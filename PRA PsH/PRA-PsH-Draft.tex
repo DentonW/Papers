@@ -50,10 +50,12 @@
 \usepackage{dcolumn}% Align table columns on decimal point
 \usepackage{bm}% bold math
 \usepackage{pdfsync}
+\usepackage{booktabs, tabularx}%toprule/bottomrule
 %%%%%% My definitions
 \def \bea{\begin{eqnarray}}
 \def\eea{\end{eqnarray}}
 %%%%%% End my definitions
+
 
 
 %\nofiles
@@ -326,13 +328,7 @@ N(\omega) = \binom{\omega+6}{6} \, ,
 %	\caption{$N(\omega)$ versus $\omega$}
 %	\label{fig:NOmega}
 %\end{figure}
-$\rho$ and $\rho'$ are defined as
-\begin{subequations}
-\begin{align}
-\vec{\rho} &= \frac{1}{2}\left(\vec{r_1} + \vec{r_2}\right) \label{eq:RhoDef}\\
-\vec{\rho}^\prime &= \frac{1}{2}\left(\vec{r_1} + \vec{r_3}\right) \label{eq:RhopDef}.
-\end{align}
-\end{subequations}
+$\rho$ and $\rho'$ are defined as $\vec{\rho} = \frac{1}{2}\left(\vec{r_1} + \vec{r_2}\right)$ and $\vec{\rho}^\prime = \frac{1}{2}\left(\vec{r_1} + \vec{r_3}\right)$.
 
 
 %THE HAMILTONIAN
@@ -666,17 +662,13 @@ of the same form as used by Van Reeth and
 Humberston [72]
 in their earlier Kohn variational calculation
 of S-wave Ps-H collisions.
-The scattering wave function 
- contains both the asymptotic form
-and short-range correlation terms for small
-interparticle distances.
-The short-range correlation terms are Hylleraas-type
-functions  which allow for all inter-particle correlations.
-For the S-wave,  the short-range correlation  terms 
+The scattering wave function contains both the asymptotic form and short-range correlation terms for small interparticle distances. The short-range correlation terms are Hylleraas-type functions  which allow for all inter-particle correlations. For the S-wave, the short-range correlation terms 
 are of the form
-$$\varphi_i = e^{-(\alpha r_1 + \beta r_2 + \gamma r_3)}
+\begin{equation}
+\varphi_i = e^{-(\alpha r_1 + \beta r_2 + \gamma r_3)}
 r_1^{k_i} r_2^{\ell i} r_{12}^{m_i} r_3^{n_i} r_{13}^{p_i}
-r_{23}^{q_i} \eqno(1)$$
+r_{23}^{q_i}
+\end{equation}
 where $\alpha$, $\beta$ and $\gamma$  are  parameters
 and $k_i$, $\ell_i$, $m_i$, $n_i$, $p_i$ and $q_i$
 are non-negative integers.
@@ -700,13 +692,14 @@ Use  the very efficient asymptotic-expansion method
 presented by Drake and Yan [100]
 for the evaluation of correlated integrals 
 of the form
-$$ I(j_1,j_2,j_3,j_{12},j_{23},j_{31};2 \alpha, 2 \beta, 2 \gamma)  =
+\begin{equation}
+I(j_1,j_2,j_3,j_{12},j_{23},j_{31};2 \alpha, 2 \beta, 2 \gamma)  =
 {\displaystyle \int} \,
 d {\bf r}_1 d {\bf r}_2 d {\bf r}_3
 r_1^{j_1} r_2^{j_2} r_3^{j_3} r_{12}^{j_{12}}
 r_{23}^{j_{23}} r_{31}^{j_{31}}
-e^{-2(\alpha r_1 + \beta r_2 + \gamma r_3)}\, .\eqno(2)
-$$
+e^{-2(\alpha r_1 + \beta r_2 + \gamma r_3)}\, .
+\end{equation}
 These integrals arise from evaluation of
 matrix elements $(\varphi_i H \varphi_j)$ and $(\varphi_i\varphi_j)$,
 where $H$ is the full Hamiltonian of the system,
@@ -723,7 +716,7 @@ Need to derive generalized complex S-matrix.
 Explain Todd's procedure and the work of Cooper for the T-matrix.
 \vskip 0.5truecm
 \noindent
-{\bf III. Results}
+\section{Results}
 \vskip 0.5truecm
 \noindent
 omega =6, omega =7, omega to infinity.
@@ -733,7 +726,7 @@ Tables as in DAMOP.
 Include the T-matrix and phase shift result---Cooper.
 \vskip 0.5truecm
 \noindent
-{\bf IV. Conclusion}
+\section{Conclusion}
 \vskip 0.5truecm
 \noindent
 Benchmark results.
@@ -742,7 +735,7 @@ Improved numerics.
 Work on the P-wave is in progress.
 \vskip 1truecm
 \noindent
-{\bf II. Numerics}
+\section{Numerics}
 Describe Todd's procedure.
 How terms are eliminated for the bound-state
 and give the procedure for determining the
@@ -756,7 +749,106 @@ bound-state, singlet and triplet scattering.
 (Compare with the nonlinear parameters that Peter used.)
 \vskip 1truecm
 \noindent
-{\bf II. Results}
+
+\subsection{Todd's procedure}
+\emph{This is mainly taken from my dissertation. This is too long. I think we can reduce it greatly by giving a reference to the L\"uchow paper and stating the differences. I also don't know if we should refer to it as his algorithm, since it is basically the same thing as what is in L\"uchow's paper. The main difference is that his algorithm compares the upper and lower triangular matrix eigenvalues. Should we refer to them as energy eigenvalues?}
+
+In trying to determine the energy eigenvalues, we noticed that the ordering of the terms could determine whether there was linear dependence in the matrices.  Allan Todd's algorithm was attractive, because it reorders the matrices to obtain the best possible energy, and it is a purely computational approach \cite{Todd2007}. So far, we have not seen any physical reason why certain terms should introduce a near linear dependence.  A description of his (\emph{not really just his}) algorithm as implemented by us follows.
+
+The total number of terms to look at is $N = N(\omega)$ (see equation \ref{eq:NumberTermsOmega}).  N matrices of size 1x1 are created for each term.  This is done for the overlap and the $\left\langle \phi \left| \,H \right| \phi \right\rangle$ matrices together (\emph{What was the other name that I saw for this? The hopping matrix?}).  The LAPACK dsygv routine is used to determine the lowest eigenvalue for each of these N sets.  These energy eigenvalues are compared against one another, and the term with the lowest energy is chosen. In the next step, the first basis function from the previous step is combined with each unused term to create N-1 matrices of size 2x2. Again, the energy eigenvalues for each of the N-1 matrices are compared against each other, and the term yielding the lowest energy is chosen as the second basis function. This is done again with 3x3 matrices for each of the N-2 remaining terms combined with the basis functions chosen in the first two steps. This procedure is repeated until all terms have been used or the remaining terms are problematic. 
+
+In principle, the overlap and H matrices (\emph{name?}) are symmetric, but this is not true to machine precision due to truncation and rounding.  If the energy eigenvalues from the upper and lower triangles differ by more than $\epsilon$, which we take as $10^{-7}$ (in atomic units), the last added term is considered problematic and discarded. Terms are also discarded if the eigenvalue routine fails when they are added.
+
+For larger basis sets, this algorithm becomes extremely slow, as determining the eigenvalues is an $O(N^3)$ operation.  It can easily be parallelized, since we are computing the eigenvalues for a large number of matrices. Our program has been parallelized using OpenMP for intranode communications and Open MPI for internode communications. \emph{Previous sentence needed?} Todd's algorithm provides the best converged energy for a set of terms, albeit at a cost of computational speed.
+
+(\emph{As mentioned in L\"uchow's paper...}) The primary motivation for using this method is to only use terms that contribute significantly to the energy eigenvalues. Terms that do not contribute significantly are more likely to introduce linear dependence into our matrices. The reordering introduced by this method is referred to as `Todd ordering' in this paper, as compared to the original ordering indicated by increasing $\omega$ in equation \ref{}.
+
+\subsection{Different Kohn methods}
+3) Implemented various Kohn methods and compared.
+
+From the bound state calculation using \emph{Todd's algorithm} mentioned in section \ref{??}, we know which short-range Hylleraas terms approximate the wavefunction of PsH best. \emph{But this doesn't describe anything other than the S-wave singlet properly.} We have observed that the short-range--short-range terms used in the same order as the output of the Todd algorithm will generate better-converged phase shifts. The separate code to determine the phase shifts uses the output from the short-range \emph{Todd} code.
+
+\emph{GRAPHS OF WITH AND WITHOUT TODD ORDERING FOR BOTH ENERGY AND PHASE SHIFTS}
+
+As discussed in section \ref{??}, there are many variants of the Kohn variational method, namely the inverse Kohn, complex Kohn (S-matrix) and complex Kohn (T-matrix). Additionally, there are both real-valued and complex general Kohn methods with an adjustable parameter $\tau$ \cite{??}. The complex Kohn methods are the most stable, since they rarely have Schwartz singularities \cite{CooperOrLucchese??}. For this reason, we take our final phase shifts as that generated by the S-matrix Kohn variational method. These phase shifts are more stable than those generated by any of the other Kohn methods.
+
+\subsection{Truncation}
+2) How you determine when to truncate the number of terms of the scattering procedure---mu?
+
+The \emph{Todd method} eliminates terms that contribute to linear dependence and reorders the remaining terms in order of decreasing contribution to the \emph{energy}. The phase shifts are calculated using this set of short-range terms for the generalized Kohn variational method for multiple $\tau$ values. We further truncate this basis set where the phase shifts for the different Kohn methods begin to diverge. This can be seen in figure \ref{??}.
+
+Determining the best term to truncate at is sometimes difficult. For the S-wave singlet, we noticed an additional property of the phase shift graphs. When $\delta_0^+$ is plotted for one Kohn method with respect to $N(\omega)$ for multiple $\mu$ values, the phase shifts agree well for the different $\mu$ values up until linear dependence becomes apparent, as seen in figure \ref{??}. We used this criteria to determine where to truncate the basis set, stopping at 1505 terms for $^1S$. We did not see a similar effect for the S-wave triplet.
+
+\emph{FIGURE OF THIS}
+
+
+
+
+\subsection{Determination of integration points}
+4) Number of integration points---color scheme.
+
+\emph{Do we really need this? It's not much more than a standard determination of what number of integration points we need. I just created a helper program that makes it easier to determine.}
+
+\subsection{Nonlinear parameters}
+To optimize the nonlinear parameters ($\alpha$, $\beta$ and $\gamma$) for the short-range terms in \cite{YanHo1999}, Yan and Ho analytically calculate the derivatives to use Newton's method. They use a different set of nonlinear parameters for each of their five sectors. We tried this but found it too unstable for higher $\omega$ when we use only one set of nonlinear parameters. Broyden's method \cite{??} worked better, but the best method for us is the simplex method. The simplex method implementation in the GNU Scientific Library \cite{??} enables us to optimize the nonlinear parameters simultaneously for $\omega = 5$ (\textbf{$\omega = 6$?}).
+
+\emph{TABLE OF NONLINEAR PARAMETERS FOR EACH PARTIAL WAVE AND OMEGA VALUE USED}
+
+
+\subsection{Lambdas}
+\emph{Combine with Determination of integration points section?}
+\emph{Do we want tables? Graphs? This isn't a computational paper, so we probably don't want to go too far in this description.}
+
+To further improve the convergence of the short-range--long-range (\emph{short-long?}) matrix elements in equation \ref{}, we investigated the integrands. The biggest source of difficulty in converging these results comes through the Gaussian-Laguerre quadratures in the $r_1$, $r_2$ and $r_3$ integrations. Specifically, the integrands do not fall off quickly enough, and the tails of the integrands are not adequately represented. This can be resolved by introducing more abscissae in the quadratures, which puts some points farther out. This brute force approach can increase the computational time greatly, so we took another approach to further increase the accuracy.
+
+The basic form of the Gauss-Laguerre quadrature is given by \cite{??}
+\beq
+\label{eq:GaussLag}
+\int_0^\infty e^{-x} f(x) dx \approx \sum_{i=1}^n w_i f(x_i).
+\eeq
+Introducing an extra $e^{-\lambda x}$ and removing it with $e^{\lambda x}$, we can push our abscissae further out by
+\beq
+\label{eq:GaussLagLambda}
+\int_0^\infty e^{-x} f(x) dx \approx \sum_{i=1}^n \frac{w_i}{\lambda} f\! \left(\frac{x_i}{\lambda}\right) \ee^{\lambda x_i}.
+\eeq
+
+\emph{The following is probably not needed.}
+
+As an example, the full expression for the $r_2$ Gauss-Laguerre quadrature is given by
+\beq
+\int_a^\infty e^{-\beta x} f(x) dx \approx \frac{e^{-\beta a}}{\beta} \sum_{i=1}^n w_i f\left(\frac{y_i}{\beta}+a\right).
+\eeq
+and with the exponential in $\lambda$, this becomes
+\beq
+\int_a^\infty e^{-\beta r_2} f(r_2) dr_2 \approx \frac{e^{-a (\beta + \lambda)}}{\beta + \lambda} \sum_{i=1}^n w_i f\left(\frac{r_2 + a(\beta + \lambda)}{\beta + \lambda} \right) \ee^{\lambda r_2}.
+\eeq
+
+\emph{I don't think we need to provide tables on this. I'm not sure I have a good representation of it easily accessible. I would probably have to re-run some programs.}
+
+
+\subsection{Nonlinear Parameters and Terms Used}
+\begin{table}[H]
+  \centering
+	\begin{ruledtabular}
+    \begin{tabular}{cccccccccc}
+    Parameter & $^1S$ & $^3S$ & $^1P$ & $^3P$ & $^1D$ & $^3D$ & $^1F$, $^3F$ & $^1G$, $^3G$ & $^1H$, $^3H$ \\
+    \colrule
+		$\omega$ & 7 & 7 & 7 & 7 & 6 & 6 & 6 & 6 & 6 \\
+		$N^\prime(\omega)$ & 1505 & 1633 & 1000 & 1000 & 916 & 919 & 462 & 462 & 462 \\
+    $\alpha$ & 0.586 & 0.323 & 0.397 & 0.310 & 0.359 & 0.356 & 0.5   & 0.5   & 0.5 \\
+    $\beta$ & 0.580 & 0.334 & 0.376 & 0.311 & 0.368 & 0.365 & 0.6   & 0.6   & 0.6 \\
+    $\gamma$ & 1.093 & 0.975 & 0.962 & 0.995 & 0.976 & 0.976 & 1.1   & 1.1   & 1.1 \\
+    $\mu$ & 0.9   & 0.9   & 0.9   & 0.9   & 0.7   & 0.7   & 0.7   & 0.7   & 0.7 \\
+    $n$ & 1     & 1     & 3     & 3     & 7     & 7     & 7     & 9     & 11 \\
+    \end{tabular}
+	  \end{ruledtabular}
+  \caption{Add caption}
+  \label{tab:addlabel}%
+\end{table}%
+
+
+\section{Results}
+%{\bf II. Results}
 NEEDS REVISIONS....written primarily in 2011
 
 To determine the reliability of the short-range part of 
@@ -850,13 +942,17 @@ The Raleigh-Ritz method is used and the optimization of the non-linear parameter
 
 \section{Results}
 \subsection{Bound State Results}
+\squeezetable  % Makes the table smaller
 \begin{table}[H]
 \begin{center}
 %\begin{tabular}{|l|l|c|l|l|}
+\begin{ruledtabular}  % From http://www.latex-community.org/forum/viewtopic.php?f=45&t=20722
 \begin{tabular}{l l c l l}
-\toprule
+%\toprule
 Group & Method & Terms & Total Energy (au) & Binding Energy (eV)\\
-
+%\hline
+\colrule  
+%\midrule
 Ho (1986) \cite{Ho1986} & Variational with Hylleraas (?) & 396 & -0.788 945$^\star$ & 1.059 75 \\
 Frolov (1997) \cite{Frolov1997a} & James-Coolidge variational & 924 & -0.789 136 9$^\star$ & 1.064 969 \\
 Frolov (1997) \cite{Frolov1997a} & James-Coolidge variational & --- & -0.789 181 8$^\star$ & 1.066 191 \\
@@ -871,9 +967,10 @@ Walters (2004) \cite{Walters2004} & ?Close-coupling 14Ps14H + $\text{H}^-$? & --
 Mitroy (2006) \cite{Mitroy2006} & ECGs with SVM & 1800 & -0.789 196 740$^\star$ & 1.066 597 58 \\
 Bubin (2006) \cite{Bubin2006} & ECGs ?variational? & 5000 & -0.789 196 765 251$^\star$ & 1.066 598 271 959 \\
 Frolov (2010) \cite{Frolov2010} & Semi-exponential basis & 84 & -0.788 516 419$^\star$ & 1.048 085 11 \\
-
+%\bottomrule
 \end{tabular}
-\caption{Bound State Energies from Other Groups - Starred values are the reported values.  Unstarred values are obtained by using the conversion factor given in section \ref{sec:Units}.}
+\end{ruledtabular}
+\caption{Bound State Energies from Other Groups - Starred values are the reported values.  Unstarred values are obtained by using the conversion factor given in section \ref{??}.}
 \label{tab:BoundEnergyOther}
 \end{center}
 \end{table}
@@ -881,11 +978,11 @@ Frolov (2010) \cite{Frolov2010} & Semi-exponential basis & 84 & -0.788 516 419$^
 In tables 3 (a) and (b) we show respectively for the singlet
 and triplet S-wave phase shifts 
 obtained with the generalized Kohn variational
-method and the complex Kohn using using $\omega=6$ and 7.
+method and the complex Kohn using $\omega=6$ and 7.
 For a given $\omega$ we compare the phase shifts from
 the various variants of the Kohn method,
 and remove any result where their is an obvious
-anamolity such to a Schwartz singularity.
+anomaly such to a Schwartz singularity.
 To the accuracy given the results agree from
 the various method (unless the results
 from  a particular method is removed.)
@@ -1096,7 +1193,7 @@ J.~Phys.~B {\bf 29}, 5961-5968 (1996). www.iop.org
 in {\it Advances in Atomic, Molecular, and Optical Physics},
 {\bf 56}, pp. 1-47, 2008 Elsevier Inc., New York.
 \bibitem{Armitage2006} S.~Armitage, D.~E.~Leslie, J.~Beale
-and G.~Larichhia,
+and G.~Laricchia,
 Nucl.~Instr.~and Methods in Phys.~Res.~B {\bf 247}, 98-104
 (2006). www.sciencedirect.com
 \bibitem{Armitage2002}S.~Armitage, D.~E.~Leslie, A.~J.~Garner and G.~Larichhia,
@@ -1118,6 +1215,8 @@ Nucl.~Instr.~and Meths. in Phys.~Res. B {\bf 221}, 140-143 (2004).
  www.sciencedirect.com
 \bibitem{Cooper} Cooper
 \bibitem{Cooper} Cooper
+\bibitem{Luchow1992}Arne Lüchow and Heinz Kleindienst. Chemical Physics Letters, 197(1-2), 105–107, (1992).
+\bibitem{YanHo1999} Zong-Chao Yan and Y. K. Ho, Physical Review A, {\bf 59}, 2697–2701 (1999).
 \end{thebibliography}
 
 
