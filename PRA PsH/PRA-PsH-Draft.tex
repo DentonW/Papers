@@ -57,6 +57,9 @@
 \newcommand{\todoi}{\todo[inline]}
 %%%%%% End my definitions
 
+% Subfolders containing our images
+\graphicspath{{IPython/}{Images/}}
+
 
 
 
@@ -244,7 +247,7 @@ Goal is to provide accurate and benchmark calculations.
 \noindent
 \section{Theory}
 
-\subsection{Positronium Hydrogen system}
+\subsection{Positronium-Hydrogen system}
 
 %begin{figure}[!h]
 %	\centering
@@ -253,11 +256,16 @@ Goal is to provide accurate and benchmark calculations.
 %	\label{fig:PsHCoords}
 %\end{figure}
 
+\begin{figure}[!h]
+	\centering
+	\includegraphics[height=2in]{PsHCoordinates}
+	\caption{Positronium-Hydrogen Coordinate System}
+	\label{fig:PsHCoords}
+\end{figure}
 
-In order to keep their nomenclature simple we relate the wavefunction for s-wave scattering to the Ps-H coordinates as describes in figure \ref{fig:PsHCoords}
-A typical real trial wavefunction for S-wave scattering of positronium from hydrogen can be written as
+In order to keep their \todo{?} nomenclature simple, we relate the wavefunction for S-wave scattering to the Ps-H coordinates as described in figure \ref{fig:PsHCoords}. The variable $\rho$ describes the position of the center of mass of the positronium atom, i.e. $\vec{\rho} = \frac{1}{2}\left(\vec{r_1} + \vec{r_2}\right)$. A typical real trial wavefunction for S-wave scattering of positronium from hydrogen can be written as \todoi{Almost sounds like we're not using this?}
 \begin{equation}
-\Psi_t^\pm = \bar{S} + \tan \eta_t \, \bar{C} + \sum_{i=1}^N c_i \bar{\phi}_i^t
+\Psi_t^\pm = \bar{S} + \tan \delta_t \, \bar{C} + \sum_{i=1}^N c_i \bar{\phi}_i^t
 \label{eq:TrialSimple}
 \end{equation}
 
@@ -272,7 +280,7 @@ A typical real trial wavefunction for S-wave scattering of positronium from hydr
 \end{subequations}
 
 \noindent The $\frac{1}{\sqrt{2}}$ and $Y_{0,0}\left( \theta_\rho, \phi_\rho \right) = \frac{1}{\sqrt{4\pi}}$ for $\bar{\phi}_i^t$ are included in the $c_i$ coefficients in (\ref{eq:TrialSimple}).
-The variable $\omega$ is an integer $\geq 0$ that determines the number of terms in the basis set.  For a chosen value of $\omega$, the integer powers of $r_i$ and $r_{ij}$ are constructed in such a way that
+The variable $\omega$ is an integer $\geq 0$ that determines the maximum number of terms in the basis set. The short-range terms, given by $\bar{\phi}_i^t$, are a Hylleraas-type basis set\todo{Provide reference?}. For a chosen value of $\omega$, the integer powers of $r_i$ and $r_{ij}$ are constructed in such a way that
 \beq
 k_i + l_i + m_i + n_i + p_i + q_i \leq \omega
 \eeq
@@ -295,429 +303,51 @@ The Hamiltonian for the fundamental Coulombic system is
 H = -\frac{1}{2} \nabla_{r_1}^2 - \frac{1}{2} \nabla_{r_2}^2 - \frac{1}{2} \nabla_{r_3}^2 + \frac {1}{r_1}-\frac {1}{r_2}-\frac {1}{r_3}-\frac {1}{r_{12}}-\frac {1}{r_{13}}+\frac {1}{r_{23}}	\label{Hamiltonian1}
 \end{align}
 
-\noindent which  can also be expressed in terms of the  variables associated with the Ps coordinates as
+\noindent which can also be expressed in terms of the variables associated with the Ps coordinates as
 \begin{align}
 H = -\frac{1}{4} \nabla_{\rho}^2 - \frac{1}{2} \nabla_{r_3}^2 - \nabla_{r_{12}}^2 + \frac {1}{r_1}-\frac {1}{r_2}-\frac {1}{r_3}-\frac {1}{r_{12}}-\frac {1}{r_{13}}+\frac {1}{r_{23}}
 	\label{Hamiltonian2}
 \end{align}
 
-\todoi{Do we need to explicitly write out the Hamiltonian? We could just refer to the J. Phys. B paper.}
+\todoi{Do we need to explicitly write out the Hamiltonian? We could just refer to the J. Phys. B paper (Van Reeth/Humberston 1999). They have this applied to e$^+$-He though.}
 
-The variable $\rho$ describes the position of the center of mass of the positronium atom, i.e. $\vec{\rho} = \frac{1}{2}\left(\vec{r_1} + \vec{r_2}\right)$.
 
-\subsection{ KOHN VARIATIONAL PRINCIPLE}
-
-
-We now give a summary of the derivation of the Kohn Variational functional for all partial waves 
-
-
-
-\begin{equation}
-\tilde{\Psi}_t^\pm = \tilde{S} + {\tan(\eta_t-\tau)}  \tilde{C} + \sum_{i=1}^N c_i \bar{\phi_i}^t ,
-\label{eq:TrialSimpleGeneral}
-\end{equation}
-
-\noindent with
-
-\begin{equation}
-\begin{bmatrix}
-\tilde{S} \\
-\tilde{C}
-\end{bmatrix}
-=
-\begin{bmatrix}
-\cos(\tau) & \sin(\tau) \\
--\sin(\tau) & \cos(\tau)
-\end{bmatrix}
-\begin{bmatrix}
-\bar{S} \\
-\bar{C}
-\end{bmatrix},
-\end{equation}
-
-
-The  standard Kohn and inverse Kohn methods $\tau= 0$ and $\tau = \frac{\pi}{2}$ respectively in equation \ref{eq:AsympExact}.  Cooper et al.\
-
-$\bar{S}$, $\bar{C}$ and $\bar{\phi_i^t}$ are the same as in (\ref{SCphiBarDef}).  
-
-The functional  for the full wavefunction is
-\beq
-I_l[\Psi_l^t] \equiv \left<\Psi_l^t | L | \Psi_l^t \right> = \int \Psi_l^t(\vec{r}) L_l \Psi_l^t(\vec{r}) \,d\vec{r}.
-\label{eq:IlDefPsi}
-\eeq
-
-\todoi{Does this need a $\hat{L}$?}
-
-\noindent with
-\beq
-\Psi_l^t(r) = \Psi_l(r) + \delta \Psi_l(r).
-\label{eq:PsilTrialRelation}
-\eeq
-\noindent The variation of $I_l$ to first order in $\delta\Psi_l$ is
-\begin{equation}
-\nonumber \delta I_l = I_l[\Psi_l^t] - I[\Psi_l]
-\label{eq:IlPsiVariation1}
-\end{equation}
-which can be rewritten as 
-\beq
-\delta I_l = 2 \left<\Psi_l | H\!-\!E | \delta\Psi_l\right> - 2 \left<\delta\Psi_l | H\!-\!E | \Psi_l\right>
-\label{eq:IlPsiVariation2}
-\eeq
-
-
-
-The variation of $\Psi$ is
-\beq
-\delta\Psi = \Psi^t - \Psi = (\bar{S} +  \tan(\eta_t-\tau) \bar{C}) - (\bar{S} +  \tan(\eta-\tau) \bar{C}) = (  \tan_t(\eta_t-\tau)  -   \tan(\eta_t-\tau) ) \bar{C} =   \delta\tan(\eta-\tau) ) \bar{C}
-\eeq
-
-The functional for the variational method of
-\beq
-\delta I = \tan(\eta_t - \tau)-\tan(\eta-\tau)
-\eeq
-or
-\beq
-I[\Psi_t] - I[\Psi] = I[\Psi_t] =  \tan(\eta_t - \tau)-\tan(\eta-\tau)
-\eeq
-
-\noindent Writing this as a variation gives
-\beq
- \tan(\eta_v- \tau)=\tan(\eta_t-\tau) - I[\Psi_t].
-\label{eq:GeneralKohnVariation}
-\eeq
-
-
-
-%THE MATRIX ESTABLISHED
-
-
-We can use this now in the stationary property of the complex Kohn functional, i.e.
-\beq
-\frac{\partial \tan(\eta_v- \tau)}{\partial \tan(\eta_t- \tau)} = 0  \text{ and } \frac{\partial\tan(\eta_v- \tau)}{\partial c_i} = 0 \text{ where $i = 1,\ldots,N$}.
-\label{eq:GeneralKohnStationary}
-\eeq
-
-!!! NEED TO SEE WHICH EQS FROM 3.73 to 3.79 ARE TO BE KEPT
-
-
-Equations (\ref{eq:IlPsiVariation1}) and (\ref{eq:IlPsiVariation2}) are then written in matrix form as
-
- The matrix equation for the generalized Kohn method can now be written as
-
-\begin{equation}
-\label{eq:GenKohnMatrix}
-\begin{bmatrix} 
- (\tilde{C},L\tilde{C}) & (\tilde{C},L\tilde{\phi}_1) & \cdots & (\tilde{C},L\bar{\phi}_j) & \cdots\\
- (\bar{\phi}_1,L\tilde{C}) & (\bar{\phi}_1,L\bar{\phi}_1) & \cdots & (\bar{\phi}_1,L\bar{\phi}_j) & \cdots\\
- \vdots & \vdots & \ddots & \vdots \\
- (\bar{\phi}_i,L\tilde{C}) & (\bar{\phi}_i,L\bar{\phi}_1) & \cdots & (\bar{\phi}_i,L\bar{\phi}_j) & \cdots\\
- \vdots & \vdots & & \vdots & \\
-\end{bmatrix}
-\begin{bmatrix}
-{\tan(\eta_t- \tau)}\\
-\tilde{c}_1\\
-\vdots\\
-\tilde{c}_i\\
-\vdots
-\end{bmatrix}
-= -
-\begin{bmatrix}
-(\tilde{C},L\tilde{S}) \\
-(\bar{\phi}_1,L\tilde{S}) \\
-\vdots \\
-(\bar{\phi}_i,L\tilde{S}) \\
-\vdots
-\end{bmatrix}.
-\end{equation}
-
-\noindent This matrix equation can be rewritten as
-\beq
-\textbf{\emph{AX = -B}}.
-\eeq
-
-\noindent Solving this for $\textbf{\emph{X}}$,
-\beq
-\textbf{\emph{X = $-A^{-1}$B}}.
-\eeq
-
-
-\subsection{Complex Kohn Variational Principle (T-Matrix)}
-
-\todoi{I think that we should have this only as detailed as Armour and Humberston's paper, or even less. Much is similar to what they have, even though it's the complex Kohn.}
-\todoi{We do have a generalized complex Kohn method for the T-matrix, including the $\tau$ terms. Should we show the derivation with that instead?}
-
-Previous work on Ps-H scattering \cite{??} used the Kohn and Inverse Kohn approach. However, both of these methods are known to be sometimes affected by Schwartz singularities. We therefore decided to also calculated the phaseshift using the generalized complex Kohn method, of which the Kohn and inverse Kohn are two real cases. \todo{Not true}
-We now derive the complex Kohn variational functional for all partial waves using a complex wavefunction which we define, in a similar manner to that in  \cite{Cooper2010}, as 
-
-
-Similar to the treatment in \cite{Cooper2010}, the complex-valued trial wavefunction is
-\beq
-\Psi_l^t = \bar{S} + T_t \, \bar{W} + \sum_{i=1}^N c_i \bar{\phi_i}^t,
-\label{eq:TrialComplex}
-\eeq
-
-where
-\beq
-\bar{W} = \bar{C} + \ii \bar{S}.
-\label{eq:WDef}
-\eeq
-
-$\bar{S}$, $\bar{C}$ and $\bar{\phi_i}$ are the same as in (\ref{SCphiBarDef}).  Note that this is different than Cooper et al. \cite{Cooper2010}, in that we do not use a variable $\tau$, and our $\bar{W}$ is their $\bar{T}$ but with $\bar{C}$ and $\bar{S}$ swapped, which gives a wavefunction of the correct form \todo{include parentheses?} (an outgoing wave).
-
-The functional  for the full wavefunction is
-\beq
-I_l[\Psi_l^t] \equiv \left<\Psi_l^t | L | \Psi_l^t \right> = \int \Psi_l^t(\vec{r}) L_l \Psi_l^t(\vec{r}) \,d\vec{r}.
-\label{eq:IlDefPsi}
-\eeq
-
-\noindent with
-\beq
-\Psi_l^t(r) = \Psi_l(r) + \delta \Psi_l(r).
-\label{eq:PsilTrialRelation}
-\eeq
-\noindent The variation of $I_l$ to first order in $\delta\Psi_l$ is
-\begin{equation}
-\nonumber \delta I_l = I_l[\Psi_l^t] - I[\Psi_l] \\
-\label{eq:IlPsiVariation1}
-\end{equation}
-
-
-
-The variation of $\Psi$ is
-\beq
-\delta\Psi = \Psi^t - \Psi = (\bar{S} + T_t \bar{W}) - (\bar{S} + T \bar{W}) = (T_t - T) \bar{W} = \delta T \,\bar{W}
-\eeq
-
-It can be shown that solving for $\delta I$, gives a result for the variational method of
-\beq
-\delta I = (T_t - T)
-\eeq
-or
-\beq
-I[\Psi_t] - I[\Psi] = I[\Psi_t] = T_t - T.
-\eeq
-
-\noindent Writing this as a variation gives
-\beq
-T_v = T_t - I[\Psi_t].
-\label{eq:ComplexKohnVariation}
-\eeq
-\todoi{Why do some of the Kohn methods have a $\kappa$ included?}
-
-
-
-%THE MATRIX ESTABLISHED
-
-
-We can use this now in the stationary property of the complex Kohn functional, i.e.
-\beq
-\frac{\partial T_v}{\partial T_t} = 0  \text{ and } \frac{\partial T_v}{\partial c_i} = 0 \text{ where $i = 1,\ldots,N$}.
-\label{eq:ComplexKohnStationary}
-\eeq
-
-\todoi{!!! NEED TO SEE WHICH EQS FROM 3.73 to 3.79 ARE TO BE KEPT}
-
-
-Using equations \ref{eq:TrialComplex} and \ref{eq:ComplexKohnVariation}, the stationary property in equation \ref{eq:ComplexKohnStationary} can be written in matrix form as
-
-\begin{equation}
-\label{eq:ComplexKohnMatrix}
-\begin{bmatrix} 
- (\bar{W},L\bar{W}) & (\bar{W},L\bar{\phi}_1) & \cdots & (\bar{W},L\bar{\phi}_j) & \cdots\\
- (\bar{\phi}_1,L\bar{W}) & (\bar{\phi}_1,L\bar{\phi}_1) & \cdots & (\bar{\phi}_1,L\bar{\phi}_j) & \cdots\\
- \vdots & \vdots & \ddots & \vdots \\
- (\bar{\phi}_i,L\bar{W}) & (\bar{\phi}_i,L\bar{\phi}_1) & \cdots & (\bar{\phi}_i,L\bar{\phi}_j) & \cdots\\
- \vdots & \vdots & & \vdots & \\
-\end{bmatrix}
-\begin{bmatrix}
-\Lambda_t\\
-c_1\\
-\vdots\\
-c_i\\
-\vdots
-\end{bmatrix}
-= -
-\begin{bmatrix}
-(\bar{W},L\bar{S}) \\
-(\bar{\phi}_1,L\bar{S}) \\
-\vdots \\
-(\bar{\phi}_i,L\bar{S}) \\
-\vdots
-\end{bmatrix}.
-\end{equation}
-
-\noindent This matrix equation can be rewritten as
-\beq
-\textbf{\emph{AX = -B}}.
-\eeq
-
-\todoi{We have introduced $T_v$ here only}
-
-\noindent Finally, we solve for $T_v$, from which we obtain our phase shifts.
-\begin{equation}
-T_v = -\textbf{\emph{B}}^{tr} \textbf{\emph{X}} - (\bar{S},L \bar{S})
-\end{equation}
-\todoi{Bold any of this? Best way to write the transpose? Wikipedia gives tr and T as possible ways, but we don't want to get it confused with the T-matrix.}
-
-
-
-\subsection{Complex Kohn Variational Principle (S-Matrix)}
-
-
-Previous work on Ps-H scattering \cite{??} used the Kohn and Inverse Kohn approach. However, both of these methods are known to be sometimes affected by Schwartz singularities. We therefore decided to also calculated the phaseshift using the generalized complex Kohn method, of which the Kohn and inverse Kohn are two real cases. \todo{Not true}
-We now derive the complex Kohn variational functional for all partial waves using a complex wavefunction which we define, in a similar manner to that in  \cite{Cooper2010}, as 
-
-
-Similar to the treatment in \cite{Cooper2010}, the complex-valued trial wavefunction is
-\beq
-\Psi_l^t = \tilde{S} + S_t \, \tilde{W} + \sum_{i=1}^N c_i \bar{\phi_i}^t,
-\label{eq:TrialComplexS}
-\eeq
-
-where
-\beq
-\tilde{S} = \bar{C} - \ii \bar{S} \text{ and } \tilde{C} = \frac{1}{2\ii}(\bar{C} + \ii \bar{S}).
-\label{eq:SCTildeDef}
-\eeq
-\todoi{Is this the correct form? My document had 3 versions of the derivation. Do we want to include the $\frac{1}{2\ii}$ in $\Psi_l^t$ above?}
-
-$\bar{S}$, $\bar{C}$ and $\bar{\phi_i}$ are the same as in (\ref{SCphiBarDef}).
-
-The functional for the full wavefunction is
-\beq
-I_l[\Psi_l^t] \equiv \left<\Psi_l^t | L | \Psi_l^t \right> = \int \Psi_l^t(\vec{r}) L_l \Psi_l^t(\vec{r}) \,d\vec{r}.
-\label{eq:IlDefPsi}
-\eeq
-
-\noindent with
-\beq
-\Psi_l^t(r) = \Psi_l(r) + \delta \Psi_l(r).
-\label{eq:PsilTrialRelation}
-\eeq
-\noindent The variation of $I_l$ to first order in $\delta\Psi_l$ is
-\begin{equation}
-\nonumber \delta I_l = I_l[\Psi_l^t] - I[\Psi_l] \\
-\label{eq:IlPsiVariation1}
-\end{equation}
-
-
-The variation of $\Psi$ is
-\todoi{Check all of these equations.}
-\beq
-\delta\Psi = \Psi^t - \Psi = (\tilde{S} + S_t \tilde{C}) - (\tilde{S} + S \tilde{C}) = (S_t - S) \bar{C} = \delta S \,\bar{C}
-\eeq
-
-It can be shown that solving for $\delta I$, gives a result for the variational method of
-\beq
-\delta I = (S_t - S)
-\eeq
-or
-\beq
-I[\Psi_t] - I[\Psi] = I[\Psi_t] = 2\ii(S_t - S).
-\eeq
-
-\noindent Writing this as a variation gives
-\beq
-S_v = S_t - \frac{1}{2\ii} I[\Psi_t].
-\label{eq:ComplexKohnVariation}
-\eeq
-
-
-
-%THE MATRIX ESTABLISHED
-
-
-We can use this now in the stationary property of the complex Kohn functional, i.e.
-\beq
-\frac{\partial S_v}{\partial S_t} = 0  \text{ and } \frac{\partial S_v}{\partial c_i} = 0 \text{ where $i = 1,\ldots,N$}.
-\label{eq:ComplexKohnStationary}
-\eeq
-
-\todoi{!!! NEED TO SEE WHICH EQS FROM 3.73 to 3.79 ARE TO BE KEPT}
-
-
-Using equations \ref{eq:TrialComplex} and \ref{eq:ComplexKohnVariation}, the stationary property in equation \ref{eq:ComplexKohnStationary} can be written in matrix form as
-
-\todoi{We need to stick with a consistent notation, whether bra-ket or define the parentheses}
-\begin{equation}
-\label{eq:ComplexKohnMatrix}
-\begin{bmatrix} 
- (\tilde{C},L\tilde{C}) & (\tilde{C},L\bar{\phi}_1) & \cdots & (\tilde{C},L\bar{\phi}_j) & \cdots\\
- (\bar{\phi}_1,L\tilde{C}) & (\bar{\phi}_1,L\bar{\phi}_1) & \cdots & (\bar{\phi}_1,L\bar{\phi}_j) & \cdots\\
- \vdots & \vdots & \ddots & \vdots \\
- (\bar{\phi}_i,L\tilde{C}) & (\bar{\phi}_i,L\bar{\phi}_1) & \cdots & (\bar{\phi}_i,L\bar{\phi}_j) & \cdots\\
- \vdots & \vdots & & \vdots & \\
-\end{bmatrix}
-\begin{bmatrix}
-\Lambda_t\\
-c_1\\
-\vdots\\
-c_i\\
-\vdots
-\end{bmatrix}
-= -
-\begin{bmatrix}
-(\tilde{C},L\tilde{S}) \\
-(\bar{\phi}_1,L\tilde{S}) \\
-\vdots \\
-(\bar{\phi}_i,L\tilde{S}) \\
-\vdots
-\end{bmatrix}.
-\end{equation}
-
-\noindent This matrix equation can be rewritten as
-\beq
-\textbf{\emph{AX = -B}}.
-\eeq
-
-\todoi{We have introduced $S_v$ here only}
-
-\noindent Finally, we solve for $S_v$, from which we obtain our phase shifts.
-\begin{equation}
-S_v = -\frac{1}{2\ii} \left( \textbf{\emph{B}}^{tr} \textbf{\emph{X}} - (\bar{S},L \bar{S}) \right)
-\end{equation}
-\todoi{Should the $\frac{1}{2\ii}$ be here? Check equation.}
- 
 
 
 %%%%%%%%%%  EXTENSION TO HIGHER PARTIAL DISCCUSION ON ANGULAR INTEGRATION AND ROLE OF DIFFERENT SYMMETRIES.
 \subsection{Higher Waves Wavefunction}
-The  wavefunctions for the higher partial waves are similar in form to that of the S-wave (\ref{eq:SWaveTrialSimple}). For clarity we remove the t suscript representing the fact that we are dealing with the trial wavefunction and assume that this is implicitly implied.
+\todoi{Not all terms here have an $\ell$ subscript. We have to be careful that it isn't confused with the superscript $\ell$ in equation \ref{eq:PartialWavePhiBar}.}
+The wavefunctions for the higher partial waves are similar in form to that of the S-wave (\ref{eq:SWaveTrialSimple}). For clarity, we remove the t subscript representing the fact that we are dealing with the trial wavefunction and assume that this is implied.
 
 \begin{equation}
-\Psi_l^\pm = \bar{S_l} + \tan \eta_l^\pm \, \bar{C_l} + \sum_{i=1}^N c_i \bar{\phi}_{i1} + \sum_{j=1}^N d_j \bar{\phi}_{j2}
+\Psi_l^\pm = \bar{S_l} + \tan \delta_l^\pm \, \bar{C_l} + \sum_{i=1}^N c_i \bar{\phi}_{i1} + \sum_{j=1}^N d_j \bar{\phi}_{j2}
 \label{eq:PWaveSimple}
 \end{equation}
 
-\noindent The $\bar{S}$ and $\bar{C}$ 
-
+\noindent The long-range terms are given by 
 \begin{subequations}
 \label{eq:PartialWaveSandCBar}
 \begin{align}
-\bar{S} &= \frac{1\pm P_{23}}{\sqrt{2}}Y_{l0}(\theta_\rho,\phi_\rho)\Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,j_l\left(\kappa\rho\right) \label{eq:PWaveSBar} \\
-\bar{C} &=\frac{1\pm P_{23}}{\sqrt{2}}Y_{l0}(\theta_\rho,\phi_\rho)\Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,n_l\left(\kappa\rho\right) f_{sh}(\rho) \label{eq:PWaveCBar} 
+\bar{S} &= \frac{1\pm P_{23}}{\sqrt{2}}Y_{\ell 0}(\theta_\rho,\phi_\rho)\Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,j_\ell\left(\kappa\rho\right) \label{eq:PWaveSBar} \\
+\bar{C} &= \frac{1\pm P_{23}}{\sqrt{2}}Y_{\ell 0}(\theta_\rho,\phi_\rho)\Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,n_\ell\left(\kappa\rho\right) f_{sh}(\rho) \label{eq:PWaveCBar}.
 \end{align}
 \end{subequations}
 
-
-
-
-\noindent The shielding factor, $f_{sh}(\rho)$ ensure that the singularity of the Neumann function is removed the origin is given by
+\noindent The shielding factor, $f_{sh}(\rho)$, ensures that the singularity of the Neumann function is removed at the origin and is
 \beq
-f^\ell_{sh}(\rho) = \left[1 - \ee^{-\mu \rho} \left(1+\frac{\mu}{2}\rho\right)\right]^{n_\ell}.
+f_{sh}(\rho) = \left[1 - \ee^{-\mu \rho} \left(1+\frac{\mu}{2}\rho\right)\right]^{m_\ell}.
 \label{eq:PartialWaveShielding}
 \eeq
 
-
-\noindent The short-range terms are given by and represent the angular momentum as been placed on either the positron ($r_1$) or on the electron on the Ps atom ($r_2$).
+\noindent The short-range terms are given by 
 \begin{subequations}
 \label{eq:PartialWavePhiBar}
 \begin{align}
-\bar{\phi}_{i1} &= \left(1 \pm P_{23}\right) Y_{l0}(\theta_1) r^\ell_1 \phi_i \label{eq:PWavePhi1i}\\
-\bar{\phi}_{j2} &= \left(1 \pm P_{23}\right) Y_{l0}(\theta_2) r^\ell_2 \phi_j \label{eq:PartialWavePhi2j},
+\bar{\phi}_{i1} &= \left(1 \pm P_{23}\right) Y_{\ell 0}(\theta_1) r^\ell_1 \phi_i \label{eq:PWavePhi1i}\\
+\bar{\phi}_{j2} &= \left(1 \pm P_{23}\right) Y_{\ell 0}(\theta_2) r^\ell_2 \phi_j \label{eq:PartialWavePhi2j},
 \end{align}
 \end{subequations}
-where $\phi_i$ is given by equation \ref{eq:PhiDef}. For partial waves with $L > 1$, the angular momentum could be shared between both particles in the Ps atom \cite{??} (Schwartz). An investigation of the contribution to the final results from each symmetry  (find paper Pos-He 1999 or thesis) has revealed that the mixed symmetries were not important and because of the complexity of the anlaytical evaluation of the various matrix elements, we have omitted the mixed symmetry term. The formulation for the Complex Kohn method is the same as that expressed above.
+where $\phi_i$ and $\phi_j$ are given by equation \ref{eq:PhiDef}. This represent the angular momentum as being placed on either the positron ($r_1$) or on the electron on the Ps atom ($r_2$). For partial waves with $L > 1$, the angular momentum could be shared between both particles in the Ps atom \cite{??} (Schwartz). An investigation of the contribution to the final results from each symmetry \todoi{find paper Pos-He 1999 or thesis} has revealed that the mixed symmetries were not important and because of the complexity of the analytical evaluation of the various matrix elements, we have omitted the mixed symmetry term. \todoi{Why is this sentence here?} The formulation for the Complex Kohn method is the same as that expressed above.
 \todoi{Mention the other form we tried here or later?}
 
 
@@ -731,8 +361,6 @@ where $\phi_i$ is given by equation \ref{eq:PhiDef}. For partial waves with $L >
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \vskip 0.5truecm
 \noindent
-Give Kohn variational method.
-Scattering wave function.
 Low-energy elastic
 Ps-H,
 for energies up to the excitation threshold of Ps(n=2),
@@ -758,61 +386,132 @@ proton, and $r_3$  is the distance of the electron in
 the H atom from the proton.
 The terms $r_{12}$, $r_{13}$ and $r_{23}$
 are the interparticle distances between the positron and electrons.
-Clearly, the scattering wave function is properly antisymmetrized to allow
-for exchange.
 As done earlier by Van Reeth and Humberston we used 
 the short-range correction part  of the 
 scattering wave function  
 to compute the binding energy of PsH [72].
 
 
-Use  the very efficient asymptotic-expansion method 
-presented by Drake and Yan [100]
-for the evaluation of correlated integrals 
-of the form
+
+\subsection{Complex Kohn Variational Principle (T-Matrix)}
+
+\todoi{I think that we should have this only as detailed as Armour and Humberston's paper, or even less. Much is similar to what they have, even though it's the complex Kohn.}
+\todoi{Do we want to just give the wavefunction and the functional, then refer them to Armour/Humberston?}
+
+Previous work on Ps-H scattering \cite{??} used the Kohn and inverse Kohn approach. However, both of these methods are known to be sometimes affected by Schwartz singularities. In addition to using a generalized real Kohn method, to reduce the presence of Schwartz singularities, we also calculate the phase shifts using a T-matrix complex Kohn method. We give the derivation of the complex Kohn variational functional for all partial waves using a complex wavefunction.
+
+Following the treatment of Cooper \cite{} and Van Reeth's thesis \cite{}, the trial wavefunction is
+\beq
+\Psi_t = \bar{S} + T_t \, \bar{W} + \sum_{i=1}^N c_i \bar{\phi_i}^t,
+\label{eq:TrialComplex}
+\eeq
+\todoi{$\bar{\phi_i}^t$ is a problem when doing t as a subscript. Armour/Humberston do this in equation (2.10) with only a t on the phase shift.}
+
+where
+\beq
+\bar{W} = \bar{C} + \ii \bar{S}.
+\label{eq:WDef}
+\eeq
+
+$\bar{S}$, $\bar{C}$ and $\bar{\phi_i}$ are the same as in (\ref{SCphiBarDef}).  Note that this is different than Cooper et al. \cite{Cooper2010}, in that we do not use a variable $\tau$, and our $\bar{W}$ is their $\bar{T}$ but with $\bar{C}$ and $\bar{S}$ swapped, which gives a wavefunction of the correct form \todo{odd wording} (an outgoing wave).
+
+The functional for the full wavefunction is
+\beq
+I_l[\Psi_t] = \left(\Psi_t, L \Psi_t \right) = \int \Psi_t(\vec{r}) L \Psi_t(\vec{r}) \,d\vec{r}.
+\label{eq:IlDefPsi}
+\eeq
+
+\todoi{We need to check about conjugation notation.}
+
+\noindent with
+\beq
+\Psi_t(r) = \Psi(r) + \delta \Psi(r)
+\label{eq:PsilTrialRelation}
+\eeq
+and
+\beq
+L = 2(H - E).
+\label{eq:LDef}
+\eeq
+\noindent The variation of $I_l$ to first order in $\delta\Psi_l$ is
 \begin{equation}
-I(j_1,j_2,j_3,j_{12},j_{23},j_{31};2 \alpha, 2 \beta, 2 \gamma)  =
-{\displaystyle \int} \,
-d {\bf r}_1 d {\bf r}_2 d {\bf r}_3
-r_1^{j_1} r_2^{j_2} r_3^{j_3} r_{12}^{j_{12}}
-r_{23}^{j_{23}} r_{31}^{j_{31}}
-e^{-2(\alpha r_1 + \beta r_2 + \gamma r_3)}\, .
+\nonumber \delta I_l = I_l[\Psi_t] - I[\Psi] \\
+\label{eq:IlPsiVariation1}
 \end{equation}
-These integrals arise from evaluation of
-matrix elements $(\varphi_i H \varphi_j)$ and $(\varphi_i\varphi_j)$,
-where $H$ is the full Hamiltonian of the system,
-which are needed in 
- both the bound-state
-and scattering calculations.
- 
-Generalized Kohn. Explain tau and work of Cooper.
 
-Complex Kohn method.
-T-matrix.
-Need to derive generalized complex S-matrix.
 
-Explain Todd's procedure and the work of Cooper for the T-matrix.
-\vskip 0.5truecm
-\noindent
-\section{Results}
-\vskip 0.5truecm
-\noindent
-omega =6, omega =7, omega to infinity.
-Extrapolation--size of error.
-Bound-state./Resonance/Scattering lengths.
-Tables as in DAMOP.
-Include the T-matrix and phase shift result---Cooper.
-\vskip 0.5truecm
-\noindent
-\section{Conclusion}
-\vskip 0.5truecm
-\noindent
-Benchmark results.
-Accurate results.
-Improved numerics.
-Work on the P-wave is in progress.
-\vskip 1truecm
-\noindent
+The variation of $\Psi$ is
+\beq
+\delta\Psi = \Psi_t - \Psi = (\bar{S} + T_t \bar{W}) - (\bar{S} + T_v \bar{W}) = (T_t - T_v) \bar{W} = \delta T \,\bar{W}
+\eeq
+
+\todoi{At which step is the approximation made?}
+
+It can be shown that solving for $\delta I$, gives a result for the variational method of
+\beq
+\delta I = (T_t - T)
+\eeq
+or
+\beq
+I[\Psi_t] - I[\Psi] = I[\Psi_t] = T_t - T.
+\eeq
+
+\noindent Writing this as a variation gives
+\beq
+T_v = T_t - I[\Psi_t].
+\label{eq:ComplexKohnVariation}
+\eeq
+
+
+We can use this now in the stationary property of the complex Kohn functional, i.e.
+\beq
+\frac{\partial T_v}{\partial T_t} = 0  \text{ and } \frac{\partial T_v}{\partial c_i} = 0 \text{ where $i = 1,\ldots,N$}.
+\label{eq:ComplexKohnStationary}
+\eeq
+
+Using equations \ref{eq:TrialComplex} and \ref{eq:ComplexKohnVariation}, the stationary property in equation \ref{eq:ComplexKohnStationary} can be written in matrix form for the S-wave as
+
+\begin{equation}
+\label{eq:ComplexKohnMatrix}
+\begin{bmatrix} 
+ (\bar{W},L\bar{W}) & (\bar{W},L\bar{\phi}_1) & \cdots & (\bar{W},L\bar{\phi}_j) & \cdots\\
+ (\bar{\phi}_1,L\bar{W}) & (\bar{\phi}_1,L\bar{\phi}_1) & \cdots & (\bar{\phi}_1,L\bar{\phi}_j) & \cdots\\
+ \vdots & \vdots & \ddots & \vdots \\
+ (\bar{\phi}_i,L\bar{W}) & (\bar{\phi}_i,L\bar{\phi}_1) & \cdots & (\bar{\phi}_i,L\bar{\phi}_j) & \cdots\\
+ \vdots & \vdots & & \vdots & \\
+\end{bmatrix}
+\begin{bmatrix}
+T_t\\
+c_1\\
+\vdots\\
+c_i\\
+\vdots
+\end{bmatrix}
+= -
+\begin{bmatrix}
+(\bar{W},L\bar{S}) \\
+(\bar{\phi}_1,L\bar{S}) \\
+\vdots \\
+(\bar{\phi}_i,L\bar{S}) \\
+\vdots
+\end{bmatrix}.
+\end{equation}
+
+\noindent For higher partial waves, the matrix equation looks the same but includes the second symmetry terms. This matrix equation can be rewritten as
+\beq
+\textbf{\emph{AX = -B}}.
+\eeq
+
+\todoi{We have introduced $T_v$ here only}
+
+\noindent Finally, we solve for $T_v$, from which we obtain our phase shifts.
+\begin{equation}
+T_v = -\textbf{\emph{B}}^{tr} \textbf{\emph{X}} - (\bar{S},L \bar{S})
+\end{equation}
+\todoi{Bold any of this? Best way to write the transpose? Wikipedia gives tr and T as possible ways, but we don't want to get it confused with the T-matrix.}
+
+
+
 \section{Numerics}
 Describe Todd's procedure.
 How terms are eliminated for the bound-state
@@ -827,6 +526,26 @@ bound-state, singlet and triplet scattering.
 \todoi{Compare with the nonlinear parameters that Peter used.}
 \vskip 1truecm
 \noindent
+
+\subsection{Short-Short Integrations}
+
+Use the very efficient asymptotic-expansion method 
+presented by Drake and Yan \cite{Drake1995}
+for the evaluation of correlated integrals 
+of the form
+\begin{equation}
+I(j_1,j_2,j_3,j_{12},j_{23},j_{31};2 \alpha, 2 \beta, 2 \gamma)  =
+{\displaystyle \int} \,
+d {\bf r}_1 d {\bf r}_2 d {\bf r}_3
+r_1^{j_1} r_2^{j_2} r_3^{j_3} r_{12}^{j_{12}}
+r_{23}^{j_{23}} r_{31}^{j_{31}}
+e^{-2(\alpha r_1 + \beta r_2 + \gamma r_3)}\, .
+\end{equation}
+These integrals arise from evaluation of the
+matrix elements $(\phi_i, L \phi_j)$, $(\phi_i, H \phi_j)$ and $(\phi_i, \phi_j)$,
+where $H$ is the full Hamiltonian of the system,
+which is needed in both the bound-state and scattering calculations.
+\todoi{Mention recursion relations and Yan/Drake's 1997 paper}
 
 \subsection{Todd's procedure}
 \emph{This is mainly taken from my dissertation. This is too long. I think we can reduce it greatly by giving a reference to the L\"uchow paper and stating the differences. I also don't know if we should refer to it as his algorithm, since it is basically the same thing as what is in L\"uchow's paper. The main difference is that his algorithm compares the upper and lower triangular matrix eigenvalues. Should we refer to them as energy eigenvalues?}
@@ -855,8 +574,7 @@ From the bound state calculation using \emph{Todd's algorithm} mentioned in sect
 As discussed in section \ref{??}, there are many variants of the Kohn variational method, namely the inverse Kohn, complex Kohn (S-matrix) and complex Kohn (T-matrix). Additionally, there are both real-valued and complex general Kohn methods with an adjustable parameter $\tau$ \cite{??}. The complex Kohn methods are the most stable, since they rarely have Schwartz singularities \cite{CooperOrLucchese??}. For this reason, we take our final phase shifts as that generated by the S-matrix Kohn variational method. These phase shifts are more stable than those generated by any of the other Kohn methods.
 
 \subsection{Truncation}
-The \emph{Todd method} eliminates terms that contribute to linear dependence and reorders the remaining terms in order of decreasing contribution to the \emph{energy}. The phase shifts are calculated using this set of short-range terms for the generalized Kohn variational method for multiple $\tau$ values. We further truncate this basis set where the phase shifts for the different Kohn methods begin to diverge. This can be seen in figure \ref{??}.
-
+The \emph{Todd method} eliminates terms that contribute to linear dependence and reorders the remaining terms in order of decreasing contribution to the energy\todo{eigenvalues?}. The phase shifts are calculated using this set of short-range terms for the generalized Kohn variational method for multiple $\tau$ values. We further truncate this basis set where the phase shifts for the different Kohn methods begin to diverge. This can be seen in figure \ref{??}.
 
 
 \subsection{Nonlinear parameters}
@@ -866,30 +584,54 @@ To optimize the nonlinear parameters ($\alpha$, $\beta$ and $\gamma$) for the sh
 \subsection{Lambdas}
 \todoi{Combine with Determination of integration points section? Do we want tables? Graphs? This isn't a computational paper, so we probably don't want to go too far in this description.}
 
-To further improve the convergence of the short-range--long-range (\emph{short-long?}) matrix elements in equation \ref{}, we investigated the integrands. The biggest source of difficulty in converging these results comes through the Gaussian-Laguerre quadratures in the $r_1$, $r_2$ and $r_3$ integrations. Specifically, the integrands do not fall off quickly enough, and the tails of the integrands are not adequately represented. This can be resolved by introducing more abscissae in the quadratures, which puts some points farther out. This brute force approach can increase the computational time greatly, so we took another approach to further increase the accuracy.
+To further improve the convergence of the short-range--long-range (\emph{short-long?}) matrix elements in equation \ref{}, we investigated the integrands. The biggest source of difficulty in converging these results comes through the Gaussian-Laguerre quadratures in the $r_1$, $r_2$ and $r_3$ integrations. Specifically, the integrands do not fall off quickly enough, and the tails of the integrands are not adequately represented. This can be resolved by introducing more abscissae in the quadratures, which puts some points farther out. This brute force approach can increase the computational time greatly, so we took another approach to further increase the accuracy. For each of the Gauss-Laguerre quadratures, we introduce an extra $e^{-\lambda r_i}$ and remove it with $e^{\lambda r_i}$ after the quadrature, pushing our abscissae further out without increasing the number of integration points.
 
-The basic form of the Gauss-Laguerre quadrature is given by \cite{Sauer2006}
-\beq
-\label{eq:GaussLag}
-\int_0^\infty e^{-x} f(x) dx \approx \sum_{i=1}^n w_i f(x_i).
-\eeq
-Introducing an extra $e^{-\lambda x}$ and removing it with $e^{\lambda x}$, we can push our abscissae further out by
-\beq
-\label{eq:GaussLagLambda}
-\int_0^\infty e^{-x} f(x) dx \approx \sum_{i=1}^n \frac{w_i}{\lambda} f\! \left(\frac{x_i}{\lambda}\right) \ee^{\lambda x_i}.
-\eeq
+%The basic form of the Gauss-Laguerre quadrature is given by \cite{Sauer2006}
+%\beq
+%\label{eq:GaussLag}
+%\int_0^\infty e^{-x} f(x) dx \approx \sum_{i=1}^n w_i f(x_i).
+%\eeq
+%Introducing an extra $e^{-\lambda x}$ and removing it with $e^{\lambda x}$, we can push our abscissae further out by
+%\beq
+%\label{eq:GaussLagLambda}
+%\int_0^\infty e^{-x} f(x) dx \approx \sum_{i=1}^n \frac{w_i}{\lambda} f\! \left(\frac{x_i}{\lambda}\right) \ee^{\lambda x_i}.
+%\eeq
+%
+%\todoi{The following is probably not needed.}
+%
+%As an example, the full expression for the $r_2$ Gauss-Laguerre quadrature is given \todo{$y_i$ defined?} by
+%\beq
+%\int_a^\infty e^{-\beta r_2} f(r_2) dr_2 \approx \frac{e^{-\beta a}}{\beta} \sum_{i=1}^n w_i f\left(\frac{y_i}{\beta}+a\right).
+%\eeq
+%and with the exponential in $\lambda$, this becomes
+%\beq
+%\int_a^\infty e^{-\beta r_2} f(r_2) dr_2 \approx \frac{e^{-a (\beta + \lambda)}}{\beta + \lambda} \sum_{i=1}^n w_i f\left(\frac{r_2 + a(\beta + \lambda)}{\beta + \lambda} \right) \ee^{\lambda r_2}.
+%\eeq
+%\todoi{We may just want to show the final result here. It's not difficult to work this out.}
 
-\emph{The following is probably not needed.}
+\subsection{Resonance Fitting}
+As with the previous Kohn calculation of Van Reeth and Humberston (who also obtained these resonances..),
+we fitted our computed phase shifts for the S-wave and P-wave for $\omega=7$) to
+the resonance formula
+\beq
+\delta(E) = A + B E + C E^2 + \arctan \left[ \frac{^1\Gamma}{2(^1E_R - E)} \right] + \arctan \left[ \frac{^2\Gamma}{2(^2E_R - E)} \right].
+\eeq
+to extract out the positions ($^1E_R$ and $^2E_R$) and widths
+($^1\Gamma$ and $^2\Gamma$) of the two resonances. The D-wave and F-wave resonance fits were performed without the second $\arctan$ term, as they have a single resonance. 
+This formula comprises of the Breit-Wigner resonance
+formula for the two resonances and allows for a slowly varying
+background.
+The data from each variant of the Kohn variational method was fitted using MATLAB nonlinear fitting routine with eight possible \todo{Correct?} weightings
+(Bisquare, Andrews, Cauchy, Fair, Huber, Logistic, Talwar and Welsch).
+For each variant of the Kohn variational method, the four parameters were determined for each
+of the eight fits and compared.
 
-As an example, the full expression for the $r_2$ Gauss-Laguerre quadrature is given \todo{$y_i$ defined?} by
-\beq
-\int_a^\infty e^{-\beta r_2} f(r_2) dr_2 \approx \frac{e^{-\beta a}}{\beta} \sum_{i=1}^n w_i f\left(\frac{y_i}{\beta}+a\right).
-\eeq
-and with the exponential in $\lambda$, this becomes
-\beq
-\int_a^\infty e^{-\beta r_2} f(r_2) dr_2 \approx \frac{e^{-a (\beta + \lambda)}}{\beta + \lambda} \sum_{i=1}^n w_i f\left(\frac{r_2 + a(\beta + \lambda)}{\beta + \lambda} \right) \ee^{\lambda r_2}.
-\eeq
-\todoi{We may just want to show the final result here. It's not difficult to work this out.}
+\subsection{Extrapolation}
+For each variant of the Kohn method, we extrapolated the phase shifts according to 
+\bea
+\tan\delta^\pm(\omega) = \tan\delta^\pm(\omega\to\infty) + {c\over \omega^p}\, .
+\eea
+
 
 \subsection{Nonlinear Parameters and Terms Used}
 \begin{table}
@@ -912,38 +654,46 @@ and with the exponential in $\lambda$, this becomes
 \end{table}%
 
 
+
+
+
 \section{Results}
 %{\bf II. Results}
-NEEDS REVISIONS....written primarily in 2011
+\todoi{NEEDS REVISIONS....written primarily in 2011}
 
 
 \subsection{Bound State Results}
 To determine the reliability of the short-range part of the wave function to describe the $^1S$ PsH system, we computed the binding energy of the $^1S$ PsH system using this part of the wave function and the Rayleigh-Ritz variational method. This method provides a true bound on the total energy and binding energy. \todoi{NEED TO MENTION POSITRONIUM HYDRIDE IN THE INTRO}
 
-To be consistent with the scattering calculation, we report the results obtained with the same set of nonlinear parameters that were used in the scattering calculation, namely $\alpha = 0.586$, $\beta = 0.580$ and $\gamma = 1.093$. For our set with 1505 terms, we calculate a nonrelativistic ground-state energy of -0.789189725 au, giving a binding energy of 1.066406705 eV (using a conversion factor of 1 au = 27.21138505 eV from \cite{?}). We note that we are able to obtain a slightly better value for the binding energy with higher $\omega$, but we are unable to use this many terms in the full scattering calculations for Ps-H.
+To be consistent with the scattering calculation, we report the results obtained with the same set of nonlinear parameters that were used in the scattering calculation, namely $\alpha = 0.586$, $\beta = 0.580$ and $\gamma = 1.093$. For our set with 1505 terms, we calculate a nonrelativistic ground-state energy of -0.789189725 au, \todo{in table...} giving a binding energy of 1.066406705 eV (using a conversion factor of 1 au = 27.21138505 eV from \cite{?}). We note that we are able to obtain a slightly better value for the binding energy with higher $\omega$, but we are unable to use this many terms in the full scattering calculations for Ps-H. \todoi{Mention here how we remove terms?} Table \ref{tab:BoundEnergyOther} compares our energies for PsH with that obtained by other groups.
 
-Table 1 shows the convergence of the total
-energy of the PsH system and the binding energy
-with respect to $\omega$ and the number of terms
-that are actually used in the calculation
-from using the Todd procedure. 
-To be consistent with the scattering calculation,
-we report the results obtained with
-the same set of nonlinear parameters
-that were used in the scattering calculation,
-namely $\alpha =0.50$, $\beta=0.60$ and $\gamma=1.1$.
-We note however that we could obtain a slightly better
-value for the binding energy for each $\omega$ and extend
-the calculation to $\omega =11$ with a
-different set of non-linear parameters
-($\alpha = \beta =0.6, \gamma =1.0$).
+Our calculation yields a better value for these
+quantities than the earlier variational calculation \cite{VanReeth2003,VanReeth2004}
+but not as good as the variational calculation of
+Yan and Ho who also used Hylleraas wave functions \cite{YanHo1999}.
+Yan and Ho implemented a different procedure
+to eliminate terms that were causing linear dependence.
+They divided the basis set into
+five blocks and certain terms were eliminated in each block.
+While we do not obtain the best value of the binding energy
+(this was not the purpose of our calculation),
+we obtained results for this quantity which are favorable with
+the most elaborate calculation in the literature which
+used 5000 explicitly correlated Gaussians \cite{Bubin2006}.
+Our calculation of the binding energy gave us confidence
+in the reliability of the short-range part of the
+scattering wave function to describe
+the $^1S$ PsH system.
+
 We show in this table, the number of terms that
-a given $\omega$ corresponds to
+a given $\omega$ corresponds to \todo{?}
 and also the number of terms that are
 included after terms have been eliminated using Todd's procedure.
 The Rayleigh-Ritz variational method provides
 a true bound on the total energy and binding
 energy.
+
+\todoi{I don't think we need to show the stabilization plots, since Peter did, and we didn't get more information from them. The rest of this section needs to be rewritten.}
 The total energy and binding energy
 converges well with respect to $\omega$.
 In figure 1 we show the eigenvalues for the $^1S$ of PsH
@@ -951,8 +701,7 @@ verses the number of terms for $\omega =?$.
 The stabilized eigenvalues correspond to
 resonances.
 
-
-In Table 2, we compare our values of the total
+In table \ref{tab:BoundEnergyOther}, we compare our values of the total
 energy and
 the binding energy obtained with $\omega=6$, $\omega=7$ (the highest
 value of $\omega$ that we report in this paper for
@@ -962,31 +711,11 @@ bound-state calculation with this set of
 non-linear parameters) with other calculations.
 In this table we give the number of terms used
 in each calculation.
-Our calculations yields a better value for these
-quantities than the earlier variational calculation [29]
-but not as good as the variational calculation of
-Yan and Ho who also used Hylleraas wave functions.
-However, our $\omega=6$ variational calculation included
-more terms than our corresponding $\omega=6$ calculation ?????
-and our $\omega=10$ calculation included less terms than
-the Yan and Ho's calculation.
-Yan and Ho implemented a different procedure
-to  eliminate terms that were causing linear dependence.
-They divided the basis set into
-five blocks and certain terms were eliminated in each block.
-While we do not obtain the best value of the binding energy
-(this was not the purpose of our calculation),
-we obtained results for this quantity which are favorable with
-the most elaborate calculation in the literature which
-used 5000 explicitly correlated Gaussians.
-Our calculation of the binding energy gave us confidence
-in the reliability of the short-range part of the
-scattering wave function to describe
-the $^1S$ PsH system.
+
  
 
 %!!!!!!!!!!!!!!  THE BOUND STATE PROBLEM!!!!!!!!!!!!!!!!!!
-Our wavefunction for the bound state is a same  Hylleraas-style set of terms as used in the s-wave scattering wavefunction, given by
+Our wavefunction for the bound state is a same  Hylleraas-style set of terms as used in the S-wave scattering wavefunction, given by
 \begin{equation}
 \label{eq:BoundWavefn}
 \Psi^\pm = \sum_{i=1}^{N(\omega)} c_i \bar{\phi}_i^\pm
@@ -1001,7 +730,6 @@ The Raleigh-Ritz method is used and the optimization of the non-linear parameter
 
 % this may need to be reduced  SO LATEST ONLY ARE INCLUDED!!!!!!!!!!!!!!!!
 
-\section{Results}
 \subsection{Phase Shifts}
 
 \squeezetable  % Makes the table smaller
@@ -1017,24 +745,17 @@ Group & Method & Terms & Total Energy (au) & Binding Energy (eV)\\
  
 %\midrule
 Ho (1986) \cite{Ho1986} & Variational with Hylleraas (?) & 396 & -0.788 945$^\star$ & 1.059 75 \\
-Frolov (1997) \cite{Frolov1997a} & James-Coolidge variational & 924 & -0.789 136 9$^\star$ & 1.064 969 \\
-Frolov (1997) \cite{Frolov1997a} & James-Coolidge variational & --- & -0.789 181 8$^\star$ & 1.066 191 \\
-Frolov (1997) \cite{Frolov1997b} & Kolesnikov-Tarasov variational & --- & -0.789 179 4$^\star$ & 1.066 126 \\
-Adhikari (1999) \cite{Adhikari1999} & Five-state & --- & -0.7886 & 1.05 \\
-Yan (1999) \cite{Yan1999} & Variational with Hylleraas $(\omega = 10)$ & 3501 & -0.789 196 607 6$^\star$ & 1.066 593 98 \\
-Yan (1999) \cite{Yan1999} & Variational with Hylleraas $(\omega = 12)$ & 5741 & -0.789 196 705 1$^\star$ & 1.066 596 635 \\
-Yan (1999) \cite{Yan1999} & Variational with Hylleraas $(\omega \rightarrow \infty)$ & - & -0.789 196 714 7$^\star$ & 1.066 596 896 \\
+Yan (1999) \cite{Yan1999} & Variational with Hylleraas $(\omega \rightarrow \infty)$ & --- & -0.789 196 714 7$^\star$ & 1.066 596 896 \\
 Blackwood (2002) \cite{Blackwood2002} & ?Close-coupling 14Ps14H? & --- & -0.786 5 & 0.994$^\star$ \\
 Van Reeth (2003) \cite{VanReeth2003} & Variational with Hylleraas $(\omega = 6)$ & 721 & -0.789 156 & 1.0655$^\star$ \\
 Walters (2004) \cite{Walters2004} & ?Close-coupling 14Ps14H + $\text{H}^-$? & --- & -0.787 9 & 1.03$^\star$\\
-Mitroy (2006) \cite{Mitroy2006} & ECGs with SVM & 1800 & -0.789 196 740$^\star$ & 1.066 597 58 \\
 Bubin (2006) \cite{Bubin2006} & ECGs ?variational? & 5000 & -0.789 196 765 251$^\star$ & 1.066 598 271 959 \\
-Frolov (2010) \cite{Frolov2010} & Semi-exponential basis & 84 & -0.788 516 419$^\star$ & 1.048 085 11 \\
+Current work & Variational with Hylleraas & 1505 & -0.789 189 725 & 1.066 406 705 \\
 %\bottomrule
 \end{tabular}
 \end{ruledtabular}
-\caption{Bound State Energies from Other Groups - Starred values are the reported values.  Unstarred values are obtained by using the conversion factor given in section \ref{??}.}
-\label{tab:BoundEnergyOther}
+\caption{Positronium Hydride Energy Comparisons- Starred values are the reported values. Unstarred values are obtained by using the conversion factor given in section \ref{??}.}
+\label{tab:BoundEnergy}
 \end{center}
 \end{table}
 \todoi{Update all references for bound state energies. Do we really need to show binding energy? Nearly all calculations are in terms of au.}
@@ -1042,21 +763,16 @@ Frolov (2010) \cite{Frolov2010} & Semi-exponential basis & 84 & -0.788 516 419$^
 In tables 3 (a) and (b) we show respectively for the singlet
 and triplet S-wave phase shifts 
 obtained with the generalized Kohn variational
-method and the complex Kohn using $\omega=6$ and 7.
-For a given $\omega$ we compare the phase shifts from
+method and the complex Kohn using $\omega=7$.
+We compare the phase shifts from
 the various variants of the Kohn method,
-and remove any result where their is an obvious
-anomaly such to a Schwartz singularity.
-To the accuracy given the results agree from
-the various method (unless the results
-from  a particular method is removed.)
+and remove any result where there is an obvious
+anomaly such as a Schwartz singularity.
+To the accuracy given, the results agree from
+the various methods (unless the results
+from a particular method are removed).
 We also show extrapolated phase shifts.
-For each variant of the Kohn method,
-we extrapolated the phase shifts according
-to 
-\bea
-\tan\delta^\pm(\omega) = \tan\delta^\pm(\omega\to\infty) + {c\over \omega^p}\, .
-\eea
+
 The extrapolated phase shifts were obtained for
 $\omega=4$ to $\omega =7$.
 By computing the percentage difference between the extrapolated phase shifts
@@ -1203,13 +919,34 @@ In this case, the Kohn results are slightly
 more negative than the close-coupling results.
 However, the Kohn and close-coupling results are
 in very good agreement.
-In figure 2 (a) and (b), respectively,
+In figure 2 (a) and (b) \ref{}, respectively,
 we compare the singlet and triplet
 S-wave phase shifts obtained from the Kohn variational
-method (and variants)  with various other calculations [].
+method (and variants) with various other calculations [].
 
-In figure 3, we compare the Kohn variational
-$^1S$ S-wave phase shifts computed with $\omega =7$
+\begin{figure}
+	\centering
+	\includegraphics[width=7in]{Omega=7}
+	\caption{S-Wave Singlet and Triplet Phase Shifts}
+	\label{fig:SWavePhaseOmega=7}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=7in]{OtherSWaveSingletResults}
+	\caption{Comparison of S-Wave Singlet Results from Other Groups}
+	\label{fig:OtherSWaveSingletResults}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=7in]{OtherSWaveTripletResults}
+	\caption{Comparison of S-Wave Triplet Results from Other Groups}
+	\label{fig:OtherSWaveTripletResults}
+\end{figure}
+
+In figure \ref{}, we compare the Kohn variational
+$^1S$ S-wave phase shifts computed with $\omega = 7$
 with the close-coupling results.
 Excellent agreement between the
 two sets of results is evident.
@@ -1227,28 +964,7 @@ by Yan and Ho
 using the complex rotation method who
 obtain the first three of the infinite
 number of Rydberg resonances (as did the CC (check)).
-As with the previous Kohn calculation of Van Reeth and Humberston (who also
-obtained these resonances..),
-we fitted our computed phase shifts (for $\omega=7$) to
-the resonance formula
-\bea
-\delta(E) =  A + B E + c E^2
-+ \arctan\bigg[ {^1\Gamma\over 2(^1E_R - E)} \bigg]
-+ \arctan\bigg[ {^2\Gamma\over 2(^2E_R - E)} \bigg]
-\eea
-to extract out the positions ($^1E_R$ and $^2E_R$) and widths
-($^1\Gamma$ and $^2\Gamma$) of the two resonances.
-This formula comprises of the Breit-Wigner resonance
-formula for the two resonances and allows for a slowly varying
-background.
-The data from each variant of
-the Kohn variational method was fitted using MATLAB
-and eight possible weightings
-(Bisquare, Andrews, Cauchy, Fair, Huber, logistic, Talwar and Welsch)
-were considered.
-For each variant of the Kohn variational
-method, the four parameters were determined for each
-of the eight fits.
+
 
 \subsection{Resonances}
 
@@ -1289,10 +1005,10 @@ channel in bringing the position of the first resonance,
 $^1E_R$, into better agreement with the Kohn
 and complex rotation calculations.
 
-We did not notice resonances in the triplet, which
-is consistent with the discussion by Blackwood et. al
+We did not notice \todo{weak} resonances in the triplet, which
+is consistent with the discussion by Blackwood et. al \cite{}
 who predicted that there should not be resonances
-for the triplet, \todo{Run on?} although Ray obtained a triplet resonance
+for the triplet, \todo{Run on?} although Ray \cite{} obtained a triplet resonance
 in a close-coupling calculation.
 
 
@@ -1362,17 +1078,61 @@ This work & $4.7189 \pm 0.0002$ & $0.0860 \pm 0.0005$ \\
 \end{table}
 
 
-\subsection{Effective Range Theory}
+\section{Effective Range Theory}
 
-Following Ref.[29],
-we estimated the singlet and triplet S-wave scattering lengths
-$$a^\pm = - \lim_{\kappa \to 0} {\tan \delta^\pm\over \kappa}\eqno(3)$$
-by evaluating $-\tan \delta^\pm\kappa$ for $\kappa =0.001$ and $\kappa=0.0001$.
-We did this for $\omega=5$, 6 and 7.
-For a given $\omega$, the two different values of $\kappa$ gave
-the same ratio (to four figures after the decimal place).
-Using the result obtained for $\omega=7$, our estimated values of
-$a^+ = 4.329$ and $a^- = 2.137$). 
+\begin{table}
+\begin{center}
+\begin{ruledtabular}
+\begin{tabular}{c c c c c c}
+Partial Wave & $\omega$ & $a^+ (\kappa = 0.001)$ & $a^+ (\kappa = 0.0001)$ & $a^- (\kappa = 0.001)$ & $a^- (\kappa = 0.0001)$ \\
+\colrule
+S & 6 & 4.3364 & 4.3364 & 2.1415 & 2.1415 \\
+S & 7 & 4.3306 & 4.3306 & 2.1363 & 2.1363 \\
+P & 6 & & & & \\
+P & 7 & -22.089 & --- & 1.48846 & --- \\
+\end{tabular}
+\end{ruledtabular}
+\caption{Scattering Lengths from $-\tan \delta^\pm\kappa$}
+\label{tab:ScatLenDef}
+\end{center}
+\end{table}
+
+\begin{table}
+\begin{center}
+\begin{ruledtabular}
+\begin{tabular}{l l l l l}
+Method & \multicolumn{1}{c}{$a^+$} & \multicolumn{1}{c}{$r_0^+$} & \multicolumn{1}{c}{$a^-$} & \multicolumn{1}{c}{$r_0^-$}\\
+\colrule
+Static-exchange (Hara \emph{et al} 1975) \cite{Hara1975} & 7.275 & \,\,--- & 2.476 & \,\,--- \\
+Kohn 35 terms (Page 1976) \cite{Page1976} & 5.844 & 2.90 & 2.319 & \,\,--- \\
+Stabilization (Drachman \emph{et al} 1975) \cite{Drachman1975} & 5.33 & 2.54 & \,\,--- & \,\,--- \\
+Stabilization (Drachman \emph{et al} 1976) \cite{Drachman1976} & \,\,--- & \,\,--- & 2.36 & 1.31 \\
+9-state R-matrix (Campbell \emph{et al} 1998) \cite{Campbell1998} & 5.51 & 2.63 & 2.45 & 1.33 \\
+22-state R-matrix (Campbell \emph{et al} 1998) \cite{Campbell1998} & 5.20 & 2.52 & 2.45 & 1.32 \\
+5-state (Adhikari \emph{et al} 1999) \cite{Adhikari1999} & 3.72 & 1.67 & --- & --- \\
+6-state close coupling (Sinha \emph{et al} 2000) \cite{Sinha2000} & 5.90 & 2.73 & 2.32 & 1.29 \\
+Variational basis-set (Adhikari \emph{et al} 2001) \cite{Adhikari2001b} & 3.49 & \,\,--- & 2.46 & \,\,--- \\
+Diffusion Monte Carlo (Chiesa \emph{et al} 2002) \cite{Chiesa2002} & 4.375 & 2.228 & 2.246 & 1.425 \\
+Stochastic variational (Ivanov \emph{et al} 2002) \cite{Ivanov2002} & 4.34 & 2.39 & 2.22 & 1.29 \\
+R-matrix 14Ps14H (Blackwood \emph{et al} 2002) \cite{Blackwood2002} & 4.41 & 2.19 & 2.06 & 1.47 \\
+Kohn 721 terms (Van Reeth \emph{et al} 2003) \cite{VanReeth2003} & 4.334 & \,\,--- & 2.143 & \,\,--- \\
+Kohn extrapolated (Van Reeth \emph{et al} 2003) \cite{VanReeth2003} & 4.311 & 2.27 & 2.126 & 1.39 \\
+R-matrix 14Ps14H+H$^-$ (Walters \emph{et al} 2004) \cite{Blackwood2002} & 4.327 & \,\,--- & \,\,--- & \,\,--- \\
+Current work & & & & \\
+\end{tabular}
+\end{ruledtabular}
+\caption{S-Wave Scattering Length and Effective Range}
+\label{tab:SWaveScatLenOther}
+\end{center}
+\end{table}
+
+Following Ref.[29], we estimated the singlet and triplet S-wave scattering lengths
+%$a^\pm = - \lim_{\kappa \to 0} {\tan \delta^\pm\over \kappa}$
+$a^\pm = - \lim_{\kappa \to 0} \frac{\tan \delta^\pm \kappa}{\kappa^{2\ell+1}}$
+by evaluating $-\tan \delta^\pm\kappa$ for $\kappa =0.001$ and $\kappa=0.0001$. 
+We present values for $\omega=6$ and 7 in table \ref{tab:ScatLenDef}.
+For a given $\omega$, the two different values of $\kappa$ gave the same ratio (to four figures after the decimal place).
+Using the result obtained for $\omega=7$, our estimated values of the scattering lengths are $a^+ = 4.329$ and $a^- = 2.137$. 
 We determined for the singlet and triplet both the S-wave scattering
 length and effective range by fitting the phase shifts obtained
 from the various variants of the Kohn variational
@@ -1386,38 +1146,75 @@ with the results of our calculations who used the
 results for a short-range interaction.
 For determining the scattering length and effective range
 from the effective range formulas we considered the following
-ranges of $\kappa$, 0.1 - 0.6, 0.01 - 0.09, 0.001 - 0.009.
+ranges of $\kappa$: 0.1 - 0.6, 0.01 - 0.09, 0.001 - 0.009.
 The previous Kohn results ($\omega=6$ containing 721) terms
 for the singlet and triplet scattering lengths $a^\pm$ were obtained from
 the ratio of $-\tan \delta^\pm_0$.
 The extrapolated scattering lengths in the
 previous Kohn calculations were obtained by using
-an extrapolation for the scattering lengrg similar
+an extrapolation for the scattering length similar
 to Eq.~(1) for the phase shifts. ?????
 [ALTERNATIVELY. The extrapolated scattering length
 and effective range in the previous Kohn variational
 calculation were obtained using  Eq.~(4) where $\delta^\pm_0$ was
 taken to be the extrapolated phase shifts. ?????]
 
-[GIVE EFFECTIVE RANGE FORMULAS IN THE THEORY SECTION.]
-The s-wave effective range for short-range interactions [] expressed in terms
+The S-wave effective range for short-range interactions [] expressed in terms
 of $\kappa \cot \delta_0^\pm$ is
-$$\kappa \cot \delta_0^\pm  = -{1\over a_0^\pm} + {1\over 2}r_0^\pm \kappa^2 + O(\kappa^4)\eqno(4)$$
+$\kappa \cot \delta_0^\pm  = -\frac{1}{a_0^\pm} + \frac{1}{2}r_0^\pm \kappa^2 + O(\kappa^4)$
 
+\todoi{I don't think we need this. We verified what they had (partially), but we never used it.}
 In figure 4, we show the phase shifts computed with
 the generalized Kohn verses $\tau$ for $\kappa =0.1$ for $\omega=7$.
 The horizontal line is the value of the phase shift computed 
 with the complex Kohn variational method for the T-matrix
 Cooper's plot.
-The singularity  in the phase shift is clearly evident
+The singularity in the phase shift is clearly evident
 near $\tau= 3$ and the figure resembles that obtained
 by Cooper et. al for e$^+$-H$_2$. The position of the singularity
 varies with $\kappa$ and with $\omega$.
 
+
+\section{Conclusion}
+\vskip 0.5truecm
+\noindent
+Benchmark results.
+Accurate results.
+Improved numerics.
+Work on the P-wave is in progress.
+\vskip 1truecm
+\noindent
+
+
+\section{End...}
 Acknowledgment
 UNT Faculty research grant.
 NSF grant.
 John Humberston.
+
+
+
+\section{Extra Notes?}
+Generalized Kohn. Explain tau and work of Cooper.
+Complex Kohn method.
+T-matrix.
+Need to derive generalized complex S-matrix.
+Explain Todd's procedure and the work of Cooper for the T-matrix.
+Cusp 25/100
+
+\vskip 0.5truecm
+\noindent
+omega =6, omega =7, omega to infinity.
+Extrapolation--size of error.
+Bound-state./Resonance/Scattering lengths.
+Tables as in DAMOP.
+Include the T-matrix and phase shift result---Cooper.
+\vskip 0.5truecm
+\noindent
+
+
+
+
 
 
 \begin{thebibliography}{References}
@@ -1460,6 +1257,9 @@ Nucl.~Instr.~and Meths. in Phys.~Res. B {\bf 221}, 140-143 (2004).
 \bibitem{Luchow1992}Arne Lüchow and Heinz Kleindienst. Chemical Physics Letters, 197(1-2), 105–107, (1992).
 \bibitem{YanHo1999} Zong-Chao Yan and Y. K. Ho, Physical Review A, {\bf 59}, 2697–2701 (1999).
 \bibitem{Sauer2006} Timothy Sauer, Numerical Analysis (2006).
+\bibitem{Armour1991} Armour and Humberston (1991).
+\bibitem{Drake1995} G.W.F. Drake and Zong-Chao Yan (1995). Physical Review A, 52(5), 3681.
+\bibitem{Yan1997} Zong-Chao Yan and G.W.F. Drake (1997). Journal of Physics B, 30(21), 4723–4750.
 \end{thebibliography}
 
 
