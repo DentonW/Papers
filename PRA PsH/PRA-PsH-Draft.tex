@@ -46,8 +46,8 @@
 \newcommand{\rhop} {\rho'}
 \newcommand{\ii}{{\rm{i}}}
 %Denton
-%\usepackage{graphicx}% Include figure files
-\usepackage[draft]{graphicx} % Do not include figure files
+\usepackage{graphicx}% Include figure files
+%\usepackage[draft]{graphicx} % Do not include figure files
 \usepackage{dcolumn} % Align table columns on decimal point
 \usepackage{bm} % bold math
 %\usepackage{booktabs, tabularx}%toprule/bottomrule
@@ -209,7 +209,6 @@ This means that it is difficult to assess whether the results
 obtained from these methods are converged with respect
 to improvements in the wave function.
 
-
 Blackwood et al. [69]  performed an elaborate CC calculation for Ps scattering from H which took into account excitation and ionization of both the projectile and target. They considered two different coupling schemes.
 The first one, which they refer to as 9Ps9H, included 9 eigen- and pseudo-states of Ps and also of H. The second scheme, which they refer to as 14Ps14H, is for the S-wave only
 and includes 14 eigen- and pseudo-states of Ps and
@@ -222,7 +221,6 @@ Kohn variational results [72].
 They speculated that the inclusion of the virtual Ps$^-$ formation channel may
 be needed to obtain agreement with the Kohn variational results
 for Ps(1s) + H(1s) scattering [70].
-
 
 Unlike the SVM and 
 DMC methods, the Kohn
@@ -266,7 +264,7 @@ Goal is to provide accurate and benchmark calculations.
 \end{figure}
 
 \todoi{Do we want to state at some point that the t is implicit? Earlier versions did.}
-We are investigating low-energy elastic positronium-hydrogen (Ps-H) for energies up to the excitation threshold of Ps(n=2) at approximately 5.101 eV.
+We are investigating low-energy elastic positronium-hydrogen (Ps-H) for energies up to the excitation threshold of Ps(n=2) at approximately 5.101 eV. Previous work on Ps-H scattering used the Kohn and inverse Kohn approach \cite{VanReeth2003, VanReeth2004}. However, both of these methods are known to be sometimes affected by Schwartz singularities. In addition to using a generalized real Kohn method, to reduce the presence of Schwartz singularities, we also calculate the phase shifts using a T-matrix complex Kohn method. Both of these methods are described in sections \ref{sec:ComplexKohn} and \ref{sec:GenKohn}. All of our final results presented in section \ref{sec:Results} use the T-matrix complex Kohn method, so we present our complex-valued wavefunctions here.
 
 For S-wave scattering of positronium from hydrogen, our very flexible \todo{Needed?} complex-valued trial scattering wavefunction is
 \todoi{Need $\ell$'s? It's only one partial wave.}
@@ -286,10 +284,10 @@ The scattering wavefunctions contain both the long-range asymptotic form and sho
 \begin{align}
 \bar{S}_\ell &= \frac{1\pm P_{23}}{\sqrt{2}}Y_{\ell 0}(\theta_\rho,\phi_\rho)\Phi_{Ps,1S}\left(r_{12}\right) \Phi_{H,1S}\left(r_3\right) \sqrt{2\kappa} \,j_\ell\left(\kappa\rho\right) \label{eq:SBar} \\
 \bar{C}_\ell &= \frac{1\pm P_{23}}{\sqrt{2}}Y_{\ell 0}(\theta_\rho,\phi_\rho)\Phi_{Ps,1S}\left(r_{12}\right) \Phi_{H,1S}\left(r_3\right) \sqrt{2\kappa} \,n_\ell\left(\kappa\rho\right) f_\ell(\rho) \text{ and}\label{eq:CBar} \\
-\bar{W}_\ell &= \bar{S}_\ell + \ii \bar{C}_\ell.
+\bar{W}_\ell &= \bar{C}_\ell + \ii \bar{S}_\ell.
 \end{align}
 \end{subequations}
-$P_{23}$ is the exchange operator for the two electrons. $\Phi_{Ps,1S}\left(r_{12}\right)$ and $\Phi_{H,1S}\left(r_3\right)$ are the ground state wavefunctions of positronium and hydrogen, respectively. The shielding factor, $f_\ell(\rho)$, ensures that the singularity of the Neumann function is removed at the origin and is chosen to be
+Note that this is different than Cooper et al.\ \cite{Cooper2010}, in that we do not use a variable $\tau$, and our $\bar{W}$ is their $\bar{T}$ but with $\bar{C}$ and $\bar{S}$ swapped, which gives an outgoing wave. $P_{23}$ is the exchange operator for the two electrons. $\Phi_{Ps,1S}\left(r_{12}\right)$ and $\Phi_{H,1S}\left(r_3\right)$ are the ground state wavefunctions of positronium and hydrogen, respectively. The shielding factor, $f_\ell(\rho)$, ensures that the singularity of the Neumann function is removed at the origin and is chosen to be
 \begin{equation}
 f_\ell(\rho) = \left[1 - \ee^{-\mu \rho} \left(1+\frac{\mu}{2}\rho\right)\right]^{m_\ell}.
 \label{eq:PartialWaveShielding}
@@ -297,7 +295,7 @@ f_\ell(\rho) = \left[1 - \ee^{-\mu \rho} \left(1+\frac{\mu}{2}\rho\right)\right]
 The $m_\ell$ is an integer chosen for each $\ell$ so that $\bar{C}$ behaves like $\bar{S}$ as $\rho \rightarrow \infty$.
 \todoi{behaves asymptotically as $\bar{S}$}
 
-The short-range terms are highly correlated Hylleraas-type functions \todo{basis sets?}, given by
+The short-range terms are highly correlated Hylleraas-type functions\todo{basis sets?}, given by
 \begin{subequations}
 \label{eq:PhiDef}
 \begin{align}
@@ -325,92 +323,55 @@ H = -\frac{1}{4} \nabla_{\rho}^2 - \frac{1}{2} \nabla_{r_3}^2 - \nabla_{r_{12}}^
 
 
 
-
-
 \subsection{Complex Kohn Variational Principle (T-Matrix)}
+\label{sec:ComplexKohn}
 
-\todoi{I think that we should have this only as detailed as Armour and Humberston's paper, or even less. Much is similar to what they have, even though it's the complex Kohn.}
-\todoi{Do we want to just give the wavefunction and the functional, then refer them to Armour/Humberston?}
+ We give the derivation of the complex Kohn variational functional for all partial waves using a complex wavefunction.
 
-The T-matrix is related to the phase shift, $\delta_\ell$, by
-\todo{ref?}
+The functional for the full wavefunctions in equations \ref{eq:TrialWave} and \ref{eq:TrialWaveHigher} is
 \begin{equation}
-\tan \delta_\ell = \frac{T}{1 + \ii T}.
-\end{equation}
-
-Previous work on Ps-H scattering \cite{??} used the Kohn and inverse Kohn approach. However, both of these methods are known to be sometimes affected by Schwartz singularities. In addition to using a generalized real Kohn method, to reduce the presence of Schwartz singularities, we also calculate the phase shifts using a T-matrix complex Kohn method. We give the derivation of the complex Kohn variational functional for all partial waves using a complex wavefunction.
-
-Following the treatment of Cooper \cite{} and Van Reeth's thesis \cite{}, the trial wavefunction is
-\beq
-\Psi_t = \bar{S} + T_t \, \bar{W} + \sum_{i=1}^N c_i \bar{\phi_i}^t,
-\label{eq:TrialComplex}
-\eeq
-\todoi{$\bar{\phi_i}^t$ is a problem when doing t as a subscript. Armour/Humberston do this in equation (2.10) with only a t on the phase shift.}
-
-where
-\beq
-\bar{W} = \bar{C} + \ii \bar{S}.
-\label{eq:WDef}
-\eeq
-
-$\bar{S}$, $\bar{C}$ and $\bar{\phi_i}$ are the same as in (\ref{eq:SCPhiDef}) and (\ref{eq:PhiDef}).  Note that this is different than Cooper et al. \cite{Cooper2010}, in that we do not use a variable $\tau$, and our $\bar{W}$ is their $\bar{T}$ but with $\bar{C}$ and $\bar{S}$ swapped, which gives a wavefunction of the correct form \todo{odd wording} (an outgoing wave).
-
-The functional for the full wavefunction is
-\beq
-I_l[\Psi_t] = \left(\Psi_t, L \Psi_t \right) = \int \Psi_t(\vec{r}) L \Psi_t(\vec{r}) \,d\vec{r}.
+I_l[\Psi^t] = \left(\Psi^t, L \Psi^t \right) = \int \Psi^t L \Psi^t \,d\tau,
 \label{eq:IlDefPsi}
-\eeq
-
-\todoi{We need to check about conjugation notation.}
-
-\noindent with
-\beq
-\Psi_t(r) = \Psi(r) + \delta \Psi(r)
-\label{eq:PsilTrialRelation}
-\eeq
-and
+\end{equation}
+with
 \beq
 L = 2(H - E).
 \label{eq:LDef}
 \eeq
-\noindent The variation of $I_l$ to first order in $\delta\Psi_l$ is
+
+\todoi{We need to check about conjugation notation.}
+
+We assume our trial wavefunction is a small variation of the exact wavefunction, or
+\beq
+\Psi^t = \Psi + \delta \Psi
+\label{eq:PsiTrialRelation}
+\eeq
+Then the variation of $I_l$ to first order in $\delta\Psi_l$ is
 \begin{equation}
-\nonumber \delta I_l = I_l[\Psi_t] - I[\Psi] \\
+\nonumber \delta I_l = I_l[\Psi^t] - I[\Psi] \\
 \label{eq:IlPsiVariation1}
 \end{equation}
 
-
-The variation of $\Psi$ is
+It can be shown that solving for $\delta I$ gives a result for the variational method of
 \beq
-\delta\Psi = \Psi_t - \Psi = (\bar{S} + T_t \bar{W}) - (\bar{S} + T_v \bar{W}) = (T_t - T_v) \bar{W} = \delta T \,\bar{W}
-\eeq
-
-\todoi{At which step is the approximation made?}
-
-It can be shown that solving for $\delta I$, gives a result for the variational method of
-\beq
-\delta I = (T_t - T)
+\delta I = (T^t - T)
 \eeq
 or
 \beq
-I[\Psi_t] - I[\Psi] = I[\Psi_t] = T_t - T.
+I[\Psi^t] - I[\Psi] = I[\Psi^t] = T^t - T.
 \eeq
-
-\noindent Writing this as a variation gives
+Neglecting the second order term, we get a functional for the variational T-matrix of
 \beq
-T_v = T_t - I[\Psi_t].
+T^v = T^t - I[\Psi^t].
 \label{eq:ComplexKohnVariation}
 \eeq
 
-
 We can use this now in the stationary property of the complex Kohn functional, i.e.
 \beq
-\frac{\partial T_v}{\partial T_t} = 0  \text{ and } \frac{\partial T_v}{\partial c_i} = 0 \text{ where $i = 1,\ldots,N$}.
+\frac{\partial T^v}{\partial T^t} = 0  \text{ and } \frac{\partial T^v}{\partial c_i} = 0 \text{ where $i = 1,\ldots,N$}.
 \label{eq:ComplexKohnStationary}
 \eeq
-
 Using equations \ref{eq:TrialComplex} and \ref{eq:ComplexKohnVariation}, the stationary property in equation \ref{eq:ComplexKohnStationary} can be written in matrix form for the S-wave as
-
 \begin{equation}
 \label{eq:ComplexKohnMatrix}
 \begin{bmatrix} 
@@ -421,7 +382,7 @@ Using equations \ref{eq:TrialComplex} and \ref{eq:ComplexKohnVariation}, the sta
  \vdots & \vdots & & \vdots & \\
 \end{bmatrix}
 \begin{bmatrix}
-T_t\\
+T^t\\
 c_1\\
 \vdots\\
 c_i\\
@@ -437,18 +398,51 @@ c_i\\
 \end{bmatrix}.
 \end{equation}
 
-\noindent For higher partial waves, the matrix equation looks the same but includes the second symmetry terms. This matrix equation can be rewritten as
-\beq
-\textbf{\emph{AX = -B}}.
-\eeq
-
-\todoi{We have introduced $T_v$ here only}
-
-\noindent Finally, we solve for $T_v$, from which we obtain our phase shifts.
+\noindent For higher partial waves, the matrix equation looks the same but includes the second symmetry short-range terms. This matrix equation can be rewritten as $\textbf{\emph{AX = -B}}$. Finally, we solve for $T^v$, from which we obtain our phase shifts.
 \begin{equation}
-T_v = -\textbf{\emph{B}}^{tr} \textbf{\emph{X}} - (\bar{S},L \bar{S})
+T^v = -\textbf{\emph{B}}^{tr} \textbf{\emph{X}} - (\bar{S},L \bar{S})
 \end{equation}
-\todoi{Bold any of this? Best way to write the transpose? Wikipedia gives tr and T as possible ways, but we don't want to get it confused with the T-matrix.}
+
+The T-matrix is related to the phase shift, $\delta_\ell$, and the K-matrix by
+\todo{ref? K?}
+\begin{equation}
+\tan \delta = K^v = \frac{T}{1 + \ii T}.
+\end{equation}
+\todoi{Do we really need to put the superscripts here now? This applies equally to the trial and variational values.}
+
+
+\subsection{Generalized Kohn Variational Method}
+\label{sec:GenKohn}
+
+We use the complex Kohn method for all of our results due to its stability, but as described in section \ref{sec:Truncation}, we also use the real-valued generalized Kohn variational method \todo{ref?} to determine how many terms we can use. The wavefunction given in (\ref{eq:TrialWaveHigherGen}) has an adjustable parameter $\tau$, which we vary. Special cases of this are the Kohn method for $\tau = 0$ and the inverse Kohn method for $\tau = \pi/2$.
+
+\todoi{$c_i$ and $d_j$ are different from before...}
+\begin{equation}
+\tilde{\Psi}_\ell^{\pm,t} = \tilde{S_\ell} + \tan(\delta^{\pm,t}_\ell - \tau) \, \tilde{C}_\ell + \sum_{i=1}^N c_{i,\ell} \bar{\phi}_{i1} + \sum_{j=1}^N d_{j,\ell} \bar{\phi}_{j2}.
+\label{eq:TrialWaveHigherGen}
+\end{equation}
+where
+\begin{equation}
+\begin{bmatrix}
+\tilde{S} \\
+\tilde{C}
+\end{bmatrix}
+=
+\begin{bmatrix}
+\cos(\tau) & \sin(\tau) \\
+-\sin(\tau) & \cos(\tau)
+\end{bmatrix}
+\begin{bmatrix}
+\bar{S} \\
+\bar{C}
+\end{bmatrix}.
+\end{equation}
+
+Then the generalized real Kohn functional for $L>0$ is
+\begin{equation}
+\tan(\delta^{\pm,v}_\ell - \tau) = \tan(\delta^{\pm,t}_\ell - \tau) - I[\tilde{\Psi}_\ell^{\pm,t}].
+\label{eq:GenKohnVariation}
+\end{equation}
 
 
 
@@ -514,6 +508,7 @@ From the bound state calculation using \emph{Todd's algorithm} mentioned in sect
 As discussed in section \ref{??}, there are many variants of the Kohn variational method, namely the inverse Kohn, complex Kohn (S-matrix) and complex Kohn (T-matrix). Additionally, there are both real-valued and complex general Kohn methods with an adjustable parameter $\tau$ \cite{??}. The complex Kohn methods are the most stable, since they rarely have Schwartz singularities \cite{CooperOrLucchese??}. For this reason, we take our final phase shifts as that generated by the S-matrix Kohn variational method. These phase shifts are more stable than those generated by any of the other Kohn methods.
 
 \subsection{Truncation}
+\label{sec:Truncation}
 The \emph{Todd method} eliminates terms that contribute to linear dependence and reorders the remaining terms in order of decreasing contribution to the energy\todo{eigenvalues?}. The phase shifts are calculated using this set of short-range terms for the generalized Kohn variational method for multiple $\tau$ values. We further truncate this basis set where the phase shifts for the different Kohn methods begin to diverge. This can be seen in figure \ref{??}.
 
 
@@ -522,6 +517,7 @@ To optimize the nonlinear parameters ($\alpha$, $\beta$ and $\gamma$) for the sh
 
 
 \subsection{Lambdas}
+\label{sec:Lambdas}
 \todoi{Combine with Determination of integration points section? Do we want tables? Graphs? This isn't a computational paper, so we probably don't want to go too far in this description.}
 
 To further improve the convergence of the short-range--long-range (\emph{short-long?}) matrix elements in equation \ref{}, we investigated the integrands. The biggest source of difficulty in converging these results comes through the Gaussian-Laguerre quadratures in the $r_1$, $r_2$ and $r_3$ integrations. Specifically, the integrands do not fall off quickly enough, and the tails of the integrands are not adequately represented. This can be resolved by introducing more abscissae in the quadratures, which puts some points farther out. This brute force approach can increase the computational time greatly, so we took another approach to further increase the accuracy. For each of the Gauss-Laguerre quadratures, we introduce an extra $e^{-\lambda r_i}$ and remove it with $e^{\lambda r_i}$ after the quadrature, pushing our abscissae further out without increasing the number of integration points.
@@ -598,6 +594,7 @@ For each variant of the Kohn method, we extrapolated the phase shifts according 
 
 
 \section{Results}
+\label{sec:Results}
 %{\bf II. Results}
 \todoi{NEEDS REVISIONS....written primarily in 2011}
 
