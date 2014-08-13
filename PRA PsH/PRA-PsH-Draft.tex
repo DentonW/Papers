@@ -46,11 +46,13 @@
 \newcommand{\rhop} {\rho'}
 \newcommand{\ii}{{\rm{i}}}
 %Denton
-\usepackage{graphicx}% Include figure files
-\usepackage{dcolumn}% Align table columns on decimal point
-\usepackage{bm}% bold math
+%\usepackage{graphicx}% Include figure files
+\usepackage[draft]{graphicx} % Do not include figure files
+\usepackage{dcolumn} % Align table columns on decimal point
+\usepackage{bm} % bold math
 %\usepackage{booktabs, tabularx}%toprule/bottomrule
 \usepackage{todonotes}
+\usepackage[hidelinks]{hyperref}  % For clickable references
 %%%%%% My definitions
 \def \bea{\begin{eqnarray}}
 \def \eea{\end{eqnarray}}
@@ -247,7 +249,7 @@ Goal is to provide accurate and benchmark calculations.
 \noindent
 \section{Theory}
 
-\subsection{Positronium-Hydrogen system}
+\subsection{The Positronium-Hydrogen System}
 
 %begin{figure}[!h]
 %	\centering
@@ -263,133 +265,65 @@ Goal is to provide accurate and benchmark calculations.
 	\label{fig:PsHCoords}
 \end{figure}
 
-In order to keep their \todo{?} nomenclature simple, we relate the wavefunction for S-wave scattering to the Ps-H coordinates as described in figure \ref{fig:PsHCoords}. The variable $\rho$ describes the position of the center of mass of the positronium atom, i.e. $\vec{\rho} = \frac{1}{2}\left(\vec{r_1} + \vec{r_2}\right)$. A typical real trial wavefunction for S-wave scattering of positronium from hydrogen can be written as \todoi{Almost sounds like we're not using this?}
+\todoi{Do we want to state at some point that the t is implicit? Earlier versions did.}
+We are investigating low-energy elastic positronium-hydrogen (Ps-H) for energies up to the excitation threshold of Ps(n=2) at approximately 5.101 eV.
+
+For S-wave scattering of positronium from hydrogen, our very flexible \todo{Needed?} complex-valued trial scattering wavefunction is
+\todoi{Need $\ell$'s? It's only one partial wave.}
 \begin{equation}
-\Psi_t^\pm = \bar{S} + \tan \delta_t \, \bar{C} + \sum_{i=1}^N c_i \bar{\phi}_i^t
-\label{eq:TrialSimple}
+\Psi^{\pm,t} = \bar{S} + T^{\pm,t} \, \bar{W} + \sum_{i=1}^N c_i \bar{\phi}_{i1},
+\label{eq:TrialWave}
 \end{equation}
-
-\noindent where
-
-\begin{subequations}\label{eq:SCPhiDef}
+where the superscript $t$ indicates that this is a trial wavefunction, and the $\pm$ indicates the spatially symmetric singlet and antisymmetric triplet cases. Earlier work by Van Reeth and Humberston used a real-valued trial wavefunction with the Kohn and inverse Kohn variational methods \cite{VanReeth2003, VanReeth2004}. For higher partial waves \todo{$\ell?$} $(L > 0)$,
+\begin{equation}
+\Psi_\ell^{\pm,t} = \bar{S_\ell} + T^{\pm,t}_\ell \, \bar{W}_\ell + \sum_{i=1}^N c_{i,\ell} \bar{\phi}_{i1} + \sum_{j=1}^N d_{j,\ell} \bar{\phi}_{j2}.
+\label{eq:TrialWaveHigher}
+\end{equation}
+The scattering wavefunctions contain both the long-range asymptotic form and short-range correlation terms for small interparticle distances. The coordinate system used in these is shown in figure \ref{fig:PsHCoords}. The variable $\rho$ describes the position of the center of mass of the positronium atom, i.e. $\vec{\rho} = \frac{1}{2}\left(\vec{r_1} + \vec{r_2}\right)$. The long-range asymptotic terms are
+\todo{1S,1s?}
+\begin{subequations}
+\label{eq:SCPhiDef}
 \begin{align}
-\bar{S} &= \frac{\left( 1 \pm P_{23} \right)}{\sqrt{2}} Y_{0,0}\left( \theta_\rho, \phi_\rho \right) \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,j_0\!\left(\kappa\rho\right) \label{eq:SDef} \\
-\bar{C} &= -\frac{\left( 1 \pm P_{23} \right)}{\sqrt{2}} Y_{0,0}\left( \theta_\rho, \phi_\rho \right) \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,n_0\!\left(\kappa\rho\right) \left[1 - \exp(-\mu \rho) (1+\frac{\mu}{2}\rho)\right] \label{eq:CDef} \\
-\bar{\phi}_i^t &= \left( 1 \pm P_{23} \right) e^{-\left(\alpha r_1 + \beta r_2 + \gamma r_3 \right)} r_1^{k_i} r_2^{l_i} r_{12}^{m_i} r_3^{n_i} r_{13}^{p_i} r_{23}^{q_i}. \label{eq:PhiDef}
+\bar{S}_\ell &= \frac{1\pm P_{23}}{\sqrt{2}}Y_{\ell 0}(\theta_\rho,\phi_\rho)\Phi_{Ps,1S}\left(r_{12}\right) \Phi_{H,1S}\left(r_3\right) \sqrt{2\kappa} \,j_\ell\left(\kappa\rho\right) \label{eq:SBar} \\
+\bar{C}_\ell &= \frac{1\pm P_{23}}{\sqrt{2}}Y_{\ell 0}(\theta_\rho,\phi_\rho)\Phi_{Ps,1S}\left(r_{12}\right) \Phi_{H,1S}\left(r_3\right) \sqrt{2\kappa} \,n_\ell\left(\kappa\rho\right) f_\ell(\rho) \text{ and}\label{eq:CBar} \\
+\bar{W}_\ell &= \bar{S}_\ell + \ii \bar{C}_\ell.
 \end{align}
 \end{subequations}
+$P_{23}$ is the exchange operator for the two electrons. $\Phi_{Ps,1S}\left(r_{12}\right)$ and $\Phi_{H,1S}\left(r_3\right)$ are the ground state wavefunctions of positronium and hydrogen, respectively. The shielding factor, $f_\ell(\rho)$, ensures that the singularity of the Neumann function is removed at the origin and is chosen to be
+\begin{equation}
+f_\ell(\rho) = \left[1 - \ee^{-\mu \rho} \left(1+\frac{\mu}{2}\rho\right)\right]^{m_\ell}.
+\label{eq:PartialWaveShielding}
+\end{equation}
+The $m_\ell$ is an integer chosen for each $\ell$ so that $\bar{C}$ behaves like $\bar{S}$ as $\rho \rightarrow \infty$.
+\todoi{behaves asymptotically as $\bar{S}$}
 
-\noindent The $\frac{1}{\sqrt{2}}$ and $Y_{0,0}\left( \theta_\rho, \phi_\rho \right) = \frac{1}{\sqrt{4\pi}}$ for $\bar{\phi}_i^t$ are included in the $c_i$ coefficients in (\ref{eq:TrialSimple}).
-The variable $\omega$ is an integer $\geq 0$ that determines the maximum number of terms in the basis set. The short-range terms, given by $\bar{\phi}_i^t$, are a Hylleraas-type basis set\todo{Provide reference?}. For a chosen value of $\omega$, the integer powers of $r_i$ and $r_{ij}$ are constructed in such a way that
-\beq
-k_i + l_i + m_i + n_i + p_i + q_i \leq \omega
-\eeq
-\noindent with all $k_i$, $l_i$, $m_i$, $n_i$, $q_i$ and $p_i$ $\geq 0$.
+The short-range terms are highly correlated Hylleraas-type functions \todo{basis sets?}, given by
+\begin{subequations}
+\label{eq:PhiDef}
+\begin{align}
+\bar{\phi}_{i1} &= \left(1 \pm P_{23}\right) Y_{\ell 0}(\theta_1,\phi_1) r_1^{k_i + \ell} r_2^{l_i} r_{12}^{m_i} r_3^{n_i} r_{13}^{p_i} r_{23}^{q_i} \text{ and} \label{eq:PartialWavePhi1i}\\
+\bar{\phi}_{j2} &= \left(1 \pm P_{23}\right) Y_{\ell 0}(\theta_2,\phi_2) r_1^{k_i} r_2^{l_i + \ell} r_{12}^{m_i} r_3^{n_i} r_{13}^{p_i} r_{23}^{q_i} \label{eq:PartialWavePhi2j}.
+\end{align}
+\end{subequations}
+The variable $\omega$ is an integer $\geq 0$ that determines the maximum number of terms in the basis set. For a chosen value of $\omega$, the integer powers of $r_i$ and $r_{ij}$ are constructed in such a way that $k_i + l_i + m_i + n_i + p_i + q_i \leq \omega$, with all $k_i$, $l_i$, $m_i$, $n_i$, $q_i$ and $p_i$ $\geq 0$.
 
-%\begin{figure}[H]
-%	\centering
-%	%\scalebox{1}{\includegraphics{NOmega}}
-%	\includegraphics[width=4in]{NOmega}
-%	\caption{$N(\omega)$ versus $\omega$}
-%	\label{fig:NOmega}
-%\end{figure}
-
+These short-range terms represent the angular momentum as being placed on either the positron ($r_1$) or on the electron on the Ps atom ($r_2$). \todoi{Mention other formalism we tried.} For partial waves with $L>1$, the angular momentum could be shared between both particles in the Ps atom \cite{??} (Schwartz). An investigation of the contribution to the final results from each symmetry for \todo{What system?} \todoi{find paper Pos-He 1999 or thesis} has revealed that the mixed symmetries were not important, and because of the complexity of the analytical evaluation of the various matrix elements, we have omitted the mixed symmetry term.
 
 
 %THE HAMILTONIAN
-
 The Hamiltonian for the fundamental Coulombic system is
 \begin{align}
-H = -\frac{1}{2} \nabla_{r_1}^2 - \frac{1}{2} \nabla_{r_2}^2 - \frac{1}{2} \nabla_{r_3}^2 + \frac {1}{r_1}-\frac {1}{r_2}-\frac {1}{r_3}-\frac {1}{r_{12}}-\frac {1}{r_{13}}+\frac {1}{r_{23}}	\label{Hamiltonian1}
+H = -\frac{1}{2} \nabla_{r_1}^2 - \frac{1}{2} \nabla_{r_2}^2 - \frac{1}{2} \nabla_{r_3}^2 + \frac {1}{r_1}-\frac {1}{r_2}-\frac {1}{r_3}-\frac {1}{r_{12}}-\frac {1}{r_{13}}+\frac {1}{r_{23}}
+	\label{Hamiltonian1}
 \end{align}
-
-\noindent which can also be expressed in terms of the variables associated with the Ps coordinates as
+which can also be expressed in terms of the variables associated with the Ps coordinates as
 \begin{align}
 H = -\frac{1}{4} \nabla_{\rho}^2 - \frac{1}{2} \nabla_{r_3}^2 - \nabla_{r_{12}}^2 + \frac {1}{r_1}-\frac {1}{r_2}-\frac {1}{r_3}-\frac {1}{r_{12}}-\frac {1}{r_{13}}+\frac {1}{r_{23}}
 	\label{Hamiltonian2}
 \end{align}
 
-\todoi{Do we need to explicitly write out the Hamiltonian? We could just refer to the J. Phys. B paper (Van Reeth/Humberston 1999). They have this applied to e$^+$-He though.}
 
 
-
-
-%%%%%%%%%%  EXTENSION TO HIGHER PARTIAL DISCCUSION ON ANGULAR INTEGRATION AND ROLE OF DIFFERENT SYMMETRIES.
-\subsection{Higher Waves Wavefunction}
-\todoi{Not all terms here have an $\ell$ subscript. We have to be careful that it isn't confused with the superscript $\ell$ in equation \ref{eq:PartialWavePhiBar}.}
-The wavefunctions for the higher partial waves are similar in form to that of the S-wave (\ref{eq:SWaveTrialSimple}). For clarity, we remove the t subscript representing the fact that we are dealing with the trial wavefunction and assume that this is implied.
-
-\begin{equation}
-\Psi_l^\pm = \bar{S_l} + \tan \delta_l^\pm \, \bar{C_l} + \sum_{i=1}^N c_i \bar{\phi}_{i1} + \sum_{j=1}^N d_j \bar{\phi}_{j2}
-\label{eq:PWaveSimple}
-\end{equation}
-
-\noindent The long-range terms are given by 
-\begin{subequations}
-\label{eq:PartialWaveSandCBar}
-\begin{align}
-\bar{S} &= \frac{1\pm P_{23}}{\sqrt{2}}Y_{\ell 0}(\theta_\rho,\phi_\rho)\Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,j_\ell\left(\kappa\rho\right) \label{eq:PWaveSBar} \\
-\bar{C} &= \frac{1\pm P_{23}}{\sqrt{2}}Y_{\ell 0}(\theta_\rho,\phi_\rho)\Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,n_\ell\left(\kappa\rho\right) f_{sh}(\rho) \label{eq:PWaveCBar}.
-\end{align}
-\end{subequations}
-
-\noindent The shielding factor, $f_{sh}(\rho)$, ensures that the singularity of the Neumann function is removed at the origin and is
-\beq
-f_{sh}(\rho) = \left[1 - \ee^{-\mu \rho} \left(1+\frac{\mu}{2}\rho\right)\right]^{m_\ell}.
-\label{eq:PartialWaveShielding}
-\eeq
-
-\noindent The short-range terms are given by 
-\begin{subequations}
-\label{eq:PartialWavePhiBar}
-\begin{align}
-\bar{\phi}_{i1} &= \left(1 \pm P_{23}\right) Y_{\ell 0}(\theta_1) r^\ell_1 \phi_i \label{eq:PWavePhi1i}\\
-\bar{\phi}_{j2} &= \left(1 \pm P_{23}\right) Y_{\ell 0}(\theta_2) r^\ell_2 \phi_j \label{eq:PartialWavePhi2j},
-\end{align}
-\end{subequations}
-where $\phi_i$ and $\phi_j$ are given by equation \ref{eq:PhiDef}. This represent the angular momentum as being placed on either the positron ($r_1$) or on the electron on the Ps atom ($r_2$). For partial waves with $L > 1$, the angular momentum could be shared between both particles in the Ps atom \cite{??} (Schwartz). An investigation of the contribution to the final results from each symmetry \todoi{find paper Pos-He 1999 or thesis} has revealed that the mixed symmetries were not important and because of the complexity of the analytical evaluation of the various matrix elements, we have omitted the mixed symmetry term. \todoi{Why is this sentence here?} The formulation for the Complex Kohn method is the same as that expressed above.
-\todoi{Mention the other form we tried here or later?}
-
-
-
-
-
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\vskip 0.5truecm
-\noindent
-Low-energy elastic
-Ps-H,
-for energies up to the excitation threshold of Ps(n=2),
-which is 5.1 eV.
-We plan to use very flexible scattering wave functions
-of the same form as used by Van Reeth and
-Humberston [72]
-in their earlier Kohn variational calculation
-of S-wave Ps-H collisions.
-The scattering wave function contains both the asymptotic form and short-range correlation terms for small interparticle distances. The short-range correlation terms are Hylleraas-type functions  which allow for all inter-particle correlations. For the S-wave, the short-range correlation terms 
-are of the form
-\begin{equation}
-\varphi_i = e^{-(\alpha r_1 + \beta r_2 + \gamma r_3)}
-r_1^{k_i} r_2^{\ell i} r_{12}^{m_i} r_3^{n_i} r_{13}^{p_i}
-r_{23}^{q_i}
-\end{equation}
-where $\alpha$, $\beta$ and $\gamma$  are  parameters
-and $k_i$, $\ell_i$, $m_i$, $n_i$, $p_i$ and $q_i$
-are non-negative integers.
-In this equation, $r_1$ is the distance of the positron from the proton, $r_2$ is 
-the distance of the electron in the Ps atom from the
-proton, and $r_3$  is the distance of the electron in
-the H atom from the proton.
-The terms $r_{12}$, $r_{13}$ and $r_{23}$
-are the interparticle distances between the positron and electrons.
-As done earlier by Van Reeth and Humberston we used 
-the short-range correction part  of the 
-scattering wave function  
-to compute the binding energy of PsH [72].
 
 
 
@@ -397,6 +331,12 @@ to compute the binding energy of PsH [72].
 
 \todoi{I think that we should have this only as detailed as Armour and Humberston's paper, or even less. Much is similar to what they have, even though it's the complex Kohn.}
 \todoi{Do we want to just give the wavefunction and the functional, then refer them to Armour/Humberston?}
+
+The T-matrix is related to the phase shift, $\delta_\ell$, by
+\todo{ref?}
+\begin{equation}
+\tan \delta_\ell = \frac{T}{1 + \ii T}.
+\end{equation}
 
 Previous work on Ps-H scattering \cite{??} used the Kohn and inverse Kohn approach. However, both of these methods are known to be sometimes affected by Schwartz singularities. In addition to using a generalized real Kohn method, to reduce the presence of Schwartz singularities, we also calculate the phase shifts using a T-matrix complex Kohn method. We give the derivation of the complex Kohn variational functional for all partial waves using a complex wavefunction.
 
@@ -413,7 +353,7 @@ where
 \label{eq:WDef}
 \eeq
 
-$\bar{S}$, $\bar{C}$ and $\bar{\phi_i}$ are the same as in (\ref{SCphiBarDef}).  Note that this is different than Cooper et al. \cite{Cooper2010}, in that we do not use a variable $\tau$, and our $\bar{W}$ is their $\bar{T}$ but with $\bar{C}$ and $\bar{S}$ swapped, which gives a wavefunction of the correct form \todo{odd wording} (an outgoing wave).
+$\bar{S}$, $\bar{C}$ and $\bar{\phi_i}$ are the same as in (\ref{eq:SCPhiDef}) and (\ref{eq:PhiDef}).  Note that this is different than Cooper et al. \cite{Cooper2010}, in that we do not use a variable $\tau$, and our $\bar{W}$ is their $\bar{T}$ but with $\bar{C}$ and $\bar{S}$ swapped, which gives a wavefunction of the correct form \todo{odd wording} (an outgoing wave).
 
 The functional for the full wavefunction is
 \beq
@@ -663,6 +603,12 @@ For each variant of the Kohn method, we extrapolated the phase shifts according 
 
 
 \subsection{Bound State Results}
+
+As done earlier by Van Reeth and Humberston we used 
+the short-range correction part  of the 
+scattering wave function  
+to compute the binding energy of PsH [72].
+
 To determine the reliability of the short-range part of the wave function to describe the $^1S$ PsH system, we computed the binding energy of the $^1S$ PsH system using this part of the wave function and the Rayleigh-Ritz variational method. This method provides a true bound on the total energy and binding energy. \todoi{NEED TO MENTION POSITRONIUM HYDRIDE IN THE INTRO}
 
 To be consistent with the scattering calculation, we report the results obtained with the same set of nonlinear parameters that were used in the scattering calculation, namely $\alpha = 0.586$, $\beta = 0.580$ and $\gamma = 1.093$. For our set with 1505 terms, we calculate a nonrelativistic ground-state energy of -0.789189725 au, \todo{in table...} giving a binding energy of 1.066406705 eV (using a conversion factor of 1 au = 27.21138505 eV from \cite{?}). We note that we are able to obtain a slightly better value for the binding energy with higher $\omega$, but we are unable to use this many terms in the full scattering calculations for Ps-H. \todoi{Mention here how we remove terms?} Table \ref{tab:BoundEnergyOther} compares our energies for PsH with that obtained by other groups.
@@ -926,21 +872,21 @@ method (and variants) with various other calculations [].
 
 \begin{figure}
 	\centering
-	\includegraphics[width=7in]{Omega=7}
+	\includegraphics[width=4in]{SWavePhaseOmega=7}
 	\caption{S-Wave Singlet and Triplet Phase Shifts}
 	\label{fig:SWavePhaseOmega=7}
 \end{figure}
 
 \begin{figure}
 	\centering
-	\includegraphics[width=7in]{OtherSWaveSingletResults}
+	\includegraphics[width=4in]{OtherSWaveSingletResults}
 	\caption{Comparison of S-Wave Singlet Results from Other Groups}
 	\label{fig:OtherSWaveSingletResults}
 \end{figure}
 
 \begin{figure}
 	\centering
-	\includegraphics[width=7in]{OtherSWaveTripletResults}
+	\includegraphics[width=4in]{OtherSWaveTripletResults}
 	\caption{Comparison of S-Wave Triplet Results from Other Groups}
 	\label{fig:OtherSWaveTripletResults}
 \end{figure}
@@ -968,8 +914,8 @@ number of Rydberg resonances (as did the CC (check)).
 
 \subsection{Resonances}
 
-In table 4, we give the values of our resonance
-parameters (obtained using $\omega=6$ and 7)
+In table \ref{}, we give the values of our resonance
+parameters (obtained using $\omega=7$) \todo{not D-wave}
 and compare with other calculations.
 The values we give for the
 parameters are the average values from
@@ -1159,9 +1105,43 @@ and effective range in the previous Kohn variational
 calculation were obtained using  Eq.~(4) where $\delta^\pm_0$ was
 taken to be the extrapolated phase shifts. ?????]
 
-The S-wave effective range for short-range interactions [] expressed in terms
-of $\kappa \cot \delta_0^\pm$ is
-$\kappa \cot \delta_0^\pm  = -\frac{1}{a_0^\pm} + \frac{1}{2}r_0^\pm \kappa^2 + O(\kappa^4)$
+The S-wave effective range for short-range interactions is \cite{}
+\beq
+\label{eq:EffectiveRangeShort}
+\kappa \cot\eta_0^\pm = -\frac{1}{a_0^\pm} + \frac{1}{2} r_0^\pm \kappa^2 + \mathcal{O}(\kappa^4).
+\eeq
+This is the equation that Van Reeth \cite{} \todo{others?} used to determine the effective range. We performed this calculation, but we also used the expression from \cite{} to include the van der Waals long-range interaction of $V(R) = -\frac{C}{R^6}$. This is given as
+\beq
+\label{eq:EffectiveRangeLongAu}
+\kappa \cot\eta_0 = -\frac{1}{a} + \frac{1}{2} r_0 \kappa^2 - \frac{4 \pi C}{15 a^2} \kappa^3 - \frac{16 C}{15 a} \kappa^4 \ln \left(\kappa \right) + \mathcal{O}(\kappa^4).
+\eeq
+The van der Waals coefficient $C$ has been calculated by Martin and Fraser to be $34.78473$ \cite{Martin1980}.
+
+
+\begin{table}
+\begin{center}
+\begin{ruledtabular}
+\begin{tabular}{c l c c c}
+ & Range & $\kappa^2$ & $\kappa^3$ & $\kappa^4 \ln$ \\
+\colrule
+$^1S$ & $0.1 - 0.6$ & 4.3132/2.2746 & 3.9023/4.5225 & 4.6030/0.8411 \\
+  & $0.01 - 0.09$ & 4.3289/2.2046 & 4.3271/2.4844 & 4.3299/2.1562 \\
+  & $0.001 - 0.009$ & 4.3289/2.2006 & 4.3289/2.2285 & 4.3289/2.2221 \\
+  & $0.0001 - 0.0009$ & 4.3289/2.4926 & 4.3289/2.4954 & 4.3289/2.4953 \\
+\colrule
+$^3S$ & $0.1 - 0.6$ & 2.1680/1.3438 & 2.1505/8.1323 & 2.1728/2.0415 \\
+  & $0.01 - 0.09$ & 2.1371/1.9309 & 2.1353/3.0796 & 2.1367/2.4140 \\
+  & $0.001 - 0.009$ & 2.1369/2.0326 & 2.1369/2.1473 & 2.1369/2.1345 \\
+  & $0.0001 - 0.0009$ & 2.1369/1.9969 & 2.1369/2.0083 & 2.1369/2.0081 \\  
+\end{tabular}
+\end{ruledtabular}
+\caption{Scattering Length and Effective Range}
+\label{tab:ScatLenER}
+\end{center}
+\end{table}
+
+
+
 
 \todoi{I don't think we need this. We verified what they had (partially), but we never used it.}
 In figure 4, we show the phase shifts computed with
