@@ -49,8 +49,8 @@
 
 %Denton
 
-\usepackage{graphicx}  % Include figure files
-%\usepackage[draft]{graphicx}  % Do not include figure files
+%\usepackage{graphicx}  % Include figure files
+\usepackage[draft]{graphicx}  % Do not include figure files
 
 \usepackage{dcolumn} % Align table columns on decimal point
 \usepackage{bm} % bold math
@@ -312,7 +312,7 @@ The variable $\omega$ is an integer $\geq 0$ that determines the maximum number 
 These short-range terms represent the angular momentum as being placed on either the positron ($r_1$) or on the electron on the Ps atom ($r_2$).
 Following up on the NIMB article \cite{VanReeth2004} which had difficulty with convergence for the P-wave triplet, we also tried a wavefunction where the angular momentum was placed on the electron of the H atom ($r_3$) and on the Ps ($\rho$). However, this did not improve convergence for us and was even marginally worse in some cases. The numerical techniques discussed in section \ref{sec:Numerical} improved our convergence.
 
-For partial waves with $L>1$, the angular momentum could be shared between both particles in the Ps atom \cite{??} (Schwartz). An investigation of the contribution to the final results from each symmetry for e$^+$-Ps scattering \cite{Watts1994} has revealed that the mixed symmetries were not important, and because of the complexity of the analytical evaluation of the various matrix elements, we have omitted the mixed symmetry terms.
+For partial waves with $L>1$, the angular momentum could be shared between both particles in the Ps atom \cite{Schwartz1961a}. An investigation of the contribution to the final results from each symmetry for e$^+$-Ps scattering \cite{VanReeth1997} has revealed that the mixed symmetries were not important, and because of the complexity of the analytical evaluation of the various matrix elements, we have omitted the mixed symmetry terms.
 
 
 %THE HAMILTONIAN
@@ -346,7 +346,6 @@ with
 \label{eq:LDef}
 \eeq
 Notice that the wavefunction is not conjugated, as pointed out by Cooper \emph{et al} \cite{Cooper2010}.
-\todoi{Change L to $\mathcal{L}$ in equations}
 
 We assume our trial wavefunction is a small variation of the exact wavefunction, or
 \beq
@@ -374,10 +373,10 @@ which can be written as a matrix equation. For the S-wave, this is
 \begin{equation}
 \label{eq:ComplexKohnMatrix}
 \begin{bmatrix} 
- (\bar{W},L\bar{W}) & (\bar{W},L\bar{\phi}_1) & \cdots & (\bar{W},L\bar{\phi}_j) & \cdots\\
- (\bar{\phi}_1,L\bar{W}) & (\bar{\phi}_1,L\bar{\phi}_1) & \cdots & (\bar{\phi}_1,L\bar{\phi}_j) & \cdots\\
+ (\bar{W},\mathcal{L}\bar{W}) & (\bar{W},\mathcal{L}\bar{\phi}_1) & \cdots & (\bar{W},\mathcal{L}\bar{\phi}_j) & \cdots\\
+ (\bar{\phi}_1,\mathcal{L}\bar{W}) & (\bar{\phi}_1,\mathcal{L}\bar{\phi}_1) & \cdots & (\bar{\phi}_1,\mathcal{L}\bar{\phi}_j) & \cdots\\
  \vdots & \vdots & \ddots & \vdots \\
- (\bar{\phi}_i,L\bar{W}) & (\bar{\phi}_i,L\bar{\phi}_1) & \cdots & (\bar{\phi}_i,L\bar{\phi}_j) & \cdots\\
+ (\bar{\phi}_i,\mathcal{L}\bar{W}) & (\bar{\phi}_i,\mathcal{L}\bar{\phi}_1) & \cdots & (\bar{\phi}_i,\mathcal{L}\bar{\phi}_j) & \cdots\\
  \vdots & \vdots & & \vdots & \\
 \end{bmatrix}
 \begin{bmatrix}
@@ -389,16 +388,16 @@ c_i\\
 \end{bmatrix}
 = -
 \begin{bmatrix}
-(\bar{W},L\bar{S}) \\
-(\bar{\phi}_1,L\bar{S}) \\
+(\bar{W},\mathcal{L}\bar{S}) \\
+(\bar{\phi}_1,\mathcal{L}\bar{S}) \\
 \vdots \\
-(\bar{\phi}_i,L\bar{S}) \\
+(\bar{\phi}_i,\mathcal{L}\bar{S}) \\
 \vdots
 \end{bmatrix}.
 \end{equation}
 This matrix equation can be rewritten as $\textbf{\emph{AX = -B}}$. For higher partial waves, the matrix equation looks the same but includes the second symmetry short-range terms. Finally, we solve for $T^v$, from which we obtain our phase shifts.
 \begin{equation}
-T^v = -\textbf{\emph{B}}^{tr} \textbf{\emph{X}} - (\bar{S},L \bar{S})
+T^v = -\textbf{\emph{B}}^{tr} \textbf{\emph{X}} - (\bar{S},\mathcal{L} \bar{S})
 \end{equation}
 
 To determine the phase shifts, we use the relation for the T-matrix given by Nesbet \cite{Nesbet2003} by
@@ -442,20 +441,85 @@ Then the generalized real Kohn functional for $L \geq 0$ is
 \end{equation}
 
 
+
+\subsection{The Positronium-Hydrogen System (Again)}
+For S-wave scattering of positronium from hydrogen, our very flexible complex-valued trial scattering wavefunction is
+\begin{equation}
+\Psi_0^{\pm,t} = \widetilde{S_0} + y_0^{\pm,t} \, \widetilde{C_0} + \sum_{i=1}^N c_i \bar{\phi}_{i1},
+\label{eq:TrialWave}
+\end{equation}
+where the superscript $t$ indicates that this is a trial wavefunction. The plus sign indicates the spatially symmetric singlet, and the minus sign indicates the spatially antisymmetric triplet case. The total orbital angular momentum, $L$, is equal to the orbital angular momentum of the incoming Ps, $\ell$. For partial waves $(L = \ell > 0)$,
+\begin{equation}
+\Psi_\ell^{\pm,t} = \widetilde{S_\ell} + y^{\pm,t}_\ell \, \widetilde{W}_\ell + \sum_{i=1}^N c_{i,\ell} \bar{\phi}_{i1} + \sum_{j=1}^N d_{j,\ell} \bar{\phi}_{j2}.
+\label{eq:TrialWaveHigher}
+\end{equation}
+
+The scattering wavefunctions contain both the long-range terms and short-range correlation terms for small interparticle distances. The coordinate system used in these is shown in figure \ref{fig:PsHCoords}. The variable $\rho$ describes the position of the center of mass of the positronium atom, i.e. $\vec{\rho} = \frac{1}{2}\left(\vec{r_1} + \vec{r_2}\right)$. The long-range terms are
+\begin{subequations}
+\label{eq:SCPhiDef}
+\begin{align}
+\bar{S}_\ell &= \frac{1\pm P_{23}}{\sqrt{2}}Y_{\ell 0}(\theta_\rho,\phi_\rho)\Phi_{Ps,1s}\left(r_{12}\right) \Phi_{H,1S}\left(r_3\right) \sqrt{2\kappa} \,j_\ell\left(\kappa\rho\right) \label{eq:SBar} \\
+\bar{C}_\ell &= \frac{1\pm P_{23}}{\sqrt{2}}Y_{\ell 0}(\theta_\rho,\phi_\rho)\Phi_{Ps,1s}\left(r_{12}\right) \Phi_{H,1S}\left(r_3\right) \sqrt{2\kappa} \,n_\ell\left(\kappa\rho\right) f_\ell(\rho) \text{ and}\label{eq:CBar}
+\end{align}
+\end{subequations}
+
+$\widetilde{S} = u \left( \begin{smallmatrix}
+\bar{S} \\ \bar{C}
+\end{smallmatrix} \right) = \left( \begin{smallmatrix}
+u_{00} & u_{01} \\  u_{10} & u_{11}
+\end{smallmatrix} \right)
+\left( \begin{smallmatrix}
+\bar{S} \\ \bar{C}
+\end{smallmatrix} \right) = 
+\left( \begin{smallmatrix}
+\cos \tau & \sin \tau \\  -\sin \tau & \cos \tau
+\end{smallmatrix} \right)$
+
+
+\subsection{Kohn Variational Methods (Again)}
+\label{sec:GenKohn}
+
+For the Kohn, $y_\ell = K_\ell$ and $u = \left( \begin{smallmatrix}
+1 & 0 \\ 0 & 1
+\end{smallmatrix} \right)$.
+
+For the inverse Kohn, $y_\ell = K_\ell^{-1}$ and $u = \left( \begin{smallmatrix}
+0 & 1 \\ -1 & 0
+\end{smallmatrix} \right)$.
+
+For the T-matrix complex Kohn, $y_\ell = T_\ell$ and $u = \begin{bmatrix}
+1 & 0 \\ \ii & 1
+\end{bmatrix}$.
+
+For the S-matrix complex Kohn, $y_\ell = 2\ii S_\ell$ and $u = \left[ \begin{smallmatrix}
+-\ii & 1 \\ \ii & 1
+\end{smallmatrix} \right]$.
+
+\begin{equation}
+y^v = -\frac{1}{\det u} \left( \textbf{\emph{B}}^{tr} \textbf{\emph{X}} - (\widetilde{S},\mathcal{L} \widetilde{S}) \right)
+\end{equation}
+
+As in Lucchese \cite{},
+\begin{equation}
+K_\ell = (u_{01} + u_{11} y_\ell)(u_{00} + u_{10} y_\ell)^{-1}
+\end{equation}
+
+
+
 \subsection{Bound State}
 As done earlier by Van Reeth and Humberston \cite{VanReeth2003,VanReeth2004}, we used the short-range correction part of the S-wave scattering wavefunction to compute the binding energy of $^1S$ PsH system. This allows us to determine the reliability of using our short-range terms for the Ps-H scattering problem. The wavefunction we use for the bound state is
 \begin{equation}
 \label{eq:BoundWavefn}
 \Psi^\pm = \sum_{i=1}^{N(\omega)} c_i \bar{\phi}_{1i}^\pm,
 \end{equation}
-where $\bar{\phi}_{1i}^\pm$ is the same as in equation (\ref{eq:PhiDef}). The Raleigh-Ritz method is used, and the optimization of the nonlinear parameters has been done using the both the Newton and simplex methods \cite{Yan1999,GSL}. For the triplet case and $L \neq 0$, even though there is not a bound state, we use the same method to optimize the nonlinear parameters to get the lowest energy. For $L > 0$, as in the scattering problem, our wavefunction includes both sets of short-range terms for this optimization.
+where $\bar{\phi}_{1i}^\pm$ is the same as in equation (\ref{eq:PhiDef}). The Rayleigh-Ritz method is used, and the optimization of the nonlinear parameters has been done using the both the Newton and simplex methods \cite{Yan1999,GSL}. For the triplet case and $L \neq 0$, even though there is not a bound state, we use the same method to optimize the nonlinear parameters to get the lowest energy. For $L > 0$, as in the scattering problem, our wavefunction includes both sets of short-range terms for this optimization.
 
 
 \subsection{Born Approximations}
 The Born approximation \cite{?} uses only the first term in equations \ref{eq:TrialWave} and \ref{eq:TrialWaveHigher}. This leads to the Born approximation of
 \begin{equation}
 \label{eq:Born}
-\delta_\ell \approx \left(\bar{S}_\ell,L\bar{S}_\ell \right)\, .
+\delta_\ell \approx \left(\bar{S}_\ell,\mathcal{L}\bar{S}_\ell \right)\, .
 \end{equation}
 We also consider a modified Born approximation that uses the first two terms in equations \ref{eq:TrialWave} and \ref{eq:TrialWaveHigher}, excluding the short-range terms. This gives a better approximation than the Born for most cases and is roughly equivalent to the Born in the other cases. Figure \ref{fig:fwave-born.pdf} shows comparison between the Born, modified Born and full complex Kohn methods for the F-wave.
 \begin{figure}[ht]
@@ -470,22 +534,22 @@ We also consider a modified Born approximation that uses the first two terms in 
 
 \section{Numerics}
 \label{sec:Numerical}
-Describe Todd's procedure.
-How terms are eliminated for the bound-state
-and give the procedure for determining the
-number for the scattering.
-Give a table for the number of terms for bound-state,
-for singlet and triplet scattering.
-Compare with the total number of terms,
-and the number of terms that Peter considered.
-Explain how the non-linear terms are obtained for the
-bound-state, singlet and triplet scattering.
-\todoi{Compare with the nonlinear parameters that Peter used.}
-\vskip 1truecm
-\noindent
+%Describe Todd's procedure.
+%How terms are eliminated for the bound-state
+%and give the procedure for determining the
+%number for the scattering.
+%Give a table for the number of terms for bound-state,
+%for singlet and triplet scattering.
+%Compare with the total number of terms,
+%and the number of terms that Peter considered.
+%Explain how the non-linear terms are obtained for the
+%bound-state, singlet and triplet scattering.
+%\todoi{Compare with the nonlinear parameters that Peter used.}
+%\vskip 1truecm
+%\noindent
 
 \subsection{Short-Short Integrations}
-
+\label{sec:ShortInt}
 For the PsH bound state and S-wave, we use the efficient asymptotic expansion method presented by Drake and Yan \cite{Drake1995} for the evaluation of correlated integrals of the form
 \begin{equation}
 \label{eq:ShortInt}
@@ -513,87 +577,58 @@ e^{-(\bar{\alpha} r_1 + \bar{\beta} r_2 + \bar{\gamma} r_3)} \\
 Y_{\ell_1 m_1} (\textit{\textbf{r}}_1) Y_{\ell_2 m_2} (\textit{\textbf{r}}_2) Y_{\ell_3 m_3} (\textit{\textbf{r}}_3)\, .
 \end{align}
 
+\subsection{Long-Range Integrations}
+\label{sec:LongInt}
+The long-range--long-range and short-range--long-range matrix elements in equations \ref{eq:ComplexKohnMatrix} and \ref{eq:GenKohnMatrix} are evaluted using Gauss-Laguerre and Gauss-Legendre quadratures. Due to a cusp in the integrands, the $r_2$ and $r_3$ integrations are split into Gauss-Legendre quadratures before the cusp and Gauss-Laguerre after the cusp. \todo{Always true?}
+
+To further improve the convergence of the short-range--long-range matrix elements, we investigated the integrands. The biggest source of difficulty in converging these results comes through the Gaussian-Laguerre quadratures in the $r_1$, $r_2$ and $r_3$ integrations. Specifically, the integrands do not fall off quickly enough, and the tails of the integrands are not adequately represented. This can be resolved by introducing more abscissae in the quadratures, which puts some points farther out. This brute force approach can increase the computational time greatly, so we took another approach to further increase the accuracy. For each of the Gauss-Laguerre quadratures, we introduce an extra $e^{-\lambda r_i}$ and remove it with $e^{\lambda r_i}$ after the quadrature, pushing our abscissae further out without increasing the number of integration points.
+
+
 
 \subsection{Todd's procedure}
-\emph{This is mainly taken from my dissertation. This is too long. I think we can reduce it greatly by giving a reference to the L\"uchow paper and stating the differences. I also don't know if we should refer to it as his algorithm, since it is basically the same thing as what is in L\"uchow's paper. The main difference is that his algorithm compares the upper and lower triangular matrix eigenvalues. Should we refer to them as energy eigenvalues?}
+%\emph{This is mainly taken from my dissertation. This is too long. I think we can reduce it greatly by giving a reference to the L\"uchow paper and stating the differences. I also don't know if we should refer to it as his algorithm, since it is basically the same thing as what is in L\"uchow's paper. The main difference is that his algorithm compares the upper and lower triangular matrix eigenvalues. Should we refer to them as energy eigenvalues?}
+%
+%In trying to determine the energy eigenvalues, we noticed that the ordering of the terms could determine whether there was linear dependence in the matrices.  Allan Todd's algorithm was attractive, because it reorders the matrices to obtain the best possible energy, and it is a purely computational approach \cite{Todd2007}. So far, we have not seen any physical reason why certain terms should introduce a near linear dependence.  A description of his (\emph{not really just his}) algorithm as implemented by us follows.
+%
+%The total number of terms to look at is $N = N(\omega)$ (see equation \ref{eq:NumberTermsOmega}).  N matrices of size 1x1 are created for each term.  This is done for the overlap and the $\left\langle \phi \left| \,H \right| \phi \right\rangle$ matrices together (\emph{What was the other name that I saw for this? The hopping matrix?}).  The LAPACK dsygv routine is used to determine the lowest eigenvalue for each of these N sets.  These energy eigenvalues are compared against one another, and the term with the lowest energy is chosen. In the next step, the first basis function from the previous step is combined with each unused term to create N-1 matrices of size 2x2. Again, the energy eigenvalues for each of the N-1 matrices are compared against each other, and the term yielding the lowest energy is chosen as the second basis function. This is done again with 3x3 matrices for each of the N-2 remaining terms combined with the basis functions chosen in the first two steps. This procedure is repeated until all terms have been used or the remaining terms are problematic. 
+%
+%In principle, the overlap and H matrices (\emph{name?}) are symmetric, but this is not true to machine precision due to truncation and rounding.  If the energy eigenvalues from the upper and lower triangles differ by more than $\epsilon$, which we take as $10^{-7}$ (in atomic units), the last added term is considered problematic and discarded. Terms are also discarded if the eigenvalue routine fails when they are added.
+%
+%For larger basis sets, this algorithm becomes extremely slow, as determining the eigenvalues is an $O(N^3)$ operation.  It can easily be parallelized, since we are computing the eigenvalues for a large number of matrices. Our program has been parallelized using OpenMP for intranode communications and Open MPI for internode communications. \emph{Previous sentence needed?} Todd's algorithm provides the best converged energy for a set of terms, albeit at a cost of computational speed.
 
-In trying to determine the energy eigenvalues, we noticed that the ordering of the terms could determine whether there was linear dependence in the matrices.  Allan Todd's algorithm was attractive, because it reorders the matrices to obtain the best possible energy, and it is a purely computational approach \cite{Todd2007}. So far, we have not seen any physical reason why certain terms should introduce a near linear dependence.  A description of his (\emph{not really just his}) algorithm as implemented by us follows.
+(\emph{As mentioned in L\"uchow's paper...}) The primary motivation for using this method is to only use terms that contribute significantly to the energy eigenvalues. Terms that do not contribute significantly are more likely to introduce linear dependence into our matrices. The reordering introduced by this method is referred to as `Todd ordering' in this paper, as compared to the original ordering indicated by increasing $\omega$.
 
-The total number of terms to look at is $N = N(\omega)$ (see equation \ref{eq:NumberTermsOmega}).  N matrices of size 1x1 are created for each term.  This is done for the overlap and the $\left\langle \phi \left| \,H \right| \phi \right\rangle$ matrices together (\emph{What was the other name that I saw for this? The hopping matrix?}).  The LAPACK dsygv routine is used to determine the lowest eigenvalue for each of these N sets.  These energy eigenvalues are compared against one another, and the term with the lowest energy is chosen. In the next step, the first basis function from the previous step is combined with each unused term to create N-1 matrices of size 2x2. Again, the energy eigenvalues for each of the N-1 matrices are compared against each other, and the term yielding the lowest energy is chosen as the second basis function. This is done again with 3x3 matrices for each of the N-2 remaining terms combined with the basis functions chosen in the first two steps. This procedure is repeated until all terms have been used or the remaining terms are problematic. 
 
-In principle, the overlap and H matrices (\emph{name?}) are symmetric, but this is not true to machine precision due to truncation and rounding.  If the energy eigenvalues from the upper and lower triangles differ by more than $\epsilon$, which we take as $10^{-7}$ (in atomic units), the last added term is considered problematic and discarded. Terms are also discarded if the eigenvalue routine fails when they are added.
-
-For larger basis sets, this algorithm becomes extremely slow, as determining the eigenvalues is an $O(N^3)$ operation.  It can easily be parallelized, since we are computing the eigenvalues for a large number of matrices. Our program has been parallelized using OpenMP for intranode communications and Open MPI for internode communications. \emph{Previous sentence needed?} Todd's algorithm provides the best converged energy for a set of terms, albeit at a cost of computational speed.
-
-(\emph{As mentioned in L\"uchow's paper...}) The primary motivation for using this method is to only use terms that contribute significantly to the energy eigenvalues. Terms that do not contribute significantly are more likely to introduce linear dependence into our matrices. The reordering introduced by this method is referred to as `Todd ordering' in this paper, as compared to the original ordering indicated by increasing $\omega$ in equation \ref{}.
-
-\subsection{Different Kohn methods}
-3) Implemented various Kohn methods and compared.
-
-Determining the best term to truncate at is sometimes difficult. For the S-wave singlet, we noticed an additional property of the phase shift graphs. When $\delta_0^+$ is plotted for one Kohn method with respect to $N(\omega)$ for multiple $\mu$ values, the phase shifts agree well for the different $\mu$ values up until linear dependence becomes apparent, as seen in figure \ref{??}. We used this criteria to determine where to truncate the basis set, stopping at 1505 terms for $^1S$. We did not see a similar effect for the S-wave triplet.
-
-\emph{FIGURE OF THIS}
-
-From the bound state calculation using \emph{Todd's algorithm} mentioned in section \ref{??}, we know which short-range Hylleraas terms approximate the wavefunction of PsH best. \emph{But this doesn't describe anything other than the S-wave singlet properly.} We have observed that the short-range--short-range terms used in the same order as the output of the Todd algorithm will generate better-converged phase shifts. The separate code to determine the phase shifts uses the output from the short-range \emph{Todd} code.
-
-\emph{GRAPHS OF WITH AND WITHOUT TODD ORDERING FOR BOTH ENERGY AND PHASE SHIFTS}
-
-As discussed in sections \ref{sec:ComplexKohn} and \ref{sec:ComplexKohn}, there are many variants of the Kohn variational method, namely the inverse Kohn, complex Kohn (S-matrix) and complex Kohn (T-matrix). Additionally, there are both real-valued and complex general Kohn methods with an adjustable parameter $\tau$ \cite{??}. The complex Kohn methods are the most stable, since they rarely have Schwartz singularities \cite{CooperOrLucchese??}. For this reason, we take our final phase shifts as that generated by the S-matrix Kohn variational method. These phase shifts are more stable than those generated by any of the other Kohn methods.
-
-\subsection{Truncation}
+\subsection{Selection of Short-Range Terms}
 \label{sec:Truncation}
-The \emph{Todd method} eliminates terms that contribute to linear dependence and reorders the remaining terms in order of decreasing contribution to the energy\todo{eigenvalues?}. The phase shifts are calculated using this set of short-range terms for the generalized Kohn variational method for multiple $\tau$ values. We further truncate this basis set where the phase shifts for the different Kohn methods begin to diverge. This can be seen in figure \ref{??}.
+We have observed that the short-range--short-range terms used in the same order as the output of the Todd algorithm will generate better-converged phase shifts, and we can include more short-range terms before linear dependence becomes a problem. The phase shifts are calculated using this set of short-range terms for the generalized Kohn variational method for multiple $\tau$ values. We further truncate this basis set where the phase shifts for the different Kohn methods begin to diverge. This can be seen in figure \ref{??}. The final results in section \ref{sec:Results} use the T-matrix complex Kohn with this set of short-range terms.
+
+\todoi{Graphs of with and without Todd ordering for energy and phase shifts?}
+
+For the S-wave singlet, we noticed an additional property of the phase shift graphs. When $\delta_0^+$ is plotted for one Kohn method with respect to $N(\omega)$ for multiple $\mu$ values, the phase shifts agree well for the different $\mu$ values up until linear dependence becomes apparent, as seen in figure \ref{??}. We used this criteria to determine where to truncate the basis set, stopping at 1505 terms for $^1S$. We did not see a similar effect for the S-wave triplet.
+
+\todoi{Figure of this}
 
 
-\subsection{Lambdas}
-\label{sec:Lambdas}
-To further improve the convergence of the short-range--long-range matrix elements in equation \ref{}, we investigated the integrands. The biggest source of difficulty in converging these results comes through the Gaussian-Laguerre quadratures in the $r_1$, $r_2$ and $r_3$ integrations. Specifically, the integrands do not fall off quickly enough, and the tails of the integrands are not adequately represented. This can be resolved by introducing more abscissae in the quadratures, which puts some points farther out. This brute force approach can increase the computational time greatly, so we took another approach to further increase the accuracy. For each of the Gauss-Laguerre quadratures, we introduce an extra $e^{-\lambda r_i}$ and remove it with $e^{\lambda r_i}$ after the quadrature, pushing our abscissae further out without increasing the number of integration points.
-
-%The basic form of the Gauss-Laguerre quadrature is given by \cite{Sauer2006}
-%\beq
-%\label{eq:GaussLag}
-%\int_0^\infty e^{-x} f(x) dx \approx \sum_{i=1}^n w_i f(x_i).
-%\eeq
-%Introducing an extra $e^{-\lambda x}$ and removing it with $e^{\lambda x}$, we can push our abscissae further out by
-%\beq
-%\label{eq:GaussLagLambda}
-%\int_0^\infty e^{-x} f(x) dx \approx \sum_{i=1}^n \frac{w_i}{\lambda} f\! \left(\frac{x_i}{\lambda}\right) \ee^{\lambda x_i}.
-%\eeq
-%
-%\todoi{The following is probably not needed.}
-%
-%As an example, the full expression for the $r_2$ Gauss-Laguerre quadrature is given \todo{$y_i$ defined?} by
-%\beq
-%\int_a^\infty e^{-\beta r_2} f(r_2) dr_2 \approx \frac{e^{-\beta a}}{\beta} \sum_{i=1}^n w_i f\left(\frac{y_i}{\beta}+a\right).
-%\eeq
-%and with the exponential in $\lambda$, this becomes
-%\beq
-%\int_a^\infty e^{-\beta r_2} f(r_2) dr_2 \approx \frac{e^{-a (\beta + \lambda)}}{\beta + \lambda} \sum_{i=1}^n w_i f\left(\frac{r_2 + a(\beta + \lambda)}{\beta + \lambda} \right) \ee^{\lambda r_2}.
-%\eeq
-%\todoi{We may just want to show the final result here. It's not difficult to work this out.}
-
-\subsection{Resonance Fitting}
-As with the previous Kohn calculation of Van Reeth and Humberston (who also obtained these resonances..),
-we fitted our computed phase shifts for the S-wave and P-wave for $\omega=7$) to
-the resonance formula
+\subsection{Fittings}
+As with the previous Kohn calculation of Van Reeth and Humberston \cite{VanReeth2004}, we fitted our computed phase shifts for the S-wave and P-wave to the resonance formula
 \beq
-\delta(E) = A + B E + C E^2 + \arctan \left[ \frac{^1\Gamma}{2(^1E_R - E)} \right] + \arctan \left[ \frac{^2\Gamma}{2(^2E_R - E)} \right].
+\delta(E) = A + B E + C E^2 + \arctan \left[ \frac{^1\Gamma}{2(^1E_R - E)} \right] + \arctan \left[ \frac{^2\Gamma}{2(^2E_R - E)} \right]
 \eeq
 to extract out the positions ($^1E_R$ and $^2E_R$) and widths
-($^1\Gamma$ and $^2\Gamma$) of the two resonances. The D-wave and F-wave resonance fits were performed without the second $\arctan$ term, as they have a single resonance. 
-This formula comprises of the Breit-Wigner resonance
+($^1\Gamma$ and $^2\Gamma$) of the two resonances. 
+This formula is comprised of the Breit-Wigner resonance
 formula for the two resonances and allows for a slowly varying
-background.
-The data from each variant of the Kohn variational method was fitted using MATLAB nonlinear fitting routine with eight possible \todo{Correct?} weightings
-(Bisquare, Andrews, Cauchy, Fair, Huber, Logistic, Talwar and Welsch).
-For each variant of the Kohn variational method, the four parameters were determined for each
-of the eight fits and compared.
+background. The D-wave and F-wave resonance fits were performed without the second $\arctan$ term, as they have a single resonance. 
+The data from each variant of the Kohn variational methods was fitted using the MATLAB nonlinear fitting routine nlinfit with eight possible weightings.
+For each variant of the Kohn variational method, the four parameters were determined for each of the eight fits and compared.
 
-\subsection{Extrapolation}
-For each variant of the Kohn method, we extrapolated the phase shifts according to 
+For each variant of the Kohn method, we extrapolated the phase shifts in tables \ref{tab:SWavePhase} and \ref{} according to 
 \bea
 \tan\delta^\pm(\omega) = \tan\delta^\pm(\omega\to\infty) + {c\over \omega^p}\, .
 \eea
+
+\todoi{Humberston reference, empirical}
 
 
 \subsection{Nonlinear Parameters and Terms Used}
@@ -755,16 +790,16 @@ $\kappa$ & $\delta^+ (\omega = 7)$ & $\delta^- (\omega = 7)$ & $\delta^+ (\omega
 \begin{table}
 \begin{center}
 \begin{ruledtabular}
-\begin{tabular}{c c c c c c c c}
-$\kappa$ & $\delta^+ (\omega = 6)$ & $\delta^+ (\omega = 7)$ & $\delta^+$ \cite{VanReethPrivate} & $\delta^+$ \cite{Blackwood2002} & $\delta^+$ \cite{Walters2004} & $\delta^+$ \cite{Ray1997} & $\delta^+$ \cite{Adhikari1999} \\
+\begin{tabular}{c c c c c c c}
+$\kappa$ & $\delta^+ (\omega = 7)$ & $\delta^+$ \cite{VanReethPrivate} & $\delta^+$ \cite{Blackwood2002} & $\delta^+$ \cite{Walters2004} & $\delta^+$ \cite{Ray1997} & $\delta^+$ \cite{Adhikari1999} \\
 \colrule
-0.1 & $2.255^{-2}$ & $2.256^{-2}$ & $2.26^{-2}$ & $2.13^{-2}$ & $2.21^{-2}$ & $7.98^{-3}$ & $4.77^{-3}$ \\
-0.2 & $1.909^{-1}$ & $1.913^{-1}$ & $1.92^{-1}$ & $1.75^{-1}$ & $1.83^{-1}$ & $6.14^{-2}$ & $3.70^{-2}$ \\
-0.3 & $6.082^{-1}$ & $6.093^{-1}$ & $6.12^{-1}$ & $5.45^{-1}$ & $5.80^{-1}$ & $1.86^{-1}$ & $1.16^{-1}$ \\
-0.4 & $9.930^{-1}$ & $9.939^{-1}$ & $9.97^{-1}$ & $9.08^{-1}$ & $9.56^{-1}$ & $3.49^{-1}$ & $2.39^{-1}$ \\
-0.5 & $1.140$ & $1.140$ & $1.143$ & $1.068$ & $1.106$ & $4.77^{-1}$ & $3.72^{-1}$ \\
-0.6 & $1.161$ & $1.162$ & $1.165$ & $1.103$ & $1.134$ & $5.36^{-1}$ & $4.78^{-1}$ \\
-0.7 & $1.151$ & $1.152$ & $1.155$ & $1.099$ & $1.133$ & $5.38^{-1}$ & $5.41^{-1}$ \\
+0.1 & $2.256^{-2}$ & $2.26^{-2}$ & $2.13^{-2}$ & $2.21^{-2}$ & $7.98^{-3}$ & $4.77^{-3}$ \\
+0.2 & $1.913^{-1}$ & $1.92^{-1}$ & $1.75^{-1}$ & $1.83^{-1}$ & $6.14^{-2}$ & $3.70^{-2}$ \\
+0.3 & $6.093^{-1}$ & $6.12^{-1}$ & $5.45^{-1}$ & $5.80^{-1}$ & $1.86^{-1}$ & $1.16^{-1}$ \\
+0.4 & $9.939^{-1}$ & $9.97^{-1}$ & $9.08^{-1}$ & $9.56^{-1}$ & $3.49^{-1}$ & $2.39^{-1}$ \\
+0.5 & $1.140$ & $1.143$ & $1.068$ & $1.106$ & $4.77^{-1}$ & $3.72^{-1}$ \\
+0.6 & $1.162$ & $1.165$ & $1.103$ & $1.134$ & $5.36^{-1}$ & $4.78^{-1}$ \\
+0.7 & $1.152$ & $1.155$ & $1.099$ & $1.133$ & $5.38^{-1}$ & $5.41^{-1}$ \\
 \end{tabular}
 \end{ruledtabular}
 \caption{P-Wave Singlet Results}
@@ -777,16 +812,16 @@ $\kappa$ & $\delta^+ (\omega = 6)$ & $\delta^+ (\omega = 7)$ & $\delta^+$ \cite{
 \begin{table}
 \begin{center}
 \begin{ruledtabular}
-\begin{tabular}{c c c c c c}
-$\kappa$ & $\delta^- (\omega = 6)$ & $\delta^- (\omega = 7)$ & $\delta^-$ \cite{Blackwood2002} & $\delta^-$ \cite{Ray1997} & $\delta^-$ \cite{Adhikari1999} \\
+\begin{tabular}{c c c c c}
+$\kappa$ & $\delta^- (\omega = 7)$ & $\delta^-$ \cite{Blackwood2002} & $\delta^-$ \cite{Ray1997} & $\delta^-$ \cite{Adhikari1999} \\
 \colrule
-0.1 & $-1.785^{-3}$ & $-1.775^{-3}$ & $-9.53^{-4}$ & $-5.03^{-3}$ & $-2.33^{-3}$ \\
-0.2 & $-1.676^{-2}$ & $-1.669^{-2}$ & $-1.22^{-2}$ & $-3.52^{-2}$ & $-1.67^{-2}$ \\
-0.3 & $-5.536^{-2}$ & $-5.518^{-2}$ & $-4.56^{-2}$ & $-9.80^{-2}$ & $-4.76^{-2}$ \\
-0.4 & $-1.149^{-1}$ & $-1.146^{-1}$ & $-1.04^{-1}$ & $-1.86^{-1}$ & $-9.18^{-2}$ \\
-0.5 & $-1.840^{-1}$ & $-1.834^{-1}$ & $-1.78^{-1}$ & $-2.87^{-1}$ & $-1.42^{-1}$ \\
-0.6 & $-2.486^{-1}$ & $-2.477^{-1}$ & $-2.47^{-1}$ & $-3.90^{-1}$ & $-1.90^{-1}$ \\
-0.7 & $-2.932^{-1}$ & $-2.917^{-1}$ & $-2.95^{-1}$ & $-4.88^{-1}$ & $-2.28^{-1}$ \\
+0.1 & $-1.775^{-3}$ & $-9.53^{-4}$ & $-5.03^{-3}$ & $-2.33^{-3}$ \\
+0.2 & $-1.669^{-2}$ & $-1.22^{-2}$ & $-3.52^{-2}$ & $-1.67^{-2}$ \\
+0.3 & $-5.518^{-2}$ & $-4.56^{-2}$ & $-9.80^{-2}$ & $-4.76^{-2}$ \\
+0.4 & $-1.146^{-1}$ & $-1.04^{-1}$ & $-1.86^{-1}$ & $-9.18^{-2}$ \\
+0.5 & $-1.834^{-1}$ & $-1.78^{-1}$ & $-2.87^{-1}$ & $-1.42^{-1}$ \\
+0.6 & $-2.477^{-1}$ & $-2.47^{-1}$ & $-3.90^{-1}$ & $-1.90^{-1}$ \\
+0.7 & $-2.917^{-1}$ & $-2.95^{-1}$ & $-4.88^{-1}$ & $-2.28^{-1}$ \\
 \end{tabular}
 \end{ruledtabular}
 \caption{P-Wave Triplet Results}
