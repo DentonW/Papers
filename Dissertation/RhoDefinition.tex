@@ -1,0 +1,62 @@
+\documentclass[main.tex]{subfiles} 
+\begin{document}
+
+\newpage
+\chapter{\texorpdfstring{$\rho$ and $\rho'$} {rho and rho'} Definitions}
+\label{chp:RhoDef}
+From equation 2.1 of Peter Van Reeth's thesis \cite{} and Armour and Humberston's paper \cite{},
+
+\beq
+\vec{\rho} = \frac{1}{2} \left( \vec{r_1} + \vec{r_2} \right).
+\label{eq:RhoDef1}
+\eeq
+
+By switching coordinates 2 and 3, we have
+\beq
+\vec{\rho'} = \frac{1}{2} \left( \vec{r_1} + \vec{r_3} \right).
+\label{eq:RhoDef2}
+\eeq
+
+In the original coordinate system (figure B.1 of \cite{}),
+\begin{align}
+\nonumber \vec{r_1} &= \left( r_1 \sin \theta_1 \cos \phi_1, r_1 \sin \theta_1 \sin \phi_1, r_1 \cos \theta_1 \right) \\
+\vec{r_3} &= \left( r_3 \sin \theta_3 \cos \phi_3, r_3 \sin \theta_3 \sin \phi_3, r_3 \cos \theta_3 \right)
+\end{align}
+
+In the rotated coordinate system (figure B.2 of \cite{}),
+\begin{align}
+\nonumber \vec{r_1} &= (0, 0, r_1) \\
+\vec{r_3} &= \left( r_3 \sin \theta_{13} \cos \phi_{13}, r_3 \sin \theta_{13} \sin \phi_{13}, r_3 \cos \theta_{13} \right)
+\end{align}
+
+\begin{align}
+\nonumber \left| r_1 + r_3 \right|^2 &= r_3^2 \sin^2 \theta_{13} \cos^2 \phi{13} + r_3^2 \sin^2 \theta_{13} \sin^2 \phi{13} + (r_1 + r_3 \cos \theta_{13})^2\\
+\nonumber &= r_3^2 \sin^2 \theta_{13} + r_1^2 + r_3^2 \cos^2 \theta_{13} + 2 r_1 r_3 \cos \theta_{13} \\
+&= r_1^2 + r_3^2 + 2 r_1 r_3 \cos \theta_{13}.
+\label{eq:RhoDef3}
+\end{align}
+
+Also, using the law of cosines,
+\beq
+r_{13}^2 = r_1^2 + r_3^2 - 2 r_1 r_3 \cos \theta_{13}
+\label{eq:CosLaw}
+\eeq
+
+Substituting (\ref{eq:CosLaw}) into (\ref{eq:RhoDef3}) gives
+\beq
+\left| r_1 + r_3 \right|^2 = 2 \left( r_1^2 + r_3^2 \right) - r_{13}^2.
+\label{eq:RhoDef4}
+\eeq
+
+From (\ref{eq:RhoDef2}) and (\ref{eq:RhoDef4}),
+\beq
+\rho' = \frac{1}{2} \left[ 2 \left(r_1^2 + r_3^2 \right) - r_{13}^2 \right] ^ \frac{1}{2}.
+\eeq
+
+Similarly,
+\beq
+\rho = \frac{1}{2} \left[ 2 \left(r_1^2 + r_2^2 \right) - r_{12}^2 \right] ^ \frac{1}{2}.
+\eeq
+
+
+\end{document}

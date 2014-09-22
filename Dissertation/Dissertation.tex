@@ -1,0 +1,222 @@
+% file: Dissertation.tex
+
+\providecommand{\e}[1]{\ensuremath{\times 10^{#1}}}
+\newcommand{\ee} {\,\text{e}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\beqs}{\begin{equation*}}
+\newcommand{\eeqs}{\end{equation*}}
+\newcommand{\barr}{\begin{array}}
+\newcommand{\earr}{\end{array}}
+\newcommand{\bce}{\begin{center}}
+\newcommand{\ece}{\end{center}}
+\newcommand{\asymplim}[1]{\: {\underset{\scriptstyle{{#1}\to\infty}}{\displaystyle{\sim}}} \:}
+\newcommand{\kr} {\kappa\rho}
+\newcommand{\krp} {\kappa\rhop}
+\newcommand{\mr} {\mu\rho}
+\newcommand{\mrp} {\mu\rho'}
+\newcommand{\rhop} {\rho'}
+\newcommand{\ii}{{\rm{i}}}
+% Clebsch-Gordan
+\newcommand{\cg}[6]{
+  \left<
+  \begin{array}{cc|c}
+  #1 & #3 & #5 \\
+  #2 & #4 & #6
+  \end{array}
+  \right>
+}
+% 3J Symbol
+\newcommand{\tj}[6]{ \begin{pmatrix}
+  #1 & #2 & #3 \\
+  #4 & #5 & #6 
+ \end{pmatrix}}
+% 6J Symbol
+\newcommand{\Gj}[6]{ \begin{Bmatrix}
+  #1 & #2 & #3 \\
+  #4 & #5 & #6 
+ \end{Bmatrix}}
+% 9J Symbol
+\newcommand{\gj}[9]{ \begin{Bmatrix}
+  #1 & #2 & #3 \\
+  #4 & #5 & #6 \\
+  #7 & #8 & #9
+ \end{Bmatrix}}
+\newcommand{\rtoinfty} {{\xrightarrow[\scriptscriptstyle {r\rightarrow \infty}]{}}}
+
+
+\documentclass[10pt,openany]{book}
+%\documentclass[draft]{}
+\usepackage{amsmath, graphicx, fullpage, showlabels, subfiles, mathrsfs}
+%\usepackage[Lenny]{fncychap}
+\usepackage[Bjornstrup]{fncychap}
+%\usepackage[colorlinks=true]{hyperref}  % hyperref must be loaded after fncychap.
+\usepackage{srcltx, tabularx, pdfsync, multirow, float, fancyhdr}
+\usepackage{color, colortbl, rotate, listings, rotating}
+\usepackage{caption, booktabs, tocvsec2, longtable}
+\usepackage[numbers]{natbib}
+%\usepackage[nottoc]{tocbibind}
+\usepackage{tocbibind}
+\usepackage{subfig}
+\usepackage{lettrine}  % Dropped capitals
+\usepackage{cool}  % Typesetting for various equation types
+%\usepackage[grey,utopia]{quotchap}  % Decorative chapter headings
+\usepackage{tikz}
+\usepackage{braket}
+\usepackage[pagebackref=true, plainpages=false, bookmarks, bookmarksnumbered, colorlinks, linktocpage=true, linkcolor=blue, citecolor=blue, filecolor=black,urlcolor=blue]{hyperref}
+%\usepackage{doi}
+\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}  % http://www.khirevich.com/latex/microtype/
+
+\usepackage{cleveref}
+\crefname{equation}{equation}{equations}
+
+% Look at http://texblog.wordpress.com/tag/pagestyle/
+%\pagestyle{fancy}
+
+% From http://latex-alive.tumblr.com/post/698006466
+\usepackage{mathpazo}
+
+% From http://texblog.org/2013/07/16/how-to-add-extra-space-to-the-table-of-contents-list-of-figures-and-tables/
+%\usepackage{etoolbox, tocloft}
+%\preto\figure{%
+%  \ifnum\value{figure}=0\addtocontents{lof}{{\bfseries Chapter \thechapter\vskip10pt}}\fi
+%}
+
+% For creating nice boxes
+\tikzstyle{nicebox}=[draw=gray!100, fill=blue!10, very thick,rounded corners, rectangle, inner sep=4pt, inner ysep=16pt]
+\tikzstyle{niceboxtitle}=[draw=gray!100, fill=white, text=black,rounded corners, very thick, rectangle]
+\newcommand\nicebox[2]{
+	{\centering
+	\begin{tikzpicture}
+		\node [nicebox](box){
+			\begin{minipage}{0.95\textwidth}\centering
+			\begin{minipage}{0.95\textwidth}
+						#2
+			\end{minipage}\end{minipage}};
+		\node[niceboxtitle, right=10pt] at (box.north west)
+			{\small\textbf{#1}};
+	\end{tikzpicture}\par}
+}
+
+
+% If you need a copy without the equations (word cloud, etc.), enable these lines.
+%\usepackage{comment}
+%\excludecomment{figure}
+%\let\endfigure\relax
+%\excludecomment{equation}
+%\let\endequation\relax
+%\excludecomment{lstlisting}
+%\let\endlstlisting\relax
+%\excludecomment{alignat}
+%\let\endalignat\relax
+%\excludecomment{align}
+%\let\endalign\relax
+%\excludecomment{subequations}
+%\let\endsubequations\relax
+%\excludecomment{tabular}
+%\let\endtabular\relax
+%\excludecomment{longtable}
+%\let\endlongtable\relax
+%\let\beq\iffalse
+%\let\eeq\fi
+
+% From http://latex-alive.tumblr.com/post/698006466
+\DeclareSymbolFont{euler}{U}{eur}{m}{n}
+\DeclareMathSymbol \uppi \mathalpha {euler} {"19}
+%\DeclareMathSymbol \ee \mathalpha {euler} {`\e}
+
+%\input{UNTdissertation.sty}
+\input{physicsheader.tex}
+
+\definecolor{Gray}{gray}{0.9}
+\definecolor{LightCyan}{rgb}{0.88,1,1}
+
+\renewcommand{\showlabelfont}{\tiny}
+
+\graphicspath{{IPython/}{Images/}}
+
+\setlength{\extrarowheight}{3pt}
+%\numberwithin{equation}{section}
+% Only use if the above line is disabled and sequential equation numbering is desired.
+%\usepackage{chngcntr}
+%\counterwithout{equation}{chapter}
+%\counterwithout{figure}{chapter}
+%\counterwithout{table}{chapter}
+
+\begin{document}
+%\title{Positronium Hydride Energy and Positronium-Hydrogen Scattering}
+\title{Variational Calculations of Positronium Scattering with Simple Atoms (H, Li)}
+\author{Denton Woods}
+%\degree{Dissertation Prepared for the Degree of\\ Doctor of Philosophy}
+%\degreedate{May 2012}
+%\approved{Wild Bill Hickock, Major Professor\\
+%  Calamity Jane, Minor Professor\\
+%  Billy the Kid, Committee Mamber and\\
+%  \hspace{2em}  Famous Outlaw\\
+%  Robert B. Toulouse, Erstwhile Dean \\
+%  \hspace{2em} of the Graduate School}
+
+
+
+\clearpage
+\phantomsection
+\pdfbookmark[1]{Title Page}{title} % Sets a PDF bookmark for the title page
+\maketitle
+\newpage
+
+%%%%%%\setcounter{tocdepth}{2}
+\hypersetup{linktocpage}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+%\pagestyle{fancy}
+%\headheight 35pt
+%\pdfpagewidth 8.5in
+%\pdfpageheight 11in
+
+\pagenumbering{roman}
+\tableofcontents
+\newpage
+\listoffigures
+\listoftables
+\newpage
+\pagenumbering{arabic}
+
+
+\subfile{Introduction.tex}
+\subfile{BoundState.tex}
+\subfile{KohnMethod.tex}
+%%%%%%\settocdepth{subsection}
+\subfile{S-Wave.tex}
+%%%%%%\settocdepth{section}
+\subfile{P-Wave.tex}
+\subfile{D-Wave.tex}
+\subfile{HigherWaves.tex}
+\subfile{Computation.tex}
+\subfile{General.tex}
+\subfile{Exponential.tex}
+
+\appendix
+\subfile{AngularIntegration.tex}
+\subfile{RhoDefinition.tex}
+\subfile{Hypergeometric.tex}
+\subfile{RPowersCoeffs.tex}
+\subfile{WLimits.tex}
+
+\addcontentsline{toc}{chapter}{References}
+\newpage
+%\bibliographystyle{h-physrev3}
+%\bibliographystyle{h-physrev}
+%\bibliographystyle{h-elsevier}
+%\bibliographystyle{iopart-num}
+%\bibliographystyle{plainnat}
+%\bibliographystyle{plainurl}
+\bibliographystyle{jphysicsB}
+%\bibliographystyle{unsrt}
+\bibliography{library,extras}
+
+\end{document}

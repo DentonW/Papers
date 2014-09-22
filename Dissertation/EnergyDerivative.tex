@@ -1,0 +1,230 @@
+\documentclass[main.tex]{subfiles} 
+\begin{document}
+
+\newpage
+\chapter{Nonlinear Parameter Optimization}
+
+\section{Energy Derivatives}
+
+\label{chp:EnergyDer}
+\textbf{@TODO:} Start with mention of Drake/Yan paper.
+
+\beq
+\Psi = \sum_{i=1}^N c_i \psi_i
+\eeq
+
+\textbf{Rewrite parts of this in terms of formulas in BoundState.tex.}
+
+The variational method gives
+\beq
+E = \frac{\left< \Psi \left| H \right| \Psi \right>}{\left< \Psi \left| \right.\! \Psi \right>}
+  = \frac{\displaystyle\sum_{i=1}^N \sum_{j=1}^N \left< c_i \psi_i \left| H \right|  c_j \psi_j \right>}{\displaystyle\sum_{i=1}^N \sum_{j=1}^N \left<c_i \psi_i \left| \right.\! c_i \psi_i \right>}
+  = \frac{\displaystyle\sum_i \sum_j c_i^* c_j H_{ij}}{\displaystyle\sum_i \sum_j c_i^* c_j S_{ij}} \equiv \frac{A}{B}
+\eeq
+
+where
+\beq
+H_{ij} = \left< \psi_i \left| H \right| \psi_j \right>
+\text{ and }
+S_{ij} = \left< \psi_i \left| \right.\! \psi_j \right>.
+\eeq
+
+$\dfrac{\partial A}{\partial c_k^*}$ or $\dfrac{\partial B}{\partial c_k^*}$ will reduce the double summation to a single sum, since 
+$ \dfrac{\partial c_i^*}{\partial c_k^*} =
+\begin{cases}
+1,& i = k \\
+0,& i \neq k
+\end{cases}.$
+
+To minimize the energy, $E$,
+\beq
+\frac{\partial E}{\partial c_k^*} = \frac{\partial A}{\partial c_k^*} \frac{1}{B} - \frac{1}{B^2} \frac{\partial B}{\partial c_k^*} A
+= \frac{1}{B} \left(\frac{\partial A}{\partial c_k^*} - E \frac{\partial B}{\partial c_k^*}\right)
+= \frac{\displaystyle\sum_{j=1}^N (H_{kj} - E S_{kj})}{B} = 0.
+\eeq
+
+We want to minimize the energy with respect to the nonlinear parameters $\alpha, \beta$ and $\gamma$.  Let us concern ourselves with the $\alpha$ parameter:  $\Psi = \Psi(\alpha, ...)$.
+
+\beq
+\frac{\partial E}{\partial \alpha} = \frac{1}{B} \left(\frac{\partial A}{\partial \alpha} - E \frac{\partial B}{\partial \alpha} \right)
+\label{eq:EnergyDerE1}
+\eeq
+
+Since $\alpha$ is real, $\alpha^* = \alpha$.  Our wavefunction is real as well, i.e. $\Psi^* = \Psi$.  The Hamiltonian, H, is independent of $\alpha$ and is Hermitian, so
+\beq
+\frac{\partial A}{\partial \alpha} = \left< \Psi \Big| H \Big| \frac{\partial\Psi}{\partial \alpha} \right> + 
+    \left< \frac{\partial\Psi}{\partial \alpha} \Big| H \Big| \Psi \right> = 2 \left< \Psi \Big| H \Big| \frac{\partial\Psi}{\partial \alpha} \right>
+\label{eq:EnergyDerPartA}
+\eeq
+\beq
+\frac{\partial B}{\partial \alpha} = \left< \Psi \Big| \frac{\partial\Psi}{\partial \alpha} \right> + 
+    \left< \frac{\partial\Psi}{\partial \alpha} \Big| \Psi \right> = 2 \left< \Psi \Big| \frac{\partial\Psi}{\partial \alpha} \right>
+\label{eq:EnergyDerPartB}
+\eeq
+
+Combining (\ref{eq:EnergyDerPartA}) and (\ref{eq:EnergyDerPartB}) with (\ref{eq:EnergyDerE1}) gives
+\beq
+\frac{\partial E}{\partial \alpha} = \frac{2 \left< \Psi \Big| H \Big| \frac{\partial\Psi}{\partial \alpha} \right> - 2 \left< \Psi \Big| \frac{\partial\Psi}{\partial \alpha} \right>}{\left< \Psi \Big| \Psi \right>}.
+\label{eq:EnergyDerivative}
+\eeq
+
+\noindent If $\Psi$ is properly normalized, $\left< \Psi \Big| \Psi \right> = 1$, the simplified version can be used:
+\beq
+\frac{\partial E}{\partial \alpha} = 2 \left< \Psi \Big| H \Big| \frac{\partial\Psi}{\partial \alpha} \right> - 2 \left< \Psi \Big| \frac{\partial\Psi}{\partial \alpha} \right>.
+\label{eq:EnergyDerivativeNorm}
+\eeq
+
+\noindent This is the form given in Drake and Yan \cite{Yan1995}.
+
+Similar forms for the other parameters are found by replacing $\alpha$ with the parameter of interest.
+
+\section{Singlet Wavefunction Derivatives}
+Taking the derivative with respect to $\alpha$ of equation \ref{eq:BoundWavefn_psi} yields
+\beq
+\frac{\partial \Psi^+}{\partial \alpha} = \sum_i d_i \frac{\partial \phi_i}{\partial \alpha} = \sum_i d_i (1+P_{23}) \frac{\partial \phi_i}{\partial \alpha} = -r_1 \Psi^{(+)}.
+\label{eq:PsiDerAlpha}
+\eeq
+
+The $\beta$ and $\gamma$ cases are similar, but the presence of the $P_{23}$ permutation operator complicates the derivative slightly.
+\begin{align}
+\nonumber \frac{\partial \Psi^{(+)}}{\partial \beta} &= \sum_i d_i \frac{\partial}{\partial \beta} \left[(1+P_{23}) \phi_i \right] \\
+\nonumber &= \sum_i d_i \left\{
+  e^{-\alpha r_1} r_1^{k_i} \frac{\partial}{\partial \beta}
+  \left[e^{-(\beta r_2 + \gamma r_3)} r_2^{l_i} r_{12}^{m_i} r_3^{n_i} r_{13}^{p_i} r_{23}^{q_i}
+      + e^{-(\beta r_3 + \gamma r_2)} r_3^{l_i} r_{13}^{m_i} r_2^{n_i} r_{12}^{p_i} r_{23}^{q_i} \right] \right\} \\
+\nonumber &= \sum_i d_i \left(
+  e^{-(\alpha r_1 + \gamma r_3)} r_1^{k_i} r_2^{l_i} r_{12}^{m_i} r_3^{n_i} r_{13}^{p_i} r_{23}^{q_i} \frac{\partial}{\partial \beta} e^{-\beta r_2} +
+  e^{-(\alpha r_1 + \gamma r_2)} r_1^{k_i} r_3^{l_i} r_{13}^{m_i} r_2^{n_i} r_{12}^{p_i} r_{23}^{q_i} \frac{\partial}{\partial \beta} e^{-\beta r_3} \right) \\
+ &= \sum_i d_i \left(-r_2 \phi_i - r_3 P_{23} \phi_i \right) 
+\label{eq:PsiDerBeta}
+\end{align}
+
+Likewise,
+\beq
+\frac{\partial \Psi^{(+)}}{\partial \gamma} = \sum_i d_i \left(-r_3 \phi_i - r_2 P_{23} \phi_i \right)
+\label{eq:PsiDerGamma}
+\eeq
+
+
+\section{Triplet Wavefunction Derivatives}
+Similar calculations for the triplet give
+
+\begin{align}
+\frac{\partial \Psi^{(-)}}{\partial \alpha} &= -r_1 \Psi^{(-)} \label{eq:PsiTripletDerAlpha} \\
+\frac{\partial \Psi^{(-)}}{\partial \beta} &= \sum_i d_i \left(-r_2 \phi_i + r_3 P_{23} \phi_i \right) \label{eq:PsiTripletDerBeta} \\
+\frac{\partial \Psi^{(-)}}{\partial \gamma} &= \sum_i d_i \left(-r_3 \phi_i + r_2 P_{23} \phi_i \right) \label{eq:PsiTripletDerGamma}
+\end{align}
+
+\section{Newton's Method}
+The derivative with respect to the parameter $\alpha$ can be used with Newton's Method to find a minimum energy.  From \cite{Sauer2006a}, Newton's method is given as
+\beq
+x_{i+1} = x_i - \frac{f(x_i)}{f'(x_i)}.
+\label{eq:NewtonMethod}
+\eeq
+
+We are looking for roots of the equation $\displaystyle\frac{\partial E}{\partial \alpha} = 0$ to minimize the energy.  From (\ref{eq:NewtonMethod}), $\displaystyle\frac{\partial^2 E}{\partial^2 \alpha}$ is required.  The secant method, a variation of Newton's method, is used to avoid this problem.  From \cite{Sauer2006a},
+\beq
+x_{i+1} = x_i - \frac{f(x_i)(x_i - x_{i-1})}{f(x_i) - f(x_{i-1})}.
+\eeq
+
+\noindent The difficulty with this method is that two starting guesses are required, versus the one for Newton's method.
+
+\section{Results of Nonlinear Parameter Optimization}
+
+For the results below, starting guesses were $\alpha = 0.6$, $\beta = 0.6$ and $\gamma = 1.0$.  The value of $h \equiv x_i - x_{i-1}$ was chosen to be $10^{-5}$.  We also examined different starting guesses, which gave similar results but took more steps to reach them.
+
+
+\setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
+\setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
+\begin{table}[ht]
+\caption{Newton Optimized Singlet Nonlinear Parameters} % title of Table
+\centering
+\begin{tabular}{c c c c}
+\hline\hline
+$\omega$ & $\alpha$ & $\beta$ & $\gamma$ \\ [0.5ex]
+\hline
+1 & 0.53604 & 0.59507 & 1.02169 \\
+2 & 0.57424 & 0.65051 & 0.98174 \\
+3 & 0.58945 & 0.62992 & 0.97556 \\
+4 & 0.58490 & 0.60928 & 0.98691 \\
+5 & 0.58004 & 0.59303 & 1.01069 \\
+\hline\hline
+\end{tabular}
+\label{table:NonlinearOptimized1SNewton}
+\end{table}
+
+
+\section{Broyden's Method}
+The above analysis used the 1-dimensional Newton's method and changed each nonlinear parameter separately.  This worked well for the singlet but became a problem for the calculations involving the triplet state.  The code for optimization was modified to use Broyden's method \cite{Sauer2006}, which can solve for all three nonlinear parameters simultaneously.  Newton's method for n-dimensions can be used as well, though it requires computation of the Jacobian.
+
+The three equations in (\ref{eq:PsiDerAlpha})-(\ref{eq:PsiDerGamma}) or (\ref{eq:PsiTripletDerAlpha})-(\ref{eq:PsiTripletDerGamma}) can be solved in the three unknowns $\alpha$, $\beta$ and $\gamma$ by Broyden's method.  The second Broyden's method, sometimes referred to as the ``bad Broyden's method'' was used here.  As Kvaalen points out, this method is perfectly usable and can be faster than the first Broyden's method \cite{Kvaalen1991}.
+
+
+\setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
+\setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
+\begin{table}[ht]
+\caption{Broyden Optimized Singlet Nonlinear Parameters} % title of Table
+\centering
+\begin{tabular}{c c c c}
+\hline\hline
+$\omega$ & $\alpha$ & $\beta$ & $\gamma$ \\ [0.5ex]
+\hline
+1 & 0.535920 & 0.594515 & 1.022061 \\
+2 & 0.571412 & 0.598429 & 1.056740 \\
+3 & 0.535149 & 0.620153 & 1.120099 \\
+4 & 0.583859 & 0.592326 & 1.016347 \\
+5 & 0.530239 & 0.627306 & 1.127732 \\
+6 & 0.533933 & 0.632110 & 1.132448 \\
+\hline\hline
+\end{tabular}
+\label{table:NonlinearOptimized1SBroyden}
+\end{table}
+
+
+\setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
+\setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
+\begin{table}[ht]
+\caption{Old Broyden Optimized Triplet Nonlinear Parameters} % title of Table
+\centering
+\begin{tabular}{c c c c}
+\hline\hline
+$\omega$ & $\alpha$ & $\beta$ & $\gamma$ \\ [0.5ex]
+\hline
+1 & 0.264440 & 0.831645 & 0.498871 \\
+2 & 0.356175 & 0.452426 & 0.829591 \\
+3 & 0.347611 & 0.467298 & 0.814971 \\
+4 & 0.323300 & 0.333783 & 0.974653 \\
+5 & 0.303696 & 0.309673 & 0.980637 \\
+\hline\hline
+\end{tabular}
+\label{table:NonlinearOptimized3SBroydenoLD}
+\end{table}
+
+\setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
+\setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
+\begin{table}[ht]
+\caption{Broyden Optimized Triplet Nonlinear Parameters} % title of Table
+\centering
+\begin{tabular}{c c c c}
+\hline\hline
+$\omega$ & $\alpha$ & $\beta$ & $\gamma$ \\ [0.5ex]
+\hline
+1 & 0.297493 & 0.287209 & 0.996888 \\
+2 & 0.329662 & 0.346790 & 0.983649 \\
+3 & 0.336829 & 0.350035 & 0.978465 \\
+4 & 0.322670 & 0.330642 & 0.984957 \\
+5 & 0.310486 & 0.322063 & 0.911863 \\
+6 & 0.283810 & 0.287592 & 0.977710 \\
+\hline\hline
+\end{tabular}
+\label{table:NonlinearOptimized3SBroyden}
+\end{table}
+
+\section{Choice of Nonlinear Parameters}
+\subsection{Bound and S-Wave}
+For the S-wave singlet, to compare directly with Van Reeth's previous calculations \cite{VanReeth2003}, we used $\alpha = 0.5$, $\beta = 0.6$ and $\gamma = 1.1$.  These values are close to the optimized nonlinear parameters found in table \ref{table:NonlinearOptimized1SBroyden}.  The initial guess trials of $\alpha = 0.6$, $\beta = 0.6$ and $\gamma = 1.0$ were also tried, but this lead to difficulties when extrapolating the phase shifts.
+
+We had considerably more difficulty with linear dependence for the S-wave triplet.  To try to circumvent some of the linear dependence problems, we chose $\alpha = 0.323$, $\beta = 0.334$ and $\gamma = 0.975$ from table \ref{table:NonlinearOptimized3SBroyden} for $\omega = 4$.  This set of nonlinear parameters is different from the set that Van Reeth used of $\beta = 0.4$ and $\gamma = 0.8$ \cite{VanReeth2003}.
+
+
+\end{document}

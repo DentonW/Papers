@@ -1,0 +1,127 @@
+\documentclass[main.tex]{subfiles} 
+\begin{document}
+
+
+\chapter{Introduction}
+\label{sec:Introduction}
+
+
+\section{Positrons and Positronium}
+Positrons (denoted by $e^+$) are the antiparticle equivalent to electrons.  The mass and spin are same as that of electrons, but the charge is $+1e$, compared to the charge of $-1e$ on an electron.  Paul Dirac first theorized the positron (antielectron) in 1928, and it was discovered shortly thereafter by Carl D. Anderson in 1932. \textbf{@TODO: Cite this.}
+
+Stjepan Mohorovi\u{c}i\'{c} theorized the existence of positronium in 1934, but it was not discovered until 1951 by Martin Deutsch.  Positronium is an exotic atom consisting of a positron and an electron.  This atom is similar in some ways to hydrogen but also differs in some key aspects.  
+
+\subsection{Positronium and Hydrogen Wavefunctions}
+The reduced mass for hydrogen is
+\begin{equation}
+\mu_H = \frac{m_p m_e}{m_p + m_e}.
+\end{equation}
+
+In the limit where the proton has infinite mass, the reduced mass becomes
+\begin{equation}
+\lim_{m_p \to \infty} \frac{m_p + m_e}{m_p m_e} = \frac{1}{m_e} = \mu_H^{-1}
+\end{equation}
+\begin{equation}
+\mu_H \approx m_e
+\end{equation}
+
+The positronium system is similar to the hydrogen atom with the proton replaced by a positron, meaning we can no longer use the infinite mass approximation, as $m_{e^+} = m_e$.
+\begin{equation}
+\mu_{Ps} = \frac{m_e^2}{2 m_e} = \frac{m_e}{2}.
+\end{equation}
+
+To obtain the Ps wavefunction, we can start with the wavefunction for H and replace $m_e \rightarrow \frac{m_e}{2}$.  The ground state wavefunction for H is
+\begin{equation}
+\Psi_{100,H} = \left(\frac{1}{\pi a_0^3}\right)^{\frac{1}{2}} \!\! \ee^{-\frac{r}{a_0}},
+\text{where } a_0 = \frac{\hbar^2}{m e^2}.
+\end{equation}
+
+If we denote $a_0 \rightarrow a_0'$, where we replace $m_e$ by $\frac{m_e}{2}$, the positronium ground state wavefunction can be writen easily as
+\begin{equation}
+\Psi_{100,Ps} = \left(\frac{1}{\pi {a_0'}^3}\right)^{\frac{1}{2}} \!\! \ee^{-\frac{r}{a_0'}},
+\text{where } a_0' = \frac{2\hbar^2}{m e^2}.
+\end{equation}
+
+Working in atomic units, $a_0 = 1$ (i.e. $\hbar = m_e = e = 1$), giving
+\begin{equation}
+\Psi_{100,H}\left(r_3\right) = \frac{1}{\sqrt{\pi}} \ee^{-r_3}
+\label{eq:HWave}
+\end{equation}
+and
+\begin{equation}
+\Psi_{100,Ps}\left(r_{12}\right) = \frac{1}{\sqrt{8 \pi}} \ee^{-r_{12}/2}.
+\label{eq:PsWave}
+\end{equation}
+
+\subsection{Positronium and Hydrogen Energies}
+
+When the Schr\"{o}dinger equation (equation \ref{}) is solved for the hydrogen atom, the energy is seen to be (neglecting higher-order effects)
+\beq
+\label{eq:HEnergy}
+E_{n,H} = -\frac{R_\infty}{n^2}.
+\eeq
+
+\noindent In Hartree atomic units, $R_\infty = \frac{1}{2}$, giving
+\beq
+\label{eq:HEnergyAU}
+E_{n,H} = -\frac{1}{2 n^2}.
+\eeq
+
+\noindent Due to the reduced mass of half that of hydrogen, the energy of positronium is
+\beq
+\label{eq:PsEnergyAU}
+E_{n,Ps} = -\frac{1}{4 n^2}.
+\eeq
+
+\noindent For a given level \emph{n}, the energy of positronium is half that of hydrogen.  The ionization energy is approximately -6.8 eV, versus that of -13.6 eV for hydrogen.  Figure \ref{fig:HPsLevels} compares the energy levels of positronium and hydrogen.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=5.5in]{HPsLevels}
+	\caption{Hydrogen and Positronium energy levels}
+	\label{fig:HPsLevels}
+\end{figure}
+
+\section{Positronium Hydride}
+\label{sec:PsH}
+Positronium hydride is a molecule comprised of a hydrogen atom and a positronium atom.  Predicted by A. Ore in 1951 \cite{Ore1951}, positronium hydride was not experimentally verified until 1992 by Schrader \cite{Schrader1992}.
+
+\subsection{Structure}
+Use \cite{Heyrovska2011} and \cite{Saito2000}
+
+
+\nicebox{Title}{This is the content of my box}
+
+
+\subsection{Experimental}
+Use \cite{Schrader1992}
+
+
+\section{Ideas for Introduction}
+
+\begin{itemize}
+	\item Bound State Versus Scattering Problems
+	\item Comparison with Other Scattering Methods
+	\item Partial waves
+	\item Types of possible targets
+\end{itemize}
+
+
+
+\section{A Note on Units}
+\label{sec:Units}
+
+\begin{verbatim}
+http://en.wikipedia.org/wiki/Natural_units
+http://www.phys.ksu.edu/personal/cdlin/class/class11a-amo2/atomic_units.pdf
+http://ilan.schnell-web.net/physics/rydberg.pdf
+http://exciting-code.org/ref:input
+http://physics.nist.gov/cuu/Constants/energy.html
+\end{verbatim}
+
+
+Unless otherwise stated, values throughout are given in atomic units, i.e. $\hbar = m_e = e = 1$. Energies are given in Hartrees, with $1 E_h = 27.211 385 05(60)$ \cite{NISTConversions}.
+
+
+
+\end{document}

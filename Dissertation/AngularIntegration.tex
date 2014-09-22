@@ -1,0 +1,105 @@
+\documentclass[Dissertation.tex]{subfiles} 
+\begin{document}
+
+\clearpage
+\pagebreak
+\newpage
+
+\chapter{Angular Integration}
+\label{chp:AngularInt}
+
+\section{Chebyshev-Gaussian Quadrature}
+\label{sec:ChebyshevGauss}
+
+We need to prove equation 5.4 of Peter Van Reeth's thesis (page 79).  Our integration is over $(0,2\pi)$.
+
+\begin{equation}
+\Int{ D(\cos \phi_{23})}{\phi_{23},0,2\pi} \approx \frac{2\pi}{n}\sum_{i=1}^n D\left[\cos\left(\frac{2i-1}{2n}\pi\right)\right].
+\label{PVRAng}
+\end{equation}
+
+
+The form that we will need is
+\begin{equation}
+\Int{ D(\cos \phi_{23}) }{\phi_{23},0,\pi} \approx \frac{\pi}{n}\sum_{i=1}^n D\left[\cos\left(\frac{2i-1}{2n}\pi\right)\right].
+\label{PVRAngNew}
+\end{equation}
+
+Both of these equations are variations on Gaussian quadratures. The Chebyshev-Gauss quadrature is given by \cite{Abramowitz1965} \cite{MathworldChebyshevGauss}
+\begin{equation}
+\Int{ \frac{f\left( x \right)}{\sqrt{1 - x^2}} }{x,-1,1} \approx \sum_{i = 1}^n {w_i}f\left( {{x_i}} \right),
+\label{ChebyshevGauss}
+\end{equation}
+
+with $w_i = \frac{\pi}{n}$ and $x_i = \cos\left(\frac{2i-1}{2n}\pi\right)$.
+
+Starting from the left side of \ref{PVRAngNew}, we have
+\begin{equation}
+\Int{ D\left( {\cos \phi } \right) }{\phi,0,\pi} = \Int{ \frac{1}{{\sqrt {1 - {{\cos }^2}\phi } }}\sqrt {1 - {{\cos }^2}\phi } \: D\!\left( {\cos \phi } \right) }{\phi,0,\pi} = \Int{ \frac{1}{{\sqrt {1 - {{\cos }^2}\phi } }} D\!\left( {\cos \phi } \right)\sin \phi \: }{\phi,0,\pi}.
+\label{PVRAngNew2}
+\end{equation}
+
+Using the substitution $x = \cos \phi$ and $dx = -\sin \phi \:d\phi$ changes the limits to $x_{min} \!\!=\! \cos 0 \! =\! 1$ and $x_{max} = \cos \pi = -1$.  Equation (\ref{PVRAngNew2}) becomes
+
+\begin{equation}
+\int_0^\pi  D\left( {\cos \phi } \right){\rm{d}}\phi = - \int_1^{ - 1} \frac{1}{{\sqrt {1 - {x^2}} }}D\left( x \right){\rm{d}}x = \int_{ - 1}^1 \frac{1}{{\sqrt {1 - {x^2}} }}D\left( x \right){\rm{d}}x.
+\label{PVRAngNew3}
+\end{equation}
+
+This is the exact form needed for Gauss-Chebyshev quadrature (with f = D):
+\begin{equation}
+\int_0^\pi  D\left( {\cos \phi } \right){\rm{d}}\phi \approx \frac{\pi }{n} \sum_{i = 1}^n D\!\left[ {\cos \left( {\frac{{2i - 1}}{{2n}}\pi } \right)} \right]
+\label{AngQuadrature}
+\end{equation}
+
+This proves only form (\ref{PVRAngNew}).  To prove (\ref{PVRAng}), we split up the integration into two parts:
+\begin{equation}
+\int_0^{2\pi } D\left( {\cos {\phi _{23}}} \right){\rm{d}}{\phi _{23}} = \int_0^\pi  D\left( {\cos {\phi _{23}}} \right){\rm{d}}{\phi _{23}} + \int _\pi ^{2\pi } D\left( {\cos {\phi _{23}}} \right){\rm{d}}{\phi _{23}}.
+\label{AngSplit}
+\end{equation}
+
+The first integration is just (\ref{PVRAngNew}).  The only difference between the first and second integration is the limits.  Defining $y = \phi - \pi$ gives
+
+\begin{equation}
+\int _\pi ^{2\pi } D\left( {\cos {\phi}} \right){\rm{d}}{\phi} = \int_0^\pi D\left[\cos(\phi)\right] dy = \int_0^\pi D\left[\cos(y+\pi)\right] dy.
+\end{equation}
+
+If we also define $z = \cos \phi = \cos(y+\pi)$ and $dz = \sin y \,dy$, we get an expression the same as (\ref{PVRAngNew3}):
+\begin{equation}
+\int_0^\pi D\left(\cos\phi\right) dy = \int_0^\pi \frac{1}{\sqrt{1-z^2}} D(z)\, sin\phi\, dy = \int_{-1}^1 \frac{1}{\sqrt{1-z^2}} D(z) dz
+\end{equation}
+
+Since this is the same as (\ref{PVRAngNew3}), we just combine this with (\ref{AngSplit}) and (\ref{AngQuadrature}) to get (\ref{PVRAng}), proving the first form.
+
+
+\section{Limits on Integration}
+As Peter Van Reeth points out in his thesis on page 78, $\phi_{23}$ is the angle between the planes of the triangles $(r_1,r_2,r_{12})$ and $(r_1,r_3,r_{13})$.  This angle can range between $\phi_{23} = 0$ and $\phi_{23} = 2 \pi$.
+
+
+\section{Rotations}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=4.5in]{CoordinateSystemOriginal}
+	\caption{Original Coordinate System}
+	\label{fig:CoordinateSystemOriginal}
+\end{figure}
+
+For the integrations involving long-range terms (see \ref{}), 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=4.5in]{CoordinateSystemRotated}
+	\caption{Rotated Coordinate System}
+	\label{fig:CoordinateSystemRotated}
+\end{figure}
+
+
+
+
+%\begin{thebibliography}{}
+%\bibitem{MathworldChebyshevGauss} http://mathworld.wolfram.com/Chebyshev-GaussQuadrature.html
+%\bibitem{AbramowitzChebyshevGauss} Abramowitz and Stegun. \textsl{Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables}, page 889. Dover, New York, 1964.
+%\end{thebibliography}
+
+
+\end{document}

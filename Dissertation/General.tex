@@ -1,0 +1,86 @@
+\documentclass[Dissertation.tex]{subfiles} 
+\begin{document}
+
+\clearpage
+\pagebreak
+\newpage
+
+\chapter{General Ps-H Formalism}
+\label{chp:General}
+
+\lettrine{F}{or} the first two partial waves of the Ps-H system, we were able to compare our code and results, including individual matrix elements, with code previously written by Peter van Reeth. As there was no available code to compare against for the D-wave, we took steps to write a general code to compare against. The long-range code, covered in section \ref{sec:GeneralLong}, is a straightforward generalization from the previous codes. The short-range code, discussed in section \ref{sec:GeneralShort}, uses a different formalism, enabling us to compare two different methods.
+
+\section{General Long-Range}
+\label{sec:GeneralLong}
+
+If the ``mixed terms'' are not included for the D-wave, the P-wave and D-wave long-range codebases are very similar. The S-wave is not much different as well, but it only has a single symmetry.
+
+\subsection{Long-Long}
+\label{sec:GeneralLongLong}
+One major difference for similar matrix elements is the angular integrations. As shown in Appendix \ref{chp:AngularInt}, the external angular integrations for each partial wave have different results, due to the different spherical harmonics. $\bar{S}$ and $\bar{C}$ are also of a similar form between the partial waves, as seen in equations \ref{eq:PWaveSandCBar}, \ref{eq:PWaveSandC}, \ref{eq:DWaveSandCBar} and \ref{eq:DWaveSandC}. Other than the spherical harmonics, the spherical Bessel functions are different, as are the shielding function for $\bar{C}$. The spherical Bessel functions are easily called through the GNU Scientific Library \cite{} for any $\ell$-value. The power of the shielding function varies as $(2\ell + 1)$. All of this allows us to easily generalize the long-long integrations.
+
+\subsection{Short-Long}
+\label{sec:GeneralShortLong}
+The short-range functions are also easily generalizable. For the P-wave and D-wave, these are seen in equations \ref{eq:PWavePhiBar} and \ref{eq:DWavePhiBar}. The $\phi_i$ and $\phi_j$ parts for each are the same. This fact can only be easily used for the short-long calculations and not the short-short calculations, due to the action of the $L$-operator on these terms. The formalism we have used for the short-long terms at every stage only operates $L$ on the long-range parts. Section \ref{sec:GeneralShort} covers the calculations of the short-short terms using a general formalism.
+
+\subsection{Implementation}
+\label{sec:GeneralLongImp}
+
+
+
+\section{General Short-Range}
+\label{sec:GeneralShort}
+
+The short-range--short-range integrals are complicated more due to the gradient-gradient formalism we have used (see equation \ref{eq:BoundGradient}). As an example of the nature of these, refer to section \ref{sec:DWaveShortShort}. The derivations were previously performed by rotating the coordinate system and integrating over external angles first, as described in Appendix \ref{chp:AngularInt}. This approach works, but it cannot be extended to higher partial waves without completing a full derivation for each partial wave. Drake and Yan \cite{Yan1997} expand upon their previous work for the three-electron Hylleraas integrals to include the spherical harmonics. It is this approach that we take here. All equations used from their paper have been rederived in my notes.
+
+\subsection{Hamiltonian}
+\label{sec:GenShortHam}
+As we have for the bound state problem, the Hamiltonian is given compactly as in equation \ref{eq:BoundHamiltonian} by
+\beq
+\label{eq:GenHam1}
+H = \sum_{i=1}^3 \left(-\frac{1}{2} \nabla_i^2 - \frac{1}{r_i} \right) + \sum_{i>j}^3 \frac{1}{r_{ij}}.
+\eeq
+
+\noindent As worked out in my notes and shown in their paper, when the Laplacians are expanded, this is given by the form
+\begin{align}
+\label{eq:GenHam2}
+\nonumber H = -\frac{1}{2} & \left[ \sum_{i=1}^3 \left( \frac{\partial^2}{\partial r_i^2} + \frac{2}{r_i} \frac{\partial}{\partial r_i} - \frac{\ell(\ell+1)}{r_i^2} \right) + \sum_{i>j}^3 \left( 2 \frac{\partial^2}{\partial r_i^2} + \frac{4}{r_{ij}} \frac{\partial}{\partial r_i} \right) + \sum_{i \neq j}^3 \left(\frac{r_i^2 - r_j^2 + r_{12}^2}{r_i r_j} \right) \right. \\
+\nonumber &  \left. + \frac{r_{12}^2 + r_{13}^2 - r_{23}^2}{r_{12} r_{13}} \frac{\partial^2}{\partial r_{12} \partial r_{13}} + \frac{r_{12}^2 + r_{23}^2 - r_{13}^2}{r_{12} r_{23}} \frac{\partial^2}{\partial r_{12} \partial r_{23}} + \frac{r_{13}^2 + r_{23}^2 - r_{12}^2}{r_{13} r_{23}} \frac{\partial^2}{\partial r_{13} \partial r_{23}} \right. \\
+& \left. + \sum_{i>j}^3 \frac{1}{r_{ij}} \frac{r_i}{r_j} \frac{\partial}{\partial r_{ij}} \left( \hat{\boldsymbol{r}_i} \cdot \hat{\nabla}_j^Y \right) + \sum_{i>j}^3 \frac{1}{r_{ji}} \frac{r_j}{r_i} \frac{\partial}{\partial r_{ji}} \left( \hat{\boldsymbol{r}_j} \cdot \hat{\nabla}_i^Y \right) \right]
+\end{align}
+% & \left. + \sum_{i>j}^3 \frac{1}{r_{ij}} \frac{r_i}{r_j} \frac{\partial}{\partial r_{ij}} \left( r_i^\hat \cdot \nabla_j^Y \right) \right]
+
+\noindent This is the form when the mass polarization terms are unimportant (with $\mu \rightarrow 0$). As in \ref{eq:GemHam2}, $\hat{\boldsymbol{r}_j} = \boldsymbol{r}_i/r_i$ and $\hat{\nabla}_i^Y = r_i \nabla_i^Y$. The terms involving $\nabla_i^Y$ only operate on the spherical harmonics, and they will be discussed in section \ref{sec:GenSphHarm}.
+
+The wavefunction we use is slightly different from the form Drake and Yan use. Specifically, we handle the antisymmetrization operator differently in our code, and we do not include the $\Omega$ function, given by equation (10) in their paper. Part of the difference here is that we are working with two electrons and one positron, whereas they are working with systems that have three electrons.
+
+\subsection{Overlap Integrals}
+\label{sec:GenOverlap}
+As mentioned in the previous section, Drake and Yan's wavefunction is similar but not exactly the same. Thus, we cannot use the equations directly from their paper. Using their notation, the overlap integrals are given by
+\begin{align}
+\nonumber I^1(1) = \left< \phi_L^1 \left| \phi_R^1 \right. \right> = \sum_{\text{all } m_i^\prime m_i} & \int \mathrm{d}\boldsymbol{r}_1 \, \mathrm{d}\boldsymbol{r}_2 \, \mathrm{d}\boldsymbol{r}_3 \, r_1^{\tilde{j}_1} r_2^{\tilde{j}_2} r_3^{\tilde{j}_3} r_{12}^{\tilde{j}_{12}} r_{23}^{\tilde{j}_{23}} r_{31}^{\tilde{j}_{31}} \ee^{-(\tilde{\alpha} r_1 + \tilde{\beta} r_2 + \tilde{\gamma} r_3)} \\
+& \times Y_{\ell_1^\prime m_1^\prime}^* (\boldsymbol{r}_1) Y_{\ell_2^\prime m_2^\prime}^* (\boldsymbol{r}_2) Y_{\ell_3^\prime m_3^\prime}^* (\boldsymbol{r}_3) Y_{\ell_1 m_1} (\boldsymbol{r}_1) Y_{\ell_2 m_2} (\boldsymbol{r}_2) Y_{\ell_3 m_3} (\boldsymbol{r}_3).
+\end{align}
+This can be split into angular and radial parts, given by
+\begin{align}
+\nonumber I^1(1) = & \sum_{q_{12}=0}^{M_{12}} \sum_{q_{23}=0}^{M_{23}} \sum_{q_{31}=0}^{M_{31}} \sum_{k_{12}=0}^{L_{12}} \sum_{k_{23}=0}^{L_{23}} \sum_{k_{31}=0}^{L_{31}} C^1(1) \\
+& \times I_R \left(q_{12}, q_{23}, q_{31}, k_{12}, k_{23}, k_{31}; \tilde{j}_1, \tilde{j}_2, \tilde{j}_3, \tilde{j}_{12}, \tilde{j}_{23}, \tilde{j}_{31}; \tilde{\alpha}, \tilde{\beta}, \tilde{\gamma} \right),
+\end{align}
+where $\tilde{j}_1 = j_1^\prime + j_1$, etc. The $I_R$ function is only dependent on the radial coordinates and is given by equation (30) of their paper. The $C^1(1)$ function differs from theirs, as we do not have the 3j symbols in their $\Omega$ function. This is given in two parts as
+\begin{align}
+\nonumber C^1(1) =\, & (-1)^{q_{12} + q_{23} + q_{31}} \left(\ell_1^\prime,\ell_2^\prime,\ell_3^\prime,\ell_1,\ell_2,\ell_3 \right)^{1/2} \sum_{n_1 n_2 n_3} (n_1,n_2,n_3) \ThreeJSymbol{\ell_1^\prime,0}{\ell_1,0}{n_1,0} \ThreeJSymbol{\ell_2^\prime,0}{\ell_2,0}{n_2,0} \\
+& \times \ThreeJSymbol{\ell_3^\prime,0}{\ell_3,0}{n_3,0} \ThreeJSymbol{q_{31},0}{q_{12},0}{n_1,0} \ThreeJSymbol{q_{12},0}{q_{23},0}{n_2,0} \\
+& \times \ThreeJSymbol{q_{23},0}{q_{31},0}{n_3,0} \SixJSymbol{n_1,n_2,n_3}{q_{23},q_{31},q_{12}} \tilde{C}^1(1)
+\end{align}
+\noindent and
+\begin{align}
+\tilde{C}^1(1) = & \sum_{\text{all } m_i^\prime m_i t_i} (-1)^{m_1 + m_2 + m_3} \ThreeJSymbol{n_1,t_1}{n_2,t_2}{n_3,t_3} \\
+& \times \ThreeJSymbol{l_1^\prime,-m_1^\prime}{l_1,m_1}{n_1,t_1} \ThreeJSymbol{l_2^\prime,-m_2^\prime}{l_2,m_2}{n_2,t_2} \ThreeJSymbol{l_1^\prime,-m_1^\prime}{l_3,m_3}{n_3,t_3}.
+\end{align}
+From the selection rules for the 3j symbol, $t_i = m_i^\prime - m_i$. The factor $(2\l+1)$ appears often in these types of derivations, so we adopt the shorthand notation of $(l,m,n,\ldots) = (2l+1)(2m+1)(2n+1) \ldots$.
+
+\subsection{Spherical Harmonic Terms}
+\label{sec:GenSphHarm}
+
+
+\end{document}

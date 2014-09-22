@@ -1,0 +1,609 @@
+\documentclass[Dissertation.tex]{subfiles} 
+\begin{document}
+
+
+\chapter{P-Wave}
+\label{chp:PWave}
+
+\section{P-Wave Wavefunction}
+The P-wave wavefunction is similar in form to that of the S-wave (\ref{eq:SWaveTrialSimple}).
+
+\begin{equation}
+\Psi_t^\pm = \bar{S} + \tan \eta_t^\pm \, \bar{C} + \sum_{i=1}^N c_i \bar{\phi}_{i1} + \sum_{j=1}^N d_j \bar{\phi}_{j2}
+\label{eq:PWaveSimple}
+\end{equation}
+
+\noindent The $\bar{S}$ and $\bar{C}$ must have both symmetries, so \textbf{@TODO: Explain}
+\begin{subequations}
+\label{eq:PWaveSandCBar}
+\begin{align}
+\bar{S} &= \frac{Y_{10}(\theta_\rho,\phi_\rho)S_{22} \pm Y_{10}(\theta_{\rho^\prime},\phi_{\rho^\prime})S_{23} }{\sqrt{2}} \label{eq:PWaveSBar} \\
+\bar{C} &= \frac{Y_{10}(\theta_\rho,\phi_\rho)C_{22} \pm Y_{10}(\theta_{\rho^\prime},\phi_{\rho^\prime})C_{23} }{\sqrt{2}} \label{eq:PWaveCBar} 
+\end{align}
+\end{subequations}
+
+\noindent with
+\begin{subequations}
+\label{eq:PWaveSandC}
+\begin{alignat}{2}
+S_{22} &={}&\Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) &\sqrt{2\kappa} \,j_1\!\left(\kappa\rho\right) \label{eq:PWaveS22Def} \\
+S_{23} &={}&\Phi_{Ps}\left(r_{13}\right) \Phi_H\left(r_2\right) &\sqrt{2\kappa} \,j_1\!\left(\kappa\rho^\prime\right) \label{eq:PWaveS23Def} \\
+C_{22} &={}-&\Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) &\sqrt{2\kappa} \,n_1\!\left(\kappa\rho\right) f_{sh}(\rho) \label{eq:PWaveC22Def} \\
+C_{23} &={}-&\Phi_{Ps}\left(r_{13}\right) \Phi_H\left(r_2\right) &\sqrt{2\kappa} \,n_1\!\left(\kappa\rho^\prime\right) f_{sh}(\rho^\prime). \label{eq:PWaveC23Def}
+\end{alignat}
+\end{subequations}
+
+\noindent The shielding factor, $f_{sh}(\rho)$, is given by
+\beq
+f_{sh}(\rho) = \left[1 - \ee^{-\mu \rho} \left(1+\frac{\mu}{2}\rho\right)\right]^3.
+\label{eq:PWaveShielding}
+\eeq
+The first and second derivatives of this shielding factor are needed in the derivations of the matrix elements, and it is worthwhile to work them out separately.
+\begin{subequations}
+\label{eq:PWaveShieldingDer}
+\begin{align}
+f_{sh}^\prime(\rho) &= \frac{3}{2} \ee^{-\mu \rho} \mu \left[1 - \ee^{-\mu \rho} \left(1+\frac{\mu}{2}\rho\right)\right]^2 (1 + \mu\rho) \label{eq:PWaveShielding1} \\
+f_{sh}^{\prime\prime}(\rho) &= \frac{3}{2} \ee^{-\mu \rho} \mu^2 \left[1 - \ee^{-\mu \rho} \left(1+\frac{\mu}{2}\rho\right)\right] \left[-\mu\rho + \ee^{-\mu \rho} \left(1+3\mu\rho+\frac{3}{2}\mu^2\rho^2\right)\right] \label{eq:PWaveShielding2}
+\end{align}
+\end{subequations}
+
+\noindent The short-range terms are given by
+\begin{subequations}
+\label{eq:PWavePhiBar}
+\begin{align}
+\bar{\phi}_{i1} &= \left(1 \pm P_{23}\right) Y_{10}(\theta_1) r_1 \phi_i \label{eq:PWavePhi1i}\\
+\bar{\phi}_{j2} &= \left(1 \pm P_{23}\right) Y_{10}(\theta_2) r_2 \phi_j \label{eq:PWavePhi2j},
+\end{align}
+\end{subequations}
+
+\noindent where $\phi_i$ and $\phi_j$ are given by (\ref{eq:PhiDef}).  We also use the shortcuts
+\begin{subequations}
+\label{eq:PWavePhi}
+\begin{align}
+\phi_{1i} &= r_1 \phi_i \\
+\phi_{2j} &= r_2 \phi_j.
+\end{align}
+\end{subequations}
+
+The cosine factors present in many of the matrix element equations are easily expressed in terms of $r_i$ and $r_{ij}$ by using the cosine rule \cite{?}:
+
+\beq
+\label{eq:Cosines}
+\cos\theta_{12} = \frac{r_1^2 + r_2^2 - r_{12}^2}{2 r_1 r_2}, \ \ \ \ \cos\theta_{13} = \frac{r_1^2 + r_3^2 - r_{13}^2}{2 r_1 r_3} \ \ \ \text{and}  \ \ \cos\theta_{23} = \frac{r_2^2 + r_3^2 - r_{23}^2}{2 r_2 r_3}.
+\eeq
+
+\noindent The $j_1(\kappa\rho)$ and $n_1(\kappa\rho)$ are the spherical Bessel and Neumann functions given by \cite[p. 729]{Weber}
+\begin{subequations}
+\label{eq:PWaveBessel}
+\begin{align}
+j_1(x) & = \frac{\sin x}{x^2} - \frac{\cos x}{x} \label{eq:Bessel1} \\
+n_1(x) & = -\frac{\cos x}{x^2} - \frac{\sin x}{x}. \label{eq:Neumann1}
+\end{align}
+\end{subequations}
+
+\noindent The $Y_{10}(\theta)$ are an abbreviated form of the spherical harmonics, since there is azimuthal symmetry.  For the P-wave, these are
+\beq
+\label{eq:PWaveSpherHarm}
+Y_{10}(\theta) = Y_{10}(\theta,\varphi) = \sqrt{\frac{3}{4\pi}} \cos\theta.
+\eeq
+
+
+\section{P-Wave Matrix Equation}
+\label{sec:PWaveMatrix}
+
+As to be expected, the P-wave matrix equation is similar in form to the S-wave result in equation \ref{eq:KohnMatrix}.
+
+\begin{equation}
+\label{eq:PWaveKohnMatrix}
+\begin{bmatrix} 
+ (\bar{C},L\bar{C}) & (\bar{C},L\bar{\phi}_{11}) & \cdots & (\bar{C},L\bar{\phi}_{1N}) & (\bar{C},L\bar{\phi}_{21}) & \cdots & (\bar{C},L\bar{\phi}_{2N})\\
+ (\bar{\phi}_{11},L\bar{C}) & (\bar{\phi}_{11},L\bar{\phi}_{11}) & \cdots & (\bar{\phi}_{11},L\bar{\phi}_{1N}) & (\bar{\phi}_{11},L\bar{\phi}_{21}) & \cdots & (\bar{\phi}_{11},L\bar{\phi}_{2N})\\
+ \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+ (\bar{\phi}_{1N},L\bar{C}) & (\bar{\phi}_{1N},L\bar{\phi}_{11}) & \cdots & (\bar{\phi}_{1N},L\bar{\phi}_{1N}) & (\bar{\phi}_{1N},L\bar{\phi}_{21}) & \cdots & (\bar{\phi}_{1N},L\bar{\phi}_{2N})\\
+ (\bar{\phi}_{21},L\bar{C}) & (\bar{\phi}_{21},L\bar{\phi}_{11}) & \cdots & (\bar{\phi}_{21},L\bar{\phi}_{1N}) & (\bar{\phi}_{21},L\bar{\phi}_{21}) & \cdots & (\bar{\phi}_{21},L\bar{\phi}_{2N})\\
+ \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+ (\bar{\phi}_{2N},L\bar{C}) & (\bar{\phi}_{2N},L\bar{\phi}_{11}) & \cdots & (\bar{\phi}_{2N},L\bar{\phi}_{1N}) & (\bar{\phi}_{2N},L\bar{\phi}_{21}) & \cdots & (\bar{\phi}_{2N},L\bar{\phi}_{2N})\\
+\end{bmatrix}
+\begin{bmatrix}
+\Lambda_t\\
+c_1\\
+\vdots\\
+c_N\\
+d_1\\
+\vdots\\
+d_N\\
+\end{bmatrix}
+= -
+\begin{bmatrix}
+(\bar{C},L\bar{S}) \\
+(\bar{\phi}_{11},L\bar{S}) \\
+\vdots \\
+(\bar{\phi}_{1N},L\bar{S}) \\
+(\bar{\phi}_{21},L\bar{S}) \\
+\vdots \\
+(\bar{\phi}_{2N},L\bar{S}) \\
+\end{bmatrix}.
+\end{equation}
+
+\noindent This matrix equation can be rewritten as
+\beq
+\textbf{\emph{AX = -B}}.
+\eeq
+
+
+
+\section{P-Wave Short-Range -- Short-Range Integrals}
+\label{sec:PWaveShortShort}
+
+\begin{align}
+\label{eq:PWavePhi1Phi1}
+\left(\bar{\phi}_{1i},L \bar{\phi}_{1j}\right) = &2 \cdot 2\pi \int{ \Bigg\{ \sum_{k=1}^3 \left[ \boldsymbol{\nabla}_{\!\mathbf{r}_k} \nonumber \phi_{1i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1j} \pm \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1j}^\prime \right] } \\
+\nonumber  &+ \left. \left[\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2}\kappa^2 + \frac{2}{r_1^2} \right] \right. \\
+ &\;\;\;\;\; \times \left(\phi_{1i} \phi_{1j} \pm \phi_{1i} \phi_{1j}^\prime \right) \Bigg\} d\tau_{int}
+\end{align}
+
+\begin{align}
+\label{eq:PWavePhi2Phi2}
+\left(\bar{\phi}_{2i},L \bar{\phi}_{2j}\right) = 2 & \cdot 2\pi \int \Bigg\{ \sum_{k=1}^3 \left[ \boldsymbol{\nabla}_{\!\mathbf{r}_k} \nonumber \phi_{2i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2j} \pm \cos\theta_{23} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2j}^\prime \right]  + \frac{2}{r_2^2}\phi_{2i}\phi_{2j} \\
+ \nonumber &\mp \phi_{2i} \phi_{2j}^\prime \left[p_i \frac{r_1}{r_3 r_{13}^2} (\cos\theta_{12} - \cos\theta_{23} \cos\theta_{13}) + m_j^\prime \frac{r_1}{r_2 r_{12}^2}(\cos\theta_{13}-\cos\theta_{23} \cos\theta_{12})\right.\\
+ \nonumber & \left. \;\;\;\;\;  + \sin^2\theta_{23} \left(q_i \frac{r_2}{r_3 r_{23}^2} + q_j^\prime \frac{r_3}{r_2 r_{23}^2} \right) \right] \\
+ \nonumber &+ \left. \left[\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2}\kappa^2 \right] \right. \\
+ &\;\;\;\;\; \times \left(\phi_{2i} \phi_{2j} \pm \cos\theta_{23} \phi_{2i} \phi_{2j}^\prime \right) \Bigg\} d\tau_{int}
+\end{align}
+
+\begin{align}
+\label{eq:PWavePhi1Phi2}
+\left(\bar{\phi}_{1i},L \bar{\phi}_{2j}\right) = 2 & \cdot 2\pi \int \Bigg\{ \sum_{k=1}^3 \left[ \cos\theta_{12} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \nonumber \phi_{1i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2j} \pm \cos\theta_{13} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2j}^\prime \right] \\
+ \nonumber &\mp \phi_{1i} \phi_{2j} \left[q_i \frac{r_3}{r_2 r_{23}^2} (\cos\theta_{13} - \cos\theta_{12} \cos\theta_{23}) + p_j \frac{r_3}{r_1 r_{13}^2}(\cos\theta_{23}-\cos\theta_{12} \cos\theta_{13})\right.\\
+ \nonumber & \left. \;\;\;\;\;  + \sin^2\theta_{12} \left(m_i \frac{r_1}{r_2 r_{12}^2} + m_j \frac{r_2}{r_1 r_{12}^2} \right) \right] \\
+ \nonumber &\mp \phi_{1i} \phi_{2j}^\prime \left[q_i \frac{r_2}{r_3 r_{23}^2} (\cos\theta_{12} - \cos\theta_{13} \cos\theta_{23}) + m_j^\prime \frac{r_2}{r_1 r_{12}^2}(\cos\theta_{23}-\cos\theta_{12} \cos\theta_{13})\right.\\
+ \nonumber & \left. \;\;\;\;\;  + \sin^2\theta_{13} \left(p_i \frac{r_1}{r_3 r_{13}^2} + p_j^\prime \frac{r_3}{r_1 r_{13}^2} \right) \right] \\
+ \nonumber &+ \left. \left[\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2}\kappa^2 \right] \right. \\
+ &\;\;\;\;\; \times \left(\cos\theta_{12} \phi_{1i} \phi_{2j} \pm \cos\theta_{13} \phi_{1i} \phi_{2j}^\prime \right) \Bigg\} d\tau_{int}
+\end{align}
+
+\begin{align}
+\label{eq:PWavePhi2Phi1}
+\left(\bar{\phi}_{2i},L \bar{\phi}_{1j}\right) = 2 & \cdot 2\pi \int \Bigg\{ \sum_{k=1}^3 \cos\theta_{12} \left[ \boldsymbol{\nabla}_{\!\mathbf{r}_k} \nonumber \phi_{2i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1j} \pm \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1j}^\prime \right] \\
+ \nonumber &\mp \phi_{2i} \phi_{1j} \left[p_i \frac{r_3}{r_1 {r_{13}}^2} (\cos\theta_{23} - \cos\theta_{12} \cos\theta_{13}) + q_j \frac{r_3}{r_2 {r_{23}}^2}(\cos\theta_{13}-\cos\theta_{12} \cos\theta_{23})\right.\\
+ \nonumber & \left. \;\;\;\;\;  + \sin^2\theta_{12} \left(m_i \frac{r_2}{r_1 {r_{12}}^2} + m_j \frac{r_1}{r_2 {r_{12}}^2} \right) \right] \\
+ \nonumber &\mp \phi_{2i} \phi_{1j}^\prime \left[p_i \frac{r_3}{r_1 r_{13}^2} (\cos\theta_{23} - \cos\theta_{12} \cos\theta_{13}) + q_j^\prime \frac{r_3}{r_2 {r_{23}}^2}(\cos\theta_{13}-\cos\theta_{12} \cos\theta_{23})\right.\\
+ \nonumber & \left. \;\;\;\;\;  + \sin^2\theta_{12} \left(m_i \frac{r_2}{r_1 {r_{12}}^2} + m_j^\prime \frac{r_1}{r_2 {r_{12}}^2} \right) \right] \\
+ \nonumber &+ \left. \left[\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2}\kappa^2 \right] \right. \\
+ &\;\;\;\;\; \times \cos\theta_{12} \left(\phi_{2i} \phi_{12j} \pm \phi_{2i} \phi_{1j}^\prime \right) \Bigg\} d\tau_{int}
+\end{align}
+
+
+\section{P-Wave Short-Range -- Long-Range Integrals}
+\label{sec:PWaveShortLong}
+
+\begin{align}
+\label{eq:PWavePhi1SBar}
+\nonumber \left(\bar{\phi}_{1i},L \bar{S}\right) = \sqrt{2} \pi & \int \left[ \frac{r_1 + r_2 \cos\theta_{12}}{\rho} \left(\phi_{1i} \pm \phi_{1i}^\prime \right) \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_{22} \right] d\tau_{int} \\
+\nonumber = \sqrt{2} \pi & \int \phi_{1i} \left[ \frac{r_1 + r_2 \cos\theta_{12}}{\rho} \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_{22} \right. \\
+& \pm \left. \frac{r_1 + r_3 \cos\theta_{13}}{\rho^\prime} \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) S_{23} \right]  d\tau_{int}
+\end{align}
+
+\begin{align}
+\label{eq:PWavePhi1CBar}
+\nonumber \left(\bar{\phi}_{1i},L \bar{C}\right) = -2 \pi &\sqrt{\kappa} \int \phi_{1i} \left\{ \frac{r_1 + r_2 \cos\theta_{12}}{\rho} \Phi_{Ps}(r_{12}) \Phi_H(r_3) \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) n_1(\kappa\rho) f_{sh}(\rho) \right. \right. \\
+\nonumber & + \left.\left. \left[f_{sh}^\prime(\rho) \frac{1}{\rho} \left( n_1(\kappa\rho) + \cos(\kappa\rho) \right) - \frac{1}{2} f_{sh}^{\prime\prime}(\rho) n_1(\kappa\rho) \right]\right] \pm \frac{r_1 + r_3 \cos\theta_{13}}{\rho^\prime}  \Phi_{Ps}(r_{13}) \Phi_H(r_2) \right. \\
+\nonumber & \times \left. \left[ \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) n_1(\kappa\rho^\prime) f_{sh}(\rho^\prime) + \left[f_{sh}^\prime(\rho^\prime) \frac{1}{\rho^\prime} \left( n_1(\kappa\rho^\prime) + \cos(\kappa\rho^\prime) \right) - \frac{1}{2} f_{sh}^{\prime\prime}(\rho^\prime) n_1(\kappa\rho^\prime) \right]\right]\right\} d\tau_{int} \\
+\nonumber = -2 \pi &\sqrt{\kappa} \int \left\{ \left( \phi_{1i} \pm \phi_{1i}^\prime \right) \frac{r_1 + r_2 \cos\theta_{12}}{\rho} \Phi_{Ps}(r_{12}) \Phi_H(r_3) \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) n_1(\kappa\rho) f_{sh}(\rho) \right.\right. \\
+& + \left.\left. \left[ f_{sh}^\prime (\rho) \frac{1}{\rho} \left( n_1(\kappa\rho) + \cos(\kappa\rho) \right) - \frac{1}{2} f_{sh}^{\prime\prime}(\rho) n_1(\kappa\rho) \right] \right] \right\} d\tau_{int}
+\end{align}
+
+\begin{align}
+\label{eq:PWavePhi2SBar}
+\nonumber \left(\bar{\phi}_{2j},L \bar{S}\right) = \sqrt{2} \pi & \int \left\{ \frac{1}{\rho} \left[ \phi_{2j} \left(r_2 + r_1 \cos\theta_{12}\right) \pm \phi_{2j}^\prime \left(r_1 \cos\theta_{13} + r_2 \cos\theta_{23} \right) \right] \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_{22} \right\} d\tau_{int} \\
+\nonumber = \sqrt{2} \pi & \int \phi_{2j} \left[ \frac{1}{\rho} \left(r_2 + r_1 \cos\theta_{12}\right) \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_{22} \right. \\
+& \pm \left. \frac{1}{\rho^\prime} \left(r_1 \cos\theta_{12} + r_3 \cos\theta_{23}\right) \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) S_{23} \right]  d\tau_{int}
+\end{align}
+
+\begin{align}
+\label{eq:PWavePhi2CBar}
+\nonumber \left(\bar{\phi}_{2j},L \bar{C}\right) = -2 \uppi &\sqrt{\kappa} \int \phi_{2j} \left\{ \frac{r_2 + r_1 \cos\theta_{12}}{\rho} \Phi_{Ps}(r_{12}) \Phi_H(r_3) \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) n_1(\kappa\rho) f_{sh}(\rho) \right. \right. \\
+\nonumber & + \left.\left. \left[f_{sh}^\prime(\rho) \frac{1}{\rho} \left( n_1(\kappa\rho) + \cos(\kappa\rho) \right) - \frac{1}{2} f_{sh}^{\prime\prime}(\rho) n_1(\kappa\rho) \right]\right] \pm \frac{r_1 \cos\theta_{12} + r_3 \cos\theta_{23}}{\rho^\prime}  \Phi_{Ps}(r_{13}) \Phi_H(r_2) \right. \\
+\nonumber & \times \left. \left[ \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) n_1(\kappa\rho^\prime) f_{sh}(\rho^\prime) + \left[f_{sh}^\prime(\rho^\prime) \frac{1}{\rho^\prime} \left( n_1(\kappa\rho^\prime) + \cos(\kappa\rho^\prime) \right) - \frac{1}{2} f_{sh}^{\prime\prime}(\rho^\prime) n_1(\kappa\rho^\prime) \right]\right]\right\} \\
+\nonumber = -2 \uppi &\sqrt{\kappa} \int \left( \phi_{2j} \frac{r_2 + r_1 \cos\theta_{12}}{\rho} \pm \phi_{2j}^\prime \frac{r_1 \cos\theta_{13} + r_2 \cos\theta_{23}}{\rho} \right) \\
+& \times \Phi_{Ps}(r_{12}) \Phi_H(r_3) \left\{ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) n_1(\kappa\rho) f_{sh}(\rho) \right. \\
+& + \left. \left[ f_{sh}^\prime (\rho) \frac{1}{\rho} \left( n_1(\kappa\rho) + \cos(\kappa\rho) \right) - \frac{1}{2} f_{sh}^{\prime\prime}(\rho) n_1(\kappa\rho) \right] \right\} d\tau_{int}
+\end{align}
+
+
+\section{P-Wave Long-Range -- Long-Range Integrals}
+\label{sec:PWaveLongLong}
+
+\begin{align}
+\label{eq:PWaveSBarSBar}
+\left(\bar{S},L\bar{S}\right) = \pm \frac{\pi}{2} \int \frac{1}{\rho\rho^\prime} \left[S_{22} S_{23} \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) \left(r_1^2 + r_1 r_2 \cos\theta_{12} + r_1 r_3 \cos\theta_{13} + r_2 r_3 \cos\theta_{23} \right) \right] d\tau_{int}
+\end{align}
+
+\begin{align}
+\label{eq:PWaveCBarSBar}
+\left(\bar{C},L\bar{S}\right) = \pm \frac{\pi}{2} \int \frac{1}{\rho\rho^\prime} \left[C_{23} S_{22} \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) \left(r_1^2 + r_1 r_2 \cos\theta_{12} + r_1 r_3 \cos\theta_{13} + r_2 r_3 \cos\theta_{23} \right) \right] d\tau_{int}
+\end{align}
+
+\begin{align}
+\label{eq:PWaveCBarCBar}
+\nonumber \left(\bar{C},L\bar{C}\right) = 2 \pi & \kappa \int \Phi_{Ps}(r_{12}) \Phi_H(r_3) \\
+\nonumber \times & \Bigg\{ 2 \Phi_{Ps}(r_{12}) \Phi_H(r_3) n_1(\kappa\rho) f_{sh}(\rho) \left(\frac{1}{\rho} f_{sh}^\prime(\rho) \left(n_1(\kappa\rho) + \cos(\kappa\rho)\right) - \frac{1}{2} f_{sh}^{\prime\prime}(\rho) n_1(\kappa\rho)\right) \\
+\nonumber & \pm \frac{1}{2\rho\rho^\prime} (r_1^2 + r_1 r_2 \cos\theta_{12} + r_1 r_3 \cos\theta_{13} + r_2 r_3 \cos\theta_{23}) \Phi_{Ps}(r_{13}) \Phi_H(r_2) n_1(\kappa\rho^\prime) f_{sh}(\rho^\prime) \\
+\nonumber & \times \left[ n_1(\kappa\rho) f_{sh}(\kappa\rho) \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) + \left(\frac{1}{\rho} f_{sh}^\prime(\rho) \left(n_1(\kappa\rho) + \cos(\kappa\rho)\right) - \frac{1}{2} f_{sh}^{\prime\prime}(\rho)  n_1(\kappa\rho)\right) \right]\Bigg\} d\tau_{int}
+\end{align}
+
+
+\section{P-Wave Second Formalism}
+
+\subsection{Wavefunction}
+\begin{equation}
+\Psi_t^\pm = \bar{S} + \tan \eta_t^\pm \, \bar{C} + \sum_{i=1}^N c_i \bar{\phi}_{\rho i} + \sum_{j=1}^N d_j \bar{\phi}_{3j}
+\label{eq:PWave2ndWavefn}
+\end{equation}
+
+\noindent The short-range terms are given by
+\begin{subequations}
+\label{eq:PWave2ndPhiBar}
+\begin{align}
+\bar{\phi}_{\rho i} &= \left(1 \pm P_{23}\right) Y_{10}(\theta_\rho) \rho \phi_i \label{eq:PWave2ndPhi1i}\\
+\bar{\phi}_{3j} &= \left(1 \pm P_{23}\right) Y_{10}(\theta_3) r_3 \phi_j \label{eq:PWave2ndPhi2j},
+\end{align}
+\end{subequations}
+
+The short-range -- long-range terms can be directly computed by changing the short-range terms, but the integration routines (section \ref{sec:ShortShortIntegration}) for the short-range -- short-range terms cannot handle the $\rho$ factor of $\bar{\phi}_{\rho 1}$ directly. The following relations must be used:
+
+\begin{subequations}
+\begin{align}
+\rho Y_{10}(\theta_\rho) &= \frac{1}{2}\left[ r_1 Y_{10}(\theta_1) + r_2 Y_{10}(\theta_2) \right] \\
+\rho^\prime Y_{10}(\theta_{\rho^\prime}) &= \frac{1}{2}\left[ r_1 Y_{10}(\theta_1) + r_3 Y_{10}(\theta_3) \right].
+\end{align}
+\end{subequations}
+
+
+
+\subsection{Short-Range -- Short-Range Integrals}
+\label{sec:PWave2ndShortShort}
+In terms of the first formalism,
+\beq
+\left(\bar{\phi}_{\rho i},L \bar{\phi}_{\rho j}\right) = \frac{1}{4} \left[ \left(\bar{\phi}_{1i},L \bar{\phi}_{1j}\right)_{1st} + \left(\bar{\phi}_{1i},L \bar{\phi}_{2j}\right)_{1st} + \left(\bar{\phi}_{2i},L \bar{\phi}_{1j}\right)_{1st} + \left(\bar{\phi}_{2i},L \bar{\phi}_{2j}\right)_{1st} \right].
+\eeq
+
+The other types of terms cannot be expressed as combinations of the first formalism results, but these calculations are similar to the first formalism.
+
+\begin{align}
+\nonumber \left(\bar{\phi}_{\rho i},L \bar{\phi}_{3j}\right) = &(Y_{10}(\theta_1) r_1 \phi_i, L Y_{10}(\theta_3) r_3 \phi_j) + (Y_{10}(\theta_2) r_2 \phi_i, L Y_{10}(\theta_3) r_3 \phi_j) \\
+\pm &(Y_{10}(\theta_1) r_1 \phi_i, L Y_{10}(\theta_2) r_2 \phi_j^\prime) \pm (Y_{10}(\theta_2) r_2 \phi_i, L Y_{10}(\theta_2) r_2 \phi_j^\prime)
+\end{align}
+
+\begin{align}
+\nonumber \left(\bar{\phi}_{\rho i},L \bar{\phi}_{3j}\right) = \pm &(Y_{10}(\theta_2) r_2 \phi_i^\prime, L Y_{10}(\theta_1) r_1 \phi_j) \pm (Y_{10}(\theta_2) r_2 \phi_i^\prime, L Y_{10}(\theta_2) r_2 \phi_j) \\
++ &(Y_{10}(\theta_2) r_2 \phi_i^\prime, L Y_{10}(\theta_1) r_1 \phi_j^\prime) + (Y_{10}(\theta_2) r_2 \phi_i^\prime, L Y_{10}(\theta_3) r_3 \phi_j^\prime)
+\end{align}
+
+\beq
+\nonumber \left(\bar{\phi}_{\rho i},L \bar{\phi}_{3j}\right) = 2 \left[ \pm(Y_{10}(\theta_2) r_2 \phi_i, L Y_{10}(\theta_3) r_3 \phi_j) + (Y_{10}(\theta_2) r_2 \phi_i^\prime, L Y_{10}(\theta_2) r_2 \phi_j^\prime) \right]
+\eeq
+
+\subsection{Short-Range -- Long-Range Integrals}
+\label{sec:PWave2ndShortLong}
+In terms of the first formalism,
+
+\begin{subequations}
+\begin{align}
+\left(\bar{\phi}_{\rho i},L \bar{S}\right) &= \frac{1}{2} \left[ \left(\bar{\phi}_{1i},L \bar{S}\right)_{1st} + \left(\bar{\phi}_{2i},L \bar{S}\right)_{1st} \right] \\
+\left(\bar{\phi}_{\rho i},L \bar{C}\right) &= \frac{1}{2} \left[ \left(\bar{\phi}_{1i},L \bar{C}\right)_{1st} + \left(\bar{\phi}_{2i},L \bar{C}\right)_{1st} \right]
+\end{align}
+\end{subequations}
+
+
+\subsection{Long-Range -- Long-Range Integrals}
+\label{sec:PWave2ndLongLong}
+
+
+\section{Optimization}
+\label{sec:PWaveOpt}
+
+\subsection{Singlet}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{c c}
+\toprule
+\toprule
+$\omega$ & 1st formalism / 1 set \\
+\midrule
+\midrule
+1 & 0.47767, 0.50273, 0.97498 \\
+  & $\textbf{-0.6668199686}$ \\
+\midrule
+2 & 0.48253, 0.49342, 0.96874 \\
+  & $\textbf{-0.7006810696}$ \\
+\midrule
+3 & 0.42803, 0.43099, 0.98993 \\
+  & $\textbf{-0.7180931727}$ \\
+\midrule
+4 & 0.39740, 0.37617, 0.96205 \\
+  & $\textbf{-0.7277620286}$ \\
+\bottomrule
+\bottomrule
+\end{tabular}
+\caption{Broyden's P-Wave Singlet Short-Range Optimization}
+\label{tab:SimplexPWaveSingOpt}
+\end{center}
+\end{table}
+
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{c c c c c}
+\toprule
+\toprule
+$\omega$ & 1st formalism / 1 set & 2nd formalism / 1 set & 1st formalism / 2 sets & 2nd formalism / 2 sets \\
+\midrule
+\midrule
+ &  &  & 0.53411, 0.45365, 1.01391 & 0.56689, 0.46865, 0.97877 \\
+1 & 0.47767, 0.50273, 0.97499 & 0.45711, 0.57000, 0.92661 & 0.37922, 0.54555, 0.98167 & 0.67777, 0.85878, 0.48137 \\
+ & $\textbf{-0.666819968640}$ & $\textbf{-0.663226610680}$ & $\textbf{-0.670015702237}$ & $\textbf{-0.665355147531}$ \\
+\midrule
+ &  &  & 0.52702, 0.43944, 1.00364 & 0.44976, 0.50397, 0.94597 \\
+2 & 0.48253, 0.49341, 0.96877 & 0.47340, 0.51629, 0.95843 & 0.40875, 0.52136, 0.97040 & 0.39637, 1.02336, 0.43279 \\
+ & $\textbf{-0.700681070987}$ & $\textbf{-0.699190666285}$ & $\textbf{-0.701936448530}$ & $\textbf{-0.700245066225}$ \\
+\midrule
+ &  &  & 0.46322, 0.39180, 1.00128 & 0.46534, 0.45128, 0.99059 \\
+3 & 0.42978, 0.43379, 0.98080 & 0.43175, 0.45646, 0.96216 & 0.38443, 0.46206, 0.97400 & 0.87453, 0.97962, 0.49570 \\
+ & $\textbf{-0.718093418924}$ & $\textbf{-0.717282613790}$ & $\textbf{-0.718548496648}$ & $\textbf{-0.717931026880}$ \\
+\midrule
+ &  &  & 0.39544, 0.35059, 0.99976 & 0.37442, 0.37461, 0.95373 \\
+4 & 0.37400, 0.37447, 0.98987 & 0.38037, 0.39519, 0.96484 & 0.34786, 0.39493, 0.97984 & 0.40786, 0.90101, 0.33513 \\
+ & $\textbf{-0.727918723553}$ & $\textbf{-0.727281885394}$ & $\textbf{-0.728067443345}$ & $\textbf{-0.727981667586}$ \\
+\midrule
+ &  &  & 0.34018, 0.31812, 0.99834 & 0.33739, 0.33907, 0.96350 \\
+5 & 0.32933, 0.32898, 0.99397 & 0.33710, 0.34681, 0.96803 & 0.31744, 0.33975, 0.98804 & 0.42998, 0.94520, 0.30234 \\
+ & $\textbf{-0.734233160953}$ & $\textbf{-0.733680013812}$ & $\textbf{-0.734264232997}$ & $\textbf{-0.734219573964}$ \\
+\bottomrule
+\bottomrule
+\end{tabular}
+\caption{Simplex P-Wave Singlet Short-Range Optimization}
+\label{tab:SimplexPWaveSingOpt}
+\end{center}
+\end{table}
+
+
+\subsection{Triplet}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{c c c c c}
+\toprule
+\toprule
+$\omega$ & 1st formalism / 1 set & 2nd formalism / 1 set & 1st formalism / 2 sets & 2nd formalism / 2 sets \\
+\midrule
+\midrule
+ &  &  & 0.38325, 0.29118, 0.98942 & 0.33678, 0.34365, 0.95176 \\
+1 & 0.33166, 0.35350, 0.99565 & 0.33026, 0.35405, 0.99091 & 0.28545, 0.39595, 1.01128 & 0.76060, 0.65935, 0.23041 \\
+ & $\textbf{-0.624190839847}$ & $\textbf{-0.622936676609}$ & $\textbf{-0.629448013148}$ & $\textbf{-0.626442778437}$ \\
+\midrule
+ &  &  & 0.40569, 0.32949, 0.97996 & 0.36235, 0.39529, 0.97160 \\
+2 & 0.36646, 0.37507, 0.99000 & 0.36796, 0.38963, 0.97533 & 0.32267, 0.40975, 1.00788 & 0.19616, 0.77243, 0.76928 \\
+ & $\textbf{-0.674819577647}$ & $\textbf{-0.672880514312}$ & $\textbf{-0.676837948726}$ & $\textbf{-0.673438894110}$ \\
+\midrule
+ &  &  & 0.38749, 0.33148, 0.98233 & 0.35575, 0.37945, 0.95930 \\
+3 & 0.35854, 0.36134, 0.99113 & 0.36397, 0.38105, 0.96908 & 0.32572, 0.38819, 1.00367 & 0.20808, 0.59945, 0.77119 \\
+ & $\textbf{-0.704764841366}$ & $\textbf{-0.703191879865}$ & $\textbf{-0.705411707053}$ & $\textbf{-0.703452729525}$ \\
+\midrule
+ &  &  & 0.35397, 0.31926, 0.98798 & 0.33926, 0.35027, 0.97895 \\
+4 & 0.33574, 0.33663, 0.99365 & 0.34276, 0.35544, 0.96801 & 0.31623, 0.35391, 0.99890 & 0.16242, 0.65645, 0.95127 \\
+ & $\textbf{-0.721696022987}$ & $\textbf{-0.720513417195}$ & $\textbf{-0.721859567659}$ & $\textbf{-0.720596381145}$ \\
+\midrule
+ &  &  & 0.31847, 0.30382, 0.99355 & 0.31772 0.32715 0.97691 \\
+5 & 0.31060, 0.31092, 0.99531 & 0.31829 0.32758 0.96828 & 0.30259, 0.31860, 0.99667 & 0.11426 0.42744 1.10880 \\
+ & $\textbf{-0.731463030326}$ & $\textbf{-0.730592482596}$ & $\textbf{-0.731486455300}$ & $\textbf{-0.730615490923}$ \\
+\bottomrule
+\bottomrule
+\end{tabular}
+\caption{Simplex P-Wave Triplet Short-Range Optimization}
+\label{tab:SimplexPWaveTripOpt}
+\end{center}
+\end{table}
+
+
+\section{Results}
+
+\subsection{Phase Shifts}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{c | c c c c c c c}
+\toprule
+$\kappa$ & $\delta^+ (\omega = 6)$ & $\delta^+ (\omega = 7)$ & $\delta^+$ \cite{VanReethPrivate} & $\delta^+$ \cite{Blackwood2002} & $\delta^+$ \cite{Walters2004} & $\delta^+$ \cite{Ray1997} & $\delta^+$ \cite{Adhikari1999} \\
+\midrule
+0.05 & $2.772^{-3}$ & $2.776^{-3}$ & --- & $2.64^{-3}$ & --- & --- & --- \\
+0.1 & $2.255^{-2}$ & $2.256^{-2}$ & $2.26^{-2}$ & $2.13^{-2}$ & $2.21^{-2}$ & $7.98^{-3}$ & $4.77^{-3}$ \\
+0.2 & $1.909^{-1}$ & $1.913^{-1}$ & $1.92^{-1}$ & $1.75^{-1}$ & $1.83^{-1}$ & $6.14^{-2}$ & $3.70^{-2}$ \\
+0.3 & $6.082^{-1}$ & $6.093^{-1}$ & $6.12^{-1}$ & $5.45^{-1}$ & $5.80^{-1}$ & $1.86^{-1}$ & $1.16^{-1}$ \\
+0.4 & $9.930^{-1}$ & $9.939^{-1}$ & $9.97^{-1}$ & $9.08^{-1}$ & $9.56^{-1}$ & $3.49^{-1}$ & $2.39^{-1}$ \\
+0.5 & $1.140$ & $1.140$ & $1.143$ & $1.068$ & $1.106$ & $4.77^{-1}$ & $3.72^{-1}$ \\
+0.6 & $1.161$ & $1.162$ & $1.165$ & $1.103$ & $1.134$ & $5.36^{-1}$ & $4.78^{-1}$ \\
+0.7 & $1.151$ & $1.152$ & $1.155$ & $1.099$ & $1.133$ & $5.38^{-1}$ & $5.41^{-1}$ \\
+\bottomrule
+\end{tabular}
+\caption{P-Wave Singlet Results}
+\label{tab:PWaveSinglet}
+\end{center}
+\end{table}
+
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{c | c c c c c}
+\toprule
+$\kappa$ & $\delta^- (\omega = 6)$ & $\delta^- (\omega = 7)$ & $\delta^-$ \cite{Blackwood2002} & $\delta^-$ \cite{Ray1997} & $\delta^-$ \cite{Adhikari1999} \\
+\midrule
+0.05 & --- & --- & $-7.63^{-5}$ & --- & --- \\
+0.1 & $-1.785^{-3}$ & $-1.775^{-3}$ & $-9.53^{-4}$ & $-5.03^{-3}$ & $-2.33^{-3}$ \\
+0.2 & $-1.676^{-2}$ & $-1.669^{-2}$ & $-1.22^{-2}$ & $-3.52^{-2}$ & $-1.67^{-2}$ \\
+0.3 & $-5.536^{-2}$ & $-5.518^{-2}$ & $-4.56^{-2}$ & $-9.80^{-2}$ & $-4.76^{-2}$ \\
+0.4 & $-1.149^{-1}$ & $-1.146^{-1}$ & $-1.04^{-1}$ & $-1.86^{-1}$ & $-9.18^{-2}$ \\
+0.5 & $-1.840^{-1}$ & $-1.834^{-1}$ & $-1.78^{-1}$ & $-2.87^{-1}$ & $-1.42^{-1}$ \\
+0.6 & $-2.486^{-1}$ & $-2.477^{-1}$ & $-2.47^{-1}$ & $-3.90^{-1}$ & $-1.90^{-1}$ \\
+0.7 & $-2.932^{-1}$ & $-2.917^{-1}$ & $-2.95^{-1}$ & $-4.88^{-1}$ & $-2.28^{-1}$ \\
+\bottomrule
+\end{tabular}
+\caption{P-Wave Triplet Results}
+\label{tab:PWaveTriplet}
+\end{center}
+\end{table}
+
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{c | c c c}
+\toprule
+$\kappa$ & $\delta^+ (\omega \rightarrow \infty) (3-6)$ & $\delta^+ (\omega \rightarrow \infty) (3-7)$ & $\delta^+ (\omega \rightarrow \infty) (4-7)$\\
+\midrule
+0.1 & $2.30^{-2}$ & $2.28^{-2}$ & $2.27^{-1}$ \\
+0.2 & $1.93^{-1}$ & $0.192^{-1}$ & $1.92^{-1}$ \\
+0.3 & $6.13^{-1}$ & $6.12^{-1}$ & $6.11^{-1}$ \\
+0.4 & $9.99^{-1}$ & $9.97^{-1}$ & $9.96^{-1}$ \\
+0.5 & $1.146$ & $1.144$ & $1.142$ \\
+0.6 & $1.170$ & $1.167$ & $1.163$ \\
+0.7 & $1.164$ & $1.159$ & $1.154$ \\
+\bottomrule
+\end{tabular}
+\caption{P-Wave Singlet Extrapolation Results}
+\label{tab:PWaveSingletExtrap}
+\end{center}
+\end{table}
+
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{c | c c c}
+\toprule
+$\kappa$ & $\delta^- (\omega \rightarrow \infty) (3-6)$ & $\delta^- (\omega \rightarrow \infty) (3-7)$ & $\delta^- (\omega \rightarrow \infty) (4-7)$\\
+\midrule
+0.1 & $-1.447^{-3}$ & $-1.606^{-3}$ & $-1.720^{-3}$ \\
+0.2 & $-1.586^{-2}$ & $-1.619^{-2}$ & $-1.652^{-2}$ \\
+0.3 & $-5.323^{-2}$ & $-5.477^{-2}$ & $-5.401^{-2}$ \\
+0.4 & $-1.111^{-1}$ & $-1.124^{-1}$ & $-1.138^{-1}$ \\
+0.5 & $-1.771^{-1}$ & $-1.797^{-1}$ & $-1.821^{-1}$ \\
+0.6 & $-2.373^{-1}$ & $-2.417^{-1}$ & $-2.455^{-1}$ \\
+0.7 & $-2.755^{-1}$ & $-2.822^{-1}$ & $-2.881^{-1}$ \\
+\bottomrule
+\end{tabular}
+\caption{P-Wave Triplet Extrapolation Results}
+\label{tab:PWaveTripletExtrap}
+\end{center}
+\end{table}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=7in]{OtherPWaveSingletResults}
+	\caption{Comparison of P-Wave Singlet Results}
+	\label{fig:OtherPWaveSingletResults}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=7in]{OtherPWaveTripletResults}
+	\caption{Comparison of P-Wave Triplet Results}
+	\label{fig:OtherPWaveTripletResults}
+\end{figure}
+
+
+\subsection{Resonance Parameters}
+\setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
+\setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
+\begin{table}[H]
+\centering
+\begin{tabular}{l c c c c c}
+\toprule
+Method & $^1E_R \text{ (eV)}$ & $^1\Gamma \text{ (eV)}$ & $^2E_R \text{ (eV)}$ & $^2\Gamma \text{ (eV)}$ \\
+\midrule
+Complex rotation (Drachman \emph{et al} 1979) \cite{Drachman1979} & $-0.57725$ & --- & $-0.6338$ & --- \\
+%Complex rotation (Yan \emph{et al} 1998) \cite{Yan1999} & $-0.56427 \pm 0.0001$ & $0.00215 \pm 0.0002$ & $-0.59253 \pm 0.00005$ & $0.00160 \pm 0.0001$ \\
+Complex rotation (Yan \emph{et al} 1998) \cite{Yan1999} & $4.2850 \pm 0.0014$ & $0.0435 \pm 0.0027$ & $5.0540 \pm 0.0027$ & $0.0925 \pm 0.0054$ \\
+Five-state C.C. (Adhikari 2001) \cite{Adhikari2001e} & $5.08$ & $0.004$ & --- & --- \\
+Optical potential (Di Rienzi \emph{et al} 2002) \cite{DiRienzi2002b} & $4.472$ & $0.082$ & --- & --- \\
+Stabilization (Yan and Ho 2003) \cite{Yan2003} & $4.287$ & $0.0446$ & $5.062$ & $0.0563$ \\
+Close coupling (Walters \emph{et al} 2004 \cite{Walters2004}) & $4.475$ & $0.0827$ & $4.905$ & $0.0043$ \\
+Kohn (Van Reeth \emph{et al} 2004) \cite{VanReeth2004} & $4.29 \pm 0.01$ & $0.042 \pm 0.005$ & --- & --- \\
+This work & $4.2856 \pm 0.0001$ & $0.0444 \pm 0.0001$ & $5.0578 \pm 0.0001$ & $0.0456 \pm 0.0002$ \\
+\bottomrule
+\end{tabular}
+\caption{P-Wave Resonance Parameters} % title of Table
+\label{tab:PWaveResonancesOther}
+\end{table}
+
+
+\subsection{Scattering Length}
+
+\begin{table}[H]
+	\centering
+	\normalsize
+	\begin{tabular}{c c | c c | c c | c}
+	\toprule
+			& & Gao Expansion & & Gao Full & & Definition \\
+			& $\kappa$ & $K_l^1$ & $a_1$ & $K_l^1$ & $a_1$ & $a_1$ \\
+	\midrule
+		$^1P$ & 0.01 & 0.269233 & -22.1978 & 0.269235 & -22.1977 & -22.0892\\
+			 & 	0.02 & 	0.267853 & -22.2879 & 0.267862 & -22.2873 & -22.1039\\
+			 & 	0.03 & 	0.266841 & -22.3546 & 0.266866 & -22.3529 & -22.1285\\
+			 & 	0.04 & 	0.266191 & -22.3976 & 0.266239 & -22.3944 & -22.1634\\
+			 & 	0.05 & 	0.265896 & -22.4173 & 0.265968 & -22.4124 & -22.2088\\
+			 & 	0.06 & 	0.265951 & -22.4136 & 0.266042 & -22.4076 & -22.2649\\
+			 & 	0.07 & 	0.266352 & -22.3870 & 0.266444 & -22.3808 & -22.3320\\
+			 & 	0.08 & 	0.267095 & -22.3377 & 0.267160 & -22.3335 & -22.4103\\
+			 & 	0.09 & 	0.268180 & -22.2664 & 0.268174 & -22.2669 & -22.5001\\
+	\midrule
+			 & 	0.002 & 0.270609 & -22.1089 & 0.270609 & -22.1089 & -22.0898\\
+			 & 	0.003 & 0.270429 & -22.1204 & 0.270429 & -22.1204 & -22.0844\\
+			 & 	0.004 & 0.270197 & -22.1353 & 0.270198 & -22.1353 & -22.0880\\
+			 & 	0.005 & 0.270065 & -22.1439 & 0.270065 & -22.1439 & -22.0854\\
+			 & 	0.006 & 0.269886 & -22.1555 & 0.269886 & -22.1555 & -22.0868\\
+			 & 	0.007 & 0.269723 & -22.1660 & 0.269724 & -22.1660 & -22.0866\\
+			 & 	0.008 & 0.269554 & -22.1770 & 0.269554 & -22.1769 & -22.0875\\
+			 & 	0.009 & 0.269391 & -22.1875 & 0.269392 & -22.1874 & -22.0883\\
+	\bottomrule
+	\end{tabular}
+	\caption{$^1P$ Scattering Length}
+	\label{tab:PWaveScatLen1}
+\end{table}
+
+
+
+\begin{table}[H]
+	\centering
+	\normalsize
+	\begin{tabular}{c c | c c | c c | c}
+	\toprule
+			& & Gao Expansion & & Gao Full & & Definition \\
+			& $\kappa$ & $K_l^1$ & $a_1$ & $K_l^1$ & $a_1$ & $a_1$ \\
+	\midrule
+		$^3P$ & 0.01 & -0.775059 & 1.36657 & -0.775063 & 1.36653 & 1.48837\\
+			& 0.02 & -0.788680 & 1.26164 & -0.788717 & 1.26136 & 1.49952\\
+			& 0.03 & -0.801051 & 1.16944 & -0.801174 & 1.16853 & 1.51773\\
+			& 0.04 & -0.812094 & 1.08951 & -0.812385 & 1.08743 & 1.54225\\
+			& 0.05 & -0.821813 & 1.02094 & -0.822378 & 1.01700 & 1.57249\\
+			& 0.06 & -0.830232 & 0.962839 & -0.831201 & 0.956228 & 1.60764\\
+			& 0.07 & -0.837385 & 0.914392 & -0.838912 & 0.904152 & 1.64646\\
+			& 0.08 & -0.843359 & 0.874562 & -0.845623 & 0.859613 & 1.68879\\
+			& 0.09 & -0.848295 & 0.842075 & -0.851496 & 0.821207 & 1.73130\\
+	\midrule
+			 & 0.003 & -0.763982 & 1.45465 & -0.763983 & 1.45464 & 1.49615\\
+			 & 0.004 & -0.764749 & 1.44847 & -0.764750 & 1.44846 & 1.4852\\
+			 & 0.005 & -0.767334 & 1.42773 & -0.767334 & 1.42772 & 1.48313\\
+			 & 0.006 & -0.769323 & 1.41186 & -0.769324 & 1.41185 & 1.48510\\
+			 & 0.007 & -0.770696 & 1.40095 & -0.770698 & 1.40094 & 1.48716\\
+			 & 0.008 & -0.772284 & 1.38839 & -0.772287 & 1.38837 & 1.48708\\
+			 & 0.009 & -0.773553 & 1.37839 & -0.773556 & 1.37836 & 1.48747\\
+	\bottomrule
+	\end{tabular}
+	\caption{$^3P$ Scattering Length}
+	\label{PWaveScatLen3}
+\end{table}
+
+
+
+\end{document}

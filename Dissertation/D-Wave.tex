@@ -1,0 +1,347 @@
+\documentclass[Dissertation.tex]{subfiles} 
+\begin{document}
+
+
+\chapter{D-Wave}
+\label{chp:DWave}
+
+
+\section{D-Wave Wavefunction}
+
+\begin{equation}
+\Psi_t^\pm = \bar{S} + \tan \eta_t^\pm \, \bar{C} + \sum_{i=1}^N c_i \bar{\phi}_{1i} + \sum_{j=1}^N d_j \bar{\phi}_{2j} + \sum_{j=1}^N f_k \bar{\phi}_{12k}
+\label{eq:DWaveSimple}
+\end{equation}
+
+
+
+
+
+\noindent The $\bar{S}$ and $\bar{C}$ must have both symmetries, so \textbf{@TODO: Explain}
+\begin{subequations}
+\label{eq:DWaveSandCBar}
+\begin{align}
+\bar{S} &= \frac{Y_{20}(\theta_\rho,\phi_\rho)S_{22} \pm Y_{20}(\theta_{\rho^\prime},\phi_{\rho^\prime})S_{23} }{\sqrt{2}} \label{eq:DWaveSBar} \\
+\bar{C} &= \frac{Y_{20}(\theta_\rho,\phi_\rho)C_{22} \pm Y_{20}(\theta_{\rho^\prime},\phi_{\rho^\prime})C_{23} }{\sqrt{2}} \label{eq:DWaveCBar} 
+\end{align}
+\end{subequations}
+
+\noindent with
+\begin{subequations}
+\label{eq:DWaveSandC}
+\begin{alignat}{2}
+S_{22} &={}&\Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) &\sqrt{2\kappa} \,j_2\!\left(\kappa\rho\right) \label{eq:PWaveS22Def} \\
+S_{23} &={}&\Phi_{Ps}\left(r_{13}\right) \Phi_H\left(r_2\right) &\sqrt{2\kappa} \,j_2\!\left(\kappa\rho^\prime\right) \label{eq:DWaveS23Def} \\
+C_{22} &={}-&\Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) &\sqrt{2\kappa} \,n_2\!\left(\kappa\rho\right) f_{sh}(\rho) \label{eq:DWaveC22Def} \\
+C_{23} &={}-&\Phi_{Ps}\left(r_{13}\right) \Phi_H\left(r_2\right) &\sqrt{2\kappa} \,n_2\!\left(\kappa\rho^\prime\right) f_{sh}(\rho^\prime). \label{eq:PWaveC23Def}
+\end{alignat}
+\end{subequations}
+
+\noindent The shielding factor, $f_{sh}(\rho)$, is given by
+\beq
+f_{sh}(\rho) = \left[1 - \ee^{-\mu \rho} \left(1+\frac{\mu}{2}\rho\right)\right]^5.
+\label{eq:DWaveShielding}
+\eeq
+The first and second derivatives of this shielding factor are needed in the derivations of the matrix elements, and it is worthwhile to work them out separately.
+\begin{subequations}
+\label{eq:DWaveShieldingDer}
+\begin{align}
+f_{sh}^\prime(\rho) &= \frac{5}{32} \ee^{-5 \mu \rho} \mu (1 + \mu \rho) (2 - 2 \ee^{\mu \rho} + \mu \rho)^4 \\
+f_{sh}^{\prime\prime}(\rho) &= -\frac{5}{32} \ee^{-5 \mu \rho} \mu^2 (2 - 2 \ee^{\mu \rho} + \mu \rho)^3 \left[4 + 2\mu\rho (5 - \ee^{\mu \rho}) + 5 \mu^2 \rho^2\right]
+\end{align}
+\end{subequations}
+
+\noindent The short-range terms are given by
+\begin{subequations}
+\label{eq:DWavePhiBar}
+\begin{align}
+\bar{\phi}_{1i} &= \left(1 \pm P_{23}\right) Y_{20}(\theta_1) r_1^2 \phi_i \label{eq:DWavePhi1i}\\
+\bar{\phi}_{2j} &= \left(1 \pm P_{23}\right) Y_{20}(\theta_2) r_2^2 \phi_j \label{eq:DWavePhi2j}\\
+\bar{\phi}_{12k} &= \left(1 \pm P_{23}\right) \psi_{(1,1,2,0)}(\theta_1,\theta_2) r_1 r_2 \phi_k, \label{eq:DWavePhi12k}
+\end{align}
+\end{subequations}
+
+\noindent where $\phi_i$, $\phi_j$ and $\phi_k$ are given by (\ref{eq:PhiDef}).  We also use the shortcuts
+\begin{subequations}
+\label{eq:DWavePhi}
+\begin{align}
+\phi_{1i} &= r_1^2 \phi_i \\
+\phi_{2j} &= r_2^2 \phi_j \\
+\phi_{2j} &= r_1 r_2 \phi_k.
+\end{align}
+\end{subequations}
+
+
+\noindent The $j_2(\kappa\rho)$ and $n_2(\kappa\rho)$ are the spherical Bessel and Neumann functions given by \cite[p. 729]{Weber}
+\begin{subequations}
+\label{eq:PWaveBessel}
+\begin{align}
+j_2(x) & = \left(\frac{3}{x^3}-\frac{1}{x}\right)\sin x - \frac{3}{x^2}\cos x \label{eq:Bessel2} \\
+n_2(x) & = -\left(\frac{3}{x^3}-\frac{1}{x}\right)\cos x - \frac{3}{x^2}\sin x. \label{eq:Neumann2}
+\end{align}
+\end{subequations}
+
+\noindent The $Y_{20}(\theta)$ are an abbreviated form of the spherical harmonics, since there is azimuthal symmetry.  For the P-wave, these are
+\beq
+\label{eq:PWaveSpherHarm}
+Y_{20}(\theta) = Y_{20}(\theta,\varphi) = \sqrt{\frac{5}{16\pi}} (3\cos^2\theta - 1).
+\eeq
+
+
+
+\section{D-Wave Short-Range -- Short-Range Integrals}
+\label{sec:DWaveShortShort}
+
+\begin{align}
+\label{eq:DWavePhi1Phi1}
+\left(\bar{\phi}_{1i},L \bar{\phi}_{1j}\right) = &2 \cdot 2\pi \int{ \Bigg\{ \sum_{k=1}^3 \left[ \boldsymbol{\nabla}_{\!\mathbf{r}_k} \nonumber \phi_{1i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1j} \pm \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1j}^\prime \right] } \\
+\nonumber  &+ \left. \left[\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2}\kappa^2 + \frac{6}{r_1^2} \right] \right. \\
+ &\;\;\;\;\; \times \left(\phi_{1i} \phi_{1j} \pm \phi_{1i} \phi_{1j}^\prime \right) \Bigg\} d\tau_{int}
+\end{align}
+
+\begin{align}
+\label{eq:DWavePhi2Phi2}
+\left(\bar{\phi}_{2i},L \bar{\phi}_{2j}\right) = 2 & \cdot 2\pi \int \Bigg\{ \sum_{k=1}^3 \left[ \boldsymbol{\nabla}_{\!\mathbf{r}_k} \nonumber \phi_{2i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2j} \pm \left(1-\tfrac{3}{2}\sin^2\theta_{23}\right) \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2j}^\prime \right]  + \frac{6}{r_2^2}\phi_{2i}\phi_{2j} \\
+ \nonumber &\mp 3 \phi_{2i} \phi_{2j}^\prime \cos\theta_{23} \left[p_i \frac{r_1}{r_3 r_{13}^2} (\cos\theta_{12} - \cos\theta_{23} \cos\theta_{13}) + m_j^\prime \frac{r_1}{r_2 r_{12}^2}(\cos\theta_{13} - \cos\theta_{23} \cos\theta_{12})\right.\\
+ \nonumber & \left. \;\;\;\;\;  + \sin^2\theta_{23} \left(q_i \frac{r_2}{r_3 r_{23}^2} + q_j^\prime \frac{r_3}{r_2 r_{23}^2} \right) \right] \\
+ \nonumber &+ \left. \left[\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2}\kappa^2 \right] \right. \\
+ &\;\;\;\;\; \times \left[\phi_{2i} \phi_{2j} \pm \left(1-\tfrac{3}{2}\sin^2\theta_{23}\right) \phi_{2i} \phi_{2j}^\prime \right] \Bigg\} d\tau_{int}
+\end{align}
+
+\begin{align}
+\label{eq:DWavePhi1Phi2}
+\left(\bar{\phi}_{1i},L \bar{\phi}_{2j}\right) = 2 & \cdot 2\pi \int \Bigg\{ \sum_{k=1}^3 \left[ \left(1-\tfrac{3}{2}\sin^2\theta_{12}\right) \boldsymbol{\nabla}_{\!\mathbf{r}_k} \nonumber \phi_{1i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2j} \pm \left(1-\tfrac{3}{2}\sin^2\theta_{13}\right) \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2j}^\prime \right] \\
+ \nonumber &\mp 3 \phi_{1i} \phi_{2j} \cos\theta_{12} \left[q_i \frac{r_3}{r_2 r_{23}^2} (\cos\theta_{13} - \cos\theta_{12} \cos\theta_{23}) + p_j \frac{r_3}{r_1 r_{13}^2}(\cos\theta_{23} - \cos\theta_{12} \cos\theta_{13})\right.\\
+ \nonumber & \left. \;\;\;\;\;  + \sin^2\theta_{12} \left(m_i \frac{r_1}{r_2 r_{12}^2} + m_j \frac{r_2}{r_1 r_{12}^2} \right) \right] \\
+ \nonumber &\mp 3 \phi_{1i} \phi_{2j}^\prime \cos\theta_{13} \left[q_i \frac{r_2}{r_3 r_{23}^2} (\cos\theta_{12} - \cos\theta_{13} \cos\theta_{23}) + m_j^\prime \frac{r_2}{r_1 r_{12}^2}(\cos\theta_{23} - \cos\theta_{12} \cos\theta_{13})\right.\\
+ \nonumber & \left. \;\;\;\;\;  + \sin^2\theta_{13} \left(p_i \frac{r_1}{r_3 r_{13}^2} + p_j^\prime \frac{r_3}{r_1 r_{13}^2} \right) \right] \\
+ \nonumber &+ \left. \left[\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2}\kappa^2 \right] \right. \\
+ &\;\;\;\;\; \times \left[\left(1-\tfrac{3}{2}\sin^2\theta_{12}\right) \phi_{1i} \phi_{2j} \pm \left(1-\tfrac{3}{2}\sin^2\theta_{13}\right) \phi_{1i} \phi_{2j}^\prime \right] \Bigg\} d\tau_{int}
+\end{align}
+
+\begin{align}
+\label{eq:DWavePhi2Phi1}
+\left(\bar{\phi}_{2i},L \bar{\phi}_{1j}\right) = 2 & \cdot 2\pi \int \Bigg\{ \sum_{k=1}^3 \left(1-\tfrac{3}{2}\sin^2\theta_{12}\right) \left[ \boldsymbol{\nabla}_{\!\mathbf{r}_k} \nonumber \phi_{2i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1j} \pm \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1j}^\prime \right] \\
+ \nonumber &\mp 3 \phi_{2i} \phi_{1j} \cos\theta_{12} \left[p_i \frac{r_3}{r_1 {r_{13}}^2} (\cos\theta_{23} - \cos\theta_{12} \cos\theta_{13}) + q_j \frac{r_3}{r_2 {r_{23}}^2}(\cos\theta_{13} - \cos\theta_{12} \cos\theta_{23})\right.\\
+ \nonumber & \left. \;\;\;\;\;  + \sin^2\theta_{12} \left(m_i \frac{r_2}{r_1 {r_{12}}^2} + m_j \frac{r_1}{r_2 {r_{12}}^2} \right) \right] \\
+ \nonumber &\mp 3 \phi_{2i} \phi_{1j}^\prime \cos\theta_{12} \left[p_i \frac{r_3}{r_1 r_{13}^2} (\cos\theta_{23} - \cos\theta_{12} \cos\theta_{13}) + q_j^\prime \frac{r_3}{r_2 {r_{23}}^2}(\cos\theta_{13} - \cos\theta_{12} \cos\theta_{23})\right.\\
+ \nonumber & \left. \;\;\;\;\;  + \sin^2\theta_{12} \left(m_i \frac{r_2}{r_1 {r_{12}}^2} + m_j^\prime \frac{r_1}{r_2 {r_{12}}^2} \right) \right] \\
+ \nonumber &+ \left. \left[\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2}\kappa^2 \right] \right. \\
+ &\;\;\;\;\; \times \left(1-\tfrac{3}{2}\sin^2\theta_{12}\right) \left( \phi_{2i} \phi_{12j} \pm \phi_{2i} \phi_{1j}^\prime \right) \Bigg\} d\tau_{int}
+\end{align}
+
+
+
+
+\section{D-Wave Short-Range -- Long-Range Integrals}
+\label{sec:DWaveShortLong}
+
+To simplify these equations, define
+\begin{align}
+\nonumber \mathscr{L} S = \frac{L S}{Y_{20}(\theta_\rho)} = & \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) \Phi_{Ps}(r_{12}) \Phi_H(r_3) \sqrt{2\kappa} \, j_2(\kappa\rho) \\
+\nonumber \mathscr{L} C = \frac{L C}{Y_{20}(\theta_\rho)} = & - \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) \Phi_{Ps}(r_{12}) \Phi_H(r_3) \sqrt{2\kappa} \, n_2(\kappa\rho) f_{sh}(\rho) \\
+& - \Phi_{Ps}(r_{12}) \Phi_H(r_3) \sqrt{2\kappa} \frac{1}{2\rho} \left\{ \left[4 n_2(\kappa\rho) - 2 \kappa\rho \, n_1(\kappa\rho) \right] f_{sh}^\prime(\rho) - \rho \, n_2(\kappa\rho) f_{sh}^{\prime\prime}(\rho) \right\}.
+\end{align}
+Equivalently,
+\begin{align}
+\mathscr{L} S^\prime &= \frac{L S^\prime}{Y_{20}(\theta_{\rho^\prime})} \\
+\mathscr{L} C^\prime &= \frac{L C^\prime}{Y_{20}(\theta_{\rho^\prime})}.
+\end{align}
+
+Each of the following equations has two forms that can be used.
+
+%\begin{align}
+%\label{eq:DWavePhi1SBar}
+%\nonumber \left(\bar{\phi}_{1i},L \bar{S}\right) = \sqrt{2} \cdot 2\pi & \int \left[ \left(1 - \frac{3 r_2^2 \sin^2\theta_{12}}{8 \rho^2} \right) \left(\phi_{1i} \pm \phi_{1i}^\prime \right) \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_{22} \right] d\tau_{int} \\
+%\nonumber = \sqrt{2} \cdot 2\pi & \int \phi_{1i} \left[ \left(1 - \frac{3 r_2^2 \sin^2\theta_{12}}{8 \rho^2} \right) \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_{22} \right. \\
+%& \pm \left. \left(1 - \frac{3 r_3^2 \sin^2\theta_{13}}{8 {\rho^\prime}^2} \right) \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) S_{23} \right] d\tau_{int}
+%\end{align}
+
+\begin{align}
+\label{eq:DWavePhi1SBar}
+\nonumber \left(\bar{\phi}_{1i},L \bar{S}\right) = & \sqrt{2} \cdot 2\pi \int \left(1 - \frac{3 r_2^2 \sin^2\theta_{12}}{8 \rho^2} \right) \left(\phi_{1i} \pm \phi_{1i}^\prime \right) \mathscr{L}S \, d\tau_{int} \\
+=& \sqrt{2} \cdot 2\pi \int \phi_{1i} \left[ \left(1 - \frac{3 r_2^2 \sin^2\theta_{12}}{8 \rho^2} \right) \mathscr{L}S \pm \left(1 - \frac{3 r_3^2 \sin^2\theta_{13}}{8 {\rho^\prime}^2} \right) \mathscr{L}S^\prime \right] d\tau_{int}
+\end{align}
+
+\begin{align}
+\label{eq:DWavePhi1CBar}
+\nonumber \left(\bar{\phi}_{1i},L \bar{C}\right) = & \sqrt{2} \cdot 2\pi \int \left(1 - \frac{3 r_2^2 \sin^2\theta_{12}}{8 \rho^2} \right) \left(\phi_{1i} \pm \phi_{1i}^\prime \right) \mathscr{L}C \, d\tau_{int} \\
+=& \sqrt{2} \cdot 2\pi \int \phi_{1i} \left[ \left(1 - \frac{3 r_2^2 \sin^2\theta_{12}}{8 \rho^2} \right) \mathscr{L}C \pm \left(1 - \frac{3 r_3^2 \sin^2\theta_{13}}{8 {\rho^\prime}^2} \right) \mathscr{L}C^\prime \right] d\tau_{int}
+\end{align}
+
+%\begin{align}
+%\label{eq:DWavePhi2SBar}
+%\nonumber \left(\bar{\phi}_{2j},L \bar{S}\right) = \sqrt{2} \cdot 2\pi & \int \left\{ \left[ \left(1 - \frac{3 r_1^2 \sin^2\theta_{12}}{8 \rho^2} \right) \phi_{2j} \pm \left( \frac{3(r_1 \cos\theta_{13} + r_2 \cos\theta_{23})^2}{8 \rho^2} - \frac{1}{2} \right) \phi_{2j}^\prime \right] \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_{22} \right\} d\tau_{int} \\
+%\nonumber = \sqrt{2} \cdot 2\pi & \int \phi_{2j} \left[ \left(1 - \frac{3 r_1^2 \sin^2\theta_{12}}{8 \rho^2} \right) \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_{22} \right. \\
+%& \pm \left. \left( \frac{3(r_1 \cos\theta_{12} + r_3 \cos\theta_{23})^2}{8 {\rho^\prime}^2} - \frac{1}{2} \right) \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) S_{23} \right]  d\tau_{int}
+%\end{align}
+
+\begin{align}
+\label{eq:DWavePhi2SBar}
+\nonumber \left(\bar{\phi}_{2j},L \bar{S}\right) = & \sqrt{2} \cdot 2\pi \int \left[ \left( \frac{3(r_1 \cos\theta_{12} + r_2)^2}{8 \rho^2} - \frac{1}{2} \right) \phi_{2j} \pm \left( \frac{3(r_1 \cos\theta_{13} + r_2 \cos\theta_{23})^2}{8 \rho^2} - \frac{1}{2} \right) \phi_{2j}^\prime \right] \mathscr{L}S \, d\tau_{int} \\
+=& \sqrt{2} \cdot 2\pi \int \phi_{2j} \left[ \left( \frac{3(r_1 \cos\theta_{12} + r_2)^2}{8 \rho^2} - \frac{1}{2} \right) \mathscr{L}S \pm \left( \frac{3(r_1 \cos\theta_{12} + r_3 \cos\theta_{23})^2}{8 {\rho^\prime}^2} - \frac{1}{2} \right) \mathscr{L}S^\prime \right] d\tau_{int}
+\end{align}
+
+\begin{align}
+\label{eq:DWavePhi2CBar}
+\nonumber \left(\bar{\phi}_{2j},L \bar{C}\right) = & \sqrt{2} \cdot 2\pi \int \left[ \left( \frac{3(r_1 \cos\theta_{12} + r_2)^2}{8 \rho^2} - \frac{1}{2} \right) \phi_{2j} \pm \left( \frac{3(r_1 \cos\theta_{13} + r_2 \cos\theta_{23})^2}{8 \rho^2} - \frac{1}{2} \right) \phi_{2j}^\prime \right] \mathscr{L}C \, d\tau_{int} \\
+=& \sqrt{2} \cdot 2\pi \int \phi_{2j} \left[ \left( \frac{3(r_1 \cos\theta_{12} + r_2)^2}{8 \rho^2} - \frac{1}{2} \right) \mathscr{L}C \pm \left( \frac{3(r_1 \cos\theta_{12} + r_3 \cos\theta_{23})^2}{8 {\rho^\prime}^2} - \frac{1}{2} \right) \mathscr{L}C^\prime \right] d\tau_{int}
+\end{align}
+
+\begin{align}
+\label{eq:DWavePhi3SBar}
+\nonumber \left(\bar{\phi}_{12k},L \bar{S}\right) = \sqrt{2} \cdot & \frac{1}{4} \sqrt{\frac{3\pi}{5}} \int \mathscr{L}S \left\{ \left[ 8 \cos\theta_{12} + \frac{3 r_1 r_2 \sin^2\theta_{12}}{\rho^2} \right] \phi_{12k} \right. \\
+\nonumber & \left. \pm \frac{1}{\sqrt{2}} \left[ 3 \frac{\cos\theta_{13}(r_1^2 + r_1 r_2 \cos\theta_{12}) + \cos\theta_{23}(r_1 r_2 + r_2^2 \cos\theta_{12})}{\rho^2} - 4 \cos\theta_{13} \right] \phi_{12k}^\prime  \right\} d\tau_{int} \\
+\nonumber = \sqrt{2} \cdot & \frac{1}{4} \sqrt{\frac{3\pi}{5}} \int \phi_{12k} \left\{ \left[ 8 \cos\theta_{12} + \frac{3 r_1 r_2 \sin^2\theta_{12}}{\rho^2} \right] \mathscr{L}S \right. \\
+& \pm \left. \frac{1}{\sqrt{2}} \left[ 3 \frac{\cos\theta_{12}(r_1^2 + r_1 r_3 \cos\theta_{13}) + \cos\theta_{23}(r_1 r_3 + r_3^2 \cos\theta_{13})}{{\rho^\prime}^2} - 4 \cos\theta_{12} \right] \mathscr{L}S^\prime \right\} d\tau_{int}
+\end{align}
+
+\begin{align}
+\label{eq:DWavePhi3CBar}
+\nonumber \left(\bar{\phi}_{12k},L \bar{C}\right) = \sqrt{2} \cdot & \frac{1}{4} \sqrt{\frac{3\pi}{5}} \int \mathscr{L}C \left\{ \left[ 8 \cos\theta_{12} + \frac{3 r_1 r_2 \sin^2\theta_{12}}{\rho^2} \right] \phi_{12k} \right. \\
+\nonumber & \left. \pm \frac{1}{\sqrt{2}} \left[ 3 \frac{\cos\theta_{13}(r_1^2 + r_1 r_2 \cos\theta_{12}) + \cos\theta_{23}(r_1 r_2 + r_2^2 \cos\theta_{12})}{\rho^2} - 4 \cos\theta_{13} \right] \phi_{12k}^\prime  \right\} d\tau_{int} \\
+\nonumber = \sqrt{2} \cdot & \frac{1}{4} \sqrt{\frac{3\pi}{5}} \int \phi_{12k} \left\{ \left[ 8 \cos\theta_{12} + \frac{3 r_1 r_2 \sin^2\theta_{12}}{\rho^2} \right] \mathscr{L}C \right. \\
+& \pm \left. \frac{1}{\sqrt{2}} \left[ 3 \frac{\cos\theta_{12}(r_1^2 + r_1 r_3 \cos\theta_{13}) + \cos\theta_{23}(r_1 r_3 + r_3^2 \cos\theta_{13})}{{\rho^\prime}^2} - 4 \cos\theta_{12} \right] \mathscr{L}C^\prime \right\} d\tau_{int}
+\end{align}
+
+
+\section{D-Wave Long-Range -- Long-Range Integrals}
+\label{sec:DWaveLongLong}
+
+\begin{align}
+\label{eq:DWaveSBarSBar}
+\left(\bar{S},L\bar{S}\right) = \pm 2\pi \int \left\{ S_{22} S_{23} \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) \left[ \frac{3}{8} \frac{(4\rho^2 + 4 {\rho^\prime}^2 - r_{23}^2)^2}{16 \rho^2 {\rho^\prime}^2} - \frac{1}{2} \right] \right\} d\tau_{int}
+\end{align}
+
+\begin{align}
+\label{eq:DWaveCBarSBar}
+\left(\bar{C},L\bar{S}\right) = \pm 2\pi \int \left\{ S_{22} C_{23} \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) \left[ \frac{3}{8} \frac{(4\rho^2 + 4 {\rho^\prime}^2 - r_{23}^2)^2}{16 \rho^2 {\rho^\prime}^2} - \frac{1}{2} \right] \right\} d\tau_{int}
+\end{align}
+
+\begin{align}
+\label{eq:DWaveSBarCBar}
+\nonumber \left(\bar{S},L\bar{C}\right) = 2\pi \int \Bigg\{ \pm & S_{23} C_{22} \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) \left[ \frac{3}{8} \frac{(4\rho^2 + 4 {\rho^\prime}^2 - r_{23}^2)^2}{16 \rho^2 {\rho^\prime}^2} - \frac{1}{2} \right] \\
+\nonumber - & \left[ S_{22} \pm \left( \frac{3}{8} \frac{(4\rho^2 + 4 {\rho^\prime}^2 - r_{23}^2)^2}{16 \rho^2 {\rho^\prime}^2} - \frac{1}{2} \right) S_{23} \right] \sqrt{2\kappa} \, \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \\
+& \times \frac{1}{2\rho} \left( \left[ 4 n_2(\kappa\rho) - 2 \kappa\rho \, n_1(\kappa\rho) \right] f_{sh}^\prime(\rho) - \rho \, n_2(\kappa\rho) f_{sh}^{\prime\prime}(\rho) \right) \Bigg\} d\tau_{int}
+\end{align}
+
+\begin{align}
+\label{eq:DWaveCBarCBar}
+\nonumber \left(\bar{C},L\bar{C}\right) = 2\pi \int \Bigg\{ \pm & C_{23} C_{22} \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) \left[ \frac{3}{8} \frac{(4\rho^2 + 4 {\rho^\prime}^2 - r_{23}^2)^2}{16 \rho^2 {\rho^\prime}^2} - \frac{1}{2} \right] \\
+\nonumber - & \left[ C_{22} \pm \left( \frac{3}{8} \frac{(4\rho^2 + 4 {\rho^\prime}^2 - r_{23}^2)^2}{16 \rho^2 {\rho^\prime}^2} - \frac{1}{2} \right) C_{23} \right] \sqrt{2\kappa} \, \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \\
+& \times \frac{1}{2\rho} \left( \left[ 4 n_2(\kappa\rho) - 2 \kappa\rho \, n_1(\kappa\rho) \right] f_{sh}^\prime(\rho) - \rho \, n_2(\kappa\rho) f_{sh}^{\prime\prime}(\rho) \right) \Bigg\} d\tau_{int}
+\end{align}
+
+
+\section{Results}
+
+
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+$\kappa$ & $\delta^+ (\omega = 6)$ & $\delta^+$ \cite{Blackwood2002} & $\delta^+$ \cite{Walters2004} & $\delta^+$ \cite{Ray1997} & $\delta^+$ \cite{Adhikari1999} \\
+\hline
+$0.05$ & $4.832^{-6}$ & $6.01^{-6}$ & --- & --- & --- \\
+$0.1$ & $1.358^{-4}$ & $1.46^{-4}$ & $2.02^{-4}$ & $3.18^{-5}$ & $1.8^{-5}$ \\
+$0.2$ & $2.987^{-3}$ & $3.15^{-3}$ & $3.49^{-3}$ & $9.17^{-4}$ & $5.3^{-4}$ \\
+$0.3$ & $1.592^{-2}$ & $1.65^{-2}$ & $1.73^{-2}$ & $5.87^{-3}$ & $3.5^{-3}$ \\
+$0.4$ & $4.933^{-2}$ & $4.95^{-2}$ & $5.22^{-2}$ & $1.97^{-2}$ & $1.2^{-2}$ \\
+$0.5$ & $1.113^{-1}$ & $1.08^{-1}$ & $1.16^{-1}$ & $4.54^{-2}$ & $2.9^{-2}$ \\
+$0.6$ & $2.027^{-1}$ & $1.94^{-1}$ & $2.08^{-1}$ & $8.09^{-2}$ & $5.5^{-2}$ \\
+$0.7$ & $3.215^{-1}$ & $3.02^{-1}$ & $3.24^{-1}$ & $1.19^{-1}$ & $8.8^{-2}$ \\
+\hline
+\end{tabular}
+\caption{D-Wave Singlet Results}
+\label{tab:DWaveSinglet}
+\end{center}
+\end{table}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=7in]{OtherDWaveSingletResults}
+	\caption{Comparison of D-Wave Singlet Results}
+	\label{fig:OtherDWaveSingletResults}
+\end{figure}
+
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$\kappa$ & $\delta^- (\omega = 6)$ & $\delta^-$ \cite{Blackwood2002} & $\delta^-$ \cite{Ray1997} & $\delta^-$ \cite{Adhikari1999} \\
+\hline
+$0.05$ & $2.352^{-6}$ & $4.16^{-6}$ & --- & --- \\
+$0.1$ & $5.808^{-5}$ & $8.48^{-5}$ & $-3.00^{-5}$ & $-1.4^{-5}$ \\
+$0.2$ & $7.120^{-4}$ & $1.15^{-3}$ & $-8.56^{-4}$ & $-4.0^{-4}$ \\
+$0.3$ & $1.065^{-3}$ & $2.84^{-3}$ & $-5.37^{-3}$ & $-2.6^{-3}$ \\
+$0.4$ & $-2.002^{-3}$ & $2.37^{-3}$ & $-1.76^{-2}$ & $-8.6^{-3}$ \\
+$0.5$ & $-1.122^{-2}$ & $-4.66^{-3}$ & $-3.95^{-2}$ & $-2.0^{-2}$ \\
+$0.6$ & $-2.647^{-2}$ & $-1.85^{-2}$ & $-7.03^{-2}$ & $-3.6^{-2}$ \\
+$0.7$ & $-4.451^{-2}$ & $-3.27^{-2}$ & $-1.06^{-1}$ & $-5.5^{-2}$ \\
+\hline
+\end{tabular}
+\caption{D-Wave Triplet Results}
+\label{tab:DWaveTriplet}
+\end{center}
+\end{table}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=7in]{OtherDWaveTripletResults}
+	\caption{Comparison of D-Wave Triplet Results}
+	\label{fig:OtherDWaveTripletResults}
+\end{figure}
+
+
+\subsection{Extrapolations}
+
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{c | c c c}
+\toprule
+$\kappa$ & $\delta^+ (\omega \rightarrow \infty) (4-6)$ & $\delta^- (\omega \rightarrow \infty) (4-6)$  \\
+\midrule
+0.1 & $1.516^{-4}$ & N/A \\
+0.2 & $3.051^{-3}$ & N/A \\
+0.3 & $1.606^{-2}$ & N/A \\
+0.4 & $4.972^{-2}$ & N/A \\
+0.5 & $1.122^{-1}$ & N/A \\
+0.6 & $2.044^{-1}$ & N/A \\
+0.7 & $1.324^{-1}$ & N/A \\
+\bottomrule
+\end{tabular}
+\caption{D-Wave Extrapolation Results}
+\label{tab:DWaveExtrap}
+\end{center}
+\end{table}
+
+
+
+\subsection{Resonance Parameters}
+
+\setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
+\setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
+\begin{table}[H]
+\centering
+\begin{tabular}{l c c}
+\toprule
+Method & $^1E_R \text{ (eV)}$ & $^1\Gamma \text{ (eV)}$ \\
+\midrule
+Complex rotation (Yan \emph{et al} 1998) \cite{Ho1998a} & $4.710 \pm 0.0027$ & $0.0925 \pm 0.0054$  \\
+Optical potential (Di Rienzi \emph{et al} 2002) \cite{DiRienzi2002a} & $4.729$ & $0.327$ \\
+Stabilization (Yan and Ho 2003) \cite{Yan2003} & $4.714$ & $0.0969$ \\
+Close coupling (Walters \emph{et al} 2004 \cite{Walters2004}) & $4.899$ & $0.0872$ \\
+This work & $4.7189 \pm 0.0002$ & $0.0860 \pm 0.0005$ \\
+\bottomrule
+\end{tabular}
+\caption{D-Wave Resonance Parameters} % title of Table
+\label{tab:DWaveResonancesOther}
+\end{table}
+
+
+\end{document}

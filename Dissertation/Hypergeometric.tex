@@ -1,0 +1,53 @@
+\documentclass[main.tex]{subfiles} 
+\begin{document}
+
+\newpage
+\chapter{\texorpdfstring{$_2F_1$} {Hypergeometric} Identity}
+\label{chp:Hypergeometric}
+
+The backwards recursion relation for the hypergeometric function is given in references \cite{Drake1995} and \cite{Frolov2003} as
+\beq
+\label{eq:HyperIdentity}
+_2F_1(1,a;c;z) = 1 + \left( \frac{a}{c} \right) z \,\,_2F_1(1,a+1;c+1;z).
+\eeq
+
+From Abramowitz and Stegun \cite{Abramowitz1965}, the definition of the hypergeometric function is given by
+\beq
+\label{eq:HyperDef}
+_2F_1(\alpha,\beta;\gamma;z) = 1 + \sum_{n=1}^{\infty} \frac{(\alpha)_n \cdot (\beta)_n}{(\gamma)_n} \frac{z^n}{n!},
+\eeq
+where $(x)_n$ is the Pochhammer symbol given by \cite{Abramowitz1965}
+\beq
+\label{eq:PochhammerDef}
+(x)_n \equiv \frac{\Gamma(x+n)}{\Gamma(x)} = x(x+1) \cdots  (x+n-1)
+\eeq
+with $(x)_0 = 1$.  A special case is $(x)_1 = n!$, where $n!$ is the factorial.
+
+Using the above definition of the Pochhammer symbol, we can easily see that
+\beq
+\label{eq:PochPlus1}
+(x+1)_n = \frac{(x+n)}{(x)} \cdot (x)_n = \frac{(x)_{n+1}}{x}.
+\eeq
+
+From \ref{eq:HyperDef} and \ref{eq:PochPlus1}, 
+\begin{align}
+\nonumber _2F_1(1,a+1;c+1;z) &= 1 + \sum_{n=1}^{\infty} \frac{(1)_n \cdot (a+1)_n}{(c+1)_n} \frac{z^n}{n!} = 1 + \sum_{n=1}^{\infty} \frac{(a+1)_n}{(c+1)_n} z^n \\
+&= 1 + \left(\frac{c}{a}\right) \sum_{n=1}^{\infty} \frac{(a)_{n+1}}{(c)_{n+1}} z^n = 1 + \left(\frac{c}{a}\right) \sum_{n=2}^{\infty} \frac{(a)_n}{(c)_n} z^{n-1}.
+\end{align}
+Multiplying by $\left(\frac{c}{a}\right) z$, we now have
+\beq
+\label{eq:Hyper1}
+\left(\frac{c}{a}\right) z _2F_1(1,a+1;c+1;z) = \left(\frac{c}{a}\right) z + \sum_{n=2}^{\infty} \frac{(a)_n}{(c)_n} z^n = \sum_{n=1}^{\infty} \frac{(a)_n}{(c)_n} z^n.
+\eeq
+
+From the definition in equation \ref{eq:HyperDef},
+\beq
+\label{eq:Hyper2}
+_2F_1(1,a;c;z) = 1 + \sum_{n=1}^{\infty} \frac{(a)_n}{(c)_n} z^n,
+\eeq
+which, when combined with equation \ref{eq:Hyper1}, gives the final result of
+\beq
+_2F_1(1,a;c;z) = 1 + \left( \frac{a}{c} \right) z \,\,_2F_1(1,a+1;c+1;z).
+\eeq
+
+\end{document}
