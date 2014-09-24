@@ -603,7 +603,7 @@ where $\bar{\phi}_{1i}^\pm$ is the same as in equation (\ref{eq:PhiDef}). The Ra
 The Born approximation \cite{?} uses only the first term in equations \ref{eq:TrialWave} and \ref{eq:TrialWaveHigher}. This leads to the Born approximation of
 \begin{equation}
 \label{eq:Born}
-\delta_\ell \approx -\left(\bar{S}_\ell,\mathcal{L}\bar{S}_\ell \right)\, .
+\tan\delta_\ell \approx -\left(\bar{S}_\ell,\mathcal{L}\bar{S}_\ell \right)\, .
 \end{equation}
 We also consider a modified Born approximation that uses the first two terms in equations \ref{eq:TrialWave} and \ref{eq:TrialWaveHigher}, excluding the short-range terms. This gives a better approximation than the Born for most cases and is roughly equivalent to the Born in the other cases. Figure \ref{fig:fwave-born.pdf} shows comparison between the Born, modified Born and full complex Kohn methods for the F-wave.
 \begin{figure}[ht]
@@ -614,7 +614,23 @@ We also consider a modified Born approximation that uses the first two terms in 
 \end{figure}
 
 
+\subsection{Cross Sections}
 
+\begin{equation}
+\label{eq:PartialCross}
+\sigma_\ell^\pm = \frac{4(2\ell+1)}{\kappa^2} \sin^2 \delta_\ell^\pm
+\end{equation}
+
+\begin{equation}
+\label{eq:TotalCross}
+\sigma_\pm(\kappa) = \frac{4}{\kappa^2} \sum_{\ell=0}^\infty (2\ell+1) \sin^2 \delta_\ell^\pm
+\end{equation}
+
+\begin{align}
+\label{eq:DiffCross}
+\nonumber \frac{d\sigma^\pm}{d\Omega} = \frac{1}{\kappa^2} & \sum_{\ell=0}^\infty \sum_{\ell^\prime=0}^\infty (2\ell+1)(2\ell^\prime+1) \exp\left\{\ii \left[\delta_\ell(\kappa) - \delta_{\ell^\prime}(\kappa) \right] \right\} \\
+& \times \sin\delta_\ell^\pm(\kappa) \sin\delta_{\ell^\prime}^\pm(\kappa) P_\ell(\cos\theta) P_{\ell^\prime}(\cos\theta)
+\end{align}
 
 \section{Numerics}
 \label{sec:Numerical}
@@ -679,6 +695,8 @@ To further improve the convergence of the short-range--long-range matrix element
 %In principle, the overlap and H matrices (\emph{name?}) are symmetric, but this is not true to machine precision due to truncation and rounding.  If the energy eigenvalues from the upper and lower triangles differ by more than $\epsilon$, which we take as $10^{-7}$ (in atomic units), the last added term is considered problematic and discarded. Terms are also discarded if the eigenvalue routine fails when they are added.
 %
 %For larger basis sets, this algorithm becomes extremely slow, as determining the eigenvalues is an $O(N^3)$ operation.  It can easily be parallelized, since we are computing the eigenvalues for a large number of matrices. Our program has been parallelized using OpenMP for intranode communications and Open MPI for internode communications. \emph{Previous sentence needed?} Todd's algorithm provides the best converged energy for a set of terms, albeit at a cost of computational speed.
+
+
 
 (\emph{As mentioned in L\"uchow's paper...}) The primary motivation for using this method is to only use terms that contribute significantly to the energy eigenvalues. Terms that do not contribute significantly are more likely to introduce linear dependence into our matrices. The reordering introduced by this method is referred to as `Todd ordering' in this paper, as compared to the original ordering indicated by increasing $\omega$.
 
@@ -1071,10 +1089,18 @@ The Walters data \cite{Walters2004} in figure \ref{fig:combined-cross-sections} 
 
 \begin{figure}[ht]
 	\centering
+	\includegraphics[width=5in]{diff-cross-section-2D-kappa}
+	\caption{Differential Cross Sections}
+	\label{fig:diff-cross-section-2D-kappa}
+\end{figure}
+
+\begin{figure}[ht]
+	\centering
 	\includegraphics[width=5in]{combined-diff-cross-sections}
 	\caption{Differential Cross Sections}
 	\label{fig:combined-diff-cross-sections}
 \end{figure}
+
 
 
 
