@@ -9,12 +9,13 @@
 import pymysql as mdb
 import numpy as np
 import sys
+from collections import Counter
 
 try:
-	db = mdb.connect(host="localhost", user="root", passwd="koW4Gjgot2", db="psh_data")
+    db = mdb.connect(host="localhost", user="phaseread", passwd="upvdlp2K6f", db="psh_data")
 except mdb.Error, e:
-	sys.stderr.write("[ERROR] %d: %s\n" % (e.args[0], e.args[1]))
-	exit()
+    sys.stderr.write("[ERROR] %d: %s\n" % (e.args[0], e.args[1]))
+    exit()
 #cursor = db.cursor(mdb.cursors.DictCursor)
 cursor = db.cursor()
 
@@ -32,12 +33,21 @@ def GetKappaTablenames(cursor, mysqlstring, points, minK=0.0, maxK=1000000.0):
             continue
         entries.append(row)
     entries.sort()  # Sorts in increasing order of kappa
+
+    kappalist = []
+    for e in entries:
+        kappalist += [e[0]]
+    dupes = [item for item, count in Counter(kappalist).iteritems() if count > 1]
+    if len(dupes) > 0:
+        print "Warning! List for %s has duplicate kappa values: %s" % (mysqlstring, dupes)
+
     return entries
 
 
 def GetSLS(cursor, mysqlstring, lvalue, points, minK=0.0, maxK=1000000.0):
     """ Retrieves the SLS entries for all data tables. minK and maxK allow for selection of
         a smaller range than the full set. """
+    #@TODO: Combine this with GetKappaTablenames?
     #@TODO: Combine this with GetKappaTablenames?
     slstable = []
     kappatable = []

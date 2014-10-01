@@ -49,8 +49,8 @@
 
 %Denton
 
-%\usepackage{graphicx}  % Include figure files
-\usepackage[draft]{graphicx}  % Do not include figure files
+\usepackage{graphicx}  % Include figure files
+%\usepackage[draft]{graphicx}  % Do not include figure files
 
 \usepackage{dcolumn} % Align table columns on decimal point
 \usepackage{bm} % bold math
@@ -68,6 +68,7 @@
 
 
 \setlength{\abovecaptionskip}{0pt}  % Reduce space between figure and caption (default of 10pt)
+%\usepackage[papersize={8.5in,11in}]{geometry}
 
 
 
@@ -79,6 +80,8 @@
 \title{A Detailed Investigation of Low-Energy Positronium-Hydrogen Scattering}
 
 \author{Denton Woods}
+\email{denton.woods@unt.edu}
+\homepage{http://www.dentonwoods.com}
 \author{S. J. Ward}
 \affiliation{Department of Physics, University of North Texas, Denton, Texas 76203, USA}
  %\email{Second.Author@institution.edu}
@@ -92,12 +95,10 @@
              %  but any date may be explicitly specified
 
 \begin{abstract}
-
-
-
-   \end{abstract}
+Abstract goes here
+\end{abstract}
    
-%\pacs{Valid PACS appear here}
+\pacs{31.15.xt Variational techniques; 34.50.-s Scattering of atoms and molecules; 36.10.Dr Positronium}
 %\keywords{Suggested keywords}
 \maketitle
 
@@ -105,23 +106,8 @@
 
 
 
-\preprint{APS/123-QED}
+%\preprint{APS/123-QED}
 
-\title{Detailed Investigations of Positronium-Hydrogen Collisions}
-
-\author{Denton Woods }
-\affiliation{Department of Physics, University of North Texas, Denton TX 76103-1427}
-\author{and \\ S. J. Ward}%
- %\email{Second.Author@institution.edu}
-
-%\author{Charlie Author}
-% \homepage{http://www.Second.institution.edu/~Charlie.Author}
-\affiliation{Department of Physics, University of North Texas, Denton TX 76103-1427}
-%Second institution and/or address\\
-%This line break forced% with \\ }%
-
-\date{\today}% It is always \today, today,
-             %  but any date may be explicitly specified
 
 
 \noindent
@@ -161,7 +147,7 @@ for the S and T-matrices. The generalized Kohn---
 The complex Kohn variational method is known to suffer
 from far few anomalous singularities than the
 Kohn or inverse Kohn variational method \cite{}. 
-(See Cooper's papers.) (Verified the test of Cooper---T-matrix
+(See Cooper's papers.) (Verified the test of Cooper---T matrix
 phase shift/Kohn goes through it.)
 The second extension that we considered was to use
 the procedure by Todd to systematically remove terms that
@@ -250,20 +236,13 @@ and thus can be extended to higher energies.
 
 Goal is to provide accurate and benchmark calculations.
 
-Atomic units are used throughout unless otherwise stated.
+Phase shifts are expressed in radians. Atomic units are used throughout unless otherwise stated. For conversions to electron-volts (eV), we use the conversion factor 1 au = {27.21138505(60) eV} \cite{NISTConversions}.
+
 \vskip 0.5truecm
 \noindent
 \section{Theory}
 
 \subsection{The Positronium-Hydrogen System}
-
-%begin{figure}[!h]
-%	\centering
-%	\includegraphics[height=3in]{PsHCoordinates}
-%	\caption{Positronium Hydride Coordinate System}
-%	\label{fig:PsHCoords}
-%\end{figure}
-
 \begin{figure}[!h]
 	\centering
 	\includegraphics[height=2in]{PsHCoordinates}
@@ -271,186 +250,16 @@ Atomic units are used throughout unless otherwise stated.
 	\label{fig:PsHCoords}
 \end{figure}
 
-We are investigating low-energy elastic ground-state positronium with ground-state hydrogen (Ps-H) for energies up to the excitation threshold of Ps(n=2) at approximately 5.101 eV. Previous work on Ps-H scattering used the Kohn and inverse Kohn approach \cite{VanReeth2003, VanReeth2004}. The complex Kohn methods are more stable and suffer less from Schwartz singularities than the Kohn, inverse Kohn and generalized Kohn methods \cite{Cooper2010}. We have used both the T-matrix complex Kohn and generalized Kohn methods. These methods are described in sections \ref{sec:ComplexKohn} and \ref{sec:GenKohn}. All of our final results presented in section \ref{sec:Results} use the T-matrix complex Kohn method, so we present our complex-valued wavefunctions here.
+We are investigating low-energy elastic ground-state positronium with ground-state hydrogen (Ps-H) for energies up to the excitation threshold of Ps(n=2) at approximately 5.101 eV. Previous work on Ps-H scattering used the Kohn and inverse Kohn approach \cite{VanReeth2003, VanReeth2004}. The complex Kohn methods are more stable and suffer less from Schwartz singularities than the Kohn, inverse Kohn and generalized Kohn methods \cite{Cooper2010}. All of our final results presented in section \ref{sec:Results} use the S matrix complex Kohn method, but we present a general wavefunction that can be used in any of the variational Kohn methods, as described in section \ref{sec:Kohn}.
 
-For S-wave scattering of positronium from hydrogen, our very flexible complex-valued trial scattering wavefunction is
-\begin{equation}
-\Psi_0^{\pm,t} = \bar{S_0} + T_0^{\pm,t} \, \bar{W_0} + \sum_{i=1}^N c_i \bar{\phi}_{i1},
-\label{eq:TrialWave}
-\end{equation}
-where the superscript $t$ indicates that this is a trial wavefunction. The plus sign indicates the spatially symmetric singlet, and the minus sign indicates the spatially antisymmetric triplet case. The total orbital angular momentum, $L$, is equal to the orbital angular momentum of the incoming Ps, $\ell$. For partial waves $(L = \ell > 0)$,
-\begin{equation}
-\Psi_\ell^{\pm,t} = \bar{S_\ell} + T^{\pm,t}_\ell \, \bar{W}_\ell + \sum_{i=1}^N c_{i,\ell} \bar{\phi}_{i1} + \sum_{j=1}^N d_{j,\ell} \bar{\phi}_{j2}.
-\label{eq:TrialWaveHigher}
-\end{equation}
-The scattering wavefunctions contain both the long-range terms and short-range correlation terms for small interparticle distances. The coordinate system used in these is shown in figure \ref{fig:PsHCoords}. The variable $\rho$ describes the position of the center of mass of the positronium atom, i.e. $\vec{\rho} = \frac{1}{2}\left(\vec{r_1} + \vec{r_2}\right)$. The long-range terms are
-\begin{subequations}
-\label{eq:SCPhiDef}
-\begin{align}
-\bar{S}_\ell &= \frac{1\pm P_{23}}{\sqrt{2}}Y_{\ell 0}(\theta_\rho,\phi_\rho)\Phi_{Ps,1s}\left(r_{12}\right) \Phi_{H,1S}\left(r_3\right) \sqrt{2\kappa} \,j_\ell\left(\kappa\rho\right) \label{eq:SBar} \\
-\bar{C}_\ell &= \frac{1\pm P_{23}}{\sqrt{2}}Y_{\ell 0}(\theta_\rho,\phi_\rho)\Phi_{Ps,1s}\left(r_{12}\right) \Phi_{H,1S}\left(r_3\right) \sqrt{2\kappa} \,n_\ell\left(\kappa\rho\right) f_\ell(\rho) \text{ and}\label{eq:CBar} \\
-\bar{W}_\ell &= \bar{C}_\ell + \ii \bar{S}_\ell.
-\end{align}
-\end{subequations}
-Note that this is different than Cooper et al.\ \cite{Cooper2010}, in that we do not use a variable $\tau$, and our $\bar{W}$ is their $\bar{T}$ but with $\bar{C}$ and $\bar{S}$ swapped, which gives an outgoing wave. $P_{23}$ is the exchange operator for the two electrons. $\Phi_{Ps,1S}\left(r_{12}\right)$ and $\Phi_{H,1S}\left(r_3\right)$ are the ground state wavefunctions of positronium and hydrogen, respectively. The shielding factor, $f_\ell(\rho)$, ensures that the singularity of the Neumann function is removed at the origin and is chosen to be
-\begin{equation}
-f_\ell(\rho) = \left[1 - \ee^{-\mu \rho} \left(1+\frac{\mu}{2}\rho\right)\right]^{m_\ell}.
-\label{eq:PartialWaveShielding}
-\end{equation}
-The $m_\ell$ is an integer chosen for each $\ell$ so that $\bar{C}$ behaves like $\bar{S}$ as $\rho \rightarrow 0$.
-
-The short-range terms are highly correlated Hylleraas-type functions, including all interparticle distances, given by
-\begin{subequations}
-\label{eq:PhiDef}
-\begin{align}
-\bar{\phi}_{i1} &= \left(1 \pm P_{23}\right) Y_{\ell 0}(\theta_1,\phi_1) r_1^{k_i + \ell} r_2^{l_i} r_{12}^{m_i} r_3^{n_i} r_{13}^{p_i} r_{23}^{q_i} \text{ and} \label{eq:PartialWavePhi1i}\\
-\bar{\phi}_{j2} &= \left(1 \pm P_{23}\right) Y_{\ell 0}(\theta_2,\phi_2) r_1^{k_i} r_2^{l_i + \ell} r_{12}^{m_i} r_3^{n_i} r_{13}^{p_i} r_{23}^{q_i} \label{eq:PartialWavePhi2j}.
-\end{align}
-\end{subequations}
-The variable $\omega$ is an integer $\geq 0$ that determines the maximum number of terms in the basis set. \todo{Needed?} For a chosen value of $\omega$, the integer powers of $r_i$ and $r_{ij}$ are constructed in such a way that $k_i + l_i + m_i + n_i + p_i + q_i \leq \omega$, with all $k_i$, $l_i$, $m_i$, $n_i$, $q_i$ and $p_i$ $\geq 0$.
-
-These short-range terms represent the angular momentum as being placed on either the positron ($r_1$) or on the electron on the Ps atom ($r_2$).
-Following up on the NIMB article \cite{VanReeth2004} which had difficulty with convergence for the P-wave triplet, we also tried a wavefunction where the angular momentum was placed on the electron of the H atom ($r_3$) and on the Ps ($\rho$). However, this did not improve convergence for us and was even marginally worse in some cases. The numerical techniques discussed in section \ref{sec:Numerical} improved our convergence.
-
-For partial waves with $L>1$, the angular momentum could be shared between both particles in the Ps atom \cite{Schwartz1961a}. An investigation of the contribution to the final results from each symmetry for e$^+$-Ps scattering \cite{VanReeth1997} has revealed that the mixed symmetries were not important, and because of the complexity of the analytical evaluation of the various matrix elements, we have omitted the mixed symmetry terms.
-
-
-%THE HAMILTONIAN
-The Hamiltonian for the fundamental Coulombic system is
-\begin{align}
-H = -\frac{1}{2} \nabla_{r_1}^2 - \frac{1}{2} \nabla_{r_2}^2 - \frac{1}{2} \nabla_{r_3}^2 + \frac {1}{r_1}-\frac {1}{r_2}-\frac {1}{r_3}-\frac {1}{r_{12}}-\frac {1}{r_{13}}+\frac {1}{r_{23}}
-	\label{Hamiltonian1}
-\end{align}
-which can also be expressed in terms of the variables associated with the Ps coordinates as
-\begin{align}
-H = -\frac{1}{4} \nabla_{\rho}^2 - \frac{1}{2} \nabla_{r_3}^2 - \nabla_{r_{12}}^2 + \frac {1}{r_1}-\frac {1}{r_2}-\frac {1}{r_3}-\frac {1}{r_{12}}-\frac {1}{r_{13}}+\frac {1}{r_{23}}
-	\label{Hamiltonian2}
-\end{align}
-
-
-
-
-\subsection{Complex Kohn Variational Principle (T-Matrix)}
-\label{sec:ComplexKohn}
-
-We give the derivation of the complex Kohn variational functional for all partial waves using a complex wavefunction.
-
-The functional for the full wavefunctions in equations \ref{eq:TrialWave} and \ref{eq:TrialWaveHigher} is (dropping the $\ell$ subscript and the $\pm$ superscript for clarity),
-\begin{equation}
-I[\Psi^t] = \left(\Psi^t, L \Psi^t \right) = \int \Psi^t L \Psi^t \,d\tau,
-\label{eq:IlDefPsi}
-\end{equation}
-with
-\beq
-\mathcal{L} = 2(H - E).
-\label{eq:LDef}
-\eeq
-Notice that the wavefunction is not conjugated, as pointed out by Cooper \emph{et al} \cite{Cooper2010}.
-
-We assume our trial wavefunction is a small variation of the exact wavefunction, or
-\beq
-\Psi^t = \Psi + \delta \Psi
-\label{eq:PsiTrialRelation}
-\eeq
-
-It can be shown that solving for $\delta I$, the variation of $I$, gives a result for the variational method of
-\beq
-\delta I = I[\Psi^t] - I[\Psi] = I[\Psi^t] = T_\ell^t - T_\ell + I[\delta \Psi].
-\label{eq:IlPsiVariation}
-\eeq
-Neglecting the second order term in $\delta \Psi$ and realizing that $I[\Psi] = 0$, we get a functional for the variational T-matrix, $T^v$ of
-\beq
-T^v = T^t - I[\Psi^t].
-\label{eq:ComplexKohnVariation}
-\eeq
-
-Using the stationary property of the complex Kohn functional, we get
-\beq
-\frac{\partial T^v}{\partial T^t} = 0  \text{ and } \frac{\partial T^v}{\partial c_i} = 0 \text{ where $i = 1,\ldots,N$},
-\label{eq:ComplexKohnStationary}
-\eeq
-which can be written as a matrix equation. For the S-wave, this is
-\begin{equation}
-\label{eq:ComplexKohnMatrix}
-\begin{bmatrix} 
- (\bar{W},\mathcal{L}\bar{W}) & (\bar{W},\mathcal{L}\bar{\phi}_1) & \cdots & (\bar{W},\mathcal{L}\bar{\phi}_j) & \cdots\\
- (\bar{\phi}_1,\mathcal{L}\bar{W}) & (\bar{\phi}_1,\mathcal{L}\bar{\phi}_1) & \cdots & (\bar{\phi}_1,\mathcal{L}\bar{\phi}_j) & \cdots\\
- \vdots & \vdots & \ddots & \vdots \\
- (\bar{\phi}_i,\mathcal{L}\bar{W}) & (\bar{\phi}_i,\mathcal{L}\bar{\phi}_1) & \cdots & (\bar{\phi}_i,\mathcal{L}\bar{\phi}_j) & \cdots\\
- \vdots & \vdots & & \vdots & \\
-\end{bmatrix}
-\begin{bmatrix}
-T^t\\
-c_1\\
-\vdots\\
-c_i\\
-\vdots
-\end{bmatrix}
-= -
-\begin{bmatrix}
-(\bar{W},\mathcal{L}\bar{S}) \\
-(\bar{\phi}_1,\mathcal{L}\bar{S}) \\
-\vdots \\
-(\bar{\phi}_i,\mathcal{L}\bar{S}) \\
-\vdots
-\end{bmatrix}.
-\end{equation}
-This matrix equation can be rewritten as $\textbf{\emph{AX = -B}}$. For higher partial waves, the matrix equation looks the same but includes the second symmetry short-range terms. Finally, we solve for $T^v$, from which we obtain our phase shifts.
-\begin{equation}
-T^v = -\textbf{\emph{B}}^{tr} \textbf{\emph{X}} - (\bar{S},\mathcal{L} \bar{S})
-\end{equation}
-
-To determine the phase shifts, we use the relation for the T-matrix given by Nesbet \cite{Nesbet2003} by
-\begin{equation}
-\tan \delta = \frac{T}{1 + \ii T}.
-\end{equation}
-
-
-\subsection{Generalized Kohn Variational Method}
-\label{sec:GenKohn}
-
-We use the complex Kohn method for all of our results given in this paper due to its stability, but as described in section \ref{sec:Truncation}, we also use the generalized Kohn variational method \cite{Cooper2010} to determine how many short-range terms we can use. The wavefunction given in (\ref{eq:TrialWaveHigherGen}) has an adjustable parameter $\tau$, which we vary. Special cases of this are the Kohn method for $\tau = 0$ and the inverse Kohn method for $\tau = \pi/2$.
-
-For $L > 0$,
-\begin{equation}
-\widetilde{\Psi}_\ell^{\pm,t} = \widetilde{S_\ell} + \tan(\delta^{\pm,t}_\ell - \tau) \, \widetilde{C}_\ell + \sum_{i=1}^N \widetilde{c}_{i,\ell} \bar{\phi}_{i1} + \sum_{j=1}^N \widetilde{d}_{j,\ell} \bar{\phi}_{j2}.
-\label{eq:TrialWaveHigherGen}
-\end{equation}
-where
-\begin{equation}
-\begin{bmatrix}
-\widetilde{S} \\
-\widetilde{C}
-\end{bmatrix}
-=
-\begin{bmatrix}
-\cos(\tau) & \sin(\tau) \\
--\sin(\tau) & \cos(\tau)
-\end{bmatrix}
-\begin{bmatrix}
-\bar{S} \\
-\bar{C}
-\end{bmatrix}.
-\end{equation}
-For $L = 0$ as in the complex Kohn case, we only have the first summation.
-
-Then the generalized real Kohn functional for $L \geq 0$ is
-\begin{equation}
-\tan(\delta^{v}_\ell - \tau) = \tan(\delta^{t}_\ell - \tau) - I\left[\widetilde{\Psi}_\ell^{t}\right].
-\label{eq:GenKohnVariation}
-\end{equation}
-
-
-
-\subsection{The Positronium-Hydrogen System (Again)}
 For S-wave scattering of positronium from hydrogen, our flexible complex-valued trial scattering wavefunction is
 \begin{equation}
-\Psi_0^{\pm,t} = \widetilde{S_0} + Y_0^{\pm,t} \, \widetilde{C}_0 + \sum_{i=1}^N c_i \bar{\phi}_{i1},
+\Psi_0^{\pm,t} = \bar{S_0} + L_0^{\pm,t} \, \bar{C}_0 + \sum_{i=1}^{N(\omega)} c_i \phi_{i1},
 \label{eq:TrialWave}
 \end{equation}
 where the superscript $t$ indicates that this is a trial wavefunction. The plus sign indicates the spatially symmetric singlet, and the minus sign indicates the spatially antisymmetric triplet case. The total orbital angular momentum, $L$, is equal to the orbital angular momentum of the incoming Ps, $\ell$. For partial waves $(L = \ell > 0)$,
 \begin{equation}
-\Psi_\ell^{\pm,t} = \widetilde{S}_\ell + Y^{\pm,t}_\ell \, \widetilde{C}_\ell + \sum_{i=1}^N c_{i,\ell} \bar{\phi}_{i1} + \sum_{j=1}^N d_{j,\ell} \bar{\phi}_{j2}.
+\Psi_\ell^{\pm,t} = \bar{S}_\ell + L^{\pm,t}_\ell \, \bar{C}_\ell + \sum_{i=1}^{N(\omega)} c_{i,\ell} \phi_{i1} + \sum_{i=N(\omega)+1}^{2N(\omega)} d_{i,\ell} \phi_{i2}.
 \label{eq:TrialWaveHigher}
 \end{equation}
 The scattering wavefunctions contain both the long-range terms and short-range correlation terms for small interparticle distances. The coordinate system used in these is shown in figure \ref{fig:PsHCoords}. The variable $\rho$ describes the position of the center of mass of the positronium atom, i.e. $\vec{\rho} = \frac{1}{2}\left(\vec{r_1} + \vec{r_2}\right)$. The long-range terms are given by
@@ -475,19 +284,48 @@ with
 \bar{C}_\ell &= \frac{1\pm P_{23}}{\sqrt{2}}Y_{\ell 0}(\theta_\rho,\phi_\rho)\Phi_{Ps,1s}\left(r_{12}\right) \Phi_{H,1S}\left(r_3\right) \sqrt{2\kappa} \,n_\ell\left(\kappa\rho\right) f_\ell(\rho). \label{eq:CBar}
 \end{align}
 \end{subequations}
-\todoi{There isn't much reason to use the bars here.}
+
+Note that our generalized T matrix is different than Cooper et al.\ \cite{Cooper2010}, in that our $\bar{S}$ and $\bar{C}$ are swapped, which gives an outgoing wave. \todo{Different location?} $P_{23}$ is the exchange operator for the two electrons. $\Phi_{Ps,1s}\left(r_{12}\right)$ and $\Phi_{H,1s}\left(r_3\right)$ are the ground state wavefunctions of positronium and hydrogen, respectively. The shielding factor, $f_\ell(\rho)$, ensures that the singularity of the Neumann function is removed at the origin and is chosen to be
+\begin{equation}
+f_\ell(\rho) = \left[1 - \ee^{-\mu \rho} \left(1+\frac{\mu}{2}\rho\right)\right]^{m_\ell}.
+\label{eq:PartialWaveShielding}
+\end{equation}
+The $m_\ell$ is an integer chosen for each $\ell$ so that $\bar{C}$ behaves like $\bar{S}$ as $\rho \rightarrow 0$.
+
+The short-range terms are highly correlated Hylleraas-type functions, including all interparticle distances, given by
+\begin{subequations}
+\label{eq:PhiDef}
+\begin{align}
+\bar{\phi}_{ij} &= \left(1 \pm P_{23}\right) Y_{\ell 0}(\theta_j,\phi_j) r_j^{\ell} r_1^{k_i} r_2^{l_i} r_{12}^{m_i} r_3^{n_i} r_{13}^{p_i} r_{23}^{q_i} \label{eq:PartialWavePhi}
+\end{align}
+\end{subequations}
+The variable $\omega$ is an integer $\geq 0$ that determines the maximum number of terms in the basis set. \todo{Needed?} For a chosen value of $\omega$, the integer powers of $r_i$ and $r_{ij}$ are constructed in such a way that $k_i + l_i + m_i + n_i + p_i + q_i \leq \omega$, with all $k_i$, $l_i$, $m_i$, $n_i$, $q_i$ and $p_i$ $\geq 0$. The first symmetry in equation \ref{eq:TrialWaveHigher} has $j = 1$ for $i=1$ to $N(\omega)$, and the second symmetry exists for $\ell > 0$, with $i = N(\omega)$ to $2N(\omega)$.
+
+These short-range terms represent the angular momentum as being placed on either the positron ($r_1$) or on the electron on the Ps atom ($r_2$, and $r_3$ with exchange).
+Following up on the NIMB article \cite{VanReeth2004} which had difficulty with convergence for the P-wave triplet, we also tried a wavefunction where the angular momentum was placed on the electron of the H atom ($r_3$) and on the Ps ($\rho$). However, this did not improve convergence for us and was even marginally worse in some cases. The numerical techniques discussed in section \ref{sec:Numerical} improved our convergence.
+
+For partial waves with $L>1$, the angular momentum could be shared between both particles in the Ps atom \cite{Schwartz1961a}. An investigation of the contribution to the final results from each symmetry for e$^+$-Ps scattering \cite{VanReeth1997} has revealed that the mixed symmetries were not important, and because of the complexity of the analytical evaluation of the various matrix elements, we have omitted the mixed symmetry terms where angular momentum is shared.
+
+% THE HAMILTONIAN
+The Hamiltonian for the fundamental Coulombic system is
+\begin{align}
+H = -\frac{1}{2} \nabla_{r_1}^2 - \frac{1}{2} \nabla_{r_2}^2 - \frac{1}{2} \nabla_{r_3}^2 + \frac {1}{r_1}-\frac {1}{r_2}-\frac {1}{r_3}-\frac {1}{r_{12}}-\frac {1}{r_{13}}+\frac {1}{r_{23}}
+	\label{Hamiltonian1}
+\end{align}
+which can also be expressed in terms of the variables associated with the Ps coordinates as
+\begin{align}
+H = -\frac{1}{4} \nabla_{\rho}^2 - \frac{1}{2} \nabla_{r_3}^2 - \nabla_{r_{12}}^2 + \frac {1}{r_1}-\frac {1}{r_2}-\frac {1}{r_3}-\frac {1}{r_{12}}-\frac {1}{r_{13}}+\frac {1}{r_{23}}
+	\label{Hamiltonian2}
+\end{align}
 
 
-\subsection{Kohn Variational Methods (Again)}
-\label{sec:GenKohn}
+\subsection{Kohn Variational Methods}
+\label{sec:Kohn}
 
-
-
-We give the derivation of the complex Kohn variational functional for all partial waves using a complex wavefunction.
-
+This derivation follows a similar procedure as that of \cite{Lucchese1989}, \cite{Cooper2010} and \cite{Armour1991}.
 The functional for the full wavefunctions in equations \ref{eq:TrialWave} and \ref{eq:TrialWaveHigher} is (dropping the $\ell$ subscript and the $\pm$ superscript for clarity),
 \begin{equation}
-I[\Psi^t] = \left(\Psi^t, L \Psi^t \right) = \int \Psi^t L \Psi^t \,d\tau,
+I[\Psi^t] = \left(\Psi^t, \mathcal{L} \Psi^t \right) = \int \Psi^t \mathcal{L} \Psi^t \,d\tau,
 \label{eq:IlDefPsi}
 \end{equation}
 with
@@ -502,22 +340,20 @@ We assume our trial wavefunction is a small variation of the exact wavefunction,
 \Psi^t = \Psi + \delta \Psi
 \label{eq:PsiTrialRelation}
 \eeq
-
 It can be shown that solving for $\delta I$, the variation of $I$, gives a result for the variational method of
 \beq
-\delta I = I[\Psi^t] - I[\Psi] = I[\Psi^t] = (Y_\ell^t - Y_\ell + I[\delta \Psi]) \det u.
+\delta I = I[\Psi^t] - I[\Psi] = I[\Psi^t] = (L^t - L + I[\delta \Psi]) \det u.
 \label{eq:IlPsiVariation}
 \eeq
-Neglecting the second order term in $\delta \Psi$ and realizing that $I[\Psi] = 0$, we get a functional for the variational T-matrix, $Y^v$ of
+Neglecting the second order term in $\delta \Psi$ and realizing that $I[\Psi] = 0$, we get a functional for the variational $L^v$ of
 \beq
-Y^v = Y^t - I[\Psi^t] / \det u.
+L^v = L^t - I[\Psi^t] / \det u.
 \label{eq:ComplexKohnVariation}
 \eeq
 
-
 Using the stationary property of the complex Kohn functional, we get
 \beq
-\frac{\partial Y^v}{\partial Y^t} = 0  \text{ and } \frac{\partial Y^v}{\partial c_i} = 0 \text{ where $i = 1,\ldots,N$},
+\frac{\partial L^v}{\partial L^t} = 0  \text{ and } \frac{\partial L^v}{\partial c_i} = 0 \text{ where $i = 1,\ldots,N$},
 \label{eq:ComplexKohnStationary}
 \eeq
 which can be written as a matrix equation. For the S-wave, this is
@@ -531,7 +367,7 @@ which can be written as a matrix equation. For the S-wave, this is
  \vdots & \vdots & & \vdots & \\
 \end{bmatrix}
 \begin{bmatrix}
-Y^t\\
+L^t\\
 c_1\\
 \vdots\\
 c_i\\
@@ -546,91 +382,76 @@ c_i\\
 \vdots
 \end{bmatrix}.
 \end{equation}
-This matrix equation can be rewritten as $\textbf{\emph{AX = -B}}$. For higher partial waves, the matrix equation looks the same but includes the second symmetry short-range terms. Finally, we solve for $Y^v$, from which we obtain our phase shifts.
+This matrix equation can be rewritten as $\textbf{\emph{AX = -B}}$. For higher partial waves, the matrix equation looks the same but includes the second symmetry short-range terms. Finally, we solve for $L^v$, from which we obtain our phase shifts.
 \begin{equation}
-Y^v = -\frac{1}{\det u} \left( \textbf{\emph{B}}^{tr} \textbf{\emph{X}} + (\widetilde{S},\mathcal{L} \widetilde{S}) \right)
+L^v = -\frac{1}{\det u} \left( \textbf{\emph{B}}^{tr} \textbf{\emph{X}} + (\widetilde{S},\mathcal{L} \widetilde{S}) \right)
 \end{equation}
 To determine the phase shifts, we use the relation given by \cite{Lucchese1989} as
 \begin{equation}
-K_\ell = \tan \delta_\ell = (u_{01} + u_{11} Y_\ell)(u_{00} + u_{10} Y_\ell)^{-1}.
+K_\ell = \tan \delta_\ell = (u_{01} + u_{11} L_\ell)(u_{00} + u_{10} L_\ell)^{-1}.
 \end{equation}
 
+%\begin{center}
+%\line(1,0){250}
+%\end{center}
 
-\begin{center}
-\line(1,0){250}
-\end{center}
-
-Generalized Kohn, $Y_\ell = \tan(\delta_\ell-\tau)$ and 
-$u = \left[ \begin{smallmatrix}
+We use different $u$ matrices to generate multiple Kohn methods, namely the
+\begin{align}
+&\text{generalized Kohn, } L_\ell = \tan(\delta_\ell-\tau), u = \left[ \begin{smallmatrix}
 \cos \tau & \sin \tau \\  -\sin \tau & \cos \tau
-\end{smallmatrix} \right]$
-
-For the Kohn, $Y_\ell = K_\ell$ and $u = \left[ \begin{smallmatrix}
-1 & 0 \\ 0 & 1
-\end{smallmatrix} \right]$.
-
-For the inverse Kohn, $Y_\ell = -K_\ell^{-1}$ and $u = \left[ \begin{smallmatrix}
-0 & 1 \\ -1 & 0
-\end{smallmatrix} \right]$.
-
-For the T-matrix complex Kohn, $Y_\ell = T_\ell$ and $u = \left[ \begin{smallmatrix}
-1 & 0 \\ \ii & 1
-\end{smallmatrix} \right]$.
-
-For the S-matrix complex Kohn, $Y_\ell = -S_\ell$ and $u = \left[ \begin{smallmatrix}
--\ii & 1 \\ \ii & 1
-\end{smallmatrix} \right]$.
-
-For the generalized T-matrix complex Kohn, $Y_\ell = T_\ell^\prime$ and $u = \left[ \begin{smallmatrix}
+\end{smallmatrix} \right], \label{eq:GenKohn}\\
+&\text{generalized T matrix Kohn, } L_\ell = T_\ell^\prime, u = \left[ \begin{smallmatrix}
 \cos\tau & \sin\tau \\ -\sin\tau + \ii \cos\tau & \cos\tau + \ii \sin\tau
-\end{smallmatrix} \right]$. This is related to $\delta_\ell$ by
-\begin{equation}
-\tan(\delta_\ell - \tau) = \frac{T_\ell^\prime}{1+\ii T_\ell^\prime}.
-\end{equation}
-
+\end{smallmatrix} \right], \label{eq:GenTKohn} \\
+\text{and}& \nonumber \\
+&\text{generalized S matrix Kohn, } L_\ell = S_\ell^\prime, u = \left[ \begin{smallmatrix}
+-\ii \cos\tau - \sin\tau & -\ii\sin\tau + \cos\tau \\ \ii\cos\tau - \sin\tau & \ii\sin\tau + \cos\tau
+\end{smallmatrix} \right]. \label{eq:GenSKohn}
+\end{align}
+For the case of $\tau = 0$, these give the Kohn, the T matrix and the S matrix, respectively. $\tau = \frac{\pi}{2}$ in equation \ref{eq:GenKohn} gives the inverse Kohn.
 
 
 \subsection{Bound State}
 As done earlier by Van Reeth and Humberston \cite{VanReeth2003,VanReeth2004}, we used the short-range correction part of the S-wave scattering wavefunction to compute the binding energy of $^1S$ PsH system. This allows us to determine the reliability of using our short-range terms for the Ps-H scattering problem. The wavefunction we use for the bound state is
 \begin{equation}
 \label{eq:BoundWavefn}
-\Psi^\pm = \sum_{i=1}^{N(\omega)} c_i \bar{\phi}_{1i}^\pm,
+\Psi^\pm = \sum_{i=1}^{N(\omega)} c_i \phi_{1i}^\pm,
 \end{equation}
-where $\bar{\phi}_{1i}^\pm$ is the same as in equation (\ref{eq:PhiDef}). The Rayleigh-Ritz method is used, and the optimization of the nonlinear parameters has been done using the both the Newton and simplex methods \cite{Yan1999,GSL}. For the triplet case and $L \neq 0$, even though there is not a bound state, we use the same method to optimize the nonlinear parameters to get the lowest energy. For $L > 0$, as in the scattering problem, our wavefunction includes both sets of short-range terms for this optimization.
+where $\phi_{1i}^\pm$ is the same as in equation (\ref{eq:PhiDef}). The Rayleigh-Ritz method is used, and the optimization of the nonlinear parameters has been done using the both the Newton and simplex methods \cite{Yan1999,GSL}. For the triplet case and $L \neq 0$, even though there is not a bound state, we use the same method to optimize the nonlinear parameters to get the lowest energy. For $L > 0$, as in the scattering problem, our wavefunction includes both sets of short-range terms for this optimization.
 
 
 \subsection{Born Approximations}
-The Born approximation \cite{?} uses only the first term in equations \ref{eq:TrialWave} and \ref{eq:TrialWaveHigher}. This leads to the Born approximation of
+The Born approximation \cite{?} uses only the first term in equations \ref{eq:TrialWave} and \ref{eq:TrialWaveHigher}. For the Kohn method, this leads to the Born approximation of
 \begin{equation}
 \label{eq:Born}
-\tan\delta_\ell \approx -\left(\bar{S}_\ell,\mathcal{L}\bar{S}_\ell \right)\, .
+\tan\delta_\ell \approx -(\widetilde{S}_\ell,\mathcal{L}\widetilde{S}_\ell )\, .
 \end{equation}
-We also consider a modified Born approximation that uses the first two terms in equations \ref{eq:TrialWave} and \ref{eq:TrialWaveHigher}, excluding the short-range terms. This gives a better approximation than the Born for most cases and is roughly equivalent to the Born in the other cases. Figure \ref{fig:fwave-born.pdf} shows comparison between the Born, modified Born and full complex Kohn methods for the F-wave.
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=3.4in]{fwave-born.pdf}
-	\caption{F-Wave Born Comparisons}
-	\label{fig:fwave-born.pdf}
-\end{figure}
-
+We also consider a modified Born approximation that uses the first two terms in equations \ref{eq:TrialWave} and \ref{eq:TrialWaveHigher}, excluding the short-range terms. This gives a better approximation than the Born for most cases and is roughly equivalent to the Born in the other cases.
 
 \subsection{Cross Sections}
 
-\begin{equation}
-\label{eq:PartialCross}
-\sigma_\ell^\pm = \frac{4(2\ell+1)}{\kappa^2} \sin^2 \delta_\ell^\pm
-\end{equation}
+We calculate the total elastic cross sections and the elastic differential cross sections using \cite{Bransden2003}, respectively
+
+%\begin{equation}
+%\label{eq:PartialCross}
+%\sigma_\ell^\pm = \frac{4(2\ell+1)}{\kappa^2} \sin^2 \delta_\ell^\pm
+%\end{equation}
 
 \begin{equation}
 \label{eq:TotalCross}
-\sigma_\pm(\kappa) = \frac{4}{\kappa^2} \sum_{\ell=0}^\infty (2\ell+1) \sin^2 \delta_\ell^\pm
+\sigma^\pm = \frac{4}{\kappa^2} \sum_{\ell=0}^\infty (2\ell+1) \sin^2 \delta_\ell^\pm
 \end{equation}
-
+and
 \begin{align}
 \label{eq:DiffCross}
 \nonumber \frac{d\sigma^\pm}{d\Omega} = \frac{1}{\kappa^2} & \sum_{\ell=0}^\infty \sum_{\ell^\prime=0}^\infty (2\ell+1)(2\ell^\prime+1) \exp\left\{\ii \left[\delta_\ell(\kappa) - \delta_{\ell^\prime}(\kappa) \right] \right\} \\
-& \times \sin\delta_\ell^\pm(\kappa) \sin\delta_{\ell^\prime}^\pm(\kappa) P_\ell(\cos\theta) P_{\ell^\prime}(\cos\theta)
+& \times \sin\delta_\ell^\pm(\kappa) \sin\delta_{\ell^\prime}^\pm(\kappa) P_\ell(\cos\theta) P_{\ell^\prime}(\cos\theta)\,.
 \end{align}
+Equation \ref{eq:TotalCross} is in units of $\pi a_0^2$, and equation \ref{eq:DiffCross} is in units of $\pi a_0^2 / \rm{sr}$. The singlet for each of the partial waves contributes $1/4$ to the total and differential cross sections, while the triplet contributes $3/4$.
+
+
+\subsection{Effective Range}
+
 
 \section{Numerics}
 \label{sec:Numerical}
@@ -660,7 +481,6 @@ r_1^{j_1} r_2^{j_2} r_3^{j_3} r_{12}^{j_{12}}
 r_{23}^{j_{23}} r_{31}^{j_{31}}
 e^{-(\bar{\alpha} r_1 + \bar{\beta} r_2 + \bar{\gamma} r_3)}\, .
 \end{equation}
-\todoi{Could this $I$ be confused with the $I$ functional in the Kohn section?}
 These integrals arise from evaluation of the matrix elements $(\phi_i, L \phi_j)$, $(\phi_i, H \phi_j)$ and $(\phi_i, \phi_j)$, where $H$ is the full Hamiltonian of the system,
 which is needed in both the bound state and scattering calculations. To verify our calculation of these integrals, we have also used the recursion relations of Pachucki \cite{Pachucki2004}.
 
@@ -679,7 +499,7 @@ Y_{\ell_1 m_1} (\textit{\textbf{r}}_1) Y_{\ell_2 m_2} (\textit{\textbf{r}}_2) Y_
 
 \subsection{Long-Range Integrations}
 \label{sec:LongInt}
-The long-range--long-range and short-range--long-range matrix elements in equations \ref{eq:ComplexKohnMatrix} and \ref{eq:GenKohnMatrix} are evaluted using Gauss-Laguerre and Gauss-Legendre quadratures. Due to a cusp in the integrands, the $r_2$ and $r_3$ integrations are split into Gauss-Legendre quadratures before the cusp and Gauss-Laguerre after the cusp. \todo{Always true?}
+The long-range--long-range and short-range--long-range matrix elements in equations \ref{eq:ComplexKohnMatrix} and \ref{eq:GenKohnMatrix} are evaluted using Gauss-Laguerre and Gauss-Legendre quadratures. Due to a cusp in the integrands, the $r_2$ and $r_3$ integrations are split into Gauss-Legendre quadratures before the cusp and Gauss-Laguerre after the cusp. \todo{Always true?} Previous calculations \cite{VanReeth2003,VanReeth2004} treated these cusps as unimportant at 25 au, while we have extended it to 100 au before we consider them important.
 
 To further improve the convergence of the short-range--long-range matrix elements, we investigated the integrands. The biggest source of difficulty in converging these results comes through the Gaussian-Laguerre quadratures in the $r_1$, $r_2$ and $r_3$ integrations. Specifically, the integrands do not fall off quickly enough, and the tails of the integrands are not adequately represented. This can be resolved by introducing more abscissae in the quadratures, which puts some points farther out. This brute force approach can increase the computational time greatly, so we took another approach to further increase the accuracy. For each of the Gauss-Laguerre quadratures, we introduce an extra $e^{-\lambda r_i}$ and remove it with $e^{\lambda r_i}$ after the quadrature, pushing our abscissae further out without increasing the number of integration points.
 
@@ -696,41 +516,35 @@ To further improve the convergence of the short-range--long-range matrix element
 %
 %For larger basis sets, this algorithm becomes extremely slow, as determining the eigenvalues is an $O(N^3)$ operation.  It can easily be parallelized, since we are computing the eigenvalues for a large number of matrices. Our program has been parallelized using OpenMP for intranode communications and Open MPI for internode communications. \emph{Previous sentence needed?} Todd's algorithm provides the best converged energy for a set of terms, albeit at a cost of computational speed.
 
-
-
-(\emph{As mentioned in L\"uchow's paper...}) The primary motivation for using this method is to only use terms that contribute significantly to the energy eigenvalues. Terms that do not contribute significantly are more likely to introduce linear dependence into our matrices. The reordering introduced by this method is referred to as `Todd ordering' in this paper, as compared to the original ordering indicated by increasing $\omega$.
+We use a method from Todd \cite{Todd2007} to remove short-range terms that contribute to linear dependence. This is a variation of the procedure from L\"uchow and Kleindienst \cite{Luchow1992}. They use multiple blocks, while we optimize with a single block. They also use a criteria of $\Delta E$ to determine when to discard terms. Instead, we compare the lowest eigenvalues from the separate calculations using the upper and lower triangular matrices in LAPACK's \texttt{dsygv} routine \cite{LAPACK}, discarding terms when they cause the difference to be greater than a predetermined threshold. The reordering introduced by this method is referred to as ``Todd ordering'' in this paper, as compared to the original ordering indicated by increasing $\omega$.
 
 
 \subsection{Selection of Short-Range Terms}
 \label{sec:Truncation}
-We have observed that the short-range--short-range terms used in the same order as the output of the Todd algorithm will generate better-converged phase shifts, and we can include more short-range terms before linear dependence becomes a problem. The phase shifts are calculated using this set of short-range terms for the generalized Kohn variational method for multiple $\tau$ values. We further truncate this basis set where the phase shifts for the different Kohn methods begin to diverge. This can be seen in figure \ref{??}. The final results in section \ref{sec:Results} use the T-matrix complex Kohn with this set of short-range terms.
+We have observed that the short-range--short-range terms used in the same order as the output of the Todd algorithm will generate better-converged phase shifts, and we can include more short-range terms before linear dependence becomes a problem. The phase shifts are calculated using this set of short-range terms for the generalized Kohn variational method for multiple $\tau$ values. We further truncate this basis set where the phase shifts for the different Kohn methods begin to diverge. This can be seen in figure \ref{??}. The final results in section \ref{sec:Results} use the S matrix complex Kohn with this set of short-range terms.
 
 \todoi{Graphs of with and without Todd ordering for energy and phase shifts?}
 
-For the S-wave singlet, we noticed an additional property of the phase shift graphs. When $\delta_0^+$ is plotted for one Kohn method with respect to $N(\omega)$ for multiple $\mu$ values, the phase shifts agree well for the different $\mu$ values up until linear dependence becomes apparent, as seen in figure \ref{??}. We used this criteria to determine where to truncate the basis set, stopping at 1505 terms for $^1S$. We did not see a similar effect for the S-wave triplet.
-
-\todoi{Figure of this}
+For the S-wave singlet, we noticed an additional property of the phase shift graphs. When $\delta_0^+$ is plotted for one Kohn method with respect to $N(\omega)$ for multiple $\mu$ values, the phase shifts agree well for the different $\mu$ values up until linear dependence becomes apparent. We used this criteria to determine where to truncate the basis set, stopping at 1505 terms for $^1S$. We did not see a similar effect for the S-wave triplet.
 
 
 \subsection{Fittings}
 As with the previous Kohn calculation of Van Reeth and Humberston \cite{VanReeth2004}, we fitted our computed phase shifts for the S-wave and P-wave to the resonance formula
-\beq
+\begin{equation}
 \delta(E) = A + B E + C E^2 + \arctan \left[ \frac{^1\Gamma}{2(^1E_R - E)} \right] + \arctan \left[ \frac{^2\Gamma}{2(^2E_R - E)} \right]
-\eeq
+\end{equation}
 to extract out the positions ($^1E_R$ and $^2E_R$) and widths
 ($^1\Gamma$ and $^2\Gamma$) of the two resonances. 
 This formula is comprised of the Breit-Wigner resonance
 formula for the two resonances and allows for a slowly varying
 background. The D-wave and F-wave resonance fits were performed without the second $\arctan$ term, as they have a single resonance. 
-The data from each variant of the Kohn variational methods was fitted using the MATLAB nonlinear fitting routine nlinfit with eight possible weightings.
+The data from each variant of the Kohn variational methods was fitted using the MATLAB nonlinear fitting routine \texttt{nlinfit} with eight possible weightings.
 For each variant of the Kohn variational method, the four parameters were determined for each of the eight fits and compared.
 
-For each variant of the Kohn method, we extrapolated the phase shifts in tables \ref{tab:SWavePhase} and \ref{} according to 
-\bea
-\tan\delta^\pm(\omega) = \tan\delta^\pm(\omega\to\infty) + {c\over \omega^p}\, .
-\eea
-
-\todoi{Humberston reference, empirical}
+For each variant of the Kohn method, we extrapolated the phase shifts in tables \ref{tab:SWavePhase} and \ref{} according to the empirical formula \cite{VanReeth2003}
+\begin{equation}
+\tan\delta_\ell^\pm(\omega) = \tan\delta_\ell^\pm(\omega\to\infty) + {c\over \omega^p}\, .
+\end{equation}
 
 
 \subsection{Nonlinear Parameters and Terms Used}
@@ -740,13 +554,13 @@ For each variant of the Kohn method, we extrapolated the phase shifts in tables 
     \begin{tabular}{cccccccccc}
     Parameter & $^1S$ & $^3S$ & $^1P$ & $^3P$ & $^1D$ & $^3D$ & $^1F$, $^3F$ & $^1G$, $^3G$ & $^1H$, $^3H$ \\
     \colrule
-		$\omega$ & 7 & 7 & 7 & 7 & 6 & 6 & 6 & 6 & 6 \\
-		$N^\prime(\omega)$ & 1505 & 1633 & 1000 & 1000 & 916 & 919 & 462 & 462 & 462 \\
-    $\alpha$ & 0.586 & 0.323 & 0.397 & 0.310 & 0.359 & 0.356 & 0.5   & 0.5   & 0.5 \\
-    $\beta$ & 0.580 & 0.334 & 0.376 & 0.311 & 0.368 & 0.365 & 0.6   & 0.6   & 0.6 \\
-    $\gamma$ & 1.093 & 0.975 & 0.962 & 0.995 & 0.976 & 0.976 & 1.1   & 1.1   & 1.1 \\
-    $\mu$ & 0.9   & 0.9   & 0.9   & 0.9   & 0.7   & 0.7   & 0.7   & 0.7   & 0.7 \\
-    $m_\ell$ & 1     & 1     & 3     & 3     & 7     & 7     & 7     & 9     & 11 \\
+	$\omega$           & 7     & 7     & 7     & 7     & 6     & 6     & 6    & 6   & 6 \\
+	$N^\prime(\omega)$ & 1505  & 1633  & 1000  & 1000  & 916   & 919   & 462  & 462 & 462 \\
+	$\alpha$           & 0.586 & 0.323 & 0.397 & 0.310 & 0.359 & 0.356 & 0.5  & 0.5 & 0.5 \\
+	$\beta$            & 0.580 & 0.334 & 0.376 & 0.311 & 0.368 & 0.365 & 0.6  & 0.6 & 0.6 \\
+	$\gamma$           & 1.093 & 0.975 & 0.962 & 0.995 & 0.976 & 0.976 & 1.1  & 1.1 & 1.1 \\
+	$\mu$              & 0.9   & 0.9   & 0.9   & 0.9   & 0.7   & 0.7   & 0.7  & 0.7 & 0.7 \\
+	$m_\ell$           & 1     & 1     & 3     & 3     & 7     & 7     & 7    & 9   & 11 \\
     \end{tabular}
 	  \end{ruledtabular}
   \caption{Parameters for each partial wave}
@@ -760,24 +574,19 @@ For each variant of the Kohn method, we extrapolated the phase shifts in tables 
 \section{Results}
 \label{sec:Results}
 %{\bf II. Results}
-\todoi{NEEDS REVISIONS....written primarily in 2011}
 
 
 \subsection{Bound State Results}
 
-To be consistent with the scattering calculation, we report the results obtained with the same set of nonlinear parameters that were used in the scattering calculation, namely $\alpha = 0.586$, $\beta = 0.580$ and $\gamma = 1.093$. For our set with 1505 terms, we calculate a nonrelativistic ground-state energy of -0.789189725 au, \todo{in table...} giving a binding energy of 1.066406705 eV (using a conversion factor of 1 au \todoi{E$_h$???} = 27.21138505 eV from \cite{NISTConversions}). We note that we are able to obtain a slightly better value for the binding energy with higher $\omega$, but we are unable to use this many terms in the full scattering calculations for Ps-H. \todoi{Mention here how we remove terms?} Table \ref{tab:BoundEnergyOther} compares our energies for PsH with that obtained by other groups.
+To be consistent with the scattering calculation, we report the results obtained with the same set of nonlinear parameters that were used in the scattering calculation, namely $\alpha = 0.586$, $\beta = 0.580$ and $\gamma = 1.093$. We note that we are able to obtain a slightly better value for the binding energy with higher $\omega$, but we are unable to use this many terms in the full scattering calculations for Ps-H. Table \ref{tab:BoundEnergy} compares our energies for PsH with that obtained by other groups.
 
 Our calculation yields a better value for these
 quantities than the earlier variational calculation \cite{VanReeth2003,VanReeth2004}
 but not as good as the variational calculation of
-Yan and Ho who also used Hylleraas wave functions \cite{Yan1999}.
-Yan and Ho implemented a different procedure
-to eliminate terms that were causing linear dependence.
-They divided the basis set into
-five blocks and certain terms were eliminated in each block.
+Yan and Ho, who also used Hylleraas wave functions \cite{Yan1999}.
 While we do not obtain the best value of the binding energy
 (this was not the purpose of our calculation),
-we obtained results for this quantity which are favorable with
+we obtained results for this quantity which compare favorably with
 the most elaborate calculation in the literature which
 used 5000 explicitly correlated Gaussians \cite{Bubin2006}.
 Our calculation of the binding energy gave us confidence
@@ -785,34 +594,10 @@ in the reliability of the short-range part of the
 scattering wave function to describe
 the $^1S$ PsH system.
 
-We show in this table, the number of terms that
-a given $\omega$ corresponds to \todo{?}
-and also the number of terms that are
-included after terms have been eliminated using Todd's procedure.
 The Rayleigh-Ritz variational method provides
 a true bound on the total energy and binding
-energy.
-
-\todoi{I don't think we need to show the stabilization plots, since Peter did, and we didn't get more information from them. The rest of this section needs to be rewritten.}
-The total energy and binding energy
+energy. The total energy and binding energy
 converges well with respect to $\omega$.
-In figure 1 we show the eigenvalues for the $^1S$ of PsH
-verses the number of terms for $\omega =?$.
-The stabilized eigenvalues correspond to
-resonances.
-
-In table \ref{tab:BoundEnergyOther}, we compare our values of the total
-energy and
-the binding energy obtained with $\omega=6$, $\omega=7$ (the highest
-value of $\omega$ that we report in this paper for
-the scattering calculation), with $\omega=10$ (the highest
-value of $\omega$ that we were able to use in the
-bound-state calculation with this set of
-non-linear parameters) with other calculations.
-In this table we give the number of terms used
-in each calculation.
-
- 
 
 
 \squeezetable  % Makes the table smaller
@@ -825,7 +610,6 @@ in each calculation.
 Group & Method & Terms & Total Energy (au) & Binding Energy (eV)\\
 %\hline
 \colrule
- 
 %\midrule
 Ho (1986) \cite{Ho1986} & Variational with Hylleraas (?) & 396 & -0.788 945$^\star$ & 1.059 75 \\
 Yan (1999) \cite{Yan1999} & Variational with Hylleraas $(\omega \rightarrow \infty)$ & --- & -0.789 196 714 7$^\star$ & 1.066 596 896 \\
@@ -837,141 +621,17 @@ Current work & Variational with Hylleraas & 1505 & -0.789 189 725 & 1.066 406 70
 %\bottomrule
 \end{tabular}
 \end{ruledtabular}
-\caption{Positronium Hydride Energy Comparisons- Starred values are the reported values. Unstarred values are obtained by using the conversion factor given in section \ref{??}.}
+\caption{Positronium hydride energy comparisons - Starred values are the reported values. Unstarred values are obtained by using the conversion factor given in \cite{NISTConversions}. \emph{Do we need to include terms?}}
 \label{tab:BoundEnergy}
 \end{center}
 \end{table}
-\todoi{Update all references for bound state energies. Do we really need to show binding energy? Nearly all calculations are in terms of au.}
+
 
 \subsection{Phase Shifts}
 
-In table \ref{tab:SWavePhase}, we show respectively for the singlet
-and triplet S-wave phase shifts 
-obtained with the generalized Kohn variational
-method and the complex Kohn using $\omega=7$.
-We compare the phase shifts from
-the various variants of the Kohn method,
-and remove any result where there is an obvious
-anomaly such as a Schwartz singularity.
-To the accuracy given, the results agree from
-the various methods (unless the results
-from a particular method are removed).
-We also show extrapolated phase shifts.
+In table \ref{tab:SWavePhase}, we show the singlet and triplet S-wave phase shifts using the S matrix Kohn variational method. To the accuracy given, the results agree from the various methods described in section \ref{sec:Kohn}, after removing any obvious Schwartz singularities. The extrapolated values to estimate the phase shifts at $\omega = \infty$ were obtained for $\omega = 4$ to $\omega = 7$. By computing the percentage difference between the extrapolated phase shifts and the computed phase shifts at $\omega =7$, we estimate that the $^1S$ phase shifts have converged to better than about $0.22\%$ for the range $kappa=0.1$ to $0.7$ and that the $^3S$ phase shifts have converged to better than $0.27\%$ for the same range of $\kappa$.
 
-The extrapolated phase shifts were obtained for
-$\omega=4$ to $\omega =7$.
-By computing the percentage difference between the extrapolated phase shifts
-and the computed phase shifts at $\omega =7$, we estimate
-that the $^1S$ phase shifts have converged to better than 0.4\%
-for the range $\kappa$ =0.1 to 0.7 and that the $^3S$ triplet
-phase shifts have converged to better than \todo{Correct this} 0.62\% 
-for the same range of $\kappa$.
-
-
-\begin{table}
-\centering
-\begin{ruledtabular}
-\begin{tabular}{c c c c c c c}
-$\kappa$ & $\delta^+ (\omega = 7)$ & $\delta^- (\omega = 7)$ & $\delta^+ (\omega \rightarrow \infty)$ & $\delta^- (\omega \rightarrow \infty)$ & \% Diff$^+$ & \% Diff$^-$ \\
-\colrule
-0.1 & -0.4268 & -0.2145 & -0.4258 & -0.2143 & 0.2226\% & 0.1201\% \\
-0.2 & -0.8200 & -0.4314 & -0.8192 & -0.4312 & 0.0998\% & 0.0633\% \\
-0.3 & -1.1612 & -0.6452 & -1.1607 & -0.6446 & 0.0402\% & 0.0941\% \\
-0.4 & -1.4462 & -0.8500 & -1.4459 & -0.8489 & 0.0216\% & 0.1302\% \\
-0.5 & -1.6777 & -1.0413 & -1.6772 & -1.0396 & 0.0308\% & 0.1661\% \\
-0.6 & -1.8577 & -1.2168 & -1.8570 & -1.2135 & 0.0402\% & 0.2728\% \\
-0.7 & -1.9642 & -1.3754 & -1.9634 & -1.3720 & 0.0448\% & 0.2501\% \\
-\end{tabular}
-\end{ruledtabular}
-\caption{S-Wave Phase Shifts}
-\label{tab:SWavePhase}
-\end{table}
-
-\todoi{Compare to how the Walters Phys Rev A paper does their table on page 6}
-
-\begin{table}
-\begin{center}
-\begin{ruledtabular}
-\begin{tabular}{c c c c c c c}
-$\kappa$ & $\delta^+ (\omega = 7)$ & $\delta^+$ \cite{VanReethPrivate} & $\delta^+$ \cite{Blackwood2002} & $\delta^+$ \cite{Walters2004} & $\delta^+$ \cite{Ray1997} & $\delta^+$ \cite{Adhikari1999} \\
-\colrule
-0.1 & $2.256^{-2}$ & $2.26^{-2}$ & $2.13^{-2}$ & $2.21^{-2}$ & $7.98^{-3}$ & $4.77^{-3}$ \\
-0.2 & $1.913^{-1}$ & $1.92^{-1}$ & $1.75^{-1}$ & $1.83^{-1}$ & $6.14^{-2}$ & $3.70^{-2}$ \\
-0.3 & $6.093^{-1}$ & $6.12^{-1}$ & $5.45^{-1}$ & $5.80^{-1}$ & $1.86^{-1}$ & $1.16^{-1}$ \\
-0.4 & $9.939^{-1}$ & $9.97^{-1}$ & $9.08^{-1}$ & $9.56^{-1}$ & $3.49^{-1}$ & $2.39^{-1}$ \\
-0.5 & $1.140$ & $1.143$ & $1.068$ & $1.106$ & $4.77^{-1}$ & $3.72^{-1}$ \\
-0.6 & $1.162$ & $1.165$ & $1.103$ & $1.134$ & $5.36^{-1}$ & $4.78^{-1}$ \\
-0.7 & $1.152$ & $1.155$ & $1.099$ & $1.133$ & $5.38^{-1}$ & $5.41^{-1}$ \\
-\end{tabular}
-\end{ruledtabular}
-\caption{P-Wave Singlet Results}
-\label{tab:PWaveSinglet}
-\end{center}
-\end{table}
-
-
-
-\begin{table}
-\begin{center}
-\begin{ruledtabular}
-\begin{tabular}{c c c c c}
-$\kappa$ & $\delta^- (\omega = 7)$ & $\delta^-$ \cite{Blackwood2002} & $\delta^-$ \cite{Ray1997} & $\delta^-$ \cite{Adhikari1999} \\
-\colrule
-0.1 & $-1.775^{-3}$ & $-9.53^{-4}$ & $-5.03^{-3}$ & $-2.33^{-3}$ \\
-0.2 & $-1.669^{-2}$ & $-1.22^{-2}$ & $-3.52^{-2}$ & $-1.67^{-2}$ \\
-0.3 & $-5.518^{-2}$ & $-4.56^{-2}$ & $-9.80^{-2}$ & $-4.76^{-2}$ \\
-0.4 & $-1.146^{-1}$ & $-1.04^{-1}$ & $-1.86^{-1}$ & $-9.18^{-2}$ \\
-0.5 & $-1.834^{-1}$ & $-1.78^{-1}$ & $-2.87^{-1}$ & $-1.42^{-1}$ \\
-0.6 & $-2.477^{-1}$ & $-2.47^{-1}$ & $-3.90^{-1}$ & $-1.90^{-1}$ \\
-0.7 & $-2.917^{-1}$ & $-2.95^{-1}$ & $-4.88^{-1}$ & $-2.28^{-1}$ \\
-\end{tabular}
-\end{ruledtabular}
-\caption{P-Wave Triplet Results}
-\label{tab:PWaveTriplet}
-\end{center}
-\end{table}
-
-
-\begin{table}
-\begin{center}
-\begin{ruledtabular}
-\begin{tabular}{c c c c c c}
-$\kappa$ & $\delta^+ (\omega = 6)$ & $\delta^+$ \cite{Blackwood2002} & $\delta^+$ \cite{Walters2004} & $\delta^+$ \cite{Ray1997} & $\delta^+$ \cite{Adhikari1999} \\
-\colrule
-$0.1$ & $1.358^{-4}$ & $1.46^{-4}$ & $2.02^{-4}$ & $3.18^{-5}$ & $1.8^{-5}$ \\
-$0.2$ & $2.987^{-3}$ & $3.15^{-3}$ & $3.49^{-3}$ & $9.17^{-4}$ & $5.3^{-4}$ \\
-$0.3$ & $1.592^{-2}$ & $1.65^{-2}$ & $1.73^{-2}$ & $5.87^{-3}$ & $3.5^{-3}$ \\
-$0.4$ & $4.933^{-2}$ & $4.95^{-2}$ & $5.22^{-2}$ & $1.97^{-2}$ & $1.2^{-2}$ \\
-$0.5$ & $1.113^{-1}$ & $1.08^{-1}$ & $1.16^{-1}$ & $4.54^{-2}$ & $2.9^{-2}$ \\
-$0.6$ & $2.027^{-1}$ & $1.94^{-1}$ & $2.08^{-1}$ & $8.09^{-2}$ & $5.5^{-2}$ \\
-$0.7$ & $3.215^{-1}$ & $3.02^{-1}$ & $3.24^{-1}$ & $1.19^{-1}$ & $8.8^{-2}$ \\
-\end{tabular}
-\end{ruledtabular}
-\caption{D-Wave Singlet Results}
-\label{tab:DWaveSinglet}
-\end{center}
-\end{table}
-
-
-\begin{table}
-\begin{center}
-\begin{ruledtabular}
-\begin{tabular}{c c c c c}
-$\kappa$ & $\delta^- (\omega = 6)$ & $\delta^-$ \cite{Blackwood2002} & $\delta^-$ \cite{Ray1997} & $\delta^-$ \cite{Adhikari1999} \\
-\colrule
-$0.1$ & $5.808^{-5}$ & $8.48^{-5}$ & $-3.00^{-5}$ & $-1.4^{-5}$ \\
-$0.2$ & $7.120^{-4}$ & $1.15^{-3}$ & $-8.56^{-4}$ & $-4.0^{-4}$ \\
-$0.3$ & $1.065^{-3}$ & $2.84^{-3}$ & $-5.37^{-3}$ & $-2.6^{-3}$ \\
-$0.4$ & $-2.002^{-3}$ & $2.37^{-3}$ & $-1.76^{-2}$ & $-8.6^{-3}$ \\
-$0.5$ & $-1.122^{-2}$ & $-4.66^{-3}$ & $-3.95^{-2}$ & $-2.0^{-2}$ \\
-$0.6$ & $-2.647^{-2}$ & $-1.85^{-2}$ & $-7.03^{-2}$ & $-3.6^{-2}$ \\
-$0.7$ & $-4.451^{-2}$ & $-3.27^{-2}$ & $-1.06^{-1}$ & $-5.5^{-2}$ \\
-\end{tabular}
-\end{ruledtabular}
-\caption{D-Wave Triplet Results}
-\label{tab:DWaveTriplet}
-\end{center}
-\end{table}
+%Tables \ref{tab:PWave} 
 
 
 
@@ -1009,6 +669,70 @@ we compare the singlet and triplet
 S-wave phase shifts obtained from the Kohn variational
 method (and variants) with various other calculations [].
 
+
+\begin{table}
+\centering
+\begin{ruledtabular}
+\begin{tabular}{c c c c c c c c c c c}
+$\kappa$ (au) & $\delta_0^+ (\omega = 7)$ & $\delta_0^+ (\omega =\infty)$ & \% Diff$^+$ & $\delta_0^+$ (VH) & $\delta_0^+$ (WYSG) & $\delta_0^- (\omega = 7)$ & $\delta_0^- (\omega = \infty)$ & \% Diff$^-$ & $\delta_0^-$ (VH) & $\delta_0^-$ (BMW) \\
+\colrule
+0.1 & -0.427 & -0.426 & 0.223\% & -0.427 & -0.432 & -0.215 & -0.214 & 0.120\% & -0.214 & -0.206 \\
+0.2 & -0.820 & -0.819 & 0.010\% & -0.820 & -0.833 & -0.431 & -0.431 & 0.063\% & -0.432 & -0.414 \\
+0.3 & -1.161 & -1.161 & 0.040\% & -1.161 & -1.179 & -0.645 & -0.645 & 0.094\% & -0.645 & -0.624 \\
+0.4 & -1.446 & -1.446 & 0.022\% & -1.446 & -1.466 & -0.850 & -0.849 & 0.130\% & -0.850 & -0.838 \\
+0.5 & -1.678 & -1.677 & 0.031\% & -1.677 & -1.699 & -1.041 & -1.040 & 0.166\% & -1.040 & -1.037 \\
+0.6 & -1.858 & -1.857 & 0.040\% & -1.857 & -1.884 & -1.217 & -1.214 & 0.273\% & -1.215 & -1.213 \\
+0.7 & -1.964 & -1.963 & 0.045\% & -1.964 & -2.012 & -1.375 & -1.372 & 0.250\% & -1.373 & -1.367 \\
+\end{tabular}
+\end{ruledtabular}
+\caption{S-wave singlet and triplet phase shifts}
+\label{tab:SWavePhase}
+\end{table}
+
+\begin{table}
+\begin{center}
+\begin{ruledtabular}
+\begin{tabular}{c c c c c c c c c c}
+$\kappa$ (au) & $\delta^+ (\omega = 7)$ & $\delta^+ (\omega = \infty)$ & \% Diff$^+$ & $\delta^+$ \cite{VanReethPrivate} & $\delta^+$ (WYSG) & $\delta^- (\omega = 7)$ & $\delta^- (\omega = \infty)$ & \% Diff$^-$ & $\delta^-$ (BMW) \\
+\colrule
+0.1 & $0.226^{-1}$ & $0.227^{-1}$ &  & $0.226^{-1}$ & $0.221^{-1}$ & $-0.178^{-2}$ & $-0.172^{-2}$ &  & $-0.953^{-3}$ \\
+0.2 & $0.191$      & $0.192$     &  & $0.192$     & $0.183$     & $-0.167^{-1}$    & $-0.165^{-1}$ &  & $-0.122^{-1}$ \\
+0.3 & $0.609$      & $0.611$     &  & $0.612$     & $0.580$     & $-0.552^{-1}$    & $-0.540^{-1}$ &  & $-0.456^{-1}$ \\
+0.4 & $0.994$      & $0.996$     &  & $0.997$     & $0.956$     & $-0.115$         & $-0.114$      &  & $-0.104$ \\
+0.5 & $1.140$      & $1.142$     &  & $1.143$     & $1.106$     & $-0.183$         & $-0.182$      &  & $-0.178$ \\
+0.6 & $1.162$      & $1.163$     &  & $1.165$     & $1.134$     & $-0.248$         & $-0.246$      &  & $-0.247$ \\
+0.7 & $1.152$      & $1.154$     &  & $1.155$     & $1.133$     & $-0.292$         & $-0.281$      &  & $-0.295$ \\
+\end{tabular}
+\end{ruledtabular}
+\caption{P-wave singlet and triplet phase shifts}
+\label{tab:PWavePhase}
+\end{center}
+\end{table}
+
+
+
+
+\begin{table}
+\begin{center}
+\begin{ruledtabular}
+\begin{tabular}{c c c c c}
+$\kappa$ & $\delta^+ (\omega = 6)$ & $\delta^+$ (WYSG) & $\delta^- (\omega = 6)$ & $\delta^-$ (BMW) \\
+\colrule
+$0.1$ & $1.358^{-4}$ & $1.46^{-4}$ & $5.808^{-5}$ & $8.48^{-5}$ \\
+$0.2$ & $2.987^{-3}$ & $3.15^{-3}$ & $7.120^{-4}$ & $1.15^{-3}$ \\
+$0.3$ & $1.592^{-2}$ & $1.65^{-2}$ & $1.065^{-3}$ & $2.84^{-3}$ \\
+$0.4$ & $4.933^{-2}$ & $4.95^{-2}$ & $-2.002^{-3}$ & $2.37^{-3}$ \\
+$0.5$ & $1.113^{-1}$ & $1.08^{-1}$ & $-1.122^{-2}$ & $-4.66^{-3}$ \\
+$0.6$ & $2.027^{-1}$ & $1.94^{-1}$ & $-2.647^{-2}$ & $-1.85^{-2}$ \\
+$0.7$ & $3.215^{-1}$ & $3.02^{-1}$ & $-4.451^{-2}$ & $-3.27^{-2}$ \\
+\end{tabular}
+\end{ruledtabular}
+\caption{D-wave singlet and triplet phase shifts}
+\label{tab:DWavePhase}
+\end{center}
+\end{table}
+
+
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=3.4in]{swave-phases}
@@ -1019,22 +743,23 @@ method (and variants) with various other calculations [].
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=3.4in]{OtherSWaveSingletResults}
-	\caption{Comparison of S-Wave Singlet Results from Other Groups}
+	\caption{Comparison of S-wave singlet results from other groups}
 	\label{fig:OtherSWaveSingletResults}
 \end{figure}
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=3.4in]{OtherSWaveTripletResults}
-	\caption{Comparison of S-Wave Triplet Results from Other Groups}
+	\caption{Comparison of S-wave triplet results from other groups}
 	\label{fig:OtherSWaveTripletResults}
 \end{figure}
+\todoi{Need this one?}
 
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=3.4in]{pwave-phases}
-	\caption{P-Wave Singlet and Triplet Phase Shifts}
+	\caption{P-wave singlet and triplet phase shifts}
 	\label{fig:pwave-phases}
 \end{figure}
 
@@ -1042,7 +767,7 @@ method (and variants) with various other calculations [].
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=3.4in]{dwave-phases}
-	\caption{D-Wave Singlet and Triplet Phase Shifts}
+	\caption{D-wave singlet and triplet phase shifts}
 	\label{fig:dwave-phases}
 \end{figure}
 
@@ -1050,22 +775,23 @@ method (and variants) with various other calculations [].
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=3.4in]{fwave-phases}
-	\caption{F-Wave Singlet and Triplet Phase Shifts}
+	\caption{F-wave singlet and triplet phase shifts}
 	\label{fig:fwave-phases}
 \end{figure}
 
+\todoi{Mention how e$^+$-H and e$^+$-He First Born (electron too?) higher partial waves similar to Kohn - moreso than ours}
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=3.4in]{gwave-phases}
-	\caption{G-Wave Singlet and Triplet Phase Shifts}
+	\caption{G-wave singlet and triplet phase shifts}
 	\label{fig:gwave-phases}
 \end{figure}
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=3.4in]{hwave-phases}
-	\caption{H-Wave Singlet and Triplet Phase Shifts}
+	\caption{H-wave singlet and triplet phase shifts}
 	\label{fig:hwave-phases}
 \end{figure}
 
@@ -1073,33 +799,50 @@ method (and variants) with various other calculations [].
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=3.4in]{combined-cross-sections}
-	\caption{Cross Sections}
+	\caption{Total cross sections}
 	\label{fig:combined-cross-sections}
 \end{figure}
 
 The Walters data \cite{Walters2004} in figure \ref{fig:combined-cross-sections} was extracted from their paper using the CurveSnap program \cite{CurveSnap}.
-\todo{Maximum percentages each higher partial wave contributed to the cross sections and differential cross sections}
+\todoi{Maximum percentages each higher partial wave contributed to the cross sections and differential cross sections}
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=3.4in]{diff-cross-section-2D-theta}
-	\caption{Differential Cross Sections}
+	\caption{Differential cross sections for selected angles}
 	\label{fig:diff-cross-section-2D-theta}
 \end{figure}
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=5in]{diff-cross-section-2D-kappa}
-	\caption{Differential Cross Sections}
+	\includegraphics[width=3.4in]{diff-cross-section-2D-kappa}
+	\caption{Differential cross sections for selected incident Ps momenta}
 	\label{fig:diff-cross-section-2D-kappa}
 \end{figure}
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=5in]{combined-diff-cross-sections}
-	\caption{Differential Cross Sections}
+	\includegraphics[width=3.4in]{combined-diff-cross-sections}
+	\caption{Differential cross sections}
 	\label{fig:combined-diff-cross-sections}
 \end{figure}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=3.4in]{orthopara-cross-sections}
+	\caption{Ortho-Para Conversion Cross Sections}
+	\label{fig:orthopara-cross-sections}
+\end{figure}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=3.4in]{momentum-cross-sections}
+	\caption{Momentum Transfer Cross Sections}
+	\label{fig:momentum-cross-sections}
+\end{figure}
+
+
+
 
 
 
@@ -1113,7 +856,7 @@ two sets of results is evident.
 The figure show two $^1S$ Rydberg resonance below the
 Ps(n=2) + H(n=1) channel
 and associated
-with the ... threshold.
+with the ... \todo{which?} threshold.
 (These resonances results were also obtained in the CC calculations,
 which obtain three resonances. check.)
 These resonances were first computed by
@@ -1141,7 +884,7 @@ Kohn variational method and  best fits (which were the
 Bisquare, Andrews and Welsch).
 (Data that appeared to have Schwartz singularities ($\tau$ =0.7 and 0.8)
 were not considered.
-For the error quoted in this table we give
+For the error quoted in this table, we give
 the standard deviation obtained from the data set.
 In this table we give the resonances parameters
 obtained in the way described for $\omega=6$ and 7.
@@ -1155,7 +898,7 @@ are in good agreement with the complex rotation calculation
 of Yan and Ho [25].
 In going from $\omega=6$ to 7 in our calculations, brings the 
 the Kohn variational result for the positions
-of the resonances into better agreement with
+of the resonances into better agreement	 with
 the complex rotation calculation, especially 
 for the second resonance.
 However, the width of the second resonance is not
@@ -1167,7 +910,7 @@ channel in bringing the position of the first resonance,
 $^1E_R$, into better agreement with the Kohn
 and complex rotation calculations.
 
-We did not notice \todo{weak} resonances in the triplet, which
+We observed no resonances in the triplet, which
 is consistent with the discussion by Blackwood et. al \cite{}
 who predicted that there should not be resonances
 for the triplet, \todo{Run on?} although Ray \cite{} obtained a triplet resonance
@@ -1180,7 +923,7 @@ in a close-coupling calculation.
 \begin{tabular}{l c c c c c}
 Method & $^1E_R \text{ (eV)}$ & $^1\Gamma \text{ (eV)}$ & $^2E_R \text{ (eV)}$ & $^2\Gamma \text{ (eV)}$ \\
 \colrule
-This work & $4.0065 \pm 0.0001$ & $0.0955 \pm 0.0001$ & $5.0277 \pm 0.0018$ & $0.0608 \pm 0.0005$ \\
+Current work & $4.0065 \pm 0.0001$ & $0.0955 \pm 0.0001$ & $5.0277 \pm 0.0018$ & $0.0608 \pm 0.0005$ \\
 Complex rotation (Drachman \emph{et al} 1975) \cite{Drachman1975} & $4.455 \pm 0.010$ & $0.062 \pm 0.015$ & --- & --- \\
 Complex rotation (Ho 1978) \cite{Ho1978} & $4.013 \pm 0.014$ & $0.075 \pm 0.027$ & --- & --- \\
 Complex rotation (Yan \emph{et al} 1999) \cite{Yan1999} & $4.0058 \pm 0.0005$ & $0.0952 \pm 0.0011$ & $4.9479 \pm 0.0014$ & $0.0585 \pm 0.0027$ \\
@@ -1212,7 +955,7 @@ Optical potential (Di Rienzi \emph{et al} 2002) \cite{DiRienzi2002b} & $4.472$ &
 Stabilization (Yan and Ho 2003) \cite{Yan2003} & $4.287$ & $0.0446$ & $5.062$ & $0.0563$ \\
 Close coupling (Walters \emph{et al} 2004 \cite{Walters2004}) & $4.475$ & $0.0827$ & $4.905$ & $0.0043$ \\
 Kohn (Van Reeth \emph{et al} 2004) \cite{VanReeth2004} & $4.29 \pm 0.01$ & $0.042 \pm 0.005$ & --- & --- \\
-This work & $4.2856 \pm 0.0001$ & $0.0444 \pm 0.0001$ & $5.0578 \pm 0.0001$ & $0.0456 \pm 0.0002$ \\
+Current work & $4.2856 \pm 0.0001$ & $0.0444 \pm 0.0001$ & $5.0578 \pm 0.0001$ & $0.0456 \pm 0.0002$ \\
 \end{tabular}
 \end{ruledtabular}
 \caption{P-Wave Resonance Parameters} % title of Table
@@ -1227,7 +970,7 @@ This work & $4.2856 \pm 0.0001$ & $0.0444 \pm 0.0001$ & $5.0578 \pm 0.0001$ & $0
 \begin{tabular}{l c c}
 Method & $^1E_R \text{ (eV)}$ & $^1\Gamma \text{ (eV)}$ \\
 \colrule
-Complex rotation (Yan \emph{et al} 1998) \cite{Ho1998a} & $4.710 \pm 0.0027$ & $0.0925 \pm 0.0054$  \\
+Complex rotation (Yan \emph{et al} 1998) \cite{Ho1998} & $4.710 \pm 0.0027$ & $0.0925 \pm 0.0054$  \\
 Optical potential (Di Rienzi \emph{et al} 2002) \cite{DiRienzi2002a} & $4.729$ & $0.327$ \\
 Stabilization (Yan and Ho 2003) \cite{Yan2003} & $4.714$ & $0.0969$ \\
 Close coupling (Walters \emph{et al} 2004 \cite{Walters2004}) & $4.899$ & $0.0872$ \\
@@ -1251,9 +994,7 @@ This work & $4.7189 \pm 0.0002$ & $0.0860 \pm 0.0005$ \\
 \begin{tabular}{c c c c c c}
 Partial Wave & $\omega$ & $a^+ (\kappa = 0.001)$ & $a^+ (\kappa = 0.0001)$ & $a^- (\kappa = 0.001)$ & $a^- (\kappa = 0.0001)$ \\
 \colrule
-S & 6 & 4.3364 & 4.3364 & 2.1415 & 2.1415 \\
 S & 7 & 4.3306 & 4.3306 & 2.1363 & 2.1363 \\
-P & 6 & & & & \\
 P & 7 & -22.089 & --- & 1.48846 & --- \\
 \end{tabular}
 \end{ruledtabular}
@@ -1366,7 +1107,7 @@ $^3S$ & $0.1 - 0.6$ & 2.1680/1.3438 & 2.1505/8.1323 & 2.1728/2.0415 \\
 In figure 4, we show the phase shifts computed with
 the generalized Kohn verses $\tau$ for $\kappa =0.1$ for $\omega=7$.
 The horizontal line is the value of the phase shift computed 
-with the complex Kohn variational method for the T-matrix
+with the complex Kohn variational method for the T matrix
 Cooper's plot.
 The singularity in the phase shift is clearly evident
 near $\tau= 3$ and the figure resembles that obtained
@@ -1395,11 +1136,7 @@ http://hpc.unt.edu/cite
 
 
 \section{Extra Notes?}
-Generalized Kohn. Explain tau and work of Cooper.
-Complex Kohn method.
-T-matrix.
-Need to derive generalized complex S-matrix.
-Explain Todd's procedure and the work of Cooper for the T-matrix.
+Explain Todd's procedure and the work of Cooper for the T matrix.
 Cusp 25/100
 
 \vskip 0.5truecm
@@ -1408,7 +1145,7 @@ omega =6, omega =7, omega to infinity.
 Extrapolation--size of error.
 Bound-state./Resonance/Scattering lengths.
 Tables as in DAMOP.
-Include the T-matrix and phase shift result---Cooper.
+Include the T matrix and phase shift result---Cooper.
 \vskip 0.5truecm
 \noindent
 
