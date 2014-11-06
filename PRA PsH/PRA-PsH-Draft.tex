@@ -258,7 +258,7 @@ For S-wave scattering of positronium from hydrogen, our flexible complex-valued 
 \Psi_0^{\pm,t} = \bar{S_0} + L_0^{\pm,t} \, \bar{C}_0 + \sum_{i=1}^{N(\omega)} c_i \phi_{i1},
 \label{eq:TrialWave}
 \end{equation}
-where the superscript $t$ indicates that this is a trial wavefunction. The plus sign indicates the spatially symmetric singlet, and the minus sign indicates the spatially antisymmetric triplet case. The total orbital angular momentum, $L$, is equal to the orbital angular momentum of the incoming Ps, $\ell$. For partial waves $L = \ell > 0$,
+where the superscript $t$ indicates that this is a trial wavefunction. The plus sign indicates the spatially symmetric singlet, and the minus sign indicates the spatially antisymmetric triplet case. The total orbital angular momentum is equal to the orbital angular momentum of the incoming Ps, $\ell$. For partial waves $\ell > 0$,
 \begin{equation}
 \Psi_\ell^{\pm,t} = \bar{S}_\ell + L^{\pm,t}_\ell \, \bar{C}_\ell + \sum_{i=1}^{N(\omega)} c_{i,\ell} \phi_{i1} + \!\!\!\sum_{i=N(\omega)+1}^{2N(\omega)} \!\! d_{i,\ell} \phi_{i2}.
 \label{eq:TrialWaveHigher}
@@ -286,12 +286,28 @@ with
 \end{align}
 \end{subequations}
 
-Note that our generalized T matrix is different than Cooper et al.\ \cite{Cooper2010}, in that our $\bar{S}$ and $\bar{C}$ are swapped, which gives an outgoing wave. \todo{Different location?} $P_{23}$ is the exchange operator for the two electrons. $\Phi_{Ps,1s}\left(r_{12}\right)$ and $\Phi_{H,1s}\left(r_3\right)$ are the ground state wavefunctions of positronium and hydrogen, respectively. The shielding factor, $f_\ell(\rho)$, ensures that the singularity of the Neumann function is removed at the origin and is chosen to be
+\todo{Different location?} $P_{23}$ is the exchange operator for the two electrons. $\Phi_{Ps,1s}\left(r_{12}\right)$ and $\Phi_{H,1s}\left(r_3\right)$ are the ground state wavefunctions of positronium and hydrogen, respectively. The shielding factor, $f_\ell(\rho)$, ensures that the singularity of the Neumann function is removed at the origin and is chosen to be
 \begin{equation}
 f_\ell(\rho) = \left[1 - \ee^{-\mu \rho} \left(1+\frac{\mu}{2}\rho\right)\right]^{m_\ell}.
 \label{eq:PartialWaveShielding}
 \end{equation}
 The $m_\ell$ is an integer chosen for each $\ell$ so that $\bar{C}$ behaves like $\bar{S}$ as $\rho \rightarrow 0$.
+
+We consider a number of variants of the Kohn variational method, described more fully in section \ref{sec:Kohn}, and $u$ and $L^{\pm}_\ell$ take different forms depending on each.
+We use different $u$ matrices to generate multiple Kohn methods, namely the
+\begin{align}
+&\text{generalized Kohn, } L^{\pm}_\ell = \tan(\delta^{\pm}_\ell-\tau), u = \left[ \begin{smallmatrix}
+\cos \tau & \sin \tau \\  -\sin \tau & \cos \tau
+\end{smallmatrix} \right], \label{eq:GenKohn}\\
+&\text{generalized T matrix Kohn, } L^{\pm,t}_\ell = T_\ell^{\pm\prime}, u = \left[ \begin{smallmatrix}
+\cos\tau & \sin\tau \\ -\sin\tau + \ii \cos\tau & \cos\tau + \ii \sin\tau
+\end{smallmatrix} \right], \label{eq:GenTKohn} \\
+\text{and}& \nonumber \\
+&\text{generalized S matrix Kohn, } L^{\pm,t}_\ell = S_\ell^{\pm\prime}, u = \left[ \begin{smallmatrix}
+-\ii \cos\tau - \sin\tau & -\ii\sin\tau + \cos\tau \\ \ii\cos\tau - \sin\tau & \ii\sin\tau + \cos\tau
+\end{smallmatrix} \right]. \label{eq:GenSKohn}
+\end{align}
+For the case of $\tau = 0$, these give the Kohn, the T matrix and the S matrix, respectively. $\tau = \frac{\pi}{2}$ in equation \ref{eq:GenKohn} gives the inverse Kohn. Note that our generalized T matrix is different than Cooper et al.\ \cite{Cooper2010}, in that our $\bar{S}$ and $\bar{C}$ are swapped, which gives an outgoing wave.
 
 The short-range terms are highly correlated Hylleraas-type functions, including all interparticle distances, given by
 \begin{subequations}
@@ -395,21 +411,6 @@ K_\ell = \tan \delta_\ell = (u_{01} + u_{11} L_\ell)(u_{00} + u_{10} L_\ell)^{-1
 %\begin{center}
 %\line(1,0){250}
 %\end{center}
-
-We use different $u$ matrices to generate multiple Kohn methods, namely the
-\begin{align}
-&\text{generalized Kohn, } L_\ell = \tan(\delta_\ell-\tau), u = \left[ \begin{smallmatrix}
-\cos \tau & \sin \tau \\  -\sin \tau & \cos \tau
-\end{smallmatrix} \right], \label{eq:GenKohn}\\
-&\text{generalized T matrix Kohn, } L_\ell = T_\ell^\prime, u = \left[ \begin{smallmatrix}
-\cos\tau & \sin\tau \\ -\sin\tau + \ii \cos\tau & \cos\tau + \ii \sin\tau
-\end{smallmatrix} \right], \label{eq:GenTKohn} \\
-\text{and}& \nonumber \\
-&\text{generalized S matrix Kohn, } L_\ell = S_\ell^\prime, u = \left[ \begin{smallmatrix}
--\ii \cos\tau - \sin\tau & -\ii\sin\tau + \cos\tau \\ \ii\cos\tau - \sin\tau & \ii\sin\tau + \cos\tau
-\end{smallmatrix} \right]. \label{eq:GenSKohn}
-\end{align}
-For the case of $\tau = 0$, these give the Kohn, the T matrix and the S matrix, respectively. $\tau = \frac{\pi}{2}$ in equation \ref{eq:GenKohn} gives the inverse Kohn.
 
 
 \subsection{Bound State}
