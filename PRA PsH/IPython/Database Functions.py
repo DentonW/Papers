@@ -133,3 +133,15 @@ def GetSubset(kappafull, kappapoints, phasecross):
         kindex.append(k.index(j))
         
     return phasecross[kindex]
+
+
+def GetPhaseN(cursor, datatable, method):
+    """ Returns the phase shifts from one Kohn method for all N values """
+
+    cursor.execute("SELECT %s from %s" % (method, datatable))
+    entries = []
+    rows = cursor.fetchall()
+    for row in rows:
+        entries.append(row[0])
+
+    return np.array(entries)
