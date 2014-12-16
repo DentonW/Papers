@@ -113,10 +113,7 @@ to be made of Ps scattering from the inert gases, He, Ne, Ar and Xe \cite{} and 
 of an atomic hydrogen beam, although the binding energy of positronium hydride, PsH, has been measured in the reaction of a positron with methane, e$^+$ + CH$_4$ $\to$ CH$_3^+$ + PsH \cite{Schrader1992}.
 %However, both the UCL \cite{} and St.~Olaf \cite{} positron experimental groups have independently proposed to measure  Ps scattering from the effective one-electron atoms, the alkali atoms.
 %The St.~Olaf positron experimental group  plans to perform the measurements of positron-alkali atom collisions at very low energies.
-The low-energy region is of particular interest, because in this energy range, positron and electron correlations are dominant. The proposed measurements of Ps-alkali atom at low energies initiated our recent project to investigate Ps collisions from
-H and the alkali atoms using the Kohn variational method which is an appropriate method for low energy scattering. Currently, we have considered H only and it is our work of the application of the Kohn variational method
-(and variants of the method) to elastic S-wave Ps-H scattering in the energies up to the excitation threshold of Ps(n=2) (5.101 eV) that we are presenting in this paper.
-\todo{Both \cite{Yan2011} and \cite{Walters2004} talk about the thresholds}
+The low-energy region is of particular interest, because in this energy range, positron and electron correlations are dominant. We are presenting in this paper our work of the application of the complex Kohn variational method to elastic Ps(1s)-H(1s) scattering in the energies up to the excitation threshold of Ps(n=2) at 5.101 eV.
 
 Ps-H scattering is a fundamental four-body Coulomb process
 and is of interest in the study of solar processes \cite{Laricchia2012, ?}.
@@ -127,7 +124,7 @@ such as a positron.
 Ps scattering also has applications
 in other areas of physics such as in biophysics and astrophysics \cite{Laricchia2012, ?}.
 
-There has been renewed interest in positronium scattering recently, in part due to an unexpected observation. Despite the expectation the electron and positronium scattering from atomic and molecular targets should be different, Brawley et al. found that for many targets, equal velocity electron and positronium scattering cross sections are similar through much of the energy range \cite{Brawley2010a,Brawley2010}. This is despite the fact that positronium has twice the mass as an electron and is neutral. Fabrikant and Gribakin recently found that for Ps-Kr and Ps-Ar low-energy scattering, the cross sections are comparable to that of $e^-$-Kr and $e^-$-Ar scattering \cite{Fabrikant2014,Fabrikant2014a}. The conclusion is that the positron plays a much smaller role in the scattering process than the electron in Ps-atom and Ps-molecule scattering.
+Despite the expectation that electron and positronium scattering from atomic and molecular targets should be different, Brawley et al. found that for many targets, equal velocity electron and positronium scattering cross sections are similar through much of the energy range \cite{Brawley2010a,Brawley2010}. This is despite the fact that positronium has twice the mass as an electron and is neutral. Fabrikant and Gribakin recently found that for Ps-Kr and Ps-Ar low-energy scattering, the cross sections are comparable to that of $e^-$-Kr and $e^-$-Ar scattering \cite{Fabrikant2014,Fabrikant2014a}. The tentative conclusion is that the positron plays a much smaller role in the scattering process than the electron in Ps-atom and Ps-molecule scattering.
 
 The Kohn (and inverse Kohn) variational method has previously been applied to
 to Ps-H collisions by 
@@ -138,9 +135,9 @@ First, and foremost, in addition to implementing
 the Kohn and inverse Kohn variational methods, we have
 implemented the generalized Kohn and the generalized complex Kohn
 for the S and T-matrices. 
-The complex Kohn variational method is known to suffer
+The complex Kohn variational methods are known to suffer
 from far fewer anomalous singularities than the
-Kohn or inverse Kohn variational method \cite{Lucchese1989, Cooper2010}. 
+Kohn, inverse Kohn and generalized Kohn variational methods \cite{Lucchese1989, Cooper2010}. 
 The second extension that we considered was to use
 the procedure by Todd to systematically remove terms that
 were causing linear dependence.
@@ -149,7 +146,7 @@ energy of PsH) with more short-range Hylleraas terms than the earlier
 Kohn calculation. 
 We have also extended the calculations to the next four partial waves through the H-wave.
 
-Using multiple variants of the Kohn variational method, we computed singlet and triplet phase shifts for Ps-H scattering for the first six partial waves. We confirm the previously observed resonances for the first four partial waves and compare the positions and widths to that of the earlier Kohn, close coupling and complex rotation calculations. In addition, we computed the scattering lengths and effective range using multiple effective range theories. We also used the short-range part of the full scattering wavefunction to compute the binding energy of positronium hydride (Ps-H). Comparing our binding energy with the most elaborate variational results gives an indication of the reliability of describing the Ps-H system at short-distances.
+Using multiple variants of the Kohn variational method, we computed singlet and triplet phase shifts for Ps-H scattering for the first six partial waves. We confirm the previously observed resonances for the first four partial waves and compare the positions and widths to that of the earlier Kohn, close coupling and complex rotation calculations. In addition, we computed the scattering lengths and effective range using multiple effective range theories. We also used the short-range part of the full scattering wavefunction to compute the binding energy of positronium hydride (Ps-H). Comparing our binding energy with the most elaborate variational results gives an indication of the reliability of describing the Ps-H system at short-distances. \todo{$\sigma$?}
 
 There have been a number of other calculations for
 Ps-H scattering. A much earlier Kohn variational calculation was performed
@@ -416,6 +413,18 @@ and
 \end{align}
 Equation \ref{eq:TotalCross} is in units of $\pi a_0^2$, and eq. \ref{eq:DiffCross} is in units of $\pi a_0^2 / \rm{sr}$. The singlet for each of the partial waves contributes $1/4$ to the total and differential cross sections, while the triplet contributes $3/4$.
 
+We also calculate the momentum transfer cross sections, given by \cite{}
+\begin{equation}
+\label{eq:MomentumCross}
+\sigma_{m}^\pm = \frac{4}{\kappa^2} \sum_{\ell=0}^\infty (\ell+1) \sin^2 (\delta_\ell^\pm - \delta_{\ell+1}^\pm) .
+\end{equation}
+
+\emph{Do we want to include the ortho-para conversion cross sections? \cite{}}
+\begin{equation}
+\label{eq:OrthoParaCross}
+\sigma_{C}^\pm = \frac{1}{4 \kappa^2} \sum_{\ell=0}^\infty (2 \ell+1) \sin^2 (\delta_\ell^+ - \delta_\ell^-)
+\end{equation}
+
 
 \subsection{Effective Range}
 
@@ -565,7 +574,7 @@ We use these extrapolated values to estimate the convergence of our phase shifts
 A similar method is used to extrapolate the scattering lengths by fitting to
 \begin{equation}
 \label{eq:ExtrapA}
-a_\ell^\pm(\omega) = a_\ell^\pm(\omega\to\infty) + \frac{c}{\omega^p}\, .
+a_\ell^\pm(\omega) = a_\ell^\pm(\omega\to\infty) + \frac{d}{\omega^q}\, .
 \end{equation}
 The difference between the scattering length and the extrapolated scattering length is considered the error in tables \ref{tab:SWaveScatLenERT} and \ref{tab:PWaveScatLen}. No convergence pattern was found for the effective range.
 
@@ -634,8 +643,8 @@ Current work & Variational with Hylleraas & 1505 & -0.789 189 725 & 1.066 406 70
 Van Reeth (2003) \cite{VanReeth2003} & Variational with Hylleraas $(\omega = 6)$ & 721 & -0.789 156 & 1.0655$^\star$ \\
 Ho (1986) \cite{Ho1986} & Variational with Hylleraas & 396 & -0.788 945$^\star$ & 1.059 75 \\
 Yan (1999) \cite{Yan1999} & Variational with Hylleraas $(\omega \rightarrow \infty)$ & --- & -0.789 196 714 7$^\star$ & 1.066 596 896 \\
-Blackwood (2002) \cite{Blackwood2002} & Close coupling 14Ps14H & --- & -0.786 5 & 0.994$^\star$ \\
-Walters (2004) \cite{Walters2004} & Close coupling 14Ps14H + $\text{H}^-$ & --- & -0.787 9 & 1.03$^\star$\\
+Blackwood (2002) \cite{Blackwood2002} & CC 14Ps14H & --- & -0.786 5 & 0.994$^\star$ \\
+Walters (2004) \cite{Walters2004} & CC 14Ps14H + $\text{H}^-$ & --- & -0.787 9 & 1.03$^\star$\\
 Mitroy (2006) \cite{Mitroy2006} & ECGs with SVM & 1800 & -0.789 196 740$^\star$ & 1.066 597 58 \\
 Bubin (2006) \cite{Bubin2006} & ECGs variational & 5000 & -0.789 196 765 251$^\star$ & 1.066 598 271 959 \\
 %\bottomrule
@@ -651,17 +660,17 @@ Bubin (2006) \cite{Bubin2006} & ECGs variational & 5000 & -0.789 196 765 251$^\s
 
 In tables \ref{tab:SWaveSingletPhase} and \ref{tab:SWaveTripletPhase}, we show the singlet and triplet S-wave phase shifts using the \emph{S} matrix Kohn variational method. To the accuracy given, the results agree from the various methods described in sec. \ref{sec:Kohn}, after removing any obvious Schwartz singularities. The extrapolated values to estimate the phase shifts as $\omega \rightarrow \infty$ were obtained for $\omega = 4$ to $\omega = 7$ using eq. \ref{eq:Extrap}. By computing the percentage difference between the extrapolated phase shifts and the computed phase shifts at $\omega=7$, we estimate that the $^1S$ phase shifts have converged to better than about $0.22\%$ for the range $\kappa=0.1$ to $0.7$ and that the $^3S$ phase shifts have converged to better than $0.27\%$ for the same range of $\kappa$.
 
-In this table, we also compare our results with the earlier Kohn variational results \cite{VanReeth2003,VanReeth2004} and with the elaborate close coupling results of Walters' group \cite{Blackwood2002,Walters2004}. Our new $\omega = 7$ results are in excellent agreement with the earlier Kohn $\omega = 6$ variational results, being either identical or slightly lower, indicating that the earlier S-wave calculations were well-converged.
+In this table, we also compare our results with the earlier Kohn variational results \cite{VanReeth2003,VanReeth2004} and with the elaborate CC results of Walters' group \cite{Blackwood2002,Walters2004}. Our new $\omega = 7$ results are in excellent agreement with the earlier Kohn $\omega = 6$ variational results, being either identical or slightly lower, indicating that the earlier S-wave calculations were well-converged.
 
 The slight difference in phase shifts between the previous and current Kohn methods can be attributed to two factors. Using Todd's procedure (described in sec. \ref{sec:Todd}) allowed us to use more terms (see table \ref{tab:Nonlinear}) than the earlier Kohn calculations \cite{VanReeth2003,VanReeth2004}, which used 721 terms. This slightly increased the phase shifts, but we also used more integration points in these calculations, which had the effect of slightly decreasing the phase shifts.
 
-The Kohn results are in good agreement with the close coupling results of the Walters group \cite{Blackwood2002,Walters2004}. For the singlet, the Kohn phase shifts are slightly larger than the close coupling results. Because of the empirical bounds on the Kohn variational results and, in practice on the close coupling (except for the Buttle correction), the Kohn results could be slightly more accurate than the close coupling.
-The situation is reversed for the triplet. In this case, the Kohn results are slightly more negative than the close coupling results.
-However, the Kohn and close coupling results are in very good agreement.
+The complex Kohn results are in good agreement with the CC results of the Walters group \cite{Blackwood2002,Walters2004}. For the singlet, the Kohn phase shifts are slightly larger than the CC results. Because of the empirical bounds on the Kohn variational results and, in practice on the CC (except for the Buttle correction), the Kohn results could be slightly more accurate than the CC.
+The situation is reversed for the triplet. In this case, the Kohn results are slightly more negative than the CC results.
+However, the Kohn and CC results are in very good agreement.
 
-The recent confined variational S-wave results from Zhang and Yan \cite{Zhang2012} agree extremely well with the Kohn results, even for the triplet, potentially indicating that the Kohn results are more accurate than the close coupling. Figure \ref{fig:swave-phases} shows the full range of our calculations, with comparisons to the close coupling and confined variational results. Excellent agreement between the three sets of results is evident. In figures \ref{fig:SwaveSingletComparison} and \ref{fig:SwaveTripletComparison}, respectively, we compare the singlet and triplet S-wave phase shifts obtained from the Kohn variational method (and variants) with various other calculations.
+The recent confined variational S-wave results from Zhang and Yan \cite{Zhang2012} agree extremely well with the Kohn results, even for the triplet, potentially indicating that the Kohn results are more accurate than the CC. Figure \ref{fig:swave-phases} shows the full range of our calculations, with comparisons to the CC and confined variational results. Excellent agreement between the three sets of results is evident. In figures \ref{fig:SwaveSingletComparison} and \ref{fig:SwaveTripletComparison}, respectively, we compare the singlet and triplet S-wave phase shifts obtained from the Kohn variational method (and variants) with various other calculations.
 
-Tables \ref{tab:PWavePhase} and \ref{tab:DWavePhase} show our phase shifts for the P-wave and D-wave, respectively. The small percentage differences with the extrapolated values indicates that our phase shifts are well converged. Similar to the S-wave, the $^1$P phase shifts are slightly above the close coupling results, and our $^3$P phase shifts are below. Figure \ref{fig:pwave-phases} shows that the Kohn and CC results agree well. We are unable to perform an extrapolation on the D-wave phase shifts, but we expect that they are reasonably well converged. The $\omega = 5$ and $\omega = 6$ phase shifts differ by no more than 8.6\% for $^1$D and 10.3\% for $^3$D. Both the $^1$D and $^3$D phase shifts are below the CC. Figure \ref{fig:dwave-phases} shows that the Kohn and CC also agree reasonably well.
+Tables \ref{tab:PWavePhase} and \ref{tab:DWavePhase} show our phase shifts for the P-wave and D-wave, respectively. The small percentage differences with the extrapolated values indicates that our phase shifts are well converged. Similar to the S-wave, the $^1$P phase shifts are slightly above the CC results, and our $^3$P phase shifts are below. Figure \ref{fig:pwave-phases} shows that the Kohn and CC results agree well. We are unable to perform an extrapolation on the D-wave phase shifts, but we expect that they are reasonably well converged. The $\omega = 5$ and $\omega = 6$ phase shifts differ by no more than 8.6\% for $^1$D and 10.3\% for $^3$D. Both the $^1$D and $^3$D phase shifts are below the CC. Figure \ref{fig:dwave-phases} shows that the Kohn and CC also agree reasonably well.
 
 
 \begin{table}[H]
@@ -813,7 +822,7 @@ $0.7$ & $3.215^{-1}$ & $3.02^{-1}$ & $-4.451^{-2}$ & $-3.27^{-2}$ \\
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=3.4in]{spd-wave-phases}
-	\caption{(Color online) Phase shifts for elastic Ps-H scattering: (a) S-wave; (b) P-wave; (c) D-wave. Singlet close-coupling results are from \cite{Walters2004}, triplet close-coupling results are from \cite{Blackwood2002}, and all confined variational results are from \cite{Zhang2012}.}
+	\caption{(Color online) Phase shifts for elastic Ps-H scattering: (a) S-wave; (b) P-wave; (c) D-wave. Inset in (c) shows a zoomed in view of the D-wave. Singlet close-coupling results are from \cite{Walters2004}, triplet close-coupling results are from \cite{Blackwood2002}, and all confined variational results are from \cite{Zhang2012}.}
 	\label{fig:spd-wave-phases}
 \end{figure}
 
@@ -834,8 +843,6 @@ We performed full Kohn calculations on all first six partial waves, but we did m
 	\caption{(Color online) F-wave singlet and triplet phase shifts. Solid lines are current $\omega = 6$ S-matrix complex Kohn phase shifts, and dashed lines are the Born approximation.}
 	\label{fig:fwave-phases}
 \end{figure}
-
-\todoi{Combine F, G and H-wave into a single multiplot?}
 
 \begin{figure}[H]
 	\centering
@@ -938,13 +945,13 @@ Figure \ref{fig:swave-phases} shows the two $^1S$ Rydberg resonances below the
 Ps(n=2) channel, the first associated with the $2s$ state \cite{DiRienzi2002b}.
 These resonances were first computed by Drachman and Houston using the stabilization
 method and complex rotation method \cite{Drachman1975}. They have been computed very accurately by Yan and Ho
-using the complex rotation method \cite{Yan1999} and by the Walters group using the close coupling approach \cite{Walters2004}. The first $^1P$ resonance is associated with the $3p$ state, not the $2p$ state \cite{DiRienzi2002b}, while the $^1D$ resonance corresponds with the first $3d$ state \cite{DiRienzi2002a}.
+using the complex rotation method \cite{Yan1999} and by the Walters group using the CC approach \cite{Walters2004}. The first $^1P$ resonance is associated with the $3p$ state, not the $2p$ state \cite{DiRienzi2002b}, while the $^1D$ resonance corresponds with the first $3d$ state \cite{DiRienzi2002a}.
 
 Excellent agreement is achieved between the parameters obtained with between the two sets of Kohn calculations (present and earlier). Good agreement is achieved between the resonance positions obtained with the complex rotation calculations of Yan and Ho \cite{Yan1999,Yan1998a,Ho1998,Ho2000} and our work. There is less agreement with the resonance width for the second resonance in the P-wave calculation, which is a narrow resonance. 
 
-The close coupling results, 9HPsPs \cite{Blackwood2002} and 9H9Ps+H$^-$ \cite{Walters2004}, are comparable to the Kohn and complex rotation calculations. This comparison confirms the importance of the H$^-$ channel in bringing the position of the first resonance, $^1E_R$, into better agreement with the Kohn and complex rotation calculations.
+The CC results, 9HPsPs \cite{Blackwood2002} and 9H9Ps+H$^-$ \cite{Walters2004}, are comparable to the Kohn and complex rotation calculations. This comparison confirms the importance of the H$^-$ channel in bringing the position of the first resonance, $^1E_R$, into better agreement with the Kohn and complex rotation calculations.
 
-We observed no resonances in the triplet for any of these partial waves, which is consistent with the discussion by Blackwood et al. \cite{Blackwood2002}, who predicted that there should be no resonances for the triplet. Ray \cite{Ray2006} obtained a triplet resonance in a 3-state close coupling approximation, but we see no evidence of this resonance.
+We observed no resonances in the triplet for any of these partial waves, which is consistent with the discussion by Blackwood et al. \cite{Blackwood2002}, who predicted that there should be no resonances for the triplet. Ray \cite{Ray2006} obtained a triplet resonance in a 3-state CC approximation, but we see no evidence of this resonance.
 
 \begin{table}[H]
 \begin{center}
@@ -952,11 +959,11 @@ We observed no resonances in the triplet for any of these partial waves, which i
 \begin{tabular}{l c c c c c}
 Method & $^1E_R \text{ (eV)}$ & $^1\Gamma \text{ (eV)}$ & $^2E_R \text{ (eV)}$ & $^2\Gamma \text{ (eV)}$ \\
 \colrule
-Current work & $4.0065 \pm 0.0001$ & $0.0955 \pm 0.0001$ & $5.0272 \pm 0.0029$ & $0.0608 \pm 0.0007$ \\
+Current work & $4.0065 \pm 0.0001$ & $0.0955 \pm 0.0001$ & $5.0277 \pm 0.0029$ & $0.0607 \pm 0.0007$ \\
 Complex rotation (Yan and Ho 1999) \cite{Yan1999} $^\dagger$ & $4.0058 \pm 0.0005$ & $0.0952 \pm 0.0011$ & $4.9479 \pm 0.0014$ & $0.0585 \pm 0.0027$ \\
 Stabilization (Yan and Ho 2003) \cite{Yan2003} & $4.007$ & $0.0969$ & $4.953$ & $0.0574$ \\
 Kohn variational (Van Reeth and Humberston 2004) \cite{VanReeth2004} & $4.0072 \pm 0.0020$ & $0.0956 \pm 0.010$ & $5.0267 \pm 0.0020$ & $0.0597 \pm 0.0010$ \\
-Close coupling (Walters \emph{et al} 2004) \cite{Walters2004} & $4.149$ & $0.103$ & $4.877$ & $0.0164$ \\
+CC (Walters \emph{et al} 2004) \cite{Walters2004} & $4.149$ & $0.103$ & $4.877$ & $0.0164$ \\
 \end{tabular}
 \end{ruledtabular}
 \caption{S-Wave Resonance Parameters} % title of Table
@@ -971,10 +978,10 @@ Close coupling (Walters \emph{et al} 2004) \cite{Walters2004} & $4.149$ & $0.103
 \begin{tabular}{l c c c c c}
 Method & $^1E_R \text{ (eV)}$ & $^1\Gamma \text{ (eV)}$ & $^2E_R \text{ (eV)}$ & $^2\Gamma \text{ (eV)}$ \\
 \colrule
-Current work & $4.2856 \pm 0.0001$ & $0.0445 \pm 0.0001$ & $5.0577 \pm 0.0004$ & $0.0459 \pm 0.0005$ \\
+Current work & $4.2856 \pm 0.0001$ & $0.0445 \pm 0.0001$ & $5.0579 \pm 0.0004$ & $0.0461 \pm 0.0005$ \\
 Complex rotation (Yan \emph{et al} 1998) \cite{Yan1999} $^\dagger$ & $4.2850 \pm 0.0014$ & $0.0435 \pm 0.0027$ & $5.0540 \pm 0.0027$ & $0.0925 \pm 0.0054$ \\
 Stabilization (Yan and Ho 2003) \cite{Yan2003} & $4.287$ & $0.0446$ & $5.062$ & $0.0563$ \\
-Close coupling (Walters \emph{et al} 2004 \cite{Walters2004}) & $4.475$ & $0.0827$ & $4.905$ & $0.0043$ \\
+CC (Walters \emph{et al} 2004 \cite{Walters2004}) & $4.475$ & $0.0827$ & $4.905$ & $0.0043$ \\
 Kohn (Van Reeth \emph{et al} 2004) \cite{VanReeth2004} & $4.29 \pm 0.01$ & $0.042 \pm 0.005$ & --- & --- \\
 \end{tabular}
 \end{ruledtabular}
@@ -990,10 +997,10 @@ Kohn (Van Reeth \emph{et al} 2004) \cite{VanReeth2004} & $4.29 \pm 0.01$ & $0.04
 \begin{tabular}{l c c}
 Method & $^1E_R \text{ (eV)}$ & $^1\Gamma \text{ (eV)}$ \\
 \colrule
-Current work & $4.7189 \pm 0.0003$ & $0.0858 \pm 0.0005$ \\
+Current work & $4.7188 \pm 0.0003$ & $0.0858 \pm 0.0005$ \\
 Complex rotation (Yan \emph{et al} 1998) \cite{Ho1998} & $4.710 \pm 0.0027$ & $0.0925 \pm 0.0054$  \\
 Stabilization (Yan and Ho 2003) \cite{Yan2003} & $4.714$ & $0.0969$ \\
-Close coupling (Walters \emph{et al} 2004 \cite{Walters2004}) & $4.899$ & $0.0872$ \\
+CC (Walters \emph{et al} 2004 \cite{Walters2004}) & $4.899$ & $0.0872$ \\
 \end{tabular}
 \end{ruledtabular}
 \caption{D-Wave Resonance Parameters} % title of Table
@@ -1008,9 +1015,9 @@ Close coupling (Walters \emph{et al} 2004 \cite{Walters2004}) & $4.899$ & $0.087
 \begin{tabular}{l c c}
 Method & $^1E_R \text{ (eV)}$ & $^1\Gamma \text{ (eV)}$ \\
 \colrule
-Current work $(\omega = 6)$ & $5.1867 \pm 0.0021$ & $0.0125 \pm 0.0003$ \\
+Current work $(\omega = 6)$ & $5.1863 \pm 0.0021$ & $0.0125 \pm 0.0003$ \\
 Complex rotation (Ho and Yan 2000) \cite{Ho2000} & $5.1661 \pm 0.0014$ & $0.0174 \pm 0.0027$  \\
-Close coupling (Walters \emph{et al} 2004 \cite{Walters2004}) & $5.200$ & $0.0095$ \\
+CC (Walters \emph{et al} 2004 \cite{Walters2004}) & $5.200$ & $0.0095$ \\
 \end{tabular}
 \end{ruledtabular}
 \caption{F-Wave Resonance Parameters} % title of Table
@@ -1024,9 +1031,9 @@ Close coupling (Walters \emph{et al} 2004 \cite{Walters2004}) & $5.200$ & $0.009
 
 Similar to the work by Van Reeth and Humberston on the S-wave \cite{VanReeth2003}, we used eq. \ref{eq:ScatLen} to find the S-wave and P-wave scattering lengths for small values of $\kappa$, given in table \ref{tab:SWaveScatLenERT}. For the P-wave, we were unable to use the very low $\kappa = 0.0001$ due to numerical inaccuracies. We see that to the accuracy reported, the S-wave scattering length has converged well with respect to $\kappa$.
 
-Prior work in the literature \cite{Blackwood2002,Walters2004,VanReeth2003} on the effective range uses the standard fitting in eq. \ref{eq:EffectiveRangeShort}, which only includes short-range interactions. Table \ref{tab:SWaveScatLenERT} shows the S-wave scattering lengths and effective ranges from prior Kohn \cite{VanReeth2003} and close coupling \cite{Blackwood2002,Walters2004} calculations. Some other recent elaborate calculations of the scattering length and effective range can be found in references \cite{Sinha2000}, \cite{Chiesa2002}, and \cite{Ivanov2002}. These all agree relatively well with each other.
+Prior work in the literature \cite{Blackwood2002,Walters2004,VanReeth2003} on the effective range uses the standard fitting in eq. \ref{eq:EffectiveRangeShort}, which only includes short-range interactions. Table \ref{tab:SWaveScatLenERT} shows the S-wave scattering lengths and effective ranges from prior Kohn \cite{VanReeth2003} and CC \cite{Blackwood2002,Walters2004} calculations. Some other recent elaborate calculations of the scattering length and effective range can be found in references \cite{Sinha2000}, \cite{Chiesa2002}, and \cite{Ivanov2002}. These all agree relatively well with each other.
 
-The close coupling paper \cite{Blackwood2002} does not give a specific range where they did the fitting for the effective range, but it appears to be a similar range as that of the Kohn calculations. Van Reeth and Humberston \cite{VanReeth2003} do the fitting for the $\kappa = 0-0.5$ au range for both the singlet and triplet. In the third line of table \ref{tab:SWaveScatLenERT}, we use the same $\kappa$ range and reproduce nearly their same results but with our $\omega = 7$ values. Figure \ref{fig:swave-ERT-short} has our updated version of the graph presented in Figure 5 of their paper. They note that the singlet forms a relatively straight line, but the triplet curves down at low energies. We see this same behavior, and investigate it further.
+The CC paper \cite{Blackwood2002} does not give a specific range where they did the fitting for the effective range, but it appears to be a similar range as that of the Kohn calculations. Van Reeth and Humberston \cite{VanReeth2003} do the fitting for the $\kappa = 0-0.5$ au range for both the singlet and triplet. In the third line of table \ref{tab:SWaveScatLenERT}, we use a similar $\kappa$ range and reproduce nearly their same results but with our $\omega = 7$ values. Figure \ref{fig:swave-ERT-short} has our updated version of the graph presented in Figure 5 of their paper. They note that the singlet forms a relatively straight line, but the triplet curves down at low energies. We see this same behavior, and investigate it further.
 
 When we do the fitting only at very small momenta ($\kappa = 0.001 - 0.009$ in table \ref{tab:SWaveScatLenERT}) and compare to the higher momentum ($\kappa = 0.1 - 0.5$), we see that the singlet results stay nearly the same. However, for the triplet, the effective range changes drastically. This corresponds with the triplet curving downward in fig. \ref{fig:swave-ERT-short}. The question as to whether this is a real feature or numerical inaccuracy at low momenta can be answered by looking at the convergence of the phase shifts at these $\kappa$ values. As Blackwood et al. note \cite{Blackwood2002}, numerical accuracy is difficult to obtain at very small $\kappa$. We estimate that for $\kappa = 0.001 - 0.009$, based off extrapolations, our S-wave singlet and triplet phase shifts have converged to within $0.28\%$ and $0.37\%$ of their correct values, respectively.
 
@@ -1151,8 +1158,8 @@ QDT expansion - Eqs. (\ref{eq:GaoScatLenS}), (\ref{eq:GaoEffRange}) & $0.001$ & 
 \colrule
 Kohn 721 terms \cite{VanReeth2003} & $0 - 0.5$ & 4.334 & \,\,--- & 2.143 & \,\,--- \\
 Kohn extrapolated \cite{VanReeth2003} & $0 - 0.5$ & 4.311 & 2.27 & 2.126 & 1.39 \\
-Close coupling 14Ps14H \cite{Blackwood2002} & --- & 4.41 & 2.19 & 2.06 & 1.47 \\
-Close coupling 14Ps14H+H$^-$ \cite{Walters2004} & --- & 4.327 & \,\,--- & \,\,--- & \,\,--- \\
+CC 14Ps14H \cite{Blackwood2002} & --- & 4.41 & 2.19 & 2.06 & 1.47 \\
+CC 14Ps14H+H$^-$ \cite{Walters2004} & --- & 4.327 & \,\,--- & \,\,--- & \,\,--- \\
 \end{tabular}
 \end{ruledtabular}
 \caption{S-wave scattering lengths and effective ranges}
@@ -1198,7 +1205,7 @@ QDT expansion - Eq. (\ref{eq:GaoScatLenP}) & 0.01 & $-22.198 \pm 0.172$ & $1.410
 
 In general, the triplet calculations have been the most difficult for any of our calculations.
 
-Data files with all current results are available upon request from the authors.
+Data files with current results are available upon request from the authors. These contain all discussed partial waves using all Kohn methods.
 
 \vskip 0.5truecm
 \noindent
