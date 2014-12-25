@@ -58,6 +58,7 @@
 %\usepackage[nottoc]{tocbibind}
 \usepackage{tocbibind}
 \usepackage{subfig}
+\usepackage{todonotes}
 \usepackage{lettrine}  % Dropped capitals
 \usepackage{cool}  % Typesetting for various equation types
 %\usepackage[grey,utopia]{quotchap}  % Decorative chapter headings
@@ -68,6 +69,12 @@
 \usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}  % http://www.khirevich.com/latex/microtype/
 \usepackage{siunitx}  % For correct typesetting of units
 \sisetup{per-mode=symbol}
+
+% If we want the equations, figures and tables to be numbered sequentially instead of by chapter/section
+%\usepackage{chngcntr}
+%\counterwithout{equation}{chapter}
+%\counterwithout{figure}{chapter}
+%\counterwithout{table}{chapter}
 
 \usepackage{cleveref}
 \crefname{equation}{equation}{equations}
@@ -121,6 +128,8 @@
 %\let\endlongtable\relax
 %\let\beq\iffalse
 %\let\eeq\fi
+
+\newcommand{\todoi}{\todo[inline]}
 
 % From http://latex-alive.tumblr.com/post/698006466
 \DeclareSymbolFont{euler}{U}{eur}{m}{n}
