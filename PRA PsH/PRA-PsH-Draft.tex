@@ -142,16 +142,15 @@ the procedure by Todd to systematically remove terms that
 were causing linear dependence.
 This enabled us to compute the phase shifts (and the binding
 energy of PsH) with more short-range Hylleraas terms than the earlier 
-Kohn calculation. 
-We have also extended the calculations to the next four partial waves through the H-wave.
+Kohn calculation. Next, we have significantly increased the number of integration points for matrix elements that involve the long-range terms, along with implementing a method to accelerate the convergence of these integrals. We have also extended the calculations to the next four partial waves through the H-wave.
 
-Using multiple variants of the Kohn variational method, we computed singlet and triplet phase shifts for Ps-H scattering for the first six partial waves. We confirm the previously observed resonances for the first four partial waves and compare the positions and widths to that of the earlier Kohn, close coupling and complex rotation calculations. In addition, we computed the scattering lengths and effective range using multiple effective range theories. We also used the short-range part of the full scattering wavefunction to compute the binding energy of positronium hydride (Ps-H). Comparing our binding energy with the most elaborate variational results gives an indication of the reliability of describing the Ps-H system at short-distances. \todo{$\sigma$?}
+We have applied the complex Kohn for the \emph{S} matrix variational principle to the first six partial waves for Ps-H scattering and present results. We confirm the previously observed resonances for the first four partial waves and compare the positions and widths to that of the earlier Kohn, close coupling (CC) and complex rotation calculations (references to be given). In addition, we computed the scattering lengths and effective range using multiple effective range theories. We also used the short-range part of the full scattering wavefunction to compute the binding energy of positronium hydride (PsH). Comparing the binding energy with the most elaborate variational results gives an indication of the reliability of describing the Ps-H system at short-distances.
 
 There have been a number of other calculations for
 Ps-H scattering. A much earlier Kohn variational calculation was performed
 by Page \cite{Page1976} for the Ps-H scattering lengths.
 At low energies, Diffusion Monte Carlo (DMC) \cite{Chiesa2002},
-the Stochastic Variational Method (SVM) \cite{Ivanov2001,Ivanov2002}, and Close Coupling (CC) \cite{Blackwood2002,Blackwood2002b,Walters2004} methods have been applied.
+the Stochastic Variational Method (SVM) \cite{Ivanov2001,Ivanov2002}, close coupling \cite{Blackwood2002,Blackwood2002b,Walters2004}, and Kohn variational \cite{Page1976,VanReeth2003,VanReeth2004} methods have been applied.
 The SVM with stabilization techniques was used to compute
 accurate low-energy phase shifts and scattering lengths for Ps-H collisions \cite{Ivanov2001,Ivanov2002}.
 A disadvantage of the SVM over scattering theory methods
@@ -187,13 +186,11 @@ improved to the converged results.
 The Kohn variational method is known to yield accurate results and 
 has provided benchmark results \cite{VanReeth2003,VanReeth2004} to which results from
 other calculations can be compared.
-Unlike the SVM, the method can 
+Unlike the SVM, the Kohn variational method can 
 treat inelastic as well as elastic scattering
 and thus can be extended to higher energies. 
 
-The most recent calculation of Ps-H scattering uses the confined variational method (CVM) \cite{Zhang2012}. This provides very accurate results but has the drawback of being very computationally expensive. In ref. \cite{Zhang2012}, they calculate phase shifts for 2 momenta for both $^1S$ and $^3S$.
-
-Goal is to provide accurate and benchmark calculations.
+The most recent calculation of Ps-H scattering uses the confined variational method (CVM) \cite{Zhang2012}. This provides accurate results but has the drawback of being very computationally expensive. In Ref. \cite{Zhang2012}, they calculate phase shifts for 2 momenta for both $^1S$ and $^3S$.
 
 Phase shifts are expressed in radians. Atomic units are used throughout unless otherwise stated. For conversions to electron-volts (eV), we use the conversion factor 1 au = {27.21138505(60) eV} \cite{NISTConversions}.
 
@@ -691,7 +688,7 @@ $\kappa$ (au) & $\delta_0^+ (\omega = 7)$ & $\delta_0^+ (\omega \rightarrow \inf
 \centering
 \begin{ruledtabular}
 \begin{tabular}{c c c c c c c}
-$\kappa$ (au) & $\delta_0^- (\omega = 7)$ & $\delta_0^- (\omega \rightarrow \infty)$ & \% Diff$^-$ & $\delta_0^-$ (Kohn) \cite{VanReeth2003} & $\delta_0^-$ (CC 14Ps14H) \cite{Blackwood2002} & $\delta_0^-$ (CV) \cite{Zhang2012} \\
+$\kappa$ (au) & $\delta_0^- (\omega = 7)$ & $\delta_0^- (\omega \rightarrow \infty)$ & \% Diff$^-$ & $\delta_0^-$ (Kohn) \cite{VanReeth2003} & $\delta_0^-$ (CC 14Ps14H) \cite{Blackwood2002} & $\delta_0^-$ (CVM) \cite{Zhang2012} \\
 \colrule
 0.1 & -0.215 & -0.214 & 0.120\% & -0.214 & -0.206 & -0.21464 \\
 0.2 & -0.431 & -0.431 & 0.063\% & -0.432 & -0.414 & -0.43159 \\
