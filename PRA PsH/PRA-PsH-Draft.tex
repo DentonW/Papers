@@ -19,7 +19,10 @@
 %  4)  latex apssamp.tex
 %
 %\documentclass[twocolumn,showpacs,preprintnumbers,amsmath,amssymb]{revtex4}
-\documentclass[preprint,showpacs,preprintnumbers,amsmath,amssymb]{revtex4}
+%\documentclass[preprint,showpacs,preprintnumbers,amsmath,amssymb]{revtex4}
+
+\documentclass[preprint,showpacs,preprintnumbers,amsmath,amssymb,longbibliography,pra,aps]{revtex4-1}
+%\documentclass[reprint,showpacs,preprintnumbers,amsmath,amssymb,pra,aps]{revtex4-1}
 
 %\bibliographystyle{aipauth4-1}
 
@@ -60,6 +63,9 @@
 \usepackage{amssymb}
 \usepackage{xcolor}
 \usepackage{wasysym}  % Simply for \CIRCLE and \Circle (could use \circ for the latter)
+
+\usepackage{silence}
+\WarningFilter{revtex4-1}{Repair the float}  % Completely innocuous warning - http://tex.stackexchange.com/questions/180762/revtex4-1-warning-repair-the-float-package
 
 %%%%%% My definitions
 \def \bea{\begin{eqnarray}}
@@ -192,7 +198,7 @@ and thus can be extended to higher energies.
 
 The most recent calculation of Ps-H scattering uses the confined variational method (CVM) \cite{Zhang2012}. This provides accurate results but has the drawback of being very computationally expensive. In Ref. \cite{Zhang2012}, they calculate phase shifts for 2 momenta for both $^1S$ and $^3S$.
 
-Phase shifts are expressed in radians. Atomic units are used throughout unless otherwise stated. For conversions to electron-volts (eV), we use the conversion factor 1 au = {27.21138505(60) eV} \cite{NISTConversions}.
+Phase shifts are expressed in radians. Atomic units are used throughout unless otherwise stated. For conversions to electron-volts (eV), we use the conversion factor 1 au = {27.21138505(60) eV} \cite{Mohr2012}.
 
 \emph{Add \cite{Shipman2014}, \cite{Barker2012}}
 \emph{Add \cite{Mitroy2002a} and \cite{Mitroy2007}?}
@@ -212,7 +218,7 @@ Phase shifts are expressed in radians. Atomic units are used throughout unless o
 	\label{fig:PsHCoords}
 \end{figure}
 
-We are investigating low-energy elastic ground-state positronium with ground-state hydrogen, Ps(1s)+H(1s), for energies up to the excitation threshold of Ps(n=2)+H(1s) at $\tfrac{3}{16}$ au ($5.102$ eV). Previous work on Ps-H scattering used the Kohn and inverse Kohn approach \cite{VanReeth2003, VanReeth2004}. The complex Kohn methods are more stable and suffer less from Schwartz singularities than the Kohn, inverse Kohn and generalized Kohn methods \cite{Lucchese1989,Cooper2009,Cooper2010}. The results presented in Sec. \ref{sec:Results} use the \emph{S} matrix complex Kohn method, but we present a general wavefunction that can be used in any of the variants of the Kohn variational method, as we describe in Sec. \ref{sec:Kohn}.
+We are investigating low-energy elastic ground-state positronium with ground-state hydrogen, Ps(1s)+H(1s), for energies up to the excitation threshold of Ps(n=2)+H(1s) at an energy of $\tfrac{3}{16}$ au ($5.102$ eV). Previous work on Ps-H scattering used the Kohn and inverse Kohn approach \cite{VanReeth2003, VanReeth2004}. The complex Kohn methods are more stable and suffer less from Schwartz singularities than the Kohn, inverse Kohn and generalized Kohn methods \cite{Lucchese1989,Cooper2009,Cooper2010}. The results presented in Sec. \ref{sec:Results} use the \emph{S} matrix complex Kohn method, but we present a general wavefunction that can be used in any of the variants of the Kohn variational method, as we describe in Sec. \ref{sec:Kohn}.
 
 For S-wave Ps(1s)-H(1s) elastic scattering, the flexible complex-valued scattering wavefunction is given by
 \begin{equation}
@@ -280,7 +286,7 @@ The variable $\omega$ is a non-negative integer that determines the maximum numb
 k_i + l_i + m_i + n_i + p_i + q_i \leq \omega, \text{ with all } k_i, l_i, m_i, n_i, q_i \text{ and } p_i \geq 0.\end{equation}
 The first symmetry in Eq. (\ref{eq:TrialWaveHigher}) has $j=1$ for $i=1$ to $N(\omega)$, and the second symmetry exists for $\ell > 0$, with $i = N(\omega)$ to $2N(\omega)$.
 
-These short-range terms represent the angular momentum as being placed on either the positron ($r_1$) or on the electron on the Ps atom ($r_2$, and $r_3$ with exchange). Following up on the Ref. \cite{VanReeth2004} where the slow convergence of the P-wave triplet phase shift was discussed, we also tried a wavefunction where the angular momentum was placed on the electron of the H atom ($r_3$) and on the Ps ($\rho$). However, this did not improve convergence for us and was even marginally worse in some cases. The numerical techniques discussed in Sec. \ref{sec:Numerical} improved our convergence.
+These short-range terms represent the angular momentum as being placed on either the positron ($r_1$) or on the electron on the Ps atom ($r_2$, and $r_3$ with exchange). Following up on the Ref. \cite{VanReeth2004} where the slow convergence of the $^3$P phase shift was discussed, we also tried a wavefunction where the angular momentum was placed on the electron of the H atom ($r_3$) and on the Ps ($\rho$). However, this did not improve convergence for us and was even marginally worse in some cases. The numerical techniques discussed in Sec. \ref{sec:Numerical} improved our convergence.
 
 For partial waves with $\ell>1$, the orbital angular momentum could also be shared between both particles in the Ps atom \cite{Schwartz1961a}. An investigation of the contribution to the final results from each symmetry for e$^+$-He scattering \cite{VanReeth1997} has revealed that the mixed symmetries were not important, and because of the complexity of the analytical evaluation of the various matrix elements, we have omitted the mixed symmetry terms where angular momentum is shared.
 
@@ -407,7 +413,7 @@ and
 \end{align}
 Equation (\ref{eq:TotalCross}) is in units of $\pi a_0^2$, and Eq. (\ref{eq:DiffCross}) is in units of $\pi a_0^2 / \rm{sr}$. The singlet for each of the partial waves contributes $1/4$ to the integrated and differential cross sections, while the triplet contributes $3/4$.
 
-We also calculate the momentum transfer cross sections, given by \cite{}
+We also calculate the momentum transfer cross sections, given by \citep[p. 589]{Bransden2003}
 \begin{equation}
 \label{eq:MomentumCross}
 \sigma_{m}^\pm = \frac{4}{\kappa^2} \sum_{\ell=0}^\infty (\ell+1) \sin^2 (\delta_\ell^\pm - \delta_{\ell+1}^\pm) .
@@ -434,7 +440,7 @@ For short-range potentials, the effective range $r_0$ is given by \cite{Bethe194
 \label{eq:EffectiveRangeShort}
 \kappa \cot\delta_0^\pm = -\frac{1}{a_0^\pm} + \frac{1}{2} r_0^\pm \kappa^2.
 \end{equation}
-The effective range is a measure of the interaction region of the scattering problem. This is the standard fitting used throughout the literature \cite{Ivanov2002,VanReeth2003,Blackwood2002,Walters2004}. As pointed out in Ref. \cite{Fabrikant2014}, the van der Waals interaction should be taken into account for low-energy Ps-atom scattering. An effective range theory (ERT) expansion for the van der Waals interaction is given by \cite[p. 668]{Drake2006}
+The effective range is a measure of the interaction region of the scattering problem. This is the fitting used throughout the literature \cite{Ivanov2002,VanReeth2003,Blackwood2002,Walters2004}. As pointed out in Ref. \cite{Fabrikant2014}, the van der Waals interaction should be taken into account for low-energy Ps-atom scattering. An effective range theory (ERT) expansion for the van der Waals interaction is given by \cite[p. 668]{Drake2006}
 \begin{equation}
 \label{eq:EffectiveRangeLongAu}
 \kappa \cot\delta_0^\pm = -\frac{1}{a} + \frac{1}{2} r_0^\pm \kappa^2 - \frac{4 \pi C}{15 a^2} \kappa^3 - \frac{16 C}{15 a} \kappa^4 \ln \left(\kappa \right).
@@ -474,7 +480,7 @@ Lastly, we also use an expression from Ref. \cite{Blackwood2002} to get an estim
 \label{eq:BlackwoodERT}
 r_0^+ = \frac{a_0^+ \sqrt{4 E_b} - 1}{2 a_0^+ E_b}
 \end{equation}
-No equivalent expression exists for $r_0^-$, as there is not a triplet bound state.
+No equivalent expression exists for $r_0^-$, as there is not a $^3$S bound state.
 
 
 \section{Numerics}
@@ -613,7 +619,7 @@ Yan and Ho \cite{Yan1999}, who also used Hylleraas wave functions.
 While we do not obtain the best value of the binding energy
 (this was not the purpose of our calculation),
 we obtained results for this quantity which compare favorably with
-the most elaborate calculation in the literature which
+the most elaborate calculation in the literature, which
 used 5000 explicitly correlated Gaussians \cite{Bubin2006}.
 Our calculation of the binding energy gives us some confidence
 in the reliability of the short-range part of the
@@ -777,7 +783,7 @@ We performed full complex Kohn calculations on all first six partial waves, but 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=3.4in]{combined-cross-sections}
-	\caption{(Color online) Integrated elastic cross sections. Close coupling data is from ref. \cite{Walters2004}.}
+	\caption{(Color online) Integrated elastic cross sections. CC data is from ref. \cite{Walters2004}.}
 	\label{fig:combined-cross-sections}
 \end{figure}
 
@@ -956,7 +962,7 @@ When we do the fitting only at very small momenta ($\kappa = 0.001 - 0.009$ in T
 
 The previous Kohn calculations \cite{VanReeth2003} were performed using Eq. (\ref{eq:EffectiveRangeShort}), which works well for short-range interactions. Equation (\ref{eq:EffectiveRangeLongAu}) includes terms due to the van der Waals interaction. Van Reeth and Humberston \cite{VanReeth2003} tried this expansion out to the $\kappa^3$ term but did not notice a difference from Eq. (\ref{eq:EffectiveRangeShort}) for either $^1$S or $^3$S. In Table \ref{tab:SWaveScatLenERT}, we see that adding the extra van der Waals terms does not change the scattering length and only changes the effective range slightly. We also tried the Hinckelmann and Spruch expression \cite{Hinckelmann1971}, but we obtained unsatisfactory results, since $d$ is not known and was chosen as a free parameter in our system.
 
-We also investigate this low $\kappa$ range using the quantum-defect theory of Gao \cite{Gao1998} in Eqs. \ref{eq:GaoScatLenS} and \ref{eq:GaoEffRange}, which give a scattering length and effective range that agree relatively well with the long-range van der Waals expression. The scattering length obtained with the QDT expansion agrees with results using the other ERTs and scattering length definition. However, the effective range obtained with the QDT expansion does not agree with the other ERTs.
+We also investigate this low $\kappa$ range using the quantum-defect theory of Gao \cite{Gao1998} in Eqs. (\ref{eq:GaoScatLenS}) and (\ref{eq:GaoEffRange}), which give a scattering length and effective range that agree relatively well with the long-range van der Waals expression. The scattering length obtained with the QDT expansion agrees with results using the other ERTs and scattering length definition. However, the effective range obtained with the QDT expansion does not agree with the other ERTs.
 %The QDT expansion does not agree well for the effective ranges but gets the scattering lengths correct. This uses only the slowly varying first term in Eq. (\ref{eq:GaoKTaylor}). 
 
 
@@ -986,6 +992,7 @@ Kohn 721 terms \cite{VanReeth2003} & $0 - 0.5$ & 4.334 & \,\,--- & 2.143 & \,\,-
 Kohn extrapolated \cite{VanReeth2003} & $0 - 0.5$ & 4.311 & 2.27 & 2.126 & 1.39 \\
 CC 14Ps14H \cite{Blackwood2002} & --- & 4.41 & 2.19 & 2.06 & 1.47 \\
 CC 14Ps14H+H$^-$ \cite{Walters2004} & --- & 4.327 & \,\,--- & \,\,--- & \,\,--- \\
+SVM \cite{Ivanov2002} & 4.34 & 2.39 & 2.22 & 1.29 \\
 \end{tabular}
 \end{ruledtabular}
 \caption{$^{1,3}$S scattering lengths and effective ranges}
@@ -1063,7 +1070,7 @@ We wish to thank Drs. Y.~K.~Ho, J.~W.~Humberston, K.~Pachucki and Z.~C.~Yan for 
 
 
 
-\bibliographystyle{h-physrev3}
+%\bibliographystyle{h-physrev3}
 \bibliography{PRA-PsH-Draft}
 
 
