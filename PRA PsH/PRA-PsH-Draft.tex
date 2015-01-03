@@ -103,9 +103,11 @@
 
 \begin{abstract}
 Abstract goes here
+
+comparison is made to
 \end{abstract}
    
-\pacs{31.15.xt Variational techniques; 34.50.-s Scattering of atoms and molecules; 36.10.Dr Positronium}
+\pacs{31.15.xt Variational techniques; 34.50.-s Scattering of atoms and molecules; 36.10.Dr Positronium; 34.80.Bm Elastic scattering}
 %\keywords{Suggested keywords}
 \maketitle
 
@@ -198,7 +200,7 @@ and thus can be extended to higher energies.
 
 The most recent calculation of Ps-H scattering uses the confined variational method (CVM) \cite{Zhang2012}. This provides accurate results but has the drawback of being very computationally expensive. In Ref. \cite{Zhang2012}, they calculate phase shifts for 2 momenta for both $^1S$ and $^3S$.
 
-Phase shifts are expressed in radians. Atomic units are used throughout unless otherwise stated. For conversions to electron-volts (eV), we use the conversion factor 1 au = {27.21138505(60) eV} \cite{Mohr2012}.
+Phase shifts are expressed in radians. Atomic units are used throughout unless otherwise stated. For conversions to electron-volts (eV), we use the conversion factor 1 au = {27.21138505(60) eV} \cite{Mohr2012,NISTConversions}.
 
 \emph{Add \cite{Shipman2014}, \cite{Barker2012}}
 \emph{Add \cite{Mitroy2002a} and \cite{Mitroy2007}?}
@@ -396,7 +398,7 @@ The Born approximation to the \emph{K} matrix \citep[p. 620]{Bransden2003} is gi
 \label{eq:Born}
 \tan\delta_\ell \approx -(\widetilde{S}_\ell,\mathcal{L}\widetilde{S}_\ell )\, .
 \end{equation}
-We also consider a modified Born approximation that uses the long-range terms only in equations \ref{eq:TrialWave} and \ref{eq:TrialWaveHigher}. This gives a better approximation than the Born for most cases and is roughly equivalent to the Born in the other cases.
+We also consider a modified Born approximation that uses the long-range terms only in equations \ref{eq:TrialWave} and \ref{eq:TrialWaveHigher}.
 
 \subsection{Cross Sections}
 
@@ -589,7 +591,7 @@ The difference between the scattering length and the extrapolated scattering len
   \centering
 	\begin{ruledtabular}
     \begin{tabular}{cccccccccc}
-    Parameter & $^1S$ & $^3S$ & $^1P$ & $^3P$ & $^1D$ & $^3D$ & $^1F$, $^3F$ & $^1G$, $^3G$ & $^1H$, $^3H$ \\
+    Parameter & $^1$S & $^3$S & $^1$P & $^3$P & $^1$D & $^3$D & $^{1,3}$F & $^{1,3}$G & $^{1,3}$H \\
     \colrule
 	$\omega$           & 7     & 7     & 7     & 7     & 6     & 6     & 5    & 5   & 5 \\
 	$N^\prime(\omega)$ & 1505  & 1633  & 1000  & 1000  & 916   & 919   & 462  & 462 & 462 \\
@@ -649,7 +651,7 @@ Bubin (2006) \cite{Bubin2006} & ECGs variational & 5000 & -0.789 196 765 251$^\s
 %\bottomrule
 \end{tabular}
 \end{ruledtabular}
-\caption{Positronium hydride energy comparisons. The values marked by an asterisk are the reported values, and the other values are obtained by using the conversion factor given in Ref. \cite{NISTConversions}.}
+\caption{Positronium hydride energy comparisons. The values marked by an asterisk are the reported values, and the other values are obtained by using the conversion factor given in Ref. \cite{Mohr2012}.}
 \label{tab:BoundEnergy}
 \end{center}
 \end{table}
@@ -657,7 +659,7 @@ Bubin (2006) \cite{Bubin2006} & ECGs variational & 5000 & -0.789 196 765 251$^\s
 
 \subsection{Phase Shifts and Cross Sections}
 
-In Tables \ref{tab:SWaveSingletPhase} and \ref{tab:SWaveTripletPhase}, we show the $^{1,3}$S phase shifts using the \emph{S} matrix complex Kohn variational method. To the accuracy given, the results agree from the various methods described in Sec. \ref{sec:Kohn}, after removing any obvious Schwartz singularities. We compute extrapolated values from $\omega = 4$ to $\omega = 7$ to estimate the phase shifts as $\omega \rightarrow \infty$ using Eq. (\ref{eq:Extrap}). By computing the percentage difference between the extrapolated phase shifts and the computed phase shifts at $\omega=7$, we estimate that the $^1S$ phase shifts have converged to better than about $0.22\%$ for the range $\kappa=0.1$ to $0.7$ and that the $^3S$ phase shifts have converged to better than $0.27\%$ for the same range of $\kappa$.
+In Tables \ref{tab:SWaveSingletPhase} and \ref{tab:SWaveTripletPhase}, we show the $^{1,3}$S phase shifts using the \emph{S} matrix complex Kohn variational method. To the accuracy given, the results agree from the various methods described in Sec. \ref{sec:Kohn}, after removing any obvious Schwartz singularities. We compute extrapolated values from $\omega = 4$ to $\omega = 7$ to estimate the phase shifts as $\omega \rightarrow \infty$ using Eq. (\ref{eq:Extrap}). By computing the percentage difference between the extrapolated phase shifts and the computed phase shifts at $\omega=7$, we estimate that the $^1$S phase shifts have converged to better than about $0.22\%$ for the range $\kappa=0.1$ to $0.7$ and that the $^3$S phase shifts have converged to better than $0.27\%$ for the same range of $\kappa$.
 
 In this table, we also compare our results with the earlier Kohn variational results \cite{VanReeth2003,VanReeth2004} and with the elaborate CC results of Walters' group \cite{Blackwood2002,Walters2004}. The current $\omega = 7$ results are in excellent agreement with the earlier Kohn $\omega = 6$ variational results, being either identical or slightly lower, indicating that the earlier S-wave calculations were well-converged. The slight difference in phase shifts between the previous and current Kohn methods can be attributed to two factors. Using Todd's procedure (described in Sec. \ref{sec:Todd}) allows us to use more terms (see Table \ref{tab:Nonlinear}) than the earlier Kohn calculations \cite{VanReeth2003,VanReeth2004}, which used 721 terms. This slightly increased the phase shifts, but we also use more integration points in these calculations, which have the effect of slightly decreasing the phase shifts.
 
@@ -757,7 +759,7 @@ $0.7$ & $3.215^{-1}$ & $3.02^{-1}$ & $-4.451^{-2}$ & $-3.27^{-2}$ \\
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=3.4in]{swave-comparisons}
-	\caption{(Color online) Comparison of $^1$S (a) and $^3$S (b) phase shifts with results from other groups. Results are ordered according to year of publication. This work -- solid curves; \mbox{\textcolor{blue}{$\times$} -- CC \cite{Walters2004};} \mbox{$\CIRCLE$ -- Kohn \cite{VanReeth2003};} \mbox{\textcolor{red}{\textbf{+}} -- CC \cite{Blackwood2002};} \mbox{$\blacktriangle$ -- Chiesa 2002 \cite{Chiesa2002};} \mbox{$\triangledown$ -- SVM 2002 \cite{Ivanov2002};} \mbox{$\Circle$ -- SVM 2001 \cite{Ivanov2001};} \mbox{\textcolor{red}{$\vartriangle$} -- Sinha 2000 \cite{Sinha2000};} \mbox{$\blacksquare$ -- Adhikari 1999 \cite{Adhikari1999};} \mbox{$\square$ -- Campbell 1998 \cite{Campbell1998};} \mbox{$\vartriangle$ -- Sinha 1997 \cite{Sinha1997};} \mbox{\textcolor[RGB]{0,127,0}{$\bigstar$} -- Ray 1997 \cite{Ray1997};} \mbox{\textcolor{red}{$\blacklozenge$} -- Drachman 1975 \cite{Drachman1975};} \mbox{\textcolor{blue}{$\lozenge$} -- Hara 1975 \cite{Hara1975};} \mbox{$\blacktriangledown$ -- Fraser 1961 \cite{Fraser1961}.}}
+	\caption{(Color online) Comparison of $^1$S (a) and $^3$S (b) phase shifts with results from other groups. Results are ordered according to year of publication. This work -- solid curves; \mbox{\textcolor{blue}{$\times$} -- CC \cite{Walters2004};} \mbox{$\CIRCLE$ -- Kohn \cite{VanReeth2003};} \mbox{\textcolor{red}{\textbf{+}} -- CC \cite{Blackwood2002};} \mbox{$\blacktriangle$ -- Chiesa 2002 \cite{Chiesa2002};} \mbox{$\triangledown$ -- SVM 2002 \cite{Ivanov2002};} \mbox{$\Circle$ -- SVM 2001 \cite{Ivanov2001};} \mbox{\textcolor{red}{$\vartriangle$} -- Sinha 2000 \cite{Sinha2000};} \mbox{$\blacksquare$ -- Adhikari 1999 \cite{Adhikari1999};} \mbox{$\square$ -- Campbell 1998 \cite{Campbell1998};} \mbox{$\vartriangle$ -- Sinha 1997 \cite{Sinha1997};} \mbox{\textcolor[RGB]{0,127,0}{$\bigstar$} -- Ray 1997 \cite{Ray1997};} \mbox{$\triangleright$ -- Drachman 1976 \cite{Drachman1976};} \mbox{\textcolor{red}{$\blacklozenge$} -- Drachman 1975 \cite{Drachman1975};} \mbox{\textcolor{blue}{$\lozenge$} -- Hara 1975 \cite{Hara1975};} \mbox{$\blacktriangledown$ -- Fraser 1961 \cite{Fraser1961}.}}
 	\label{fig:swave-comparisons}
 \end{figure}
 
@@ -776,14 +778,14 @@ $0.7$ & $3.215^{-1}$ & $3.02^{-1}$ & $-4.451^{-2}$ & $-3.27^{-2}$ \\
 	\label{fig:fgh-wave-phases}
 \end{figure}
 
-Figure \ref{fig:fgh-wave-phases} shows the F-wave, G-wave and H-wave phase shifts compared to the Born approximation. Even for these higher partial waves, the Born approximation is not particularly good, being much lower. The Born approximation does not even have the correct sign for the phase shifts for the G-wave and H-wave triplet. This comparison is not shown for the first three partial waves, as there is very little agreement. The $e^+$-H and $e^+$-He Born results agree more closely with the Kohn calculations than for the Ps-H system \cite{?}. The major difference is that for Ps scattering, the correlations are very important, and the Born approximation cannot describe them well. The F-wave has a resonance above the Ps(n=2) threshold, but the beginning of the resonance is evident in Fig. \ref{fig:fgh-wave-phases}(a).
+Figure \ref{fig:fgh-wave-phases} shows the F-wave, G-wave and H-wave phase shifts compared to the Born approximation. For these three partial waves, the modified Born is approximately equivalent to the Born, so we show only the Born in these graphs. Even for these higher partial waves, the Born approximation is not particularly good, being much lower. The Born approximation does not even have the correct sign for the phase shifts for the G-wave and H-wave triplet. This comparison is not shown for the first three partial waves, as there is very little agreement. The $e^+$-H and $e^+$-He Born results agree more closely with the Kohn calculations than for the Ps-H system \cite{?}. The major difference is that for Ps scattering, the correlations are very important, and the Born approximation cannot describe them well. The F-wave has a resonance above the Ps(n=2) threshold, but the beginning of the resonance is evident in Fig. \ref{fig:fgh-wave-phases}(a).
 
 We performed full complex Kohn calculations on all first six partial waves, but we did more extensive calculations for the first three partial waves, as shown by the parameters and terms used in Sec. \ref{sec:Parameters}. For the F-wave through the H-wave, the phase shifts and partial elastic cross sections become very small, so their overall contribution to the total elastic cross sections becomes negligible by the H-wave. The H-wave only contributes up to $0.009\%$ of the integrated elastic cross sections near the threshold and much less at lower energies. For Fig. \ref{fig:combined-cross-sections}, we extracted the CC data of Ref. \cite{Walters2004} using the CurveSnap program \cite{CurveSnap}.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=3.4in]{combined-cross-sections}
-	\caption{(Color online) Integrated elastic cross sections. CC data is from ref. \cite{Walters2004}.}
+	\caption{(Color online) Integrated elastic cross sections. CC data is from Ref. \cite{Walters2004}.}
 	\label{fig:combined-cross-sections}
 \end{figure}
 
@@ -817,19 +819,12 @@ The differential cross sections shown in Figs. \ref{fig:diff-cross-section-2D-th
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=3.4in]{orthopara-cross-sections}
-	\caption{Ortho-Para conversion cross sections}
-	\label{fig:orthopara-cross-sections}
+	\includegraphics[width=3.4in]{cross-section-comparisons}
+	\caption{Comparison of cross sections}
+	\label{fig:cross-section-comparisons}
 \end{figure}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=3.4in]{momentum-cross-sections}
-	\caption{(Color online) Momentum transfer cross sections}
-	\label{fig:momentum-cross-sections}
-\end{figure}
-
-As pointed out in Ref. \cite{Buckman1989}, $\sigma_m = \sigma_{el}$ for zero energy. From Figs. \ref{fig:combined-cross-sections} and \ref{fig:momentum-cross-sections}, we can see that this is the case. For very low energies ($E < 10^{-6}$ eV), $\sigma_m = \sigma_{el} = 32.45$.
+As pointed out in Ref. \cite{Buckman1989}, $\sigma_m = \sigma_{el}$ for zero energy. From Fig. \ref{fig:cross-section-comparisons}, we can see that this is the case. For very low energies ($E < 10^{-6}$ eV), $\sigma_m = \sigma_{el} = 32.45$. The ortho-para cross section, $\sigma_C$, is much lower than the elastic and momentum transfer cross sections.
 
 
 
@@ -882,7 +877,8 @@ We observe no resonances in the triplet for any of these partial waves, which is
 \begin{tabular}{l c c c c c}
 Method & $^1E_R \text{ (eV)}$ & $^1\Gamma \text{ (eV)}$ & $^2E_R \text{ (eV)}$ & $^2\Gamma \text{ (eV)}$ \\
 \colrule
-Current work & $4.0065 \pm 0.0001$ & $0.0955 \pm 0.0001$ & $5.0277 \pm 0.0029$ & $0.0607 \pm 0.0007$ \\
+Current work & $4.0065 \pm 0.0001$ & $0.0955 \pm 0.0001$ & $5.0272 \pm 0.0029$ & $0.0608 \pm 0.0007$ \\
+Current work \emph{S} matrix & $4.0065$ & $0.0955$ & $5.0277$ & $0.0607$ \\
 Complex rotation (Yan and Ho 1999) \cite{Yan1999} $^\dagger$ & $4.0058 \pm 0.0005$ & $0.0952 \pm 0.0011$ & $4.9479 \pm 0.0014$ & $0.0585 \pm 0.0027$ \\
 Stabilization (Yan and Ho 2003) \cite{Yan2003} & $4.007$ & $0.0969$ & $4.953$ & $0.0574$ \\
 Kohn variational (Van Reeth and Humberston 2004) \cite{VanReeth2004} & $4.0072 \pm 0.0020$ & $0.0956 \pm 0.010$ & $5.0267 \pm 0.0020$ & $0.0597 \pm 0.0010$ \\
@@ -901,7 +897,8 @@ CC (Walters \emph{et al} 2004) \cite{Walters2004} & $4.149$ & $0.103$ & $4.877$ 
 \begin{tabular}{l c c c c c}
 Method & $^1E_R \text{ (eV)}$ & $^1\Gamma \text{ (eV)}$ & $^2E_R \text{ (eV)}$ & $^2\Gamma \text{ (eV)}$ \\
 \colrule
-Current work & $4.2856 \pm 0.0001$ & $0.0445 \pm 0.0001$ & $5.0579 \pm 0.0004$ & $0.0461 \pm 0.0005$ \\
+Current work & $4.2856 \pm 0.0001$ & $0.0445 \pm 0.0001$ & $5.0577 \pm 0.0004$ & $0.0459 \pm 0.0005$ \\
+Current work \emph{S} matrix & $4.2856$ & $0.0445$ & $5.0579$ & $0.0459$ \\
 Complex rotation (Yan \emph{et al} 1998) \cite{Yan1999} $^\dagger$ & $4.2850 \pm 0.0014$ & $0.0435 \pm 0.0027$ & $5.0540 \pm 0.0027$ & $0.0925 \pm 0.0054$ \\
 Stabilization (Yan and Ho 2003) \cite{Yan2003} & $4.287$ & $0.0446$ & $5.062$ & $0.0563$ \\
 CC (Walters \emph{et al} 2004 \cite{Walters2004}) & $4.475$ & $0.0827$ & $4.905$ & $0.0043$ \\
@@ -921,6 +918,7 @@ Kohn (Van Reeth \emph{et al} 2004) \cite{VanReeth2004} & $4.29 \pm 0.01$ & $0.04
 Method & $^1E_R \text{ (eV)}$ & $^1\Gamma \text{ (eV)}$ \\
 \colrule
 Current work & $4.7188 \pm 0.0003$ & $0.0858 \pm 0.0005$ \\
+Current work \emph{S} matrix & $4.7186$ & $0.0864$ \\
 Complex rotation (Yan \emph{et al} 1998) \cite{Ho1998} & $4.710 \pm 0.0027$ & $0.0925 \pm 0.0054$  \\
 Stabilization (Yan and Ho 2003) \cite{Yan2003} & $4.714$ & $0.0969$ \\
 CC (Walters \emph{et al} 2004 \cite{Walters2004}) & $4.899$ & $0.0872$ \\
@@ -938,7 +936,8 @@ CC (Walters \emph{et al} 2004 \cite{Walters2004}) & $4.899$ & $0.0872$ \\
 \begin{tabular}{l c c}
 Method & $^1E_R \text{ (eV)}$ & $^1\Gamma \text{ (eV)}$ \\
 \colrule
-Current work $(\omega = 6)$ & $5.1863 \pm 0.0021$ & $0.0125 \pm 0.0003$ \\
+Current work $(\omega = 6)$ & $5.1867 \pm 0.0021$ & $0.0125 \pm 0.0003$ \\
+Current work \emph{S} matrix $(\omega = 6)$ & $5.1863$ & $0.0125$ \\
 Complex rotation (Ho and Yan 2000) \cite{Ho2000} & $5.1661 \pm 0.0014$ & $0.0174 \pm 0.0027$  \\
 CC (Walters \emph{et al} 2004 \cite{Walters2004}) & $5.200$ & $0.0095$ \\
 \end{tabular}
@@ -1058,7 +1057,7 @@ Benchmark results.
 Accurate results.
 Improved numerics.
 
-
+\todoi{From \cite{Ho1998}: ``Resonances in positronium-hydrogen scattering are the result of the Rydberg series of a positron attaching to a negative hydrogen ion, H− (Drachman 1979).''}
 
 
 \section{Acknowledgments}
