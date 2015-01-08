@@ -860,7 +860,7 @@ Method & $^1E_R \text{ (eV)}$ & $^1\Gamma \text{ (eV)}$ & $^2E_R \text{ (eV)}$ &
 \colrule
 Current work & $4.2856 \pm 0.0001$ & $0.0445 \pm 0.0001$ & $5.0577 \pm 0.0004$ & $0.0459 \pm 0.0005$ \\
 Current work \emph{S} matrix complex Kohn & $4.2856$ & $0.0445$ & $5.0579$ & $0.0459$ \\
-Complex rotation (Yan and Ho 1998) \cite{Yan1999} $^\dagger$ & $4.2850 \pm 0.0014$ & $0.0435 \pm 0.0027$ & $5.0540 \pm 0.0027$ & $0.0925 \pm 0.0054$ \\
+Complex rotation (Yan and Ho 1998) \cite{Yan1998a} $^\dagger$ & $4.2850 \pm 0.0014$ & $0.0435 \pm 0.0027$ & $5.0540 \pm 0.0027$ & $0.0925 \pm 0.0054$ \\
 Stabilization (Yan and Ho 2003) \cite{Yan2003} & $4.287$ & $0.0446$ & $5.062$ & $0.0563$ \\
 CC (Walters et al. 2004 \cite{Walters2004}) & $4.475$ & $0.0827$ & $4.905$ & $0.0043$ \\
 Kohn (Van Reeth and Humberston 2004) \cite{VanReeth2004} & $4.29 \pm 0.01$ & $0.042 \pm 0.005$ & --- & --- \\
@@ -918,7 +918,7 @@ Prior work in the literature for Ps-H scattering \cite{Blackwood2002,Ivanov2002,
 
 Reference \cite{Blackwood2002} on the CC calculation does not give a specific range where they did the fitting for the effective range, but it appears to be a similar range as that of the Kohn variational calculations. Van Reeth and Humberston \cite{VanReeth2003} do the fitting for the $\kappa = 0-0.5$ range for both the singlet and triplet. In the third line of Table \ref{tab:SWaveScatLenERT}, we use a similar $\kappa$ range and reproduce nearly their same results but with our $\omega = 7$ values. Figure \ref{fig:swave-ERT-short} has our updated version of the graph presented in Figure 5 of their paper. They note that the singlet forms a relatively straight line, but the triplet curves down at low energies. We see this same behavior, and investigate it further.
 
-When we perform the fitting only at very small momenta ($\kappa = 0.001 - 0.009$ in Table \ref{tab:SWaveScatLenERT}) and compare to the higher momentum ($\kappa = 0.1 - 0.5$), we see that the singlet results stay nearly the same. However, for the triplet, the effective range changes significantly. This corresponds with the triplet curving downward in Fig. \ref{fig:swave-ERT-short}. The question as to whether this is a real feature or numerical inaccuracy at low momenta can be answered by looking at the convergence of the phase shifts at these $\kappa$ values. As Blackwood et al. note \cite{Blackwood2002}, numerical accuracy is difficult to obtain at very small $\kappa$. We estimate that for $\kappa = 0.001 - 0.009$, based off extrapolations, the $^1$S and $^3$S complex Kohn variational phase shifts have converged to within $0.28\%$ and $0.37\%$ of their correct values, respectively.
+When we perform the fitting only at very small momenta ($\kappa = 0.001 - 0.009$ in Table \ref{tab:SWaveScatLenERT}) and compare to the higher momentum ($\kappa = 0.1 - 0.5$), we see that the singlet results stay nearly the same. However, for the triplet, the effective range changes significantly. This corresponds with the triplet curving downward in Fig. \ref{fig:swave-ERT-short}. The question as to whether this is a real feature or numerical inaccuracy at low momenta can be answered by looking at the convergence of the phase shifts at these $\kappa$ values. As Blackwood et al. note \cite{Blackwood2002}, numerical accuracy is difficult to obtain at very small $\kappa$. We estimate that for $\kappa = 0.001 - 0.009$, based on the extrapolations, the $^1$S and $^3$S complex Kohn variational phase shifts have converged to within $0.28\%$ and $0.37\%$ of their correct values, respectively.
 
 The previous Kohn calculations \cite{VanReeth2003} were performed using Eq. (\ref{eq:EffectiveRangeShort}), which works well for short-range interactions. Equation (\ref{eq:EffectiveRangeLongAu}) includes terms due to the van der Waals interaction. Van Reeth and Humberston \cite{VanReeth2003} tried this expansion out to the $\kappa^3$ term but did not notice a difference from Eq. (\ref{eq:EffectiveRangeShort}) for either $^1$S or $^3$S. In Table \ref{tab:SWaveScatLenERT}, we see that adding the extra van der Waals terms does not change the scattering length and only changes the effective range slightly. We also tried the Hinckelmann and Spruch expression \cite{Hinckelmann1971}, but we obtained unsatisfactory results, since $d$ is not known and was chosen as a free parameter in our system.
 
@@ -1005,29 +1005,17 @@ SVM \cite{Ivanov2002} & --- & $-20.7$ & $6.80$
 
 \section{Conclusion}
 
-discrepancy in D-wave
+We present complex Kohn variational results for Ps(1s) scattering from H(1s) below the Ps(n=2) threshold. We extend the earlier Kohn calculations \cite{VanReeth2003,VanReeth2004} with a larger basis set, increased number of integration points, a modification to the integration, and by using the complex Kohn, all giving better converged phase shifts. We describe a method to identify short-range terms that contribute to linear dependence, allowing us to use a larger basis set \cite{Todd2007}. In general, the triplet computations have been more difficult than the singlet, typically resulting in slower convergence.
 
-In general, the triplet calculations have been the most difficult for any of our calculations.
+The S-wave and P-wave phase shifts can be considered benchmark results. The discrepancy in the D-wave phase shifts between the complex Kohn variational and CC methods needs further investigation, especially for $^3$D. The partial waves with $\ell > 2$ have very small phase shifts and do not contribute greatly to the overall cross sections. There are no published phase shifts to compare against for $\ell > 2$. We present the elastic differential, elastic integrated, momentum transfer and ortho-para conversion cross sections using the first six partial waves through the H-wave. The differential cross section is minimal at $\theta = \pi/2$ and peaks throughout most of the energy range in forward scattering ($\theta = 0$) with more contribution from backward scattering ($\theta = \pi$) at very low energies.
+
+We calculate resonance positions and widths for the $^1$S, $^1$P, $^1$D, and $^1$F partial waves, which favorably compare to the very accurate complex rotation results of Yan and Ho \cite{Yan1999,Yan1998a,Ho1998,Ho2000}. We also provide a detailed investigation of the effective range and scattering length for $^{1,3}$S, along with the $^{1,3}$P scattering length. We present results using the definition of the scattering length, a short-range effective range expansion, an expansion incorporating the van der Waals interaction and two quantum defect theory models. The $^{1,3}$S scattering lengths agree well with previous work and are likely the most accurate to date. The $^3$S effective range we calculate is higher than previously reported. The $^1$P scattering length agrees with the SVM \cite{Ivanov2002}, but the complex Kohn $^3$P scattering length is much smaller.
 
 Data files with current results and IPython scripts are available upon request from Denton Woods. These contain all discussed partial waves using all Kohn methods.
 
-extended previous Kohn calculations
 
-\todoi{Address Peter's concerns in his email on November 25}
+%\todoi{Address Peter's concerns in his email on November 25}
 
-\vskip 0.5truecm
-\noindent
-Benchmark results.
-Accurate results.
-Improved numerics.
-
-\begin{itemize}
-  \item Kohn variational method
-  \item phase shifts for the first six partial waves
-  \item benchmark results for the S-wave and P-wave
-  \item elastic differential, elastic total, momentum transfer, and ortho-para conversion cross sections
-  \item effective range, scattering length
-\end{itemize}
 
 \section{Acknowledgments}
 
