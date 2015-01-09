@@ -19,8 +19,8 @@
 %  4)  latex apssamp.tex
 %
 
-%\documentclass[preprint,showpacs,preprintnumbers,amsmath,amssymb,longbibliography,pra,aps]{revtex4-1}
-\documentclass[reprint,showpacs,preprintnumbers,amsmath,amssymb,pra,aps]{revtex4-1}
+\documentclass[preprint,showpacs,preprintnumbers,amsmath,amssymb,longbibliography,pra,aps]{revtex4-1}
+%\documentclass[reprint,showpacs,preprintnumbers,amsmath,amssymb,pra,aps,longbibliography]{revtex4-1}
 
 %\bibliographystyle{aipauth4-1}
 
@@ -149,7 +149,7 @@ Next, we have significantly increased the number of integration points for matri
 
 We have applied the complex Kohn for the \emph{S} matrix variational principle to the first six partial waves for Ps-H scattering and present results. We confirm the previously observed resonances for the first four partial waves and compare the positions and widths to that of the earlier Kohn, close coupling (CC) and complex rotation calculations (references to be given). In addition, we computed the scattering lengths and effective range using multiple effective range theories. We also used the short-range part of the full scattering wavefunction to compute the binding energy of PsH. Comparing the binding energy with the most elaborate variational results gives an indication of the reliability of describing the Ps-H system at short-distances.
 
-The binding energy of PsH has been calculated using various methods. Ho performed a variational calculation with a Hylleraas basis set \cite{Ho1986}, and Yan and Ho later did a more extensive calculation \cite{Yan1999}. Mitroy used the stochastic variational method (SVM) with 1800 explicitly correlated Gaussians (ECGs) \cite{Mitroy2006}, and Bubin and Adamowicz found the most accurate value using 5000 ECGs in a variational calculation \cite{Bubin2006}. These are all singlet PsH, as we have done, but Mitroy and Bromley also found a triplet bound state of PsH \cite{Mitroy2007}.
+The binding energy of PsH, $E_b$, has been calculated using various methods. Ho performed a variational calculation with a Hylleraas basis set \cite{Ho1986}, and Yan and Ho later did a more extensive calculation \cite{Yan1999}. Mitroy used the stochastic variational method (SVM) with 1800 explicitly correlated Gaussians (ECGs) \cite{Mitroy2006}, and Bubin and Adamowicz found the most accurate value using 5000 ECGs in a variational calculation \cite{Bubin2006}. These are all singlet PsH, as we have done, but Mitroy and Bromley also found a triplet bound state of PsH \cite{Mitroy2007}.
  %This is not meant to be an exhaustive list for this system.
 
 There have been a number of other calculations for
@@ -215,7 +215,7 @@ Phase shifts are expressed in radians. Atomic units are used throughout unless o
 	\label{fig:PsHCoords}
 \end{figure}
 
-We are investigating low-energy elastic ground-state Ps with ground-state hydrogen, Ps(1s)+H(1s), for energies up to the excitation threshold of Ps(n=2)+H(1s) at an energy of $\tfrac{3}{16}$ au ($5.102$ eV). Previous work on Ps-H scattering used the Kohn and inverse Kohn approach \cite{VanReeth2003, VanReeth2004}. The complex Kohn methods are more stable and suffer less from Schwartz singularities than the Kohn, inverse Kohn and generalized Kohn methods \cite{Lucchese1989,Cooper2009,Cooper2010}. Work by Van Reeth and Humberston on e$^+$-He scattering also used the complex Kohn variational method \cite{VanReeth1999}. The results presented in Sec. \ref{sec:Results} use the \emph{S} matrix complex Kohn method, but we present a general wavefunction that can be used in any of the variants of the Kohn variational method, as we describe in Sec. \ref{sec:Kohn}.
+We are investigating low-energy elastic ground-state Ps with ground-state hydrogen, Ps(1s)+H(1s), for incident energies up to the excitation threshold of Ps(n=2)+H(1s), which is at an energy of $\tfrac{3}{16}$ au ($5.102$ eV). Previous work on Ps-H scattering used the Kohn and inverse Kohn approach \cite{VanReeth2003, VanReeth2004}. The complex Kohn methods are more stable and suffer less from Schwartz singularities than the Kohn, inverse Kohn and generalized Kohn methods \cite{Lucchese1989,Cooper2009,Cooper2010}. Work by Van Reeth and Humberston on e$^+$-He scattering also used the complex Kohn variational method \cite{VanReeth1999}. The results presented in Sec. \ref{sec:Results} use the \emph{S} matrix complex Kohn method, but we present a general wavefunction that can be used in any of the variants of the Kohn variational method, as we describe in Sec. \ref{sec:Kohn}.
 
 For S-wave Ps(1s)-H(1s) elastic scattering, the flexible complex-valued scattering wavefunction is given by
 \begin{equation}
@@ -255,7 +255,7 @@ $P_{23}$ is the exchange operator for the two electrons. $\Phi_{Ps,1s}\left(r_{1
 f_\ell(\rho) = \left[1 - \ee^{-\mu \rho} \left(1+\frac{\mu}{2}\rho\right)\right]^{m_\ell}.
 \label{eq:PartialWaveShielding}
 \end{equation}
-The $m_\ell$ is an integer chosen for each $\ell$ so that $\bar{C}$ behaves like $\bar{S}$ as $\rho \rightarrow 0$.
+The $m_\ell$ is an integer that can be chosen for each $\ell$ so that $\bar{C}$ behaves like $\bar{S}$ as $\rho \rightarrow 0$. We use this criteria as a minimum value for $m_\ell$, and Table \ref{tab:Nonlinear} gives the values we use for each partial wave.
 
 We consider a number of variants of the Kohn variational method, described more fully in Sec. \ref{sec:Kohn}, and $\textbf{u}$ and $L^{\pm}_\ell$ take different forms depending on each. We use different $\textbf{u}$ matrices to generate multiple Kohn methods, namely the following:
 \begin{subequations}
@@ -318,12 +318,12 @@ with
 \mathcal{L} = 2(H - E).
 \label{eq:LDef}
 \eeq
-The total energy is given by
+The total energy, E, is given by
 \begin{equation}
 \label{eq:TotalEnergy}
-E = \epsilon_H + \epsilon_{Ps} + \frac{1}{4}\kappa^2 = \epsilon_H + \epsilon_{Ps} + E_{\bm \kappa}.
+E = \epsilon_H + \epsilon_{Ps} + \frac{1}{4}\kappa^2 = \epsilon_H + \epsilon_{Ps} + E_{\bm \kappa},
 \end{equation}
-Notice that the wavefunction is not conjugated, as pointed out by Cooper et al \cite{Cooper2010}.
+where $\epsilon_H$ and $\epsilon_{Ps}$ are the ground state energies of H and Ps, respectively. Notice that the wavefunction is not conjugated, as pointed out by Cooper et al \cite{Cooper2010}.
 
 We assume the trial wavefunction is a small variation of the exact wavefunction $\Psi$, or
 \beq
@@ -386,7 +386,7 @@ K_\ell = \tan \delta_\ell = (u_{01} + u_{11} L_\ell)(u_{00} + u_{10} L_\ell)^{-1
 %\end{center}
 
 \subsection{PsH Bound State and Optimization of Nonlinear Parameters}
-As done earlier by Van Reeth and Humberston \cite{VanReeth2003,VanReeth2004}, we used the short-range correction part of the S-wave scattering wavefunction to compute the binding energy of $^1S$ PsH system. This allows us to determine the reliability of using our short-range terms for the Ps-H scattering problem. The wavefunction we use for the bound state is
+As done earlier by Van Reeth and Humberston \cite{VanReeth2003,VanReeth2004}, we used the short-range correction part of the S-wave scattering wavefunction to compute the binding energy, $E_b$ of the $^1S$ PsH system. This allows us to determine the reliability of using our short-range terms for the Ps-H scattering problem. The wavefunction we use for the bound state is
 \begin{equation}
 \label{eq:BoundWavefn}
 \Psi^\pm = \sum_{i=1}^{N(\omega)} c_i \phi_{1i}^\pm,
@@ -434,16 +434,16 @@ The scattering length is defined as \cite{Bransden2003}
 \label{eq:ScatLen}
 a_\ell^\pm = -\lim_{\kappa \to 0} \frac{\tan{\delta_\ell^\pm}}{\kappa^{2\ell+1}}.
 \end{equation}
-The Kohn variational methods give an exact upper bound on the scattering length \cite{Joachain1979}. The scattering length can give information about whether there is a bound state in the system, and at zero energy \cite{Buckman1989},
+To avoid confusion with the Bohr radius, $a_0$, we define $a = a_{\ell=0}$. The Kohn variational methods give an exact upper bound on the scattering length \cite{Joachain1979}. The scattering length can give information about whether there is a bound state in the system, and at zero energy \cite{Buckman1989},
 \begin{equation}
 \label{eq:ScatLenCross}
-\sigma_m = \sigma_{el} = 4 a^2 .
+\sigma_m^\pm = \sigma_{el}^\pm = 4 (a^\pm)^2 .
 \end{equation}
 
 For short-range potentials, the effective range $r_0$ is given by \cite{Bethe1949,Blatt1949}
 \begin{equation}
 \label{eq:EffectiveRangeShort}
-\kappa \cot\delta_0^\pm = -\frac{1}{a_0^\pm} + \frac{1}{2} r_0^\pm \kappa^2.
+\kappa \cot\delta_0^\pm = -\frac{1}{a^\pm} + \frac{1}{2} r_0^\pm \kappa^2.
 \end{equation}
 The effective range is a measure of the interaction region of the scattering problem. This is the fitting used throughout the literature \cite{Ivanov2002,VanReeth2003,Blackwood2002,Walters2004}. As pointed out in Ref. \cite{Fabrikant2014}, the van der Waals interaction should be taken into account for low-energy Ps-atom scattering. An ERT expansion for the van der Waals interaction is given by \cite{Drake2006}
 \begin{equation}
@@ -484,7 +484,7 @@ The term $\beta_6$ is related to $C$ by $\beta_6 = (2\mu C/\hbar^2)^{1/4}$.
 Lastly, we use an expression from Ref. \cite{Blackwood2002} to get an estimate of the $^1$S effective range, given by
 \begin{equation}
 \label{eq:BlackwoodERT}
-r_0^+ = \frac{a_0^+ \sqrt{4 E_b} - 1}{2 a_0^+ E_b}.
+r_0^+ = \frac{a^+ \sqrt{4 E_b} - 1}{2 a^+ E_b}.
 \end{equation}
 No equivalent expression exists for $r_0^-$, as there is not a $^3$S bound state.
 
@@ -564,8 +564,8 @@ As with the previous Kohn calculation of Van Reeth and Humberston \cite{VanReeth
 \end{align}
 to extract out the positions ($^1E_R$ and $^2E_R$) and widths
 ($^1\Gamma$ and $^2\Gamma$) of the two resonances. 
-This formula is comprised of the Breit-Wigner resonance
-terms \cite{Bransden2003} for the two resonances and allows for a slowly varying polynomial
+This formula is comprised of the Fano resonance
+terms \cite{Fano1961} for the two resonances and allows for a slowly varying polynomial
 background. The $^1$D and $^1$F resonance fits are performed without the second $\arctan$ term, as they have a single resonance. 
 The data from each variant of the Kohn variational methods was fitted using the MATLAB \cite{MATLAB} nonlinear fitting routine \texttt{nlinfit} with eight possible weightings.
 For each variant of the Kohn variational method, the four parameters were determined for each of the eight fits and compared.
@@ -633,7 +633,7 @@ the $^1S$ PsH system.
 \begin{ruledtabular}  % From http://www.latex-community.org/forum/viewtopic.php?f=45&t=20722
 \begin{tabular}{l l c l l}
 %\toprule
-Group & Method & Terms & Total Energy (au) & Binding Energy (eV)\\
+Group & Method & Terms & E (au) & $E_b$ (eV)\\
 %\hline
 \colrule
 %\midrule
@@ -722,7 +722,7 @@ $\kappa$ (au) & $\delta_1^+ (\omega = 7)$ & $\delta_1^+ (\omega \rightarrow \inf
 0.7 & $1.152$      & $1.154$      & $0.181\%$ & $1.133$      & $-0.292$      & $-0.281$      & $1.237\%$ & $-0.295$ \\
 \end{tabular}
 \end{ruledtabular}
-\caption{$^{1,3}$P phase shifts}
+\caption{$^{1,3}$P phase shifts. \% Diff$^\pm$ is the percent difference between the current Kohn $\omega = 7$ and $\omega \rightarrow \infty$ results.}
 \label{tab:PWavePhase}
 \end{center}
 \end{table*}
@@ -774,7 +774,7 @@ $0.7$ & $3.215^{-1}$ & $3.02^{-1}$ & $-4.451^{-2}$ & $-3.27^{-2}$ \\
 	\label{fig:fgh-wave-phases}
 \end{figure}
 
-Figure \ref{fig:fgh-wave-phases} shows the F-wave, G-wave and H-wave phase shifts compared to the Born approximation. For these three partial waves, the modified Born is approximately equivalent to the Born, so we show only the Born in these graphs. Even for these higher partial waves, the Born approximation is not particularly good, being much lower. The Born approximation does not even have the correct sign for the phase shifts for the G-wave and H-wave triplet. This comparison is not shown for the first three partial waves, as there is very little agreement. The $e^+$-H and $e^+$-He Born results agree more closely with the Kohn calculations than for the Ps-H system \cite{?}. The major difference is that for Ps scattering, the correlations are very important, and the Born approximation cannot describe them well. The F-wave has a resonance above the Ps(n=2) threshold, but the beginning of the resonance is evident in Fig. \ref{fig:fgh-wave-phases}(a).
+Figure \ref{fig:fgh-wave-phases} shows the F-wave, G-wave and H-wave phase shifts compared to the Born approximation. For these three partial waves, the modified Born is approximately equivalent to the Born, so we show only the Born in these graphs. Even for these higher partial waves, the Born approximation is not particularly good, being much lower. The Born approximation does not even have the correct sign for the phase shifts for the G-wave and H-wave triplet. This comparison is not shown for the first three partial waves, as there is very little agreement. The $e^+$-H and $e^+$-He Born results agree more closely with the Kohn calculations than for the Ps-H system \cite{VanReeth2014}. The major difference is that for Ps scattering, the correlations are more important, and the Born approximation cannot describe them well. The F-wave has a resonance above the Ps(n=2) threshold, but the beginning of the resonance is evident in Fig. \ref{fig:fgh-wave-phases}(a).
 
 We performed full complex Kohn calculations on all first six partial waves, but we did more extensive calculations for the first three partial waves, as shown by the parameters and terms used in Sec. \ref{sec:Parameters}. For the F-wave through the H-wave, the phase shifts and partial elastic cross sections become very small, so their overall contribution to the total elastic cross sections becomes negligible by the H-wave. The H-wave only contributes up to $0.009\%$ of the integrated elastic cross sections near the threshold and much less at lower energies. For Fig. \ref{fig:combined-cross-sections}, we extracted the CC data of Ref. \cite{Walters2004} using the CurveSnap program \cite{CurveSnap}.
 
@@ -942,7 +942,7 @@ We also investigate this low $\kappa$ range using the quantum-defect theory of G
 \begin{center}
 \begin{ruledtabular}
 \begin{tabular}{l c c c c c}
-Model & $\kappa$ & $a_0^+$ & $r_0^+$ & $a_0^-$ & $r_0^-$ \\
+Model & $\kappa$ & $a^+$ & $r_0^+$ & $a^-$ & $r_0^-$ \\
 \colrule
 Def - Eq. (\ref{eq:ScatLen}) & $0.001$ & $4.331 \pm 0.012$ & --- & $2.137 \pm 0.008$ & --- \\
 ERT Short - Eq. (\ref{eq:EffectiveRangeShort}) & $0.001 - 0.009$ & $4.331 \pm 0.012$ & 2.197 & $2.137 \pm 0.008$ & 2.035 \\
@@ -950,13 +950,13 @@ ERT Short - Eq. (\ref{eq:EffectiveRangeShort}) & $0.1 - 0.5$ & $4.308 \pm 0.003$
 ERT VDW - Eq. (\ref{eq:EffectiveRangeLongAu}) & $0.001 - 0.009$ & $4.331 \pm 0.012$ & 2.221 & $2.137 \pm 0.008$ & 2.137 \\
 QDT - Eqs. (\ref{eq:GaoZEqn}), (\ref{eq:GaoKTaylor}) & $0.002, 0.003$ & $4.331 \pm 0.012$ & 2.210 & $2.137 \pm 0.008$ & 2.151 \\
 QDT expansion - Eqs. (\ref{eq:GaoScatLenS}), (\ref{eq:GaoEffRange}) & $0.001$ & $4.331 \pm 0.012$ & 2.535 & $2.137 \pm 0.008$ & 3.085 \\
-From E$_b$, $a_0$ - Eq. (\ref{eq:BlackwoodERT}) & --- & --- & 2.106 & --- & --- \\
+Eq. (\ref{eq:BlackwoodERT}) & --- & --- & 2.106 & --- & --- \\
 \colrule
 Kohn 721 terms \cite{VanReeth2003} & $0 - 0.5$ & 4.334 & \,\,--- & 2.143 & \,\,--- \\
 Kohn extrapolated \cite{VanReeth2003} & $0 - 0.5$ & 4.311 & 2.27 & 2.126 & 1.39 \\
 CC 14Ps14H \cite{Blackwood2002} & --- & 4.41 & 2.19 & 2.06 & 1.47 \\
 CC 14Ps14H+H$^-$ \cite{Walters2004} & --- & 4.327 & \,\,--- & \,\,--- & \,\,--- \\
-SVM \cite{Ivanov2002} & 4.34 & 2.39 & 2.22 & 1.29 \\
+SVM \cite{Ivanov2002} & --- & 4.34 & 2.39 & 2.22 & 1.29 \\
 \end{tabular}
 \end{ruledtabular}
 \caption{$^{1,3}$S scattering lengths and effective ranges}
@@ -964,12 +964,12 @@ SVM \cite{Ivanov2002} & 4.34 & 2.39 & 2.22 & 1.29 \\
 \end{center}
 \end{table*}
 
-From Eq. (\ref{eq:ScatLenCross}), we can compare the scattering lengths to the cross sections at zero energy (taken as $E_{\bm \kappa} = 10^{-7}$ eV here) with
+From Eq. (\ref{eq:ScatLenCross}), we can compare the scattering lengths to the cross sections at zero energy (taken as $E_{\bm \kappa} = 10^{-7}$ eV here) with (in units of $\pi a_0^2$)
 \begin{subequations}
 \label{eq:CrossScatLen}
 \begin{align}
-\sigma_{el}^+ = \sigma_m^+ = 75.03 & \approx 4 (a_0^+)^2 = 75.02 \\
-\sigma_{el}^- = \sigma_m^- = 18.27 & \approx 4 (a_0^-)^2 = 18.26 \, .
+\sigma_{el}^+ = \sigma_m^+ = 75.03 & \approx 4 (a^+)^2 = 75.02 \\
+\sigma_{el}^- = \sigma_m^- = 18.27 & \approx 4 (a^-)^2 = 18.26 \, .
 \end{align}
 \end{subequations}
 This gives us some confidence in the accuracy of our calculations at low energies, particularly for the S-wave, which is the dominant partial wave at low energies.
