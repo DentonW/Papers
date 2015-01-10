@@ -47,6 +47,7 @@
 
 \documentclass[10pt,openany]{book}
 %\documentclass[draft]{}
+%\usepackage[nobysame]{amsrefs}
 \usepackage{amsmath, graphicx, fullpage, showlabels, subfiles, mathrsfs}
 %\usepackage[Lenny]{fncychap}
 \usepackage[Bjornstrup]{fncychap}
@@ -69,6 +70,7 @@
 \usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}  % http://www.khirevich.com/latex/microtype/
 \usepackage{siunitx}  % For correct typesetting of units
 \sisetup{per-mode=symbol}
+\usepackage[dvips,letterpaper,margin=0.75in,bottom=0.5in]{geometry}  % For smaller page margins
 
 % If we want the equations, figures and tables to be numbered sequentially instead of by chapter/section
 %\usepackage{chngcntr}
@@ -89,6 +91,12 @@
 %\usepackage{etoolbox, tocloft}
 %\preto\figure{%
 %  \ifnum\value{figure}=0\addtocontents{lof}{{\bfseries Chapter \thechapter\vskip10pt}}\fi
+%}
+
+% If using amsrefs
+%\renewcommand{\biblistfont}{%
+%  \normalfont
+%  \normalsize
 %}
 
 % For creating nice boxes
@@ -226,8 +234,11 @@
 %\bibliographystyle{iopart-num}
 %\bibliographystyle{plainnat}
 %\bibliographystyle{plainurl}
-\bibliographystyle{jphysicsB}
+%\bibliographystyle{jphysicsB}
 %\bibliographystyle{unsrt}
-\bibliography{library,extras}
+%\bibliographystyle{utphysLSB}
+\bibliographystyle{UNTamsplain}
+
+\bibliography{library}
 
 \end{document}
