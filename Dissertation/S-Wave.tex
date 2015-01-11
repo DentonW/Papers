@@ -991,24 +991,22 @@ Double, $10^{-6}$, with asymptotic expansion & 0.6, 0.6, 1.0 & 8 & 0.1 & 1925 & 
 \subsection{Phase Shifts}
 
 \begin{table}[H]
-\begin{center}
-\begin{tabular}{|c !{\vrule width 1pt} c|c !{\vrule width 1pt} c|c !{\vrule width 1pt} c | c !{\vrule width 1pt} c | c|}
-\hline
-$\kappa$ & $\delta^+ (\omega = 6)$ & $\delta^- (\omega = 6)$ & $\delta^+ (\omega = 7)$ & $\delta^- (\omega = 7)$ & $\delta^+ (\omega \rightarrow \infty)$ & $\delta^- (\omega \rightarrow \infty)$ & \% Diff$^+$ & \% Diff$^-$ \\
-\hline
-0.05 & -0.2160 & -0.1071 & -0.2157 & -0.1070 & --- & --- & --- & --- \\
-0.1 & -0.4273 & -0.2149 & -0.4268 & -0.2145 & -0.4258 & -0.2143 & 0.2226\% & 0.1201\% \\
-0.2 & -0.8207 & -0.4321 & -0.8200 & -0.4314 & -0.8192 & -0.4312 & 0.0998\% & 0.0633\% \\
-0.3 & -1.1619 & -0.6459 & -1.1612 & -0.6452 & -1.1607 & -0.6446 & 0.0402\% & 0.0941\% \\
-0.4 & -1.4468 & -0.8506 & -1.4462 & -0.8500 & -1.4459 & -0.8489 & 0.0216\% & 0.1302\% \\
-0.5 & -1.6784 & -1.0420 & -1.6777 & -1.0413 & -1.6772 & -1.0396 & 0.0308\% & 0.1661\% \\
-0.6 & -1.8584 & -1.2178 & -1.8577 & -1.2168 & -1.8570 & -1.2135 & 0.0402\% & 0.2728\% \\
-0.7 & -1.9650 & -1.3770 & -1.9642 & -1.3754 & -1.9634 & -1.3720 & 0.0448\% & 0.2501\% \\
-\hline
+\centering
+\begin{tabular}{c c c c c c c c}
+\toprule
+$\kappa$ & $\delta^+ (\omega = 7)$ & $\delta^- (\omega = 7)$ & $\delta^+ (\omega \rightarrow \infty)$ & $\delta^- (\omega \rightarrow \infty)$ & \% Diff$^+$ & \% Diff$^-$ \\
+\midrule
+0.1 & -0.427 & -0.215 & -0.426 & -0.214 & 0.223\% & 0.120\% \\
+0.2 & -0.820 & -0.431 & -0.819 & -0.432 & 0.019\% & 0.063\% \\
+0.3 & -1.161 & -0.645 & -1.161 & -0.645 & 0.040\% & 0.094\% \\
+0.4 & -1.446 & -0.850 & -1.446 & -0.850 & 0.022\% & 0.130\% \\
+0.5 & -1.678 & -1.041 & -1.677 & -1.040 & 0.031\% & 0.166\% \\
+0.6 & -1.858 & -1.217 & -1.857 & -1.215 & 0.040\% & 0.273\% \\
+0.7 & -1.964 & -1.375 & -1.963 & -1.373 & 0.045\% & 0.250\% \\
+\bottomrule
 \end{tabular}
-\caption{S-Wave Phase Shifts}
+\caption{S-Wave complex Kohn phase shifts}
 \label{tab:SWavePhase}
-\end{center}
 \end{table}
 
 Table \ref{tab:SWavePhase} contains the phase shifts for regular intervals of $\kappa$, which we can compare to the results from other groups in Tables \ref{tab:SWaveSingletOther} and \ref{tab:SWaveTripletOther} starting on page \pageref{tab:SWaveSingletOther}.  Our phase shifts at $\omega = 7$ from this table are exactly the same as Van Reeth and Humberston's results for $\omega = 6$ \cite{VanReeth2003}, with some exceptions in the last digit.  Figure \ref{fig:SWavePhaseOmega=7} has the fuller set of phase shifts plotted with respect to the positronium momentum, $\kappa$.
@@ -1019,9 +1017,9 @@ As mentioned in Section \ref{sec:Extrapolation}, extrapolation to $\omega = \inf
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=7in]{Omega=7}
-	\caption{S-Wave Singlet and Triplet Phase Shifts}
-	\label{fig:SWavePhaseOmega=7}
+	\includegraphics[width=7in]{swave-phases}
+	\caption{$^{1,3}$S phase shifts}
+	\label{fig:SWavePhase}
 \end{figure}
 
 
@@ -1075,19 +1073,12 @@ $0.8$ &    --- &    --- &    --- & $-1.652$ & $-0.851$ \\
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=7in]{OtherSWaveSingletResults}
-	\caption{Comparison of S-Wave Singlet Results from Other Groups}
-	\label{fig:OtherSWaveSingletResults}
+	\includegraphics[width=7in]{swave-comparisons}
+	\caption{Comparison of S-wave results}
+	\label{fig:SWaveComparisons}
 \end{figure}
 
 Figure \ref{fig:OtherSWaveSingletResults} shows the results from various groups for calculations of the singlet S-wave.  Our results are extremely close to Van Reeth's \cite{VanReeth2003}, so they would follow along the solid line as well.  Several groups have results that cluster very closely to his and ours, namely Blackwood \cite{Blackwood2002}, Walters \cite{Walters2004}, Chiesa \cite{Chiesa2002} and Ivanov \cite{Ivanov2002}.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=7in]{OtherSWaveTripletResults}
-	\caption{Comparison of S-Wave Triplet Results from Other Groups}
-	\label{fig:OtherSWaveTripletResults}
-\end{figure}
 
 \textbf{@TODO:} Discussion of the techniques used by each of the groups
 
