@@ -203,19 +203,19 @@ Combining (\ref{eq:EnergyDerPartA}) and (\ref{eq:EnergyDerPartB}) with (\ref{eq:
 \label{eq:EnergyDerivativeNorm}
 \eeq
 
-\noindent This is the form given in Drake and Yan \cite{Yan1995}.
+\noindent This is the form given in Drake and Yan \cite{Drake1995}.
 
 Similar forms for the other parameters are found by replacing $\alpha$ with the parameter of interest.
 
 
 \subsubsection{Newton's Method}
-The derivative with respect to the parameter $\alpha$ can be used with Newton's Method to find a minimum energy.  From \cite{Sauer2006a}, Newton's method is given as
+The derivative with respect to the parameter $\alpha$ can be used with Newton's Method to find a minimum energy.  From \cite{Sauer2006}, Newton's method is given as
 \beq
 x_{i+1} = x_i - \frac{f(x_i)}{f'(x_i)}.
 \label{eq:NewtonMethod}
 \eeq
 
-We are looking for roots of the equation $\displaystyle\frac{\partial E}{\partial \alpha} = 0$ to minimize the energy.  From (\ref{eq:NewtonMethod}), $\displaystyle\frac{\partial^2 E}{\partial^2 \alpha}$ is required.  The secant method, a variation of Newton's method, is used to avoid this problem.  From \cite{Sauer2006a},
+We are looking for roots of the equation $\displaystyle\frac{\partial E}{\partial \alpha} = 0$ to minimize the energy.  From (\ref{eq:NewtonMethod}), $\displaystyle\frac{\partial^2 E}{\partial^2 \alpha}$ is required.  The secant method, a variation of Newton's method, is used to avoid this problem.  From \cite{Sauer2006},
 \beq
 x_{i+1} = x_i - \frac{f(x_i)(x_i - x_{i-1})}{f(x_i) - f(x_{i-1})}.
 \eeq
@@ -520,7 +520,7 @@ Group & Method & Terms & Total Energy (au) & Binding Energy (eV)\\
 Ho (1986) \cite{Ho1986} & Variational with Hylleraas (?) & 396 & -0.788 945$^\star$ & 1.059 75 \\
 Frolov (1997) \cite{Frolov1997a} & James-Coolidge variational & 924 & -0.789 136 9$^\star$ & 1.064 969 \\
 Frolov (1997) \cite{Frolov1997a} & James-Coolidge variational & --- & -0.789 181 8$^\star$ & 1.066 191 \\
-Frolov (1997) \cite{Frolov1997b} & Kolesnikov-Tarasov variational & --- & -0.789 179 4$^\star$ & 1.066 126 \\
+\textbf{CHECK THIS} Frolov (1997) \cite{Frolov1997a} & Kolesnikov-Tarasov variational & --- & -0.789 179 4$^\star$ & 1.066 126 \\
 Adhikari (1999) \cite{Adhikari1999} & Five-state & --- & -0.7886 & 1.05 \\
 Yan (1999) \cite{Yan1999} & Variational with Hylleraas $(\omega = 10)$ & 3501 & -0.789 196 607 6$^\star$ & 1.066 593 98 \\
 Yan (1999) \cite{Yan1999} & Variational with Hylleraas $(\omega = 12)$ & 5741 & -0.789 196 705 1$^\star$ & 1.066 596 635 \\

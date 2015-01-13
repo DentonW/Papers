@@ -99,9 +99,14 @@
 \date{\today}% It is always \today, today,
              %  but any date may be explicitly specified
 
+%\begin{abstract}
+%The complex Kohn variational method is used with a Hylleraas-type basis set to compute phase shifts for low-energy Ps(1s)-H(1s) scattering below the Ps(n=2) threshold. Comparison is made to a number of other calculations of this system. The phase shifts for the S-wave and P-wave are benchmark results, and phase shifts are calculated through the H-wave. The binding energy of positronium hydride is calculated. Numerical methods used for calculating the binding energy and phase shifts are described. In addition, elastic differential, elastic integrated, momentum transfer, and ortho-para conversion cross sections are computed from the phase shifts, along with resonances through the F-wave. A detailed analysis of the scattering length and effective range using multiple effective range theories is provided.
+%\end{abstract}
+
 \begin{abstract}
-The complex Kohn variational method is used with a Hylleraas-type basis set to compute phase shifts for low-energy Ps(1s)-H(1s) scattering below the Ps(n=2) threshold. Comparison is made to a number of other calculations of this system. The phase shifts for the S-wave and P-wave are benchmark results, and phase shifts are calculated through the H-wave. The binding energy of positronium hydride is calculated. Numerical methods used for calculating the binding energy and phase shifts are described. In addition, elastic differential, elastic integrated, momentum transfer, and ortho-para conversion cross sections are computed from the phase shifts, along with resonances through the F-wave. A detailed analysis of the scattering length and effective range using multiple effective range theories is provided.
+We investigate the four-body Coulomb process of low-energy positronium-hydrogen (Ps-H) scattering below the Ps(n=2) excitation threshold with a Hylleraas-type basis set using the complex Kohn variational method. We provide benchmark phase shifts for the S-wave and P-wave and show phase shifts through the H-wave. We compare our results to a number of other calculations for this system, including the binding energy of positronium hydride (PsH). We describe numerical methods used for calculating the binding energy and phase shifts. In addition, we present elastic differential, elastic integrated, momentum transfer, and ortho-para conversion cross sections, along with resonances through the F-wave. Finally, we give a detailed analysis of the scattering length and effective range using multiple effective range theories.
 \end{abstract}
+
    
 \pacs{31.15.xt Variational techniques; 34.50.-s Scattering of atoms and molecules; 36.10.Dr Positronium; 34.80.Bm Elastic scattering}
 %\keywords{Suggested keywords}
@@ -321,7 +326,7 @@ with
 The total energy, E, is given by
 \begin{equation}
 \label{eq:TotalEnergy}
-E = \epsilon_H + \epsilon_{Ps} + \frac{1}{4}\kappa^2 = \epsilon_H + \epsilon_{Ps} + E_{\bm \kappa},
+E = E_H + E_{Ps} + \frac{1}{4}\kappa^2 = E_H + E_{Ps} + E_{\bm \kappa},
 \end{equation}
 where $\epsilon_H$ and $\epsilon_{Ps}$ are the ground state energies of H and Ps, respectively. Notice that the wavefunction is not conjugated, as pointed out by Cooper et al \cite{Cooper2010}.
 
@@ -817,7 +822,9 @@ The differential cross sections shown in Figs. \ref{fig:diff-cross-section-2D-th
 	\label{fig:cross-section-comparisons}
 \end{figure}
 
-From Eq. (\ref{eq:ScatLenCross}), $\sigma_m = \sigma_{el}$ for zero energy. From Fig. \ref{fig:cross-section-comparisons}, we can see that this is the case. For very low energies ($E_{\bm \kappa} < 10^{-6}$ eV), $\sigma_m = \sigma_{el} = 32.45$. The ortho-para conversion cross section, $\sigma_c$, is much lower than the elastic and momentum transfer cross sections. Similar to the elastic integrated cross sections, the CC $\sigma_c$ curve is approximately the same as ours, but the resonances are clearly shifted. The static exchange $\sigma_m$ curve does not agree well with the complex Kohn results, but the static exchange is an earlier calculation that does not predict resonances.
+From Eq. (\ref{eq:ScatLenCross}), $\sigma_m = \sigma_{el}$ for zero energy. From Fig. \ref{fig:cross-section-comparisons}, we can see that this is the case. For very low energies ($E_{\bm \kappa} < 10^{-6}$ eV), $\sigma_m = \sigma_{el} = 32.45$. The momentum transfer cross section differs from the integrated elastic cross section past very low energies, and as noted in Ref. \cite{Blackwood2002c}, this is due to the differential elastic cross section only being isotropic at very low energy.
+
+The ortho-para conversion cross section, $\sigma_c$, is much lower than the elastic and momentum transfer cross sections. Similar to the elastic integrated cross sections, the CC $\sigma_c$ curve is approximately the same as ours, but the resonances are clearly shifted. The static exchange $\sigma_m$ curve does not agree well with the complex Kohn results, but the static exchange is an earlier calculation that does not predict resonances.
 
 \subsection{Resonances}
 \label{sec:Resonances}

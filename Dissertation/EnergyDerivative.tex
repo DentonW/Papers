@@ -74,7 +74,7 @@ Combining (\ref{eq:EnergyDerPartA}) and (\ref{eq:EnergyDerPartB}) with (\ref{eq:
 \label{eq:EnergyDerivativeNorm}
 \eeq
 
-\noindent This is the form given in Drake and Yan \cite{Yan1995}.
+\noindent This is the form given in Drake and Yan \cite{Drake1995}.
 
 Similar forms for the other parameters are found by replacing $\alpha$ with the parameter of interest.
 
@@ -116,13 +116,13 @@ Similar calculations for the triplet give
 \end{align}
 
 \section{Newton's Method}
-The derivative with respect to the parameter $\alpha$ can be used with Newton's Method to find a minimum energy.  From \cite{Sauer2006a}, Newton's method is given as
+The derivative with respect to the parameter $\alpha$ can be used with Newton's Method to find a minimum energy.  From \cite{Sauer2006}, Newton's method is given as
 \beq
 x_{i+1} = x_i - \frac{f(x_i)}{f'(x_i)}.
 \label{eq:NewtonMethod}
 \eeq
 
-We are looking for roots of the equation $\displaystyle\frac{\partial E}{\partial \alpha} = 0$ to minimize the energy.  From (\ref{eq:NewtonMethod}), $\displaystyle\frac{\partial^2 E}{\partial^2 \alpha}$ is required.  The secant method, a variation of Newton's method, is used to avoid this problem.  From \cite{Sauer2006a},
+We are looking for roots of the equation $\displaystyle\frac{\partial E}{\partial \alpha} = 0$ to minimize the energy.  From (\ref{eq:NewtonMethod}), $\displaystyle\frac{\partial^2 E}{\partial^2 \alpha}$ is required.  The secant method, a variation of Newton's method, is used to avoid this problem.  From \cite{Sauer2006},
 \beq
 x_{i+1} = x_i - \frac{f(x_i)(x_i - x_{i-1})}{f(x_i) - f(x_{i-1})}.
 \eeq

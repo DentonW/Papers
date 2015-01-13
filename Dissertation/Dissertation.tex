@@ -45,7 +45,9 @@
 \newcommand{\rtoinfty} {{\xrightarrow[\scriptscriptstyle {r\rightarrow \infty}]{}}}
 
 
-\documentclass[10pt,openany]{book}
+%\documentclass[10pt,openany]{book}
+\documentclass[12pt,openany]{book}
+
 %\documentclass[draft]{}
 %\usepackage[nobysame]{amsrefs}
 \usepackage{amsmath, graphicx, fullpage, showlabels, subfiles, mathrsfs}
@@ -70,7 +72,13 @@
 \usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}  % http://www.khirevich.com/latex/microtype/
 \usepackage{siunitx}  % For correct typesetting of units
 \sisetup{per-mode=symbol}
-\usepackage[dvips,letterpaper,margin=0.75in,bottom=0.5in]{geometry}  % For smaller page margins
+\usepackage{wasysym}  % Simply for \CIRCLE and \Circle (could use \circ for the latter)
+
+%\usepackage[dvips,letterpaper,margin=0.75in,bottom=0.5in]{geometry}  % For smaller page margins
+%\usepackage{setspace}
+%\singlespacing
+%\onehalfspacing
+%\doublespacing
 
 % If we want the equations, figures and tables to be numbered sequentially instead of by chapter/section
 %\usepackage{chngcntr}
@@ -239,6 +247,6 @@
 %\bibliographystyle{utphysLSB}
 \bibliographystyle{UNTamsplain}
 
-\bibliography{library}
+\bibliography{Dissertation}
 
 \end{document}
