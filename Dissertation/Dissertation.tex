@@ -62,6 +62,7 @@
 \usepackage{tocbibind}
 \usepackage{subfig}
 \usepackage{todonotes}
+\usepackage{bm}  % Bold-faced math
 \usepackage{lettrine}  % Dropped capitals
 \usepackage{cool}  % Typesetting for various equation types
 %\usepackage[grey,utopia]{quotchap}  % Decorative chapter headings
@@ -70,9 +71,11 @@
 \usepackage[pagebackref=true, plainpages=false, bookmarks, bookmarksnumbered, colorlinks, linktocpage=true, linkcolor=blue, citecolor=blue, filecolor=black,urlcolor=blue]{hyperref}
 %\usepackage{doi}
 \usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}  % http://www.khirevich.com/latex/microtype/
+\microtypecontext{spacing=nonfrench}  % To get rid of that warning
 \usepackage{siunitx}  % For correct typesetting of units
 \sisetup{per-mode=symbol}
 \usepackage{wasysym}  % Simply for \CIRCLE and \Circle (could use \circ for the latter)
+\usepackage{pdflscape}  % For landscape pages
 
 %\usepackage[dvips,letterpaper,margin=0.75in,bottom=0.5in]{geometry}  % For smaller page margins
 %\usepackage{setspace}
@@ -234,7 +237,7 @@
 \subfile{RPowersCoeffs.tex}
 \subfile{WLimits.tex}
 
-\addcontentsline{toc}{chapter}{References}
+%\addcontentsline{toc}{chapter}{References}
 \newpage
 %\bibliographystyle{h-physrev3}
 %\bibliographystyle{h-physrev}

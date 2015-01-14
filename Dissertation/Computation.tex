@@ -36,7 +36,7 @@ This asymptotic expansion method was used in all calculations of the S-wave and 
 \label{sec:RecursionRelations}
 Pachucki et al.\ were not the first to derive an analytic solution to the three-electron integrals \cite{Pachucki2004}, but the first by Fromm and Hill is not very practical to use, considering its very complicated form \cite{Fromm1987}. Each set of $r_i$ and $r_{ij}$ powers requires a new rederivation from the Fromm and Hill result. The recursion relations from Pachucki are complicated but also general.
 
-Since the recursion relations are an analytic solution, we can get any desired precision that we choose. The calculations previously with the asymptotic expansion used double precision, but we chose quadruple precision for the recursion relations. Part of this choice is that just like many other types of recursion relations, these relations may not be stable for higher $\omega$ values without the increased precision. We have tested through $\omega = 8$, and this method produced stable results. In some of their work on Li and Be$^+$, their group uses sextuple precision, as quadruple precision becomes insufficient near $\omega = 10$ \cite{Puchalski}, which is much higher than we can use in the scattering calculations.
+Since the recursion relations are an analytic solution, we can get any desired precision that we choose. The calculations previously with the asymptotic expansion used double precision, but we chose quadruple precision for the recursion relations. Part of this choice is that just like many other types of recursion relations, these relations may not be stable for higher $\omega$ values without the increased precision. We have tested through $\omega = 8$, and this method produced stable results. In some of their work on Li and Be$^+$, their group uses sextuple precision, as quadruple precision becomes insufficient near $\omega = 10$ \cite{Puchalski2006}, which is much higher than we can use in the scattering calculations.
 
 \subsection{W Functions}
 \label{sec:WFunctions}
@@ -280,18 +280,19 @@ From \ref{eq:PhiBarLSBar2b}, \ref{eq:LS2} and \ref{eq:LSP2},
  &= \frac{2}{\sqrt{2}} \int \phi_i \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right)S \pm \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) S^\prime \right]  d\tau.
 \end{align}
 
-\subsection{Case I: $q_i > 0$}
+\subsection{Case I: \texorpdfstring{$q_i > 0$}{qi > 0}}
 \label{sec:Swaveqigt0}
 When $q_i > 0$ in $\phi_i$ (equation \ref{eq:PhiDef}), the power of $r_{23}$ is equal to or greater than 0.  Gaussian quadratures can safely integrate this type of term, so we integrate the full expression in equation \ref{eq:PhiLSBarInt}.
 \begin{align}
 \label{eq:PhiLSBarIntFull}
 \nonumber (\bar{\phi}_i, L\bar{S}) =& \, \frac{2}{\sqrt{2}} \cdot 8\pi^2  \int_0^\infty \int_0^\infty \int_0^\infty \int_{|r_1 - r_2|}^{|r_1 + r_2|} \int_{|r_1 - r_3|}^{|r_1 + r_3|} \int_0^{2\pi} \phi_i \\
-&\times \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right)S \pm \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) S^\prime \right]  r_2 r_3 r_{12} r_{13}\, d\phi_{23}\, dr_{13}\, dr_{12}\, dr_3\, dr_2\, dr_1
+&\times \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right)S \pm \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) S^\prime \right] \\
+&\times r_2 r_3 r_{12} r_{13}\, d\phi_{23}\, dr_{13}\, dr_{12}\, dr_3\, dr_2\, dr_1
 \end{align}
 
 Similar to the long-long integrations from section \ref{sec:LongLongInt}, the $r_1$ integration is performed using the Gauss-Laguerre quadrature.  The $r_2$ integral is broken into two parts at the cusp of $r_2 = r_1$, with the Gauss-Legendre quadrature before the cusp and the Gauss-Laguerre quadrature after the cusp.  In the $r_3$ coordinate, there is a cusp at $r_3 = r_2$, so the integration is also split up into Gauss-Legendre before the cusp and Gauss-Laguerre after the cusp.  The finite intervals for $r_{12}$ and $r_{13}$ ensure that we can use Gauss-Legendre quadratures for these coordinates.  The $\phi_{23}$ integration uses the Chebyshev-Gauss quadrature.
 
-\subsection{Case II: $q_i = 0$}
+\subsection{Case II: \texorpdfstring{$q_i = 0$}{qi = 0}}
 When $q_i = 0$, the overall power of the $r_{23}^{-1}$ term is $-1$, so we cannot use the Gaussian quadratures in the form of \ref{eq:PhiLSBarIntFull}.  Similar to the long-long integrations, the $r_{23}^{-1}$ term is integrated separately, using the same type of integrations as equation \ref{eq:PhiLSBarIntFull}.  Refer to the previous section for the description of the quadratures used.
 \begin{align}
 \label{eq:PhiLSBarIntNoR23}
@@ -507,7 +508,7 @@ Integral & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
 
 \section{Selection of Quadrature Points}
 \label{sec:SelQuadPoints1}
-The number of quadrature points for each coordinate in the 6-dimensional integrations is critical to have fully converged results. In our testing, the $r_1$ coordinate (the coordinate of $e^+$) was the most important, requiring more integration points than any other. The $r_2$ and $r_3$ coordinates were the second most important, and the interparticle terms ($r_{12}$, $r_{13}$ and $r_{23}$) were the least important. These results only apply to the long-range--long-range and long-range--short-range terms, as the short-range--short-range terms are integrated using the same asymptotic expansion method as the bound state problem (see section \ref{sec:SWaveShortShort}).
+The number of quadrature points for each coordinate in the 6-dimensional integrations is critical to have fully converged results. In our testing, the $r_1$ coordinate (the coordinate of $e^+$) was the most important, requiring more integration points than any other. The $r_2$ and $r_3$ coordinates were the second most important, and the interparticle terms ($r_{12}$, $r_{13}$ and $r_{23}$) were the least important. These results only apply to the long-range--long-range and long-range--short-range terms, as the short-range--short-range terms are integrated using the same asymptotic expansion method as the bound state problem (see section \ref{sec:MatrixShort}).
 
 To determine this, we held the number of integration points fixed, except for one coordinate, which we increased in steps. The difference in the output between steps was used to analyze how important each coordinate was. Also, some terms are more sensitive to the number of integration points than other. For instance, the $(\bar{S},L\bar{S})$ term converges relatively quickly, while the $(\bar{C},L\bar{C})$ term requires more integration points.
 

@@ -40,7 +40,7 @@ R_l(k,r) = \frac{u_l(k,r)}{r} = B_l(k)\left[j_l(k r) - \tan(\delta_l(k)) \eta_l(
 \label{SphericalBesselNorm}
 \end{equation}
 
-The asymptotic expansions for the spherical Bessel functions $j_l$ and $n_l$ are \cite{Weber}
+The asymptotic expansions for the spherical Bessel functions $j_l$ and $n_l$ are \cite{Arfken2005}
 \begin{equation}
 j_l(x) \rtoinfty \frac{1}{x} \sin(x - \frac{n \pi}{2}) \text{ and }
 n_l(x) \rtoinfty -\frac{1}{x} \cos(x - \frac{n \pi}{2}).
@@ -75,7 +75,7 @@ u_l^t(r) \rtoinfty \sin(k r - \tfrac{l \pi}{2} + \gamma) + \tan(\delta_l^t - \ga
 \end{equation}
 
 \section{Variation of \texorpdfstring{$I_l$}{Il}}
-There are two ways to obtain the Kohn method.  We will first explore the variation of the functional $I_l$ as in Adhikari's book \cite{Adhikari}.  We begin by defining $I_l$ as
+There are two ways to obtain the Kohn method.  We will first explore the variation of the functional $I_l$ as in Adhikari's book \cite{Adhikari1998}.  We begin by defining $I_l$ as
 \begin{equation}
 I_l[u_l^t] \equiv \int_0^\infty u_l^t(r) L_l u_l^t(r) \,dr.
 \label{eq:IlDefU}
@@ -194,7 +194,7 @@ To determine the error of this equation, we need to look back to (\ref{DeltaIl})
 \label{Kato1}
 \end{equation}
 
-The above equation is the same as (\ref{KohnEqnGeneral}) but includes the error term.  This equation is known as the \emph{Kato identity} and is derived in a different manner in his 1951 paper \cite{Kato1951a}.  The way it is presented here is similar to Adhikari's book \cite{Adhikari}.  In the next section, the Kato identity will be derived in the same way as his 1951 paper.
+The above equation is the same as (\ref{KohnEqnGeneral}) but includes the error term.  This equation is known as the \emph{Kato identity} and is derived in a different manner in his 1951 paper \cite{Kato1951a}.  The way it is presented here is similar to Adhikari's book \cite{Adhikari1998}.  In the next section, the Kato identity will be derived in the same way as his 1951 paper.
 
 
 \section{Green's Theorem}
@@ -282,7 +282,7 @@ This variational principle is known as the Rubinow method or the inverse Kohn me
 
 
 \section{Notations}
-It should be noted that of the references used, none use exactly the same notation.  Though the notation used in this paper is most similar to that of Bransden and Joachain's book \cite{Bransden2003}, it is not exactly the same.  In Adhikari's book \cite{Adhikari}, $\Delta$ is used instead of $\delta$ for the variation.  In Joachain's book \cite{Joachain1979} and Kato's paper \cite{Kato1951a}, they use $\overline{u_l}$ and $u_l$ for $u_l$ and $u_l^t$, respectively, which can be confusing when switching between sources.  Joachain also uses $\eta_l$ instead of $\delta_l$ for the phase shifts in his book, in order to not confuse it with the $\delta$ for the variation.  Care must be taken when reading papers with these variational methods, as there appears to be no standard notation yet.
+It should be noted that of the references used, none use exactly the same notation.  Though the notation used in this paper is most similar to that of Bransden and Joachain's book \cite{Bransden2003}, it is not exactly the same.  In Adhikari's book \cite{Adhikari1998}, $\Delta$ is used instead of $\delta$ for the variation.  In Joachain's book \cite{Joachain1979} and Kato's paper \cite{Kato1951a}, they use $\overline{u_l}$ and $u_l$ for $u_l$ and $u_l^t$, respectively, which can be confusing when switching between sources.  Joachain also uses $\eta_l$ instead of $\delta_l$ for the phase shifts in his book, in order to not confuse it with the $\delta$ for the variation.  Care must be taken when reading papers with these variational methods, as there appears to be no standard notation yet.
 
 Some references use the full wavefunction, while others use the reduced radial part of the wavefunction, $u_l(r)$.  The references that use $\psi_l(r)$ use (\ref{LDef}) instead of (\ref{LDefR}).  Equation (\ref{LDefR}) has taken the additional step of multiplying through by a negative sign.  This leads to a sign change in (\ref{KohnEqnGeneral}) and (\ref{Kato1}), i.e.
 
@@ -374,7 +374,7 @@ We define $\delta I'$ as
 \eeq
 
 We can drop the dot product, since the surface elements are in the same direction as $\nabla_\rho$.
-Using the above equation in (\ref{eq:IlPsiVariation2}), along with (\ref{Hamiltonian2}), (\ref{eq:HEqn}), (\ref{eq:PsEqn}) and (\ref{eq:EnergyTotal}) gives a cancellation in the terms without Laplacian operators, yielding
+Using the above equation in (\ref{eq:IlPsiVariation2}), along with (\ref{eq:Hamiltonian2}), (\ref{eq:HEqn}), (\ref{eq:PsEqn}) and (\ref{eq:EnergyTotal}) gives a cancellation in the terms without Laplacian operators, yielding
 \begin{align}
 \nonumber \delta I = &-\frac{1}{2} \int\limits_{V_3} \int\limits_{V_{12}} \int\limits_{S_\rho} \left[ \Psi \nabla_\rho \delta\Psi - \delta\Psi \nabla_\rho \Psi \right] d\sigma_\rho d\tau_{12} d\tau_3 \\
 \nonumber & + 2 \int \Psi\left(H_H + H_{Ps} + \frac{1}{r_1} - \frac{1}{r_2} - \frac{1}{r_{13}} + \frac{1}{r_{23}} - E_H - E_{Ps} + \frac{1}{4} \kappa^2\right) \delta\Psi \, d\sigma_\rho d\tau_{12} d\tau_3 \\
