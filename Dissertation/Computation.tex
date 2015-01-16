@@ -8,35 +8,84 @@
 
 \section{Short-Range -- Short-Range Integrations}
 \label{sec:ShortShortIntegration}
-The short-range -- short-range integrals make up the bulk of the $A$ matrix (equation \ref{eq:GenKohnMatrixAXB}). The positronium hydride bound state problem in chapter \ref{chp:PsHBound} consists of only these types of matrix elements (see equation \ref{eq:BoundWavefn}). The most general form of these short-range integrals is
-
+The short-range -- short-range integrals make up the bulk of the $A$ matrix (\cref{eq:GenKohnMatrixAXB}). The positronium hydride bound state problem in \cref{chp:PsHBound} consists of only these types of matrix elements (see \cref{eq:BoundWavefn}). The most general form of these short-range integrals is
 \beq
-I \equiv I(k_i, l_i, m_i, n_i, p_i, q_i; \alpha, \beta, \gamma) = \int e^{-(\alpha r_1 + \beta r_2 + \gamma r_3)} r_1^{k_i} r_2^{l_i} r_{12}^{m_i} r_3^{n_i} r_{13}^{p_i} r_{23}^{q_i} d\textbf{r}_1 d\textbf{r}_2 d\textbf{r}_3.
+\label{eq:FourBody}
+I \equiv I(k_i, l_i, m_i, n_i, p_i, q_i; \alpha, \beta, \gamma) = \int e^{-(\alpha r_1 + \beta r_2 + \gamma r_3)} r_1^{k_i} r_2^{l_i} r_{12}^{m_i} r_3^{n_i} r_{13}^{p_i} r_{23}^{q_i} d\textbf{r}_1 d\textbf{r}_2 d\textbf{r}_3,
 \eeq
-This class of integrals, the so-called Hylleraas three-electron or four-body integrals, has been studied extensively. See references \cite{Drake1995}, \cite{Frolov2003}, \cite{Pelzl1998} and \cite{Pachucki2004} for just some of the papers detailing strategies on how to compute these integrals. The first three papers here use the same infinite summation to numerically solve this integral but use different techniques to accelerate the convergence, as the summation converges slowly for some arguments. The last paper by Pachucki et al.\ uses a very different approach with recursion relations, described in section \ref{sec:RecursionRelations}.
+with real-valued $\alpha, \beta, \gamma > 0$ and integers $k_i, l_i, n_i \geq -2$ and $m_i, p_i, q_i \geq -1$.
 
-The general form of the infinite summation for $I$ is
+This class of integrals, the so-called Hylleraas three-electron or four-body integrals, has been studied extensively. See references \cite{Drake1995}, \cite{Frolov2003}, \cite{Pelzl1998} and \cite{Pachucki2004} for just some of the papers detailing strategies on how to compute these integrals. The first three papers here use the same infinite summation to numerically solve this integral but use different techniques to accelerate the convergence, as the summation converges slowly for some arguments. The last paper by Pachucki et al.\ uses a very different approach with recursion relations, described in \cref{sec:RecursionRelations}.
+
+Each of these methods has some restriction on how singular these integrals can be. For Drake and Yan's asymptotic expansion \cite{Drake1995,Drake1997}, $k_i, l_i, n_i \geq -2$ and $m_i, p_i, q_i \geq -1$. Yan extends these to $k_i, l_i, m_i, n_i, p_i, q_i \geq -3$ in an additional paper \cite{Yan2000a}. For the recursion relations of Pachucki et al \cite{Pachucki2004}, $k_i, l_i, m_i, n_i, p_i, q_i \geq -1$. Pachucki and Puchalski have two other papers, one extending this to $k_i, l_i, m_i, n_i, p_i, q_i \geq -2$ \cite{Pachucki2005} and another even extending these to $k_i, l_i, m_i, n_i, p_i, q_i \geq -3$ \cite{Pachucki2008}. Our work for the D-wave has some terms with $k_i$, $l_i$, or $n_i = -2$, restricting what methods we can use. The biggest need for integrals more singular than $\frac{1}{r_i}$ or $\frac{1}{r_{ij}}$ in most work (such as lithium energies \cite{Yan1997a,Puchalski2010})is for relativistic or quantum electrodynamics effects \cite{Yan1997,Pachucki2008,Puchalski2010}.
+
+{\"O}hrn and Nordling \cite{Ohrn1963} were the first to give a method to solve this type of integral by splitting it into summations over $W$ functions. To deal with odd powers of $r_{ij}$, these terms are usually expanded in a Laplace expansion using Perkins's expression \cite{Perkins1968}. A related expression is given by Sack \cite{Sack1964}. Porras and King \cite{Porras1994} also use another expansion with Gegenbauer polynomials.
+
+From Drake and Yan's paper \cite{Drake1995}, splitting into $W$ functions gives
+\begin{align}
+\label{eq:FourBodyExpansion}
+I &= (4\pi)^3 \sum_{q=0}^\infty \sum_{k_{12} = 0}^{L_{12}} \sum_{k_{12} = 0}^{L_{23}} \sum_{k_{12} = 0}^{L_{13}} \frac{1}{(2q+1)^2} C_{j_{12} q k_{12}} C_{j_{23} q k_{23}} C_{j_{13} q k_{13}} \nonumber \\
+& \times [W(\tilde{k}_i + 2q + 2 k_{12} + 2 k_{13}, \tilde{l}_i + m_i - 2 k_{12} + 2 k_{23}, \tilde{n}_i + q_i - 2 q - 2 k_{23} + p_i - 2 k_{13}; \alpha, \beta, \gamma) \nonumber \\
+      & + W(\tilde{k}_i + 2q + 2 k_{12} + 2 k_{13}, \tilde{n}_i + p_i - 2 k_{13} + 2 k_{23}, \tilde{l}_i + m_i - 2 q - 2 k_{23} + q_i - 2 k_{13}; \alpha, \gamma, \beta) \nonumber \\
+      & + W(\tilde{l}_i + 2q + 2 k_{12} + 2 k_{23}, \tilde{k}_i + m_i - 2 k_{12} + 2 k_{13}, \tilde{n}_i + q_i - 2 q - 2 k_{23} + p_i - 2 k_{13}; \beta, \alpha, \gamma) \nonumber \\
+      & + W(\tilde{l}_i + 2q + 2 k_{12} + 2 k_{23}, \tilde{n}_i + q_i - 2 k_{23} + 2 k_{13}, \tilde{k}_i + m_i - 2 q - 2 k_{23} + p_i - 2 k_{13}; \beta, \gamma, \alpha) \nonumber \\
+      & + W(\tilde{n}_i + 2q + 2 k_{23} + 2 k_{13}, \tilde{k}_i + p_i - 2 k_{13} + 2 k_{12}, \tilde{l}_i + m_i - 2 q - 2 k_{23} + q_i - 2 k_{13}; \gamma, \alpha, \beta) \nonumber \\
+      & + W(\tilde{n}_i + 2q + 2 k_{23} + 2 k_{13}, \tilde{l}_i + q_i - 2 k_{23} + 2 k_{12}, \tilde{k}_i + m_i - 2 q - 2 k_{23} + p_i - 2 k_{13}; \gamma, \beta, \alpha)]
+\end{align}
+
+The $k_{ij}$ summations are all finite. If all powers of $r_{ij}$ are odd, the $q$ summation is infinite, and if any of $r_{ij}$ is even, the $q$ summation becomes finite. For the finite $q$ sums, these direct sums are solved very accurately, but for the infinite sums, some integrals converge slowly. Particularly when all three $r_{ij}$ powers are odd and at least one is $-1$, the integrals converge the slowest. It is possible to restrict the basis set described by \cref{eq:OmegaDef} so that at least one of the $r_{ij}$ powers is even, making solving the integrals easier. However, this leads to slow convergence in the energy \cite{Drake1995}.
+
+As Frolov and Bailey \cite{Frolov2003} note, these four-body integrals only work for systems with one infinitely heavy particle, such as PsH or Ps-H scattering. For systems with arbitrary masses, such as Ps$_2$ or Ps-Ps scattering, this has to be generalized to
 \beq
-I = \sum_{q=0}^\infty T(q),
+\label{eq:FourBodyIntGen}
+I = \int e^{-(\alpha r_1 + \beta r_2 + \gamma r_3 + a_{12} r_{12} + a_{13} r_{13} + a_{23} r_{23})} r_1^{k_i} r_2^{l_i} r_{12}^{m_i} r_3^{n_i} r_{13}^{p_i} r_{23}^{q_i} d\textbf{r}_1 d\textbf{r}_2 d\textbf{r}_3.
 \eeq
-where $T(q)$ is given by Drake and others \cite{Drake1995,Frolov2003}. In the case where any of $m_i$, $p_i$ or $q_i$ are even, the summation collapses to a finite summation, making the calculations exact to numerical accuracy. Early attempts at using a Hylleraas-type basis restricted one of the $r_{ij}$ powers to be even for this reason, but the full calculation for the energy converged slowly \cite{?}.
+Fromm and Hill give an analytic solution to this \cite{Fromm1987}, but it is extremely difficult to work with. Harris more recently solved this problem analytically using recursion relations \cite{Harris2009}, using a similar method to the recursion relations of Pachucki et al \cite{Pachucki2004}. Both of these solutions restrict the powers of $r_i$ and $r_{ij}$ to $k_i, l_i, m_i, n_i, p_i, q_i \geq -1$. We have also looked at a subset of these integrals (refer to \cref{chp:Exponential}). As another extension of the Hylleraas basis set, some four-electron integrals can be reduced down to the three-electron integrals \cite{King1993,Pelzl2002}.
 
-\todoi{Not true ($\geq 2?$. Add more references other than \cite{Pelzl2002}.}
-In our calculations, $k_i$, $l_i$, $m_i$, $n_i$, $p_i$ and $q_i \geq -1$. Most of the techniques for solving these integrals only work when this condition is satisfied. More singular integrals can be solved in special cases \cite{Pelzl2002}, but these types of terms normally only appear when relativistic corrections are taken into account.
 
 \subsection{Asymptotic Expansion}
 \label{sec:AsymptoticExpansion}
-The infinite summation for $I$ given in references \cite{Drake1995} and \cite{Frolov2003} can converge extremely slow when all $r_{ij}$ powers are odd, especially since we need as much accuracy in the matrix elements as possible. As an example in Drake and Yan's paper \cite{Drake1995}, direct calculation of this summation for $I(0,0,0,-1,-1,-1; 1,1,1)$ only reaches an accuracy of $1.5 x 10^{-13}$ after 6860 terms. With their asymptotic expansion method, the integral has converged to approximately $2.2 x 10^{-16}$ after only 21 terms.
+For cases of \cref{eq:FourBodyExpansion} with all odd powers of $r_{ij}$, the $q$ summation is infinite, and the summation converges slowly. The convergence accelerator approach of Pelzl and King \cite{Pelzl1998,Pelzl2002} is one way to deal with this. I did limited testing with this approach but chose to instead use the asymptotic expansion method of Drake and Yan \cite{Drake1995}. In my testing, it was more numerically stable, and it has been generalized to arbitrary angular momenta \cite{Yan1997}.
 
-The summation converges monotonically and asymptotically. Drake and Yan use this knowledge to speed up the convergence of the integration. Details of this method can be found in their paper \cite{Drake1995}.
+As an example in Drake and Yan's paper \cite{Drake1995}, direct calculation of the $q$ summation for $I(0,0,0,-1,-1,-1; 1,1,1)$ only reaches an accuracy of $1.5 x 10^{-13}$ after 6860 terms. With their asymptotic expansion method, the integral has converged to approximately $2.2 x 10^{-16}$ after only 21 terms. The summation converges monotonically and asymptotically. Drake and Yan use this knowledge to speed up the convergence of the integration. Details of this method can be found in their paper \cite{Drake1995}.
 
-This asymptotic expansion method was used in all calculations of the S-wave and performed very well. The accuracy is good, and the integrations complete in a reasonable amount of time, on the order of hours normally. After the S-wave calculations were completed, we learned of an analytic, instead of numerical, solution to these three-electron integrals, derived by Pachucki et al.\ \cite{Pachucki2004}.
+I use this asymptotic expansion method in all calculations of the short--short integrals through the H-wave, and it performed very well. In fact, my quadruple precision code often calculates matrix elements to better than $1$ part in $10^{20}$ for the S-wave. \Cref{tab:AsympExpan} gives an example of the convergence of a single integral by only calculating the direct sum of \cref{eq:FourBodyExpansion} in the $S_d(N)$ column and with the asymptotic expansion in the $S_a(N)$ column. These four-body integrals are relatively quick to calculate, and most of the runs to compute them complete in a matter of hours.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{c c c c}
+\toprule
+$N$ & $S_d(N)$ & $\Delta S_d(N)$ & $S_a(N)$ \\
+\midrule
+17 & 684.106 432 091 &               & 684.113 411 842 629 912 374 349 \\
+18 & 684.107 475 306 & 0.001 043 214 & 684.113 411 842 629 911 836 645 \\
+19 & 684.108 320 637 & 0.000 845 331 & 684.113 411 842 629 911 829 661 \\
+20 & 684.109 012 851 & 0.000 692 213 & 684.113 411 842 629 911 835 071 \\
+21 & 684.109 585 093 & 0.000 572 241 & 684.113 411 842 629 911 836 095 \\
+22 & 684.110 062 261 & 0.000 477 167 & 684.113 411 842 629 911 836 195 \\
+23 & 684.110 463 302 & 0.000 401 041 & 684.113 411 842 629 911 836 186 \\
+24 & 684.110 802 809 & 0.000 339 506 & 684.113 411 842 629 911 836 178 \\
+25 & 684.111 092 142 & 0.000 289 333 & 684.113 411 842 629 911 836 174 \\
+26 & 684.111 340 236 & 0.000 248 094 & 684.113 411 842 629 911 836 173 \\
+27 & 684.111 554 183 & 0.000 213 946 & 684.113 411 842 629 911 836 172 \\
+28 & 684.111 739 660 & 0.000 185 477 & 684.113 411 842 629 911 836 172 \\
+29 & 684.111 901 249 & 0.000 161 588 & 684.113 411 842 629 911 836 172 \\
+30 & 684.112 042 674 & 0.000 141 425 & 684.113 411 842 629 911 836 172 \\
+\bottomrule
+\end{tabular}
+\caption{Convergence of direct sum, $S_d(N)$, against the asymptotic expansion, $S_a(N)$. This is an extension of Table I in Drake and Yan's work \cite{Drake1995} and uses $\Lambda = 15$. $\Delta S_d(N)$ gives the difference between successive direct sums.}
+\label{tab:AsympExpan}
+\end{table}
 
 \subsection{Recursion Relations}
 \label{sec:RecursionRelations}
-Pachucki et al.\ were not the first to derive an analytic solution to the three-electron integrals \cite{Pachucki2004}, but the first by Fromm and Hill is not very practical to use, considering its very complicated form \cite{Fromm1987}. Each set of $r_i$ and $r_{ij}$ powers requires a new rederivation from the Fromm and Hill result. The recursion relations from Pachucki are complicated but also general.
+After the S-wave calculations were completed, we learned of an analytic, instead of numerical, solution to these three-electron integrals, derived by Pachucki et al.\ \cite{Pachucki2004}. Pachucki et al.\ \cite{Pachucki2004} were not the first to derive an analytic solution to the three-electron integrals, but the first by Fromm and Hill \cite{Fromm1987} is not very practical to use, considering its very complicated form. Each set of $r_i$ and $r_{ij}$ powers requires a new rederivation from the Fromm and Hill result. The recursion relations from Pachucki are complicated but also general.
 
-Since the recursion relations are an analytic solution, we can get any desired precision that we choose. The calculations previously with the asymptotic expansion used double precision, but we chose quadruple precision for the recursion relations. Part of this choice is that just like many other types of recursion relations, these relations may not be stable for higher $\omega$ values without the increased precision. We have tested through $\omega = 8$, and this method produced stable results. In some of their work on Li and Be$^+$, their group uses sextuple precision, as quadruple precision becomes insufficient near $\omega = 10$ \cite{Puchalski2006}, which is much higher than we can use in the scattering calculations.
+Like many other types of recursion relations, these recursion relations may not be stable for higher $\omega$ values, depending on the calculated precision. I have tested through $\omega = 8$, and this method produced stable results under quadruple precision. In some of their work on Li and Be$^+$, their group uses sextuple precision, as quadruple precision becomes insufficient near $\omega = 10$ \cite{Puchalski2006}, which is much higher than we can use in the Ps-H scattering calculations.
+
+\todoi{More on this}
+
+
 
 \subsection{W Functions}
 \label{sec:WFunctions}
@@ -537,7 +586,7 @@ To determine an optimal set of points, 10 points were added to Van Reeth's set i
 
 
 \section{Phase Shift Convergence and Singularities}
-Schwartz singularities are well-documented \cite{?} and are non-physical ``resonances''. To avoid these singularities, we use multiple forms of the Kohn method: Kohn, inverse Kohn, complex Kohn and the generalized Kohn. There may also be spurious results if the matrix elements are not converged, with one example being the feature at approximately 600 terms in figure \ref{fig:OriginalPhaseShifts-pvr} for the inverse Kohn. With the original ordering of the short-range terms, the phase shifts always break up at around 1100 terms, even when the matrix elements are converged. To alleviate this problem, we have implemented the Todd algorithm.
+Schwartz singularities are well-documented \cite{Lucchese1989,Cooper2009} and are non-physical ``resonances''. To avoid these singularities, we use multiple forms of the Kohn method: Kohn, inverse Kohn, generalized Kohn, generalized S-matrix complex Kohn, and generalized T-matrix complex Kohn. There may also be spurious results if the matrix elements are not converged, with one example being the feature at approximately 600 terms in figure \ref{fig:OriginalPhaseShifts-pvr} for the inverse Kohn. With the original ordering of the short-range terms, the phase shifts always break up at around 1100 terms, even when the matrix elements are converged. To alleviate this problem, we have implemented the Todd algorithm.
 
 \section{Todd Algorithm Applied to the Scattering Problem}
 \label{sec:ToddScattering}
@@ -882,6 +931,22 @@ Extra points & Phase shift \\
 \end{table}
 
 \textbf{@TODO: Table of final integration points}
+
+
+\section{Fittings}
+\label{sec:Fittings}
+
+\subsection{Resonance Fitting}
+\label{sec:ResonanceFit}
+To fit the data, I first tried the \texttt{Fit} and \texttt{FindFit} functions of Mathematica\textsuperscript{\textregistered} 8.0 \cite{Mathematica}, but these were unable to fit our data to this complicated nonlinear function. I next tried the \texttt{curve\_fit} function of SciPy \cite{SciPy} in Python\textsuperscript{\textregistered} 2.6 \cite{Python}, which was better able to fit the nonresonant (polynomial) part.
+
+I finally wrote a custom MATLAB\textsuperscript{\textregistered} \cite{matlab} script that uses the \texttt{nlinfit} routine of MATLAB. \texttt{nlinfit} is specifically designed for fitting to nonlinear functions, and its robust option allows for a variety of weighting functions to be used. Our script does the fitting for all eight of the possible weightings: Bisquare, Andrews, Cauchy, Fair, Huber, Logistic, Talwar and Welsch. This fitting routine is also not as sensitive to the initial conditions as the Mathematica and SciPy routines. The resulting graphs for $\omega = 6$ are in figures \ref{fig:ResOmega=6,pg1} and \ref{fig:ResOmega=6,pg2}, and the graphs for $\omega = 7$ are in figures \ref{fig:ResOmega=7,pg1} and \ref{fig:ResOmega=7,pg2}.
+
+Some fittings are better than others for this particular type of function. The Fair, Huber and Logistic weightings get the positions and widths of the resonances nearly correct, but the resulting curve clearly does not fit the data points leading to the first resonance, as can be seen in these figures. For a more rigorous examination of the fittings, the residuals were calculated for each point and graphed in figures \ref{fig:ResOmega=6,Residuals} and \ref{fig:ResOmega=7,Residuals}. I also calculated the residual sum of squares (RSS), which are shown in these figures. The Fair, Huber and Logistic weightings are clearly the worst fits for this function, though they are still respectable, giving parameters that are extremely close. It should be noted that the data will fit poorly to equation (\ref{eq:ResonanceCurve}) as the energy is decreased (i.e. far from the resonances), so the fits all have larger residuals for low energies.
+
+\todoi{Cite Mathematica, SciPy and MATLAB. Show results of Mathematica and Python fittings. Do I need to write function names differently (e.g. FindFit)?}
+
+\cite{Tennyson1984} \cite{Stibbe1998} \cite{Sochi2013}
 
 
 \end{document}

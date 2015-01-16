@@ -150,7 +150,7 @@ were causing linear dependence.
 This enabled us to compute the phase shifts (and the binding
 energy of PsH) with more short-range Hylleraas terms than the earlier 
 Kohn calculation. We added the asymptotic expansion of Drake and Yan \cite{Drake1995, Yan1997} to improve the short-range integrations.
-Next, we have significantly increased the number of integration points for matrix elements that involve the long-range terms, along with implementing a method to accelerate the convergence of these integrals. We also extended the calculations to the next four partial waves through the H-wave. We also calculate the differential elastic, integrated elastic, momentum transfer and ortho-para conversion cross sections, and we analyze the resonances through the F-wave.
+Next, we have significantly increased the number of integration points for matrix elements that involve the long-range terms, along with implementing a method to accelerate the convergence of these integrals. We also extended the calculations to the next four partial waves through to the H-wave. We also calculate the differential elastic, integrated elastic, momentum transfer and ortho-para conversion cross sections, and we analyze the resonances through the F-wave.
 
 We have applied the complex Kohn for the \emph{S} matrix variational principle to the first six partial waves for Ps-H scattering and present results. We confirm the previously observed resonances for the first four partial waves and compare the positions and widths to that of the earlier Kohn, close coupling (CC) and complex rotation calculations (references to be given). In addition, we computed the scattering lengths and effective range using multiple effective range theories. We also used the short-range part of the full scattering wavefunction to compute the binding energy of PsH. Comparing the binding energy with the most elaborate variational results gives an indication of the reliability of describing the Ps-H system at short-distances.
 
@@ -204,8 +204,8 @@ The most recent calculation of Ps-H scattering uses the confined variational met
 
 Phase shifts are expressed in radians. Atomic units are used throughout unless otherwise stated. For conversions to electron-volts (eV), we use the conversion factor \mbox{1 au = {27.21138505(60) eV}} \cite{Mohr2012,*NISTConversions}.
 
-\emph{Add \cite{Shipman2014}, \cite{Barker2012}, \cite{Laricchia2009}?}
-\emph{Add \cite{Mitroy2002a}?}
+%\emph{Add \cite{Shipman2014}, \cite{Barker2012}, \cite{Laricchia2009}?}
+%\emph{Add \cite{Mitroy2002a}?}
 
 
 \vskip 0.5truecm
@@ -232,7 +232,7 @@ where the superscript $t$ indicates that this is a trial wavefunction. The plus 
 \Psi_\ell^{\pm,t} = \bar{S}_\ell + L^{\pm,t}_\ell \, \bar{C}_\ell + \sum_{i=1}^{N(\omega)} c_{i,\ell} \phi_{i1} + \!\!\!\sum_{i=N(\omega)+1}^{2N(\omega)} \!\! d_{i,\ell} \phi_{i2}.
 \label{eq:TrialWaveHigher}
 \end{equation}
-The scattering wavefunctions contain both the long-range terms $\bar{S}$ and $\bar{C}$ and the short-range correlation terms $\phi_{i1}$ for small interparticle distances. We show the coordinate system for Ps-H in Fig. \ref{fig:PsHCoords}. The vector $\rho$ is the position vector of the center of mass of the Ps atom with respect to the proton, i.e. $\vec{\rho} = \frac{1}{2}\left(\vec{r_1} + \vec{r_2}\right)$. The long-range terms of Eqs. (\ref{eq:TrialWave}) and (\ref{eq:TrialWaveHigher}) are given by
+The scattering wavefunctions contain both the long-range terms $\bar{S}$ and $\bar{C}$ and the short-range correlation terms $\phi_{i1}$ for small interparticle distances. We show the coordinate system for Ps-H in Fig. \ref{fig:PsHCoords}. The vector $\vec{\rho} = \frac{1}{2}\left(\vec{r_1} + \vec{r_2}\right)$ is the position vector of the center of mass of the Ps atom with respect to the proton. The long-range terms of Eqs. (\ref{eq:TrialWave}) and (\ref{eq:TrialWaveHigher}) are given by
 \begin{equation}
 \label{eq:SCPhiDef}
 \begin{bmatrix}
@@ -289,7 +289,7 @@ The variable $\omega$ is a non-negative integer that determines the maximum numb
 k_i + l_i + m_i + n_i + p_i + q_i \leq \omega,
 \end{equation}
 with all $k_i, l_i, m_i, n_i, q_i$ and $p_i \geq 0$.
-The first symmetry in Eq. (\ref{eq:TrialWaveHigher}) has $j=1$ for $i=1$ to $N(\omega)$, and the second symmetry exists for $\ell > 0$, with $i = N(\omega)$ to $2N(\omega)$.
+The first set of short-range terms in Eq. (\ref{eq:TrialWaveHigher}), referred to as the first symmetry, has $j=1$ for $i=1$ to $N(\omega)$. The second symmetry set of terms exists for $\ell > 0$, with $j=2$ and $i = N(\omega)$ to $2N(\omega)$.
 
 These short-range terms represent the angular momentum as being placed on either the positron ($r_1$) or on the electron on the Ps atom ($r_2$, and $r_3$ with exchange). Following up on the Ref. \cite{VanReeth2004} where the slow convergence of the $^3$P phase shift was discussed, we also tried a wavefunction where the angular momentum was placed on the electron of the H atom ($r_3$) and on the Ps ($\rho$). However, this did not improve convergence for us and was even marginally worse in some cases. The numerical techniques discussed in Sec. \ref{sec:Numerical} improved our convergence.
 
@@ -340,7 +340,7 @@ It can be shown that solving for $\delta I$, the variation of $I$, gives a resul
 \delta I = I[\Psi^t] - I[\Psi] = I[\Psi^t] = (L^t - L + I[\delta \Psi]) \det u.
 \label{eq:IlPsiVariation}
 \eeq
-Here $L$ and $L^t$ correspond to the exact and trial wavefunctions, respectively. Neglecting the second order term in $\delta \Psi$ and realizing that $I[\Psi] = 0$, we get a functional for the variational $L^v$ of
+Here $L$ and $L^t$ correspond to the exact and trial wavefunctions, respectively, with the trial wavefunctions given in Eqns. \ref{eq:TrialWave} and \ref{eq:TrialWaveHigher}. Neglecting the second order term in $\delta \Psi$ and realizing that $I[\Psi] = 0$, we get a functional for the variational $L^v$ of
 \beq
 L^v = L^t - I[\Psi^t] / \det u.
 \label{eq:ComplexKohnVariation}

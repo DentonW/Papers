@@ -32,7 +32,7 @@ C &= -Y_{0,0}\!\left( \theta_\rho, \phi_\rho \right) \Phi_{Ps}\left(r_{12}\right
 \end{align}
 \end{subequations}
 
-\noindent The $\frac{1}{\sqrt{2}}$ and $Y_{0,0}\left( \theta_\rho, \phi_\rho \right) = \frac{1}{\sqrt{4\pi}}$ for $\bar{\phi}_i^t$ are included in the $c_i$ coefficients in (\ref{eq:TrialSimple}).
+\noindent The $\frac{1}{\sqrt{2}}$ and $Y_{0,0}\left( \theta_\rho, \phi_\rho \right) = \frac{1}{\sqrt{4\pi}}$ for $\bar{\phi}_i^t$ are included in the $c_i$ coefficients in (\ref{eq:SWaveTrialSimple}).
 
 $\rho$ and $\rho'$ are defined as (refer to figure \ref{fig:PsHCoords})
 \begin{subequations}
@@ -778,16 +778,16 @@ Lastly, we need to prove that $\left(\bar{\phi}_i, L \bar{\phi}_j\right) = \left
 F = (\phi_i, L \phi_j) - (\phi_j L \phi_i).
 \eeq
 
-Using (\ref{Hamiltonian1}),
-\beq
-	F=\left({-\phi_i,{\frac {1}{2}{\nabla }_{{r}_{1}}^{2}\phi_j}}\right)+\left({\phi_j,{\frac {1}{2}{\nabla }_{{r}_{1}}^{2}\phi_i}}\right)+
-	\left({-\phi_i,{\frac {1}{2}{\nabla }_{{r}_{2}}^{2}\phi_j}}\right)+\left({\phi_j,{\frac {1}{2}{\nabla }_{{r}_{2}}^{2}\phi_i}}\right)+
-	\left({-\phi_i,{\frac {1}{2}{\nabla }_{{r}_{3}}^{2}\phi_j}}\right)+\left({\phi_j,{\frac {1}{2}{\nabla }_{{r}_{3}}^{2}\phi_i}}\right)
-\eeq
+Using (\ref{eq:Hamiltonian1}),
+\begin{align}
+	F=&\left({-\phi_i,{\frac {1}{2}{\nabla }_{{r}_{1}}^{2}\phi_j}}\right)+\left({\phi_j,{\frac {1}{2}{\nabla }_{{r}_{1}}^{2}\phi_i}}\right)+
+	\left({-\phi_i,{\frac {1}{2}{\nabla }_{{r}_{2}}^{2}\phi_j}}\right)+\left({\phi_j,{\frac {1}{2}{\nabla }_{{r}_{2}}^{2}\phi_i}}\right) \nonumber \\
+	&+\left({-\phi_i,{\frac {1}{2}{\nabla }_{{r}_{3}}^{2}\phi_j}}\right)+\left({\phi_j,{\frac {1}{2}{\nabla }_{{r}_{3}}^{2}\phi_i}}\right).
+\end{align}
 
 From (\ref{eq:PhiDef}), the $\bar{\phi}_i$ (and $\bar{\phi}_j$) have a decaying exponential dependence in $r_1$, $r_2$ and $r_3$, so the surface terms in the integrations will vanish.  Combining this fact with (\ref{PhiBarDef}) gives that $F = 0$.  Then
 \beq
-\left(\bar{\phi}_i, L \bar{\phi}_j\right) = \left(\bar{\phi}_j, L \bar{\phi}_i\right)
+\left(\bar{\phi}_i, L \bar{\phi}_j\right) = \left(\bar{\phi}_j, L \bar{\phi}_i\right).
 \label{PhiLPhiPerm}
 \eeq
 
@@ -805,14 +805,14 @@ The claims in equations \ref{eq:PhiLSPerm} and \ref{eq:PhiLCPerm} can be proven 
 
 Only the first three terms of the above functional have to be evaluated, as the other terms go to 0 with the subtraction.
 \begin{align}
-	F=\left({-g,\frac{1}{2} \nabla_{r_1}^2 f}\right)+\left({f,\frac{1}{2} \nabla_{r_1}^2 g}\right)+
-	\left({-g,\frac{1}{2} \nabla_{r_2}^2 f}\right)+\left({f,\frac{1}{2} \nabla_{r_2}^2 g}\right)+
-	\left({-g,\frac{1}{2} \nabla_{r_3}^2 f}\right)+\left({f,\frac{1}{2} \nabla_{r_3}^2 g}\right)
+	F=&\left({-g,\frac{1}{2} \nabla_{r_1}^2 f}\right)+\left({f,\frac{1}{2} \nabla_{r_1}^2 g}\right)+
+	\left({-g,\frac{1}{2} \nabla_{r_2}^2 f}\right)+\left({f,\frac{1}{2} \nabla_{r_2}^2 g}\right) \nonumber \\
+	&+\left({-g,\frac{1}{2} \nabla_{r_3}^2 f}\right)+\left({f,\frac{1}{2} \nabla_{r_3}^2 g}\right)
 \end{align}
 
 We can use Green's theorem on each pair of terms:
 
-\textbf{@TODO:} Is it really only 2 volumes, not 3?
+\todoi{Is it really only 2 volumes, not 3?}
 
 \begin{align}
 	{\int _{V_2}{{\int_{V_1}{\left[{u{\nabla }_1^2 v-v{\nabla }_1^2 u}\right]{d \tau_1}}}{d \tau_2}}}
@@ -1098,19 +1098,9 @@ The resonance positions and widths can be calculated to high accuracy by fitting
 \label{eq:ResonanceCurve}
 \delta(E) = A + BE + CE^2 + \arctan\left[ \frac{^1\Gamma}{2\left(^1E_R-E\right)} \right] + \arctan\left[ \frac{^2\Gamma}{2\left(^2E_R-E\right)} \right]
 \eeq
+The polynomial part of the above equation corresponds to hard-sphere scattering. The arctangent parts correspond to the first and second Fano resonances \cite{Fano1961,Macek1970,Hazi1979}, with $^1E_R$ and $^2E_R$ as the positions of the resonances and $^1\Gamma$ and $^2\Gamma$ as the widths of the respective resonances.
 
-\noindent The polynomial part of the above equation corresponds to hard-sphere scattering. The arctangent parts correspond to the first and second resonances, with $^1E_R$ and $^2E_R$ as the positions of the resonances and $^1\Gamma$ and $^2\Gamma$ as the widths of the respective resonances.
-
-\subsection{Resonance Fitting}
-\label{sec:ResonanceFit}
-To fit the data, we first tried the Fit and FindFit functions of \textit{Mathematica} 8.0, but these were unable to fit our data to this complicated nonlinear function.  We next tried the curve\_fit function of SciPy in Python 2.6, which was better able to fit the nonresonant (polynomial) part.
-
-We finally wrote a custom MATLAB script that uses the nlinfit routine of MATLAB.  nlinfit is specifically designed for fitting to nonlinear functions, and its robust option allows for a variety of weighting functions to be used.  Our script does the fitting for all eight of the possible weightings: Bisquare, Andrews, Cauchy, Fair, Huber, Logistic, Talwar and Welsch.  This fitting routine is also not as sensitive to the initial conditions as the \textit{Mathematica} and SciPy routines.  The resulting graphs for $\omega = 6$ are in figures \ref{fig:ResOmega=6,pg1} and \ref{fig:ResOmega=6,pg2}, and the graphs for $\omega = 7$ are in figures \ref{fig:ResOmega=7,pg1} and \ref{fig:ResOmega=7,pg2}.
-
-Some fittings are better than others for this particular type of function.  The Fair, Huber and Logistic weightings get the positions and widths of the resonances nearly correct, but the resulting curve clearly does not fit the data points leading to the first resonance, as can be seen in these figures.  For a more rigorous examination of the fittings, the residuals were calculated for each point and graphed in figures \ref{fig:ResOmega=6,Residuals} and \ref{fig:ResOmega=7,Residuals}.  We also calculated the residual sum of squares (RSS), which are shown in these figures.  The Fair, Huber and Logistic weightings are clearly the worst fits for this function, though they are still respectable, giving parameters that are extremely close.  It should be noted that the data will fit poorly to equation (\ref{eq:ResonanceCurve}) as the energy is decreased (i.e. far from the resonances), so the fits all have larger residuals for low energies.
-
-\textbf{@TODO:} Refer back to the Bransden and Joachain book and/or the Ray paper about decomposing this equation into the different parts.  Talk about what type of resonances these are (Feshbach?).  Refer to the discussions in Peter's paper and Yan/Ho's paper about the resonances corresponding to 2S and 3S.  Discussion on energy levels elsewhere for H and Ps, along with what the threshold is.  Cite Mathematica, SciPy and MATLAB.  Show results of Mathematica and Python fittings.  Do we need to write function names differently (e.g. FindFit)?
-
+\textbf{@TODO:} Refer back to the Bransden and Joachain book and/or the Ray paper about decomposing this equation into the different parts.  Talk about what type of resonances these are (Feshbach?).  Refer to the discussions in Peter's paper and Yan/Ho's paper about the resonances corresponding to 2S and 3S.  Discussion on energy levels elsewhere for H and Ps, along with what the threshold is.  
 \subsection{Resonance Graphs}
 \label{sec:ResonanceGraphs}
 

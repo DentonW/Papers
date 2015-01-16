@@ -68,7 +68,9 @@
 %\usepackage[grey,utopia]{quotchap}  % Decorative chapter headings
 \usepackage{tikz}
 \usepackage{braket}
-\usepackage[pagebackref=true, plainpages=false, bookmarks, bookmarksnumbered, colorlinks, linktocpage=true, linkcolor=blue, citecolor=blue, filecolor=black,urlcolor=blue]{hyperref}
+\usepackage[pagebackref=true, plainpages=false, bookmarks, bookmarksnumbered, colorlinks, linktocpage=true, linkcolor=blue, citecolor=blue, filecolor=black,urlcolor=blue, %
+			pdflang={en}, pdftitle={Variational Calculations of Positronium Scattering with Hydrogen}, pdfauthor={Denton Woods}, %
+			pdfsubject={Denton Woods's Dissertation at the University of North Texas}, pdfkeywords={positronium, hydrogen, scattering, positronium hydride, Denton Woods}]{hyperref}
 %\usepackage{doi}
 \usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}  % http://www.khirevich.com/latex/microtype/
 \microtypecontext{spacing=nonfrench}  % To get rid of that warning
@@ -216,6 +218,20 @@
 \newpage
 \pagenumbering{arabic}
 
+
+% From http://tex.stackexchange.com/questions/45809/acknowledgement-dedication-problem
+\clearpage
+\chapter*{Acknowledgements}
+\thispagestyle{plain}
+\par\vspace*{.35\textheight}{\centering A lot of people helped me.\par}
+
+\clearpage
+\chapter*{Nomenclature}
+\begin{longtable}[l]{p{20pt} p{100pt}}
+RAC & Rear axle carrier  \\
+FAC & Front axle carrier \\
+... & ...                \\
+\end{longtable}
 
 \subfile{Introduction.tex}
 \subfile{BoundState.tex}
