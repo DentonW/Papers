@@ -1,4 +1,48 @@
+%&Dissertation
+
 % file: Dissertation.tex
+
+
+%\documentclass[10pt,openany]{book}
+%\documentclass[12pt,openany]{book}
+
+\endofdump
+
+%\documentclass[draft]{}
+%\usepackage[nobysame]{amsrefs}
+
+%\usepackage[dvips,letterpaper,margin=0.75in,bottom=0.5in]{geometry}  % For smaller page margins
+%\usepackage{setspace}
+%\singlespacing
+%\onehalfspacing
+%\doublespacing
+
+% If we want the equations, figures and tables to be numbered sequentially instead of by chapter/section
+%\usepackage{chngcntr}
+%\counterwithout{equation}{chapter}
+%\counterwithout{figure}{chapter}
+%\counterwithout{table}{chapter}
+
+\usepackage{cleveref}
+\crefname{equation}{equation}{equations}
+
+% Look at http://texblog.wordpress.com/tag/pagestyle/
+%\pagestyle{fancy}
+
+% From http://latex-alive.tumblr.com/post/698006466
+\usepackage{mathpazo}
+
+% From http://texblog.org/2013/07/16/how-to-add-extra-space-to-the-table-of-contents-list-of-figures-and-tables/
+%\usepackage{etoolbox, tocloft}
+%\preto\figure{%
+%  \ifnum\value{figure}=0\addtocontents{lof}{{\bfseries Chapter \thechapter\vskip10pt}}\fi
+%}
+
+% If using amsrefs
+%\renewcommand{\biblistfont}{%
+%  \normalfont
+%  \normalsize
+%}
 
 \providecommand{\e}[1]{\ensuremath{\times 10^{#1}}}
 \newcommand{\ee} {\,\text{e}}
@@ -43,74 +87,6 @@
   #7 & #8 & #9
  \end{Bmatrix}}
 \newcommand{\rtoinfty} {{\xrightarrow[\scriptscriptstyle {r\rightarrow \infty}]{}}}
-
-
-%\documentclass[10pt,openany]{book}
-\documentclass[12pt,openany]{book}
-
-%\documentclass[draft]{}
-%\usepackage[nobysame]{amsrefs}
-\usepackage{amsmath, graphicx, fullpage, showlabels, subfiles, mathrsfs}
-%\usepackage[Lenny]{fncychap}
-\usepackage[Bjornstrup]{fncychap}
-%\usepackage[colorlinks=true]{hyperref}  % hyperref must be loaded after fncychap.
-\usepackage{srcltx, tabularx, pdfsync, multirow, float, fancyhdr}
-\usepackage{color, colortbl, rotate, listings, rotating}
-\usepackage{caption, booktabs, tocvsec2, longtable}
-\usepackage[numbers]{natbib}
-%\usepackage[nottoc]{tocbibind}
-\usepackage{tocbibind}
-\usepackage{subfig}
-\usepackage{todonotes}
-\usepackage{bm}  % Bold-faced math
-\usepackage{lettrine}  % Dropped capitals
-\usepackage{cool}  % Typesetting for various equation types
-%\usepackage[grey,utopia]{quotchap}  % Decorative chapter headings
-\usepackage{tikz}
-\usepackage{braket}
-\usepackage[pagebackref=true, plainpages=false, bookmarks, bookmarksnumbered, colorlinks, linktocpage=true, linkcolor=blue, citecolor=blue, filecolor=black,urlcolor=blue, %
-			pdflang={en}, pdftitle={Variational Calculations of Positronium Scattering with Hydrogen}, pdfauthor={Denton Woods}, %
-			pdfsubject={Denton Woods's Dissertation at the University of North Texas}, pdfkeywords={positronium, hydrogen, scattering, positronium hydride, Denton Woods}]{hyperref}
-%\usepackage{doi}
-\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}  % http://www.khirevich.com/latex/microtype/
-\microtypecontext{spacing=nonfrench}  % To get rid of that warning
-\usepackage{siunitx}  % For correct typesetting of units
-\sisetup{per-mode=symbol}
-\usepackage{wasysym}  % Simply for \CIRCLE and \Circle (could use \circ for the latter)
-\usepackage{pdflscape}  % For landscape pages
-
-%\usepackage[dvips,letterpaper,margin=0.75in,bottom=0.5in]{geometry}  % For smaller page margins
-%\usepackage{setspace}
-%\singlespacing
-%\onehalfspacing
-%\doublespacing
-
-% If we want the equations, figures and tables to be numbered sequentially instead of by chapter/section
-%\usepackage{chngcntr}
-%\counterwithout{equation}{chapter}
-%\counterwithout{figure}{chapter}
-%\counterwithout{table}{chapter}
-
-\usepackage{cleveref}
-\crefname{equation}{equation}{equations}
-
-% Look at http://texblog.wordpress.com/tag/pagestyle/
-%\pagestyle{fancy}
-
-% From http://latex-alive.tumblr.com/post/698006466
-\usepackage{mathpazo}
-
-% From http://texblog.org/2013/07/16/how-to-add-extra-space-to-the-table-of-contents-list-of-figures-and-tables/
-%\usepackage{etoolbox, tocloft}
-%\preto\figure{%
-%  \ifnum\value{figure}=0\addtocontents{lof}{{\bfseries Chapter \thechapter\vskip10pt}}\fi
-%}
-
-% If using amsrefs
-%\renewcommand{\biblistfont}{%
-%  \normalfont
-%  \normalsize
-%}
 
 % For creating nice boxes
 \tikzstyle{nicebox}=[draw=gray!100, fill=blue!10, very thick,rounded corners, rectangle, inner sep=4pt, inner ysep=16pt]
