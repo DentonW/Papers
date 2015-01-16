@@ -2,10 +2,6 @@
 
 % file: Dissertation.tex
 
-
-%\documentclass[10pt,openany]{book}
-%\documentclass[12pt,openany]{book}
-
 \endofdump
 
 %\documentclass[draft]{}
@@ -22,15 +18,6 @@
 %\counterwithout{equation}{chapter}
 %\counterwithout{figure}{chapter}
 %\counterwithout{table}{chapter}
-
-\usepackage{cleveref}
-\crefname{equation}{equation}{equations}
-
-% Look at http://texblog.wordpress.com/tag/pagestyle/
-%\pagestyle{fancy}
-
-% From http://latex-alive.tumblr.com/post/698006466
-\usepackage{mathpazo}
 
 % From http://texblog.org/2013/07/16/how-to-add-extra-space-to-the-table-of-contents-list-of-figures-and-tables/
 %\usepackage{etoolbox, tocloft}
@@ -151,26 +138,32 @@
 %\counterwithout{figure}{chapter}
 %\counterwithout{table}{chapter}
 
+%%% This is the main style file.
+%\input{UNTdissertation.sty}
+
 \begin{document}
-%\title{Positronium Hydride Energy and Positronium-Hydrogen Scattering}
-\title{Variational Calculations of Positronium Scattering with Hydrogen}
-\author{Denton Woods}
-%\degree{Dissertation Prepared for the Degree of\\ Doctor of Philosophy}
-%\degreedate{May 2012}
-%\approved{Wild Bill Hickock, Major Professor\\
-%  Calamity Jane, Minor Professor\\
-%  Billy the Kid, Committee Mamber and\\
-%  \hspace{2em}  Famous Outlaw\\
-%  Robert B. Toulouse, Erstwhile Dean \\
-%  \hspace{2em} of the Graduate School}
+
+%\title{Variational Calculations of Positronium Scattering with Hydrogen}
+%\author{Denton Woods}
+%%\degree{Dissertation Prepared for the Degree of\\ Doctor of Philosophy}
+%%\degreedate{May 2015}
+%%\approved{Wild Bill Hickock, Major Professor\\
+%%  Calamity Jane, Minor Professor\\
+%%  Billy the Kid, Committee Mamber and\\
+%%  \hspace{2em}  Famous Outlaw\\
+%%  Robert B. Toulouse, Erstwhile Dean \\
+%%  \hspace{2em} of the Graduate School}
 
 
-
-\clearpage
-\phantomsection
+%\clearpage
+%\phantomsection
 \pdfbookmark[1]{Title Page}{title} % Sets a PDF bookmark for the title page
-\maketitle
-\newpage
+%\maketitle
+%\newpage
+
+\input{TitlePage}
+
+\input{Abstract}
 
 %%%%%%\setcounter{tocdepth}{2}
 \hypersetup{linktocpage}
