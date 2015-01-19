@@ -605,17 +605,17 @@ From (\ref{eq:LS2}) and (\ref{eq:LSP2}),
 \label{sec:LCElements}
 Now we need to do the same analysis for $L\bar{C}$ as we just did for $L\bar{S}$. The shielding factor, $f_{sh}(\rho)$, complicates the derivatives slightly.
 \begin{align}
-\mathcal{L}C = & \left(-\frac{1}{2}\nabla_\rho^2 - \nabla_{r_3}^2 - 2\nabla_{r_{12}}^2 + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2}\kappa^2 \right) \\
+\mathcal{L}C = & \left(-\frac{1}{2}\nabla_\rho^2 - \nabla_{r_3}^2 - 2\nabla_{r_{12}}^2 + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2}\kappa^2 \right) \nonumber \\
  & \times \Phi_{Ps}(r_{12}) \Phi_H(r_3) \frac{\sin(\kappa\rho)}{\kappa\rho} \sqrt{\frac{2\kappa}{4\pi}} \left[1 + e^{-\mu\rho} \left(1 + \frac{\mu}{2} \rho \right) \right]
 \label{LC1}
 \end{align}
 
 \noindent Again, we use (\ref{eq:HEqn}) and (\ref{eq:PsEqn}) to simplify this expression.
-\beq
-\mathcal{L}C = \left(-\frac{1}{2}\nabla_\rho^2 + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}}  - \frac{1}{2}\kappa^2\right) 
- \Phi_{Ps}(r_{12}) \Phi_H(r_3) \frac{\sin(\kappa\rho)}{\kappa\rho} \sqrt{\frac{2\kappa}{4\pi}} \left[1 + e^{-\mu\rho} \left(1 + \frac{\mu}{2} \rho \right) \right]
+\begin{align}
+\mathcal{L}C = & \left(-\frac{1}{2}\nabla_\rho^2 + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}}  - \frac{1}{2}\kappa^2\right) \nonumber \\
+ & \times \Phi_{Ps}(r_{12}) \Phi_H(r_3) \frac{\sin(\kappa\rho)}{\kappa\rho} \sqrt{\frac{2\kappa}{4\pi}} \left[1 + e^{-\mu\rho} \left(1 + \frac{\mu}{2} \rho \right) \right]
 \label{LC2}
-\eeq
+\end{align}
 
 From (\ref{eigenn0}), $n_0(\kr)$ is an eigenfunction of $\nabla_\rho^2$ with eigenvalue $-\kappa^2$.  Then $\displaystyle -\frac{1}{2} \nabla_\rho^2 \frac{\cos(\kr)}{\kr}$ could be replaced by $\displaystyle \frac{1}{2}\kappa^2\frac{\cos(\kr)}{\kr}$ if the shielding term could be ignored.  However, it also depends on $\rho$, so we have to calculate this separately.
 
@@ -1264,7 +1264,7 @@ a^\pm(\omega) = a^\pm(\omega \rightarrow \infty) + \frac{c}{\omega^p}.
 
 
 \subsection{Effective Range}
-For short-range potentials, the effective range is given by \cite{Bethe1949} \cite{Blatt1949} \cite[pg. 668]{Drake2006}
+For short-range potentials, the effective range is given by \cite{Bethe1949,Blatt1949,Drake2006}
 
 \beq
 \label{eq:EffectiveRangeShort}

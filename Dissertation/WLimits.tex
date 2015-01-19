@@ -3,9 +3,9 @@
 
 \chapter{W Function Limits}
 \label{chp:WLimits}
-\textbf{@TODO: Write this all in terms of $j_i$, $k_i$, $l_i$, etc. instead of $k_1$, $k_2$, $k_{12}$, etc.}
+\todoi{Write this all in terms of $j_i$, $k_i$, $l_i$, etc. instead of $k_1$, $k_2$, $k_{12}$, etc.}
 
-\lettrine{P}{recalculating} the results of the W function yields significant improvements to the speed of this program.  The number of terms in the trial function increases greatly with increasing $\omega$.  The number of elements of the matrices Phi2HPhi and PhiPhi is $N(\omega)^2$.  Only half of each of these matrices is calculated, since the upper triangular portion mirrors the bottom triangle.  The W function is called repeatedly for each element, but the parameters are not unique between elements of the matrices.
+\lettrine{\textcolor{startcolor}{P}}{recalculating} the results of the W function yields significant improvements to the speed of this program.  The number of terms in the trial function increases greatly with increasing $\omega$.  The number of elements of the matrices Phi2HPhi and PhiPhi is $N(\omega)^2$.  Only half of each of these matrices is calculated, since the upper triangular portion mirrors the bottom triangle.  The W function is called repeatedly for each element, but the parameters are not unique between elements of the matrices.
 
 A four-dimensional matrix is constructed with ranges of all possible inputs to the W function, and the output of the W function is stored as the elements.  The range of the parameters to the W function needs to be determined so that no extra computation takes place for impossible inputs and that values are not read outside of the matrix.
 
