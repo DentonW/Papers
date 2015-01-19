@@ -126,14 +126,14 @@ Talwar		& 0.15466 & -0.075358 & 0.013303 & 5.1822 & 0.010697 \\
 \setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
 \begin{table}[H]
 \centering
-\begin{tabular}{l c c}
+\begin{tabular}{l l l}
 \toprule
 Method & $^1E_R \text{ (eV)}$ & $^1\Gamma \text{ (eV)}$ \\
 \midrule
-Kohn $(\omega = 5)$ & $5.1822$ & $0.0107$ \\
-Complex rotation (Ho and Yan 2000) \cite{Ho2000} & $5.1661 \pm 0.0014$ & $0.0174 \pm 0.0027$  \\
-Close coupling (22Ps1H + H$^-$ \emph{et al} 2002) \cite{Blackwood2002b} & $5.151$ & $0.010$ \\
-Close coupling (Walters \emph{et al} 2004 \cite{Walters2004}) & $5.200$ & $0.0095$ \\
+This work & $5.1867 \pm 0.0021$ & $0.0125 \pm 0.0003$ \\
+CC (9Ps9H + H$^-$) \cite{Walters2004} & $5.200$ & $0.0095$ \\
+CC (22Ps1H + H$^-$) \cite{Blackwood2002b} & $5.151$ & $0.010$ \\
+Complex rotation \cite{Ho2000} & $5.1661 \pm 0.0014$ & $0.0174 \pm 0.0027$  \\
 \bottomrule
 \end{tabular}
 \caption{F-Wave Resonance Parameters} % title of Table
@@ -222,7 +222,7 @@ The Born approximation is also not sufficient for describing the H-wave. Like th
 \begin{tabular}{l l l l}
 \toprule
  & & & Yan and Ho \cite{Yan1999, Yan1998a} \\
-Resonance & Current Kohn & Walters \emph{et al} \cite{Walters2004} & Ho and Yan \cite{Ho1998, Ho2000} \\
+Resonance & This work & Walters et al.\ \cite{Walters2004} & Ho and Yan \cite{Ho1998, Ho2000} \\
 \midrule
 S(1) & $4.0061$ & $4.149$ & $4.0058 \pm 0.0005$ \\
      & $(0.0955)$ & $(0.103)$ & $(0.0952 \pm 0.0011)$ \\
@@ -239,8 +239,8 @@ P(2) & $5.0581$ & $4.905$ & $5.0540 \pm 0.0027$ \\
 D(1) & $4.724$ & $4.899$ & $4.710 \pm 0.0027$ \\
      & $(0.0819)$ & $(0.0872)$ & $(0.0925 \pm 0.0054)$ \\
 \\
-F(1) & $5.1822$ & $5.200$ & $5.1661 \pm 0.0014$ \\
-     & $(0.0107)$ & $(0.0095)$ & $(0.00174 \pm 0.0027)$ \\
+F(1) & $5.1867$ & $5.200$ & $5.1661 \pm 0.0014$ \\
+     & $(0.0125)$ & $(0.0095)$ & $(0.00174 \pm 0.0027)$ \\
 \bottomrule
 \end{tabular}
 \caption{All resonance parameters (in eV)} % title of Table
@@ -248,7 +248,10 @@ F(1) & $5.1822$ & $5.200$ & $5.1661 \pm 0.0014$ \\
 \end{table}
 
 
-\section{Total Cross Sections}
+\section{Cross Sections}
+\label{sec:cross}
+
+\section{Integrated Cross Sections}
 \label{sec:totalcross}
 
 \begin{equation}
@@ -273,21 +276,21 @@ F(1) & $5.1822$ & $5.200$ & $5.1661 \pm 0.0014$ \\
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=7in]{percentage-cross-sections}
-	\caption[Percentage contribution to total cross section]{Percentage contribution to total cross section from each partial wave for singlet (a) and triplet (b).}
+	\caption[Percentage contribution to total cross section]{Percentage contribution to total cross section from each partial wave for the singlet (a) and triplet (b).}
 	\label{fig:percentage-cross-sections}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=7in]{percentage-cross-sections-full}
-	\caption[Percentage contribution to total cross section]{Percentage contribution to total cross section from each partial wave for singlet (a) and triplet (b).}
+	\caption[Percentage contribution to total cross section]{Percentage contribution to total cross section from each partial wave for the singlet (a) and triplet (b).}
 	\label{fig:percentage-cross-sections-full}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=6in]{combined-cross-sections}
-	\caption{Cross sections. CC results are from Ref. \cite{Walters2004}, and SE results are from Ref. \cite{Hara1975}.}
+	\caption[Cross sections.]{Cross sections. CC results are from Ref. \cite{Walters2004}, and SE results are from Ref. \cite{Hara1975}.}
 	\label{fig:combined-cross-sections}
 \end{figure}
 
@@ -303,14 +306,14 @@ For the total, differential and momentum transfer cross sections, the singlet co
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=7in]{spd-singlet-cross-sections}
-	\caption{Comparisons of $^1$S, $^1$P, and $^1$D cross sections. CC results are from Ref. \cite{Walters2004}.}
+	\caption[Comparisons of $^1$S, $^1$P, and $^1$D cross sections.]{Comparisons of $^1$S, $^1$P, and $^1$D cross sections. CC results are from Ref. \cite{Walters2004}.}
 	\label{fig:spd-singlet-cross-sections}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=7in]{sp-triplet-cross-sections}
-	\caption{Comparisons of $^1$S cross sections. CC results are from Ref. \cite{Walters2004}.}
+	\caption[Comparisons of $^1$S cross sections.]{Comparisons of $^1$S cross sections. CC results are from Ref. \cite{Walters2004}.}
 	\label{fig:sp-triplet-cross-sections}
 \end{figure}
 

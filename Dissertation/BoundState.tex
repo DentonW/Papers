@@ -88,7 +88,7 @@ The Laplacians in equation \ref{eq:BoundHamiltonian} are complicated when applie
 -\Int{ \phi_i \left(\nabla_{r_1}^2 + \nabla_{r_2}^2 + \nabla_{r_3}^2 \right) \phi_j }{\tau} = \int \sum_{l=1}^3 \bm{\nabla}_{\!\bm{r}_l} \phi_i \bm{\cdot} \bm{\nabla}_{\!\bm{r}_l} \phi_j \, d\tau
 \eeq
 
-\noindent This expression is simpler than applying the Laplacian operators directly to $\phi_j$, and the summation is given by the following expression:
+\noindent This expression is simpler than applying the Laplacian operators directly to $\phi_j$, and the summation is given by the following expression (a full derivation is given on the research Wiki \cite{Wiki}):
 
 \begin{align}
 \nonumber \sum_{l=1}^3 \bm{\nabla}_{\!\mathbf{r}_l} \phi_i \bm{\cdot} \bm{\nabla}_{\!\mathbf{r}_l} \phi_j = &\phi_i \phi_j \Bigg\{(\alpha^2 + \beta^2 + \gamma^2) - \frac{\alpha}{r_1}(k_i + k_j) - \frac{\beta}{r_2}(l_i + l_j) + \frac{\gamma}{r_3}(n_i + n_j) \\
@@ -132,6 +132,7 @@ expression \ref{eq:BoundHFull} becomes
 
 %\subsection{Energy Derivatives}
 \section{Parameter Optimization}
+\label{sec:BoundOpt}
 The most powerful property of the Rayleigh-Ritz variational method is the ability to systematically improve the wavefunction to lower the upper bound on the energy. By either adding terms to the expansion in \ref{eq:BoundWavefn_psi} or changing the nonlinear parameters $\alpha$, $\beta$ and $\gamma$, the energy can be reduced and a possible minimum found. This is a three-dimensional optimization problem, so we tried multiple methods for the nonlinear parameter optimization.
 
 \subsection{Newton's Method}
@@ -456,70 +457,8 @@ This output is also used in the program for Todd's method, which is then fed int
 
 
 
-\section{Other Groups' Results}
+\section{Results}
 \subsection{Bound State Results}
-
-%\begin{landscape}
-\begin{table}[H]
-%\footnotesize
-\begin{center}
-%\begin{tabular}{|l|l|c|l|l|}
-\begin{tabular}{l l c l l}
-\toprule
-Group & Method & Terms & Total Energy (au) & Binding Energy (eV)\\
-\midrule
-Ho (1986) \cite{Ho1986} & Variational with Hylleraas (?) & 396 & -0.788 945$^\star$ & 1.059 75 \\
-Frolov (1997) \cite{Frolov1997a} & James-Coolidge variational & 924 & -0.789 136 9$^\star$ & 1.064 969 \\
-Frolov (1997) \cite{Frolov1997a} & James-Coolidge variational & --- & -0.789 181 8$^\star$ & 1.066 191 \\
-Frolov (1997) \cite{Frolov1997c} & Kolesnikov-Tarasov variational & --- & -0.789 179 4$^\star$ & 1.066 126 \\
-Strasburger (1998) \cite{Strasburger1998} & ECGs & 332 & -0.789 185$^\star$ & 1.066 278 \\
-Adhikari (1999) \cite{Adhikari1999} & Five-state CC & --- & -0.788 6 & 1.05 \\
-Yan (1999) \cite{Yan1999} & Variational Hylleraas $(\omega = 12)$ & 5741 & -0.789 196 705 1$^\star$ & 1.066 596 635 \\
-Yan (1999) \cite{Yan1999} & Variational Hylleraas $(\omega \rightarrow \infty)$ & --- & -0.789 196 714 7$^\star$ & 1.066 596 896 \\
-Blackwood (2002) \cite{Blackwood2002} & ?CC 14Ps14H? & --- & -0.786 5 & 0.994$^\star$ \\
-Van Reeth (2003) \cite{VanReeth2003} & Variational Hylleraas $(\omega = 6)$ & 721 & -0.789 156 & 1.065 5$^\star$ \\
-Walters (2004) \cite{Walters2004} & ?CC 14Ps14H + $\text{H}^-$? & --- & -0.787 9 & 1.03$^\star$\\
-Mitroy (2006) \cite{Mitroy2006} & ECGs with SVM & 1800 & -0.789 196 740$^\star$ & 1.066 597 58 \\
-Bubin (2006) \cite{Bubin2006} & ECGs variational & 5000 & -0.789 196 765 251$^\star$ & 1.066 598 271 959 \\
-Frolov (2010) \cite{Frolov2010} & Semi-exponential basis & 84 & -0.788 516 419$^\star$ & 1.048 085 11 \\
-\bottomrule
-\end{tabular}
-\caption{Bound state energies from other groups. Starred values are the reported values. Unstarred values are obtained by using the conversion factor given in section \ref{sec:Units}.}
-\label{tab:BoundEnergyOther}
-\end{center}
-\end{table}
-%\end{landscape}
-
-
-\section{Parameter Optimization}
-\label{sec:BoundOptimization}
-
-
-\setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
-\setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
-\begin{table}[ht]
-\caption{Simplex Optimized Singlet Nonlinear Parameters} % title of Table
-\centering
-\begin{tabular}{c c c c}
-\hline\hline
-$\omega$ & $\alpha$ & $\beta$ & $\gamma$ \\ [0.5ex]
-\hline
-1 &  &  &  \\
-2 &  &  &  \\
-3 &  &  &  \\
-4 &  &  &  \\
-5 &  &  &  \\
-6 &  &  &  \\
-\hline\hline
-\end{tabular}
-\label{table:NonlinearOptimized1SSimplex}
-\end{table}
-
-
-\section{Our Results}
-\label{sec:BoundResults}
-
-\subsection{Bound State: Singlet}
 
 \setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
 \setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
@@ -547,6 +486,7 @@ $\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (au) & Binding E
 \label{tab:BoundEnergyOld}
 \end{table}
 
+The original double precision PsH code was run for a simple choice of the nonlinear parameters $\alpha$, $\beta$ and $\gamma$. During these initial runs, LAPACK returned valid energies through $\omega = 5$. With the $\omega = 6$ runs, it had trouble using the full 924 terms, with \texttt{dsygv} giving an error. Using Todd's algorithm (\cref{sec:ToddBound}), this code returned a usable 916 terms for $\omega = 6$, as given in \cref{tab:BoundEnergyOld}. The original code worked well through $\omega = 10$, but going from $\omega = 9$ to $\omega = 10$ only added an additional 39 terms. The run for $\omega = 11$ was obviously a problem, since it gave less terms than $\omega = 10$ and a higher energy, even when changing the $\alpha$ parameter slightly.
 
 \setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
 \setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
@@ -554,7 +494,7 @@ $\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (au) & Binding E
 \centering
 \begin{tabular}{c c c c c c c}
 \toprule
-$\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (au) & Binding Energy (eV) \\ [0.5ex]
+$\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Dissociation Energy (au) & Binding Energy (eV) \\ [0.5ex]
 \midrule
 0 & 1 & 0.586 & 0.580 & 1.093 & -0.558 977 058 051 & --- \\
 1 & 7 & 0.586 & 0.580 & 1.093 & -0.744 698 936 920 & --- \\
@@ -566,11 +506,11 @@ $\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (au) & Binding E
 7 & 1716 & 0.586 & 0.580 & 1.093 & -0.789 189 730 694 & 1.066 406 851 931 \\
 \bottomrule
 \end{tabular}
-\caption{Ground-state energy of positronium hydride} % title of Table
+\caption{Ground state energy of positronium hydride with full set of terms} % title of Table
 \label{tab:BoundEnergy1}
 \end{table}
 
-through the ViewOmegaCutoffs.py script described at \url{http://cas-bs5cph1.phys.unt.edu/wiki/index.php/ViewOmegaCutoffs.py}
+The next and current version of the code used quadruple precision and is able to do runs through $\omega = 8$ (not shown in \cref{tab:BoundEnergy1}). Linear dependence is also decreased when the nonlinear parameters are different (\cref{sec:BoundOpt} for parameter optimization). The Ps-H scattering problem (\cref{chp:SWave}) is much more difficult, so a run with $\omega = 7$ is all that is needed. \Cref{tab:BoundEnergy1} shows the PsH energies through $\omega = 7$ for the full set of terms described by \cref{eq:OmegaDef}.
 
 \setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
 \setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
@@ -578,7 +518,7 @@ through the ViewOmegaCutoffs.py script described at \url{http://cas-bs5cph1.phys
 \centering
 \begin{tabular}{c c c c c c c}
 \toprule
-$\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (au) & Binding Energy (eV) \\ [0.5ex]
+$\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Dissociation Energy (au) & Binding Energy (eV) \\ [0.5ex]
 \midrule
 0 & 1 & 0.586 & 0.580 & 1.093 & -0.667 061 651 939 & --- \\
 1 & 5 & 0.586 & 0.580 & 1.093 & -0.744 026 116 052 & --- \\
@@ -590,11 +530,66 @@ $\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (au) & Binding E
 7 & 1505 & 0.586 & 0.580 & 1.093 & -0.789 189 725 291 & 1.066 406 704 904 \\
 \bottomrule
 \end{tabular}
-\caption{Ground-state energy of positronium hydride} % title of Table
+\caption{Ground state energy of positronium hydride with restricted Todd set of terms} % title of Table
 \label{tab:BoundEnergyTodd1}
 \end{table}
 
+As described later in \cref{sec:ToddScattering}, we cannot use the full 1716 terms for the Ps-H scattering problem. \Cref{tab:BoundEnergyTodd1} gives the ground state energies using the restricted set of terms with Todd ordering. The cutoffs in $\omega$ are easily seen using the ViewOmegaCutoffs.py script described at \url{http://cas-bs5cph1.phys.unt.edu/wiki/index.php/ViewOmegaCutoffs.py} \cite{Wiki}.
 
+
+%\begin{landscape}
+\begin{table}[H]
+\footnotesize
+\begin{center}
+%\begin{tabular}{|l|l|c|l|l|}
+\rowcolors{2}{gray!15}{white}
+\begin{tabular}{l l c l l}
+\toprule
+\rowcolor{gray!25} & & & Dissociation & Binding\\
+\rowcolor{gray!25}Group & Method & Terms & Energy (au) & Energy (eV)\\
+\midrule
+Current work & Variational Hylleraas $(\omega = 7)$ & 1505 & -0.789 189 725 & 1.066 406 705 \\
+Frolov (2010) \cite{Frolov2010} & Semi-exponential basis & 84 & -0.788 516 419$^\star$ & 1.048 085 11 \\
+Bubin (2006) \cite{Bubin2006} & ECGs variational & 5000 & -0.789 196 765 251$^\star$ & 1.066 598 271 959 \\
+Mitroy (2006) \cite{Mitroy2006} & ECGs with SVM & 1800 & -0.789 196 740$^\star$ & 1.066 597 58 \\
+Van Reeth (2003) \cite{VanReeth2003} & Variational Hylleraas $(\omega = 6)$ & 721 & -0.789 156 & 1.065 5$^\star$ \\
+Yan (1999) \cite{Yan1999} & Variational Hylleraas $(\omega = 12)$ & 5741 & -0.789 196 705 1$^\star$ & 1.066 596 635 \\
+Yan (1999) \cite{Yan1999} & Variational Hylleraas $(\omega \rightarrow \infty)$ & --- & -0.789 196 714 7$^\star$ & 1.066 596 896 \\
+Adhikari (1999) \cite{Adhikari1999} & Five-state CC & --- & -0.788 6 & 1.05$^\star$ \\
+Strasburger (1998) \cite{Strasburger1998} & ECGs & 332 & -0.789 185$^\star$ & 1.066 278 \\
+Frolov (1997) \cite{Frolov1997a} & James-Coolidge variational & 924 & -0.789 136 9$^\star$ & 1.064 969 \\
+Frolov (1997) \cite{Frolov1997a} & James-Coolidge variational & --- & -0.789 181 8$^\star$ & 1.066 191 \\
+Frolov (1997) \cite{Frolov1997c} & Kolesnikov-Tarasov variational & --- & -0.789 179 4$^\star$ & 1.066 126 \\
+Ho (1986) \cite{Ho1986} & Variational with Hylleraas & 396 & -0.788 945$^\star$ & 1.059 75 \\
+Ho (1978) \cite{Ho1978} & Variational with Hylleraas & 210 & -0.787 525$^\star$ & 1.021 12$^\star$ \\
+Clary (1976) \cite{Clary1976} & Variational & 67 & -0.784 161$^\star$ & 0.929 568 \\
+Page (1974) \cite{Page1974} & Variational & 70 & -0.786 79$^\star$ & 1.0012 \\
+Navin (1974) \cite{Navin1974} & Variational & 17 & -0.779 2$^\star$ & 0.794 6 \\
+Houston (1973) \cite{Houston1973} & Variational & 56 & -0.774 7$^\star$ & 0.672 5 \\
+Lebeda (1969) \cite{Lebeda1969} & Variational & 12 & -0.774 2$^\star$ & 0.658 5 \\
+Ludwig (1966) \cite{Ludwig1966} & --- & --- & -0.752 5$^\star$ & 0.06803 \\
+Goldanskii (1964) \cite{Clary1976} & --- & --- & -0.667 7$^\star$ & -2.2395 \\
+Neamtan (1962) \cite{Neamtan1962} & Variational exponential & 2 & -0.758 4$^\star$ & 0.228 6 \\
+Ore (1951) \cite{Ore1951} & Variational exponential & 2 & -0.752 51$^\star$ & 0.068 301 \\
+\midrule
+Walters (2004) \cite{Walters2004} & CC 14Ps14H + H$^-$ & --- & -0.787 9 & 1.03$^\star$\\
+Walters (2004) \cite{Walters2004} & CC 9Ps9H + H$^-$ & --- & -0.787 5 & 1.02$^\star$\\
+Blackwood (2002) \cite{Blackwood2002} & CC 14Ps14H & --- & -0.786 5  & 0.994$^\star$ \\
+Blackwood (2002) \cite{Blackwood2002} & CC 9Ps9H & --- & -0.785 4 & 0.963$^\star$ \\
+Blackwood (2002) \cite{Blackwood2002b} & CC 22Ps1H + H$^-$ & --- & -0.781 2 & 0.850$^\star$ \\
+Campbell (1998) \cite{Campbell1998} & CC 22Ps1H & --- & -0.773 3 & 0.634$^\star$ \\
+\bottomrule
+\end{tabular}
+\caption[Positronium hydride energy values]{Positronium hydride energy values. Starred values are the reported values. Unstarred values are obtained by using the conversion factor given in section \ref{sec:Units}.}
+\label{tab:BoundEnergyOther}
+\end{center}
+\end{table}
+%\end{landscape}
+
+There have been a large number of calculations of the PsH binding energy over the years, starting with Ore's prediction that PsH could exist,  \cite{Ore1951}
+nomenclature
+
+The second part of this table gives just the CC results of the Belfast group.
 
 \subsection{``Bound State'': Triplet}
 
@@ -642,6 +637,41 @@ $\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (au) \\ [0.5ex]
 \caption{Eigenvalues of triplet short-range terms} % title of Table
 \label{tab:BoundEnergyTodd3}
 \end{table}
+
+\section{Parameter Optimization}
+\label{sec:BoundOptimization}
+
+
+\setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
+\setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
+\begin{table}[ht]
+\caption{Simplex Optimized Singlet Nonlinear Parameters} % title of Table
+\centering
+\begin{tabular}{c c c c}
+\hline\hline
+$\omega$ & $\alpha$ & $\beta$ & $\gamma$ \\ [0.5ex]
+\hline
+1 &  &  &  \\
+2 &  &  &  \\
+3 &  &  &  \\
+4 &  &  &  \\
+5 &  &  &  \\
+6 &  &  &  \\
+\hline\hline
+\end{tabular}
+\label{table:NonlinearOptimized1SSimplex}
+\end{table}
+
+
+\section{Our Results}
+\label{sec:BoundResults}
+
+\subsection{Bound State: Singlet}
+
+
+
+
+
 
 
 \end{document}

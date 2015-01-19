@@ -12,11 +12,14 @@
 
 %\documentclass[draft]{}
 %\usepackage[nobysame]{amsrefs}
-\usepackage{amsmath, graphicx, fullpage, showlabels, subfiles, mathrsfs}
+%\usepackage[demo]{graphicx}
+\usepackage{graphicx}
+\usepackage{amsmath, fullpage, subfiles, mathrsfs}
 %\usepackage[Lenny]{fncychap}
 \usepackage[Bjornstrup]{fncychap}
 %\usepackage[colorlinks=true]{hyperref}  % hyperref must be loaded after fncychap.
 \usepackage{srcltx, tabularx, pdfsync, multirow, float, fancyhdr}
+\usepackage[table]{xcolor}  % For table coloring - can have option clash if loaded after other packages
 \usepackage{color, colortbl, rotate, listings, rotating}
 \usepackage{caption, booktabs, tocvsec2, longtable}
 \usepackage[numbers]{natbib}
@@ -29,6 +32,7 @@
 \usepackage{cool}  % Typesetting for various equation types
 %\usepackage[grey,utopia]{quotchap}  % Decorative chapter headings
 \usepackage{tikz}
+%\PassOptionsToPackage{table}{xcolor}
 \usepackage{braket}
 \usepackage[pagebackref=true, plainpages=false, bookmarks, bookmarksnumbered, colorlinks, linktocpage=true, linkcolor=blue, citecolor=blue, filecolor=black,urlcolor=blue, %
 			pdflang={en}, pdftitle={Variational Calculations of Positronium Scattering with Hydrogen}, pdfauthor={Denton Woods}, %
@@ -39,11 +43,13 @@
 \usepackage{siunitx}  % For correct typesetting of units
 \sisetup{per-mode=symbol}
 \usepackage{wasysym}  % Simply for \CIRCLE and \Circle (could use \circ for the latter)
-\usepackage{pdflscape}  % For landscape pages
+\usepackage{pdflscape}  % For landscape page
 
 
 \usepackage{cleveref}
 \crefname{equation}{equation}{equations}
+%\usepackage{showlabels}
+
 
 % Look at http://texblog.wordpress.com/tag/pagestyle/
 %\pagestyle{fancy}

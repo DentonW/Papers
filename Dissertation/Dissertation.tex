@@ -1,8 +1,56 @@
-%&Dissertation
+%\documentclass[10pt,openany]{book}
+\documentclass[12pt,openany]{book}
 
-% file: Dissertation.tex
 
-\endofdump
+%\documentclass[draft]{}
+%\usepackage[nobysame]{amsrefs}
+%\usepackage[demo]{graphicx}
+\usepackage{graphicx}
+\usepackage{amsmath, fullpage, subfiles, mathrsfs}
+%\usepackage[Lenny]{fncychap}
+\usepackage[Bjornstrup]{fncychap}
+%\usepackage[colorlinks=true]{hyperref}  % hyperref must be loaded after fncychap.
+\usepackage{srcltx, tabularx, pdfsync, multirow, float, fancyhdr}
+\usepackage[table]{xcolor}  % For table coloring - can have option clash if loaded after other packages
+\usepackage{color, colortbl, rotate, listings, rotating}
+\usepackage{caption, booktabs, tocvsec2, longtable}
+\usepackage[numbers]{natbib}
+%\usepackage[nottoc]{tocbibind}
+\usepackage{tocbibind}
+\usepackage{subfig}
+\usepackage{todonotes}
+\usepackage{bm}  % Bold-faced math
+\usepackage{lettrine}  % Dropped capitals
+\usepackage{cool}  % Typesetting for various equation types
+%\usepackage[grey,utopia]{quotchap}  % Decorative chapter headings
+\usepackage{tikz}
+%\PassOptionsToPackage{table}{xcolor}
+\usepackage{braket}
+\usepackage[pagebackref=true, plainpages=false, bookmarks, bookmarksnumbered, colorlinks, linktocpage=true, linkcolor=blue, citecolor=blue, filecolor=black,urlcolor=blue, %
+			pdflang={en}, pdftitle={Variational Calculations of Positronium Scattering with Hydrogen}, pdfauthor={Denton Woods}, %
+			pdfsubject={Denton Woods's Dissertation at the University of North Texas}, pdfkeywords={positronium, hydrogen, scattering, positronium hydride, Denton Woods}]{hyperref}
+%\usepackage{doi}
+\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}  % http://www.khirevich.com/latex/microtype/
+\microtypecontext{spacing=nonfrench}  % To get rid of that warning
+\usepackage{siunitx}  % For correct typesetting of units
+\sisetup{per-mode=symbol}
+\usepackage{wasysym}  % Simply for \CIRCLE and \Circle (could use \circ for the latter)
+\usepackage{pdflscape}  % For landscape page
+
+
+\usepackage{cleveref}
+\crefname{equation}{equation}{equations}
+%\usepackage{showlabels}
+
+
+% Look at http://texblog.wordpress.com/tag/pagestyle/
+%\pagestyle{fancy}
+
+% From http://latex-alive.tumblr.com/post/698006466
+\usepackage{mathpazo}
+
+%\usepackage[table]{xcolor}  % May need to be loaded after other packages
+%\PassOptionsToPackage{table}{xcolor}
 
 %\documentclass[draft]{}
 %\usepackage[nobysame]{amsrefs}
@@ -126,7 +174,7 @@
 \definecolor{Gray}{gray}{0.9}
 \definecolor{LightCyan}{rgb}{0.88,1,1}
 
-\renewcommand{\showlabelfont}{\tiny}
+%\renewcommand{\showlabelfont}{\scriptsize}
 
 \graphicspath{{IPython/}{Images/}}
 
@@ -165,6 +213,16 @@
 
 \input{Abstract}
 
+% From http://tex.stackexchange.com/questions/45809/acknowledgement-dedication-problem
+\clearpage
+\thispagestyle{plain}
+\begin{center}
+    \large
+    \textbf{Acknowledgements}
+\end{center}
+A lot of people helped me. Special thanks goes to Ryan Bosca, who helped me at times and let me bounce ideas off of him.
+
+
 %%%%%%\setcounter{tocdepth}{2}
 \hypersetup{linktocpage}
 \hypersetup{
@@ -188,15 +246,9 @@
 \pagenumbering{arabic}
 
 
-% From http://tex.stackexchange.com/questions/45809/acknowledgement-dedication-problem
-\clearpage
-\chapter*{Acknowledgements}
-\thispagestyle{plain}
-\par\vspace*{.35\textheight}{\centering A lot of people helped me.\par}
-
 \clearpage
 \chapter*{Nomenclature}
-\begin{longtable}[l]{p{20pt} p{100pt}}
+\begin{longtable}[l]{p{10pt} p{100pt}}
 RAC & Rear axle carrier  \\
 FAC & Front axle carrier \\
 ... & ...                \\

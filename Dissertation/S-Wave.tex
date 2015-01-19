@@ -174,7 +174,7 @@ u =
 \label{eq:LGenKohn}
 \eeq
 
-\noindent The generalized Kohn method is described by Cooper et al. \cite{Cooper2009, Cooper2010}.  When $\tau = 0$ is substituted in \ref{eq:uGenKohn}, the $u$-matrix for the Kohn method is generated (equation \ref{eq:uKohn}). Similarly, when $\tau = \frac{\pi}{2}$, the $u$-matrix for the inverse Kohn method is generated (equation \ref{eq:uInvKohn}). As to be expected, the Kohn and inverse Kohn methods are special cases of the generalized Kohn method.
+\noindent The generalized Kohn method is described by Cooper et al.\ \cite{Cooper2009, Cooper2010}.  When $\tau = 0$ is substituted in \ref{eq:uGenKohn}, the $u$-matrix for the Kohn method is generated (equation \ref{eq:uKohn}). Similarly, when $\tau = \frac{\pi}{2}$, the $u$-matrix for the inverse Kohn method is generated (equation \ref{eq:uInvKohn}). As to be expected, the Kohn and inverse Kohn methods are special cases of the generalized Kohn method.
 
 
 \subsection{Complex Kohn T-matrix}
@@ -265,7 +265,7 @@ In this work, we only consider the first three partial waves, i.e. $l = 0, 1$ an
 We use the general Kohn functional (equation \ref{eq:GenKohnPrinciple}) with our trial function to get
 \beq
 \label{eq:GenKohnApplied}
-\mathcal{L}_v = \mathcal{L}_t - (\psi_t,L \psi_t) = \mathcal{L}_t - \Big((\bar{\bar{S}} + \mathcal{L}_t \tilde{C} + \sum_i c_i \tilde{\phi}_i), L (\tilde{S} + \mathcal{L}_t \tilde{C} + \sum_j c_j \tilde{\phi}_j )\Big).
+\mathcal{L}_v = \mathcal{L}_t - (\psi_t,\mathcal{L} \psi_t) = \mathcal{L}_t - \Big((\bar{\bar{S}} + \mathcal{L}_t \tilde{C} + \sum_i c_i \tilde{\phi}_i), L (\tilde{S} + \mathcal{L}_t \tilde{C} + \sum_j c_j \tilde{\phi}_j )\Big).
 \eeq
 
 The property of the Kohn functional that it is stationary with respect to variations in the linear parameters (\ref{Partials1}) can be written in our case as
@@ -276,29 +276,29 @@ The property of the Kohn functional that it is stationary with respect to variat
 
 Performing the first variation gives
 \beq
-0 = \frac{\partial \mathcal{L}_v}{\partial \mathcal{L}_t} = 1 - \Big[(\tilde{S},L\tilde{C}) + (\tilde{C},L\tilde{S}) + \frac{\partial}{\partial \mathcal{L}_t}(\mathcal{L}_t \tilde{C},L \mathcal{L}_t \tilde{C}) + (\tilde{C}, L \sum_i c_i \tilde{\phi}_i) + (\sum_i c_i \tilde{\phi}_i, L \tilde{C}) \Big].
+0 = \frac{\partial \mathcal{L}_v}{\partial \mathcal{L}_t} = 1 - \Big[(\tilde{S},\mathcal{L}\tilde{C}) + (\tilde{C},\mathcal{L}\tilde{S}) + \frac{\partial}{\partial \mathcal{L}_t}(\mathcal{L}_t \tilde{C},\mathcal{L} \mathcal{L}_t \tilde{C}) + (\tilde{C}, L \sum_i c_i \tilde{\phi}_i) + (\sum_i c_i \tilde{\phi}_i, L \tilde{C}) \Big].
 \label{eq:PdLambda1}
 \eeq
 
 \noindent The third term in brackets becomes
 \beq
-\frac{\partial}{\partial \mathcal{L}_t} (\mathcal{L}_t \tilde{C},L \mathcal{L}_t \tilde{C}) = (\tilde{C},L \tilde{C}) \frac{\partial}{\partial \mathcal{L}_t} \mathcal{L}_t^2 = 2(\tilde{C},L\tilde{C}) \mathcal{L}_t.
+\frac{\partial}{\partial \mathcal{L}_t} (\mathcal{L}_t \tilde{C},\mathcal{L} \mathcal{L}_t \tilde{C}) = (\tilde{C},\mathcal{L} \tilde{C}) \frac{\partial}{\partial \mathcal{L}_t} \mathcal{L}_t^2 = 2(\tilde{C},\mathcal{L}\tilde{C}) \mathcal{L}_t.
 \eeq
 
 \noindent The last two terms of (\ref{eq:PdLambda1}) are equal to each other, and we can use (\ref{eq:SLCandCLSBar}) to rewrite this.
 \beq
-0 = -(\tilde{C},L\tilde{S}) - (\tilde{C},L\tilde{S}) - 2 \mathcal{L}_t (\tilde{C},L\tilde{C}) - 2 \sum_i c_i (\tilde{C},L\tilde{\phi}_i)
+0 = -(\tilde{C},\mathcal{L}\tilde{S}) - (\tilde{C},\mathcal{L}\tilde{S}) - 2 \mathcal{L}_t (\tilde{C},\mathcal{L}\tilde{C}) - 2 \sum_i c_i (\tilde{C},\mathcal{L}\tilde{\phi}_i)
 \eeq
 
 \noindent Rearranging gives
 \beq
--(\tilde{C},L\tilde{S}) = \mathcal{L}_t (\tilde{C},L\tilde{C}) + \sum_i c_i (\tilde{C},L\tilde{\phi}_i)
+-(\tilde{C},\mathcal{L}\tilde{S}) = \mathcal{L}_t (\tilde{C},\mathcal{L}\tilde{C}) + \sum_i c_i (\tilde{C},\mathcal{L}\tilde{\phi}_i)
 \label{eq:PdLambda}
 \eeq
 
 Now we perform the variation with respect to a general $c_k$ as in (\ref{eq:KohnStationary}).
 \beq
-0 = \frac{\partial \mathcal{L}_v}{\partial c_k} = -\Big[ (\tilde{S},L \tilde{\phi}_k) + \mathcal{L}_t (\tilde{C},L \tilde{\phi}_k) + (\tilde{\phi}_k,L \tilde{S}) + \mathcal{L}_t (\tilde{\phi}_k,L \tilde{C}) + \frac{\partial}{\partial c_k} (\sum_i c_i \tilde{\phi}_i, L \sum_j c_j \tilde{\phi}_j) \Big]
+0 = \frac{\partial \mathcal{L}_v}{\partial c_k} = -\Big[ (\tilde{S},\mathcal{L} \tilde{\phi}_k) + \mathcal{L}_t (\tilde{C},\mathcal{L} \tilde{\phi}_k) + (\tilde{\phi}_k,\mathcal{L} \tilde{S}) + \mathcal{L}_t (\tilde{\phi}_k,\mathcal{L} \tilde{C}) + \frac{\partial}{\partial c_k} (\sum_i c_i \tilde{\phi}_i, L \sum_j c_j \tilde{\phi}_j) \Big]
 \label{eq:PdCk1}
 \eeq
 
@@ -333,10 +333,10 @@ The set of linear equations in (\ref{eq:PdLambda}) and (\ref{eq:PdCk}) can be wr
 \begin{equation}
 \label{eq:GeneralKohnMatrix}
 \begin{bmatrix} 
- (\tilde{C},L\tilde{C}) & (\tilde{C},L\tilde{\phi}_1) & \cdots & (\tilde{C},L\tilde{\phi}_j) & \cdots\\
- (\tilde{\phi}_1,L\tilde{C}) & (\tilde{\phi}_1,L\tilde{\phi}_1) & \cdots & (\tilde{\phi}_1,L\tilde{\phi}_j) & \cdots\\
+ (\tilde{C},\mathcal{L}\tilde{C}) & (\tilde{C},\mathcal{L}\tilde{\phi}_1) & \cdots & (\tilde{C},\mathcal{L}\tilde{\phi}_j) & \cdots\\
+ (\tilde{\phi}_1,\mathcal{L}\tilde{C}) & (\tilde{\phi}_1,\mathcal{L}\tilde{\phi}_1) & \cdots & (\tilde{\phi}_1,\mathcal{L}\tilde{\phi}_j) & \cdots\\
  \vdots & \vdots & \ddots & \vdots \\
- (\tilde{\phi}_i,L\tilde{C}) & (\tilde{\phi}_i,L\tilde{\phi}_1) & \cdots & (\tilde{\phi}_i,L\tilde{\phi}_j) & \cdots\\
+ (\tilde{\phi}_i,\mathcal{L}\tilde{C}) & (\tilde{\phi}_i,\mathcal{L}\tilde{\phi}_1) & \cdots & (\tilde{\phi}_i,\mathcal{L}\tilde{\phi}_j) & \cdots\\
  \vdots & \vdots & & \vdots & \\
 \end{bmatrix}
 \begin{bmatrix}
@@ -348,10 +348,10 @@ c_i\\
 \end{bmatrix}
 = -
 \begin{bmatrix}
-(\tilde{C},L\tilde{S}) \\
-(\tilde{\phi}_1,L\tilde{S}) \\
+(\tilde{C},\mathcal{L}\tilde{S}) \\
+(\tilde{\phi}_1,\mathcal{L}\tilde{S}) \\
 \vdots \\
-(\tilde{\phi}_i,L\tilde{S}) \\
+(\tilde{\phi}_i,\mathcal{L}\tilde{S}) \\
 \vdots
 \end{bmatrix}.
 \end{equation}
@@ -370,15 +370,15 @@ c_i\\
 To obtain $\mathcal{L}_v$ from this matrix equation, we must next expand equation \ref{eq:GenKohnApplied}.
 
 \begin{align}
-\nonumber \mathcal{L}_v = \mathcal{L}_t - \Big[ & (\tilde{S},L\tilde{S}) + \mathcal{L}_t (\tilde{S},L\tilde{C}) + \sum_i c_i (\tilde{S},\tilde{\phi}_i) + \mathcal{L}_t (\tilde{C},L\tilde{S}) + \mathcal{L}_t^2 (\tilde{C},L\tilde{C}) + \mathcal{L}_t \sum_i c_i (\tilde{C},L \tilde{\phi}_i) \\
+\nonumber \mathcal{L}_v = \mathcal{L}_t - \Big[ & (\tilde{S},\mathcal{L}\tilde{S}) + \mathcal{L}_t (\tilde{S},\mathcal{L}\tilde{C}) + \sum_i c_i (\tilde{S},\tilde{\phi}_i) + \mathcal{L}_t (\tilde{C},\mathcal{L}\tilde{S}) + \mathcal{L}_t^2 (\tilde{C},\mathcal{L}\tilde{C}) + \mathcal{L}_t \sum_i c_i (\tilde{C},\mathcal{L} \tilde{\phi}_i) \\
 & + \sum_i c_i (\tilde{\phi}_i, L\tilde{S}) + \mathcal{L}_t \sum_i c_i (\tilde{\phi}_i, L\tilde{C}) + \sum_i \sum_j c_i c_j (\tilde{\phi}_i, L\tilde{\phi}_j) \Big]
 \end{align}
 
-\noindent By substituting equation \ref{eq:GenSLCandCLS} in for $(\tilde{S},L\tilde{C})$, the first $L_t$ above is cancelled, leaving
+\noindent By substituting equation \ref{eq:GenSLCandCLS} in for $(\tilde{S},\mathcal{L}\tilde{C})$, the first $L_t$ above is cancelled, leaving
 
 \begin{align}
 \label{eq:GenKohnApplied2}
-\nonumber \mathcal{L}_v = - \Big[ & (\tilde{S},L\tilde{S}) + \mathcal{L}_t (\tilde{C},L\tilde{S}) + \sum_i c_i (\tilde{S},\tilde{\phi}_i) + \mathcal{L}_t (\tilde{C},L\tilde{S}) + \mathcal{L}_t^2 (\tilde{C},L\tilde{C}) + \mathcal{L}_t \sum_i c_i (\tilde{C},L \tilde{\phi}_i) \\
+\nonumber \mathcal{L}_v = - \Big[ & (\tilde{S},\mathcal{L}\tilde{S}) + \mathcal{L}_t (\tilde{C},\mathcal{L}\tilde{S}) + \sum_i c_i (\tilde{S},\tilde{\phi}_i) + \mathcal{L}_t (\tilde{C},\mathcal{L}\tilde{S}) + \mathcal{L}_t^2 (\tilde{C},\mathcal{L}\tilde{C}) + \mathcal{L}_t \sum_i c_i (\tilde{C},\mathcal{L} \tilde{\phi}_i) \\
 & + \sum_i c_i (\tilde{\phi}_i, L\tilde{S}) + \mathcal{L}_t \sum_i c_i (\tilde{\phi}_i, L\tilde{C}) + \sum_i \sum_j c_i c_j (\tilde{\phi}_i, L\tilde{\phi}_j) \Big].
 \end{align}
 
@@ -394,9 +394,9 @@ D =
 \label{eq:GenFandD}
 F =
 \begin{bmatrix}
-(\boldsymbol{\tilde{C},L\tilde{C}}) & (\boldsymbol{\tilde{C},L\tilde{\phi}}) & (\boldsymbol{\tilde{C},L\tilde{S}}) \\
-(\boldsymbol{\tilde{\phi},L\tilde{C}}) & (\boldsymbol{\tilde{\phi},L\tilde{\phi}}) & (\boldsymbol{\tilde{\phi},L\tilde{S}}) \\
-(\boldsymbol{\tilde{C},L\tilde{S}}) & (\boldsymbol{\tilde{S},L\tilde{\phi}}) & (\boldsymbol{\tilde{S},L\tilde{S}})
+(\boldsymbol{\tilde{C},\mathcal{L}\tilde{C}}) & (\boldsymbol{\tilde{C},\mathcal{L}\tilde{\phi}}) & (\boldsymbol{\tilde{C},\mathcal{L}\tilde{S}}) \\
+(\boldsymbol{\tilde{\phi},\mathcal{L}\tilde{C}}) & (\boldsymbol{\tilde{\phi},\mathcal{L}\tilde{\phi}}) & (\boldsymbol{\tilde{\phi},\mathcal{L}\tilde{S}}) \\
+(\boldsymbol{\tilde{C},\mathcal{L}\tilde{S}}) & (\boldsymbol{\tilde{S},\mathcal{L}\tilde{\phi}}) & (\boldsymbol{\tilde{S},\mathcal{L}\tilde{S}})
 \end{bmatrix},
 \eeq
 equation \ref{eq:GenKohnApplied2} can be rewritten as the following matrix equation:
@@ -415,7 +415,7 @@ equation \ref{eq:GenKohnApplied2} can be rewritten as the following matrix equat
 \end{bmatrix}
 \begin{bmatrix}
 \boldsymbol{A} & \boldsymbol{B} \\
-\boldsymbol{B^T} & \boldsymbol{(\tilde{S},L\tilde{S})}
+\boldsymbol{B^T} & \boldsymbol{(\tilde{S},\mathcal{L}\tilde{S})}
 \end{bmatrix}
 \begin{bmatrix}
 \boldsymbol{X} \\
@@ -427,18 +427,18 @@ equation \ref{eq:GenKohnApplied2} can be rewritten as the following matrix equat
 \end{bmatrix}
 \begin{bmatrix}
 0 \\
-\boldsymbol{B^T X} + (\tilde{S},L\tilde{S})
+\boldsymbol{B^T X} + (\tilde{S},\mathcal{L}\tilde{S})
 \end{bmatrix} \\
-&= -\boldsymbol{B^T X} - (\tilde{S},L\tilde{S}),
+&= -\boldsymbol{B^T X} - (\tilde{S},\mathcal{L}\tilde{S}),
 \end{align}
 where
 \beq
-\boldsymbol{B^T X} = \mathcal{L}_t (\tilde{C},L\tilde{S}) + \sum_i c_i (\tilde{\phi}_i, L\tilde{S}).
+\boldsymbol{B^T X} = \mathcal{L}_t (\tilde{C},\mathcal{L}\tilde{S}) + \sum_i c_i (\tilde{\phi}_i, L\tilde{S}).
 \eeq
 
 \noindent A more compact way of writing equation \ref{eq:GenDFDT2} is by
 \beq
-\mathcal{L}_v = -\left( \Psi^{t,0},L \tilde{S} \right).
+\mathcal{L}_v = -\left( \Psi^{t,0},\mathcal{L} \tilde{S} \right).
 \eeq
 $\Psi^{t,0}$ is the full general wavefunction in equation \ref{eq:GeneralWaveTrial} with its nonlinear parameters optimized.
 
@@ -454,11 +454,10 @@ The total energy is needed to evaluate all the matrix elements. From (\cite{}), 
 \label{eq:Wavenumber}
 \eeq
 
-From equation \ref{eq:Wavenumber}, since positronium has twice the mass of a positron, $m \to 2m$, the kinetic energy of the positronium atom is $T = \frac{1}{4} \kappa^2$, where $\kappa$ is the wavenumber of Ps.  Including the binding energy of H and Ps to get the total energy gives
+From equation \ref{eq:Wavenumber}, since positronium has twice the mass of a positron, $m \to 2m$, the kinetic energy of the positronium atom is $T = \frac{1}{4} \kappa^2$, where $\kappa$ is the wavenumber of Ps.  Including the dissociation energy of H and Ps to get the total energy gives
 \beq
 E_T = E_H + E_{Ps} + \frac{1}{4} \kappa^2.
 \eeq
-
 For the ground states of H and Ps,
 \beq
 E_T = -\frac{1}{2} - \frac{1}{4} + \frac{1}{4} \kappa^2 = -\frac{3}{4} + \frac{1}{4} \kappa^2 \:\: \text{(in a.u.)}.
@@ -477,25 +476,25 @@ Some important cancellations are made in the matrix element equations by using t
 
 \subsection{Matrix Elements Involving Long-Range Terms}
 \label{sec:MatrixLong}
-The short-range--long-range and long-range--long-range matrix elements have a similar analysis. For all of these, the effect of the $L = 2(H-E)$ operator on the long-range terms must be considered, and then integrations over the external angles (see Appendix \ref{chp:AngularInt}) are performed. The remaining 6-dimensional integral is then numerically integrated as described in sections \ref{sec:LongLongInt} and \ref{sec:ShortLongInt}.
+The short-range--long-range and long-range--long-range matrix elements have a similar analysis. For all of these, the effect of the $\mathcal{L} = 2(H-E)$ operator on the long-range terms must be considered, and then integrations over the external angles (see Appendix \ref{chp:AngularInt}) are performed. The remaining 6-dimensional integral is then numerically integrated as described in sections \ref{sec:LongLongInt} and \ref{sec:ShortLongInt}.
 
-\subsubsection{Elements with LS}
+\subsubsection{Elements with \texorpdfstring{$\mathcal{L}S$}{LS}}
 \label{sec:LSElements}
-The $(\tilde{C},L\tilde{S})$ and $(\tilde{\phi}_i,L\tilde{S})$ matrix elements have the $L$-operator acting on $S$. While not explicitly in the matrix given by \ref{eq:GeneralKohnMatrix}, $(\tilde{S},L\tilde{S})$ is required in the final equation \ref{eq:GenDFDT2}. Also from the general $\tilde{S}$ and $\tilde{C}$, equation \ref{eq:GenSCMatrix} gives that the evaluation of $(\tilde{S},L\tilde{S})$ is needed. We first look at $L$ operating on $S$ and then determine the form of these matrix elements.
+The $(\tilde{C},\mathcal{L}\tilde{S})$ and $(\tilde{\phi}_i,\mathcal{L}\tilde{S})$ matrix elements have the $L$-operator acting on $S$. While not explicitly in the matrix given by \ref{eq:GeneralKohnMatrix}, $(\tilde{S},\mathcal{L}\tilde{S})$ is required in the final equation \ref{eq:GenDFDT2}. Also from the general $\tilde{S}$ and $\tilde{C}$, equation \ref{eq:GenSCMatrix} gives that the evaluation of $(\tilde{S},\mathcal{L}\tilde{S})$ is needed. We first look at $L$ operating on $S$ and then determine the form of these matrix elements.
 
 \begin{align}
-\nonumber LS &= \left(-\frac{1}{2}\nabla_\rho^2 - \nabla_{r_3}^2 - 2\nabla_{r_{12}}^2 + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_T\right) \Phi_{Ps}(r_{12}) \Phi_H(r_3) \frac{\sin(\kappa\rho)}{\kappa\rho} \sqrt{\frac{2\kappa}{4\pi}} \\
+\nonumber \mathcal{L}S &= \left(-\frac{1}{2}\nabla_\rho^2 - \nabla_{r_3}^2 - 2\nabla_{r_{12}}^2 + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_T\right) \Phi_{Ps}(r_{12}) \Phi_H(r_3) \frac{\sin(\kappa\rho)}{\kappa\rho} \sqrt{\frac{2\kappa}{4\pi}} \\
 &= \left(-\frac{1}{2}\nabla_\rho^2 - \nabla_{r_3}^2 - 2\nabla_{r_{12}}^2 + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2}\kappa^2 \right) \Phi_{Ps}(r_{12}) \Phi_H(r_3) \frac{\sin(\kappa\rho)}{\kappa\rho} \sqrt{\frac{2\kappa}{4\pi}}.
 \end{align}
 
 Since $\Phi_H$ and $\frac{\sin(\kappa\rho)}{\kappa\rho}$ are independent of $r_3$, we can use (\ref{eq:HEqn}) to replace the $\left(-\frac{1}{2}\nabla_{r_3}^2 - \frac{1}{r_3}\right)$ with $E_H$, which gives a cancellation with the $-2 E_H$:
 \beq
-LS = \left(-\frac{1}{2}\nabla_\rho^2 - 2\nabla_{r_{12}}^2 + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_{Ps} - \frac{1}{2}\kappa^2 \right) \Phi_{Ps}(r_{12}) \Phi_H(r_3) \frac{\sin(\kappa\rho)}{\kappa\rho} \sqrt{\frac{2\kappa}{4\pi}}
+\mathcal{L}S = \left(-\frac{1}{2}\nabla_\rho^2 - 2\nabla_{r_{12}}^2 + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_{Ps} - \frac{1}{2}\kappa^2 \right) \Phi_{Ps}(r_{12}) \Phi_H(r_3) \frac{\sin(\kappa\rho)}{\kappa\rho} \sqrt{\frac{2\kappa}{4\pi}}
 \eeq
 
 \noindent We can do the same with (\ref{eq:PsEqn}):
 \beq
-LS = \left(-\frac{1}{2}\nabla_\rho^2 + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - \frac{1}{2}\kappa^2 \right) \Phi_{Ps}(r_{12}) \Phi_H(r_3) \frac{\sin(\kappa\rho)}{\kappa\rho} \sqrt{\frac{2\kappa}{4\pi}}
+\mathcal{L}S = \left(-\frac{1}{2}\nabla_\rho^2 + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - \frac{1}{2}\kappa^2 \right) \Phi_{Ps}(r_{12}) \Phi_H(r_3) \frac{\sin(\kappa\rho)}{\kappa\rho} \sqrt{\frac{2\kappa}{4\pi}}
 \label{LS1}
 \eeq
 
@@ -515,105 +514,105 @@ From the file 'PVR Thesis.nb',
 \noindent So $j_0(\kr)$ is an eigenfunction of $-\nabla_\rho^2$ with eigenvalue $-\kappa^2$.  Now using (\ref{eigenj0}) in (\ref{LS1}) gives
 \begin{align}
 \label{eq:LS2}
-\nonumber LS &= \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) \Phi_{Ps}(r_{12}) \Phi_H(r_3) \frac{\sin(\kr)}{\kr} \sqrt{\frac{2\kappa}{4\pi}} \\
+\nonumber \mathcal{L}S &= \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) \Phi_{Ps}(r_{12}) \Phi_H(r_3) \frac{\sin(\kr)}{\kr} \sqrt{\frac{2\kappa}{4\pi}} \\
 &= \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S
 \end{align}
 
 \beq
-(S,LS) = \left( \left[ \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right] S^2 \right)
+(S,\mathcal{L}S) = \left( \left[ \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right] S^2 \right)
 \label{eq:SLS}
 \eeq
 
-The potential energy terms in brackets are antisymmetric, i.e. replacing $1 \leftrightarrow 2$.  Also notice from (\ref{eq:SCPhiDef}) that S and C are symmetric.  So under the $1 \leftrightarrow 2$ permutation, $(S,LS)$ and $(C,LS)$ are antisymmetric.  Thus, we have
+The potential energy terms in brackets are antisymmetric, i.e. replacing $1 \leftrightarrow 2$.  Also notice from (\ref{eq:SCPhiDef}) that S and C are symmetric.  So under the $1 \leftrightarrow 2$ permutation, $(S,\mathcal{L}S)$ and $(C,\mathcal{L}S)$ are antisymmetric.  Thus, we have
 \beq
-(S,LS) = 0 \text{ and } (C,LS) = 0.
+(S,\mathcal{L}S) = 0 \text{ and } (C,\mathcal{L}S) = 0.
 \eeq
 
 From (\ref{SCphiBarDef}),
 \beq
-(\bar{S},L\bar{S}) = \frac{1}{2} \left((S \pm S^\prime),L(S \pm S^\prime)\right) = \frac{1}{2} \left[(S,LS) \pm (S,LS^\prime) \pm (S^\prime,LS) + (S^\prime,L S^\prime) \right]
+(\bar{S},\mathcal{L}\bar{S}) = \frac{1}{2} \left((S \pm S^\prime),\mathcal{L}(S \pm S^\prime)\right) = \frac{1}{2} \left[(S,\mathcal{L}S) \pm (S,\mathcal{L}S^\prime) \pm (S^\prime,\mathcal{L}S) + (S^\prime,\mathcal{L} S^\prime) \right]
 \eeq
 
 \noindent From the symmetry of these elements (as in (\ref{})),
 \beq
-(S,LS) = (S^\prime,LS^\prime) = 0.
+(S,\mathcal{L}S) = (S^\prime,\mathcal{L}S^\prime) = 0.
 \eeq
 
 \noindent Also,
 \beq
-(S,LS^\prime) = (S^\prime,LS).
+(S,\mathcal{L}S^\prime) = (S^\prime,\mathcal{L}S).
 \eeq
 
 \beq
-(\bar{S},L\bar{S}) = \pm \left(S^\prime,LS\right) = \pm \left(S^\prime, \left[ \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right] S\right)
+(\bar{S},\mathcal{L}\bar{S}) = \pm \left(S^\prime,\mathcal{L}S\right) = \pm \left(S^\prime, \left[ \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right] S\right)
 \label{eq:SbarLSbar}
 \eeq
 
 The same computation applies for $\bar{C}$:
 \beq
-(\bar{C},L\bar{S}) = \pm \left(C^\prime,LS\right) = \pm \left(C^\prime, \left[ \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right] S\right)
+(\bar{C},\mathcal{L}\bar{S}) = \pm \left(C^\prime,\mathcal{L}S\right) = \pm \left(C^\prime, \left[ \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right] S\right)
 \label{eq:CbarLSbar}
 \eeq
 
-We can use (\ref{eq:SLCandCLS}) to find $(\bar{S},L\bar{C})$ from this:
+We can use (\ref{eq:SLCandCLS}) to find $(\bar{S},\mathcal{L}\bar{C})$ from this:
 \beq
-\left(\bar{S},L\bar{C}\right) = \left(\bar{C},L\bar{S}\right) + 1
+\left(\bar{S},\mathcal{L}\bar{C}\right) = \left(\bar{C},\mathcal{L}\bar{S}\right) + 1
 \label{eq:SLCandCLSBar}
 \eeq
 
-$LS'$ is constructed by performing the $2 \leftrightarrow 3$ permutation of (\ref{eq:LS2}):
+$\mathcal{L}S'$ is constructed by performing the $2 \leftrightarrow 3$ permutation of (\ref{eq:LS2}):
 \beq
 \label{eq:LSP2}
-LS' = \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) S'.
+\mathcal{L}S' = \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) S'.
 \eeq
 
-So $(\bar{\phi}_i, L\bar{S})$ is a straightforward calculation.
+So $(\bar{\phi}_i, \mathcal{L}\bar{S})$ is a straightforward calculation.
 \beq
 \label{eq:PhiBarLSBar1}
-(\bar{\phi}_i, L\bar{S}) = \left( (\phi_i \pm \phi_i') L \frac{(S \pm S')}{\sqrt{2}}\right)
+(\bar{\phi}_i, \mathcal{L}\bar{S}) = \left( (\phi_i \pm \phi_i') L \frac{(S \pm S')}{\sqrt{2}}\right)
 = \frac{1}{\sqrt{2}} \left(\phi_i L S \pm \phi_i L S' \pm \phi_i' L S + \phi_i' L S'\right)
 \eeq
 
 Again, from the properties of the $P_{23}$ permutation operator,
 \beq
-(\phi_i,LS) = (\phi_i',LS') \text{ and } (\phi_i,LS') = (\phi_i',LS).
+(\phi_i,\mathcal{L}S) = (\phi_i',\mathcal{L}S') \text{ and } (\phi_i,\mathcal{L}S') = (\phi_i',\mathcal{L}S).
 \eeq
 
 Equation (\ref{eq:PhiBarLSBar1}) becomes
 \begin{subequations}
 \label{eq:PhiBarLSBar2}
 \begin{align}
-(\bar{\phi}_i, L\bar{S}) = \frac{1}{\sqrt{2}} \left[2(\phi_i,LS) \pm 2(\phi_i',LS)\right] &= \frac{2}{\sqrt{2}} \left[(\phi_i,LS) \pm (\phi_i',LS)\right] \label{eq:PhiBarLSBar2a} \\
- &= \frac{2}{\sqrt{2}} \left[(\phi_i,LS) \pm (\phi_i,LS')\right]  \label{eq:PhiBarLSBar2b}
+(\bar{\phi}_i, \mathcal{L}\bar{S}) = \frac{1}{\sqrt{2}} \left[2(\phi_i,\mathcal{L}S) \pm 2(\phi_i',\mathcal{L}S)\right] &= \frac{2}{\sqrt{2}} \left[(\phi_i,\mathcal{L}S) \pm (\phi_i',\mathcal{L}S)\right] \label{eq:PhiBarLSBar2a} \\
+ &= \frac{2}{\sqrt{2}} \left[(\phi_i,\mathcal{L}S) \pm (\phi_i,\mathcal{L}S')\right]  \label{eq:PhiBarLSBar2b}
 \end{align}
 \end{subequations}
 
 Notice that (\ref{eq:PhiBarLSBar2a}) and (\ref{eq:PhiBarLSBar2b}) are equivalent ways of writing this expression.  Either could be used, depending on the form desired for the computation.
 From (\ref{eq:LS2}) and (\ref{eq:LSP2}),
 \begin{align}
-(\bar{\phi}_i, L\bar{S}) &= \frac{2}{\sqrt{2}} \left[\left( \phi_i \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S\right) \pm \left( \phi_i' \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S\right)\right] \\
+(\bar{\phi}_i, \mathcal{L}\bar{S}) &= \frac{2}{\sqrt{2}} \left[\left( \phi_i \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S\right) \pm \left( \phi_i' \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S\right)\right] \\
  &= \frac{2}{\sqrt{2}} \left[\left( \phi_i \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S\right) \pm \left( \phi_i \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) S'\right)\right]
 \end{align}
 
 \noindent We also have that
 \beq
-(\bar{\phi}_i, L\bar{S}) = (\bar{S}, L\bar{\phi}_i).
+(\bar{\phi}_i, \mathcal{L}\bar{S}) = (\bar{S}, \mathcal{L}\bar{\phi}_i).
 \label{eq:PhiLSPerm}
 \eeq
 
 
-\subsubsection{Elements with LC}
+\subsubsection{Elements with \texorpdfstring{$\mathcal{L}C$}{LC}}
 \label{sec:LCElements}
 Now we need to do the same analysis for $L\bar{C}$ as we just did for $L\bar{S}$. The shielding factor, $f_{sh}(\rho)$, complicates the derivatives slightly.
 \begin{align}
-LC = & \left(-\frac{1}{2}\nabla_\rho^2 - \nabla_{r_3}^2 - 2\nabla_{r_{12}}^2 + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2}\kappa^2 \right) \\
+\mathcal{L}C = & \left(-\frac{1}{2}\nabla_\rho^2 - \nabla_{r_3}^2 - 2\nabla_{r_{12}}^2 + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2}\kappa^2 \right) \\
  & \times \Phi_{Ps}(r_{12}) \Phi_H(r_3) \frac{\sin(\kappa\rho)}{\kappa\rho} \sqrt{\frac{2\kappa}{4\pi}} \left[1 + e^{-\mu\rho} \left(1 + \frac{\mu}{2} \rho \right) \right]
 \label{LC1}
 \end{align}
 
 \noindent Again, we use (\ref{eq:HEqn}) and (\ref{eq:PsEqn}) to simplify this expression.
 \beq
-LC = \left(-\frac{1}{2}\nabla_\rho^2 + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}}  - \frac{1}{2}\kappa^2\right) 
+\mathcal{L}C = \left(-\frac{1}{2}\nabla_\rho^2 + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}}  - \frac{1}{2}\kappa^2\right) 
  \Phi_{Ps}(r_{12}) \Phi_H(r_3) \frac{\sin(\kappa\rho)}{\kappa\rho} \sqrt{\frac{2\kappa}{4\pi}} \left[1 + e^{-\mu\rho} \left(1 + \frac{\mu}{2} \rho \right) \right]
 \label{LC2}
 \eeq
@@ -630,12 +629,12 @@ From (\ref{eigenn0}), $n_0(\kr)$ is an eigenfunction of $\nabla_\rho^2$ with eig
 
 \noindent The second term here cancels the $\displaystyle \frac{1}{2}\kappa^2$ in parentheses in (\ref{LC2}).  Now we have
 \begin{align}
-LC = \: & \Phi_{Ps}(r_{12}) \Phi_H(r_3) \sqrt{\frac{2\kappa}{4\pi}} \left\{ \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) \frac{\cos(\kr)}{\kr} \left[1 - e^{-\mr} \left(1 + \frac{\mu}{2}\rho \right) \right] \right. \nonumber\\
+\mathcal{L}C = \: & \Phi_{Ps}(r_{12}) \Phi_H(r_3) \sqrt{\frac{2\kappa}{4\pi}} \left\{ \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) \frac{\cos(\kr)}{\kr} \left[1 - e^{-\mr} \left(1 + \frac{\mu}{2}\rho \right) \right] \right. \nonumber\\
 & + \left. \frac{e^{-\mr} \mu^3 \rho}{4} \frac{\cos(\kr)}{\kr} + \frac{e^{-\mr}}{2} \kappa \mu (1+\mu\rho) \frac{\sin(\kr)}{\kr} \right\}
 \label{eq:LC}
 \end{align}
 
-To find $L\bar{C}$, we also have to analyze $LC^\prime$.  From (\ref{eq:SCprime}) and (\ref{eq:SCPhiDef}),
+To find $\mathcal{L}\bar{C}$, we also have to analyze $\mathcal{L}C^\prime$.  From (\ref{eq:SCprime}) and (\ref{eq:SCPhiDef}),
 \beq
 C^\prime = P_{23} C = -Y_{0,0}(\theta_{\rho^\prime}, \varphi_{\rho^\prime}) \Phi_{Ps}(r_{13}) \Phi_H(r_2) \sqrt{2\kappa} n_0(\kr) \left[1 - e^{-\mu\rho^\prime}\left(1 + \frac{\mu}{2} \rho^\prime \right) \right].
 \eeq
@@ -643,7 +642,7 @@ C^\prime = P_{23} C = -Y_{0,0}(\theta_{\rho^\prime}, \varphi_{\rho^\prime}) \Phi
 \noindent The calculation is exactly the same as that for $LC$, except $\rho\to\rho^\prime$ and $2\leftrightarrow3$.
 
 \begin{align}
-LC^\prime = & \left(-\frac{1}{2}\nabla_{\rhop}^2 - \nabla_{r_2}^2 - 2\nabla_{r_{13}}^2 + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2}\kappa^2 \right) \nonumber \\
+\mathcal{L}C^\prime = & \left(-\frac{1}{2}\nabla_{\rhop}^2 - \nabla_{r_2}^2 - 2\nabla_{r_{13}}^2 + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2}\kappa^2 \right) \nonumber \\
  & \times \Phi_{Ps}(r_{13}) \Phi_H(r_2) \frac{\sin(\kappa\rhop)}{\kappa\rhop} \sqrt{\frac{2\kappa}{4\pi}} \left[1 + e^{-\mu\rhop} \left(1 + \frac{\mu}{2} \rhop \right) \right]
 \label{LCP1}
 \end{align}
@@ -655,7 +654,7 @@ We can modify (\ref{eq:HEqn}) and (\ref{eq:PsEqn}) to simplify this:
 \end{align}
 
 \beq
-LC^\prime = \left(-\frac{1}{2}\nabla_{\rhop}^2 + \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}}  + \frac{2}{r_{23}} - \frac{1}{2}\kappa^2 \right) \Phi_{Ps}(r_{13}) \Phi_H(r_2) \frac{\sin(\kappa\rhop)}{\kappa\rhop} \sqrt{\frac{2\kappa}{4\pi}} \left[1 + e^{-\mu\rhop} \left(1 + \frac{\mu}{2} \rhop \right) \right]
+\mathcal{L}C^\prime = \left(-\frac{1}{2}\nabla_{\rhop}^2 + \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}}  + \frac{2}{r_{23}} - \frac{1}{2}\kappa^2 \right) \Phi_{Ps}(r_{13}) \Phi_H(r_2) \frac{\sin(\kappa\rhop)}{\kappa\rhop} \sqrt{\frac{2\kappa}{4\pi}} \left[1 + e^{-\mu\rhop} \left(1 + \frac{\mu}{2} \rhop \right) \right]
 \label{eq:LCP2}
 \eeq
 
@@ -667,14 +666,14 @@ Modifying the result from (\ref{laplacianshield}) to use $\rhop$ instead of $\rh
 
 \noindent Similar to (\ref{eq:LC}), (\ref{eq:LCP2}) becomes
 \begin{align}
-LC^\prime = \: & \Phi_{Ps}(r_{13}) \Phi_H(r_2) \sqrt{\frac{2\kappa}{4\pi}} \left\{ \left(\frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) \frac{\cos(\krp)}{\krp} \left[1 - e^{-\mrp} \left(1 + \frac{\mu}{2}\rhop \right) \right] \right. \nonumber\\
+\mathcal{L}C^\prime = \: & \Phi_{Ps}(r_{13}) \Phi_H(r_2) \sqrt{\frac{2\kappa}{4\pi}} \left\{ \left(\frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) \frac{\cos(\krp)}{\krp} \left[1 - e^{-\mrp} \left(1 + \frac{\mu}{2}\rhop \right) \right] \right. \nonumber\\
 & + \left. \frac{e^{-\mrp} \mu^3 \rhop}{4} \frac{\cos(\krp)}{\krp} + \frac{e^{-\mrp}}{2} \kappa \mu (1+\mu\rhop) \frac{\sin(\krp)}{\krp} \right\}
 \label{eq:LCP}
 \end{align}
 
 \noindent Combining (\ref{eq:LC}) and (\ref{eq:LCP}) gives
 \begin{align}
-L\bar{C} = \:\: &\frac{1}{\sqrt{2}} L(C \pm C^\prime) = \frac{1}{\sqrt{2}} (LC \pm LC^\prime) \nonumber \\
+\mathcal{L}\bar{C} = \:\: &\frac{1}{\sqrt{2}} \mathcal{L}(C \pm C^\prime) = \frac{1}{\sqrt{2}} (\mathcal{L}C \pm \mathcal{L}C^\prime) \nonumber \\
 = \:\: &\frac{1}{\sqrt{8\pi}} \Phi_{Ps}(r_{12}) \Phi_H(r_3) \sqrt{2\kappa} \nonumber  \\
 &\times \left\{ \frac{\kappa\mu}{2} e^{-\mr} (1+\mr) \frac{\sin(\kr)}{\kr} + \frac{\mu^3 \rho}{4} e^{-\mr} \frac{\cos(\kr)}{\kr} \right. \nonumber \\
 &+ \left. \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}}\right) \frac{\cos(\kr)}{\kr} \left[1 - e^{-\mr} \left(1 + \frac{\mu}{2}\rho\right)\right] \right\} \nonumber \\
@@ -686,20 +685,20 @@ L\bar{C} = \:\: &\frac{1}{\sqrt{2}} L(C \pm C^\prime) = \frac{1}{\sqrt{2}} (LC \
 
 The properties of the permutation operator give that
 \beq
-(C,LC) = (C',LC') \text{ and } (C,LC') = (C',LC)
+(C,\mathcal{L}C) = (C',\mathcal{L}C') \text{ and } (C,\mathcal{L}C') = (C',\mathcal{L}C)
 \eeq
 
 Using these two relations gives that
 \begin{align}
-\left(\bar{C},L\bar{C}\right) &= \frac{1}{2}\left(\left(C \pm C'\right),L(C \pm C')\right) \nonumber\\
- &= \frac{1}{2}\left[(C,LC) \pm (C,LC') \pm (C',LC) + (C',LC')\right] = \frac{1}{2}\left[2(C,LC) \pm 2(C',LC)\right] \nonumber\\
- &= (C,LC) \pm (C',LC).
+\left(\bar{C},\mathcal{L}\bar{C}\right) &= \frac{1}{2}\left(\left(C \pm C'\right),\mathcal{L}(C \pm C')\right) \nonumber\\
+ &= \frac{1}{2}\left[(C,\mathcal{L}C) \pm (C,\mathcal{L}C') \pm (C',\mathcal{L}C) + (C',\mathcal{L}C')\right] = \frac{1}{2}\left[2(C,\mathcal{L}C) \pm 2(C',\mathcal{L}C)\right] \nonumber\\
+ &= (C,\mathcal{L}C) \pm (C',\mathcal{L}C).
  \label{CLC1}
 \end{align}
 
 Substitute (\ref{eq:CDef}) and (\ref{eq:LC}) in (\ref{CLC1}) to get
 \begin{align}
-\left(\bar{C},L\bar{C}\right) = &(C,LC) \pm (C',LC) = \left((C \pm C'),LC\right) \nonumber\\
+\left(\bar{C},\mathcal{L}\bar{C}\right) = &(C,\mathcal{L}C) \pm (C',\mathcal{L}C) = \left((C \pm C'),\mathcal{L}C\right) \nonumber\\
  = &\left((C \pm C') \Phi_{Ps}(r_{12}) \Phi_H(r_3) \sqrt{\frac{2\kappa}{4\pi}} \left\{ \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) \frac{\cos(\kr)}{\kr} \left[1 - e^{-\mr}\left(1 + \frac{\mu}{2}\rho \right) \right] \right.\right. \\
    &+ \left.\left. \frac{e^{-\mr} \mu^3 \rho}{4} \frac{\cos(\kr)}{\kr} + \frac{e^{-\mr}}{2} \kappa\mu (1+\mr) \frac{\sin(\kr)}{\kr} \right\} \right).
  \label{CBarLCBar1}
@@ -707,7 +706,7 @@ Substitute (\ref{eq:CDef}) and (\ref{eq:LC}) in (\ref{CLC1}) to get
 
 These can be split up to simplify:
 \begin{align}
-\left(\bar{C},L\bar{C}\right) = &\sqrt{\frac{2\kappa}{4\pi}} \frac{\kappa\mu}{2} \left((C \pm C') e^{-\mr}(1+\mr) \frac{\sin(\kr)}{\kr} \Phi_{Ps}(r_{12}) \Phi_H(r_3) \right)  \nonumber\\
+\left(\bar{C},\mathcal{L}\bar{C}\right) = &\sqrt{\frac{2\kappa}{4\pi}} \frac{\kappa\mu}{2} \left((C \pm C') e^{-\mr}(1+\mr) \frac{\sin(\kr)}{\kr} \Phi_{Ps}(r_{12}) \Phi_H(r_3) \right)  \nonumber\\
  &+ \sqrt{\frac{2\kappa}{4\pi}} \frac{\mu^3}{4} \left((C \pm C') e^{-\mr} \frac{\cos(\kr)}{\kr} \Phi_{Ps}(r_{12}) \Phi_H(r_3) \right) \nonumber\\
  &+ \sqrt{\frac{2\kappa}{4\pi}} \left((C \pm C') \left(\frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}}\right) \frac{\cos(\kr)}{\kr} \left[1 - e^{-\mr}\left(1 + \frac{\mu}{2}\rho \right)\right] \Phi_{Ps}(r_{12}) \Phi_H(r_3) \right) \nonumber\\
 = &\frac{\kappa\mu}{2} \left((C \pm C') e^{-\mr}(1+\mr) S\right) \nonumber\\
@@ -728,7 +727,7 @@ Looking at just the last term:
 
 \noindent We finally have that
 \begin{align}
-\left(\bar{C},L\bar{C}\right) = \: &\frac{\kappa\mu}{2} \left((C \pm C') e^{-\mr}(1+\mr) S\right) \nonumber\\
+\left(\bar{C},\mathcal{L}\bar{C}\right) = \: &\frac{\kappa\mu}{2} \left((C \pm C') e^{-\mr}(1+\mr) S\right) \nonumber\\
  &+ \sqrt{\frac{2\kappa}{4\pi}} \frac{\mu^3}{4} \left((C \pm C') e^{-\mr} \frac{\cos(\kr)}{\kr} \Phi_{Ps}(r_{12}) \Phi_H(r_3) \right) \nonumber\\
  &\pm \left(C' \left(\frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}}\right) C \right).
  \label{CBarLCBar}
@@ -738,18 +737,18 @@ Looking at just the last term:
 We chose to absorb both the $\frac{1}{\sqrt{2}}$ and $Y_{0,0}(\theta_\rho,\varphi_\rho) = \frac{1}{\sqrt{4\pi}}$ into the $c_i$ constants of the short-range terms (\ref{eq:PhiDef}).
 
 
-The analysis for $(\bar{\phi}_i, L\bar{C})$ and $(\bar{C}, L\bar{\phi}_i)$ is similar to the analysis in section \ref{sec:LSElements}.
+The analysis for $(\bar{\phi}_i, \mathcal{L}\bar{C})$ and $(\bar{C}, L\bar{\phi}_i)$ is similar to the analysis in section \ref{sec:LSElements}.
 \begin{subequations}
 \begin{align}
-(\bar{\phi}_i, L\bar{C}) &= \frac{2}{\sqrt{2}} \left[(\phi_i,LC) \pm (\phi_i',LC)\right] \label{PhiBarLCBar2a} \\
- &= \frac{2}{\sqrt{2}} \left[(\phi_i,LC) \pm (\phi_i,LC')\right]  \label{PhiBarLCBar2b}
+(\bar{\phi}_i, \mathcal{L}\bar{C}) &= \frac{2}{\sqrt{2}} \left[(\phi_i,\mathcal{L}C) \pm (\phi_i',\mathcal{L}C)\right] \label{PhiBarLCBar2a} \\
+ &= \frac{2}{\sqrt{2}} \left[(\phi_i,\mathcal{L}C) \pm (\phi_i,\mathcal{L}C')\right]  \label{PhiBarLCBar2b}
 \end{align}
 \end{subequations}
 
-Using (\ref{eq:LC}) and (\ref{eq:LCP}) in the above gives our final result for $(\bar{\phi}_i, L\bar{C})$.
+Using (\ref{eq:LC}) and (\ref{eq:LCP}) in the above gives our final result for $(\bar{\phi}_i, \mathcal{L}\bar{C})$.
 \begin{subequations}
 \begin{align}
-(\bar{\phi}_i, L\bar{C}) = \sqrt{\frac{\kappa}{\pi}} &\left( (\phi_i \pm \phi_i') \Phi_{Ps}(r_{12}) \Phi_H(r_3) \left\{ \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}}\right) \frac{\cos(\kr)}{\kr} \left[1 - e^{-\mr}\left(1 + \frac{\mu}{2}\rho\right)\right] \right.\right. \nonumber\\
+(\bar{\phi}_i, \mathcal{L}\bar{C}) = \sqrt{\frac{\kappa}{\pi}} &\left( (\phi_i \pm \phi_i') \Phi_{Ps}(r_{12}) \Phi_H(r_3) \left\{ \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}}\right) \frac{\cos(\kr)}{\kr} \left[1 - e^{-\mr}\left(1 + \frac{\mu}{2}\rho\right)\right] \right.\right. \nonumber\\
 &+ \left.\left.\frac{e^{-\mr}\mu^3\rho}{4} \frac{\cos(\kr)}{\kr} + \frac{e^{-\mr}}{2} \kappa\mu (1+\mr) \frac{\sin(\kr)}{\kr}  \right\}\right) \\
 = \sqrt{\frac{\kappa}{\pi}} &\left( \phi_i \Phi_{Ps}(r_{12}) \Phi_H(r_3) \left\{ \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}}\right) \frac{\cos(\kr)}{\kr} \left[1 - e^{-\mr}\left(1 + \frac{\mu}{2}\rho\right)\right] \right.\right. \nonumber\\
 &+ \left.\left.\frac{e^{-\mr}\mu^3\rho}{4} \frac{\cos(\kr)}{\kr} + \frac{e^{-\mr}}{2} \kappa\mu (1+\mr) \frac{\sin(\kr)}{\kr}  \right\}\right) \nonumber\\
@@ -760,7 +759,7 @@ Using (\ref{eq:LC}) and (\ref{eq:LCP}) in the above gives our final result for $
 
 Similar to (\ref{eq:PhiLSPerm}), we have
 \beq
-(\bar{\phi}_i, L\bar{C}) = (\bar{C}, L\bar{\phi}_i).
+(\bar{\phi}_i, \mathcal{L}\bar{C}) = (\bar{C}, L\bar{\phi}_i).
 \label{eq:PhiLCPerm}
 \eeq
 
@@ -787,20 +786,20 @@ Using (\ref{eq:Hamiltonian1}),
 
 From (\ref{eq:PhiDef}), the $\bar{\phi}_i$ (and $\bar{\phi}_j$) have a decaying exponential dependence in $r_1$, $r_2$ and $r_3$, so the surface terms in the integrations will vanish.  Combining this fact with (\ref{PhiBarDef}) gives that $F = 0$.  Then
 \beq
-\left(\bar{\phi}_i, L \bar{\phi}_j\right) = \left(\bar{\phi}_j, L \bar{\phi}_i\right).
+\left(\bar{\phi}_i, \mathcal{L} \bar{\phi}_j\right) = \left(\bar{\phi}_j, \mathcal{L} \bar{\phi}_i\right).
 \label{PhiLPhiPerm}
 \eeq
 
 The claims in (\ref{eq:PhiLSPerm}) and (\ref{eq:PhiLCPerm}) are proven using the same method.  Both (\ref{eq:PhiLSPerm}) and (\ref{eq:PhiLCPerm}) include $\bar{\phi}_i$, so these terms do have a decaying exponential dependence, making the claims true.
 
-%(\bar{\phi}_i, L\bar{C}) = \frac{\sqrt{2\kappa}}{4\pi} &\left( (\phi_i \pm \phi_i') \Phi_{Ps}(r_{12}) \Phi_H(r_3) \left\{ \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}}\right) \frac{\cos(\kr)}{\kr} \left[1 - e^{-\mr}\left(1 + \frac{\mu}{2}\rho\right)\right] \right.\right. \nonumber\\
+%(\bar{\phi}_i, \mathcal{L}\bar{C}) = \frac{\sqrt{2\kappa}}{4\pi} &\left( (\phi_i \pm \phi_i') \Phi_{Ps}(r_{12}) \Phi_H(r_3) \left\{ \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}}\right) \frac{\cos(\kr)}{\kr} \left[1 - e^{-\mr}\left(1 + \frac{\mu}{2}\rho\right)\right] \right.\right. \nonumber\\
 %&+ \frac{e^{-\mr}\mu^3\rho}{4} \frac{\cos(\kr)}{\kr} + \frac{e^{-\mr}}{2} \kappa\mu (1+\mr) \frac{\sin(\kr)} \left.\left. \right\}\right)
 
 
 \subsection{Matrix Element Symmetry}
 The claims in equations \ref{eq:PhiLSPerm} and \ref{eq:PhiLCPerm} can be proven by starting with the functional
 \begin{align}
-	F \equiv \left(g,Lf \right)-\left(f,Lg \right).
+	F \equiv \left(g,\mathcal{L}f \right)-\left(f,\mathcal{L}g \right).
 \end{align}
 
 Only the first three terms of the above functional have to be evaluated, as the other terms go to 0 with the subtraction.
@@ -823,27 +822,27 @@ We can use Green's theorem on each pair of terms:
 \begin{subequations}
 \label{eq:elem_symm}
 \begin{align}
-\left(\bar{\phi}_i, L \bar{\phi}_j \right) &= \left(\bar{\phi}_j, L \bar{\phi}_i \right) \\
-\left(\bar{\phi}_i, L \bar{S} \right) &= \left(\bar{S}, L \bar{\phi}_i \right) \label{eq:SLPhi} \\
-\left(\bar{\phi}_i, L \bar{C} \right) &= \left(\bar{C}, L \bar{\phi}_i \right) \label{eq:CLPhi}
+\left(\bar{\phi}_i, \mathcal{L} \bar{\phi}_j \right) &= \left(\bar{\phi}_j, \mathcal{L} \bar{\phi}_i \right) \\
+\left(\bar{\phi}_i, \mathcal{L} \bar{S} \right) &= \left(\bar{S}, \mathcal{L} \bar{\phi}_i \right) \label{eq:SLPhi} \\
+\left(\bar{\phi}_i, \mathcal{L} \bar{C} \right) &= \left(\bar{C}, \mathcal{L} \bar{\phi}_i \right) \label{eq:CLPhi}
 \end{align}
 \end{subequations}
 
-\noindent Equations \ref{eq:SLPhi} and \ref{eq:CLPhi} allow us to avoid having to operate $L$ on the $\phi$ terms. From equation \ref{}, the form of $L\phi_i$ is very complicated, so our 
+\noindent Equations \ref{eq:SLPhi} and \ref{eq:CLPhi} allow us to avoid having to operate $\mathcal{L}$ on the $\phi$ terms. From equation \ref{}, the form of $\mathcal{L}\phi_i$ is very complicated, so our 
 
 We just need to consider the long-range--long-range matrix elements. Examining the functional
- $F = \left(\bar{S}, L\bar{C}\right) - \left(\bar{C}, L\bar{S}\right)$:
+ $F = \left(\bar{S}, \mathcal{L}\bar{C}\right) - \left(\bar{C}, \mathcal{L}\bar{S}\right)$:
 \begin{equation*}
-F = \left(\frac{1}{\sqrt{2}} \left[S \pm S^\prime \right], L \frac{1}{\sqrt{2}}\left[C \pm C^\prime \right] \right) -
-    \left(\frac{1}{\sqrt{2}} \left[C \pm C^\prime \right], L \frac{1}{\sqrt{2}}\left[S \pm S^\prime \right] \right)
+F = \left(\frac{1}{\sqrt{2}} \left[S \pm S^\prime \right], \mathcal{L} \frac{1}{\sqrt{2}}\left[C \pm C^\prime \right] \right) -
+    \left(\frac{1}{\sqrt{2}} \left[C \pm C^\prime \right], \mathcal{L} \frac{1}{\sqrt{2}}\left[S \pm S^\prime \right] \right)
 \end{equation*}
 \begin{equation}
-= \frac{1}{2}\left[(S,LC) \pm (S,LC^\prime) \pm (S^\prime,LC) + (S^\prime,LC^\prime) - (C,LS) \mp (C,LS^\prime) \mp (C^\prime,LS) - (C^\prime,LS^\prime)\right]
+= \frac{1}{2}\left[(S,\mathcal{L}C) \pm (S,\mathcal{L}C^\prime) \pm (S^\prime,\mathcal{L}C) + (S^\prime,\mathcal{L}C^\prime) - (C,\mathcal{L}S) \mp (C,\mathcal{L}S^\prime) \mp (C^\prime,\mathcal{L}S) - (C^\prime,\mathcal{L}S^\prime)\right]
 \end{equation}
 
-From (\ref{}), $(S,LC) = (S^\prime,LC^\prime)$, $(S^\prime,LC) = (S,LC^\prime)$, $(C,LS) = (S^\prime,LC^\prime)$ and $(C^\prime,LS) = (C,LS^\prime)$, causing the above to reduce to
+From (\ref{}), $(S,\mathcal{L}C) = (S^\prime,\mathcal{L}C^\prime)$, $(S^\prime,\mathcal{L}C) = (S,\mathcal{L}C^\prime)$, $(C,\mathcal{L}S) = (S^\prime,\mathcal{L}C^\prime)$ and $(C^\prime,\mathcal{L}S) = (C,\mathcal{L}S^\prime)$, causing the above to reduce to
 \beqs
-F = \left[ (S,LC) - (C,LS)\right] \pm \left[ (S,LC^\prime) - (C^\prime,LS)\right].
+F = \left[ (S,\mathcal{L}C) - (C,\mathcal{L}S)\right] \pm \left[ (S,\mathcal{L}C^\prime) - (C^\prime,\mathcal{L}S)\right].
 \eeqs
 \beq
 \equiv G \pm G^\prime
@@ -909,51 +908,51 @@ Since $\Phi_{Ps}(r_{12})$ is only dependent on $r_{12}$ and $\Phi_{H}(r_{3})$ is
 G = 1.
 \eeq
 
-From (\ref{GBarDef}), $G = (S,LC) - (C,LS)$, so
+From (\ref{GBarDef}), $G = (S,\mathcal{L}C) - (C,\mathcal{L}S)$, so
 \beq
-(S,LC) = (C,LS) + 1.
+(S,\mathcal{L}C) = (C,\mathcal{L}S) + 1.
 \label{eq:SLCandCLS}
 \eeq
 
 \noindent Writing this in terms of $\bar{S}$ and $\bar{C}$, we have the final relation of
 \beq
-\left(\bar{S},L\bar{C}\right) = \left(\bar{C},L\bar{S}\right) + 1.
+\left(\bar{S},\mathcal{L}\bar{C}\right) = \left(\bar{C},\mathcal{L}\bar{S}\right) + 1.
 \eeq
 
 
 
-\subsection{General \texorpdfstring{$(\tilde{S}L\tilde{C})$ and $(\tilde{C}L\tilde{S})$}{General SLC and CLS} Relation}
+\subsection{General \texorpdfstring{$(\tilde{S}\mathcal{L}\tilde{C})$ and $(\tilde{C}\mathcal{L}\tilde{S})$}{SLC and CLS} Relation}
 \label{sec:GenSLCandCLS}
 
 \begin{align}
-\nonumber (\tilde{S},L\tilde{C}) &= \left((u_{00}\bar{S} + u_{01}\bar{C}),L(u_{10}\bar{S} + u_{11}\bar{C})\right) \\
-&= u_{00} u_{10} (\bar{S},L\bar{S}) + u_{00} u_{11} (\bar{S},L\bar{C}) + u_{01} u_{10} (\bar{C},L\bar{S}) + u_{01} u_{11} (\bar{C},L\bar{C})
+\nonumber (\tilde{S},\mathcal{L}\tilde{C}) &= \left((u_{00}\bar{S} + u_{01}\bar{C}),\mathcal{L}(u_{10}\bar{S} + u_{11}\bar{C})\right) \\
+&= u_{00} u_{10} (\bar{S},\mathcal{L}\bar{S}) + u_{00} u_{11} (\bar{S},\mathcal{L}\bar{C}) + u_{01} u_{10} (\bar{C},\mathcal{L}\bar{S}) + u_{01} u_{11} (\bar{C},\mathcal{L}\bar{C})
 \label{eq:GenSLC}
 \end{align}
 
 Likewise,
 \begin{align}
-\nonumber (\tilde{C},L\tilde{S}) &= \left((u_{10}\bar{S} + u_{11}\bar{C}),L(u_{00}\bar{S} + u_{01}\bar{C})\right) \\
-&= u_{10} u_{00} (\bar{S},L\bar{S}) + u_{10} u_{01} (\bar{S},L\bar{C}) + u_{11} u_{00} (\bar{C},L\bar{S}) + u_{11} u_{01} (\bar{C},L\bar{C})
+\nonumber (\tilde{C},\mathcal{L}\tilde{S}) &= \left((u_{10}\bar{S} + u_{11}\bar{C}),\mathcal{L}(u_{00}\bar{S} + u_{01}\bar{C})\right) \\
+&= u_{10} u_{00} (\bar{S},\mathcal{L}\bar{S}) + u_{10} u_{01} (\bar{S},\mathcal{L}\bar{C}) + u_{11} u_{00} (\bar{C},\mathcal{L}\bar{S}) + u_{11} u_{01} (\bar{C},\mathcal{L}\bar{C})
 \label{eq:GenCLS}
 \end{align}
 
 \noindent Combining equations \ref{eq:GenSLC} and \ref{eq:GenCLS} gives
 \begin{align}
-\nonumber (\tilde{S},L\tilde{C}) - (\tilde{C},L\tilde{S}) = \,\, &[u_{00} u_{10} - u_{10} u_{00}] (\bar{S},L\bar{S}) + [u_{00} u_{11} - u_{10} u_{01}] (\bar{S},L\bar{C}) \\
-\nonumber + &[u_{01} u_{10} - u_{11} u_{00}] (\bar{C},L\bar{S}) + [u_{01} u_{11} - u_{11} u_{01}] (\bar{C},L\bar{C}) \\
-\nonumber = \,\, &[u_{00} u_{11} - u_{10} u_{01}] [(\bar{S},L\bar{C}) - (\bar{C},L\bar{S})] \\
-\nonumber = \,\, & \det(u) [(\bar{S},L\bar{C}) - (\bar{C},L\bar{S})]
+\nonumber (\tilde{S},\mathcal{L}\tilde{C}) - (\tilde{C},\mathcal{L}\tilde{S}) = \,\, &[u_{00} u_{10} - u_{10} u_{00}] (\bar{S},\mathcal{L}\bar{S}) + [u_{00} u_{11} - u_{10} u_{01}] (\bar{S},\mathcal{L}\bar{C}) \\
+\nonumber + &[u_{01} u_{10} - u_{11} u_{00}] (\bar{C},\mathcal{L}\bar{S}) + [u_{01} u_{11} - u_{11} u_{01}] (\bar{C},\mathcal{L}\bar{C}) \\
+\nonumber = \,\, &[u_{00} u_{11} - u_{10} u_{01}] [(\bar{S},\mathcal{L}\bar{C}) - (\bar{C},\mathcal{L}\bar{S})] \\
+\nonumber = \,\, & \det(u) [(\bar{S},\mathcal{L}\bar{C}) - (\bar{C},\mathcal{L}\bar{S})]
 \end{align}
 
 \noindent Each of our $u$ matrices satisfies $\det(u) = 1$, making this
 \beq
-(\tilde{S},L\tilde{C}) - (\tilde{C},L\tilde{S}) = (\bar{S},L\bar{C}) - (\bar{C},L\bar{S}).
+(\tilde{S},\mathcal{L}\tilde{C}) - (\tilde{C},\mathcal{L}\tilde{S}) = (\bar{S},\mathcal{L}\bar{C}) - (\bar{C},\mathcal{L}\bar{S}).
 \eeq
 
 \noindent This can finally be written as the general form of equation \ref{eq:SLCandCLS}, giving
 \beq
-(\tilde{S},L\tilde{C}) = (\tilde{C},L\tilde{S}) + 1.
+(\tilde{S},\mathcal{L}\tilde{C}) = (\tilde{C},\mathcal{L}\tilde{S}) + 1.
 \label{eq:GenSLCandCLS}
 \eeq
 
@@ -1073,14 +1072,14 @@ $0.8$ &    --- &    --- &    --- & $-1.652$ & $-0.851$ \\
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=6in]{swave-comparisons}
+	\includegraphics[width=5.25in]{swave-comparisons}
 	\caption[Comparison of S-wave phase shifts]{Comparison of $^1$S (a) and $^3$S (b) phase shifts with results from other groups. Results are ordered according to year of publication. This work -- solid curves; \mbox{\textcolor{blue}{$\times$} -- CC \cite{Walters2004};} \mbox{$\CIRCLE$ -- Kohn \cite{VanReeth2003};} \mbox{\textcolor{red}{\textbf{+}} -- CC \cite{Blackwood2002};} \mbox{$\blacktriangle$ -- DMC \cite{Chiesa2002};} \mbox{$\triangledown$ -- SVM 2002 \cite{Ivanov2002};} \mbox{$\Circle$ -- SVM 2001 \cite{Ivanov2001};} \mbox{\textcolor{red}{$\vartriangle$} -- 6-state CC \cite{Sinha2000};} \mbox{$\blacksquare$ -- 5-state CC \cite{Adhikari1999};} \mbox{$\square$ -- Coupled-pseudostate \cite{Campbell1998};} \mbox{$\vartriangle$ -- 3-state CC \cite{Sinha1997};} \mbox{\textcolor[RGB]{0,127,0}{$\bigstar$} -- CC \cite{Ray1997};} \mbox{$\triangleright$ -- Stabilization \cite{Drachman1976};} \mbox{\textcolor{red}{$\blacklozenge$} -- Stabilization \cite{Drachman1975};} \mbox{\textcolor{blue}{$\lozenge$} -- Static-exchange \cite{Hara1975};} \mbox{$\blacktriangledown$ -- Static-exchange \cite{Fraser1961}.}}
 	\label{fig:SWaveComparisons}
 \end{figure}
 
-Figure \ref{fig:OtherSWaveSingletResults} shows the results from various groups for calculations of the singlet S-wave.  Our results are extremely close to Van Reeth's \cite{VanReeth2003}, so they would follow along the solid line as well.  Several groups have results that cluster very closely to his and ours, namely Blackwood \cite{Blackwood2002}, Walters \cite{Walters2004}, Chiesa \cite{Chiesa2002} and Ivanov \cite{Ivanov2002}.
+Figure \ref{fig:SWaveComparisons} shows the results from various groups for calculations of the singlet S-wave.  Our results are extremely close to Van Reeth's \cite{VanReeth2003}, so they would follow along the solid line as well.  Several groups have results that cluster very closely to his and ours, namely Blackwood \cite{Blackwood2002}, Walters \cite{Walters2004}, Chiesa \cite{Chiesa2002} and Ivanov \cite{Ivanov2002}.
 
-\textbf{@TODO:} Discussion of the techniques used by each of the groups
+
 
 
 
@@ -1088,7 +1087,7 @@ Figure \ref{fig:OtherSWaveSingletResults} shows the results from various groups 
 \section{S-Wave Resonances}
 \label{sec:SWaveResonances}
 
-There are two very obvious resonances before the Ps(2s)+H(1s) channel threshold for $^1$S scattering, which can be seen in figure \ref{fig:SWavePhaseOmega=7}.  This threshold is at an incoming Ps energy of approximately 5.102 eV.  
+There are two very obvious resonances before the Ps(n=2) channel threshold for $^1$S scattering, which can be seen in figure \ref{fig:SWavePhase}.  This threshold is at an incoming Ps energy of approximately 5.102 eV.  
 
 \subsection{Resonance Model}
 \label{sec:ResonanceModel}
@@ -1100,7 +1099,7 @@ The resonance positions and widths can be calculated to high accuracy by fitting
 \eeq
 The polynomial part of the above equation corresponds to hard-sphere scattering. The arctangent parts correspond to the first and second Fano resonances \cite{Fano1961,Macek1970,Hazi1979}, with $^1E_R$ and $^2E_R$ as the positions of the resonances and $^1\Gamma$ and $^2\Gamma$ as the widths of the respective resonances.
 
-\textbf{@TODO:} Refer back to the Bransden and Joachain book and/or the Ray paper about decomposing this equation into the different parts.  Talk about what type of resonances these are (Feshbach?).  Refer to the discussions in Peter's paper and Yan/Ho's paper about the resonances corresponding to 2S and 3S.  Discussion on energy levels elsewhere for H and Ps, along with what the threshold is.  
+\textbf{@TODO:} Refer back to the Bransden and Joachain book and/or the Ray paper about decomposing this equation into the different parts. Refer to the discussions in Peter's paper and Yan/Ho's paper about the resonances corresponding to 2S and 3S.  Discussion on energy levels elsewhere for H and Ps, along with what the threshold is. Ray has an analysis about the resonance width versus the lifetime.
 \subsection{Resonance Graphs}
 \label{sec:ResonanceGraphs}
 
@@ -1186,29 +1185,32 @@ The error for each parameter could be determined one of three ways.  The errors 
 
 
 \subsection{Resonance Parameters}
+
 \setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
 \setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
 \begin{table}[H]
+\footnotesize
 \centering
-\begin{tabular}{l c c c c c}
+
+\begin{tabular}{l l l l l}
 \toprule
 Method & $^1E_R \text{ (eV)}$ & $^1\Gamma \text{ (eV)}$ & $^2E_R \text{ (eV)}$ & $^2\Gamma \text{ (eV)}$ \\
 \midrule
 This work & $4.0065 \pm 0.0001$ & $0.0955 \pm 0.0001$ & $5.0277 \pm 0.0018$ & $0.0608 \pm 0.0005$ \\
-Complex rotation (Drachman \emph{et al} 1975) \cite{Drachman1975} & $4.455 \pm 0.010$ & $0.062 \pm 0.015$ & --- & --- \\
-Complex rotation (Ho 1978) \cite{Ho1978} & $4.013 \pm 0.014$ & $0.075 \pm 0.027$ & --- & --- \\
+Complex rotation \cite{Drachman1975} & $4.455 \pm 0.010$ & $0.062 \pm 0.015$ & --- & --- \\
+Complex rotation \cite{Ho1978} & $4.013 \pm 0.014$ & $0.075 \pm 0.027$ & --- & --- \\
 Coupled-pseudostate \cite{Campbell1998} & $4.55$ & $0.084$ & --- & --- \\
-Complex rotation (Yan \emph{et al} 1999) \cite{Yan1999} & $4.0058 \pm 0.0005$ & $0.0952 \pm 0.0011$ & $4.9479 \pm 0.0014$ & $0.0585 \pm 0.0027$ \\
-Five-state coupled channel (Adhikari 2001) \cite{Adhikari2001e} & $4.01$ & $0.15$ & --- & --- \\
-Optical potential (Di Rienzi \emph{et al} 2002) \cite{DiRienzi2002b} & $4.021$ & $0.0259$ & --- & --- \\
-Close coupling (9Ps9H \emph{et al} 2002) \cite{Blackwood2002} & $4.37$ & $0.10$ & --- & --- \\
-Close coupling (22Ps1H + H$^-$ \emph{et al} 2002) \cite{Blackwood2002b} & $4.141$ & $0.071$ & $4.963$ & $0.033$ \\
-Stabilization (Yan and Ho 2003) \cite{Yan2003} & $4.007$ & $0.0969$ & $4.953$ & $0.0574$ \\
-Kohn variational (Van Reeth \emph{et al} 2004) \cite{VanReeth2004} & $4.0072 \pm 0.0020$ & $0.0956 \pm 0.010$ & $5.0267 \pm 0.0020$ & $0.0597 \pm 0.0010$ \\
-Close coupling (Walters \emph{et al} 2004) \cite{Walters2004} & $4.149$ & $0.103$ & $4.877$ & $0.0164$ \\
+Complex rotation \cite{Yan1999} & $4.0058 \pm 0.0005$ & $0.0952 \pm 0.0011$ & $4.9479 \pm 0.0014$ & $0.0585 \pm 0.0027$ \\
+Five-state CC \cite{Adhikari2001e} & $4.01$ & $0.15$ & --- & --- \\
+Optical potential \cite{DiRienzi2002b} & $4.021$ & $0.0259$ & --- & --- \\
+CC (9Ps9H) \cite{Blackwood2002} & $4.37$ & $0.10$ & --- & --- \\
+CC (22Ps1H + H$^-$) \cite{Blackwood2002b} & $4.141$ & $0.071$ & $4.963$ & $0.033$ \\
+Stabilization \cite{Yan2003} & $4.007$ & $0.0969$ & $4.953$ & $0.0574$ \\
+Kohn variational \cite{VanReeth2004} & $4.0072 \pm 0.0020$ & $0.0956 \pm 0.010$ & $5.0267 \pm 0.0020$ & $0.0597 \pm 0.0010$ \\
+CC (9Ps9H + H$^-$) \cite{Walters2004} & $4.149$ & $0.103$ & $4.877$ & $0.0164$ \\
 \bottomrule
 \end{tabular}
-\caption{S-Wave Resonance Parameters} % title of Table
+\caption{S-wave resonance parameters} % title of Table
 \label{tab:SWaveResonancesOther}
 \end{table}
 
