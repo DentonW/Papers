@@ -4,9 +4,8 @@
 \chapter{The Bound State: Positronium Hydride}
 \label{chp:PsHBound}
 
-\lettrine{\textcolor{startcolor}{A}}{s} discussed in \cref{sec:PsH}, positronium hydride consists of one atom of positronium and one of hydrogen. We model it the standard way here as an exotic atom, instead of a molecule. The energy 
+\lettrine{\textcolor{startcolor}{A}}{s} discussed in \cref{sec:PsH}, positronium hydride consists of one atom of positronium and one of hydrogen. We model it the standard way here as an exotic atom, instead of a molecule. \Cref{fig:PsHCoords} shows the PsH coordinate system. There are 6 interparticle coordinates, given by $r_1$, $r_2$, $r_3$, $r_{12}$, $r_{13}$, and $r_{23}$. The proton is considered infinitely heavy in this treatment.
 
-\section{Positronium Hydride Coordinate System}
 \begin{figure}[!h]
 	\centering
 	\includegraphics[height=3in]{PsHCoordinates}
@@ -23,12 +22,14 @@ Our wavefunction for the bound state is a Hylleraas-style set of terms, given by
 \begin{subequations}
 \label{eq:BoundWavefn}
 \begin{align}
-\Psi^\pm &= \frac{1}{\sqrt{4\pi}} \sum_{i=1}^{N(\omega)} c_i \bar{\phi}_i^\pm \label{eq:BoundWavefn_psi} \\
+\Psi^\pm &= \sum_{i=1}^{N(\omega)} c_i \bar{\phi}_i^\pm \label{eq:BoundWavefn_psi} \\
 \bar{\phi}_i^\pm &= (1 \pm P_{23}) \phi_i \label{eq:BoundWavefn_phibar} \\
 \phi_i &= e^{-(\alpha r_1 + \beta r_2 + \gamma r_3)} r_1^{k_i} r_2^{l_i} r_{12}^{m_i} r_3^{n_i} r_{13}^{p_i} r_{23}^{q_i} \label{eq:BoundWavefn_phi} \, ,
 \end{align}
 \end{subequations}
-\noindent where the plus sign indicates the spatially symmetric singlet case, and the minus sign indicates the spatially antisymmetric triplet case.  The $\frac{1}{\sqrt{2}}$ needed for \textbf{@TODO: Why exactly? Flux?} is absorbed into the $c_i$ constant in equation \ref{eq:BoundWavefn_psi}.  For clarity in some equations, the definition $d_i = \frac{1}{\sqrt{4\pi}} c_i$ is used.
+where the plus sign indicates the spatially symmetric singlet case, and the minus sign indicates the spatially antisymmetric triplet case. The permutation operator $P_{23}$ is needed, as the two electrons are indistinguishable. The $\frac{1}{\sqrt{2}}$ needed %for \textbf{@TODO: Why exactly? Flux?}%
+to normalize $\Psi^\pm$ (to cancel out the 2 in \cref{eq:RRfinal}) is absorbed into the $c_i$ constant in equation \ref{eq:BoundWavefn_psi}. The constant $\SphericalHarmY{0}{0}{\theta}{\phi} = \frac{1}{\sqrt{4\pi}}$ is also absorbed into $c_i$.
+% For clarity in some equations, the definition $d_i = \frac{1}{\sqrt{4\pi}} c_i$ is used.
 
 The variable $\omega$ is an integer $\geq 0$ that determines the number of terms in the basis set.  For a chosen value of $\omega$, the integer powers of $r_i$ and $r_{ij}$ are constructed in such a way that
 \beq
@@ -39,7 +40,7 @@ k_i + l_i + m_i + n_i + p_i + q_i \leq \omega
 
 \beq
 \label{eq:NumberTermsOmega}
-N(\omega) = \binom{\omega+6}{6} \, ,
+N(\omega) = \Binomial{\omega+6}{6} \, ,
 \eeq
 \noindent where the 6 comes from the 6 coordinates of $r_i$ and $r_{ij}$.  A plot of $N(\omega)$ versus $\omega$ is given in \cref{fig:NOmega}.
 
@@ -53,7 +54,7 @@ N(\omega) = \binom{\omega+6}{6} \, ,
 
 
 \section{Rayleigh-Ritz Variational Method}
-The Rayleigh-Ritz variational method is given as the functional
+The Rayleigh-Ritz variational method is given as the functional \cite{Bransden2003}
 \beq
 \label{eq:RayleighRitz}
 E[\Psi] = \frac{\Braket{\Psi | H | \Psi}}{\Braket{\Psi | \Psi}}.
@@ -63,7 +64,7 @@ E[\Psi] = \frac{\Braket{\Psi | H | \Psi}}{\Braket{\Psi | \Psi}}.
 \beq
 E_0 \leq E[\Psi].
 \eeq
-This can be rewritten in matrix notation as a generalized eigenvalue problem: \cite{RayleighRitz}
+This can be rewritten in matrix notation as a generalized eigenvalue problem \cite{RayleighRitz}
 \beq
 \label{eq:BoundGenEig}
 \textbf{Hc} = E\textbf{Sc},
@@ -132,7 +133,7 @@ expression \ref{eq:BoundHFull} becomes
 %\subsection{Energy Derivatives}
 \section{Parameter Optimization}
 \label{sec:BoundOpt}
-The most powerful property of the Rayleigh-Ritz variational method is the ability to systematically improve the wavefunction to lower the upper bound on the energy. By either adding terms to the expansion in \ref{eq:BoundWavefn_psi} or changing the nonlinear parameters $\alpha$, $\beta$ and $\gamma$, the energy can be reduced and a possible minimum found. This is a three-dimensional optimization problem, so we tried multiple methods for the nonlinear parameter optimization.
+The most powerful property of the Rayleigh-Ritz variational method is the ability to systematically improve the wavefunction to lower the upper bound on the energy. By either adding terms to the expansion in \ref{eq:BoundWavefn_psi} or changing the nonlinear parameters $\alpha$, $\beta$ and $\gamma$, the energy can be reduced and a possible minimum found. This is a three-dimensional optimization problem, and we tried multiple methods for the nonlinear parameter optimization.
 
 \subsection{Newton's Method}
 
@@ -169,6 +170,7 @@ $ \dfrac{\partial c_i^*}{\partial c_k^*} =
 
 To minimize the energy, $E$,
 \beq
+\label{eq:RRfinal}
 \frac{\partial E}{\partial c_k^*} = \frac{\partial A}{\partial c_k^*} \frac{1}{B} - \frac{1}{B^2} \frac{\partial B}{\partial c_k^*} A
 = \frac{1}{B} \left(\frac{\partial A}{\partial c_k^*} - E \frac{\partial B}{\partial c_k^*}\right)
 = \frac{\displaystyle\sum_{j=1}^N (H_{kj} - E S_{kj})}{B} = 0.
@@ -228,27 +230,27 @@ x_{i+1} = x_i - \frac{f(x_i)(x_i - x_{i-1})}{f(x_i) - f(x_{i-1})}.
 \subsubsection{Singlet Wavefunction Derivatives}
 Taking the derivative with respect to $\alpha$ of equation \ref{eq:BoundWavefn_psi} yields
 \beq
-\frac{\partial \Psi^+}{\partial \alpha} = \sum_i d_i \frac{\partial \phi_i}{\partial \alpha} = \sum_i d_i (1+P_{23}) \frac{\partial \phi_i}{\partial \alpha} = -r_1 \Psi^{(+)}.
+\frac{\partial \Psi^+}{\partial \alpha} = \sum_i c_i \frac{\partial \phi_i}{\partial \alpha} = \sum_i c_i (1+P_{23}) \frac{\partial \phi_i}{\partial \alpha} = -r_1 \Psi^{(+)}.
 \label{eq:PsiDerAlpha}
 \eeq
 
 The $\beta$ and $\gamma$ cases are similar, but the presence of the $P_{23}$ permutation operator complicates the derivative slightly.
 \begin{align}
-\nonumber \frac{\partial \Psi^{(+)}}{\partial \beta} &= \sum_i d_i \frac{\partial}{\partial \beta} \left[(1+P_{23}) \phi_i \right] \\
-\nonumber &= \sum_i d_i \left\{
+\nonumber \frac{\partial \Psi^{(+)}}{\partial \beta} &= \sum_i c_i \frac{\partial}{\partial \beta} \left[(1+P_{23}) \phi_i \right] \\
+\nonumber &= \sum_i c_i \left\{
   e^{-\alpha r_1} r_1^{k_i} \frac{\partial}{\partial \beta}
   \left[e^{-(\beta r_2 + \gamma r_3)} r_2^{l_i} r_{12}^{m_i} r_3^{n_i} r_{13}^{p_i} r_{23}^{q_i}
       + e^{-(\beta r_3 + \gamma r_2)} r_3^{l_i} r_{13}^{m_i} r_2^{n_i} r_{12}^{p_i} r_{23}^{q_i} \right] \right\} \\
-\nonumber &= \sum_i d_i \left(
+\nonumber &= \sum_i c_i \left(
   e^{-(\alpha r_1 + \gamma r_3)} r_1^{k_i} r_2^{l_i} r_{12}^{m_i} r_3^{n_i} r_{13}^{p_i} r_{23}^{q_i} \frac{\partial}{\partial \beta} e^{-\beta r_2} +
   e^{-(\alpha r_1 + \gamma r_2)} r_1^{k_i} r_3^{l_i} r_{13}^{m_i} r_2^{n_i} r_{12}^{p_i} r_{23}^{q_i} \frac{\partial}{\partial \beta} e^{-\beta r_3} \right) \\
- &= \sum_i d_i \left(-r_2 \phi_i - r_3 P_{23} \phi_i \right) 
+ &= \sum_i c_i \left(-r_2 \phi_i - r_3 P_{23} \phi_i \right) 
 \label{eq:PsiDerBeta}
 \end{align}
 
 Likewise,
 \beq
-\frac{\partial \Psi^{(+)}}{\partial \gamma} = \sum_i d_i \left(-r_3 \phi_i - r_2 P_{23} \phi_i \right)
+\frac{\partial \Psi^{(+)}}{\partial \gamma} = \sum_i c_i \left(-r_3 \phi_i - r_2 P_{23} \phi_i \right)
 \label{eq:PsiDerGamma}
 \eeq
 
@@ -258,8 +260,8 @@ Similar calculations for the triplet give
 
 \begin{align}
 \frac{\partial \Psi^{(-)}}{\partial \alpha} &= -r_1 \Psi^{(-)} \label{eq:PsiTripletDerAlpha} \\
-\frac{\partial \Psi^{(-)}}{\partial \beta} &= \sum_i d_i \left(-r_2 \phi_i + r_3 P_{23} \phi_i \right) \label{eq:PsiTripletDerBeta} \\
-\frac{\partial \Psi^{(-)}}{\partial \gamma} &= \sum_i d_i \left(-r_3 \phi_i + r_2 P_{23} \phi_i \right) \label{eq:PsiTripletDerGamma}
+\frac{\partial \Psi^{(-)}}{\partial \beta} &= \sum_i c_i \left(-r_2 \phi_i + r_3 P_{23} \phi_i \right) \label{eq:PsiTripletDerBeta} \\
+\frac{\partial \Psi^{(-)}}{\partial \gamma} &= \sum_i c_i \left(-r_3 \phi_i + r_2 P_{23} \phi_i \right) \label{eq:PsiTripletDerGamma}
 \end{align}
 
 
@@ -500,32 +502,50 @@ $\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Dissociation Energy (au) & Bi
 As described later in \cref{sec:ToddScattering}, we cannot use the full 1716 terms for the Ps-H scattering problem. \Cref{tab:BoundEnergyTodd1} gives the ground state energies using the restricted set of terms with Todd ordering. The cutoffs in $\omega$ are easily seen using the ViewOmegaCutoffs.py script described at \url{http://cas-bs5cph1.phys.unt.edu/wiki/index.php/ViewOmegaCutoffs.py} \cite{Wiki}.
 
 
-%\begin{landscape}
-\begin{table}[H]
-\footnotesize
 \begin{center}
-%\begin{tabular}{|l|l|c|l|l|}
+\setlength{\aboverulesep}{0pt}
+\setlength{\belowrulesep}{0pt}
+\setlength{\extrarowheight}{.75ex}
+\footnotesize
 \rowcolors{2}{gray!15}{white}
-\begin{tabular}{l l c l l}
+\begin{longtable}{l l c l l}
+\rowcolors{2}{gray!15}{white}
+\label{tab:BoundEnergyOther} \\
 \toprule
-\rowcolor{gray!25} & & & Dissociation & Binding\\
-\rowcolor{gray!25}Group & Method & Terms & Energy (au) & Energy (eV)\\
+\rowcolor{gray!25} \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{Dissociation} & \multicolumn{1}{c}{Binding} \\
+\rowcolor{gray!25} \multicolumn{1}{c}{Group} & \multicolumn{1}{c}{Method} & \multicolumn{1}{c}{Terms} & \multicolumn{1}{c}{Energy (au)} & \multicolumn{1}{c}{Energy (eV)} \\
 \midrule
+\endfirsthead
+
+\rowcolor{white}\multicolumn{5}{r}{{  }} \\
+\toprule
+\rowcolor{gray!25} \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{Dissociation} & \multicolumn{1}{c}{Binding} \\
+\rowcolor{gray!25} \multicolumn{1}{c}{Group} & \multicolumn{1}{c}{Method} & \multicolumn{1}{c}{Terms} & \multicolumn{1}{c}{Energy (au)} & \multicolumn{1}{c}{Energy (eV)} \\
+\midrule
+\endhead
+
+\hline \multicolumn{5}{r}{{Continued on next page}} \\ \hline
+\rowcolor{white} \caption[Positronium hydride energy values]{Positronium hydride energy values. Starred values are the reported values. Unstarred values are obtained by using the conversion factor given in section \ref{sec:Units}. Results marked by $^a$ take into account the finite mass correction.} \\
+\endfoot
+
+\caption{continued from previous page}
+\endlastfoot
+\rowcolors{2}{gray!15}{white}
 Current work & Variational Hylleraas $(\omega = 7)$ & 1505 & -0.789 189 725 & 1.066 406 705 \\
-Frolov (2010) \cite{Frolov2010} & Semi-exponential basis & 84 & -0.788 516 419$^\star$ & 1.048 085 11 \\
+Frolov (2010) \cite{Frolov2010} & Semi-exponential & 84 & -0.788 516 419$^\star$ & 1.048 085 11 \\
 Bubin (2006) \cite{Bubin2006} & ECGs variational & 5000 & -0.789 196 765 251$^\star$ & 1.066 598 271 959 \\
 Bubin (2006) \cite{Bubin2006} & ECGs variational$^a$ & 5000 & -0.788 870 710 444$^\star$ & 1.057 725 869 06 \\
 Mitroy (2006) \cite{Mitroy2006} & ECGs with SVM & 1800 & -0.789 196 740$^\star$ & 1.066 597 58 \\
 Chiesa (2004) \cite{Chiesa2004} & Quantum Monte Carlo & --- & -0.784 620$^\star$ & 0.942 058 \\
-Bubin (2004) \cite{Bubin2004} & ECGs$^a$ & 3200 & 0.788 870 706 6$^\star$ & 1.057 725 764 \\
+Bubin (2004) \cite{Bubin2004} & ECGs$^a$ & 3200 & -0.788 870 706 6$^\star$ & 1.057 725 764 \\
 Van Reeth (2003) \cite{VanReeth2003} & Variational Hylleraas $(\omega = 6)$ & 721 & -0.789 156 & 1.065 5$^\star$ \\
 Yan (1999) \cite{Yan1999} & Variational Hylleraas $(\omega = 12)$ & 5741 & -0.789 196 705 1$^\star$ & 1.066 596 635 \\
 Yan (1999) \cite{Yan1999} & Variational Hylleraas $(\omega \rightarrow \infty)$ & --- & -0.789 196 714 7$^\star$ & 1.066 596 896 \\
-Yan (1999) \cite{Yan1999a} & Variational Hylleraas$^a$ & 4705 & -0.789 102 812 & 1.064 041 68$^\star$ \\
+Yan (1999) \cite{Yan1999a} & Variational Hylleraas$^a$ & 4705 & -0.788 853 107$^\star$ & 1.057 246 85 \\
 Ryzhikh (1999) \cite{Ryzhikh1999} & ECGs & 750 & -0.789 196 0$^\star$ & 1.066 577 \\
 Adhikari (1999) \cite{Adhikari1999} & Five-state CC & --- & -0.788 6 & 1.05$^\star$ \\
 Strasburger (1998) \cite{Strasburger1998} & ECGs & 332 & -0.789 185$^\star$ & 1.066 278 \\
-Bressanini (1998) \cite{Bressanini1998} & Diffusion Monte Carlo & --- & -0.789 175$^\star$ & 1.066 01 \\
+Bressanini (1998) \cite{Bressanini1998} & DMC & --- & -0.789 175$^\star$ & 1.066 01 \\
 Usukura (1998) \cite{Usukura1998} & SVM & 1600 & -0.789 196 553 6$^\star$ & 1.066 592 513 \\
 Frolov (1997) \cite{Frolov1997a} & James-Coolidge variational & 924 & -0.789 136 9$^\star$ & 1.064 969 \\
 Frolov (1997) \cite{Frolov1997a} & James-Coolidge variational & --- & -0.789 181 8$^\star$ & 1.066 191 \\
@@ -542,36 +562,37 @@ Houston (1973) \cite{Houston1973} & Variational & 56 & -0.774 7$^\star$ & 0.672 
 Lebeda (1969) \cite{Lebeda1969} & Variational & 12 & -0.774 2$^\star$ & 0.658 5 \\
 Ludwig (1966) \cite{Ludwig1966} & --- & --- & -0.752 5$^\star$ & 0.06803 \\
 Goldanskii (1964) \cite{Clary1976} & --- & --- & -0.667 7$^\star$ & -2.2395 \\
-Neamtan (1962) \cite{Neamtan1962} & Variational exponential & 2 & -0.758 4$^\star$ & 0.228 6 \\
-Ore (1951) \cite{Ore1951} & Variational exponential & 2 & -0.752 51$^\star$ & 0.068 301 \\
-\midrule
-Walters (2004) \cite{Walters2004} & CC 14Ps14H + H$^-$ & --- & -0.787 9 & 1.03$^\star$\\
-Walters (2004) \cite{Walters2004} & CC 9Ps9H + H$^-$ & --- & -0.787 5 & 1.02$^\star$\\
-Blackwood (2002) \cite{Blackwood2002} & CC 14Ps14H & --- & -0.786 5  & 0.994$^\star$ \\
-Blackwood (2002) \cite{Blackwood2002} & CC 9Ps9H & --- & -0.785 4 & 0.963$^\star$ \\
-Blackwood (2002) \cite{Blackwood2002b} & CC 22Ps1H + H$^-$ & --- & -0.781 2 & 0.850$^\star$ \\
-Campbell (1998) \cite{Campbell1998} & CC 22Ps1H & --- & -0.773 3 & 0.634$^\star$ \\
+Neamtan (1962) \cite{Neamtan1962} & Variational exponential & 2 & -0.758 4$^\star$ & 0.228 6 \\*
+Ore (1951) \cite{Ore1951} & Variational exponential & 2 & -0.752 51$^\star$ & 0.068 301 \\*
+Walters (2004) \cite{Walters2004} & CC 14Ps14H + H$^-$ & --- & -0.787 9 & 1.03$^\star$\\*
+Walters (2004) \cite{Walters2004} & CC 9Ps9H + H$^-$ & --- & -0.787 5 & 1.02$^\star$\\*
+Blackwood (2002) \cite{Blackwood2002} & CC 14Ps14H & --- & -0.786 5  & 0.994$^\star$ \\*
+Blackwood (2002) \cite{Blackwood2002} & CC 9Ps9H & --- & -0.785 4 & 0.963$^\star$ \\*
+Blackwood (2002) \cite{Blackwood2002b} & CC 22Ps1H + H$^-$ & --- & -0.781 2 & 0.850$^\star$ \\*
+Campbell (1998) \cite{Campbell1998} & CC 22Ps1H & --- & -0.773 3 & 0.634$^\star$ \\*
 \bottomrule
-\end{tabular}
-\caption[Positronium hydride energy values]{Positronium hydride energy values. Starred values are the reported values. Unstarred values are obtained by using the conversion factor given in section \ref{sec:Units}. Results marked by $^a$ take into account the finite mass correction.}
-\label{tab:BoundEnergyOther}
+\end{longtable}
 \end{center}
-\end{table}
 %\end{landscape}
+
 
 \todoi{See if I can get the Jiang and Bressanini papers mentioned in \cite{Mitroy2006}. \url{http://scitation.aip.org/content/aip/journal/jcp/102/20/10.1063/1.469002}  \url{http://dx.doi.org/10.1063/1.1531101}  \url{http://scitation.aip.org/content/aip/journal/jcp/108/12/10.1063/1.475887}  \url{http://scitation.aip.org/content/aip/journal/jcp/109/21/10.1063/1.477604}}
 
-There have been a large number of calculations of the PsH binding energy over the years, starting with Ore's prediction in 1951 that PsH could exist \cite{Ore1951}. As computing power increased, using a Hylleraas basis set with hundreds of terms became possible \cite{Ho1978,Ho1986,Yan1999,VanReeth2003}. The Hylleraas results were the most accurate until very accurate ECG results from Mitroy \cite{Mitroy2006} and then Bubin and Adamowicz \cite{Bubin2006}.
+There have been a large number of calculations of the PsH binding energy over the years, starting with Ore's prediction in 1951 that PsH could exist \cite{Ore1951}. As computing power increased, using a Hylleraas basis set with hundreds or even thousands of terms became possible \cite{Ho1978,Ho1986,Yan1999,VanReeth2003}. The Hylleraas results were the most accurate until very accurate ECG results from Mitroy \cite{Mitroy2006} and Bubin and Adamowicz \cite{Bubin2004,Bubin2006}. The ECGs do not satisfy the Kato cusp condition, but good optimization of the basis set can give good results \cite{Mitroy2013}.
 
+The latest by Frolov \cite{Frolov2010} is more of an introduction of a modified basis set to this problem, showing how only 84 terms gives a better energy than a much larger Hylleraas set. Yan and Ho \cite{Yan1999} use a Hylleraas basis set with 5 sectors that each have different nonlinear parameters. Frolov's work essentially uses the same basis set but gives each term its own set of nonlinear parameters, optimizing all of them simultaneously.
 
+The last six entries of this table give just the CC results of the Belfast group. These are grouped together to show how different states and pseudostates in the CC calculations can give better approximations to the binding energy. It is particularly clear that adding the H$^-$ channel vastly improves the accuracy.
 
-The second part of this table gives just the CC results of the Belfast group.
+Our current complex Kohn binding energy in the first line of the table compares well with the accurate energies of Refs. \cite{Bubin2006, Mitroy2006, Yan1999}, but it is not as accurate of a calculation. The purpose of doing the PsH calculation was not to get the best result but to test how well the short-range terms for Ps-H scattering represent the short-range interactions. Based on \cref{tab:BoundEnergyOther}, the short-range interactions are described well. This also gave experience working with the Hylleraas basis set, and finding the PsH energy is a simpler problem than Ps-H scattering.
 
 \subsection{``Bound State'': Triplet}
 
-Our code does not predict a true triplet bound state, making the singlet state the only possible configuration for PsH.  Mitroy and Bromley have published a paper claiming a stable triplet bound state \cite{Mitroy2007}, but our code may not have the appropriate type of wavefunction to see this.  Despite not predicting a bound state, we run the bound state code for the triplet so that we can use this for the short-range terms for the scattering program.
+Our code does not predict a true triplet bound state, making the singlet ground state the only possible configuration for PsH. Mitroy and Bromley have published a paper claiming a stable triplet bound state \cite{Mitroy2007}, but our code may not have the appropriate type of wavefunction to see this. They also use a very large configuration interaction basis, and this bound state is very shallow. Despite not predicting a bound state, we run the bound state code for the triplet so that we can use this for the short-range terms for the scattering program.
 
-This output is also used in the program for Todd's method, which is then fed into the scattering program.  The triplet case is much more sensitive to the nonlinear parameters, as evidenced by the results in Table \ref{tab:BoundTripletResults}.  The lowest energy and larger number of terms for $\omega = 7$ is given by the highlighted row.  This set of terms is used in our triplet scattering calculations.  We have been unable to use more terms for $\omega = 8$ than $\omega = 7$, though the energy is lower than any of those given for $\omega = 7$.
+This output is also used in the program for Todd's method, which is then fed into the scattering program (see \cref{sec:ToddScattering}). The triplet case was more sensitive to the accuracy of the matrix elements. With the singlet, we were able to use the full $\omega = 6$ set (924 terms) without the asymptotic expansion before linear dependence became an issue. With the triplet, we were only able to use 450 terms out of an $\omega = 7$ run if the asymptotic expansion was not used. Adding the asymptotic expansion in double precision let us use 1327 terms. Finally, changing the code to quadruple precision lets us use the full set of 1716 terms for an $\omega = 7$ run, as shown in \cref{tab:BoundEnergy3}. 
+ 
+The lowest energy and larger number of terms for $\omega = 7$ is given by the highlighted row.  This set of terms is used in our triplet scattering calculations.  We have been unable to use more terms for $\omega = 8$ than $\omega = 7$, though the energy is lower than any of those given for $\omega = 7$. With Todd ordering and terms removed for the scattering problem (as described in \cref{}), we have the eigenvalues shown in \cref{tab:BoundEnergyTodd3}. Of note is that the energy shown for $\omega = 7$ is close to the bound state threshold of $E = -3/4$ au.
 
 \setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
 \setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
@@ -641,13 +662,6 @@ $\omega$ & $\alpha$ & $\beta$ & $\gamma$ \\ [0.5ex]
 \end{tabular}
 \label{table:NonlinearOptimized1SSimplex}
 \end{table}
-
-
-\section{Our Results}
-\label{sec:BoundResults}
-
-\subsection{Bound State: Singlet}
-
 
 
 
