@@ -460,32 +460,32 @@ The effective range is a measure of the interaction region of the scattering pro
 \end{equation}
 We use the van der Waals coefficient, C, given by Martin and Fraser as 34.78473 au \cite{Martin1980}.
 
-Gao has developed a quantum defect theory (QDT) treatment, solving the Schr\"{o}dinger equation for an attractive $r^{-6}$ potential to find an expression relating the phase shifts to a quantity he refers to as $K_l^0(E_{\bm \kappa})$ \cite{Gao1998}.
+Gao has developed a quantum defect theory (QDT) treatment, solving the Schr\"{o}dinger equation for an attractive $r^{-6}$ potential to find an expression relating the phase shifts to a quantity he refers to as $K_\ell^0(E_{\bm \kappa})$ \cite{Gao1998}.
 \begin{equation}
 \label{eq:GaoZEqn}
-\tan\delta_l = [Z_{ff} - K_l^0(E_{\bm \kappa}) Z_{gf}]^{-1} [K_l^0(E_{\bm \kappa}) Z_{gg} - Z_{fg}]
+\tan\delta_\ell = [Z_{ff} - K_\ell^0(E_{\bm \kappa}) Z_{gf}]^{-1} [K_\ell^0(E_{\bm \kappa}) Z_{gg} - Z_{fg}]
 \end{equation}
-The Z functions in this equation are described fully in his paper. The phase shifts are fitted to Eq. (\ref{eq:GaoZEqn}) to determine $K_l^0(E)$ for each $\kappa$ value. $K_l^0(\epsilon)$ must be expanded in a Taylor series as
+The Z functions in this equation are described fully in his paper. The phase shifts are fitted to Eq. (\ref{eq:GaoZEqn}) to determine $K_\ell^0(E)$ for each $\kappa$ value. $K_\ell^0(\epsilon)$ must be expanded in a Taylor series as
 \begin{equation}
 \label{eq:GaoKTaylor}
-K_l^0(E_{\bm \kappa}) = K_l^0(0) + {K_l^0}^\prime(0) E_{\bm \kappa} + \ldots.
+K_\ell^0(E_{\bm \kappa}) = K_\ell^0(0) + {K_\ell^0}^\prime(0) E_{\bm \kappa} + \ldots.
 \end{equation}
-From this, $K_l^0(0)$ and ${K_l^0}^\prime(0)$ are determined. $K_l^0(0)$ slowly varies with the energy $E_{\bm \kappa}$, and ${K_l^0}^\prime(0)$ gives the quickly varying part. In Ref. \cite{Gao1998a}, Gao performed an expansion of this expression for low $\kappa$ to generate expressions for $a_\ell$ and $r_0$:
+From this, $K_\ell^0(0)$ and ${K_\ell^0}^\prime(0)$ are determined. $K_\ell^0(0)$ slowly varies with the energy $E_{\bm \kappa}$, and ${K_\ell^0}^\prime(0)$ gives the quickly varying part. In Ref. \cite{Gao1998a}, Gao performed an expansion of this expression for low $\kappa$ to generate expressions for $a_\ell$ and $r_0$:
 
 \begin{equation}
 \label{eq:GaoScatLenS}
-a_{\ell=0} = \frac{2\pi}{[\Gamma(1/4)]^2} \frac{K_{l=0}^0(0) - 1}{K_{l=0}^0(0)} \beta_6
+a_{\ell=0} = \frac{2\pi}{[\Gamma(1/4)]^2} \frac{K_{\ell=0}^0(0) - 1}{K_{\ell=0}^0(0)} \beta_6
 \end{equation}
 
 \begin{equation}
 \label{eq:GaoScatLenP}
-a_{\ell=1} = -\frac{\pi}{18[\Gamma(1/4)]^2} \frac{K_{l=1}^0(0) + 1}{K_{l=1}^0(0)} \beta_6^3
+a_{\ell=1} = -\frac{\pi}{18[\Gamma(1/4)]^2} \frac{K_{\ell=1}^0(0) + 1}{K_{\ell=1}^0(0)} \beta_6^3
 \end{equation}
 
 \begin{align}
 \label{eq:GaoEffRange}
-r_{\ell=0} = &\frac{[\Gamma(1/4)]^2}{3\pi} \frac{[K_{l=0}^0(0)]^2 + 1}{[K_{l=0}^0(0) - 1]^2} \beta_6 \nonumber \\
-&+ \frac{[\Gamma(1/4)]^2}{\pi} \frac{{K_{l=0}^0}^\prime(0)^2(\hbar^2/2\mu)(1/\beta_6)^2}{[K_{l=0}^0(0) - 1]^2} \beta_6.
+r_{\ell=0} = &\frac{[\Gamma(1/4)]^2}{3\pi} \frac{[K_{\ell=0}^0(0)]^2 + 1}{[K_{\ell=0}^0(0) - 1]^2} \beta_6 \nonumber \\
+&+ \frac{[\Gamma(1/4)]^2}{\pi} \frac{{K_{\ell=0}^0}^\prime(0)^2(\hbar^2/2\mu)(1/\beta_6)^2}{[K_{\ell=0}^0(0) - 1]^2} \beta_6.
 \end{align}
 The term $\beta_6$ is related to $C$ by $\beta_6 = (2\mu C/\hbar^2)^{1/4}$.
 
@@ -561,7 +561,7 @@ We observe that the short-range terms used in the same order as the output of th
 	\label{fig:swave-phase-divergence}
 \end{figure}
 
-For $^1$S, we noticed an additional property of the phase shift graphs. When $\delta_0^+$ is plotted for one Kohn method with respect to $N(\omega)$ for multiple $\mu$ values ($\mu$ defined in Eq. (\ref{eq:PartialWaveShielding})), the phase shifts agree well for the different $\mu$ values up until linear dependence becomes apparent visually. We used this criteria to determine where to truncate the basis set, stopping at 1505 terms for $^1S$. We did not see a similar effect for $^3$S or other partial waves.
+For $^1$S, we noticed an additional property of the phase shift graphs. When $\delta_0^+$ is plotted for one Kohn method with respect to $N(\omega)$ for multiple $\mu$ values ($\mu$ defined in Eq. (\ref{eq:PartialWaveShielding})), the phase shifts agree well for the different $\mu$ values up until linear dependence becomes apparent visually. We use this criteria to determine where to truncate the basis set, stopping at 1505 terms for $^1S$. We did not see a similar effect for $^3$S or other partial waves.
 
 \subsection{Fittings}
 As with the previous Kohn calculation of Van Reeth and Humberston \cite{VanReeth2004}, we fit our computed phase shifts near the resonances for the S-wave and P-wave to the resonance formula
@@ -641,18 +641,18 @@ the $^1S$ PsH system.
 \begin{ruledtabular}  % From http://www.latex-community.org/forum/viewtopic.php?f=45&t=20722
 \begin{tabular}{l c l l}
 %\toprule
-Method & Terms & E (au) & $E_b$ (eV)\\
+Method & Terms & \thead{$E$ (au)} & \thead{$E_b$ (eV)}\\
 %\hline
 \colrule
 %\midrule
-Current work & 1505 & $-0.789 189 725$ & 1.066 406 705 \\
-Variational Hylleraas $(\omega = 6)$ \cite{VanReeth2003} & 721 & $-0.789 156$ & 1.065 5$^\star$ \\
-Variational Hylleraas \cite{Ho1986} & 396 & $-0.788 945^\star$ & 1.059 75 \\
-Variational Hylleraas $(\omega \rightarrow \infty)$ \cite{Yan1999} & --- & $-0.789 196 714 7^\star$ & 1.066 596 896 \\
-CC 14Ps14H \cite{Blackwood2002} & --- & $-0.786$ 5 & 0.994$^\star$ \\
-CC 14Ps14H + $\text{H}^-$ \cite{Walters2004} & --- & $-0.787 9$ & 1.03$^\star$\\
-ECGs with SVM \cite{Mitroy2006} & 1800 & $-0.789 196 740^\star$ & 1.066 597 58 \\
-ECGs variational \cite{Bubin2006} & 5000 & $-0.789 196 765 251^\star$ & 1.066 598 271 959 \\
+Current work & 1505 & $-$0.789 189 725 & 1.066 406 705 \\
+Variational Hylleraas $(\omega = 6)$ \cite{VanReeth2003} & 721 & $-$0.789 156 & 1.065 5$^\star$ \\
+Variational Hylleraas \cite{Ho1986} & 396 & $-$0.788 945$^\star$ & 1.059 75 \\
+Variational Hylleraas $(\omega \rightarrow \infty)$ \cite{Yan1999} & --- & $-$0.789 196 714 7$^\star$ & 1.066 596 896 \\
+CC 14Ps14H \cite{Blackwood2002} & --- & $-$0.786 5 & 0.994$^\star$ \\
+CC 14Ps14H + $\text{H}^-$ \cite{Walters2004} & --- & $-$0.787 9 & 1.03$^\star$\\
+ECGs with SVM \cite{Mitroy2006} & 1800 & $-$0.789 196 740$^\star$ & 1.066 597 58 \\
+ECGs variational \cite{Bubin2006} & 5000 & $-$0.789 196 765 251$^\star$ & 1.066 598 271 959 \\
 %\bottomrule
 \end{tabular}
 \end{ruledtabular}
