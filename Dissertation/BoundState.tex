@@ -47,11 +47,10 @@ N(\omega) = \Binomial{\omega+6}{6} \, ,
 \begin{figure}[H]
 	\centering
 	%\scalebox{1}{\includegraphics{NOmega}}
-	\includegraphics[width=4in]{NOmega}
+	\includegraphics[width=4in]{num-omega}
 	\caption{$N(\omega)$ versus $\omega$}
 	\label{fig:NOmega}
 \end{figure}
-
 
 \section{Rayleigh-Ritz Variational Method}
 The Rayleigh-Ritz variational method is given as the functional \cite{Bransden2003}
@@ -369,85 +368,36 @@ We had considerably more difficulty with linear dependence for the S-wave triple
 
 
 
-\section{Stabilization}
-\begin{figure}[ht]
-	\centering
-	\scalebox{1.3}{\includegraphics[height=3in]{Stabilization}}
-	\caption{Stabilization}
-	\label{fig:Stabilization}
-\end{figure}
-
-
-
-\section{Our Results}
-\subsection{Bound State: Singlet}
-
-\begin{table}[H]
-\begin{center}
-\begin{tabular}{|c|c|c|c|c|c|}
-\hline
-Description & $\alpha$, $\beta$ and $\gamma$ & $\omega$ & N($\omega$) & Used terms & Energy\\
-\hline
-Double, $10^{-7}$?, with asymptotic expansion & 0.6, 0.6, 1.0 & 6 & 924 & 916 & -0.7891695098 \\
-Double, $10^{-7}$?, with asymptotic expansion & 0.6, 0.6, 1.0 & 7 & 1716 & 1585 & -0.7891895683 \\
-Double, $10^{-7}$?, with asymptotic expansion & 0.6, 0.6, 1.0 & 8 & 3003 & 1925 & -0.7891945593 \\
-Quadruple, $10^{-6}$, with asymptotic expansion & 0.6, 0.6, 1.0 & 8 & 3003 & 2067 & -0.7891945847\\
-Double, $10^{-7}$?, with asymptotic expansion & 0.6, 0.6, 1.0 & 9 & 5005 & 2155 & -0.7891958600 \\
-\rowcolor{LightCyan}
-Double, $10^{-7}$?, with asymptotic expansion & 0.6, 0.6, 1.0 & 10 & 8008 & 2205 & -0.7891963235 \\
-
-Double, $10^{-7}$?, with asymptotic expansion & 0.58, 0.6, 1.0 & 9 & 5005 & 2166 & -0.7891958308\\
-Double, $10^{-7}$?, with asymptotic expansion & 0.58, 0.6, 1.0 & 11 & 12376 & 1674 & -0.7891961505\\
-
-Double, $10^{-7}$, with asymptotic expansion & 0.5, 0.6, 1.1 & 6 & 924 & 924 & -0.7891619764\\
-Double, $10^{-7}$, without asymptotic expansion & 0.5, 0.6, 1.1 & 6 & 924 & 924 & -0.7891619769\\
-\rowcolor{LightCyan}
-Double, $10^{-6}$, with asymptotic expansion & 0.5, 0.6, 1.1 & 7 & 1716 & 1608 & -0.7891870914\\
-Double, $10^{-6}$, without asymptotic expansion & 0.5, 0.6, 1.1 & 7 & 1716 & 1658 & -0.7891870935\\
-Quadruple, $10^{-6}$, with asymptotic expansion & 0.5, 0.6, 1.1 & 7 & 1716 & 1661 & -0.7891870935\\
-Double, $10^{-6}$, with asymptotic expansion & 0.5, 0.6, 1.1 & 8 & 3003 & 1653 & -0.7891935019\\
-Double, $10^{-6}$, without asymptotic expansion & 0.5, 0.6, 1.1 & 8 & 3003 & 1403 & -0.7891932577\\
-Quadruple, $10^{-6}$, with asymptotic expansion & 0.5, 0.6, 1.1 & 8 & 3003 & 1619 & -0.7891934661\\
-\hline
-\end{tabular}
-\caption{Bound State Energy for Singlet PsH}
-\label{tab:BoundSingletResults}
-\end{center}
-\end{table}
-
-The PsH bound state energy code was run for several sets of nonlinear parameters and increasing values of $\omega$.  Some runs were also performed using quadruple precision, but the results for that are preliminary at this point.  Table \ref{tab:BoundSingletResults} contains the results of these runs.  One criteria of Todd's method (\ref{sec:ToddBound}) is that the eigenvalues from the upper and lower triangular matrices must differ by no more than a threshold value.  This threshold is given in the first column.
-
-The best run is given by the first highlighted row, with $\omega = 10$.  We performed a run for $\omega = 11$, but linear dependence issues caused it to returned only 1674 terms, less than the 2205 for $\omega = 10$.  The energy is also higher, so $\omega = 10$ is the practical limit for our calculations without improvements in the code to solve the generalized eigenvalue problem (\ref{eq:BoundGenEig}).  The scattering problem is much more demanding with regards to computation time and linear dependence, so the current set of short-range terms that we use is denoted by the second highlighted row with $\omega = 7$.  
-
-\textbf{@TODO:} Further discussion on the linear dependence in another section
-
-
 \section{Results}
+
+\todoi{Give binding energy equation}
+
 \subsection{Bound State: Singlet}
 
 \setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
 \setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
 \begin{table}[H]
+\small
 \centering
-\begin{tabular}{c c c c c c c}
+\begin{tabular}{c c c c c c c d{1.12}}
 \toprule
-$\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (au) & Binding Energy (eV) \\ [0.5ex]
+$\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (au) & Binding Energy (eV) & \multicolumn{1}{c}{$\Delta E$ (au)} \\ [0.5ex]
 \midrule
-0 & 1 & 0.60 & 0.60 & 1.00 & -0.541 492 378 889 & --- \\
-1 & 7 & 0.60 & 0.60 & 1.00 & -0.744 334 244 165 & --- \\
-2 & 28 & 0.60 & 0.60 & 1.00 & -0.778 357 106 972 & 0.771 636 156 726 \\
-3 & 84 & 0.60 & 0.60 & 1.00 & -0.786 807 448 395 & 1.001 581 651 009 \\
-4 & 210 & 0.60 & 0.60 & 1.00 & -0.788 685 563 109 & 1.052 687 753 648 \\
-5 & 462 & 0.60 & 0.60 & 1.00 & -0.789 082 645 582 & 1.063 492 917 716 \\
-6 & 916 & 0.60 & 0.60 & 1.00 & -0.789 169 509 836 & 1.065 856 614 384 \\
-7 & 1585 & 0.60 & 0.60 & 1.00 & -0.789 189 568 390 & 1.066 402 435 425 \\
-8 & 1925 & 0.60 & 0.60 & 1.00 & -0.789 194 559 324 & 1.066 538 245 640 \\
-9 & 2166 & 0.60 & 0.60 & 1.00 & -0.789 195 830 870 & 1.066 572 846 182 \\
-10 & 2205 & 0.60 & 0.60 & 1.00 & -0.789 196 323 586 & 1.066 586 253 647 \\
-11 & 1674 & 0.58 & 0.60 & 1.00 & -0.789 196 284 600 & 1.066 585 192 793 \\
+0 & 1 &     0.60 & 0.60 & 1.00 & $-$0.541 492 378 889 & --- & \multicolumn{1}{c}{---} \\
+1 & 7 &     0.60 & 0.60 & 1.00 & $-$0.744 334 244 165 & ---               &  0.202 841 865 276 \\
+2 & 28 &    0.60 & 0.60 & 1.00 & $-$0.778 357 106 972 & 0.771 636 156 726 &  0.034 022 862 807 \\
+3 & 84 &    0.60 & 0.60 & 1.00 & $-$0.786 807 448 395 & 1.001 581 651 009 &  0.008 450 341 423 \\
+4 & 210 &   0.60 & 0.60 & 1.00 & $-$0.788 685 563 109 & 1.052 687 753 648 &  0.001 878 114 714 \\
+5 & 462 &   0.60 & 0.60 & 1.00 & $-$0.789 082 645 582 & 1.063 492 917 716 &  0.000 397 082 473 \\
+6 & 916 &   0.60 & 0.60 & 1.00 & $-$0.789 169 509 836 & 1.065 856 614 384 &  0.000 086 864 254 \\
+7 & 1585 &  0.60 & 0.60 & 1.00 & $-$0.789 189 568 390 & 1.066 402 435 425 &  0.000 020 058 554 \\
+8 & 1925 &  0.60 & 0.60 & 1.00 & $-$0.789 194 559 324 & 1.066 538 245 640 &  0.000 004 990 934 \\
+9 & 2166 &  0.60 & 0.60 & 1.00 & $-$0.789 195 830 870 & 1.066 572 846 182 &  0.000 001 271 546 \\
+10 & 2205 & 0.60 & 0.60 & 1.00 & $-$0.789 196 323 586 & 1.066 586 253 647 &  0.000 000 492 716 \\
+11 & 1674 & 0.58 & 0.60 & 1.00 & $-$0.789 196 284 600 & 1.066 585 192 793 & -0.000 000 038 986 \\
 \bottomrule
 \end{tabular}
-\caption{Ground state energy of positronium hydride} % title of Table
+\caption{Ground state energy of PsH} % title of Table
 \label{tab:BoundEnergyOld}
 \end{table}
 
@@ -456,46 +406,48 @@ The original double precision PsH code was run for a simple choice of the nonlin
 \setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
 \setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
 \begin{table}[H]
+\small
 \centering
-\begin{tabular}{c c c c c c c}
+\begin{tabular}{c c c c c c c c}
 \toprule
-$\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Dissociation Energy (au) & Binding Energy (eV) \\ [0.5ex]
+$\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (au) & Binding Energy (eV) & $\Delta E$ (au) \\ [0.5ex]
 \midrule
-0 & 1 & 0.586 & 0.580 & 1.093 & -0.558 977 058 051 & --- \\
-1 & 7 & 0.586 & 0.580 & 1.093 & -0.744 698 936 920 & --- \\
-2 & 28 & 0.586 & 0.580 & 1.093 & -0.778 246 602 473 & 0.768 629 176 247 \\
-3 & 84 & 0.586 & 0.580 & 1.093 & -0.786 743 703 126 & 0.999 847 053 924 \\
-4 & 210 & 0.586 & 0.580 & 1.093 & -0.788 672 801 036 & 1.052 340 479 962 \\
-5 & 462 & 0.586 & 0.580 & 1.093 & -0.789 082 645 582 & 1.063 460 197 197 \\
-6 & 924 & 0.586 & 0.580 & 1.093 & -0.789 169 509 836 & 1.065 861 354 038 \\
-7 & 1716 & 0.586 & 0.580 & 1.093 & -0.789 189 730 694 & 1.066 406 851 931 \\
+0 & 1    & 0.586 & 0.580 & 1.093 & -0.558 977 058 051 & --- & --- \\
+1 & 7    & 0.586 & 0.580 & 1.093 & -0.744 698 936 920 & ---               & 0.185 721 878 869 \\
+2 & 28   & 0.586 & 0.580 & 1.093 & -0.778 246 602 473 & 0.768 629 176 247 & 0.033 547 665 553 \\
+3 & 84   & 0.586 & 0.580 & 1.093 & -0.786 743 703 126 & 0.999 847 053 924 & 0.008 497 100 653 \\
+4 & 210  & 0.586 & 0.580 & 1.093 & -0.788 672 801 036 & 1.052 340 479 962 & 0.001 929 097 910 \\
+5 & 462  & 0.586 & 0.580 & 1.093 & -0.789 082 645 582 & 1.063 460 197 197 & 0.000 409 844 546 \\
+6 & 924  & 0.586 & 0.580 & 1.093 & -0.789 169 509 836 & 1.065 861 354 038 & 0.000 086 864 254 \\
+7 & 1716 & 0.586 & 0.580 & 1.093 & -0.789 189 730 694 & 1.066 406 851 931 & 0.000 020 220 858 \\
 \bottomrule
 \end{tabular}
-\caption{Ground state energy of positronium hydride with full set of terms} % title of Table
+\caption{Ground state energy of PsH with full set of terms} % title of Table
 \label{tab:BoundEnergy1}
 \end{table}
 
-The next and current version of the code used quadruple precision and is able to do runs through $\omega = 8$ (not shown in \cref{tab:BoundEnergy1}). Linear dependence is also decreased when the nonlinear parameters are different (\cref{sec:BoundOpt} for parameter optimization). The Ps-H scattering problem (\cref{chp:SWave}) is much more difficult, so a run with $\omega = 7$ is all that is needed. \Cref{tab:BoundEnergy1} shows the PsH energies through $\omega = 7$ for the full set of terms described by \cref{eq:OmegaDef}.
+The next and current version of the code uses quadruple precision and is able to do runs through $\omega = 8$ (not shown in \cref{tab:BoundEnergy1}). Linear dependence is also decreased when the nonlinear parameters are different (\cref{sec:BoundOpt} for parameter optimization). The Ps-H scattering problem (\cref{chp:SWave}) is much more difficult, so a run with $\omega = 7$ is all that is needed. \Cref{tab:BoundEnergy1} shows the PsH energies through $\omega = 7$ for the full set of terms described by \cref{eq:OmegaDef}.
 
 \setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
 \setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
 \begin{table}[H]
+\small
 \centering
-\begin{tabular}{c c c c c c c}
+\begin{tabular}{c c c c c c c c}
 \toprule
-$\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Dissociation Energy (au) & Binding Energy (eV) \\ [0.5ex]
+$\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (au) & Binding Energy (eV) & $\Delta E$ (au) \\ [0.5ex]
 \midrule
-0 & 1 & 0.586 & 0.580 & 1.093 & -0.667 061 651 939 & --- \\
-1 & 5 & 0.586 & 0.580 & 1.093 & -0.744 026 116 052 & --- \\
-2 & 25 & 0.586 & 0.580 & 1.093 & -0.782 354 938 988 & 0.880 422 703 095 \\
-3 & 77 & 0.586 & 0.580 & 1.093 & -0.787 040 587 400 & 1.007 925 686 241 \\
-4 & 199 & 0.586 & 0.580 & 1.093 & -0.788 799 610 636 & 1.055 791 144 810 \\
-5 & 436 & 0.586 & 0.580 & 1.093 & -0.789 131 695 127 & 1.064 827 623 779 \\
-6 & 856 & 0.586 & 0.580 & 1.093 & -0.789 188 377 502 & 1.066 370 029 703 \\
-7 & 1505 & 0.586 & 0.580 & 1.093 & -0.789 189 725 291 & 1.066 406 704 904 \\
+0 & 1    & 0.586 & 0.580 & 1.093 & -0.667 061 651 939 & --- & --- \\
+1 & 5    & 0.586 & 0.580 & 1.093 & -0.744 026 116 052 & ---               & 0.076 964 464 113 \\
+2 & 25   & 0.586 & 0.580 & 1.093 & -0.782 354 938 988 & 0.880 422 703 095 & 0.038 328 822 936 \\
+3 & 77   & 0.586 & 0.580 & 1.093 & -0.787 040 587 400 & 1.007 925 686 241 & 0.004 685 648 412 \\
+4 & 199  & 0.586 & 0.580 & 1.093 & -0.788 799 610 636 & 1.055 791 144 810 & 0.001 759 023 236 \\
+5 & 436  & 0.586 & 0.580 & 1.093 & -0.789 131 695 127 & 1.064 827 623 779 & 0.000 332 084 491 \\
+6 & 856  & 0.586 & 0.580 & 1.093 & -0.789 188 377 502 & 1.066 370 029 703 & 0.000 056 682 375 \\
+7 & 1505 & 0.586 & 0.580 & 1.093 & -0.789 189 725 291 & 1.066 406 704 904 & 0.000 001 347 789 \\
 \bottomrule
 \end{tabular}
-\caption{Ground state energy of positronium hydride with restricted Todd set of terms} % title of Table
+\caption{Ground state energy of PsH with restricted Todd set of terms} % title of Table
 \label{tab:BoundEnergyTodd1}
 \end{table}
 
@@ -512,7 +464,7 @@ As described later in \cref{sec:ToddScattering}, we cannot use the full 1716 ter
 \rowcolors{2}{gray!15}{white}
 \label{tab:BoundEnergyOther} \\
 \toprule
-\rowcolor{gray!25} \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{Dissociation} & \multicolumn{1}{c}{Binding} \\
+\rowcolor{gray!25} \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{Total} & \multicolumn{1}{c}{Binding} \\
 \rowcolor{gray!25} \multicolumn{1}{c}{Group} & \multicolumn{1}{c}{Method} & \multicolumn{1}{c}{Terms} & \multicolumn{1}{c}{Energy (au)} & \multicolumn{1}{c}{Energy (eV)} \\
 \midrule
 \endfirsthead
@@ -556,7 +508,7 @@ Saito (1995) \cite{Saito1995} & Restricted Hartree-Fock & --- &  & 0.70$^\star$ 
 Ho (1986) \cite{Ho1986} & Variational with Hylleraas & 396 & -0.788 945$^\star$ & 1.059 75 \\
 Ho (1978) \cite{Ho1978} & Variational with Hylleraas & 210 & -0.787 525$^\star$ & 1.021 12$^\star$ \\
 Clary (1976) \cite{Clary1976} & Variational & 67 & -0.784 161$^\star$ & 0.929 568 \\
-Page (1974) \cite{Page1974} & Variational & 70 & -0.786 79$^\star$ & 1.0012 \\
+Page (1974) \cite{Page1974} & Variational & 70 & -0.786 79$^\star$ & 1.0011 \\
 Navin (1974) \cite{Navin1974} & Variational & 17 & -0.779 2$^\star$ & 0.794 6 \\
 Houston (1973) \cite{Houston1973} & Variational & 56 & -0.774 7$^\star$ & 0.672 5 \\
 Lebeda (1969) \cite{Lebeda1969} & Variational & 12 & -0.774 2$^\star$ & 0.658 5 \\
@@ -575,8 +527,6 @@ Campbell (1998) \cite{Campbell1998} & CC 22Ps1H & --- & -0.773 3 & 0.634$^\star$
 \end{center}
 %\end{landscape}
 
-\todoi{Is this really the dissociation energy?}
-
 \todoi{See if I can get the Jiang and Bressanini papers mentioned in \cite{Mitroy2006}. \url{http://scitation.aip.org/content/aip/journal/jcp/102/20/10.1063/1.469002}  \url{http://dx.doi.org/10.1063/1.1531101}  \url{http://scitation.aip.org/content/aip/journal/jcp/108/12/10.1063/1.475887}  \url{http://scitation.aip.org/content/aip/journal/jcp/109/21/10.1063/1.477604}}
 
 There have been a large number of calculations of the PsH binding energy over the years, starting with Ore's prediction in 1951 that PsH could exist \cite{Ore1951}. As computing power increased, using a Hylleraas basis set with hundreds or even thousands of terms became possible \cite{Ho1978,Ho1986,Yan1999,VanReeth2003}. The Hylleraas results were the most accurate until very accurate ECG results from Mitroy \cite{Mitroy2006} and Bubin and Adamowicz \cite{Bubin2004,Bubin2006}. The ECGs do not satisfy the Kato cusp condition, but good optimization of the basis set can give good results \cite{Mitroy2013}.
@@ -592,53 +542,96 @@ Our current complex Kohn binding energy in the first line of the table compares 
 Our code does not predict a true triplet bound state, making the singlet ground state the only possible configuration for PsH. Mitroy and Bromley have published a paper claiming a stable triplet bound state \cite{Mitroy2007}, but our code may not have the appropriate type of wavefunction to see this. They also use a very large configuration interaction basis, and this bound state is very shallow. Despite not predicting a bound state, we run the bound state code for the triplet so that we can use this for the short-range terms for the scattering program.
 
 This output is also used in the program for Todd's method, which is then fed into the scattering program (see \cref{sec:ToddScattering}). The triplet case was more sensitive to the accuracy of the matrix elements. With the singlet, we were able to use the full $\omega = 6$ set (924 terms) without the asymptotic expansion before linear dependence became an issue. With the triplet, we were only able to use 450 terms out of an $\omega = 7$ run if the asymptotic expansion was not used. Adding the asymptotic expansion in double precision let us use 1327 terms. Finally, changing the code to quadruple precision lets us use the full set of 1716 terms for an $\omega = 7$ run, as shown in \cref{tab:BoundEnergy3}. 
- 
-The lowest energy and larger number of terms for $\omega = 7$ is given by the highlighted row.  This set of terms is used in our triplet scattering calculations.  We have been unable to use more terms for $\omega = 8$ than $\omega = 7$, though the energy is lower than any of those given for $\omega = 7$. With Todd ordering and terms removed for the scattering problem (as described in \cref{}), we have the eigenvalues shown in \cref{tab:BoundEnergyTodd3}. Of note is that the energy shown for $\omega = 7$ is close to the bound state threshold of $E = -3/4$ au.
 
 \setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
 \setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
 \begin{table}[H]
 \centering
-\begin{tabular}{c c c c c c}
+\begin{tabular}{c c c c c c c}
 \toprule
-$\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (au) \\ [0.5ex]
+$\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (au) & $\Delta E$ (au) \\ [0.5ex]
 \midrule
-0 & 1 & 0.323 & 0.334 & 0.975 & -0.500 031 146 247 \\
-1 & 7 & 0.323 & 0.334 & 0.975 & -0.623 725 636 031 \\
-2 & 28 & 0.323 & 0.334 & 0.975 & -0.679 176 805 541 \\
-3 & 84 & 0.323 & 0.334 & 0.975 & -0.710 407 818 871 \\
-4 & 210 & 0.323 & 0.334 & 0.975 & -0.727 102 619 903 \\
-5 & 462 & 0.323 & 0.334 & 0.975 & -0.735 860 693 040 \\
-6 & 924 & 0.323 & 0.334 & 0.975 & -0.740 622 381 908 \\
-7 & 1716 & 0.323 & 0.334 & 0.975 & -0.743 386 825 704 \\
+0 & 1    & 0.323 & 0.334 & 0.975 & -0.500 031 146 247 & --- \\
+1 & 7    & 0.323 & 0.334 & 0.975 & -0.623 725 636 031 & 0.123 694 489 784 \\
+2 & 28   & 0.323 & 0.334 & 0.975 & -0.679 176 805 541 & 0.055 451 169 510 \\
+3 & 84   & 0.323 & 0.334 & 0.975 & -0.710 407 818 871 & 0.031 231 013 330 \\
+4 & 210  & 0.323 & 0.334 & 0.975 & -0.727 102 619 903 & 0.016 694 801 032 \\
+5 & 462  & 0.323 & 0.334 & 0.975 & -0.735 860 693 040 & 0.008 758 073 137 \\
+6 & 924  & 0.323 & 0.334 & 0.975 & -0.740 622 381 908 & 0.004 761 688 868 \\
+7 & 1716 & 0.323 & 0.334 & 0.975 & -0.743 386 825 704 & 0.002 764 443 796 \\
 \bottomrule
 \end{tabular}
 \caption{Eigenvalues of triplet short-range terms} % title of Table
 \label{tab:BoundEnergy3}
 \end{table}
 
+As described later in \cref{sec:ToddScattering}, we cannot use the full 1716 terms for the Ps-H scattering problem. \Cref{tab:BoundEnergyTodd1} gives the ground state energies using the restricted set of terms with Todd ordering. The cutoffs in $\omega$ are easily seen using the ViewOmegaCutoffs.py script described at \url{http://cas-bs5cph1.phys.unt.edu/wiki/index.php/ViewOmegaCutoffs.py} \cite{Wiki}.
 
 \setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
 \setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
 \begin{table}[H]
 \centering
-\begin{tabular}{c c c c c c}
+\begin{tabular}{c c c c c c c}
 \toprule
-$\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (au) \\ [0.5ex]
+$\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (au) & $\Delta E$ (au) \\ [0.5ex]
 \midrule
-0 & 1 & 0.323 & 0.334 & 0.975 & -0.563 395 012 511 \\
-1 & 7 & 0.323 & 0.334 & 0.975 & -0.686 271 418 056 \\
-2 & 27 & 0.323 & 0.334 & 0.975 & -0.711 282 334 038 \\
-3 & 81 & 0.323 & 0.334 & 0.975 & -0.735 714 009 056 \\
-4 & 201 & 0.323 & 0.334 & 0.975 & -0.743 231 966 796 \\
-5 & 432 & 0.323 & 0.334 & 0.975 & -0.743 327 766 172 \\
-6 & 854 & 0.323 & 0.334 & 0.975 & -0.743 378 744 079 \\
-7 & 1633 & 0.323 & 0.334 & 0.975 & -0.743 386 823 504 \\
+0 & 1    & 0.323 & 0.334 & 0.975 & -0.563 395 012 511 & --- \\
+1 & 7    & 0.323 & 0.334 & 0.975 & -0.686 271 418 056 & 0.122 876 405 545 \\
+2 & 27   & 0.323 & 0.334 & 0.975 & -0.711 282 334 038 & 0.025 010 915 982 \\
+3 & 81   & 0.323 & 0.334 & 0.975 & -0.735 714 009 056 & 0.024 431 675 018 \\
+4 & 201  & 0.323 & 0.334 & 0.975 & -0.743 231 966 796 & 0.007 517 957 740 \\
+5 & 432  & 0.323 & 0.334 & 0.975 & -0.743 327 766 172 & 0.000 095 799 376 \\
+6 & 854  & 0.323 & 0.334 & 0.975 & -0.743 378 744 079 & 0.000 050 977 907 \\
+7 & 1633 & 0.323 & 0.334 & 0.975 & -0.743 386 823 504 & 0.000 008 079 425 \\
 \bottomrule
 \end{tabular}
 \caption{Eigenvalues of triplet short-range terms} % title of Table
 \label{tab:BoundEnergyTodd3}
 \end{table}
+
+
+\section{Stabilization}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=5.5in]{singlet-eigen}
+	\caption{$^1$S eigenvalues. The dashed line represents the Ps(n=2) threshold. Dotted lines represent complex Kohn $^1$S resonance positions.}
+	\label{fig:singlet-eigen}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=5.5in]{triplet-eigen}
+	\caption{$^3$S eigenvalues. The dashed line represents the Ps(n=2) threshold.}
+	\label{fig:triplet-eigen}
+\end{figure}
+
+
+The binding energy (also known as the dissociation energy) is given by Ref. \cite{Page1974} as
+\beq
+\label{eq:DissociationE}
+E_d = -E_1 - \frac{3}{4} \text{ au}.
+\eeq
+The $-\frac{3}{4}$ comes from adding the ground state (or ionization) energies of Ps and H. If the PsH system has a lower energy than $-\frac{3}{4}$, the system is bound. 
+Alternatively, if the binding energy is greater than 0, the system is bound.
+Using the accurate Bubin and Adamowicz energy in \cref{tab:BoundEnergyOther}, this gives that $^1$S PsH is stable against dissociation into Ps and H by $\SI{0.039 196 765 251}{au}$ or $\SI{1.066 598 271 959}{eV}$. 
+
+Hazi and Taylor \cite{Hazi1970} introduced the concept of stabilization plots to PsH bound state calculations. Specifically, they plotted the four lowest eigenvalues with respect to $N$ and looked for avoided crossings. The avoided crossing that they found at $\SI{0.428 985}{au}$ (or $\SI{5.8366}{eV}$ as shown in \cref{tab:SWaveResonancesOther}) corresponds roughly with the first $^1$S resonance.
+
+Plotting the first 10 eigenvalues with respect to $N$ for $^1$S gives \cref{fig:singlet-eigen}. As noted, the dashed line represents the Ps(n=2) inelastic threshold at $\SI{5.101}{eV}$. The dotted lines correspond to the first two complex Kohn $^1$S resonance positions given in \cref{tab:SWaveResonancesOther}. 
+
+
+
+
+
+
+
+
+
+
+
+
 
 \section{Parameter Optimization}
 \label{sec:BoundOptimization}
@@ -666,7 +659,7 @@ $\omega$ & $\alpha$ & $\beta$ & $\gamma$ \\ [0.5ex]
 
 
 
-
-
+%\bibliographystyle{UNTamsplain}
+%\bibliography{Dissertation}
 
 \end{document}

@@ -29,6 +29,9 @@
 % Subfolders containing our images
 \graphicspath{{IPython/}{Images/}}
 
+% Remove before submitting
+\newcommand{\todoi}{\todo[inline]}
+
 % To center table head
 \newcommand*{\thead}[1]{\multicolumn{1}{c}{#1}}
 
@@ -83,8 +86,9 @@ molecules; 36.10.Dr Positronium; 34.80.Bm Elastic scattering}
 %\preprint{APS/123-QED}
 
 Positronium (Ps) scattering from atoms and molecules is an area of current 
-experimental and theoretical interest. The development of energy-tunable ortho
--Ps beams \cite{Brown1985,Laricchia1987,Zafar1996,Garner1996,Laricchia2008} 
+experimental and theoretical interest. The development of energy-tunable
+ortho-Ps beams
+\cite{Brown1985,Laricchia1987,Zafar1996,Garner1996,Laricchia2008} 
 has enabled measurements to be made of Ps scattering from the inert gases He, 
 Ne, Ar, Kr, and Xe
 \cite{Garner1996,Garner2000,Armitage2002,Laricchia2004,Armitage2006,Laricchia2008,Engbrecht2008,Brawley2010a}
@@ -95,9 +99,10 @@ difficulty of an atomic hydrogen beam, although the binding energy of positroniu
 hydride (PsH) has been measured in the reaction of a positron with methane,
 e$^+$ + CH$_4$ $\to$ CH$_3^+$ + PsH \cite{Schrader1992}. The low-energy region
 is of particular interest, because in this energy range, positron and electron 
-correlations are dominant. We are presenting \cite{Conferences1,Conferences2} 
+correlations are dominant. We are presenting
+\cite{Conferences1,Conferences2,Conferences3} 
 in this paper our work of the application of the complex Kohn variational 
-method to elastic Ps(1s)+H(1s) scattering in the energies up to the 
+method to elastic Ps(1s)-H(1s) scattering in the energies up to the 
 excitation threshold of Ps(n=2) at 5.101 eV.
 
 Ps formation is important in the galactic core \cite{Kinzer1996}, and Ps-atom 
@@ -161,9 +166,7 @@ Ho performed a variational calculation with a Hylleraas basis set
 \cite{Yan1999}. Mitroy used the stochastic variational method (SVM) with
 1800 explicitly correlated Gaussians (ECGs) \cite{Mitroy2006}, and Bubin
 and Adamowicz found the most accurate value using 5000 ECGs in a variational
-calculation \cite{Bubin2006}. These are all singlet PsH, as we have done,
-but Mitroy and Bromley also found a triplet bound state of PsH
-\cite{Mitroy2007}.
+calculation \cite{Bubin2006}.
  
 %This is not meant to be an exhaustive list for this system.
 
@@ -203,7 +206,7 @@ e$^+$-H$^-$ channel
 \cite{Blackwood2002b} and compared their results for the S-wave with the
 accurate Kohn variational results \cite{VanReeth2003}. They speculated that the
 inclusion of the virtual Ps$^-$ formation channel may be needed to obtain 
-agreement with the Kohn variational results for Ps(1s) + H(1s) scattering 
+agreement with the Kohn variational results for Ps(1s)-H(1s) scattering 
 \cite{Blackwood2002}.
 
 Unlike the SVM and DMC methods, the Kohn variational method gives rigorous 
@@ -244,7 +247,8 @@ conversion factor 1 au = {27.21138505(60) eV}
 	\label{fig:PsHCoords}
 \end{figure}
 
-We are investigating low-energy elastic ground-state Ps with ground-state 
+We are investigating low-energy elastic scattering of ground-state Ps
+with ground-state 
 hydrogen, Ps(1s)+H(1s), for incident energies up to the excitation threshold 
 of Ps(n=2)+H(1s), which is at an energy of $\tfrac{3}{16}$ au ($5.102$ eV). 
 Previous work on Ps-H scattering used the Kohn and inverse Kohn approach
@@ -257,7 +261,7 @@ variational method \cite{VanReeth1999}. The results presented in Sec.
 general wavefunction that can be used in any of the variants of the Kohn 
 variational method, as we describe in Sec. \ref{sec:Kohn}.
 
-For S-wave Ps(1s)+H(1s) elastic scattering, the flexible scattering
+For S-wave Ps(1s)-H(1s) elastic scattering, the flexible scattering
 wavefunction is given by
 \begin{equation}
 \Psi_0^{\pm,t} = \widetilde{S}_0 + L_0^{\pm,t} \, \widetilde{C}_0
@@ -268,7 +272,7 @@ where the superscript $t$ indicates that this is a trial wavefunction. The plus
 sign indicates the spatially symmetric singlet case, and the minus sign
 indicates the spatially antisymmetric triplet. The total orbital angular
 momentum of the system is equal to the orbital angular momentum of the incoming
-ground state Ps, $\ell$. For partial waves $\ell > 0$,
+ground-state Ps, $\ell$. For partial waves $\ell > 0$,
 \begin{equation}
 \Psi_\ell^{\pm,t} = \widetilde{S}_\ell + L^{\pm,t}_\ell \, \widetilde{C}_\ell
  + \sum_{i=1}^{N(\omega)} c_{i,\ell} \phi_{i1}
@@ -311,7 +315,7 @@ with
 
 $P_{23}$ is the exchange operator for the two indistinguishable electrons.
 $\Phi_{Ps,1s}\left(r_{12}\right)$ and $\Phi_{H,1s}\left(r_3\right)$ are the 
-ground state wavefunctions of Ps and H, respectively. The shielding factor,
+ground-state wavefunctions of Ps and H, respectively. The shielding factor,
 $f_\ell(\rho)$, ensures that the singularity of the Neumann function is removed
 at the origin and is chosen to be
 \begin{equation}
@@ -360,7 +364,8 @@ all interparticle distances, given by
 \begin{equation}
 \label{eq:PhiDef}
 \bar{\phi}_{ij} = \left(1 \pm P_{23}\right) Y_{\ell 0}(\theta_j,\phi_j)
-r_j^{\ell} r_1^{k_i} r_2^{l_i} r_{12}^{m_i} r_3^{n_i} r_{13}^{p_i} r_{23}^{q_i}
+e^{-(\alpha r_1 + \beta r_2 + \gamma r_3)}
+r_j^{\ell} r_1^{k_i} r_2^{l_i} r_{12}^{m_i} r_3^{n_i} r_{13}^{p_i} r_{23}^{q_i}.
 \end{equation}
 The variable $\omega$ is a non-negative integer that determines the maximum
 number of terms in the basis set. For a chosen value of $\omega$, the integer
@@ -597,6 +602,12 @@ The scattering length is defined as \cite{Bransden2003}
 \label{eq:ScatLen}
 a_\ell^\pm = -\lim_{\kappa \to 0}
   \frac{\tan{\delta_\ell^\pm}}{\kappa^{2\ell+1}}.
+\end{equation}
+We use the approximation with small $\kappa$ of
+\begin{equation}
+\label{eq:ScatLenApprox}
+a_\ell^\pm \approx
+  - \frac{\tan{\delta_\ell^\pm}}{\kappa^{2\ell+1}}.
 \end{equation}
 To avoid confusion with the Bohr radius, $a_0$, we define $a = a_{\ell=0}$. The
 Kohn variational methods give an exact upper bound on the scattering length
@@ -862,6 +873,12 @@ length is considered the error in tables \ref{tab:SWaveScatLenERT} and
   \caption{Parameters for each partial wave}
   \label{tab:Nonlinear}
 \end{table}
+
+Table \ref{tab:Nonlinear} shows the number of terms, $N^\prime(\omega)$, used 
+for each partial wave. This table also shows the parameters $\alpha$, $\beta$,
+$\gamma$ in Eq.~(\ref{eq:PhiDef}) and the parameters $\mu$ and $m_\ell$ in 
+Eq.~(\ref{eq:PartialWaveShielding}) used for each partial wave.
+
 
 \section{Results}
 \label{sec:Results}
@@ -1258,15 +1275,14 @@ deviation. The second line has the $S$ matrix complex Kohn results.
 
 These Rydberg resonances correspond to the quasibound state of e$^+$ with the 
 H$^-$ ion \cite{Drachman1979}. Figure \ref{fig:spd-wave-phases}(a) shows the 
-two $^1$S Rydberg resonances below the
-Ps(n=2) channel, the first associated with the $2s$ state \cite{DiRienzi2002b}.
-These resonances were first computed by Drachman and Houston using the 
-stabilization method and complex rotation method \cite{Drachman1975}. They 
-have been computed very accurately by Yan and Ho using the complex rotation 
-method \cite{Yan1999} and by the Walters' group using the CC approach
-\cite{Walters2004}. The first $^1$P resonance is associated with the $3p$
-state, not the $2p$ state \cite{DiRienzi2002b}, while the $^1D$ resonance 
-corresponds with the $3d$ state \cite{DiRienzi2002a}.
+two $^1$S Rydberg resonances below the Ps(n=2) channel. The first resonance 
+is associated with the $2s$ state \cite{DiRienzi2002b} and was first 
+calculated by Hazi and Taylor using a stabilization method \cite{Hazi1970}. 
+They have been computed very accurately by Yan and Ho using the complex 
+rotation method \cite{Yan1999} and by the Walters' group using the CC 
+approach \cite{Walters2004}. The first $^1$P resonance is associated with the 
+$3p$ state, not the $2p$ state \cite{DiRienzi2002b}, while the $^1D$ 
+resonance corresponds with the $3d$ state \cite{DiRienzi2002a}.
 
 Excellent agreement between the parameters is achieved between the two sets 
 of Kohn calculations (present and earlier). Good agreement is achieved 
@@ -1275,8 +1291,8 @@ calculations of Yan and Ho \cite{Yan1999,Yan1998a,Ho1998,Ho2000} and our
 work. There is less agreement with the resonance parameters for the narrow 
 second resonances in the $^1$S and $^1$P calculation.
 
-The CC results, 9HPsPs \cite{Blackwood2002} and 9H9Ps+H$^-$ \cite{Walters2004}
-, are comparable to the Kohn and complex rotation calculations. This 
+The CC results, 9HPsPs \cite{Blackwood2002} and 9H9Ps+H$^-$ \cite{Walters2004},
+are comparable to the Kohn and complex rotation calculations. This 
 comparison confirms the importance of the H$^-$ channel in bringing the 
 position of the first resonance, $^1E_R$, into better agreement with the Kohn 
 and complex rotation calculations.
@@ -1368,7 +1384,7 @@ CC (Walters et al. 2004 \cite{Walters2004}) & $5.200$ & $0.0095$ \\
 \section{Effective Range Theory}
 
 Similar to the work by Van Reeth and Humberston \cite{VanReeth2003}, we use 
-Eq. (\ref{eq:ScatLen}) to find the $^{1,3}$S scattering lengths for small 
+Eq. (\ref{eq:ScatLenApprox}) to find the $^{1,3}$S scattering lengths for small 
 values of $\kappa$, given in Table \ref{tab:SWaveScatLenERT}. We see that to 
 the accuracy reported, the $^{1,3}$S scattering lengths converge well with 
 respect to $\kappa$.
@@ -1455,7 +1471,7 @@ portion of the same data as denoted by the gray box in the lower left.}
 \begin{tabular}{l c c c c c}
 Model & $\kappa$ & $a^+$ & $r_0^+$ & $a^-$ & $r_0^-$ \\
 \colrule
-Def - Eq. (\ref{eq:ScatLen}) & $0.001$ & $4.331 \pm 0.012$ & --- & $2.137 \pm 0.008$ & --- \\
+Approximation to def. - Eq. (\ref{eq:ScatLenApprox}) & $0.001$ & $4.331 \pm 0.012$ & --- & $2.137 \pm 0.008$ & --- \\
 ERT Short - Eq. (\ref{eq:EffectiveRangeShort}) & $0.001 - 0.009$ & $4.331 \pm 0.012$ & 2.197 & $2.137 \pm 0.008$ & 2.035 \\
 ERT Short - Eq. (\ref{eq:EffectiveRangeShort}) & $0.1 - 0.5$ & $4.308 \pm 0.003$ & 2.275 & $2.162 \pm 0.003$ & 1.343 \\
 ERT VDW - Eq. (\ref{eq:EffectiveRangeLongAu}) & $0.001 - 0.009$ & $4.331 \pm 0.012$ & 2.221 & $2.137 \pm 0.008$ & 2.137 \\
@@ -1506,7 +1522,7 @@ mainly due to SVM $^3$P phase shifts being much lower than the complex Kohn
 \begin{tabular}{l l c c}
 Model & $\kappa$ & $a_1^+$ & $a_1^-$ \\
 \colrule
-Def - Eq. (\ref{eq:ScatLen}) & 0.01 & $-22.130 \pm 0.173$ & $1.4530 \pm 0.1104$ \\
+Approximation to def. - Eq. (\ref{eq:ScatLenApprox}) & 0.01 & $-22.130 \pm 0.173$ & $1.4530 \pm 0.1104$ \\
 QDT - Eq. (\ref{eq:GaoZEqn}) & 0.01, 0.02 & $-22.200 \pm 0.173$ & $1.4158 \pm 0.1107$ \\
 QDT expansion - Eq. (\ref{eq:GaoScatLenP}) & 0.01 & $-22.198 \pm 0.172$ & $1.4102 \pm 0.1104$ \\
 \colrule
@@ -1522,43 +1538,41 @@ SVM \cite{Ivanov2002} & --- & $-20.7$ & $6.80$
 \section{Conclusion}
 
 We present complex Kohn variational results for Ps(1s) scattering from H(1s) 
-below the Ps(n=2) threshold. We extend the earlier Kohn calculations
-\cite{VanReeth2003,VanReeth2004}
- with a larger basis set, increased number of 
-integration points, a modification to the integration, and by using the 
-complex Kohn, all giving better converged phase shifts. We describe a method 
-to identify short-range terms that contribute to linear dependence, allowing 
-us to use a larger basis set \cite{Todd2007}. In general, the triplet 
-computations have been more difficult than the singlet, typically resulting 
-in slower convergence.
+below the Ps(n=2) threshold. We extend the earlier Kohn variational 
+calculations \cite{VanReeth2003,VanReeth2004} with a larger basis set, which 
+is made possible by an increase in the number of integration points and, for
+$^{1,3}D$, the introduction and subsequent removal of the $e^{-\lambda r_i}$
+term to the Gauss-Laguerre quadratures. These give better converged phase 
+shifts, and we also use the $S$ matrix complex Kohn variational method to get 
+more stable phase shifts.
+%We describe a method 
+%to identify short-range terms that contribute to linear dependence, allowing 
+%us to use a larger basis set \cite{Todd2007}.
 
-The S-wave and P-wave phase shifts can be considered benchmark results. The 
-discrepancy in the D-wave phase shifts between the complex Kohn variational 
+The $^{1,3}$S and $^{1,3}$P phase shifts can be considered benchmark results. The 
+discrepancy in the $^{1,3}$D phase shifts between the complex Kohn variational 
 and CC methods needs further investigation, especially for $^3$D. The partial 
 waves with $\ell > 2$ have very small phase shifts and do not contribute 
-greatly to the overall cross sections. There are no published phase shifts to 
-compare against for $\ell > 2$. We present the elastic differential, elastic 
+greatly to the overall cross sections. We present the elastic differential, elastic 
 integrated, momentum transfer and ortho-para conversion cross sections using 
-the first six partial waves through the H-wave. The differential cross 
-section is minimal at $\theta = \pi/2$ and peaks throughout most of the 
-energy range in forward scattering ($\theta = 0$) with more contribution from 
-backward scattering ($\theta = \pi$) at very low energies.
+the complex Kohn variational phase shifts for
+the first six partial waves.
 
 We calculate resonance positions and widths for the $^1$S, $^1$P, $^1$D, and
-$^1$F partial waves, which favorably compare to the very accurate complex 
-rotation results of Yan and Ho \cite{Yan1999,Yan1998a,Ho1998,Ho2000}. We also 
+$^1$F partial waves, which favorably compare to the accurate complex 
+rotation results of Refs. \cite{Yan1999,Yan1998a,Ho1998,Ho2000}. We also 
 provide a detailed investigation of the effective ranges and scattering 
 lengths for $^{1,3}$S, along with the $^{1,3}$P scattering lengths. We 
-present results using the definition of the scattering length, a short-range 
+present results using an approximation of the definition of the scattering
+length, a short-range 
 effective range expansion, an expansion incorporating the van der Waals 
-interaction, and two quantum defect theory models. The $^{1,3}$S scattering 
+interaction, and a quantum defect theory model and its expansion.
+The $^{1,3}$S scattering 
 lengths agree well with previous work and are likely the most accurate to 
 date. The $^3$S effective range we calculate is higher than previously 
 reported. The $^1$P scattering length agrees with the SVM \cite{Ivanov2002}, 
 but the complex Kohn $^3$P scattering length is much smaller.
 
-Data files with current results and IPython scripts are available upon 
-request from Denton Woods.
 
 
 \begin{acknowledgments}

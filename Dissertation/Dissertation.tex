@@ -36,12 +36,17 @@
 \sisetup{per-mode=symbol}
 \usepackage{wasysym}  % Simply for \CIRCLE and \Circle (could use \circ for the latter)
 \usepackage{pdflscape}  % For landscape page
-
+\usepackage{dcolumn}
 
 \usepackage{cleveref}
 \crefname{equation}{equation}{equations}
 %\usepackage{showlabels}
 
+% For dcolumn
+\newcolumntype{d}[1]{D{.}{\cdot}{#1}}
+
+% To center table head (when more than one decimal point)
+\newcommand*{\thead}[1]{\multicolumn{1}{c}{#1}}
 
 % Look at http://texblog.wordpress.com/tag/pagestyle/
 %\pagestyle{fancy}
