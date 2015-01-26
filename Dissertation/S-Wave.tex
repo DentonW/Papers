@@ -6,6 +6,7 @@
 \label{chp:SWave}
 
 \section{Wavefunction}
+\label{sec:SWaveFn}
 Our trial wavefunction for the s-wave partial wave of positronium scattering from hydrogen is
 \begin{equation}
 \Psi_t^\pm = \bar{S} + \tan \eta_t^\pm \, \bar{C} + \sum_{i=1}^N c_i \bar{\phi}_i^t ,
@@ -41,13 +42,11 @@ $\rho$ and $\rho'$ are defined as (refer to figure \ref{fig:PsHCoords})
 \vec{\rho}^\prime &= \frac{1}{2}\left(\vec{r_1} + \vec{r_3}\right) \label{eq:RhopDef}.
 \end{align}
 \end{subequations}
-
-\noindent As a shortcut, we can also write
+As a shortcut, we can also write
 \begin{equation}
 S^\prime = P_{23} S \text{ and } C^\prime = P_{23} C.
 \label{eq:SCprime}
 \end{equation}
-
 The short-range Hylleraas-type terms are given by the $\phi_i$ in equation \ref{eq:SWaveTrialSimple}. 
 
 The Hamiltonian for the fundamental Coulombic system is
@@ -67,6 +66,7 @@ H = -\frac{1}{4} \nabla_{\rho^\prime}^2 - \frac{1}{2} \nabla_{r_2}^2 - \nabla_{r
 \label{eq:Hamiltonian3}
 \end{align}
 
+As a condensed notation, the S-wave singlet and triplet are referred to as $^1$S and $^3$S, respectively (as shown in \cref{chp:nomenclature}).
 
 \section{General Wavefunction}
 
@@ -1023,7 +1023,7 @@ As mentioned in Section \ref{sec:Extrapolation}, extrapolation to $\omega = \inf
 
 
 \begin{table}[H]
-\begin{center}
+\centering
 \begin{tabular}{c c c c c c c}
 \toprule
  & $(\omega = 6)$ & $(\omega \rightarrow \infty)$ &  &  &  & \\
@@ -1042,12 +1042,11 @@ $0.8$ &    --- &    --- &    --- &    --- & $-2.652$ & $-2.163$ \\
 \end{tabular}
 \caption{S-Wave Singlet Results from Other Groups}
 \label{tab:SWaveSingletOther}
-\end{center}
 \end{table}
 
 
 \begin{table}[H]
-\begin{center}
+\centering
 \begin{tabular}{c c c c c c}
 \toprule
  & $(\omega = 6)$ & $(\omega \rightarrow \infty)$ &  &  &   \\
@@ -1066,7 +1065,6 @@ $0.8$ &    --- &    --- &    --- & $-1.652$ & $-0.851$ \\
 \end{tabular}
 \caption{S-Wave Triplet Results from Other Groups}
 \label{tab:SWaveTripletOther}
-\end{center}
 \end{table}
 
 
@@ -1241,7 +1239,7 @@ a^\pm = -\lim_{\kappa \to 0} \frac{\tan{\delta^\pm}}{\kappa}.
 \textbf{@TODO: Put in graph showing convergence.}
 
 \begin{table}[H]
-\begin{center}
+\centering
 \begin{tabular}{c c c c c}
 \toprule
 $\omega$ & $a^+ (\kappa = 0.001)$ & $a^+ (\kappa = 0.0001)$ & $a^- (\kappa = 0.001)$ & $a^- (\kappa = 0.0001)$ \\
@@ -1252,7 +1250,6 @@ $\omega$ & $a^+ (\kappa = 0.001)$ & $a^+ (\kappa = 0.0001)$ & $a^- (\kappa = 0.0
 \end{tabular}
 \caption{Scattering Length from Definition}
 \label{tab:ScatLenDef}
-\end{center}
 \end{table}
 
 \noindent Van Reeth and Humberston also extrapolate their scattering length to $\omega \rightarrow \infty$ using the following equation \cite{VanReeth2003}:
@@ -1277,7 +1274,7 @@ For short-range potentials, the effective range is given by \cite{Bethe1949,Blat
 \textbf{@TODO: Graphs}
 
 \begin{table}[H]
-\begin{center}
+\centering
 \begin{tabular}{c l c c c c}
 \toprule
 $\omega$ & Range & $a^+$ & $r_0^+$ & $a^-$ & $r_0^-$ \\
@@ -1295,7 +1292,6 @@ $\omega$ & Range & $a^+$ & $r_0^+$ & $a^-$ & $r_0^-$ \\
 \end{tabular}
 \caption{Scattering Length and Effective Range for Standard Fit}
 \label{tab:ScatLenStandard}
-\end{center}
 \end{table}
 
 This fitting works well enough for the singlet, but the triplet data does not fit exactly.  This can be seen in figure \textbf{ADD FIGURE}, which is similar to figure 5 of Van Reeth \cite{VanReeth2003}.  The long-range $R^{-6}$ van der Waals potential appears to be more dominant for the triplet. \textbf{Physical Reason?}
@@ -1335,7 +1331,7 @@ In tables \ref{tab:ScatLenSinglet} and \ref{tab:ScatLenTriplet}, the $\kappa^2$ 
 
 
 \begin{table}[H]
-\begin{center}
+\centering
 \begin{tabular}{c l c c c}
 \toprule
 $\omega$ & Range & $\kappa^2$ & $\kappa^3$ & $\kappa^4 \ln$ \\
@@ -1358,12 +1354,11 @@ $\omega$ & Range & $\kappa^2$ & $\kappa^3$ & $\kappa^4 \ln$ \\
 \end{tabular}
 \caption{Singlet Scattering Length and Effective Range}
 \label{tab:ScatLenSinglet}
-\end{center}
 \end{table}
 
 
 \begin{table}[H]
-\begin{center}
+\centering
 \begin{tabular}{c l c c c}
 \toprule
 $\omega$ & Range & $\kappa^2$ & $\kappa^3$ & $\kappa^4 \ln$ \\
@@ -1386,7 +1381,6 @@ $\omega$ & Range & $\kappa^2$ & $\kappa^3$ & $\kappa^4 \ln$ \\
 \end{tabular}
 \caption{Triplet Scattering Length and Effective Range}
 \label{tab:ScatLenTriplet}
-\end{center}
 \end{table}
  
 
@@ -1401,7 +1395,7 @@ Equation \ref{eq:EffectiveRangeLong} is derived by starting with the expression 
 \eeq
 
 \begin{table}[H]
-\begin{center}
+\centering
 \begin{tabular}{c l c c c c}
 \toprule
 $\omega$ & Range & $\kappa^3$ & $\kappa^4$ & $\kappa^5 \ln$ \\
@@ -1414,12 +1408,11 @@ $\omega$ & Range & $\kappa^3$ & $\kappa^4$ & $\kappa^5 \ln$ \\
 \end{tabular}
 \caption{Hinckelmann Singlet Scattering Length and Effective Range}
 \label{tab:HinckScatLenSinglet}
-\end{center}
 \end{table}
 
 
 \begin{table}[H]
-\begin{center}
+\centering
 \begin{tabular}{c l c c c c}
 \toprule
 $\omega$ & Range & $\kappa^3$ & $\kappa^4$ & $\kappa^5 \ln$ \\
@@ -1432,7 +1425,6 @@ $\omega$ & Range & $\kappa^3$ & $\kappa^4$ & $\kappa^5 \ln$ \\
 \end{tabular}
 \caption{Hinckelmann Triplet Scattering Length and Effective Range}
 \label{tab:HinckScatLenTriplet}
-\end{center}
 \end{table}
 
 Tables \ref{tab:HinckScatLenSinglet} and \ref{tab:HinckScatLenTriplet} have entries for the $\kappa^5 \ln$ term where the fitting cannot be used, since the fitting attempts to use a negative value of $d$, forcing the natural logarithm to return a complex value. The variable $d$ is given in their paper as the distance $r < d$ at which the van der Waals potential is negligible. We have to fit to $d$ in our problem, making this particular model not fit as well. The Flannery equation, equation \ref{eq:EffectiveRangeLong}, is a modified version of this and is easier to fit to our type of problem.
@@ -1451,7 +1443,7 @@ R = \left(\frac{M C}{\hbar^2}\right)^{\frac{1}{4}}.
 \noindent Using the values from table \ref{tab:ScatLenDef} for $a^\pm$, this equation produces the results in table \ref{tab:EffRangeArriola}.
 
 \begin{table}[H]
-\begin{center}
+\centering
 \begin{tabular}{c c c c c}
 \toprule
 $\omega$ & $r_0^+$ & $r_0^-$ \\
@@ -1463,7 +1455,6 @@ $\omega$ & $r_0^+$ & $r_0^-$ \\
 \end{tabular}
 \caption{Effective Range from Analytic Equation}
 \label{tab:EffRangeArriola}
-\end{center}
 \end{table}
 
 Equation \ref{eq:EffRangeAnalytic} is derived using a semiclassical approach and not a full effective range theory treatment; it nonetheless returns values for the effective range similar to that returned from the other models.
@@ -1499,7 +1490,7 @@ r_0 = \frac{[\Gamma(1/4)]^2}{3\pi} \frac{[K_{l=0}^0(0)]^2 + 1}{[K_{l=0}^0(0) - 1
 Table \ref{tab:GaoResults} is found by taking equation \ref{eq:GaoKTaylor} out to the second term, which includes the $K_l^0$ derivative. Two values of $\kappa$ are used to solve the equations for the unknowns $K_{l=0}^0(0)$ and ${K_{l=0}^0}^\prime(0)$. These values are in the table and are used to determine $a$ and $r_0$ via equations \ref{eq:GaoScatLen} and \ref{eq:GaoEffRange}.
 
 \begin{table}[H]
-\begin{center}
+\centering
 \begin{tabular}{c c c c c c}
 \toprule
 \toprule
@@ -1540,7 +1531,6 @@ $^3S$ & 0.001, 0.002 & -3.31507 & -64.1297 & 2.13686 & 2.03551 \\
 \end{tabular}
 \caption{Full Gao Model Scattering Length and Effective Range}
 \label{tab:GaoResults}
-\end{center}
 \end{table}
 
 The values for $a$ are well-converged and compare well with the values in table \ref{tab:ScatLenDef} from the definition in equation \ref{eq:ScatLen}. The values of $r_0$ are not well-converged, but they compare well with the fittings in section \ref{sec:vanderWaalsERT}. We also attempted to carry the expansion in equation \ref{eq:GaoKTaylor} to the third term with the second derivative, but numerical inaccuracy proved to be a problem. The $\epsilon^2$ is proportional to $\kappa^4$, so this term is vanishingly small for most $\kappa$ values considered, making determining $\xi_2$ difficult.
@@ -1582,7 +1572,7 @@ To obtain the plots in figures \ref{fig:ERT-Comparisons-Singlet-01} - \ref{fig:E
 
 \subsubsection{Other Groups' Results}
 \begin{table}[H]
-\begin{center}
+\centering
 \begin{tabular}{l l l l l}
 \toprule
 Method & \multicolumn{1}{c}{$a^+$} & \multicolumn{1}{c}{$r_0^+$} & \multicolumn{1}{c}{$a^-$} & \multicolumn{1}{c}{$r_0^-$}\\
@@ -1607,7 +1597,6 @@ R-matrix 14Ps14H+H$^-$ (Walters \emph{et al} 2004) \cite{Blackwood2002} & 4.327 
 \end{tabular}
 \caption{S-Wave Scattering Length and Effective Range}
 \label{tab:SWaveScatLenOther}
-\end{center}
 \end{table}
 
 
