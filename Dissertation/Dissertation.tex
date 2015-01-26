@@ -1,3 +1,5 @@
+%\RequirePackage[l2tabu, orthodox]{nag}  % Warns of obsolete or incorrect LaTeX usage
+
 %\documentclass[10pt,openany]{book}
 \documentclass[12pt,openany]{book}
 
@@ -100,7 +102,7 @@
 \newcommand{\mr} {\mu\rho}
 \newcommand{\mrp} {\mu\rho'}
 \newcommand{\rhop} {\rho'}
-\newcommand{\ii}{{\rm{i}}}
+\newcommand{\ii}{{\textrm{i}}}
 % Clebsch-Gordan
 \newcommand{\cg}[6]{
   \left<
@@ -254,11 +256,13 @@ A lot of people helped me. Special thanks goes to Ryan Bosca, who helped me at t
 
 \clearpage
 \chapter*{Nomenclature}
-\begin{longtable}[l]{p{10pt} p{100pt}}
-RAC & Rear axle carrier  \\
-FAC & Front axle carrier \\
+\label{chp:nomenclature}
+\begin{table*}
+	\begin{tabular}{l l}
+$^1$S, $^1$P & S-wave singlet, S-wave triplet  \\
 ... & ...                \\
-\end{longtable}
+	\end{tabular}
+\end{table*}
 
 \subfile{Introduction.tex}
 \subfile{BoundState.tex}

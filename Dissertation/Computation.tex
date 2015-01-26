@@ -490,7 +490,7 @@ Singlet or triplet (1 for singlet, -1 for triplet)
 
 
 \begin{table}[H]
-\begin{center}
+\centering
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
 \hline
  & Coord & Coord & Coord & Coord & Coord & Coord & Coord & Coord\\
@@ -506,12 +506,11 @@ Integral & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
 \end{tabular}
 \caption{Base set of effective coordinates for S-wave integrations}
 \label{tab:BaseEffectiveCoords}
-\end{center}
 \end{table}
 
 
 \begin{table}[H]
-\begin{center}
+\centering
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
 \hline
  & Coord & Coord & Coord & Coord & Coord & Coord & Coord & Coord\\
@@ -527,7 +526,6 @@ Integral & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
 \end{tabular}
 \caption{Optimal set of effective coordinates for S-wave integrations}
 \label{tab:OptimalEffectiveCoords}
-\end{center}
 \end{table}
 
 Describing the number of points used in integrating the different coordinates in sections \ref{sec:LongLongInt} and \ref{sec:ShortLongInt} can be confusing, so we have taken to grouping the sets of points as in tables \ref{tab:BaseEffectiveCoords} and \ref{tab:OptimalEffectiveCoords}. Each column of this table is referred to as an ``effective coordinate''.
@@ -535,7 +533,7 @@ Describing the number of points used in integrating the different coordinates in
 
 
 \begin{table}[H]
-\begin{center}
+\centering
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
 \hline
  & Coord & Coord & Coord & Coord & Coord & Coord & Coord & Coord\\
@@ -551,7 +549,6 @@ Integral & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
 \end{tabular}
 \caption{Description of effective coordinates for S-wave integrations}
 \label{tab:EffectiveCoords}
-\end{center}
 \end{table}
 
 
@@ -690,7 +687,7 @@ The $c$ and $p$ in this equation are fitting parameters. When plotted with respe
 In Van Reeth and Humberston, the extrapolation is done using $\omega = 3$ through $\omega = 6$ \cite{VanReeth2003}. Our results go to $\omega = 7$, so we have completed the extrapolation using the sets $\omega = 3-6$, $\omega = 3-7$ and $\omega = 4-7$. The smallest residuals are normally found with the set $\omega = 4-7$. Table \ref{tab:FittingParams} has the fitting parameters for the singlet and triplet S-wave states. These parameters are taken from the phase shifts determined by the S-matrix and T-matrix complex Kohn methods for $\omega = 4-7$. The values of the extrapolated phase shifts using this method are in table \ref{tab:SWavePhase}.
 
 \begin{table}[H]
-\begin{center}
+\centering
 \begin{tabular}{|c !{\vrule width 1pt} c|c !{\vrule width 1pt} c|c|}
 \hline
 $\kappa$ & $c^+$ & $p^+$ & $c^-$ & $p^-$ \\
@@ -706,7 +703,6 @@ $\kappa$ & $c^+$ & $p^+$ & $c^-$ & $p^-$ \\
 \end{tabular}
 \caption{Fitting Parameters for Singlet (+) and Triplet (-)}
 \label{tab:FittingParams}
-\end{center}
 \end{table}
 
 \subsection{Reordering}
@@ -728,7 +724,7 @@ Van Reeth used cusp parameters set at $r_1 = 25$, with little apparent loss of p
 Smaller values for these cusp parameters were also tried, and these tests are summarized in table \ref{tab:SWaveCuspParameters}. When the cusp parameters are too small, such as the cases of 5, 10 and 15, the phase shifts do not converge well and start to diverge much earlier. The second column in this table shows the number of terms we can use for each set, but the number of terms to use is not exact due to the lack of good convergence, so the values here are approximate for small cusp parameters. The phase shift given for these three tests are therefore approximate as well. From this table, we conclude that 20 is the minimum value needed, at least for the $\kappa = 0.1$ case tested here for the S-wave. To be conservative, future runs will use cusp parameters of 25. Further testing with other $\kappa$ values should be performed to verify that these results hold for higher momenta.
 
 \begin{table}[H]
-\begin{center}
+\centering
 \begin{tabular}{c c c}
 \toprule
 Cusp parameter & Terms possible & Phase shift \\
@@ -743,7 +739,6 @@ Cusp parameter & Terms possible & Phase shift \\
 \end{tabular}
 \caption{S-Wave Cusp Parameters}
 \label{tab:SWaveCuspParameters}
-\end{center}
 \end{table}
 
 
@@ -894,7 +889,7 @@ We then completed a series of runs where we increased the number of integration 
 These tests give us an idea of what coordinates need more integration points. The phase shifts, not the matrix elements, are what we are concerned with, so we ran a number of tests for the phase shifts for $\omega = 6$. Table \ref{tab:5thcoordExtraPoints} shows how the phase shift stabilizes when the $5^{th}$ coordinate has an extra 10-15 points. For table \ref{tab:678thcoordExtraPoints}, we have 15 extra points in the $1^{st}$ and $5^{th}$ coordinates, then add points to all of the $6^{th}$, $7^{th}$ and $8^{th}$ coordinates simultaneously. To the required precision (3 significant figures), the phase shift does not change with this last set of changes. From these runs, we finally determined that the $1^{st}$ and $5^{th}$ coordinates needed 15 extra integration points each, and we can save adding extra points to the other coordinates.
 
 \begin{table}[H]
-\begin{center}
+\centering
 \begin{tabular}{c c}
 \toprule
 Extra points & Phase shift \\
@@ -910,12 +905,11 @@ Extra points & Phase shift \\
 \end{tabular}
 \caption{5th Coordinate Comparisons}
 \label{tab:5thcoordExtraPoints}
-\end{center}
 \end{table}
 
 
 \begin{table}[H]
-\begin{center}
+\centering
 \begin{tabular}{c c}
 \toprule
 Extra points & Phase shift \\
@@ -927,7 +921,6 @@ Extra points & Phase shift \\
 \end{tabular}
 \caption{Extra points in the $6^{th}$, $7^{th}$ and $8^{th}$ coordinates}
 \label{tab:678thcoordExtraPoints}
-\end{center}
 \end{table}
 
 \textbf{@TODO: Table of final integration points}

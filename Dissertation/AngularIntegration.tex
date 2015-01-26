@@ -42,26 +42,26 @@ Starting from the left side of \ref{PVRAngNew}, we have
 Using the substitution $x = \cos \phi$ and $dx = -\sin \phi \:d\phi$ changes the limits to $x_{min} \!\!=\! \cos 0 \! =\! 1$ and $x_{max} = \cos \pi = -1$.  Equation (\ref{PVRAngNew2}) becomes
 
 \begin{equation}
-\int_0^\pi  D\left( {\cos \phi } \right){\rm{d}}\phi = - \int_1^{ - 1} \frac{1}{{\sqrt {1 - {x^2}} }}D\left( x \right){\rm{d}}x = \int_{ - 1}^1 \frac{1}{{\sqrt {1 - {x^2}} }}D\left( x \right){\rm{d}}x.
+\int_0^\pi  D\left( {\cos \phi } \right){\textrm{d}}\phi = - \int_1^{ - 1} \frac{1}{{\sqrt {1 - {x^2}} }}D\left( x \right){\textrm{d}}x = \int_{ - 1}^1 \frac{1}{{\sqrt {1 - {x^2}} }}D\left( x \right){\textrm{d}}x.
 \label{PVRAngNew3}
 \end{equation}
 
 This is the exact form needed for Gauss-Chebyshev quadrature (with f = D):
 \begin{equation}
-\int_0^\pi  D\left( {\cos \phi } \right){\rm{d}}\phi \approx \frac{\pi }{n} \sum_{i = 1}^n D\!\left[ {\cos \left( {\frac{{2i - 1}}{{2n}}\pi } \right)} \right]
+\int_0^\pi  D\left( {\cos \phi } \right){\textrm{d}}\phi \approx \frac{\pi }{n} \sum_{i = 1}^n D\!\left[ {\cos \left( {\frac{{2i - 1}}{{2n}}\pi } \right)} \right]
 \label{AngQuadrature}
 \end{equation}
 
 This proves only form (\ref{PVRAngNew}).  To prove (\ref{PVRAng}), we split up the integration into two parts:
 \begin{equation}
-\int_0^{2\pi } D\left( {\cos {\phi _{23}}} \right){\rm{d}}{\phi _{23}} = \int_0^\pi  D\left( {\cos {\phi _{23}}} \right){\rm{d}}{\phi _{23}} + \int _\pi ^{2\pi } D\left( {\cos {\phi _{23}}} \right){\rm{d}}{\phi _{23}}.
+\int_0^{2\pi } D\left( {\cos {\phi _{23}}} \right){\textrm{d}}{\phi _{23}} = \int_0^\pi  D\left( {\cos {\phi _{23}}} \right){\textrm{d}}{\phi _{23}} + \int _\pi ^{2\pi } D\left( {\cos {\phi _{23}}} \right){\textrm{d}}{\phi _{23}}.
 \label{AngSplit}
 \end{equation}
 
 The first integration is just (\ref{PVRAngNew}).  The only difference between the first and second integration is the limits.  Defining $y = \phi - \pi$ gives
 
 \begin{equation}
-\int _\pi ^{2\pi } D\left( {\cos {\phi}} \right){\rm{d}}{\phi} = \int_0^\pi D\left[\cos(\phi)\right] dy = \int_0^\pi D\left[\cos(y+\pi)\right] dy.
+\int _\pi ^{2\pi } D\left( {\cos {\phi}} \right){\textrm{d}}{\phi} = \int_0^\pi D\left[\cos(\phi)\right] dy = \int_0^\pi D\left[\cos(y+\pi)\right] dy.
 \end{equation}
 
 If we also define $z = \cos \phi = \cos(y+\pi)$ and $dz = \sin y \,dy$, we get an expression the same as (\ref{PVRAngNew3}):

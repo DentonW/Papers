@@ -12,11 +12,11 @@
 	\caption{Positronium hydride coordinate system}
 	\label{fig:PsHCoords}
 \end{figure}
+% If someone gets picky about the fonts here, I could do this instead:
+%  http://www.howtotex.com/tips-tricks/inkscape-images-with-latex-fonts/
 
 \section{Positronium Hydride (PsH) Wavefunction}
 \label{sec:BoundWavefn}
-
-\textbf{@TODO:} Write what $P_{23}$ is and why we need it (indistinguishable electrons).
 
 Our wavefunction for the bound state is a Hylleraas-style set of terms, given by
 \begin{subequations}
@@ -42,15 +42,16 @@ k_i + l_i + m_i + n_i + p_i + q_i \leq \omega
 \label{eq:NumberTermsOmega}
 N(\omega) = \Binomial{\omega+6}{6} \, ,
 \eeq
-\noindent where the 6 comes from the 6 coordinates of $r_i$ and $r_{ij}$.  A plot of $N(\omega)$ versus $\omega$ is given in \cref{fig:NOmega}.
+\noindent where the 6 comes from the 6 coordinates of $r_i$ and $r_{ij}$.  A plot of $N(\omega)$ versus $\omega$ is given in \cref{fig:num-omega}.
 
 \begin{figure}[H]
 	\centering
 	%\scalebox{1}{\includegraphics{NOmega}}
 	\includegraphics[width=4in]{num-omega}
 	\caption{$N(\omega)$ versus $\omega$}
-	\label{fig:NOmega}
+	\label{fig:num-omega}
 \end{figure}
+
 
 \section{Rayleigh-Ritz Variational Method}
 The Rayleigh-Ritz variational method is given as the functional \cite{Bransden2003}
@@ -593,21 +594,6 @@ $\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (au) & $\Delta E
 \section{Stabilization}
 
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=5.5in]{singlet-eigen}
-	\caption{$^1$S eigenvalues. The dashed line represents the Ps(n=2) threshold. Dotted lines represent complex Kohn $^1$S resonance positions.}
-	\label{fig:singlet-eigen}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=5.5in]{triplet-eigen}
-	\caption{$^3$S eigenvalues. The dashed line represents the Ps(n=2) threshold.}
-	\label{fig:triplet-eigen}
-\end{figure}
-
-
 The binding energy (also known as the dissociation energy) is given by Ref. \cite{Page1974} as
 \beq
 \label{eq:DissociationE}
@@ -617,19 +603,111 @@ The $-\frac{3}{4}$ comes from adding the ground state (or ionization) energies o
 Alternatively, if the binding energy is greater than 0, the system is bound.
 Using the accurate Bubin and Adamowicz energy in \cref{tab:BoundEnergyOther}, this gives that $^1$S PsH is stable against dissociation into Ps and H by $\SI{0.039 196 765 251}{au}$ or $\SI{1.066 598 271 959}{eV}$. 
 
-Hazi and Taylor \cite{Hazi1970} introduced the concept of stabilization plots to PsH bound state calculations. Specifically, they plotted the four lowest eigenvalues with respect to $N$ and looked for avoided crossings. The avoided crossing that they found at $\SI{0.428 985}{au}$ (or $\SI{5.8366}{eV}$ as shown in \cref{tab:SWaveResonancesOther}) corresponds roughly with the first $^1$S resonance.
+Hazi and Taylor \cite{Hazi1970} introduced the concept of stabilization plots to PsH bound state calculations. This can allow calculations of scattering parameters from a fully bound state calculation. Specifically, they plotted the four lowest eigenvalues with respect to $N$ and looked for avoided crossings. A resonance only exists if there is an avoided crossing between eigenvalues. The avoided crossing that they found at $\SI{0.428 985}{au}$ (or $\SI{5.8366}{eV}$ as shown in \cref{tab:SWaveResonancesOther}) corresponds roughly with the first $^1$S resonance. Van Reeth and Humberston \cite{VanReeth2004} also did an analysis of stabilized eigenvalues but with the same type of basis set that we use.
 
-Plotting the first 10 eigenvalues with respect to $N$ for $^1$S gives \cref{fig:singlet-eigen}. As noted, the dashed line represents the Ps(n=2) inelastic threshold at $\SI{5.101}{eV}$. The dotted lines correspond to the first two complex Kohn $^1$S resonance positions given in \cref{tab:SWaveResonancesOther}. Our wavefunction is not optimized for this type of analysis, but 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=4.5in]{swavesinglet-eigen}
+	\caption{$^1$S eigenvalues. The dashed line represents the Ps(n=2) threshold. Dotted lines represent complex Kohn $^1$S resonance positions. The red rectangles are potential avoided crossings.}
+	\label{fig:swavesinglet-eigen}
+\end{figure}
+
+Plotting the first 10 eigenvalues with respect to $N$ for $^1$S gives \cref{fig:swavesinglet-eigen}. As noted, the dashed line represents the Ps(n=2) inelastic threshold at $\SI{5.101}{eV}$. The dotted lines correspond to the first two complex Kohn $^1$S resonance positions given in \cref{tab:SWaveResonancesOther}. Our wavefunction is not optimized for this type of analysis, but there is evidence of avoided crossing given by the red rectangles in \cref{fig:swavesinglet-eigen}. The position of the plateau in between these rectangles corresponds relatively well with the first resonance position, $^1E_R$, we find in \cref{tab:SWaveResonancesOther} from the full scattering calculations in \cref{chp:SWave}. The line for the second resonance lines up with the 5th eigenvalue from roughly 700 to 900 terms and with the 6th eigenvalue starting at about 1250 terms. There is not a clear way to get the resonance positions from this if they are not known previously. The estimates of the two resonances positions is $\SI{3.99}{eV}$ and $\SI{5.03}{eV}$.
+
+Van Reeth and Humberston \cite{VanReeth2004} had difficulty doing the same type of stabilization with these Hylleraas-type terms. Other wavefunctions or stabilization methods may work better for this system. For instance, Yan and Ho vary a scaling factor and plot the eigenvalue energies with respect to this \cite{Yan2003}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=4.5in]{swavetriplet-eigen}
+	\caption{$^3$S eigenvalues. The dashed line represents the Ps(n=2) threshold.}
+	\label{fig:swavetriplet-eigen}
+\end{figure}
+
+\Cref{fig:swavetriplet-eigen} shows the same type of stabilization plot for $^3$S. It is clear that below the Ps(n=2) threshold, there are no avoided crossings, meaning that there are no resonances in the S-wave triplet for this energy range. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=4.5in]{pwavesinglet-eigen-unpaired}
+	\caption{$^1$P eigenvalues for first symmetry only. The dashed line represents the Ps(n=2) threshold. Dotted lines represent complex Kohn $^1$P resonance positions.}
+	\label{fig:pwavesinglet-eigen-unpaired}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=4.5in]{pwavetriplet-eigen-unpaired}
+	\caption{$^3$P eigenvalues for first symmetry only. The dashed line represents the Ps(n=2) threshold.}
+	\label{fig:pwavetriplet-eigen-unpaired}
+\end{figure}
+
+\Cref{fig:pwavesinglet-eigen-unpaired,fig:pwavetriplet-eigen-unpaired} show the stabilization plots for the P-wave eigenvalues when only the first symmetry (see \cref{sec:PWaveFn}) is evaluated. Similar to $^3$S, there is no evidence of avoided crossings, or resonances, for $^3$P. In \cref{fig:pwavetriplet-eigen-unpaired}, linear dependence becomes a problem at 957 terms, hence why the eigenvalues have a sudden drop.
+
+In \cref{fig:pwavesinglet-eigen-unpaired}, there is evidence of avoided crossings for the first resonance marked by the red rectangles. The second avoided crossing is barely noticeable. Taking the fifth eigenvalue at 800 terms gives $\SI{4.44}{eV}$, which is not very much in line with the accurate calculations shown in \cref{tab:PWaveResonancesOther}, including the complex Kohn. The second resonance is above the Ps(n=2) threshold here, making it physically different from the actual resonance.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=4.5in]{pwavesinglet-eigen-paired}
+	\caption{$^1$P eigenvalues for both symmetries. The dashed line represents the Ps(n=2) threshold. Dotted horizontal lines represent complex Kohn $^1$P resonance positions. The approximate avoided crossings are denoted by rectangles.}
+	\label{fig:pwavesinglet-eigen-paired}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=4.5in]{pwavetriplet-eigen-paired}
+	\caption{$^3$P eigenvalues for both symmetries. The dashed line represents the Ps(n=2) threshold.}
+	\label{fig:pwavetriplet-eigen-paired}
+\end{figure}
+
+\Cref{fig:pwavesinglet-eigen-paired,fig:pwavetriplet-eigen-paired} are also for the P-wave, but they use both the first and second symmetries paired. So each term number given on the x-axis is actually two terms, i.e. $N = 200$ is a total of 400 short-range terms, 200 of the first symmetry and 200 of the second symmetry. It is still clear that $^3$P does not have resonances below the inelastic threshold.
+
+In \cref{fig:pwavesinglet-eigen-paired}, the first resonance position lines up relatively well with the full scattering calculations. The second resonance is a narrow resonance, and there is an avoided crossing enclosed in the dashed blue rectangle. The approximate position of the resonances are taken as the fifth and sixth eigenvalues at 1000 terms, which are tabulated in \cref{tab:Stabilization} and can be compared to the full complex Kohn calculation in \cref{tab:PWaveResonancesOther}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=4.5in]{dwavesinglet-eigen-unpaired}
+	\caption{$^1$D eigenvalues for first symmetry only. The dashed line represents the Ps(n=2) threshold. The dotted line represents the complex Kohn $^1$D resonance position.}
+	\label{fig:dwavesinglet-eigen-unpaired}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=4.5in]{dwavetriplet-eigen-unpaired}
+	\caption{$^3$D eigenvalues for first symmetry only. The dashed line represents the Ps(n=2) threshold.}
+	\label{fig:dwavetriplet-eigen-unpaired}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=4.5in]{dwavesinglet-eigen-paired}
+	\caption{$^1$D eigenvalues for both symmetries. The dashed line represents the Ps(n=2) threshold. The dotted line represents the complex Kohn $^1$D resonance position.}
+	\label{fig:dwavesinglet-eigen-paired}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=4.5in]{dwavetriplet-eigen-paired}
+	\caption{$^3$D eigenvalues for both symmetries. The dashed line represents the Ps(n=2) threshold.}
+	\label{fig:dwavetriplet-eigen-paired}
+\end{figure}
+
+To complete the discussion for resonances below the inelastic threshold, the D-wave stabilization plots for the first symmetry only are in \cref{fig:dwavesinglet-eigen-unpaired,fig:dwavetriplet-eigen-unpaired}. Compared to \cref{fig:dwavesinglet-eigen-paired,fig:dwavetriplet-eigen-paired}, the first symmetry obviously is not enough to adequately describe the system. There is only one resonance before the threshold, and the fifth eigenvalue is taken at 924 paired terms in \cref{tab:Stabilization}.
 
 
+\begin{table}[H]
+\centering
+\begin{tabular}{c c c}
+\toprule
+Partial wave & $^1E_R$ & $^2E_R$ \\
+\midrule
+$^1$S & 3.99 & 5.03  \\
+$^1$P & 4.28 & 4.99  \\
+$^1$D & 4.73 & ---   \\
+\bottomrule
+\end{tabular}
+\caption{Approximate resonance positions found using stabilization method}
+\label{tab:Stabilization}
+\end{table}
 
-
-
-
-
-
-
-
+\Cref{tab:Stabilization} gives the resonance positions found using the stabilization method. Despite the fact that this stabilization method does not give very accurate resonance positions in our case, we can learn some things from these. First, we can determine the number of resonances before the Ps(n=2) threshold and where to look for them in the full complex Kohn calculations. Secondly, the triplet states do not have resonances before this threshold for any of these partial waves. Lastly, for $\ell > 0$, both the first and second symmetries are needed to accurately describe the system. The first symmetry alone cannot adequately describe the P-wave and D-wave.
 
 
 
