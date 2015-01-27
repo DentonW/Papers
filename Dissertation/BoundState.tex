@@ -4,7 +4,7 @@
 \chapter{The Bound State: Positronium Hydride}
 \label{chp:PsHBound}
 
-\lettrine{\textcolor{startcolor}{A}}{s} discussed in \cref{sec:PsH}, positronium hydride consists of one atom of positronium and one of hydrogen. We model it the standard way here as an exotic atom, instead of a molecule. \Cref{fig:PsHCoords} shows the PsH coordinate system. There are 6 interparticle coordinates, given by $r_1$, $r_2$, $r_3$, $r_{12}$, $r_{13}$, and $r_{23}$. The proton is considered infinitely heavy in this treatment.
+\lettrine{\textcolor{startcolor}{A}}{s} discussed in \cref{sec:PsH}, PsH consists of one atom of positronium and one of hydrogen. We model it the standard way here as an exotic atom, instead of a molecule. \Cref{fig:PsHCoords} shows the PsH coordinate system. There are 6 interparticle coordinates, given by $r_1$, $r_2$, $r_3$, $r_{12}$, $r_{13}$, and $r_{23}$. The proton is considered infinitely heavy in this treatment.
 
 \begin{figure}[!h]
 	\centering
@@ -74,15 +74,14 @@ where
 \label{eq:HijSij}
 H_{ij} = \left< \bar{\phi}_i \left| H \right| \bar{\phi}_j \right>\!, \, S_{ij} = \left< \bar{\phi}_i \left| \right.\! \bar{\phi}_j \right>, 
 \eeq
-and \textbf{c} is the vector of coefficients for the wavefunction $\Psi$.  The normalization here is unimportant due to the division in equation \ref{eq:RayleighRitz} and the form of equation \ref{eq:BoundGenEig}.
+and \textbf{c} is the vector of coefficients for the wavefunction $\Psi$.  The normalization here is unimportant due to the division in \cref{eq:RayleighRitz} and the form of \cref{eq:BoundGenEig}.
 
 For PsH, the non-relativistic Hamiltonian is
 \beq
 \label{eq:BoundHamiltonian}
 H = -\frac{1}{2} \nabla_{r_1}^2 - \frac{1}{2} \nabla_{r_2}^2 - \frac{1}{2} \nabla_{r_3}^2 + \frac {1}{r_1}-\frac {1}{r_2}-\frac {1}{r_3}-\frac {1}{r_{12}}-\frac {1}{r_{13}}+\frac {1}{r_{23}}.
 \eeq
-
-The Laplacians in equation \ref{eq:BoundHamiltonian} are complicated when applied to the $\phi_j$ function.  We exploit the short-range nature of $\phi_i$ and $\phi_j$ by using integration by parts, similar to equation (3.21) of Armour and Humberston \cite{Armour1991}.
+The Laplacians in \cref{eq:BoundHamiltonian} are complicated when applied to the $\phi_j$ function.  We exploit the short-range nature of $\phi_i$ and $\phi_j$ by using integration by parts, similar to equation (3.21) of Armour and Humberston \cite{Armour1991}.
 \beq
 \label{eq:BoundGradient}
 -\Int{ \phi_i \left(\nabla_{r_1}^2 + \nabla_{r_2}^2 + \nabla_{r_3}^2 \right) \phi_j }{\tau} = \int \sum_{l=1}^3 \bm{\nabla}_{\!\bm{r}_l} \phi_i \bm{\cdot} \bm{\nabla}_{\!\bm{r}_l} \phi_j \, d\tau
@@ -104,7 +103,7 @@ The Laplacians in equation \ref{eq:BoundHamiltonian} are complicated when applie
 		   &+ \frac{r_{13}^2 + r_{23}^2 - r_{12}^2}{2 r_{13}^2 r_{23}^2} \left[p_i q_j + p_j q_i\right] \Bigg\}.
 \end{align}
 
-The full expression for $H_{ij}$ from equation \ref{eq:HijSij} after using \cref{eq:BoundHamiltonian,eq:BoundGradient} is then
+The full expression for $H_{ij}$ from \cref{eq:HijSij} after using \cref{eq:BoundHamiltonian,eq:BoundGradient} is then
 \beq
 \label{eq:BoundHFull}
 \left< \bar{\phi}_i \left| H \right| \bar{\phi}_j \right> = \Int{ \left[ \frac{1}{2}\sum_{l=1}^3 \boldsymbol{\nabla}_{\!\mathbf{r}_l} \bar{\phi}_i \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_l} \bar{\phi}_j + \left( \frac {1}{r_1}-\frac {1}{r_2}-\frac {1}{r_3}-\frac {1}{r_{12}}-\frac {1}{r_{13}}+\frac {1}{r_{23}} \right) \bar{\phi}_i \bar{\phi}_j \right]}{\tau}.
@@ -120,6 +119,7 @@ and
 \eeq
 expression \ref{eq:BoundHFull} becomes
 \begin{subequations}
+\label{eq:RRfinal}
 \begin{align}
 \nonumber \left< (1 \pm P_{23}) \phi_i \left| H \right| (1 \pm P_{23}) \phi_j \right> =& \left< \phi_i \left| H \right| \phi_j \right> \pm \left< P_{23} \phi_i \left| H \right| \phi_j \right> \\
 &\pm \left< \phi_i \left| H \right| P_{23} \phi_j \right> + \left< P_{23} \phi_i \left| H \right| P_{23} \phi_j \right> \\
@@ -129,198 +129,27 @@ expression \ref{eq:BoundHFull} becomes
 \end{subequations}
 
 
-
-%\subsection{Energy Derivatives}
 \section{Parameter Optimization}
-\label{sec:BoundOpt}
+\label{sec:BoundOptimization}
 The most powerful property of the Rayleigh-Ritz variational method is the ability to systematically improve the wavefunction to lower the upper bound on the energy. By either adding terms to the expansion in \ref{eq:BoundWavefn_psi} or changing the nonlinear parameters $\alpha$, $\beta$ and $\gamma$, the energy can be reduced and a possible minimum found. This is a three-dimensional optimization problem, and we tried multiple methods for the nonlinear parameter optimization.
 
 \subsection{Newton's Method}
-
-\subsubsection{Energy Derivatives}
-\label{sec:EnergyDer}
-\textbf{@TODO:} Start with mention of Drake/Yan paper.
-
-\beq
-\Psi = \sum_{i=1}^N c_i \psi_i
-\eeq
-
-\textbf{Rewrite parts of this in terms of formulas in BoundState.tex.}
-
-The variational method gives
-\beq
-E = \frac{\left< \Psi \left| H \right| \Psi \right>}{\left< \Psi \left| \right.\! \Psi \right>}
-  = \frac{\displaystyle\sum_{i=1}^N \sum_{j=1}^N \left< c_i \psi_i \left| H \right|  c_j \psi_j \right>}{\displaystyle\sum_{i=1}^N \sum_{j=1}^N \left<c_i \psi_i \left| \right.\! c_i \psi_i \right>}
-  = \frac{\displaystyle\sum_i \sum_j c_i^* c_j H_{ij}}{\displaystyle\sum_i \sum_j c_i^* c_j S_{ij}} \equiv \frac{A}{B}
-\eeq
-
-where
-\beq
-H_{ij} = \left< \psi_i \left| H \right| \psi_j \right>
-\text{ and }
-S_{ij} = \left< \psi_i \left| \right.\! \psi_j \right>.
-\eeq
-
-$\dfrac{\partial A}{\partial c_k^*}$ or $\dfrac{\partial B}{\partial c_k^*}$ will reduce the double summation to a single sum, since 
-$ \dfrac{\partial c_i^*}{\partial c_k^*} =
-\begin{cases}
-1,& i = k \\
-0,& i \neq k
-\end{cases}.$
-
-To minimize the energy, $E$,
-\beq
-\label{eq:RRfinal}
-\frac{\partial E}{\partial c_k^*} = \frac{\partial A}{\partial c_k^*} \frac{1}{B} - \frac{1}{B^2} \frac{\partial B}{\partial c_k^*} A
-= \frac{1}{B} \left(\frac{\partial A}{\partial c_k^*} - E \frac{\partial B}{\partial c_k^*}\right)
-= \frac{\displaystyle\sum_{j=1}^N (H_{kj} - E S_{kj})}{B} = 0.
-\eeq
-
-We want to minimize the energy with respect to the nonlinear parameters $\alpha, \beta$ and $\gamma$.  Let us concern ourselves with the $\alpha$ parameter:  $\Psi = \Psi(\alpha, ...)$.
-
-\beq
-\frac{\partial E}{\partial \alpha} = \frac{1}{B} \left(\frac{\partial A}{\partial \alpha} - E \frac{\partial B}{\partial \alpha} \right)
-\label{eq:EnergyDerE1}
-\eeq
-
-Since $\alpha$ is real, $\alpha^* = \alpha$.  Our wavefunction is real as well, i.e. $\Psi^* = \Psi$.  The Hamiltonian, H, is independent of $\alpha$ and is Hermitian, so
-\beq
-\frac{\partial A}{\partial \alpha} = \left< \Psi \Big| H \Big| \frac{\partial\Psi}{\partial \alpha} \right> + 
-    \left< \frac{\partial\Psi}{\partial \alpha} \Big| H \Big| \Psi \right> = 2 \left< \Psi \Big| H \Big| \frac{\partial\Psi}{\partial \alpha} \right>
-\label{eq:EnergyDerPartA}
-\eeq
-\beq
-\frac{\partial B}{\partial \alpha} = \left< \Psi \Big| \frac{\partial\Psi}{\partial \alpha} \right> + 
-    \left< \frac{\partial\Psi}{\partial \alpha} \Big| \Psi \right> = 2 \left< \Psi \Big| \frac{\partial\Psi}{\partial \alpha} \right>
-\label{eq:EnergyDerPartB}
-\eeq
-
-Combining (\ref{eq:EnergyDerPartA}) and (\ref{eq:EnergyDerPartB}) with (\ref{eq:EnergyDerE1}) gives
-\beq
-\frac{\partial E}{\partial \alpha} = \frac{2 \left< \Psi \Big| H \Big| \frac{\partial\Psi}{\partial \alpha} \right> - 2 \left< \Psi \Big| \frac{\partial\Psi}{\partial \alpha} \right>}{\left< \Psi \Big| \Psi \right>}.
-\label{eq:EnergyDerivative}
-\eeq
-
-\noindent If $\Psi$ is properly normalized, $\left< \Psi \Big| \Psi \right> = 1$, the simplified version can be used:
+\label{sec:Newton}
+From Ref. \cite{Yan1999} (and easily derived), if the wavefunction $\Psi$ is properly normalized, the energy can be minimized by setting the derivative with respect to each of the nonlinear parameters equal to 0 by
 \beq
 \frac{\partial E}{\partial \alpha} = 2 \left< \Psi \Big| H \Big| \frac{\partial\Psi}{\partial \alpha} \right> - 2 \left< \Psi \Big| \frac{\partial\Psi}{\partial \alpha} \right>.
 \label{eq:EnergyDerivativeNorm}
 \eeq
-
-\noindent This is the form given in Drake and Yan \cite{Drake1995}.
-
-Similar forms for the other parameters are found by replacing $\alpha$ with the parameter of interest.
-
-
-\subsubsection{Newton's Method}
-The derivative with respect to the parameter $\alpha$ can be used with Newton's Method to find a minimum energy.  From \cite{Sauer2006}, Newton's method is given as
-\beq
-x_{i+1} = x_i - \frac{f(x_i)}{f'(x_i)}.
-\label{eq:NewtonMethod}
-\eeq
-
-We are looking for roots of the equation $\displaystyle\frac{\partial E}{\partial \alpha} = 0$ to minimize the energy.  From (\ref{eq:NewtonMethod}), $\displaystyle\frac{\partial^2 E}{\partial^2 \alpha}$ is required.  The secant method, a variation of Newton's method, is used to avoid this problem.  From \cite{Sauer2006},
-\beq
-x_{i+1} = x_i - \frac{f(x_i)(x_i - x_{i-1})}{f(x_i) - f(x_{i-1})}.
-\eeq
-
-\noindent The difficulty with this method is that two starting guesses are required, versus the one for Newton's method.
-
-
-\subsubsection{Singlet Wavefunction Derivatives}
-Taking the derivative with respect to $\alpha$ of equation \ref{eq:BoundWavefn_psi} yields
-\beq
-\frac{\partial \Psi^+}{\partial \alpha} = \sum_i c_i \frac{\partial \phi_i}{\partial \alpha} = \sum_i c_i (1+P_{23}) \frac{\partial \phi_i}{\partial \alpha} = -r_1 \Psi^{(+)}.
-\label{eq:PsiDerAlpha}
-\eeq
-
-The $\beta$ and $\gamma$ cases are similar, but the presence of the $P_{23}$ permutation operator complicates the derivative slightly.
-\begin{align}
-\nonumber \frac{\partial \Psi^{(+)}}{\partial \beta} &= \sum_i c_i \frac{\partial}{\partial \beta} \left[(1+P_{23}) \phi_i \right] \\
-\nonumber &= \sum_i c_i \left\{
-  e^{-\alpha r_1} r_1^{k_i} \frac{\partial}{\partial \beta}
-  \left[e^{-(\beta r_2 + \gamma r_3)} r_2^{l_i} r_{12}^{m_i} r_3^{n_i} r_{13}^{p_i} r_{23}^{q_i}
-      + e^{-(\beta r_3 + \gamma r_2)} r_3^{l_i} r_{13}^{m_i} r_2^{n_i} r_{12}^{p_i} r_{23}^{q_i} \right] \right\} \\
-\nonumber &= \sum_i c_i \left(
-  e^{-(\alpha r_1 + \gamma r_3)} r_1^{k_i} r_2^{l_i} r_{12}^{m_i} r_3^{n_i} r_{13}^{p_i} r_{23}^{q_i} \frac{\partial}{\partial \beta} e^{-\beta r_2} +
-  e^{-(\alpha r_1 + \gamma r_2)} r_1^{k_i} r_3^{l_i} r_{13}^{m_i} r_2^{n_i} r_{12}^{p_i} r_{23}^{q_i} \frac{\partial}{\partial \beta} e^{-\beta r_3} \right) \\
- &= \sum_i c_i \left(-r_2 \phi_i - r_3 P_{23} \phi_i \right) 
-\label{eq:PsiDerBeta}
-\end{align}
-
-Likewise,
-\beq
-\frac{\partial \Psi^{(+)}}{\partial \gamma} = \sum_i c_i \left(-r_3 \phi_i - r_2 P_{23} \phi_i \right)
-\label{eq:PsiDerGamma}
-\eeq
-
-
-\subsubsection{Triplet Wavefunction Derivatives}
-Similar calculations for the triplet give
-
-\begin{align}
-\frac{\partial \Psi^{(-)}}{\partial \alpha} &= -r_1 \Psi^{(-)} \label{eq:PsiTripletDerAlpha} \\
-\frac{\partial \Psi^{(-)}}{\partial \beta} &= \sum_i c_i \left(-r_2 \phi_i + r_3 P_{23} \phi_i \right) \label{eq:PsiTripletDerBeta} \\
-\frac{\partial \Psi^{(-)}}{\partial \gamma} &= \sum_i c_i \left(-r_3 \phi_i + r_2 P_{23} \phi_i \right) \label{eq:PsiTripletDerGamma}
-\end{align}
-
-
-\subsection{Results of Nonlinear Parameter Optimization}
-
-For the results in table \ref{table:NonlinearOptimized1SNewton}, starting guesses were $\alpha = 0.6$, $\beta = 0.6$ and $\gamma = 1.0$.  The value of $h \equiv x_i - x_{i-1}$ was chosen to be $10^{-5}$.  We also examined different starting guesses, which gave similar results but took more steps to reach them.
-
-
-\setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
-\setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
-\begin{table}[ht]
-\caption{Newton Optimized Singlet Nonlinear Parameters} % title of Table
-\centering
-\begin{tabular}{c c c c}
-\hline\hline
-$\omega$ & $\alpha$ & $\beta$ & $\gamma$ \\ [0.5ex]
-\hline
-1 & 0.53604 & 0.59507 & 1.02169 \\
-2 & 0.57424 & 0.65051 & 0.98174 \\
-3 & 0.58945 & 0.62992 & 0.97556 \\
-4 & 0.58490 & 0.60928 & 0.98691 \\
-5 & 0.58004 & 0.59303 & 1.01069 \\
-\hline\hline
-\end{tabular}
-\label{table:NonlinearOptimized1SNewton}
-\end{table}
-
+With this, the wavefunction is minimized using the 1-D Newton's method for each parameter separately \cite{Sauer2006}. Newton's method was unstable for anything other than a small basis set ($\omega \leq 4$), so I evaluated other methods. Newton's method for n-dimensions can be used as well, though it requires computation of the Jacobian.
 
 \subsection{Broyden's Method}
-The above analysis used the 1-dimensional Newton's method and changed each nonlinear parameter separately.  This worked well for the singlet but became a problem for the calculations involving the triplet state.  The code for optimization was modified to use Broyden's method \cite{Sauer2006}, which can solve for all three nonlinear parameters simultaneously.  Newton's method for n-dimensions can be used as well, though it requires computation of the Jacobian.
-
-The three equations in (\ref{eq:PsiDerAlpha})-(\ref{eq:PsiDerGamma}) or (\ref{eq:PsiTripletDerAlpha})-(\ref{eq:PsiTripletDerGamma}) can be solved in the three unknowns $\alpha$, $\beta$ and $\gamma$ by Broyden's method.  The second Broyden's method, sometimes referred to as the ``bad Broyden's method'' was used here.  As Kvaalen points out, this method is perfectly usable and can be faster than the first Broyden's method \cite{Kvaalen1991}.
-
+\label{sec:Broyden}
+The next method I tried was Broyden's method \cite{Sauer2006}, which can solve for all three nonlinear parameters simultaneously. This was more stable than than 1-D Newton method. The second Broyden's method, sometimes referred to as the ``bad Broyden's method'' was used here. As Kvaalen points out, this method is perfectly usable and can be faster than the first Broyden's method \cite{Kvaalen1991}. \Cref{table:NonlinearOptimized3SBroyden} shows the nonlinear parameters used for $^3$S. All other partial waves used the simplex method described in \cref{sec:Simplex}. This is because I already had a number of results for $^3$S, and I was able to use even more terms than I could use for $^1$S \ref{}, so running everything again for simplex-optimized nonlinear parameters was unnecessary.
 
 \setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
 \setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
-\begin{table}[ht]
-\caption{Broyden Optimized Singlet Nonlinear Parameters} % title of Table
-\centering
-\begin{tabular}{c c c c}
-\hline\hline
-$\omega$ & $\alpha$ & $\beta$ & $\gamma$ \\ [0.5ex]
-\hline
-1 & 0.535920 & 0.594515 & 1.022061 \\
-2 & 0.571412 & 0.598429 & 1.056740 \\
-3 & 0.535149 & 0.620153 & 1.120099 \\
-4 & 0.583859 & 0.592326 & 1.016347 \\
-5 & 0.530239 & 0.627306 & 1.127732 \\
-6 & 0.533933 & 0.632110 & 1.132448 \\
-\hline\hline
-\end{tabular}
-\label{table:NonlinearOptimized1SBroyden}
-\end{table}
-
-
-\setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
-\setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
-\begin{table}[ht]
-\caption{Old Broyden Optimized Triplet Nonlinear Parameters} % title of Table
+\begin{table}[H]
+\caption{Old Broyden Optimized Triplet Nonlinear Parameters}
 \centering
 \begin{tabular}{c c c c}
 \hline\hline
@@ -330,43 +159,57 @@ $\omega$ & $\alpha$ & $\beta$ & $\gamma$ \\ [0.5ex]
 2 & 0.356175 & 0.452426 & 0.829591 \\
 3 & 0.347611 & 0.467298 & 0.814971 \\
 4 & 0.323300 & 0.333783 & 0.974653 \\
-5 & 0.303696 & 0.309673 & 0.980637 \\
-\hline\hline
-\end{tabular}
-\label{table:NonlinearOptimized3SBroydenoLD}
-\end{table}
-
-\setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
-\setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
-\begin{table}[ht]
-\caption{Broyden Optimized Triplet Nonlinear Parameters} % title of Table
-\centering
-\begin{tabular}{c c c c}
-\hline\hline
-$\omega$ & $\alpha$ & $\beta$ & $\gamma$ \\ [0.5ex]
-\hline
-1 & 0.297493 & 0.287209 & 0.996888 \\
-2 & 0.329662 & 0.346790 & 0.983649 \\
-3 & 0.336829 & 0.350035 & 0.978465 \\
-4 & 0.322670 & 0.330642 & 0.984957 \\
-5 & 0.310486 & 0.322063 & 0.911863 \\
-6 & 0.283810 & 0.287592 & 0.977710 \\
 \hline\hline
 \end{tabular}
 \label{table:NonlinearOptimized3SBroyden}
 \end{table}
 
-\subsection{Choice of Nonlinear Parameters}
-\subsubsection{Bound and S-Wave}
-For the S-wave singlet, to compare directly with Van Reeth's previous calculations \cite{VanReeth2003}, we used $\alpha = 0.5$, $\beta = 0.6$ and $\gamma = 1.1$.  These values are close to the optimized nonlinear parameters found in table \ref{table:NonlinearOptimized1SBroyden}.  The initial guess trials of $\alpha = 0.6$, $\beta = 0.6$ and $\gamma = 1.0$ were also tried, but this lead to difficulties when extrapolating the phase shifts.
+\subsection{Simplex Method}
+\label{sec:Simplex}
 
-We had considerably more difficulty with linear dependence for the S-wave triplet.  To try to circumvent some of the linear dependence problems, we chose $\alpha = 0.323$, $\beta = 0.334$ and $\gamma = 0.975$ from table \ref{table:NonlinearOptimized3SBroyden} for $\omega = 4$.  This set of nonlinear parameters is different from the set that Van Reeth used of $\beta = 0.4$ and $\gamma = 0.8$ \cite{VanReeth2003}.
+\setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
+\setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
+\begin{table}[H]
+\caption{Simplex Optimized Singlet Nonlinear Parameters}
+\centering
+\begin{tabular}{c c c c}
+\hline\hline
+$\omega$ & $\alpha$ & $\beta$ & $\gamma$ \\ [0.5ex]
+\hline
+0 & 0.30226 & 0.45479 & 1.07962 \\
+1 & 0.53592 & 0.59453 & 1.02206 \\
+2 & 0.57450 & 0.65222 & 0.98020 \\
+3 & 0.58966 & 0.63150 & 0.97397 \\
+4 & 0.58493 & 0.60995 & 0.98610 \\
+5 & 0.58691 & 0.58045 & 1.03321 \\
+\hline\hline
+\end{tabular}
+\label{tab:NonlinearOptimized1SSimplex}
+\end{table}
 
+Broyden's method was more stable than Newton's method for this work, but I also tried the \texttt{gsl\_multimin\_fminimizer\_nmsimplex} routine from the GNU Scientific Library, which is an implementation of the simplex method \cite{GSL,GSLsimplex}. This was the most stable of the three methods tried to optimize $\alpha$, $\beta$, and $\gamma$ simultaneously. I normally stopped at $\omega = 5$ for the optimization, and the S-wave singlet runs are shown in \cref{tab:NonlinearOptimized1SSimplex}. \Cref{tab:NonlinearOptimizedPD} has the optimized nonlinear parameters used for the P-wave and D-wave. Due to the slowness of the general short-range code (see \cref{sec:GeneralShort}), the F-wave through G-wave just use the parameters $\alpha = 0.5$, $\beta = 0.6$, and $\gamma = 1.1$.
 
+\begin{table}[H]
+\small
+\centering
+\begin{tabular}{c c c c}
+\toprule
+Partial Wave & $\alpha$ & $\beta$ & $\gamma$ \\
+\midrule
+$^1$P & 0.397 & 0.376 & 0.962 \\
+$^3$P & 0.310 & 0.311 & 0.995 \\
+$^1$D & 0.359 & 0.368 & 0.976 \\
+$^3$D & 0.356 & 0.365 & 0.976 \\
+\bottomrule
+\end{tabular}
+\caption{Simplex optimized nonlinear parameters for the P-wave and D-wave}
+\label{tab:NonlinearOptimizedPD}
+\end{table}
+
+With the work on the second formalism for the P-wave \cref{sec:PWaveOpt}, it was also possible to use the simplex method to optimize all 6 nonlinear parameters simultaneously instead of having to optimize each symmetry separately. If the sector-based method of Drake and Yan \cite{Yan1995} is ever implemented for this problem, it would be possible to optimize all 15 parameters simultaneously, but it may be much more computationally feasible to optimize each sector separately.
 
 
 \section{Program}
-
 
 
 \section{Results}
@@ -398,7 +241,7 @@ $\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (au) & Binding E
 11 & 1674 & 0.58 & 0.60 & 1.00 & $-$0.789 196 284 600 & 1.066 585 192 793 & -0.000 000 038 986 \\
 \bottomrule
 \end{tabular}
-\caption{Ground state energy of PsH} % title of Table
+\caption{Ground state energy of PsH}
 \label{tab:BoundEnergyOld}
 \end{table}
 
@@ -423,7 +266,7 @@ $\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (au) & Binding E
 7 & 1716 & 0.586 & 0.580 & 1.093 & -0.789 189 730 694 & 1.066 406 851 931 & 0.000 020 220 858 \\
 \bottomrule
 \end{tabular}
-\caption{Ground state energy of PsH with full set of terms} % title of Table
+\caption{Ground state energy of PsH with full set of terms}
 \label{tab:BoundEnergy1}
 \end{table}
 
@@ -448,7 +291,7 @@ $\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (au) & Binding E
 7 & 1505 & 0.586 & 0.580 & 1.093 & -0.789 189 725 291 & 1.066 406 704 904 & 0.000 001 347 789 \\
 \bottomrule
 \end{tabular}
-\caption{Ground state energy of PsH with restricted Todd set of terms} % title of Table
+\caption{Ground state energy of PsH with restricted Todd set of terms}
 \label{tab:BoundEnergyTodd1}
 \end{table}
 
@@ -562,7 +405,7 @@ $\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (au) & $\Delta E
 7 & 1716 & 0.323 & 0.334 & 0.975 & -0.743 386 825 704 & 0.002 764 443 796 \\
 \bottomrule
 \end{tabular}
-\caption{Eigenvalues of triplet short-range terms} % title of Table
+\caption{Eigenvalues of triplet short-range terms}
 \label{tab:BoundEnergy3}
 \end{table}
 
@@ -586,7 +429,7 @@ $\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (au) & $\Delta E
 7 & 1633 & 0.323 & 0.334 & 0.975 & -0.743 386 823 504 & 0.000 008 079 425 \\
 \bottomrule
 \end{tabular}
-\caption{Eigenvalues of triplet short-range terms} % title of Table
+\caption{Eigenvalues of triplet short-range terms}
 \label{tab:BoundEnergyTodd3}
 \end{table}
 
@@ -708,32 +551,6 @@ $^1$D & 4.73 & ---   \\
 \end{table}
 
 \Cref{tab:Stabilization} gives the resonance positions found using the stabilization method. Despite the fact that this stabilization method does not give very accurate resonance positions in our case, we can learn some things from these. First, we can determine the number of resonances before the Ps(n=2) threshold and where to look for them in the full complex Kohn calculations. Secondly, the triplet states do not have resonances before this threshold for any of these partial waves. Lastly, for $\ell > 0$, both the first and second symmetries are needed to accurately describe the system. The first symmetry alone cannot adequately describe the P-wave and D-wave.
-
-
-
-\section{Parameter Optimization}
-\label{sec:BoundOptimization}
-
-
-\setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
-\setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
-\begin{table}[ht]
-\caption{Simplex Optimized Singlet Nonlinear Parameters} % title of Table
-\centering
-\begin{tabular}{c c c c}
-\hline\hline
-$\omega$ & $\alpha$ & $\beta$ & $\gamma$ \\ [0.5ex]
-\hline
-1 &  &  &  \\
-2 &  &  &  \\
-3 &  &  &  \\
-4 &  &  &  \\
-5 &  &  &  \\
-6 &  &  &  \\
-\hline\hline
-\end{tabular}
-\label{table:NonlinearOptimized1SSimplex}
-\end{table}
 
 
 
