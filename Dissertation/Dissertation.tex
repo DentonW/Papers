@@ -36,9 +36,11 @@
 \microtypecontext{spacing=nonfrench}  % To get rid of that warning
 \usepackage{siunitx}  % For correct typesetting of units
 \sisetup{per-mode=symbol}
+%\sisetup{range-phrase = \text{--}}
 \usepackage{wasysym}  % Simply for \CIRCLE and \Circle (could use \circ for the latter)
 \usepackage{pdflscape}  % For landscape page
 \usepackage{dcolumn}
+%\usepackage[arrowdel,notrig]{physics}  % Unfortunately conflicts with other packages
 
 \usepackage{cleveref}
 \crefname{equation}{equation}{equations}
@@ -176,7 +178,7 @@
 %\DeclareMathSymbol \ee \mathalpha {euler} {`\e}
 
 %\input{UNTdissertation.sty}
-\input{physicsheader.tex}
+\input{physicsheader.tex}  % Much already in the physics package
 
 \definecolor{Gray}{gray}{0.9}
 \definecolor{LightCyan}{rgb}{0.88,1,1}
@@ -272,9 +274,9 @@ $^1$S, $^1$P & S-wave singlet, S-wave triplet  \\
 %%%%%%\settocdepth{section}
 \subfile{P-Wave.tex}
 \subfile{D-Wave.tex}
+\subfile{General.tex}
 \subfile{HigherWaves.tex}
 \subfile{Computation.tex}
-\subfile{General.tex}
 \subfile{Exponential.tex}
 
 \appendix

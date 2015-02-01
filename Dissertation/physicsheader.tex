@@ -47,6 +47,7 @@
 \let\divsymb=\div % rename builtin command \div to \divsymb
 \renewcommand{\div}[1]{\gv{\nabla} \cdot #1} % for divergence
 \newcommand{\curl}[1]{\gv{\nabla} \times #1} % for curl
+\newcommand{\laplacian}[1]{\nabla^2 #1}
 \let\baraccent=\= % rename builtin command \= to \baraccent
 \renewcommand{\=}[1]{\stackrel{#1}{=}} % for putting numbers above =
 \newtheorem{prop}{Proposition}
