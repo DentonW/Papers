@@ -102,11 +102,11 @@ Some important cancellations are made in the matrix element equations by using t
 
 \subsection{Matrix Elements Involving Long-Range Terms}
 \label{sec:MatrixLong}
-The short-range--long-range and long-range--long-range matrix elements have a similar analysis. For all of these, the effect of the $\mathcal{L} = 2(H-E)$ operator on the long-range terms must be considered, and then integrations over the external angles (see Appendix \ref{chp:AngularInt}) are performed. The remaining 6-dimensional integral is then numerically integrated as described in sections \ref{sec:LongLongInt} and \ref{sec:ShortLongInt}.
+The short-range--long-range and long-range--long-range matrix elements have a similar analysis. For all of these, the effect of the $\mathcal{L} = 2(H-E)$ operator on the long-range terms must be considered, and then integrations over the external angles (see \Cref{chp:AngularInt}) are performed. The remaining 6-dimensional integral is then numerically integrated as described in sections \ref{sec:LongLongInt} and \ref{sec:ShortLongInt}.
 
 \subsubsection{Elements with \texorpdfstring{$\mathcal{L}S$}{LS}}
 \label{sec:LSElements}
-The $(\tilde{C},\mathcal{L}\tilde{S})$ and $(\tilde{\phi}_i,\mathcal{L}\tilde{S})$ matrix elements have the $L$-operator acting on $S$. While not explicitly in the matrix given by \ref{eq:GeneralKohnMatrix}, $(\tilde{S},\mathcal{L}\tilde{S})$ is required in the final equation \ref{eq:GenDFDT2}. Also from the general $\tilde{S}$ and $\tilde{C}$, equation \ref{eq:GenSCMatrix} gives that the evaluation of $(\tilde{S},\mathcal{L}\tilde{S})$ is needed. We first look at $L$ operating on $S$ and then determine the form of these matrix elements.
+The $(\tilde{C},\mathcal{L}\tilde{S})$ and $(\tilde{\phi}_i,\mathcal{L}\tilde{S})$ matrix elements have the $\mathcal{L}$-operator acting on $S$. While not explicitly in the matrix given by \ref{eq:GeneralKohnMatrix}, $(\tilde{S},\mathcal{L}\tilde{S})$ is required in the final equation \ref{eq:GenDFDT2}. Also from the general $\tilde{S}$ and $\tilde{C}$, equation \ref{eq:GenSCMatrix} gives that the evaluation of $(\tilde{S},\mathcal{L}\tilde{S})$ is needed. We first look at $L$ operating on $S$ and then determine the form of these matrix elements.
 
 \begin{align}
 \nonumber \mathcal{L}S &= \left(-\frac{1}{2}\nabla_\rho^2 - \nabla_{r_3}^2 - 2\nabla_{r_{12}}^2 + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_T\right) \Phi_{Ps}(r_{12}) \Phi_H(r_3) \frac{\sin(\kappa\rho)}{\kappa\rho} \sqrt{\frac{2\kappa}{4\pi}} \\
@@ -568,10 +568,10 @@ Likewise,
 \nonumber (\tilde{S},\mathcal{L}\tilde{C}) - (\tilde{C},\mathcal{L}\tilde{S}) = \,\, &[u_{00} u_{10} - u_{10} u_{00}] (\bar{S},\mathcal{L}\bar{S}) + [u_{00} u_{11} - u_{10} u_{01}] (\bar{S},\mathcal{L}\bar{C}) \\
 \nonumber + &[u_{01} u_{10} - u_{11} u_{00}] (\bar{C},\mathcal{L}\bar{S}) + [u_{01} u_{11} - u_{11} u_{01}] (\bar{C},\mathcal{L}\bar{C}) \\
 \nonumber = \,\, &[u_{00} u_{11} - u_{10} u_{01}] [(\bar{S},\mathcal{L}\bar{C}) - (\bar{C},\mathcal{L}\bar{S})] \\
-\nonumber = \,\, & \det(u) [(\bar{S},\mathcal{L}\bar{C}) - (\bar{C},\mathcal{L}\bar{S})]
+\nonumber = \,\, & \Det{\textbf{u}} [(\bar{S},\mathcal{L}\bar{C}) - (\bar{C},\mathcal{L}\bar{S})]
 \end{align}
 
-\noindent Each of our $u$ matrices satisfies $\det(u) = 1$, making this
+\noindent Each of our $u$ matrices satisfies $\Det{\textbf{u}} = 1$, making this
 \beq
 (\tilde{S},\mathcal{L}\tilde{C}) - (\tilde{C},\mathcal{L}\tilde{S}) = (\bar{S},\mathcal{L}\bar{C}) - (\bar{C},\mathcal{L}\bar{S}).
 \eeq
@@ -588,7 +588,7 @@ This section
 
 
 
-\section{Results}
+\section{Phase Shifts}
 
 \subsection{Singlet}
 All runs here were performed using Peter's set, with an extra 10 points in all coordinates, except for the 2nd, 3rd and 4th (which gained an extra 5 points instead).  The phase shift is given at the last term.  The value in brackets after the extrapolated phase shift is the starting value of $\omega$ for the extrapolation.

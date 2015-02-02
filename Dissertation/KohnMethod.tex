@@ -2,623 +2,8 @@
 \begin{document}
 
 
-\chapter{Kohn Variational Method}
+\chapter{Kohn Variational Methods}
 
-\lettrine{\textcolor{startcolor}{F}}{rom} any introductory book on quantum mechanics, for a central potential in spherical coordinates, Schr\"odinger's equation becomes
-\begin{equation}
-\left[\frac{\hbar^2}{2m}\frac{d^2}{dr^2} + \frac{l(l+1)\hbar^2}{2 m r^2} + V(r)\right] u_{E,l}(r) = E u_{E,l}(r),
-\end{equation}
-where
-\begin{equation}
-u_{E,l}(r) = r R_{E,l}(r).
-\end{equation}
-Using $k = \frac{\sqrt{2 m E}}{\hbar}$ and rewriting in atomic units yields the equation
-\begin{equation}
-\left[\frac{d^2}{dr^2} - \frac{l(l+1)}{r^2} - U(r) + k^2\right]u_l(k,r) = 0,
-\label{RadialSE}
-\end{equation}
-where $U(r) = \frac{2 m V(r)}{\hbar^2}$.
-The dependence on k in the function $u_l(r)$ will be implicit from this point forward.  The operation on $u_l(r)$ can be defined as \cite{Bransden2003}
-\beq
-L_l \equiv 2(H - E)
-\label{LDef}
-\eeq
-or, for just the negative of the radial part,
-\beq
-L_l \equiv \frac{d^2}{dr^2} - \frac{l(l+1)}{r^2} - U(r) + k^2
-\label{LDefR}
-\eeq
-so that (\ref{RadialSE}) can be rewritten as
-\begin{equation}
-L_l u_l(r) = 0.
-\label{RadialSEL}
-\end{equation}
-
-Far from the scattering potential, the scattered wavefunction must be a spherical wave.  As $r\rightarrow\infty$, if the potential falls off faster than $r^{-1}$, the radial function can be written as \cite{Bransden2003}
-\begin{equation}
-R_l(k,r) = \frac{u_l(k,r)}{r} = B_l(k)\left[j_l(k r) - \tan(\delta_l(k)) \eta_l(k r)\right].
-\label{SphericalBesselNorm}
-\end{equation}
-
-The asymptotic expansions for the spherical Bessel functions $j_l$ and $n_l$ are \cite{Arfken2005}
-\begin{equation}
-j_l(x) \rtoinfty \frac{1}{x} \sin(x - \frac{n \pi}{2}) \text{ and }
-n_l(x) \rtoinfty -\frac{1}{x} \cos(x - \frac{n \pi}{2}).
-\end{equation}
-Using these asymptotic expansions allows us to write (\ref{SphericalBesselNorm}) as
-\begin{equation}
-u_l(r) \rtoinfty \sin(k r - \tfrac{l \pi}{2}) + \tan(\delta_l) \cos(k r - \tfrac{l \pi}{2}).
-\label{AsympExactParticular}
-\end{equation}
-Bransden and Joachain \cite{Bransden2003} generalize this to
-\begin{equation}
-u_l(r) \rtoinfty \sin(k r - \tfrac{l \pi}{2} + \gamma) + \tan(\delta_l - \gamma) \cos(k r - \tfrac{l \pi}{2} + \gamma).
-\label{eq:AsympExact}
-\end{equation}
-Other ``normalizations'' are possible, and these will be discussed in (\textbf{REF}).
-
-The other boundary condition is at the origin, where $u_l(r)$ vanishes:
-\begin{equation}
-u_l(0) = 0.
-\label{OriginExact}
-\end{equation}
-
-We also consider a trial function with a trial phase shift of $\delta_l^t$ that satisfies the same boundary conditions of
-\begin{equation}
-u_l^t(0) = 0
-\label{OriginTrial}
-\end{equation}
-and
-\begin{equation}
-u_l^t(r) \rtoinfty \sin(k r - \tfrac{l \pi}{2} + \gamma) + \tan(\delta_l^t - \gamma) \cos(k r - \tfrac{l \pi}{2} + \gamma).
-\label{AsympTrial}
-\end{equation}
-
-\section{Variation of \texorpdfstring{$I_l$}{Il}}
-There are two ways to obtain the Kohn method.  We will first explore the variation of the functional $I_l$ as in Adhikari's book \cite{Adhikari1998}.  We begin by defining $I_l$ as
-\begin{equation}
-I_l[u_l^t] \equiv \int_0^\infty u_l^t(r) L_l u_l^t(r) \,dr.
-\label{eq:IlDefU}
-\end{equation}
-Then from (\ref{RadialSEL}),
-\begin{equation}
-I_l[u_l] = 0.
-\label{eq:ExactIl}
-\end{equation}
-
-The trial function is related to the exact solution by
-\begin{equation}
-u_l^t(r) = u_l(r) + \delta u_l(r).
-\label{eq:UlTrialRelation}
-\end{equation}
-
-The variation of $I_l$, $\delta I_l$, is just $I_l[u_l^t] - I_l[u_l]$.  Explicitly writing this out yields (by (\ref{RadialSEL}))
-\begin{equation*}
-\delta I_l = I_l[u_l + \delta u_l] - I_l[u_l] = I_l[u_l + \delta u_l] = \int_0^\infty (u_l L_l u_l + u_l L_l\delta u_l + \delta u_l L_l u_l + \delta u_l L \delta u_l) dr
-\end{equation*}
-\begin{equation}
-= \int_0^\infty (u_l L_l\delta u_l + \delta u_l L_l u_l + \delta u_l L \delta u_l) dr.
-\end{equation}
-
-\noindent Applying integration by parts twice moves the second derivative on the first term from $\delta u_l$ onto $u_l$ instead.  Defining $f(r) = -\frac{l(l+1)}{r^2} - U(r) + k^2$, we have
-\begin{align}
-\nonumber \int_0^\infty (u_l L_l\delta u_l)dr =& \int_0^\infty \left(u_l f(r) \delta u_l + u_l \frac{d^2\delta u_l}{dr^2}\right)dr \\
-\nonumber =& \int_0^\infty u_l f(r) \delta u_l dr - \int_0^\infty (\frac{du_l}{dr})(\frac{d\delta u_l}{dr}) dr + u_l \left. \frac{d\delta u_l}{dr} \right|_0^\infty \\
-\nonumber =& \int_0^\infty \delta u_l f(r) u_l dr + \int_0^\infty \delta u_l \frac{d^2u_l}{dr^2} dr + \left[u_l \frac{d\delta u_l}{dr} - \delta u_l \frac{du_l}{dr} \right]_0^\infty \\
-=& \int_0^\infty \delta u_l L_l u_l dr + \left[u_l \frac{d\delta u_l}{dr} - \delta u_l \frac{du_l}{dr} \right]_0^\infty
-\end{align}
-
-\noindent Thus, the variation of $I_l$ is
-\begin{equation}
-\delta I_l = 2 \int_0^\infty \delta u_l L_l u_l + \int_0^\infty \delta u_l L \delta u_l dr + \left[u_l \frac{d\delta u_l}{dr} - \delta u_l \frac{du_l}{dr} \right]_0^\infty.
-\label{DeltaIl}
-\end{equation}
-From (\ref{RadialSEL}), the first term is 0.  Since the second term is of second order in $\delta u_l$, as long as $\delta u_l$ is small (the trial function is a good approximation), this term can be neglected.  Then the variation of $I_l$ to first order is
-\begin{equation}
-\delta I_l = \left[u_l \frac{d\delta u_l}{dr} - \delta u_l \frac{du_l}{dr} \right]_0^\infty.
-\label{Parts1}
-\end{equation}
-
-\noindent By virtue of (\ref{OriginExact}) and (\ref{OriginTrial}), the lower limits are 0.  The notation is simplified by using
-\begin{equation}
-\lambda_l = \tan(\delta_l - \gamma),\, \lambda_l^t = \tan(\delta_l^t - \gamma) \text{ and } \delta\lambda_l = \lambda_l^t - \lambda_l.
-\end{equation}
-By (\ref{eq:AsympExact}) and (\ref{AsympTrial}), $\delta u_l$ and $\frac{d\delta u_l}{dr}$ are
-\begin{equation}
-\lim_{r \to \infty} \delta u_l(r) = \lim_{r \to \infty} (u_l^t(r) - u_l(r)) = -\delta\lambda_l \cos(k r - \tfrac{l \pi}{2} + \gamma)
-\end{equation}
-\begin{equation}
-\lim_{r \to \infty} \frac{d\delta u_l}{dr} = -k \,\delta\!\lambda_l \sin(k r - \tfrac{l \pi}{2} + \gamma)
-\end{equation}
-
-\noindent Using the above equations in (\ref{Parts1}) gives
-\begin{align}
-\delta I_l = -k\, \delta\!\lambda_l \bigg[ &(\sin(k r - \tfrac{l \pi}{2} + \gamma) + \lambda_l \cos(k r - \tfrac{l \pi}{2} + \gamma))\sin(k r - \tfrac{l \pi}{2} + \gamma) \\	+ 
-                                                                &(\cos(k r - \tfrac{l \pi}{2} + \gamma) + \lambda_l \sin(k r - \tfrac{l \pi}{2} + \gamma))\cos(k r - \tfrac{l \pi}{2} + \gamma)\bigg]
-\end{align}
-
-\noindent Multiplying out the terms and using the trigonometric identity $\sin^2(\theta) + \cos^2(\theta) = 1$ gives
-\begin{equation}
-\delta I_l = -k\, \delta\!\lambda_l
-\label{Variation1}
-\end{equation}
-
-In \cite{Joachain1979}, a functional $J_l$ is defined as
-\begin{equation}
-J_l = I_l + k \lambda_l,
-\end{equation}
-which is stationary, meaning
-\begin{equation}
-\delta J_l = \delta(I_l + k \lambda_l) = 0.
-\end{equation}
-
-Expanding (\ref{Variation1}) gives
-\begin{equation}
-I_l[u_l^t] - I_l[u_l] + k \lambda_l^t - k \lambda_l = 0.
-\end{equation}
-From (\ref{eq:ExactIl}), the second term is 0.  Solving for $\lambda_l$ and rewriting $\lambda_l$ as $[\lambda_l]$ to emphasize the variational nature of the problem yields
-\begin{equation}
-[\lambda_l] = \lambda_l^t + k^{-1} I_l[u_l^t].
-\label{KohnEqnGeneral}
-\end{equation}
-This is the general form of the Kohn variational method.  We will look at specific cases in a later section (\textbf{REF}).
-
-A trial function is constructed that depends on (N+1) parameters, i.e. $u_l^t(c_1, c_2, ..., c_N, \lambda_l^t; r)$ \cite{Joachain1979}.  Taking the variation of $J_l$ with respect to each of these parameters yields the system of equations
-\begin{align}
-&\frac{\partial J_l}{\partial c_i} = 0, \;\;\;\;\;\;  i = 1, 2, ..., N \notag \\
-&\frac{\partial J_l}{\partial \lambda_l^t} = 0
-\label{Partials1}
-\end{align}
-or
-\begin{align}
-&\frac{\partial I_l}{\partial c_i} = 0, \;\;\;\;\;\;  i = 1, 2, ..., N \notag \\
-&\frac{\partial I_l}{\partial \lambda_l^t} = -k
-\label{Partials2}
-\end{align}
-
-
-\section{Kato Identity}
-To determine the error of this equation, we need to look back to (\ref{DeltaIl}).  If the second term is no longer neglected, (\ref{DeltaIl}) becomes
-\begin{equation}
-\delta I_l = \left[u_l \frac{d\delta u_l}{dr} - \delta u_l \frac{du_l}{dr} \right]_0^\infty + \int_0^\infty \delta u_l L \delta u_l dr.
-\end{equation}
-
-\noindent Using the same method as above yields a similar equation to (\ref{Variation1}).
-\begin{equation}
-\delta I_l = -k\, \delta\!\lambda_l + \int_0^\infty \delta u_l L \delta u_l dr
-\end{equation}
-
-\noindent Expanding this and solving for $\lambda_l$, we obtain
-\begin{equation}
-[\lambda_l] = \lambda_l^t + k^{-1} I_l[u_l^t] - \int_0^\infty \delta u_l L \delta u_l dr.
-\label{Kato1}
-\end{equation}
-
-The above equation is the same as (\ref{KohnEqnGeneral}) but includes the error term.  This equation is known as the \emph{Kato identity} and is derived in a different manner in his 1951 paper \cite{Kato1951a}.  The way it is presented here is similar to Adhikari's book \cite{Adhikari1998}.  In the next section, the Kato identity will be derived in the same way as his 1951 paper.
-
-
-\section{Green's Theorem}
-Applying Green's theorem (integration by parts) with $f = u_l$ and $g = u_l^t$ gives \cite{Kato1951a}
-\begin{align}
-\nonumber \int_0^\infty(f L[g] - L[f] g)dr &= \left[f \frac{dg}{dr} - \frac{df}{dr} g\right]_0^\infty \\
-\int_0^\infty(u_l L u_l^t - u_l^t L u_l)dr &= \left[u_l \frac{du_l^t}{dr} - \frac{du_l}{dr} u_l^t\right]_0^\infty.
-\label{GreenTheorem}
-\end{align}
-
-Using the same normalization as (\ref{eq:AsympExact}) and (\ref{AsympTrial}), the first derivatives are
-\begin{align}
-\nonumber \lim_{r \to \infty} \frac{du_l}{dr} &= k \cos(k r - \tfrac{l \pi}{2} + \gamma) - \lambda_l k  \sin(k r - \tfrac{l \pi}{2} + \gamma) \text{  and}\\
-\lim_{r \to \infty} \frac{du_l^t}{dr} &= k \cos(k r - \tfrac{l \pi}{2} + \gamma) - \lambda_l^t k \sin(k r - \tfrac{l \pi}{2} + \gamma).
-\end{align}
-By (\ref{RadialSEL}), equation (\ref{GreenTheorem}) becomes
-\begin{align}
-\int_0^\infty \!\!u_l L u_l^t dr = \,&(\sin(k r - \tfrac{l \pi}{2} + \gamma) + \lambda_l \cos(k r - \tfrac{l \pi}{2} + \gamma))(k \cos(k r - \tfrac{l \pi}{2} + \gamma) - \lambda_l^t k \sin(k r - \tfrac{l \pi}{2} + \gamma)) \, + \notag \\
-   &(\sin(k r - \tfrac{l \pi}{2} + \gamma) + \lambda_l^t \cos(k r - \tfrac{l \pi}{2} + \gamma))(k \cos(k r - \tfrac{l \pi}{2} + \gamma) - \lambda_l k \sin(k r - \tfrac{l \pi}{2} + \gamma)) \notag \\
-   &\!\!\!\!\!\!\!= k(\lambda_l - \lambda_l^t).
-\label{GreenKato}
-\end{align}
-Kato \cite{Kato1951a} notes that
-\begin{equation}
-L[\delta u_l] = L[u_l^t - u_l] = L[u_l^t] - L[u_l] = L[u_l^t],
-\label{Lequiv}
-\end{equation}
-since L is linear and by (\ref{RadialSEL}).  Also rewriting $u_l$ as $u_l = u_l^t - \delta u_l$ causes (\ref{GreenKato}) to become
-\begin{equation}
-\int_0^\infty \!\!(u_l^t - \delta u_l) L(\delta u_l) dr =
-   \int_0^\infty \!\!u_l^t L(\delta u_l) dr - \int_0^\infty \!\! \delta u_l\, L(\delta u_l) dr =
-   k(\lambda_l - \lambda_l^t).
-\end{equation}
-
-Using (\ref{Lequiv}) again and solving for $k \lambda_l$ gives a similar equation to the result in Kato's paper \cite{Kato1951a}
-\begin{equation}
-k \lambda_l = k \lambda_l^t + I_l[u_l^t] - \int_0^\infty \delta u_l L(\delta u_l) dr.
-\label{Kato2}
-\end{equation}
-This is the same equation as (\ref{Kato1}).  In his original paper, Kato uses a slightly different normalization, which will be covered in section \ref{sec:InverseKohn}.
-
-
-\section{Kohn Method}
-In his original paper \cite{Kohn1948}, Kohn used $\gamma = 0$, leading to a normalization of
-\begin{equation}
-u_l(r) \rtoinfty \sin(k r - \tfrac{l \pi}{2}) + \tan \delta_l \cos(k r - \tfrac{l \pi}{2}),
-\end{equation}
-which is the same as (\ref{AsympExactParticular}).  Bransden and Joachain \cite{Bransden2003} rewrite the variational principle (\ref{KohnEqnGeneral}) in terms of the K-matrix element
-\begin{align}
-\nonumber K_l(k) &= \lambda_l = \tan \delta_l(k) \\
-K_l^t(k) &= \lambda_l^t = \tan \delta_l^t(k).
-\end{align}
-
-\noindent Using these in (\ref{KohnEqnGeneral}) gives
-\begin{equation}
-\left[K_l\right] = K_l^t + k^{-1} I_l[u_l^t].
-\label{KMatrixKohn}
-\end{equation}
-
-
-\section{Inverse Kohn Method}
-\label{sec:InverseKohn}
-There are many different variational principles that can be generated using variations on the above methods.  A simple change to the previous section on the Kohn method is choosing $\gamma = \frac{\pi}{2}$.  This is the value that Rubinow considered \cite{Burke1995}.
-
-The normalization becomes
-\begin{equation}
-u_l(r) \rtoinfty \cos(k r - \tfrac{l \pi}{2}) + \cot \delta_l \sin(k r - \tfrac{l \pi}{2}),
-\end{equation}
-which is also the normalization that Kato used \cite{Kato1951a}.
-
-Since $\tan(\theta - \frac{\pi}{2}) = -\cot(\theta)$, equation (\ref{Variation1}) becomes
-\begin{equation}
-\delta I_l = k \,\delta\cot \delta_l = k \,\delta \mu_l,
-\end{equation}
-where $\mu_l = \cot \delta_l$.  When expanded, this becomes
-\begin{equation}
-[\mu_l] = \mu_l^t - k^{-1}(I_l[u_l^t] - I_l[u_l]) = \mu_l^t - k^{-1} I_l[u_l^t].
-\end{equation}
-This variational principle is known as the Rubinow method or the inverse Kohn method, since $\mu_l = \lambda_l^{-1}$.
-
-
-
-\section{Schwartz Singularities}
-\label{sec:SchwartzSing}
-
-
-\section{Notations}
-It should be noted that of the references used, none use exactly the same notation.  Though the notation used in this paper is most similar to that of Bransden and Joachain's book \cite{Bransden2003}, it is not exactly the same.  In Adhikari's book \cite{Adhikari1998}, $\Delta$ is used instead of $\delta$ for the variation.  In Joachain's book \cite{Joachain1979} and Kato's paper \cite{Kato1951a}, they use $\overline{u_l}$ and $u_l$ for $u_l$ and $u_l^t$, respectively, which can be confusing when switching between sources.  Joachain also uses $\eta_l$ instead of $\delta_l$ for the phase shifts in his book, in order to not confuse it with the $\delta$ for the variation.  Care must be taken when reading papers with these variational methods, as there appears to be no standard notation yet.
-
-Some references use the full wavefunction, while others use the reduced radial part of the wavefunction, $u_l(r)$.  The references that use $\psi_l(r)$ use (\ref{LDef}) instead of (\ref{LDefR}).  Equation (\ref{LDefR}) has taken the additional step of multiplying through by a negative sign.  This leads to a sign change in (\ref{KohnEqnGeneral}) and (\ref{Kato1}), i.e.
-
-\begin{equation}
-[\lambda_l] = \lambda_l^t - k^{-1} I_l[\psi_l^t].
-\label{KohnEqnGeneralPsi}
-\end{equation}
-
-\begin{equation}
-[\lambda_l] = \lambda_l^t - k^{-1} I_l[\psi_l^t] + \int_0^\infty \delta \psi_l L \, \delta \psi_l dr.
-\label{Kato1Psi}
-\end{equation}
-
-
-
-
-\section{Complex Kohn}
-
-The complex Kohn method provides anomaly-free phase shifts, except in exceptional circumstances \cite{Lucchese1989}.  In this section, we will derive the complex Kohn variational principle and solve for the phase shift.
-
-Similar to the treatment in \cite{Cooper2010}, the complex-valued trial wavefunction is
-\beq
-\breve{\Psi}_t^\pm = \bar{S} + T_t \, \bar{W} + \sum_{i=1}^N c_i' \bar{\phi_i}^t,
-\label{eq:TrialComplex}
-\eeq
-
-where
-\beq
-\bar{W} = \bar{S} + \ii \bar{C}.
-\label{eq:WDef}
-\eeq
-
-\textbf{SHOULDN'T THIS BE C + i S?}
-
-$\bar{S}$, $\bar{C}$ and $\bar{\phi_i}$ are the same as in (\ref{SCphiBarDef}).  Note that this is different than Cooper et al.\ \cite{Cooper2010}, in that we do not use a variable $\tau$, and our $\bar{W}$ is their $\bar{T}$ but with $\bar{C}$ and $\bar{S}$ swapped, which gives a wavefunction of the correct form (an outgoing wave).
-
-The version of (\ref{eq:IlDefU}) for the full wavefunction is
-\beq
-I_l[\Psi_l^t] \equiv \left<\Psi_l^t | L | \Psi_l^t \right> = \int \Psi_l^t(\vec{r}) L_l \Psi_l^t(\vec{r}) \,d\vec{r}.
-\label{eq:IlDefPsi}
-\eeq
-
-\noindent Similar to (\ref{eq:UlTrialRelation}),
-\beq
-\Psi_l^t(r) = \Psi_l(r) + \delta \Psi_l(r).
-\label{eq:PsilTrialRelation}
-\eeq
-
-\noindent The variation of $I_l$ is
-\begin{align}
-\nonumber \delta I_l &= I_l[\Psi_l^t] - I[\Psi_l] \\
-\nonumber &= I[\Psi_l + \delta \Psi_l] - I[\Psi_l] \\
-\nonumber &= \left<\Psi_l^t | L_l | \Psi_l^t\right> - \left<\Psi_l | L_l | \Psi_l\right> \\
-&= \left<\Psi_l | L_l | \Psi_l\right> + \left<\Psi_l | L_l | \delta\Psi_l\right> + \left<\delta\Psi_l | L_l | \Psi_l\right> + \left<\delta\Psi_l | L_l | \delta\Psi_l\right> - \left<\Psi | L_l | \Psi_l \right>.
-\label{eq:IlPsiVariation1}
-\end{align}
-
-\noindent The first and last terms are equal to 0, by virtue of (\ref{eq:ExactIl}).  The $\left<\delta\Psi_l | L | \delta\Psi_l\right>$ term is of second order in $\delta\Psi_l$, so this is neglected.  We also drop the $l$ subscript from this point.
-
-Since $L \Psi = 0$,
-\beq
-\left<\delta\Psi_l | L | \Psi_l\right> = -\left<\delta\Psi_l | L | \Psi_l\right>,
-\eeq
-
-\noindent which combined with the definition of $L$ from (\ref{LDef}), allows us to write the above equation as
-\beq
-\delta I_l = 2 \left<\Psi_l | H\!-\!E | \delta\Psi_l\right> - 2 \left<\delta\Psi_l | H\!-\!E | \Psi_l\right>
-\label{eq:IlPsiVariation2}
-\eeq
-
-As in (\ref{GDef}) and (\ref{GDef2}), Green's theorem gives
-\begin{align}
-\nonumber \left<\delta\Psi_l | \nabla_\rho^2 | \Psi_l\right> - \left<\delta\Psi_l | \nabla_\rho^2 | \Psi_l\right> 
-&= \int\limits_{V_3} \int\limits_{V_{12}} \int\limits_{S_\rho} \left[ \Psi \nabla_\rho^2 \delta\Psi - \delta\Psi \nabla_\rho^2 \Psi \right] d\tau_\rho \, d\tau_{12} d\tau_3 \\
-&= \int\limits_{V_3} \int\limits_{V_{12}} \int\limits_{S_\rho} \left[ \Psi \vec{\nabla}_\rho \delta\Psi - \delta\Psi \vec{\nabla}_\rho \Psi \right] \cdot d\vec{\sigma}_\rho d\tau_{12} d\tau_3
-\label{eq:ComplexGreensThm}
-\end{align}
-
-We define $\delta I'$ as
-\begin{align}
-\nonumber \delta I' \equiv &\int\limits_{V_3} \int\limits_{V_{12}} \int\limits_{S_\rho} \left[\Psi \vec{\nabla}_\rho \delta\Psi - \delta\Psi \vec{\nabla}_\rho \Psi \right] \cdot d\vec{\sigma}_\rho d\tau_{12} d\tau_3
-  + \int\limits_{V_\rho} \int\limits_{V_{12}} \int\limits_{S_3} \left[\Psi \vec{\nabla}_{r_3} \delta\Psi - \delta\Psi \vec{\nabla}_{r_3} \Psi \right] \cdot d\vec{\sigma}_3 d\tau_{12} d\tau_{\rho} \\
-  + &\int\limits_{V_\rho} \int\limits_{V_{13}}\int\limits_{S_{12}} \left[\Psi \vec{\nabla}_{r_{12}} \delta\Psi - \delta\Psi \vec{\nabla}_{r_{12}} \Psi \right] \cdot d\vec{\sigma}_{12} d\tau_{13} d\tau_\rho.
-\end{align}
-
-\noindent Due to the exponential fall-off in (\ref{eq:HWave}) and (\ref{eq:PsWave}), the last two terms cancel, leaving
-\beq
-\nonumber \delta I' \equiv \int\limits_{V_3} \int\limits_{V_{12}} \int\limits_{S_\rho} \left[\Psi \vec{\nabla}_\rho \delta\Psi - \delta\Psi \vec{\nabla}_\rho \Psi \right] \cdot d\vec{\sigma}_\rho d\tau_{12} d\tau_3.
-\eeq
-
-We can drop the dot product, since the surface elements are in the same direction as $\nabla_\rho$.
-Using the above equation in (\ref{eq:IlPsiVariation2}), along with (\ref{eq:Hamiltonian2}), (\ref{eq:HEqn}), (\ref{eq:PsEqn}) and (\ref{eq:EnergyTotal}) gives a cancellation in the terms without Laplacian operators, yielding
-\begin{align}
-\nonumber \delta I = &-\frac{1}{2} \int\limits_{V_3} \int\limits_{V_{12}} \int\limits_{S_\rho} \left[ \Psi \nabla_\rho \delta\Psi - \delta\Psi \nabla_\rho \Psi \right] d\sigma_\rho d\tau_{12} d\tau_3 \\
-\nonumber & + 2 \int \Psi\left(H_H + H_{Ps} + \frac{1}{r_1} - \frac{1}{r_2} - \frac{1}{r_{13}} + \frac{1}{r_{23}} - E_H - E_{Ps} + \frac{1}{4} \kappa^2\right) \delta\Psi \, d\sigma_\rho d\tau_{12} d\tau_3 \\
-\nonumber & + 2 \int \delta\Psi\left(H_H + H_{Ps} + \frac{1}{r_1} - \frac{1}{r_2} - \frac{1}{r_{13}} + \frac{1}{r_{23}} - E_H - E_{Ps} + \frac{1}{4} \kappa^2\right) \Psi \, d\sigma_\rho d\tau_{12} d\tau_3 \\
-= &-\frac{1}{2} \int\limits_{V_3} \int\limits_{V_{12}} \int\limits_{S_\rho} \left[ \Psi \nabla_\rho \delta\Psi - \delta\Psi \nabla_\rho \Psi \right] d\sigma_\rho d\tau_{12} d\tau_3
-\label{eq:ComplexIl1}
-\end{align}
-
-The variation of $\Psi$ is
-\beq
-\delta\Psi = \Psi^t - \Psi = (\bar{S} + T_t \bar{W}) - (\bar{S} + T \bar{W}) = (T_t - T) \bar{W} = \delta T \,\bar{W}
-\eeq
-
-\noindent Using this in (\ref{eq:ComplexIl1}) gives
-\beq
-\delta I = -\frac{1}{2} \int\limits_{V_3} \int\limits_{V_{12}} \int\limits_{S_\rho} \left\{ \left[(\bar{S} + T\bar{W})\nabla_\rho(T_t - T)\bar{W}\right] - \left[(T_t - T)\bar{W} \, \nabla_\rho (\bar{S} + T \bar{W})\right] \right\} d\sigma_\rho d\tau_{12} d\tau_3
-\eeq
-
-Now evaluating the $\nabla_\rho$ on $j_0$ and $-n_0$,
-\begin{align}
-\nonumber
-\nabla_\rho \frac{\sin{\kr}}{\kr} &= \kappa \frac{\cos{\kr}}{\kr} - \frac{\sin{\kr}}{\kappa\rho^2} \\
-\nabla_\rho \frac{\cos{\kr}}{\kr} &= -\kappa \frac{\sin{\kr}}{\kr} - \frac{\cos{\kr}}{\kappa\rho^2},
-\end{align}
-
-\noindent which, if we only take the leading terms, gives
-\begin{alignat}{2}
-\nonumber\nabla_\rho \bar{S} &={}& &\kappa \bar{C} \\
-\nonumber\nabla_\rho \bar{C} &={}& -&\kappa \bar{S} \\
-\nabla_\rho \bar{W} &={}& -&\kappa \bar{S} + \ii \kappa \bar{C} = \ii\kappa(\ii \bar{S} + \bar{C}) = \ii\kappa\bar{W}.
-\label{eq:NablaOnSCW}
-\end{alignat}
-
-Substituting these in $\delta I$ gives
-\begin{align}
-\nonumber \delta I &= -\frac{1}{2} \int\limits_{V_3} \int\limits_{V_{12}} \int\limits_{S_\rho} \left\{ \left[(\bar{S} + T\bar{W})(T_t - T)\ii\kappa\bar{W}\right] - \left[(T_t - T)\bar{W} (\kappa\bar{S} + T \ii\kappa\bar{W})\right] \right\} d\sigma_\rho d\tau_{12} d\tau_3 \\
-\nonumber &= -\frac{\kappa}{2} (T_t - T)\int\limits_{V_3} \int\limits_{V_{12}} \int\limits_{S_\rho} \left[ \left(\ii \bar{S}\bar{W} + \ii T \bar{W}^2 - \bar{W}\bar{C} - \ii T \bar{W}\right) \right] d\sigma_\rho d\tau_{12} d\tau_3 \\
-\nonumber &= -\frac{\kappa}{2} \int\limits_{V_3} \int\limits_{V_{12}} \int\limits_{S_\rho} \left[ \ii T_t \bar{S}\bar{W} + \ii T_t T\bar{W}^2 - \ii T \bar{S}\bar{W} - \ii T^2\bar{W}^2 - T_t\bar{W}\bar{C} - \ii T_t T \bar{W} + T \bar{W}\bar{C} + \ii T^2 \bar{W} \right] d\sigma_\rho d\tau_{12} d\tau_3
-\end{align}
-
-\noindent Neglecting quadratic terms of $T^2$ or $T_t T$, we have
-\begin{alignat}{2}
-\nonumber \delta I &={}& -&\frac{\kappa}{2} (T_t - T) \int\limits_{V_3} \int\limits_{V_{12}} \int\limits_{S_\rho} \left[\ii \bar{S}\bar{W} - \bar{W}\bar{C}\right] d\sigma_\rho d\tau_{12} d\tau_3 \\
-\nonumber &={}& -&\frac{\kappa}{2} (T_t - T) \int\limits_{V_3} \int\limits_{V_{12}} \int\limits_{S_\rho} \left[\ii\bar{S}\left(\bar{C} + \ii\bar{S}\right) - \left(\bar{C} + \ii\bar{S}\right)\bar{C}\right] d\sigma_\rho d\tau_{12} d\tau_3 \\
-&={}& &\frac{\kappa}{2} (T_t - T) \int\limits_{V_3} \int\limits_{V_{12}} \int\limits_{S_\rho} \left(\bar{S}^2 + \bar{C}^2\right) d\sigma_\rho d\tau_{12} d\tau_3.
-\end{alignat}
-
-For $l = 0$,
-\begin{align}
-\nonumber \delta I &= \frac{\kappa}{2} (T_t - T) \int\limits_{V_3} \int\limits_{V_{12}} \int\limits_{S_\rho} Y_{0,0}\left( \theta_\rho, \phi_\rho \right)^2 \Phi_{Ps}(r_{12})^2 \Phi_H(r_3)^2 \left[ \frac{\sin^2(\kappa\rho)}{\rho^2} + \frac{\cos^2(\kappa\rho)}{\rho^2}\right] \frac{2}{\kappa} d\sigma_\rho d\tau_{12} d\tau_3 \\
-&= (T_t - T) \int\limits_{V_3} \int\limits_{V_{12}} \int\limits_{S_\rho} Y_{0,0}\left( \theta_\rho, \phi_\rho \right)^2 \Phi_{Ps}(r_{12})^2 \Phi_H(r_3)^2 \frac{1}{\rho^2} \rho^2 \sin\theta_\rho d\theta_\rho d\phi_\rho d\tau_{12} d\tau_3
-\end{align}
-
-Since the Ps and H functions are normalized,
-\beq
-\int\limits_{V_3}\! \Phi_H(r_3) d\tau_3 = 1 \text{ and } \int\limits_{V_{12}}\! \Phi_{Ps}(r_{12}) d\tau_{12} = 1.
-\label{eq:PsHNormalization}
-\eeq
-
-This leaves us with
-\beq
-\delta I = (T_t - T) \int\limits_{S_\rho} Y_{0,0}\left( \theta_\rho, \phi_\rho \right)^2 \sin\theta_\rho d\theta_\rho d\phi_\rho
-\eeq
-
-Upon performing the angular integrations, we finally obtain our equation for the variational method of
-\beq
-\delta I = (T_t - T)
-\eeq
-or
-\beq
-I[\Psi_t] - I[\Psi] = I[\Psi_t] = T_t - T.
-\eeq
-
-\noindent Writing this as a variation gives
-\beq
-T_v = T_t - I[\Psi_t].
-\label{eq:ComplexKohnVariation}
-\eeq
-
-Substituting our trial wavefunction (\ref{eq:TrialComplex}) into (\ref{eq:IlDefPsi}) gives
-\begin{align}
-\nonumber I[\Psi_t] = \Big< &\bar{S} + T_t \, \bar{W} + \sum_{i} c_i' \bar{\phi_i}^t \;\Big| L \Big|\; \bar{S} + T_t \, \bar{W} + \sum_{i} c_i' \bar{\phi_i}^t \Big> \\
-\nonumber = \Big( &\bar{S} L \bar{S} + T_t \bar{S} L \bar{W} + \bar{S} L \sum_{i} c_i \bar{\phi_i} + T_t \bar{W} L \bar{S} + T_t^2 \bar{W}L\bar{W} + T_t \bar{W} L \sum_{i} c_i \bar{\phi_i} \Big. \\
-& \Big. + \sum_{i} c_i \bar{\phi_i} L \bar{S} + T_t \sum_{i} c_i \bar{\phi_i} L \bar{W} + \sum_{i} \sum_{j} c_i c_j \bar{\phi_i} L \bar{\phi_j} \Big) 
-\end{align}
-
-\noindent Using the bra-ket notation, the bra should be conjugated, but as \cite{} points out, the conjugation should not be performed in these calculations.  All further calculations in this section implicitly omit the complex conjugation of the bra.
-
-We can use this now in the stationary property of the complex Kohn functional, i.e.
-\beq
-\frac{\partial T_v}{\partial T_t} = 0  \text{ and } \frac{\partial T_v}{\partial c_i} = 0 \text{ where $i = 1,\ldots,N$}.
-\label{eq:ComplexKohnStationary}
-\eeq
-
-Using (\ref{eq:WDef}) and (\ref{eq:SLCandCLSBar}),
-\begin{align}
-\nonumber (\bar{S},L \bar{W}) - (\bar{W},L \bar{S}) &= (\bar{S},L\bar{C}) + \ii(\bar{S},L\bar{S}) - (\bar{C},L\bar{S}) - \ii (\bar{S},L\bar{S}) \\
-& = (\bar{S},L\bar{C}) - (\bar{C},L\bar{S}) = 1.
-\label{eq:WLCandCLWBar}
-\end{align}
-
-\noindent Using (\ref{eq:PhiLSPerm}) and (\ref{eq:PhiLCPerm}),
-\beq
-(\bar{\phi}_i, L\bar{W}) = (\bar{W}, L\bar{\phi}_i).
-\label{eq:PhiLWPerm}
-\eeq
-
-Performing the first variation and using (\ref{eq:PhiLWPerm}) and (\ref{eq:WLCandCLWBar}) gives
-\begin{align}
-\nonumber 0 &= 1 - \Big[(\bar{S},L \bar{W}) + (\bar{W},L \bar{S}) + 2\, T_t (\bar{W},L\bar{W}) + \sum_i c_i (\bar{W},L \bar{\phi_i}) + \sum_i c_i (\bar{\phi_i},L \bar{W}) \Big]. \\
-&= 2\, (\bar{W},L \bar{S}) + 2\, T_t (\bar{W},L \bar{W}) + 2 \sum_i c_i (\bar{W},L \bar{\phi_i})
-\label{eq:Complex1stVar1}
-\end{align}
-
-\noindent Rearranging, we have
-\beq
--(\bar{W},L \bar{S}) = T_t (\bar{W},L \bar{W}) + \sum_i c_i (\bar{W},L \bar{\phi_i}).
-\label{eq:Complex1stVar2}
-\eeq
-
-Performing the second variation with respect to an arbitrary $c_k$ yields
-\beq
-0 = (\bar{S},L \bar{\phi_k}) + T_t (\bar{W},L\bar{\phi_k}) + (\bar{\phi_k},L\bar{S}) + T_t (\bar{\phi_k},L\bar{W}) + \frac{\partial}{\partial c_k} \sum_i \sum_j c_i c_j (\bar{\phi_i},L\bar{\phi_j}).
-\label{eq:Complex2ndVar1}
-\eeq
-
-\noindent With (\ref{eq:PhiLWPerm}), the last term evalutes to
-\begin{align}
-\nonumber \frac{\partial}{\partial c_k} \sum_i \sum_j c_i c_j (\bar{\phi_i},L\bar{\phi_j}) &= \sum_{j\neq k} c_j (\bar{\phi_k},L\bar{\phi_j}) + \sum_{i\neq k} c_i  (\bar{\phi_i},L\bar{\phi_k}) + 2\, c_k (\bar{\phi_k},L\bar{\phi_k}) \\
-&= 2 \sum_{j\neq k} c_j (\bar{\phi_k},L\bar{\phi_j}) + 2 c_k (\bar{\phi_k},L\bar{\phi_k}) = 2 \sum_j c_j (\bar{\phi_k},L\bar{\phi_j}).
-\end{align}
-
-\noindent Substituting this back into (\ref{eq:Complex2ndVar1}) along with (\ref{eq:PhiLSPerm}) and rearranging gives our other linear equations of
-\beq
--(\bar{\phi_k},L\bar{S}) = T_t (\bar{\phi_k},L\bar{W}) + \sum_j c_j (\bar{\phi_k},L\bar{\phi_j}).
-\label{eq:Complex2ndVar2}
-\eeq
-
-Equations (\ref{eq:Complex1stVar2}) and (\ref{eq:Complex2ndVar2}) are then written in matrix form as
-
-\begin{equation}
-\label{eq:ComplexKohnMatrix}
-\begin{bmatrix} 
- (\bar{W},L\bar{W}) & (\bar{W},L\bar{\phi}_1) & \cdots & (\bar{W},L\bar{\phi}_j) & \cdots\\
- (\bar{\phi}_1,L\bar{W}) & (\bar{\phi}_1,L\bar{\phi}_1) & \cdots & (\bar{\phi}_1,L\bar{\phi}_j) & \cdots\\
- \vdots & \vdots & \ddots & \vdots \\
- (\bar{\phi}_i,L\bar{W}) & (\bar{\phi}_i,L\bar{\phi}_1) & \cdots & (\bar{\phi}_i,L\bar{\phi}_j) & \cdots\\
- \vdots & \vdots & & \vdots & \\
-\end{bmatrix}
-\begin{bmatrix}
-T_t\\
-c_1\\
-\vdots\\
-c_i\\
-\vdots
-\end{bmatrix}
-= -
-\begin{bmatrix}
-(\bar{W},L\bar{S}) \\
-(\bar{\phi}_1,L\bar{S}) \\
-\vdots \\
-(\bar{\phi}_i,L\bar{S}) \\
-\vdots
-\end{bmatrix}.
-\end{equation}
-
-\noindent This matrix equation can be rewritten as
-\beq
-\textbf{\emph{AX = -B}}.
-\eeq
-
-\noindent Solving this for $\textbf{\emph{X}}$,
-\beq
-\textbf{\emph{X = $-A^{-1}$B}}.
-\eeq
-
-
-\section{Generalized Kohn}
-\label{sec:GenKohn}
-For the Kohn and inverse Kohn methods, we chose $\gamma = 0$ and $\gamma = \frac{\pi}{2}$ respectively in equation \ref{eq:AsympExact}.  Cooper et al.\ perform a similar treatment for what is referred to as the generalized Kohn method, and we have adapted it to our particular wavefunction \cite{Cooper2009, Cooper2010}.  The form is
-
-\begin{equation}
-\tilde{\Psi}_t^\pm = \tilde{S} + \tilde{\Lambda}_t \tilde{C} + \sum_{i=1}^N c_i \bar{\phi_i}^t ,
-\label{eq:TrialSimpleGeneral}
-\end{equation}
-
-\noindent with
-\begin{equation}
-\label{eq:GenKohnDef}
-\tilde{\Lambda}_t = \tan(\eta_t-\tau)
-\end{equation}
-
-\noindent and
-
-\begin{equation}
-\begin{bmatrix}
-\tilde{S} \\
-\tilde{C}
-\end{bmatrix}
-=
-\begin{bmatrix}
-\cos(\tau) & \sin(\tau) \\
--\sin(\tau) & \cos(\tau)
-\end{bmatrix}
-\begin{bmatrix}
-\bar{S} \\
-\bar{C}
-\end{bmatrix},
-\end{equation}
-
-
-\noindent where $\bar{S}$, $\bar{C}$ and $\bar{\phi}_i$ are defined by (\ref{SCphiBarDef}).  The derivation to determine the phase shifts is very similar to that of the Kohn method, but the $\tau$ parameter is taken into account.  The matrix equation for the generalized Kohn method is similar in form to the Kohn method given by equation (\ref{eq:KohnMatrix}).
-
-\begin{equation}
-\label{eq:GenKohnMatrix}
-\begin{bmatrix} 
- (\tilde{C},L\tilde{C}) & (\tilde{C},L\tilde{\phi}_1) & \cdots & (\tilde{C},L\bar{\phi}_j) & \cdots\\
- (\bar{\phi}_1,L\tilde{C}) & (\bar{\phi}_1,L\bar{\phi}_1) & \cdots & (\bar{\phi}_1,L\bar{\phi}_j) & \cdots\\
- \vdots & \vdots & \ddots & \vdots \\
- (\bar{\phi}_i,L\tilde{C}) & (\bar{\phi}_i,L\bar{\phi}_1) & \cdots & (\bar{\phi}_i,L\bar{\phi}_j) & \cdots\\
- \vdots & \vdots & & \vdots & \\
-\end{bmatrix}
-\begin{bmatrix}
-\tilde{\Lambda}_t\\
-\tilde{c}_1\\
-\vdots\\
-\tilde{c}_i\\
-\vdots
-\end{bmatrix}
-= -
-\begin{bmatrix}
-(\tilde{C},L\tilde{S}) \\
-(\bar{\phi}_1,L\tilde{S}) \\
-\vdots \\
-(\bar{\phi}_i,L\tilde{S}) \\
-\vdots
-\end{bmatrix}.
-\end{equation}
-
-Discussion on the use of this method is provided in the later section \ref{sec:CompGenKohn}.
-
-
-
-\todoi{Remove much of what came before}
 
 \section{General Wavefunction}
 
@@ -634,8 +19,8 @@ The short-range $\bar{\phi}_i^t$ terms can represent terms of different symmetri
 \beq
 \label{eq:GenSCMatrix}
 \begin{bmatrix}
-\tilde{S} \\
-\tilde{C}
+\widetilde{S} \\
+\widetilde{C}
 \end{bmatrix}
 =
 \textbf{u}
@@ -658,8 +43,8 @@ u_{10} & u_{11}
 \begin{subequations}
 \label{eq:TildeSCDef}
 \begin{align}
-\tilde{S} &= u_{00} \bar{S} + u_{01} \bar{C} \\
-\tilde{C} &= u_{10} \bar{S} + u_{11} \bar{C}.
+\widetilde{S} &= u_{00} \bar{S} + u_{01} \bar{C} \\
+\widetilde{C} &= u_{10} \bar{S} + u_{11} \bar{C}.
 \end{align}
 \end{subequations}
 
@@ -685,20 +70,12 @@ f_\ell(\rho) = \left[1 - \ee^{-\mu \rho} \left(1+\frac{\mu}{2}\rho\right)
 At a minimum, $m_\ell$ is chosen so that $C$ behaves like $S$ as $\rho \to 0$. \todoi{Derivation. Table of values of $m_\ell$.}
 
 
-\section{Derivation of the General Kohn Principle}
-
-The version of \cref{eq:IlDefU} for the full wavefunction is
-\beq
-I_l\left[\Psi_l^t\right] \equiv \left<{\Psi_l^t}^* | L | \Psi_l^t \right> = \int \Psi_l^t(\vec{r}) \mathcal{L}_l \Psi_l^t(\vec{r}) \,d\vec{r}.
-\label{eq:IlDefPsiGen}
-\eeq
-
 \section{General Kohn Principle}
 \label{sec:GenKohnPrinciple}
 
 
 In this work, we only consider the first six partial waves, i.e. $\ell = 0$--$5$
-for the S-, P- and D-waves, respectively. There is no general proof of 
+for the S-, P-, D-, F-, G-, and H-waves. There is no general proof of 
 this, but for these first six partial waves, a relation between $S$ and $C$ 
 is seen by taking the gradient of each with respect to $\rho$. For the S-wave,
 $\ell = 0$, the gradient \todo{Not gradient} of the spherical Bessel function is
@@ -715,27 +92,15 @@ The leading term in $\rho$ for this case is $\frac{\cos(\kappa\rho)}{\rho}$, whi
 \end{align}
 \end{subequations}
 
-\noindent Generalizing this to $\widetilde{S}$ and $\widetilde{C}$ gives
-\begin{subequations}
-\label{eq:GenGenSCGrad}
-\begin{align}
-\nabla_{\rho/\rho^\prime} \tilde{S} &= \frac{1}{\sqrt{2}} \left[u_{00} \left(\nabla_\rho S \pm \nabla_{\rho^\prime} S^\prime \right) + u_{01} \left(\nabla_\rho C \pm \nabla_{\rho^\prime} C^\prime \right) \right] \approx \kappa \left[ u_{00} \bar{C} - u_{01} \bar{S} \right] \text{ and}\\
-\nabla_{\rho/\rho^\prime} \tilde{C} &= \frac{1}{\sqrt{2}} \left[u_{10} \left(\nabla_\rho S \pm \nabla_{\rho^\prime} S^\prime \right) + u_{11} \left(\nabla_\rho C \pm \nabla_{\rho^\prime} C^\prime \right) \right] \approx \kappa \left[ u_{10} \bar{C} - u_{11} \bar{S} \right].
-\end{align}
-\end{subequations}
-
-\beq
-\label{eq:GenKohnPrinciple}
-\mathcal{L}_v = \mathcal{L}_t - I_l\left[\Psi_l^t\right]
-\eeq
 
 
-\section{General Kohn Derivation}
-\label{sec:KohnDerivation1}
+
+\section{General Kohn Principle Derivation}
+\label{sec:KohnDerivation}
 
 Much of this derivation is similar to that in Peter Van Reeth's thesis \cite{VanReethThesis} but is for single channel scattering and also generalized to a variety of Kohn variational methods. His thesis covers the Kohn and inverse Kohn methods for two channel e$^+$-He scattering. For this derivation, I will use \cref{eq:GeneralWaveTrial} but drop the short-range $\phi_i^t$ terms. The derivation follows through the same with these terms, but it is clearer to ignore them here. %Likewise, we only consider the direct terms here. The final result of this section also applies to the exchanged terms.
 
-The version of (\ref{eq:IlDefU}) for the full wavefunction is
+The version of \cref{eq:IlDefU} for the full wavefunction is
 \begin{equation}
 I[\Psi_\ell^t]\equiv \left<\Psi_\ell^{t\star} | \mathcal{L} | \Psi_\ell^t \right> = \left(\Psi_\ell^t, \mathcal{L} \Psi_\ell^t \right) = \int \Psi_\ell^t \mathcal{L}
   \Psi_\ell^t \,d\tau.
@@ -746,9 +111,14 @@ The operator $\mathcal{L}$ is given by
 \label{eq:LDef}
 \mathcal{L} = 2(H-E).
 \eeq
-Normally, the bra in bra-ket notation is conjugated, but as noted by Cooper et al. \cite{Cooper2010}, the bra is not conjugated for the Kohn variational methods. 
+Note that for the exact wavefunction $\Psi_\ell$,
+\beq
+\label{eq:Il0}
+I[\Psi_\ell] = 0.
+\eeq
+Normally, the bra in bra-ket notation is conjugated, but as noted by Cooper et al. \cite{Cooper2010}, the bra is not conjugated for the Kohn variational methods.
 
-\noindent Similar to (\ref{eq:UlTrialRelation}),
+\noindent Similar to \cref{eq:UlTrialRelation},
 \beq
 \label{eq:PsilTrialRelation}
 \Psi_\ell^t = \Psi_\ell + \delta \Psi_\ell.
@@ -761,8 +131,7 @@ Normally, the bra in bra-ket notation is conjugated, but as noted by Cooper et a
 \nonumber &= I_\ell[\Psi_\ell + \delta \Psi_\ell] - I_\ell[\Psi_\ell] \\
 &= (\Psi_\ell, \mathcal{L} \Psi_\ell) + (\Psi_\ell, \mathcal{L} \,\delta\Psi_\ell) + (\delta\Psi_\ell, \mathcal{L} \Psi_\ell) + (\delta\Psi_\ell, \mathcal{L} \,\delta\Psi_\ell) - (\Psi_\ell, \mathcal{L} \Psi_\ell).
 \end{align}
-
-\noindent The first and last terms are equal to 0, by virtue of (\ref{eq:ExactIl}). We drop the $\ell$ subscript from this point.
+The first and last terms are equal to 0, by virtue of \cref{eq:Il0}. %We drop the $\ell$ subscript from this point.
 
 The $(\delta\Psi_\ell, \mathcal{L} \,\delta\Psi_\ell)$ term is of second order in $\delta\Psi_l$, so this can be neglected. Denoting this approximation as $\delta I_\ell^\prime$ gives
 \beq
@@ -775,7 +144,7 @@ Since $\mathcal{L}\Psi_\ell = 0$,
 (\delta\Psi_\ell, \mathcal{L} \Psi_\ell) = -(\delta\Psi_\ell, \mathcal{L} \Psi_\ell),
 \eeq
 
-\noindent which combined with the definition of $\mathcal{L}$ from (\ref{eq:LDef}), allows us to write the above equation as
+\noindent which combined with the definition of $\mathcal{L}$ from \cref{eq:LDef}, allows us to write the above equation as
 \beq
 \delta I_\ell^\prime = 2 \Braket{\Psi_\ell^\star | H\!-\!E | \delta\Psi_\ell} - 2 \Braket{\delta\Psi_\ell^\star | H\!-\!E | \Psi_\ell }.
 \label{eq:IlPsiVariation2}
@@ -833,8 +202,19 @@ Substituting this into \cref{eq:IlPsiVariation4} with \cref{eq:GreensThm},
 \delta I_\ell^\prime = -\frac{1}{2} (L_\ell^t - L_\ell) \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{S_\rho} \left[(\widetilde{S} + L_\ell \, \widetilde{C}) \grad_\rho \widetilde{C} - \widetilde{C} \grad_\rho (\widetilde{S} + L_\ell \, \widetilde{C}) \right] d\sigma_\rho d\tau_{12} d\tau_3.
 \eeq
 
+
+\noindent Generalizing this to $\widetilde{S}$ and $\widetilde{C}$ gives
+\begin{subequations}
+\label{eq:GenGenSCGrad}
+\begin{align}
+\grad_{\rho/\rho^\prime} \widetilde{S} &= \frac{1}{\sqrt{2}} \left[u_{00} \left(\grad_\rho S \pm \grad_{\rho^\prime} S^\prime \right) + u_{01} \left(\grad_\rho C \pm \grad_{\rho^\prime} C^\prime \right) \right] \approx \kappa \left[ u_{00} \bar{C} - u_{01} \bar{S} \right]\\
+\grad_{\rho/\rho^\prime} \widetilde{C} &= \frac{1}{\sqrt{2}} \left[u_{10} \left(\grad_\rho S \pm \grad_{\rho^\prime} S^\prime \right) + u_{11} \left(\grad_\rho C \pm \grad_{\rho^\prime} C^\prime \right) \right] \approx \kappa \left[ u_{10} \bar{C} - u_{11} \bar{S} \right].
+\end{align}
+\end{subequations}
+
 The Laplacian acting on $\widetilde{S}$ and $\widetilde{C}$ in \cref{eq:TildeSCDef} gives
-\todoi{Check these! Specifically whether $P_{23}$ works here. Change opening paragraph if not.}
+
+
 \begin{subequations}
 \label{eq:GradSC}
 \begin{align}
@@ -846,7 +226,7 @@ Substituting this into \cref{eq:IlPsiVariation5},
 \begin{align}
 \label{eq:IlPsiVariation6}
 \delta I_\ell^\prime = -\frac{1}{2} (L_\ell^t - L_\ell) & \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{S_\rho}  \left\{(\widetilde{S} + L_\ell \, \widetilde{C}) \kappa (u_{10} \bar{C} - u_{11} \bar{S}) \right. \nonumber \\
- &- \left. \widetilde{C} \kappa \left[(u_{00} \bar{C} - u_{01} \bar{S}) + L_\ell (u_{10} \bar{C} - u_{11} \bar{S}) \right] \right\} d\sigma_\rho d\tau_{12} d\tau_3
+ &- \left. \widetilde{C} \kappa \left[(u_{00} \bar{C} - u_{01} \bar{S}) + L_\ell (u_{10} \bar{C} - u_{11} \bar{S}) \right] \right\} d\sigma_\rho d\tau_{12} d\tau_3.
 \end{align}
 Omitting terms quadratic in $L_\ell$ or $L_\ell^t$, including $L_\ell^t L_\ell$,
 \begin{align}
@@ -876,11 +256,11 @@ As $\rho \to \infty$,
 S^2 + C^2 = \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho}^2 \Phi_{Ps}\left(r_{12}\right)^2 \Phi_H\left(r_3\right)^2 (2 \kappa) \frac{1}{\kappa^2 \rho^2}.
 \eeq
 
-Substituting this in \ref{eq:IlPsiVariation6} and expanding the $d\sigma_\rho$ differential,
+Substituting this in \cref{eq:IlPsiVariation6} and expanding the $d\sigma_\rho$ differential,
 \begin{align}
 \label{eq:IlPsiVariation7}
 \delta I_\ell^\prime =& \kappa (L_\ell^t - L_\ell) \Det{\textbf{u}} \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{S_\rho} \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho}^2 \Phi_{Ps}\left(r_{12}\right)^2 \Phi_H\left(r_3\right)^2 \frac{1}{\kappa \rho^2} \rho^2 \sin\theta_\rho d\theta_\rho d\phi_\rho d\tau_{12} d\tau_3 \nonumber \\
-=& (L_\ell^t - L_\ell) \Det{\textbf{u}} \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{S_\rho} \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho}^2 \Phi_{Ps}\left(r_{12}\right)^2 \Phi_H\left(r_3\right)^2 \sin\theta_\rho d\theta_\rho d\phi_\rho d\tau_{12} d\tau_3
+=& (L_\ell^t - L_\ell) \Det{\textbf{u}} \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{S_\rho} \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho}^2 \Phi_{Ps}\left(r_{12}\right)^2 \Phi_H\left(r_3\right)^2 \sin\theta_\rho d\theta_\rho d\phi_\rho d\tau_{12} d\tau_3.
 \end{align}
 Since the Ps and H eigenfunctions are normalized, i.e.
 \beq
@@ -908,7 +288,7 @@ From \cref{eq:IlPrimeDef,eq:IlPsiVariation9},
 \label{eq:KatoIdent}
 \delta I_\ell^\prime = (L_\ell^t - L_\ell) \Det{\textbf{u}} + (\delta\Psi_\ell, \mathcal{L} \,\delta\Psi_\ell).
 \eeq
-This is the Kato identity \cite{Kato1951a}. For the Kohn variational methods, the last term is neglected, since it is quadratic in $\delta\Psi_\ell$. Using $\delta I_\ell^\prime = \delta I_\ell$, we have
+This is the Kato identity \cite{Kato1951a}. For the Kohn variational methods, the last term is neglected, since it is quadratic in $\delta\Psi_\ell$. Using $\delta I_\ell^\prime \approx \delta I_\ell$, we have
 \beq
 \delta I_\ell = I_\ell[\Psi_\ell^t] - I_\ell[\Psi_\ell] = (L_\ell^t - L_\ell) \Det{\textbf{u}}.
 \eeq
@@ -919,313 +299,87 @@ L_\ell^v = L_\ell^t - I_\ell[\Psi_\ell^t] / \! \Det{\textbf{u}}.
 \eeq
 
 
-
-
-
-
-{\begin{center} \rule{4cm}{0.4pt} \end{center}}
-
-
-Now evaluating the $\nabla_\rho$ on $j_0$ and $-n_0$,
-\begin{align}
-\nonumber
-\nabla_\rho \frac{\sin{\kr}}{\kr} &= \kappa \frac{\cos{\kr}}{\kr} - \frac{\sin{\kr}}{\kappa\rho^2} \\
-\nabla_\rho \frac{\cos{\kr}}{\kr} &= -\kappa \frac{\sin{\kr}}{\kr} - \frac{\cos{\kr}}{\kappa\rho^2},
-\end{align}
-
-\noindent which, if we only take the leading terms, gives
-\begin{alignat}{2}
-\nonumber\nabla_\rho \bar{S} &={}& &\kappa \bar{C} \\
-\nonumber\nabla_\rho \bar{C} &={}& -&\kappa \bar{S} \\
-\nabla_\rho \bar{W} &={}& -&\kappa \bar{S} + \ii \kappa \bar{C} = \ii\kappa(\ii \bar{S} + \bar{C}) = \ii\kappa\bar{W}.
-\label{eq:NablaOnSCW}
-\end{alignat}
-
-Substituting these in $\delta I$ gives
-\begin{align}
-\nonumber \delta I &= -\frac{1}{2} \int\limits_{V_3} \int\limits_{V_{12}} \int\limits_{S_\rho} \left\{ \left[(\bar{S} + T\bar{W})(T_t - T)\ii\kappa\bar{W}\right] - \left[(T_t - T)\bar{W} (\kappa\bar{S} + T \ii\kappa\bar{W})\right] \right\} d\sigma_\rho d\tau_{12} d\tau_3 \\
-\nonumber &= -\frac{\kappa}{2} (T_t - T)\int\limits_{V_3} \int\limits_{V_{12}} \int\limits_{S_\rho} \left[ \left(\ii \bar{S}\bar{W} + \ii T \bar{W}^2 - \bar{W}\bar{C} - \ii T \bar{W}\right) \right] d\sigma_\rho d\tau_{12} d\tau_3 \\
-\nonumber &= -\frac{\kappa}{2} \int\limits_{V_3} \int\limits_{V_{12}} \int\limits_{S_\rho} \left[ \ii T_t \bar{S}\bar{W} + \ii T_t T\bar{W}^2 - \ii T \bar{S}\bar{W} - \ii T^2\bar{W}^2 - T_t\bar{W}\bar{C} - \ii T_t T \bar{W} + T \bar{W}\bar{C} + \ii T^2 \bar{W} \right] d\sigma_\rho d\tau_{12} d\tau_3
-\end{align}
-
-\noindent Neglecting quadratic terms of $T^2$ or $T_t T$, we have
-\begin{alignat}{2}
-\nonumber \delta I &={}& -&\frac{\kappa}{2} (T_t - T) \int\limits_{V_3} \int\limits_{V_{12}} \int\limits_{S_\rho} \left[\ii \bar{S}\bar{W} - \bar{W}\bar{C}\right] d\sigma_\rho d\tau_{12} d\tau_3 \\
-\nonumber &={}& -&\frac{\kappa}{2} (T_t - T) \int\limits_{V_3} \int\limits_{V_{12}} \int\limits_{S_\rho} \left[\ii\bar{S}\left(\bar{C} + \ii\bar{S}\right) - \left(\bar{C} + \ii\bar{S}\right)\bar{C}\right] d\sigma_\rho d\tau_{12} d\tau_3 \\
-&={}& &\frac{\kappa}{2} (T_t - T) \int\limits_{V_3} \int\limits_{V_{12}} \int\limits_{S_\rho} \left(\bar{S}^2 + \bar{C}^2\right) d\sigma_\rho d\tau_{12} d\tau_3.
-\end{alignat}
-
-For $l = 0$,
-\begin{align}
-\nonumber \delta I &= \frac{\kappa}{2} (T_t - T) \int\limits_{V_3} \int\limits_{V_{12}} \int\limits_{S_\rho} Y_{0,0}\left( \theta_\rho, \phi_\rho \right)^2 \Phi_{Ps}(r_{12})^2 \Phi_H(r_3)^2 \left[ \frac{\sin^2(\kappa\rho)}{\rho^2} + \frac{\cos^2(\kappa\rho)}{\rho^2}\right] \frac{2}{\kappa} d\sigma_\rho d\tau_{12} d\tau_3 \\
-&= (T_t - T) \int\limits_{V_3} \int\limits_{V_{12}} \int\limits_{S_\rho} Y_{0,0}\left( \theta_\rho, \phi_\rho \right)^2 \Phi_{Ps}(r_{12})^2 \Phi_H(r_3)^2 \frac{1}{\rho^2} \rho^2 \sin\theta_\rho d\theta_\rho d\phi_\rho d\tau_{12} d\tau_3
-\end{align}
-
-Since the Ps and H functions are normalized,
-\beq
-\int\limits_{V_3}\! \Phi_H(r_3) d\tau_3 = 1 \text{ and } \int\limits_{V_{12}}\! \Phi_{Ps}(r_{12}) d\tau_{12} = 1.
-\label{eq:PsHNormalization}
-\eeq
-
-This leaves us with
-\beq
-\delta I = (T_t - T) \int\limits_{S_\rho} Y_{0,0}\left( \theta_\rho, \phi_\rho \right)^2 \sin\theta_\rho d\theta_\rho d\phi_\rho
-\eeq
-
-Upon performing the angular integrations, we finally obtain our equation for the variational method of
-\beq
-\delta I = (T_t - T)
-\eeq
-or
-\beq
-I[\Psi_t] - I[\Psi] = I[\Psi_t] = T_t - T.
-\eeq
-
-\noindent Writing this as a variation gives
-\beq
-T_v = T_t - I[\Psi_t].
-\label{eq:ComplexKohnVariation}
-\eeq
-
-Substituting our trial wavefunction (\ref{eq:TrialComplex}) into (\ref{eq:IlDefPsi}) gives
-\begin{align}
-\nonumber I[\Psi_t] = \Big< &\bar{S} + T_t \, \bar{W} + \sum_{i} c_i' \bar{\phi_i}^t \;\Big| L \Big|\; \bar{S} + T_t \, \bar{W} + \sum_{i} c_i' \bar{\phi_i}^t \Big> \\
-\nonumber = \Big( &\bar{S} L \bar{S} + T_t \bar{S} L \bar{W} + \bar{S} L \sum_{i} c_i \bar{\phi_i} + T_t \bar{W} L \bar{S} + T_t^2 \bar{W}L\bar{W} + T_t \bar{W} L \sum_{i} c_i \bar{\phi_i} \Big. \\
-& \Big. + \sum_{i} c_i \bar{\phi_i} L \bar{S} + T_t \sum_{i} c_i \bar{\phi_i} L \bar{W} + \sum_{i} \sum_{j} c_i c_j \bar{\phi_i} L \bar{\phi_j} \Big) 
-\end{align}
-
-\noindent Using the bra-ket notation, the bra should be conjugated, but as \cite{} points out, the conjugation should not be performed in these calculations.  All further calculations in this section implicitly omit the complex conjugation of the bra.
-
-We can use this now in the stationary property of the complex Kohn functional, i.e.
-\beq
-\frac{\partial T_v}{\partial T_t} = 0  \text{ and } \frac{\partial T_v}{\partial c_i} = 0 \text{ where $i = 1,\ldots,N$}.
-\label{eq:ComplexKohnStationary}
-\eeq
-
-Using (\ref{eq:WDef}) and (\ref{eq:SLCandCLSBar}),
-\begin{align}
-\nonumber (\bar{S},L \bar{W}) - (\bar{W},L \bar{S}) &= (\bar{S},L\bar{C}) + \ii(\bar{S},L\bar{S}) - (\bar{C},L\bar{S}) - \ii (\bar{S},L\bar{S}) \\
-& = (\bar{S},L\bar{C}) - (\bar{C},L\bar{S}) = 1.
-\label{eq:WLCandCLWBar}
-\end{align}
-
-\noindent Using (\ref{eq:PhiLSPerm}) and (\ref{eq:PhiLCPerm}),
-\beq
-(\bar{\phi}_i, L\bar{W}) = (\bar{W}, L\bar{\phi}_i).
-\label{eq:PhiLWPerm}
-\eeq
-
-Performing the first variation and using (\ref{eq:PhiLWPerm}) and (\ref{eq:WLCandCLWBar}) gives
-\begin{align}
-\nonumber 0 &= 1 - \Big[(\bar{S},L \bar{W}) + (\bar{W},L \bar{S}) + 2\, T_t (\bar{W},L\bar{W}) + \sum_i c_i (\bar{W},L \bar{\phi_i}) + \sum_i c_i (\bar{\phi_i},L \bar{W}) \Big]. \\
-&= 2\, (\bar{W},L \bar{S}) + 2\, T_t (\bar{W},L \bar{W}) + 2 \sum_i c_i (\bar{W},L \bar{\phi_i})
-\label{eq:Complex1stVar1}
-\end{align}
-
-\noindent Rearranging, we have
-\beq
--(\bar{W},L \bar{S}) = T_t (\bar{W},L \bar{W}) + \sum_i c_i (\bar{W},L \bar{\phi_i}).
-\label{eq:Complex1stVar2}
-\eeq
-
-Performing the second variation with respect to an arbitrary $c_k$ yields
-\beq
-0 = (\bar{S},L \bar{\phi_k}) + T_t (\bar{W},L\bar{\phi_k}) + (\bar{\phi_k},L\bar{S}) + T_t (\bar{\phi_k},L\bar{W}) + \frac{\partial}{\partial c_k} \sum_i \sum_j c_i c_j (\bar{\phi_i},L\bar{\phi_j}).
-\label{eq:Complex2ndVar1}
-\eeq
-
-\noindent With (\ref{eq:PhiLWPerm}), the last term evalutes to
-\begin{align}
-\nonumber \frac{\partial}{\partial c_k} \sum_i \sum_j c_i c_j (\bar{\phi_i},L\bar{\phi_j}) &= \sum_{j\neq k} c_j (\bar{\phi_k},L\bar{\phi_j}) + \sum_{i\neq k} c_i  (\bar{\phi_i},L\bar{\phi_k}) + 2\, c_k (\bar{\phi_k},L\bar{\phi_k}) \\
-&= 2 \sum_{j\neq k} c_j (\bar{\phi_k},L\bar{\phi_j}) + 2 c_k (\bar{\phi_k},L\bar{\phi_k}) = 2 \sum_j c_j (\bar{\phi_k},L\bar{\phi_j}).
-\end{align}
-
-\noindent Substituting this back into (\ref{eq:Complex2ndVar1}) along with (\ref{eq:PhiLSPerm}) and rearranging gives our other linear equations of
-\beq
--(\bar{\phi_k},L\bar{S}) = T_t (\bar{\phi_k},L\bar{W}) + \sum_j c_j (\bar{\phi_k},L\bar{\phi_j}).
-\label{eq:Complex2ndVar2}
-\eeq
-
-Equations (\ref{eq:Complex1stVar2}) and (\ref{eq:Complex2ndVar2}) are then written in matrix form as
-
-\begin{equation}
-\label{eq:ComplexKohnMatrix}
-\begin{bmatrix} 
- (\bar{W},L\bar{W}) & (\bar{W},L\bar{\phi}_1) & \cdots & (\bar{W},L\bar{\phi}_j) & \cdots\\
- (\bar{\phi}_1,L\bar{W}) & (\bar{\phi}_1,L\bar{\phi}_1) & \cdots & (\bar{\phi}_1,L\bar{\phi}_j) & \cdots\\
- \vdots & \vdots & \ddots & \vdots \\
- (\bar{\phi}_i,L\bar{W}) & (\bar{\phi}_i,L\bar{\phi}_1) & \cdots & (\bar{\phi}_i,L\bar{\phi}_j) & \cdots\\
- \vdots & \vdots & & \vdots & \\
-\end{bmatrix}
-\begin{bmatrix}
-T_t\\
-c_1\\
-\vdots\\
-c_i\\
-\vdots
-\end{bmatrix}
-= -
-\begin{bmatrix}
-(\bar{W},L\bar{S}) \\
-(\bar{\phi}_1,L\bar{S}) \\
-\vdots \\
-(\bar{\phi}_i,L\bar{S}) \\
-\vdots
-\end{bmatrix}.
-\end{equation}
-
-\noindent This matrix equation can be rewritten as
-\beq
-\textbf{\emph{AX = -B}}.
-\eeq
-
-\noindent Solving this for $\textbf{\emph{X}}$,
-\beq
-\textbf{\emph{X = $-A^{-1}$B}}.
-\eeq
-
-
-\section{General Kohn Derivation...Paper Version}
-\label{sec:KohnDerivation1}
-\todoi{Rewrite - same as paper right now}
-
-This derivation follows a similar procedure as that of
-Refs.~\cite{Lucchese1989,Cooper2010,Armour1991,VanReethThesis}.
-The functional for the full wavefunction in Eqs. (\ref{eq:TrialWave}) and
-(\ref{eq:TrialWaveHigher}) is (dropping the $\ell$ subscript and the $\pm$ 
-superscript for clarity),
-
-\begin{equation}
-I[\Psi^t]\equiv \left<\Psi_l^t | L | \Psi_l^t \right> = \left(\Psi^t, \mathcal{L} \Psi^t \right) = \int \Psi^t \mathcal{L}
-  \Psi^t \,d\tau,
-\label{eq:IlDefPsi}
-\end{equation}
-with
-\begin{equation}
-\mathcal{L} = 2(H - E).
-\label{eq:LDef}
-\end{equation}
-The total energy, E, is given by
-\begin{equation}
-\label{eq:TotalEnergy}
-E = E_H + E_{Ps} + \frac{1}{4}\kappa^2 = E_H + E_{Ps} + E_{\bm \kappa} \;,
-\end{equation}
-where $E_H$ and $E_{Ps}$ are the ionization energies of H and Ps, respectively.
-Notice that the wavefunction is not conjugated, as pointed out by Cooper et al.
-\cite{Cooper2010}.
-
-We assume the trial wavefunction is a small variation of the exact wavefunction
-$\Psi$, or
-\begin{equation}
-\Psi^t = \Psi + \delta \Psi
-\label{eq:PsiTrialRelation}
-\end{equation}
-It can be shown that solving for $\delta I$, the variation of $I$, gives a
-result for the variational method of
-\begin{equation}
-\delta I = I[\Psi^t] - I[\Psi] = I[\Psi^t] = (L^t - L + I[\delta \Psi]) \det u.
-\label{eq:IlPsiVariation}
-\end{equation}
-Here $L$ and $L^t$ correspond to the exact and trial wavefunctions,
-respectively, with the trial wavefunctions given in Eqns. \ref{eq:TrialWave}
-and \ref{eq:TrialWaveHigher}. Neglecting the second order term in
-$\delta \Psi$ and realizing that $I[\Psi] = 0$, we get a functional for the
-variational $L^v$ of
-\begin{equation}
-L^v = L^t - I[\Psi^t] / \det u.
-\label{eq:ComplexKohnVariation}
-\end{equation}
-
-Using the stationary property of the complex Kohn functional, we get
-\begin{equation}
-\frac{\partial L^v}{\partial L^t} = 0  \text{ and }
-  \frac{\partial L^v}{\partial c_i} = 0 \text{ where $i = 1,\ldots,N$},
-\label{eq:ComplexKohnStationary}
-\end{equation}
-
-
 \section{Application of the Kohn Methods}
 \label{sec:KohnApplied}
 
-We use the general Kohn functional (equation \ref{eq:GenKohnPrinciple}) with our trial function to get
+We use the general Kohn variational method (\cref{eq:GenKohn}) with our full trial wavefunction to get
 \beq
 \label{eq:GenKohnApplied}
-\mathcal{L}_v = \mathcal{L}_t - (\psi_t,\mathcal{L} \psi_t) = \mathcal{L}_t - \Big((\bar{\bar{S}} + \mathcal{L}_t \tilde{C} + \sum_i c_i \tilde{\phi}_i), L (\tilde{S} + \mathcal{L}_t \tilde{C} + \sum_j c_j \tilde{\phi}_j )\Big).
+L_\ell^v = L_\ell^t - \tfrac{1}{\Det{\textbf{u}}} \Big((\widetilde{S} + L_\ell^t \, \widetilde{C} + \sum_i c_i \bar{\phi}_i^t), \mathcal{L} (\widetilde{S} + L_\ell^t \, \widetilde{C} + \sum_j c_j \bar{\phi}_j^t )\Big).
 \eeq
-
-The property of the Kohn functional that it is stationary with respect to variations in the linear parameters (\ref{Partials1}) can be written in our case as
+The property of the Kohn functional that it is stationary with respect to variations in the linear parameters \cite{Joachain1979} can be written in our case as
 \beq
-\frac{\partial \mathcal{L}_v}{\partial \mathcal{L}_t} = 0  \text{ and } \frac{\partial \mathcal{L}_v}{\partial c_i} = 0 \text{ where $i = 1,\ldots,N$}.
+\frac{\partial L_\ell^v}{\partial L_\ell^t} = 0  \text{ and } \frac{\partial L_\ell^v}{\partial c_i} = 0 \text{, where $i = 1,\ldots,N$}.
 \label{eq:KohnStationary}
 \eeq
 
 Performing the first variation gives
 \beq
-0 = \frac{\partial \mathcal{L}_v}{\partial \mathcal{L}_t} = 1 - \Big[(\tilde{S},\mathcal{L}\tilde{C}) + (\tilde{C},\mathcal{L}\tilde{S}) + \frac{\partial}{\partial \mathcal{L}_t}(\mathcal{L}_t \tilde{C},\mathcal{L} \mathcal{L}_t \tilde{C}) + (\tilde{C}, L \sum_i c_i \tilde{\phi}_i) + (\sum_i c_i \tilde{\phi}_i, L \tilde{C}) \Big].
+0 = \pderiv{L_\ell^v}{L_\ell^t} = 1 - \left[(\widetilde{S},\mathcal{L}\widetilde{C}) + (\widetilde{C},\mathcal{L}\widetilde{S}) + \frac{\partial}{\partial L_\ell^t}(L_\ell^t \widetilde{C},\mathcal{L} L_\ell^t \widetilde{C}) + (\widetilde{C}, L \sum_i c_i \bar{\phi}_i) + (\sum_i c_i \bar{\phi}_i, \mathcal{L} \widetilde{C}) \right].
 \label{eq:PdLambda1}
 \eeq
 
 \noindent The third term in brackets becomes
 \beq
-\frac{\partial}{\partial \mathcal{L}_t} (\mathcal{L}_t \tilde{C},\mathcal{L} \mathcal{L}_t \tilde{C}) = (\tilde{C},\mathcal{L} \tilde{C}) \frac{\partial}{\partial \mathcal{L}_t} \mathcal{L}_t^2 = 2(\tilde{C},\mathcal{L}\tilde{C}) \mathcal{L}_t.
+\pderiv{}{L_\ell^t} (L_\ell^t \widetilde{C},\mathcal{L} L_\ell^t \widetilde{C}) = (\widetilde{C},\mathcal{L} \widetilde{C}) \frac{\partial}{\partial L_\ell^t} {L_\ell^t}^2 = 2(\widetilde{C},\mathcal{L}\widetilde{C}) L_\ell^t.
 \eeq
 
-\noindent The last two terms of (\ref{eq:PdLambda1}) are equal to each other, and we can use (\ref{eq:SLCandCLSBar}) to rewrite this.
+\noindent The last two terms of \cref{eq:PdLambda1} are equal to each other, and we can use \cref{eq:SLCandCLSBar} to rewrite this.
 \beq
-0 = -(\tilde{C},\mathcal{L}\tilde{S}) - (\tilde{C},\mathcal{L}\tilde{S}) - 2 \mathcal{L}_t (\tilde{C},\mathcal{L}\tilde{C}) - 2 \sum_i c_i (\tilde{C},\mathcal{L}\tilde{\phi}_i)
+0 = -(\widetilde{C},\mathcal{L}\widetilde{S}) - (\widetilde{C},\mathcal{L}\widetilde{S}) - 2 L_\ell^t (\widetilde{C},\mathcal{L}\widetilde{C}) - 2 \sum_i c_i (\widetilde{C},\mathcal{L}\bar{\phi}_i)
 \eeq
 
 \noindent Rearranging gives
 \beq
--(\tilde{C},\mathcal{L}\tilde{S}) = \mathcal{L}_t (\tilde{C},\mathcal{L}\tilde{C}) + \sum_i c_i (\tilde{C},\mathcal{L}\tilde{\phi}_i)
+-(\widetilde{C},\mathcal{L}\widetilde{S}) = L_\ell^t (\widetilde{C},\mathcal{L}\widetilde{C}) + \sum_i c_i (\widetilde{C},\mathcal{L}\bar{\phi}_i)
 \label{eq:PdLambda}
 \eeq
 
-Now we perform the variation with respect to a general $c_k$ as in (\ref{eq:KohnStationary}).
+Now we perform the variation with respect to a general $c_k$ as in \cref{eq:KohnStationary}.
 \beq
-0 = \frac{\partial \mathcal{L}_v}{\partial c_k} = -\Big[ (\tilde{S},\mathcal{L} \tilde{\phi}_k) + \mathcal{L}_t (\tilde{C},\mathcal{L} \tilde{\phi}_k) + (\tilde{\phi}_k,\mathcal{L} \tilde{S}) + \mathcal{L}_t (\tilde{\phi}_k,\mathcal{L} \tilde{C}) + \frac{\partial}{\partial c_k} (\sum_i c_i \tilde{\phi}_i, L \sum_j c_j \tilde{\phi}_j) \Big]
+0 = \frac{\partial \mathcal{L}_v}{\partial c_k} = -\left[ (\widetilde{S},\mathcal{L} \bar{\phi}_k) + L_\ell^t (\widetilde{C},\mathcal{L} \bar{\phi}_k) + (\bar{\phi}_k,\mathcal{L} \widetilde{S}) + L_\ell^t (\bar{\phi}_k,\mathcal{L} \widetilde{C}) + \frac{\partial}{\partial c_k} (\sum_i c_i \bar{\phi}_i, \mathcal{L} \sum_j c_j \bar{\phi}_j) \right]
 \label{eq:PdCk1}
 \eeq
 
 If $c_i \ne c_j$,
 \begin{subequations}
 \begin{align}
-\frac{\partial}{\partial c_i} (c_i \tilde{\phi}_i, L \sum_{j \ne i} c_j \tilde{\phi}_j) &= \sum_{j \ne i} c_j (\tilde{\phi}_i, L \tilde{\phi}_j) \text{ and} \\
-\frac{\partial}{\partial c_j} (\sum_{i \ne j} c_i \tilde{\phi}_i, L c_j \tilde{\phi}_j) &= \sum_{i \ne j} c_i (\tilde{\phi}_i, L \tilde{\phi}_j).
+\frac{\partial}{\partial c_i} (c_i \bar{\phi}_i, \mathcal{L} \sum_{j \ne i} c_j \bar{\phi}_j) &= \sum_{j \ne i} c_j (\bar{\phi}_i, \mathcal{L} \bar{\phi}_j) \text{ and} \\
+\frac{\partial}{\partial c_j} (\sum_{i \ne j} c_i \bar{\phi}_i, \mathcal{L} c_j \bar{\phi}_j) &= \sum_{i \ne j} c_i (\bar{\phi}_i, \mathcal{L} \bar{\phi}_j).
 \end{align}
 \end{subequations}
 
-\noindent These two equations are equivalent, since $\left( \tilde{\phi}_i, L \tilde{\phi}_j \right) = \left( \tilde{\phi}_j, L \tilde{\phi}_i \right)$ by (\ref{PhiLPhiPerm}).
+\noindent These two equations are equivalent, since $\left( \bar{\phi}_i, \mathcal{L} \bar{\phi}_j \right) = \left( \bar{\phi}_j, \mathcal{L}L \bar{\phi}_i \right)$ by \cref{PhiLPhiPerm}.
 
 If $c_i = c_j$,
 \beq
-\frac{\partial}{\partial c_i} \left( c_i \tilde{\phi}_i, L c_j \tilde{\phi}_j \right) = \frac{\partial}{\partial c_i} \left( c_i \tilde{\phi}_i, L c_i \tilde{\phi}_i \right) = \frac{\partial}{\partial c_i} c_i^2 \left( \tilde{\phi}_i, L \tilde{\phi}_j \right) = 2 \, c_i \left( \tilde{\phi}_i, L \tilde{\phi}_j \right).
+\frac{\partial}{\partial c_i} \left( c_i \bar{\phi}_i, L c_j \bar{\phi}_j \right) = \frac{\partial}{\partial c_i} \left( c_i \bar{\phi}_i, \mathcal{L} c_i \bar{\phi}_i \right) = \frac{\partial}{\partial c_i} c_i^2 \left( \bar{\phi}_i, \mathcal{L} \bar{\phi}_j \right) = 2 \, c_i \left( \bar{\phi}_i, \mathcal{L} \bar{\phi}_j \right).
 \eeq
 
-\noindent We can also use (\ref{eq:PhiLSPerm}) and (\ref{eq:PhiLCPerm}) to reduce (\ref{eq:PdCk1}) to
+\noindent We can also use \cref{eq:PhiLSPerm,eq:PhiLCPerm} to reduce \cref{eq:PdCk1} to
 \beq
-0 = -\Big[ 2 (\tilde{\phi}_k, L \tilde{S}) + 2 \mathcal{L}_t (\tilde{\phi}_k, L \tilde{C}) + 2 \sum_i (\tilde{\phi}_k, L c_i \tilde{\phi}_i) \Big].
+0 = -\Big[ 2 (\bar{\phi}_k, \mathcal{L} \widetilde{S}) + 2 L_\ell^t (\bar{\phi}_k, \mathcal{L} \widetilde{C}) + 2 \sum_i (\bar{\phi}_k, \mathcal{L} c_i \bar{\phi}_i) \Big].
 \eeq
 
 \noindent
 Rearranging gives
 \beq
--\left( \tilde{\phi}_k, L \tilde{S} \right) = \mathcal{L}_t \left( \tilde{\phi}_k, L \tilde{C} \right) + \sum_i \left( \tilde{\phi}_k, L c_i \tilde{\phi}_i \right).
+-\left( \bar{\phi}_k, \mathcal{L} \widetilde{S} \right) = L_\ell^t \left( \bar{\phi}_k, \mathcal{L} \widetilde{C} \right) + \sum_i \left( \bar{\phi}_k, \mathcal{L} c_i \bar{\phi}_i \right).
 \label{eq:PdCk}
 \eeq
 
-The set of linear equations in (\ref{eq:PdLambda}) and (\ref{eq:PdCk}) can be written in matrix form as
+The set of linear equations in \cref{eq:PdLambda,eq:PdCk} can be written in matrix form as
 \begin{equation}
 \label{eq:GeneralKohnMatrix}
 \begin{bmatrix} 
- (\tilde{C},\mathcal{L}\tilde{C}) & (\tilde{C},\mathcal{L}\tilde{\phi}_1) & \cdots & (\tilde{C},\mathcal{L}\tilde{\phi}_j) & \cdots\\
- (\tilde{\phi}_1,\mathcal{L}\tilde{C}) & (\tilde{\phi}_1,\mathcal{L}\tilde{\phi}_1) & \cdots & (\tilde{\phi}_1,\mathcal{L}\tilde{\phi}_j) & \cdots\\
+ (\widetilde{C},\mathcal{L}\widetilde{C}) & (\widetilde{C},\mathcal{L}\bar{\phi}_1) & \cdots & (\widetilde{C},\mathcal{L}\bar{\phi}_j) & \cdots\\
+ (\bar{\phi}_1,\mathcal{L}\widetilde{C}) & (\bar{\phi}_1,\mathcal{L}\bar{\phi}_1) & \cdots & (\bar{\phi}_1,\mathcal{L}\bar{\phi}_j) & \cdots\\
  \vdots & \vdots & \ddots & \vdots \\
- (\tilde{\phi}_i,\mathcal{L}\tilde{C}) & (\tilde{\phi}_i,\mathcal{L}\tilde{\phi}_1) & \cdots & (\tilde{\phi}_i,\mathcal{L}\tilde{\phi}_j) & \cdots\\
+ (\bar{\phi}_i,\mathcal{L}\widetilde{C}) & (\bar{\phi}_i,\mathcal{L}\bar{\phi}_1) & \cdots & (\bar{\phi}_i,\mathcal{L}\bar{\phi}_j) & \cdots\\
  \vdots & \vdots & & \vdots & \\
 \end{bmatrix}
 \begin{bmatrix}
-\mathcal{L}_t\\
+L_\ell^t\\
 c_1\\
 \vdots\\
 c_i\\
@@ -1233,10 +387,10 @@ c_i\\
 \end{bmatrix}
 = -
 \begin{bmatrix}
-(\tilde{C},\mathcal{L}\tilde{S}) \\
-(\tilde{\phi}_1,\mathcal{L}\tilde{S}) \\
+(\widetilde{C},\mathcal{L}\widetilde{S}) \\
+(\bar{\phi}_1,\mathcal{L}\widetilde{S}) \\
 \vdots \\
-(\tilde{\phi}_i,\mathcal{L}\tilde{S}) \\
+(\bar{\phi}_i,\mathcal{L}\widetilde{S}) \\
 \vdots
 \end{bmatrix}.
 \end{equation}
@@ -1252,26 +406,26 @@ c_i\\
 \textbf{\emph{X = $-A^{-1}$B}}.
 \eeq
 
-To obtain $\mathcal{L}_v$ from this matrix equation, we must next expand equation \ref{eq:GenKohnApplied}.
+To obtain $\mathcal{L}_v$ from this matrix equation, we must next expand \cref{eq:GenKohnApplied}.
 
 \begin{align}
-\nonumber \mathcal{L}_v = \mathcal{L}_t - \Big[ & (\tilde{S},\mathcal{L}\tilde{S}) + \mathcal{L}_t (\tilde{S},\mathcal{L}\tilde{C}) + \sum_i c_i (\tilde{S},\tilde{\phi}_i) + \mathcal{L}_t (\tilde{C},\mathcal{L}\tilde{S}) + \mathcal{L}_t^2 (\tilde{C},\mathcal{L}\tilde{C}) + \mathcal{L}_t \sum_i c_i (\tilde{C},\mathcal{L} \tilde{\phi}_i) \\
-& + \sum_i c_i (\tilde{\phi}_i, L\tilde{S}) + \mathcal{L}_t \sum_i c_i (\tilde{\phi}_i, L\tilde{C}) + \sum_i \sum_j c_i c_j (\tilde{\phi}_i, L\tilde{\phi}_j) \Big]
+\nonumber \mathcal{L}_v = L_\ell^t - &\left[ (\widetilde{S},\mathcal{L}\widetilde{S}) + L_\ell^t (\widetilde{S},\mathcal{L}\widetilde{C}) + \sum_i c_i (\widetilde{S},\bar{\phi}_i) + L_\ell^t (\widetilde{C},\mathcal{L}\widetilde{S}) + {L_\ell^t}^2 (\widetilde{C},\mathcal{L}\widetilde{C}) + L_\ell^t \sum_i c_i (\widetilde{C},\mathcal{L} \bar{\phi}_i) \right. \\
+& + \left. \sum_i c_i (\bar{\phi}_i, \mathcal{L} \widetilde{S}) + L_\ell^t \sum_i c_i (\bar{\phi}_i, \mathcal{L} \widetilde{C}) + \sum_i \sum_j c_i c_j (\bar{\phi}_i, \mathcal{L} \bar{\phi}_j) \right]
 \end{align}
 
-\noindent By substituting equation \ref{eq:GenSLCandCLS} in for $(\tilde{S},\mathcal{L}\tilde{C})$, the first $\mathcal{L}_t$ above is canceled, leaving
+\noindent By substituting \cref{eq:GenSLCandCLS} in for $(\widetilde{S},\mathcal{L}\widetilde{C})$, the first $L_\ell^t$ above is canceled, leaving
 
 \begin{align}
 \label{eq:GenKohnApplied2}
-\nonumber \mathcal{L}_v = - \Big[ & (\tilde{S},\mathcal{L}\tilde{S}) + \mathcal{L}_t (\tilde{C},\mathcal{L}\tilde{S}) + \sum_i c_i (\tilde{S},\tilde{\phi}_i) + \mathcal{L}_t (\tilde{C},\mathcal{L}\tilde{S}) + \mathcal{L}_t^2 (\tilde{C},\mathcal{L}\tilde{C}) + \mathcal{L}_t \sum_i c_i (\tilde{C},\mathcal{L} \tilde{\phi}_i) \\
-& + \sum_i c_i (\tilde{\phi}_i, L\tilde{S}) + \mathcal{L}_t \sum_i c_i (\tilde{\phi}_i, L\tilde{C}) + \sum_i \sum_j c_i c_j (\tilde{\phi}_i, L\tilde{\phi}_j) \Big].
+\nonumber \mathcal{L}_v = - & \left[ (\widetilde{S},\mathcal{L}\widetilde{S}) + L_\ell^t (\widetilde{C},\mathcal{L}\widetilde{S}) + \sum_i c_i (\widetilde{S},\bar{\phi}_i) + L_\ell^t (\widetilde{C},\mathcal{L}\widetilde{S}) + {L_\ell^t}^2 (\widetilde{C},\mathcal{L}\widetilde{C}) + L_\ell^t \sum_i c_i (\widetilde{C},\mathcal{L} \bar{\phi}_i) \right. \\
+& + \left. \sum_i c_i (\bar{\phi}_i, \mathcal{L} \widetilde{S}) + L_\ell^t \sum_i c_i (\bar{\phi}_i, \mathcal{L} \widetilde{C}) + \sum_i \sum_j c_i c_j (\bar{\phi}_i, \mathcal{L} \bar{\phi}_j) \right].
 \end{align}
 
 Using the following definitions of
 \beq
 D = 
 \begin{bmatrix}
-\mathcal{L}_t & c_1 & \cdots & c_N
+L_\ell^t & c_1 & \cdots & c_N
 \end{bmatrix}
 \text{ and}
 \eeq
@@ -1279,28 +433,28 @@ D =
 \label{eq:GenFandD}
 F =
 \begin{bmatrix}
-(\boldsymbol{\tilde{C},\mathcal{L}\tilde{C}}) & (\boldsymbol{\tilde{C},\mathcal{L}\tilde{\phi}}) & (\boldsymbol{\tilde{C},\mathcal{L}\tilde{S}}) \\
-(\boldsymbol{\tilde{\phi},\mathcal{L}\tilde{C}}) & (\boldsymbol{\tilde{\phi},\mathcal{L}\tilde{\phi}}) & (\boldsymbol{\tilde{\phi},\mathcal{L}\tilde{S}}) \\
-(\boldsymbol{\tilde{C},\mathcal{L}\tilde{S}}) & (\boldsymbol{\tilde{S},\mathcal{L}\tilde{\phi}}) & (\boldsymbol{\tilde{S},\mathcal{L}\tilde{S}})
+(\boldsymbol{\widetilde{C},\mathcal{L}\widetilde{C}}) & (\boldsymbol{\widetilde{C},\mathcal{L}\bar{\phi}}) & (\boldsymbol{\widetilde{C},\mathcal{L}\widetilde{S}}) \\
+(\boldsymbol{\bar{\phi},\mathcal{L}\widetilde{C}}) & (\boldsymbol{\bar{\phi},\mathcal{L}\bar{\phi}}) & (\boldsymbol{\bar{\phi},\mathcal{L}\widetilde{S}}) \\
+(\boldsymbol{\widetilde{C},\mathcal{L}\widetilde{S}}) & (\boldsymbol{\widetilde{S},\mathcal{L}\bar{\phi}}) & (\boldsymbol{\widetilde{S},\mathcal{L}\widetilde{S}})
 \end{bmatrix},
 \eeq
-equation \ref{eq:GenKohnApplied2} can be rewritten as the following matrix equation:
+\cref{eq:GenKohnApplied2} can be rewritten as the following matrix equation:
 
 \beq
 \label{eq:GenDFDT}
-\mathcal{L}_v = - D F D^T.
+L_\ell^v = - D F D^T.
 \eeq
 
-\noindent Using equations \ref{eq:GenKohnMatrix} and \ref{eq:GenKohnMatrix} in \ref{eq:GenDFDT} and expanding gives
+\noindent Using \cref{eq:GenKohnMatrix,eq:GenKohnMatrix} in \cref{eq:GenDFDT} and expanding gives
 \begin{align}
 \label{eq:GenDFDT2}
-\nonumber \mathcal{L}_v &= - 
+\nonumber L_\ell^v &= - 
 \begin{bmatrix}
 \boldsymbol{X^T} & 1 
 \end{bmatrix}
 \begin{bmatrix}
 \boldsymbol{A} & \boldsymbol{B} \\
-\boldsymbol{B^T} & \boldsymbol{(\tilde{S},\mathcal{L}\tilde{S})}
+\boldsymbol{B^T} & \boldsymbol{(\widetilde{S},\mathcal{L}\widetilde{S})}
 \end{bmatrix}
 \begin{bmatrix}
 \boldsymbol{X} \\
@@ -1312,18 +466,18 @@ equation \ref{eq:GenKohnApplied2} can be rewritten as the following matrix equat
 \end{bmatrix}
 \begin{bmatrix}
 0 \\
-\boldsymbol{B^T X} + (\tilde{S},\mathcal{L}\tilde{S})
+\boldsymbol{B^T X} + (\widetilde{S},\mathcal{L}\widetilde{S})
 \end{bmatrix} \\
-&= -\boldsymbol{B^T X} - (\tilde{S},\mathcal{L}\tilde{S}),
+&= -\boldsymbol{B^T X} - (\widetilde{S},\mathcal{L}\widetilde{S}),
 \end{align}
 where
 \beq
-\boldsymbol{B^T X} = \mathcal{L}_t (\tilde{C},\mathcal{L}\tilde{S}) + \sum_i c_i (\tilde{\phi}_i, L\tilde{S}).
+\boldsymbol{B^T X} = L_\ell^t (\widetilde{C},\mathcal{L}\widetilde{S}) + \sum_i c_i (\bar{\phi}_i, \mathcal{L} \widetilde{S}).
 \eeq
 
-\noindent A more compact way of writing equation \ref{eq:GenDFDT2} is by
+\noindent A more compact way of writing \cref{eq:GenDFDT2} is by
 \beq
-\mathcal{L}_v = -\left( \Psi^{t,0},\mathcal{L} \tilde{S} \right).
+L_\ell^v = -\left( \Psi^{t,0},\mathcal{L} \widetilde{S} \right).
 \eeq
 $\Psi^{t,0}$ is the full general wavefunction in \cref{eq:GeneralWaveTrial} with its nonlinear parameters optimized.
 
@@ -1348,7 +502,7 @@ $\Psi^{t,0}$ is the full general wavefunction in \cref{eq:GeneralWaveTrial} with
 
 
 
-The $\textbf{u}$ and $\mathcal{L}_l$ for the various Kohn methods are described now. Note that for each of these, $\det(u) = 1$.
+The $\textbf{u}$ and $\mathcal{L}_l$ for the various Kohn methods are described now. Note that for each of these, $\Det{\textbf{u}} = 1$.
 
 \subsubsection*{Kohn}
 \beq
@@ -1397,7 +551,7 @@ The $\textbf{u}$ and $\mathcal{L}_l$ for the various Kohn methods are described 
 \label{eq:LGenKohn}
 \eeq
 
-\noindent The generalized Kohn method is described by Cooper et al.\ \cite{Cooper2009, Cooper2010}.  When $\tau = 0$ is substituted in \ref{eq:uGenKohn}, the $u$-matrix for the Kohn method is generated (equation \ref{eq:uKohn}). Similarly, when $\tau = \frac{\pi}{2}$, the $\textbf{u}$-matrix for the inverse Kohn method is generated (equation \ref{eq:uInvKohn}). As to be expected, the Kohn and inverse Kohn methods are special cases of the generalized Kohn method.
+\noindent The generalized Kohn method is described by Cooper et al.\ \cite{Cooper2009, Cooper2010}.  When $\tau = 0$ is substituted in \cref{eq:uGenKohn}, the $\textbf{u}$-matrix for the Kohn method is generated (\cref{eq:uKohn}). Similarly, when $\tau = \frac{\pi}{2}$, the $\textbf{u}$-matrix for the inverse Kohn method is generated (\cref{eq:uInvKohn}). As to be expected, the Kohn and inverse Kohn methods are special cases of the generalized Kohn method.
 
 
 \subsubsection*{Complex Kohn $T$-matrix}
@@ -1429,14 +583,14 @@ The $\textbf{u}$ and $\mathcal{L}_l$ for the various Kohn methods are described 
 \eeq
 
 \beq
-\mathcal{L}_l = 2 \ii S_l
+\mathcal{L}_l = 2 \ii S_\ell
 \label{eq:LCompSKohn}
 \eeq
 \todoi{This is probably not correct now.}
 
 The Lucchese version of $\textbf{u}$ differs from ours, since he uses a different definition for the $S$-matrix  \cite{Lucchese1989}. The form of the $S$-matrix we are using with our wavefunction is related to the $K$-matrix by
 \beq
-K_l = \frac{\ii(1-S_l)}{1+S_l},
+K_\ell = \frac{\ii(1-S_\ell)}{1+S_\ell},
 \eeq
 which is satisfied by the above $\textbf{u}$-matrix.
 
@@ -1460,6 +614,12 @@ which is satisfied by the above $\textbf{u}$-matrix.
 \end{bmatrix}
 \label{eq:uGenKohn}
 \eeq
+
+
+\section{Schwartz Singularities}
+\label{eq:SchwartzSing}
+
+
 
 
 
