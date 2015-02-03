@@ -10,11 +10,11 @@
 The applications of the Kohn, inverse Kohn, complex Kohns, generalized Kohn, and generalized complex Kohns to our trial wavefunctions for each of the partial waves through the H-wave are all very similar in form. The trial wavefunctions for the partial waves (\cref{eq:SWaveTrialSimple,eq:PWaveSimple,eq:DWaveSimple}) can be written in a general form as
 
 \beq
-\Psi_t^\pm = \widetilde{S} + L_\ell^t \, \widetilde{C} + \sum_{i=1}^N c_i \bar{\phi}_i^t.
+\Psi_\ell^{\pm,t} = \widetilde{S}_\ell + L_\ell^{\pm,t} \, \widetilde{C}_\ell + \sum_{i=1}^N c_i \bar{\Phi}_i.
 \label{eq:GeneralWaveTrial}
 \eeq
 
-The short-range $\bar{\phi}_i^t$ terms can represent terms of different symmetries, such as the $\bar{\phi}_{i1}$ and $\bar{\phi}_{j2}$ of the P-wave in \cref{eq:PWaveSimple}. The only requirement in this derivation is that these are Hylleraas-type short-range terms. In addition to letting the $\widetilde{S}$ and $\widetilde{C}$ represent the $\bar{S}$ and $\bar{C}$ for the different partial waves, we can define them in such a way as to use multiple Kohn methods (Kohn, inverse Kohn, etc.). We begin by defining a $2\times 2$ matrix $\textbf{u}$ which satisfies
+The short-range $\bar{\Phi}_i$ terms can represent terms of different symmetries, such as the $\bar{\phi}_{1i}$ and $\bar{\phi}_{2j}$ of the P-wave in \cref{eq:PWaveSimple}. The only requirement in this derivation is that these are Hylleraas-type short-range terms. In addition to letting the $\widetilde{S}$ and $\widetilde{C}$ represent the $\bar{S}$ and $\bar{C}$ for the different partial waves, we can define them in such a way as to use multiple Kohn methods (Kohn, inverse Kohn, etc.). We begin by defining a $2\times 2$ matrix $\textbf{u}$ which satisfies
 
 \beq
 \label{eq:GenSCMatrix}
@@ -43,37 +43,83 @@ u_{10} & u_{11}
 \begin{subequations}
 \label{eq:TildeSCDef}
 \begin{align}
-\widetilde{S} &= u_{00} \bar{S} + u_{01} \bar{C} \\
-\widetilde{C} &= u_{10} \bar{S} + u_{11} \bar{C}.
+\widetilde{S}_\ell &= u_{00} \bar{S}_\ell + u_{01} \bar{C}_\ell \\
+\widetilde{C}_\ell &= u_{10} \bar{S}_\ell + u_{11} \bar{C}_\ell.
 \end{align}
 \end{subequations}
 
 Generally,
 \beq
-\bar{S} = \frac{1}{\sqrt{2}}(S \pm S^\prime) \text{ and } \bar{C} = \frac{1}{\sqrt{2}}(C \pm C^\prime),
+\bar{S}_\ell = \frac{1}{\sqrt{2}}(S_\ell \pm S_\ell^\prime) \text{ and } \bar{C}_\ell = \frac{1}{\sqrt{2}}(C_\ell \pm C_\ell^\prime),
 \eeq
-where $S^\prime = P_{23}S$ and $C^\prime = P_{23}C$.
-The general form for the long-range terms $S$ and $C$ is
+where $S_\ell^\prime = P_{23}S_\ell$ and $C_\ell^\prime = P_{23}C_\ell$.
+The general form for the long-range terms $S_\ell$ and $C_\ell$ is
 \begin{subequations}
 \label{eq:GenSandC}
 \begin{align}
-S = \,&\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,j_\ell\!\left(\kappa\rho\right) \label{eq:GenSDef} \\
-C = -&\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,n_\ell\!\left(\kappa\rho\right) f_\ell(\rho) \label{eq:GenCDef}.
+S_\ell = \,&\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,j_\ell\!\left(\kappa\rho\right) \label{eq:GenSDef} \\
+C_\ell = -&\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,n_\ell\!\left(\kappa\rho\right) f_\ell(\rho) \label{eq:GenCDef}.
 \end{align}
 \end{subequations}
 The shielding function, $f_\ell(\rho)$, removes the singularity at the origin due to the Neumann function, $n_\ell$. The form that we have chosen for this is
 \begin{equation}
-f_\ell(\rho) = \left[1 - \ee^{-\mu \rho} \left(1+\frac{\mu}{2}\rho\right)
-\right]^{m_\ell}.
-\label{eq:PartialWaveShielding}
+  \label{eq:PartialWaveShielding}
+  f_\ell(\rho) = \left[1 - \ee^{-\mu \rho} \left(1+\frac{\mu}{2}\rho\right)
+  \right]^{m_\ell}.
 \end{equation}
-At a minimum, $m_\ell$ is chosen so that $C$ behaves like $S$ as $\rho \to 0$. This is shown in \cref{sec:ShieldingFunc}. The values used for the different partial waves are given in \cref{tab:Shielding}.
+At a minimum, $m_\ell$ is chosen so that $C_\ell$ behaves like $S_\ell$ as $\rho \to 0$. For more discussion of this, see \Cref{sec:ShieldingFunc}. The values used for the different partial waves are given in \cref{tab:Shielding}.
+
+The Hylleraas-type short-range terms are similar to that used in the bound state in \cref{eq:BoundWavefn}. These are chosen to have two symmetries, one with a prefactor of $r_1^\ell$ and the other with a prefactor of $r_2^\ell$. From Refs.~\cite{Schwartz1961a,VanReethThesis}, the D-wave and higher can have additional symmetries where the angular momentum is shared between the Ps and H. We do not consider these mixed terms here. \todo{Justification}
+
+\begin{subequations}
+\begin{align}
+  \label{eq:PhiDef}
+  \bar{\phi}_{1i} &= \left(1 \pm P_{23}\right) \SphericalHarmonicY{\ell}{0}{\theta_1}{\phi_1}
+  e^{-(\alpha r_1 + \beta r_2 + \gamma r_3)}
+  r_1^{\ell} r_1^{k_i} r_2^{l_i} r_{12}^{m_i} r_3^{n_i} r_{13}^{p_i} r_{23}^{q_i} \\
+  \bar{\phi}_{2j} &= \left(1 \pm P_{23}\right) \SphericalHarmonicY{\ell}{0}{\theta_2}{\phi_2}
+  e^{-(\alpha r_1 + \beta r_2 + \gamma r_3)}
+  r_2^{\ell} r_1^{k_j} r_2^{l_j} r_{12}^{m_j} r_3^{n_j} r_{13}^{p_j} r_{23}^{q_j}.
+\end{align}
+\end{subequations}
+
+The S-wave only has a single symmetry, so $\bar{\Phi}_i$ is a single set of terms.
+Similar to \cref{sec:BoundWavefn}, the $\frac{1}{\sqrt{2}}$ is absorbed into $c_i$. The full S-wave trial wavefunction can be written as
+\begin{equation}
+  \label{eq:TrialWave}
+  \Psi_0^{\pm,t} = \widetilde{S}_0 + L_0^{\pm,t} \, \widetilde{C}_0 + \sum_{i=1}^{N(\omega)} c_{i,0} \bar{\phi}_{i1}.
+\end{equation}
+
+For the P-wave and higher ($\ell > 0$), 
+
+\begin{equation}
+  \label{eq:TrialWaveHigher}
+  \Psi_\ell^{\pm,t} = \widetilde{S}_\ell + L^{\pm,t}_\ell \, \widetilde{C}_\ell
+  + \sum_{i=1}^{N(\omega)} c_{i,\ell} \bar{\phi}_{i1}
+  + \!\!\!\sum_{i=N(\omega)+1}^{2N(\omega)} \!\! d_{i,\ell} \bar{\phi}_{i2}.
+\end{equation}
+
+$\rho$ and $\rho'$ are defined as (refer to \cref{fig:PsHCoords} and \Cref{chp:RhoDef})
+\begin{subequations}
+\begin{align}
+\vec{\rho} &= \frac{1}{2}\left(\vec{r_1} + \vec{r_2}\right) \label{eq:RhoDef}\\
+\vec{\rho}^\prime &= \frac{1}{2}\left(\vec{r_1} + \vec{r_3}\right) \label{eq:RhopDef}.
+\end{align}
+\end{subequations}
 
 
 \section{General Kohn Principle Derivation}
 \label{sec:KohnDerivation}
 
-Much of this derivation is similar to that in Peter Van Reeth's thesis \cite{VanReethThesis} but is for single channel scattering and also generalized to a variety of Kohn variational methods. His thesis covers the Kohn and inverse Kohn methods for two channel e$^+$-He scattering. For this derivation, I will use \cref{eq:GeneralWaveTrial} but drop the short-range $\bar{\phi}_i^t$ terms. The derivation follows through the same with these terms, but it is clearer to ignore them here. Likewise, we only consider the direct terms here, unless otherwise specified. The final result of this section applies equally well to both the direct and exchanged terms.
+Much of this derivation is similar to that in Peter Van Reeth's thesis \cite{
+VanReethThesis} but is for single channel scattering and also generalized to 
+a variety of Kohn variational methods. His thesis covers the Kohn and inverse 
+Kohn methods for two channel e$^+$-He scattering. For this derivation, I will 
+use \cref{eq:GeneralWaveTrial} but drop the short-range $\bar{\phi}_i^t$ 
+terms. The derivation follows through the same with these terms, but it is 
+clearer to ignore them here. Likewise, we only consider the direct terms 
+here, unless otherwise specified. The final result of this section applies 
+equally well to both the direct and exchanged terms.
 
 The functional $I_\ell$ is defined as \cite{Adhikari1998}
 \begin{equation}
@@ -124,13 +170,40 @@ Since $\mathcal{L}\Psi_\ell = 0$,
 \label{eq:IlPsiVariation2}
 \eeq
 
-The Hamiltonian for Ps-H scattering with Coulombic potentials is
+The wavenumber is defined as
+\beq
+\kappa = \frac{\sqrt{2 m E}}{\hbar}
+\label{eq:Wavenumber}
+\eeq
+
+From \cref{eq:Wavenumber}, since Ps has twice the mass of a positron, $m \to 2m$, the kinetic energy of the positronium atom is $T = \frac{1}{4} \kappa^2$, where $\kappa$ is the wavenumber of Ps. Including the dissociation energy of H and Ps to get the total energy gives
+\beq
+E = E_H + E_{Ps} + \frac{1}{4} \kappa^2.
+\eeq
+For the ground states of H and Ps,
+\beq
+E = -\frac{1}{2} - \frac{1}{4} + \frac{1}{4} \kappa^2 = -\frac{3}{4} + \frac{1}{4} \kappa^2 \:\: \text{(in a.u.)}.
+\label{eq:EnergyTotal}
+\eeq
+
+The Hamiltonian for the fundamental Coulombic system is
 \begin{align}
-H = -\frac{1}{4} \Laplacian_\rho - \frac{1}{2} \Laplacian_{r_3} - \Laplacian_{r_{12}} + \frac{1}{r_1} - \frac{1}{r_2} - \frac{1}{r_3} - \frac{1}{r_{12}} - \frac{1}{r_{13}} + \frac{1}{r_{23}}.
-\label{eq:Hamiltonian2}
+\label{eq:Hamiltonian1}
+H = -\frac{1}{2} \Laplacian_{r_1} - \frac{1}{2} \Laplacian_{r_2} - \frac{1}{2} \Laplacian_{r_3} + \frac{1}{r_1} - \frac{1}{r_2} - \frac{1}{r_3} - \frac{1}{r_{12}} -\frac {1}{r_{13}} + \frac{1}{r_{23}}.
 \end{align}
 
-\noindent When substituted in \cref{eq:IlPsiVariation2} and using the total energy from \cref{eq:TotalEnergy}, this gives
+\noindent The Hamiltonian can also be expressed in terms of other variables as
+\begin{align}
+H = -\frac{1}{4} \Laplacian_\rho - \frac{1}{2} \Laplacian_{r_3} - \Laplacian_{r_{12}} + \frac{1}{r_1} - \frac{1}{r_2} - \frac{1}{r_3} - \frac{1}{r_{12}} - \frac{1}{r_{13}} + \frac{1}{r_{23}}
+\label{eq:Hamiltonian2}
+\end{align}
+and
+\begin{align}
+H = -\frac{1}{4} \Laplacian_{\rho^\prime} - \frac{1}{2} \Laplacian_{r_2} - \Laplacian_{r_{13}} + \frac{1}{r_1} - \frac{1}{r_2} - \frac{1}{r_3} - \frac{1}{r_{12}} - \frac{1}{r_{13}} + \frac{1}{r_{23}}.
+\label{eq:Hamiltonian3}
+\end{align}
+
+\noindent Substituting the second form of $H$ in \cref{eq:IlPsiVariation2} and using the total energy from \cref{eq:TotalEnergy} gives
 \begin{align}
 \label{eq:IlPsiVariation3}
 \delta I_\ell^\prime = 2 \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{V_\rho} \Psi_\ell &\left[-\frac{1}{4} \Laplacian_\rho - \frac{1}{2} \Laplacian_{r_3} - \Laplacian_{r_{12}} + \frac{1}{r_1} - \frac{1}{r_2} - \frac{1}{r_3} \right. \nonumber \\
@@ -139,12 +212,21 @@ H = -\frac{1}{4} \Laplacian_\rho - \frac{1}{2} \Laplacian_{r_3} - \Laplacian_{r_
   &- \left. \frac{1}{r_{12}} - \frac{1}{r_{13}} + \frac{1}{r_{23}} - E_H - E_{Ps} - \frac{1}{4}\kappa^2 \right] \Psi_\ell \,d\tau_\rho d\tau_{r_3} d\tau_{r_{12}}.
 \end{align}
 
-Realizing that the Hamiltonians for H and Ps are given by
+Some important cancellations are made in the matrix element equations in \cref{sec:??} by using the H and Ps ground state wave equations. Separately, the H and Ps equations are respectively (for large values of $\rho$)
+\beq
+\left(-\frac{1}{2} \Laplacian_{r_3} - \frac{1}{r_3}\right) \Phi_H(r_3) = E_H \Phi_H(r_3)
+\label{eq:HEqn}
+\eeq
+\beq
+\left(-\Laplacian_{r_{12}} - \frac{1}{r_{12}}\right) \Phi_{Ps}(r_{12}) = E_{Ps} \Phi_{Ps}(r_{12})
+\label{eq:PsEqn}
+\eeq
+Realizing then that the Hamiltonians for H and Ps are given by
 \begin{subequations}
 \label{eq:HPsHamil}
 \begin{align}
 H_H =& -\frac{1}{2} \Laplacian_{r_3} - \frac{1}{r_3} \label{eq:HHamil} \\
-H_{Ps} =& -\frac{1}{4} \Laplacian_{r_{12}} - \frac{1}{r_{12}}, \label{eq:PsHamil}
+H_{Ps} =& -\Laplacian_{r_{12}} - \frac{1}{r_{12}} \label{eq:PsHamil}
 \end{align}
 \end{subequations}
 and rearranging terms, \cref{eq:IlPsiVariation3} becomes
@@ -580,6 +662,12 @@ This is a generalized form of the $S$ matrix Kohn. When $\tau = 0$, this reduces
 \section{Schwartz Singularities}
 \label{eq:SchwartzSing}
 
+
+
+
+\section{Matrix Elements Involving Long-Range Terms}
+\label{sec:MatrixLong}
+The short-range--long-range and long-range--long-range matrix elements have a similar analysis. For all of these, the effect of the $\mathcal{L} = 2(H-E)$ operator on the long-range terms must be considered, and then integrations over the external angles (see \Cref{chp:AngularInt}) are performed. The remaining 6-dimensional integral is then numerically integrated as described in sections \ref{sec:LongLongInt} and \ref{sec:ShortLongInt}.
 
 
 \biblio

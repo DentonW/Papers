@@ -94,37 +94,39 @@ Y_{10}(\theta) = Y_{10}(\theta,\varphi) = \sqrt{\frac{3}{4\pi}} \cos\theta.
 
 As to be expected, the P-wave matrix equation is similar in form to the S-wave result in equation \ref{eq:KohnMatrix}.
 
+{\small
 \begin{equation}
 \label{eq:PWaveKohnMatrix}
-\begin{bmatrix} 
- (\bar{C},L\bar{C}) & (\bar{C},L\bar{\phi}_{11}) & \cdots & (\bar{C},L\bar{\phi}_{1N}) & (\bar{C},L\bar{\phi}_{21}) & \cdots & (\bar{C},L\bar{\phi}_{2N})\\
- (\bar{\phi}_{11},L\bar{C}) & (\bar{\phi}_{11},L\bar{\phi}_{11}) & \cdots & (\bar{\phi}_{11},L\bar{\phi}_{1N}) & (\bar{\phi}_{11},L\bar{\phi}_{21}) & \cdots & (\bar{\phi}_{11},L\bar{\phi}_{2N})\\
- \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
- (\bar{\phi}_{1N},L\bar{C}) & (\bar{\phi}_{1N},L\bar{\phi}_{11}) & \cdots & (\bar{\phi}_{1N},L\bar{\phi}_{1N}) & (\bar{\phi}_{1N},L\bar{\phi}_{21}) & \cdots & (\bar{\phi}_{1N},L\bar{\phi}_{2N})\\
- (\bar{\phi}_{21},L\bar{C}) & (\bar{\phi}_{21},L\bar{\phi}_{11}) & \cdots & (\bar{\phi}_{21},L\bar{\phi}_{1N}) & (\bar{\phi}_{21},L\bar{\phi}_{21}) & \cdots & (\bar{\phi}_{21},L\bar{\phi}_{2N})\\
- \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
- (\bar{\phi}_{2N},L\bar{C}) & (\bar{\phi}_{2N},L\bar{\phi}_{11}) & \cdots & (\bar{\phi}_{2N},L\bar{\phi}_{1N}) & (\bar{\phi}_{2N},L\bar{\phi}_{21}) & \cdots & (\bar{\phi}_{2N},L\bar{\phi}_{2N})\\
-\end{bmatrix}
-\begin{bmatrix}
-\Lambda_t\\
-c_1\\
-\vdots\\
-c_N\\
-d_1\\
-\vdots\\
-d_N\\
-\end{bmatrix}
-= -
-\begin{bmatrix}
-(\bar{C},L\bar{S}) \\
-(\bar{\phi}_{11},L\bar{S}) \\
-\vdots \\
-(\bar{\phi}_{1N},L\bar{S}) \\
-(\bar{\phi}_{21},L\bar{S}) \\
-\vdots \\
-(\bar{\phi}_{2N},L\bar{S}) \\
-\end{bmatrix}.
+	\begin{bmatrix} 
+	 (\widetilde{C},\mathcal{L}\widetilde{C}) & (\widetilde{C},\mathcal{L}\bar{\phi}_{11}) & \cdots & (\widetilde{C},\mathcal{L}\bar{\phi}_{1N}) & (\widetilde{C},\mathcal{L}\bar{\phi}_{21}) & \cdots & (\widetilde{C},\mathcal{L}\bar{\phi}_{2N})\\
+	 (\bar{\phi}_{11},\mathcal{L}\widetilde{C}) & (\bar{\phi}_{11},\mathcal{L}\bar{\phi}_{11}) & \cdots & (\bar{\phi}_{11},\mathcal{L}\bar{\phi}_{1N}) & (\bar{\phi}_{11},\mathcal{L}\bar{\phi}_{21}) & \cdots & (\bar{\phi}_{11},\mathcal{L}\bar{\phi}_{2N})\\
+	 \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+	 (\bar{\phi}_{1N},\mathcal{L}\widetilde{C}) & (\bar{\phi}_{1N},\mathcal{L}\bar{\phi}_{11}) & \cdots & (\bar{\phi}_{1N},\mathcal{L}\bar{\phi}_{1N}) & (\bar{\phi}_{1N},\mathcal{L}\bar{\phi}_{21}) & \cdots & (\bar{\phi}_{1N},\mathcal{L}\bar{\phi}_{2N})\\
+	 (\bar{\phi}_{21},\mathcal{L}\widetilde{C}) & (\bar{\phi}_{21},\mathcal{L}\bar{\phi}_{11}) & \cdots & (\bar{\phi}_{21},\mathcal{L}\bar{\phi}_{1N}) & (\bar{\phi}_{21},\mathcal{L}\bar{\phi}_{21}) & \cdots & (\bar{\phi}_{21},\mathcal{L}\bar{\phi}_{2N})\\
+	 \vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+	 (\bar{\phi}_{2N},\mathcal{L}\widetilde{C}) & (\bar{\phi}_{2N},\mathcal{L}\bar{\phi}_{11}) & \cdots & (\bar{\phi}_{2N},\mathcal{L}\bar{\phi}_{1N}) & (\bar{\phi}_{2N},\mathcal{L}\bar{\phi}_{21}) & \cdots & (\bar{\phi}_{2N},\mathcal{L}\bar{\phi}_{2N})\\
+	\end{bmatrix}
+	\begin{bmatrix}
+  L_\ell^t\\
+	c_1\\
+	\vdots\\
+	c_N\\
+	d_1\\
+	\vdots\\
+	d_N\\
+	\end{bmatrix}
+	= -
+	\begin{bmatrix}
+	(\widetilde{C},\mathcal{L}\widetilde{S}) \\
+	(\bar{\phi}_{11},\mathcal{L}\widetilde{S}) \\
+	\vdots \\
+	(\bar{\phi}_{1N},\mathcal{L}\widetilde{S}) \\
+	(\bar{\phi}_{21},\mathcal{L}\widetilde{S}) \\
+	\vdots \\
+	(\bar{\phi}_{2N},\mathcal{L}\widetilde{S}) \\
+	\end{bmatrix}.
 \end{equation}
+}
 
 \noindent This matrix equation can be rewritten as
 \beq
@@ -533,74 +535,6 @@ Complex rotation (Drachman et al.\ 1979) \cite{Drachman1979} & $-0.57725$ & --- 
 \end{tabular}
 \caption{P-wave resonance parameters}
 \label{tab:PWaveResonancesOther}
-\end{table}
-
-
-\subsection{Scattering Length}
-
-\begin{table}[H]
-	\centering
-	\normalsize
-	\begin{tabular}{c c | c c | c c | c}
-	\toprule
-			& & Gao Expansion & & Gao Full & & Definition \\
-			& $\kappa$ & $K_l^1$ & $a_1$ & $K_l^1$ & $a_1$ & $a_1$ \\
-	\midrule
-		$^1P$ & 0.01 & 0.269233 & -22.1978 & 0.269235 & -22.1977 & -22.0892\\
-			 & 	0.02 & 	0.267853 & -22.2879 & 0.267862 & -22.2873 & -22.1039\\
-			 & 	0.03 & 	0.266841 & -22.3546 & 0.266866 & -22.3529 & -22.1285\\
-			 & 	0.04 & 	0.266191 & -22.3976 & 0.266239 & -22.3944 & -22.1634\\
-			 & 	0.05 & 	0.265896 & -22.4173 & 0.265968 & -22.4124 & -22.2088\\
-			 & 	0.06 & 	0.265951 & -22.4136 & 0.266042 & -22.4076 & -22.2649\\
-			 & 	0.07 & 	0.266352 & -22.3870 & 0.266444 & -22.3808 & -22.3320\\
-			 & 	0.08 & 	0.267095 & -22.3377 & 0.267160 & -22.3335 & -22.4103\\
-			 & 	0.09 & 	0.268180 & -22.2664 & 0.268174 & -22.2669 & -22.5001\\
-	\midrule
-			 & 	0.002 & 0.270609 & -22.1089 & 0.270609 & -22.1089 & -22.0898\\
-			 & 	0.003 & 0.270429 & -22.1204 & 0.270429 & -22.1204 & -22.0844\\
-			 & 	0.004 & 0.270197 & -22.1353 & 0.270198 & -22.1353 & -22.0880\\
-			 & 	0.005 & 0.270065 & -22.1439 & 0.270065 & -22.1439 & -22.0854\\
-			 & 	0.006 & 0.269886 & -22.1555 & 0.269886 & -22.1555 & -22.0868\\
-			 & 	0.007 & 0.269723 & -22.1660 & 0.269724 & -22.1660 & -22.0866\\
-			 & 	0.008 & 0.269554 & -22.1770 & 0.269554 & -22.1769 & -22.0875\\
-			 & 	0.009 & 0.269391 & -22.1875 & 0.269392 & -22.1874 & -22.0883\\
-	\bottomrule
-	\end{tabular}
-	\caption{$^1P$ Scattering Length}
-	\label{tab:PWaveScatLen1}
-\end{table}
-
-
-
-\begin{table}[H]
-	\centering
-	\normalsize
-	\begin{tabular}{c c | c c | c c | c}
-	\toprule
-			& & Gao Expansion & & Gao Full & & Definition \\
-			& $\kappa$ & $K_l^1$ & $a_1$ & $K_l^1$ & $a_1$ & $a_1$ \\
-	\midrule
-		$^3P$ & 0.01 & -0.775059 & 1.36657 & -0.775063 & 1.36653 & 1.48837\\
-			& 0.02 & -0.788680 & 1.26164 & -0.788717 & 1.26136 & 1.49952\\
-			& 0.03 & -0.801051 & 1.16944 & -0.801174 & 1.16853 & 1.51773\\
-			& 0.04 & -0.812094 & 1.08951 & -0.812385 & 1.08743 & 1.54225\\
-			& 0.05 & -0.821813 & 1.02094 & -0.822378 & 1.01700 & 1.57249\\
-			& 0.06 & -0.830232 & 0.962839 & -0.831201 & 0.956228 & 1.60764\\
-			& 0.07 & -0.837385 & 0.914392 & -0.838912 & 0.904152 & 1.64646\\
-			& 0.08 & -0.843359 & 0.874562 & -0.845623 & 0.859613 & 1.68879\\
-			& 0.09 & -0.848295 & 0.842075 & -0.851496 & 0.821207 & 1.73130\\
-	\midrule
-			 & 0.003 & -0.763982 & 1.45465 & -0.763983 & 1.45464 & 1.49615\\
-			 & 0.004 & -0.764749 & 1.44847 & -0.764750 & 1.44846 & 1.4852\\
-			 & 0.005 & -0.767334 & 1.42773 & -0.767334 & 1.42772 & 1.48313\\
-			 & 0.006 & -0.769323 & 1.41186 & -0.769324 & 1.41185 & 1.48510\\
-			 & 0.007 & -0.770696 & 1.40095 & -0.770698 & 1.40094 & 1.48716\\
-			 & 0.008 & -0.772284 & 1.38839 & -0.772287 & 1.38837 & 1.48708\\
-			 & 0.009 & -0.773553 & 1.37839 & -0.773556 & 1.37836 & 1.48747\\
-	\bottomrule
-	\end{tabular}
-	\caption{$^3P$ Scattering Length}
-	\label{PWaveScatLen3}
 \end{table}
 
 

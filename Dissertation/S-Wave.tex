@@ -5,68 +5,71 @@
 \chapter{S-Wave}
 \label{chp:SWave}
 
-\section{Wavefunction}
-\label{sec:SWaveFn}
-Our trial wavefunction for the s-wave partial wave of positronium scattering from hydrogen is
-\begin{equation}
-\Psi_t^\pm = \bar{S} + \tan \eta_t^\pm \, \bar{C} + \sum_{i=1}^N c_i \bar{\phi}_i^t ,
-\label{eq:SWaveTrialSimple}
-\end{equation}
-
-\noindent where
-
-\begin{subequations}\label{SCphiBarDef}
-\begin{align}
-\bar{S} &= \frac{\left( 1 \pm P_{23} \right) S}{\sqrt{2}} \label{SBarDef} \\
-\bar{C} &= \frac{\left( 1 \pm P_{23} \right) C}{\sqrt{2}} \label{CBarDef} \\
-\bar{\phi}_i^t &= \left( 1 \pm P_{23} \right) \phi_i \label{PhiBarDef}
-\end{align}
-\end{subequations}
-
-\noindent and
-
-\begin{subequations}\label{eq:SCPhiDef}
-\begin{align}
-S &= Y_{0,0}\!\left( \theta_\rho, \phi_\rho \right) \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,j_0\!\left(\kappa\rho\right) \label{eq:SDef} \\
-C &= -Y_{0,0}\!\left( \theta_\rho, \phi_\rho \right) \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,n_0\!\left(\kappa\rho\right) \left[1 - \exp(-\mu \rho) (1+\frac{\mu}{2}\rho)\right] \label{eq:CDef} \\
-\phi_i &= e^{-\left(\alpha r_1 + \beta r_2 + \gamma r_3 \right)} r_1^{k_i} r_2^{l_i} r_{12}^{m_i} r_3^{n_i} r_{13}^{p_i} r_{23}^{q_i}. \label{eq:PhiDef}
-\end{align}
-\end{subequations}
-
-\noindent The $\frac{1}{\sqrt{2}}$ and $Y_{0,0}\left( \theta_\rho, \phi_\rho \right) = \frac{1}{\sqrt{4\pi}}$ for $\bar{\phi}_i^t$ are included in the $c_i$ coefficients in (\ref{eq:SWaveTrialSimple}).
-
-$\rho$ and $\rho'$ are defined as (refer to figure \ref{fig:PsHCoords})
-\begin{subequations}
-\begin{align}
-\vec{\rho} &= \frac{1}{2}\left(\vec{r_1} + \vec{r_2}\right) \label{eq:RhoDef}\\
-\vec{\rho}^\prime &= \frac{1}{2}\left(\vec{r_1} + \vec{r_3}\right) \label{eq:RhopDef}.
-\end{align}
-\end{subequations}
-As a shortcut, we can also write
-\begin{equation}
-S^\prime = P_{23} S \text{ and } C^\prime = P_{23} C.
-\label{eq:SCprime}
-\end{equation}
-The short-range Hylleraas-type terms are given by the $\phi_i$ in equation \ref{eq:SWaveTrialSimple}. 
-
-The Hamiltonian for the fundamental Coulombic system is
-\begin{align}
-\label{eq:Hamiltonian1}
-H = -\frac{1}{2} \nabla_{r_1}^2 - \frac{1}{2} \nabla_{r_2}^2 - \frac{1}{2} \nabla_{r_3}^2 + \frac{1}{r_1} - \frac{1}{r_2} - \frac{1}{r_3} - \frac{1}{r_{12}} -\frac {1}{r_{13}} + \frac{1}{r_{23}}.
-\end{align}
-
-\noindent The Hamiltonian can also be expressed in terms of other variables as
-\begin{align}
-H = -\frac{1}{4} \nabla_{\rho}^2 - \frac{1}{2} \nabla_{r_3}^2 - \nabla_{r_{12}}^2 + \frac{1}{r_1} - \frac{1}{r_2} - \frac{1}{r_3} - \frac{1}{r_{12}} - \frac{1}{r_{13}} + \frac{1}{r_{23}}
-\label{eq:Hamiltonian2Dup}
-\end{align}
-and
-\begin{align}
-H = -\frac{1}{4} \nabla_{\rho^\prime}^2 - \frac{1}{2} \nabla_{r_2}^2 - \nabla_{r_{13}}^2 + \frac{1}{r_1} - \frac{1}{r_2} - \frac{1}{r_3} - \frac{1}{r_{12}} - \frac{1}{r_{13}} + \frac{1}{r_{23}}.
-\label{eq:Hamiltonian3}
-\end{align}
-
+The S-wave is the simplest of the partial waves to consider, since it is the lowest angular momentum state, and the spherical harmonics in 
 As a condensed notation, the S-wave singlet and triplet are referred to as $^1$S and $^3$S, respectively (as shown in \cref{chp:nomenclature}).
+
+%\section{Wavefunction}
+%\label{sec:SWaveFn}
+%Our trial wavefunction for the s-wave partial wave of positronium scattering from hydrogen is
+%\begin{equation}
+%\Psi_t^\pm = \bar{S} + \tan \eta_t^\pm \, \bar{C} + \sum_{i=1}^N c_i \bar{\phi}_i^t ,
+%\label{eq:SWaveTrialSimple}
+%\end{equation}
+%
+%\noindent where
+%
+%\begin{subequations}\label{SCphiBarDef}
+%\begin{align}
+%\bar{S} &= \frac{\left( 1 \pm P_{23} \right) S}{\sqrt{2}} \label{SBarDef} \\
+%\bar{C} &= \frac{\left( 1 \pm P_{23} \right) C}{\sqrt{2}} \label{CBarDef} \\
+%\bar{\phi}_i^t &= \left( 1 \pm P_{23} \right) \phi_i \label{PhiBarDef}
+%\end{align}
+%\end{subequations}
+%
+%\noindent and
+%
+%\begin{subequations}\label{eq:SCPhiDef}
+%\begin{align}
+%S &= Y_{0,0}\!\left( \theta_\rho, \phi_\rho \right) \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,j_0\!\left(\kappa\rho\right) \label{eq:SDef} \\
+%C &= -Y_{0,0}\!\left( \theta_\rho, \phi_\rho \right) \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,n_0\!\left(\kappa\rho\right) \left[1 - \exp(-\mu \rho) (1+\frac{\mu}{2}\rho)\right] \label{eq:CDef} \\
+%\phi_i &= e^{-\left(\alpha r_1 + \beta r_2 + \gamma r_3 \right)} r_1^{k_i} r_2^{l_i} r_{12}^{m_i} r_3^{n_i} r_{13}^{p_i} r_{23}^{q_i}. \label{eq:PhiDef}
+%\end{align}
+%\end{subequations}
+%
+%\noindent The $\frac{1}{\sqrt{2}}$ and $Y_{0,0}\left( \theta_\rho, \phi_\rho \right) = \frac{1}{\sqrt{4\pi}}$ for $\bar{\phi}_i^t$ are included in the $c_i$ coefficients in (\ref{eq:SWaveTrialSimple}).
+%
+%$\rho$ and $\rho'$ are defined as (refer to figure \ref{fig:PsHCoords})
+%\begin{subequations}
+%\begin{align}
+%\vec{\rho} &= \frac{1}{2}\left(\vec{r_1} + \vec{r_2}\right) \label{eq:RhoDef}\\
+%\vec{\rho}^\prime &= \frac{1}{2}\left(\vec{r_1} + \vec{r_3}\right) \label{eq:RhopDef}.
+%\end{align}
+%\end{subequations}
+%As a shortcut, we can also write
+%\begin{equation}
+%S^\prime = P_{23} S \text{ and } C^\prime = P_{23} C.
+%\label{eq:SCprime}
+%\end{equation}
+%The short-range Hylleraas-type terms are given by the $\phi_i$ in equation \ref{eq:SWaveTrialSimple}. 
+
+%The Hamiltonian for the fundamental Coulombic system is
+%\begin{align}
+%\label{eq:Hamiltonian1}
+%H = -\frac{1}{2} \nabla_{r_1}^2 - \frac{1}{2} \nabla_{r_2}^2 - \frac{1}{2} \nabla_{r_3}^2 + \frac{1}{r_1} - \frac{1}{r_2} - \frac{1}{r_3} - \frac{1}{r_{12}} -\frac {1}{r_{13}} + \frac{1}{r_{23}}.
+%\end{align}
+%
+%\noindent The Hamiltonian can also be expressed in terms of other variables as
+%\begin{align}
+%H = -\frac{1}{4} \nabla_{\rho}^2 - \frac{1}{2} \nabla_{r_3}^2 - \nabla_{r_{12}}^2 + \frac{1}{r_1} - \frac{1}{r_2} - \frac{1}{r_3} - \frac{1}{r_{12}} - \frac{1}{r_{13}} + \frac{1}{r_{23}}
+%\label{eq:Hamiltonian2Dup}
+%\end{align}
+%and
+%\begin{align}
+%H = -\frac{1}{4} \nabla_{\rho^\prime}^2 - \frac{1}{2} \nabla_{r_2}^2 - \nabla_{r_{13}}^2 + \frac{1}{r_1} - \frac{1}{r_2} - \frac{1}{r_3} - \frac{1}{r_{12}} - \frac{1}{r_{13}} + \frac{1}{r_{23}}.
+%\label{eq:Hamiltonian3}
+%\end{align}
+
+
 
 
 
@@ -80,15 +83,15 @@ The total energy is needed to evaluate all the matrix elements. From (\cite{}), 
 \label{eq:Wavenumber}
 \eeq
 
-From equation \ref{eq:Wavenumber}, since positronium has twice the mass of a positron, $m \to 2m$, the kinetic energy of the positronium atom is $T = \frac{1}{4} \kappa^2$, where $\kappa$ is the wavenumber of Ps.  Including the dissociation energy of H and Ps to get the total energy gives
-\beq
-E_T = E_H + E_{Ps} + \frac{1}{4} \kappa^2.
-\eeq
-For the ground states of H and Ps,
-\beq
-E_T = -\frac{1}{2} - \frac{1}{4} + \frac{1}{4} \kappa^2 = -\frac{3}{4} + \frac{1}{4} \kappa^2 \:\: \text{(in a.u.)}.
-\label{eq:EnergyTotal}
-\eeq
+%From equation \ref{eq:Wavenumber}, since positronium has twice the mass of a positron, $m \to 2m$, the kinetic energy of the positronium atom is $T = \frac{1}{4} \kappa^2$, where $\kappa$ is the wavenumber of Ps.  Including the dissociation energy of H and Ps to get the total energy gives
+%\beq
+%E_T = E_H + E_{Ps} + \frac{1}{4} \kappa^2.
+%\eeq
+%For the ground states of H and Ps,
+%\beq
+%E_T = -\frac{1}{2} - \frac{1}{4} + \frac{1}{4} \kappa^2 = -\frac{3}{4} + \frac{1}{4} \kappa^2 \:\: \text{(in a.u.)}.
+%\label{eq:EnergyTotal}
+%\eeq
 
 Some important cancellations are made in the matrix element equations by using the H and Ps ground state wavefunctions. Separately, the H and Ps equations are respectively (for large values of $\rho$)
 \beq
@@ -856,386 +859,6 @@ Stabilization \cite{Hazi1970} & $5.8366$ & $0.2693$ & --- & --- \\
 
 
 
-
-
-\section{Scattering Length and Effective Range}
-\label{sec:ScatteringLength}
-
-\textbf{@TODO: Explanation of what scattering length is}
-
-\subsection{Scattering Length Definition}
-The scattering length is defined as \citep[pg. 589]{Bransden2003}
-\beq
-\label{eq:ScatLen}
-a^\pm = -\lim_{\kappa \to 0} \frac{\tan{\delta^\pm}}{\kappa}.
-\eeq
-
-%\noindent We follow a similar procedure to that of Van Reeth and Humberston to determine the scattering length \cite{VanReeth2003}.  The scattering program is run for values of $\kappa = 0.001$ and $\kappa = 0.0001$ for both the singlet and triplet states.  The scattering lengths calculated for each are nearly identical, differing only in the fifth decimal place.  
-
-\noindent If this definition is used for decreasing (but positive) values of $\kappa$, there is a clear convergence.  Table \ref{tab:ScatLenDef} has the scattering length calculated for $\kappa$ values of $0.001$ and $0.0001$.  To the quoted accuracy, the values of the scattering length agree exactly for the two different values of $\kappa$.  This is the method used by Van Reeth and Humberston for finding the scattering length \cite{VanReeth2003}.
-
-\textbf{@TODO: Put in graph showing convergence.}
-
-\begin{table}[H]
-\centering
-\begin{tabular}{c c c c c}
-\toprule
-$\omega$ & $a^+ (\kappa = 0.001)$ & $a^+ (\kappa = 0.0001)$ & $a^- (\kappa = 0.001)$ & $a^- (\kappa = 0.0001)$ \\
-\midrule
-6 & 4.3364 & 4.3364 & 2.1415 & 2.1415 \\
-7 & 4.3306 & 4.3306 & 2.1363 & 2.1363 \\
-\bottomrule
-\end{tabular}
-\caption{Scattering Length from Definition}
-\label{tab:ScatLenDef}
-\end{table}
-
-\noindent Van Reeth and Humberston also extrapolate their scattering length to $\omega \rightarrow \infty$ using the following equation \cite{VanReeth2003}:
-\beq
-\label{eq:ScatLenExtrap}
-a^\pm(\omega) = a^\pm(\omega \rightarrow \infty) + \frac{c}{\omega^p}.
-\eeq
-
-\textbf{@TODO: Extrapolation}
-
-
-\subsection{Effective Range}
-For short-range potentials, the effective range is given by \cite{Bethe1949,Blatt1949,Drake2006}
-
-\beq
-\label{eq:EffectiveRangeShort}
-\kappa \cot\eta_0^\pm = -\frac{1}{a^\pm} + \frac{1}{2} r_0^\pm \kappa^2 + \mathcal{O}(\kappa^4).
-\eeq
-
-\noindent This equation will be referred to as the standard fit. Phase shifts for low values of $\kappa$ are fitted to this equation to determine the effective range and scattering length, and the results are shown in table \ref{tab:ScatLenStandard}. This is a subset of tables \ref{tab:ScatLenSinglet} and \ref{tab:ScatLenTriplet}. For each range other than $\kappa = 0.1 - 0.6$, we used 10 equidistant values of $\kappa$. This fitting is not carried out to $\kappa$ higher than 0.6, due to the resonance structure described in section \ref{sec:SWaveResonances}.
-
-\textbf{@TODO: Graphs}
-
-\begin{table}[H]
-\centering
-\begin{tabular}{c l c c c c}
-\toprule
-$\omega$ & Range & $a^+$ & $r_0^+$ & $a^-$ & $r_0^-$ \\
-\midrule
-6 & $0.1 - 0.6$ & 4.3168 & 2.2755 & 2.1701 & 1.3447 \\
-  & $0.01 - 0.09$ & 4.3364 & 2.1968 & 2.1417 & 1.8562 \\
-  & $0.001 - 0.009$ & 4.3364 & 2.1882 & 2.1415 & 1.9288 \\
-  & $0.0001 - 0.0009$ & 4.3364 & 2.1920 & 2.1415 & 1.9302 \\
-\midrule
-7 & $0.1 - 0.6$ & 4.3132 & 2.2745 & 2.1677 & 1.3419 \\
-  & $0.01 - 0.09$ & 4.3306 & 2.2012 & 2.1365 & 1.9345 \\
-  & $0.001 - 0.009$ & 4.3306 & 2.1927 & 2.1363 & 2.0374 \\
-  & $0.0001 - 0.0009$ & 4.3306 & 2.2070 & 2.1363 & 1.5457 \\
-\bottomrule
-\end{tabular}
-\caption{Scattering Length and Effective Range for Standard Fit}
-\label{tab:ScatLenStandard}
-\end{table}
-
-This fitting works well enough for the singlet, but the triplet data does not fit exactly.  This can be seen in figure \textbf{ADD FIGURE}, which is similar to figure 5 of Van Reeth \cite{VanReeth2003}.  The long-range $R^{-6}$ van der Waals potential appears to be more dominant for the triplet. \textbf{Physical Reason?}
-
-\textbf{ADD FIGURE}
-
-For small values of $\kappa$ (less than 0.009), the scattering length agrees with the definition in equation \ref{eq:ScatLen}. These values also agree well with the scattering length found by other recent calculations, shown in table \ref{tab:SWaveScatLenOther}. The effective range for the $\kappa = 0.1 - 0.6$ entry for the standard fit also agrees relatively well with the results from other groups. As can easily be seen, when smaller $\kappa$ values are used however, the value of $r_0^\pm$ changes drastically for the triplet and somewhat for the singlet. Previous work using the Kohn variational method found $r_0^- = 1.39$ \cite{VanReeth2003}, which is close to our value of $r_0^- = 1.3438$.
-
-All other calculations for $r_0$ in the literature have used only the standard fit for both the singlet and triplet. These calculations also only use a fairly high set of $\kappa$ values, such as $0.1 - 0.6$. The discrepancy between calculated effective ranges with equation \ref{eq:EffectiveRangeShort} led us to consider other effective range theory models that include the van der Waals interaction.
-
-\subsection{van der Waals Terms}
-\label{sec:vanderWaalsERT}
-
-The van der Waals potential is given as
-
-\beq
-\label{eq:VanderWaals}
-V(R) = -\frac{C}{R^6}.
-\eeq
-
-\textbf{@TODO: Discuss why this potential is used.}
-
-\noindent For the Ps-H system, $C$ has been calculated in atomic units by Martin and Fraser to be $34.78473$ \cite{Martin1980}. When the long-range potential is taken into account, the effective range equation becomes (dropping the $\pm$ for clarity) \cite[pg. 669]{Drake2006}
-
-\beq
-\label{eq:EffectiveRangeLong}
-\kappa \cot\eta_0 = -\frac{1}{a} + \frac{1}{2} r_0 \kappa^2 - \frac{\pi}{15 a^2} \left(\frac{2 M C}{\hbar^2}\right) \kappa^3 - \frac{4}{15 a} \left(\frac{2 M C}{\hbar^2}\right) \kappa^4 \ln \left(\kappa a_0 \right) + \mathcal{O}(\kappa^4).
-\eeq
-
-\noindent In atomic units (see section \ref{sec:Units}), $M = 2$ (mass of Ps), $\hbar = 1$ (Planck's constant) and $a_0 = 1$ (Bohr radius), simplifying this equation as
-\beq
-\label{eq:EffectiveRangeLongAu}
-\kappa \cot\eta_0 = -\frac{1}{a} + \frac{1}{2} r_0 \kappa^2 - \frac{4 \pi C}{15 a^2} \kappa^3 - \frac{16 C}{15 a} \kappa^4 \ln \left(\kappa \right) + \mathcal{O}(\kappa^4).
-\eeq
-
-In tables \ref{tab:ScatLenSinglet} and \ref{tab:ScatLenTriplet}, the $\kappa^2$ column fits only to the first two terms of \ref{eq:EffectiveRangeLongAu}, which makes this the same as the standard fit, equation \ref{eq:EffectiveRangeShort}.  The $\kappa^3$ column fits to the first three terms, and the $\kappa^4 \ln$ column fits to all four terms.  Entries in these tables are given as $a^\pm / r_0^\pm$. The scattering length, $a^\pm$, is used as a fitting parameter, not a fixed value determined by \ref{eq:ScatLen} in table \ref{tab:ScatLenDef}.
-
-
-\begin{table}[H]
-\centering
-\begin{tabular}{c l c c c}
-\toprule
-$\omega$ & Range & $\kappa^2$ & $\kappa^3$ & $\kappa^4 \ln$ \\
-\midrule
-5 & $0.1 - 0.6$ & 4.3233/2.2834 & 3.9143/4.5169 & 4.6162/0.8488 \\
-  & $0.01 - 0.09$ & 4.3459/2.1995 & 4.3442/2.4770 & 4.3469/2.1502 \\
-  & $0.001 - 0.009$ & 4.3460/2.1957 & 4.3460/2.2234 & 4.3460/2.2171 \\
-  & $0.0001 - 0.0009$ & 4.3460/2.1890 & 4.3460/2.1918 & 4.3460/2.1917 \\
-\midrule
-6 & $0.1 - 0.6$ & 4.3162/2.2768 & 3.9060/4.5202 & 4.6070/0.8429 \\
-  & $0.01 - 0.09$ & 4.3348/2.1994 & 4.3330/2.4784 & 4.3358/2.1507 \\
-  & $0.001 - 0.009$ & 4.3348/2.1953 & 4.3348/2.2232 & 4.3348/2.2168 \\
-  & $0.0001 - 0.0009$ & 4.3348/2.2085 & 4.3348/2.2113 & 4.3348/2.2112 \\
-\midrule
-7 & $0.1 - 0.6$ & 4.3132/2.2746 & 3.9023/4.5225 & 4.6030/0.8411 \\
-  & $0.01 - 0.09$ & 4.3289/2.2046 & 4.3271/2.4844 & 4.3299/2.1562 \\
-  & $0.001 - 0.009$ & 4.3289/2.2006 & 4.3289/2.2285 & 4.3289/2.2221 \\
-  & $0.0001 - 0.0009$ & 4.3289/2.4926 & 4.3289/2.4954 & 4.3289/2.4953 \\
-\bottomrule
-\end{tabular}
-\caption{Singlet Scattering Length and Effective Range}
-\label{tab:ScatLenSinglet}
-\end{table}
-
-
-\begin{table}[H]
-\centering
-\begin{tabular}{c l c c c}
-\toprule
-$\omega$ & Range & $\kappa^2$ & $\kappa^3$ & $\kappa^4 \ln$ \\
-\midrule
-5 & $0.1 - 0.6$ & 2.1763/1.3614 & 2.1586/8.0998 & 2.1832/2.0213 \\
-  & $0.01 - 0.09$ & 2.1533/1.7514 & 2.1516/2.8828 & 2.1530/2.2222 \\
-  & $0.001 - 0.009$ & 2.1532/1.7959 & 2.1532/1.9089 & 2.1532/1.8961 \\
-  & $0.0001 - 0.0009$ & 2.1532/1.7950 & 2.1532/1.8063 & 2.1532/1.8061 \\
-\midrule
-6 & $0.1 - 0.6$ & 2.1705/1.3490 & 2.1530/8.1222 & 2.1760/2.0351 \\
-  & $0.01 - 0.09$ & 2.1425/1.8521 & 2.1407/2.9950 & 2.1421/2.3311 \\
-  & $0.001 - 0.009$ & 2.1423/1.9225 & 2.1423/2.0367 & 2.1423/2.0238 \\
-  & $0.0001 - 0.0009$ & 2.1423/1.9236 & 2.1423/1.9350 & 2.1423/1.9349 \\
-\midrule
-7 & $0.1 - 0.6$ & 2.1680/1.3438 & 2.1505/8.1323 & 2.1728/2.0415 \\
-  & $0.01 - 0.09$ & 2.1371/1.9309 & 2.1353/3.0796 & 2.1367/2.4140 \\
-  & $0.001 - 0.009$ & 2.1369/2.0326 & 2.1369/2.1473 & 2.1369/2.1345 \\
-  & $0.0001 - 0.0009$ & 2.1369/1.9969 & 2.1369/2.0083 & 2.1369/2.0081 \\  
-\bottomrule
-\end{tabular}
-\caption{Triplet Scattering Length and Effective Range}
-\label{tab:ScatLenTriplet}
-\end{table}
- 
-
-
-
-\subsubsection{Hinckelmann Equation}
-Equation \ref{eq:EffectiveRangeLong} is derived by starting with the expression given in Hinckelmann and Spruch, then inverting and performing an expansion. Hinckelmann gives this in terms of $\tan\eta_0$ instead of the now more commonly used $\cot\eta_0$ \cite{Hinckelmann1971}.
-
-\beq
-\label{eq:HinckelmannEqn}
-\tan\eta_0 = -a \kappa - \frac{1}{2} r_0 a^2 \kappa^3 + \frac{1}{15} C^4 \kappa^4 + \frac{4}{15} C^4 \kappa^5 \ln|2\kappa d| + \mathcal{O}(\kappa^5)
-\eeq
-
-\begin{table}[H]
-\centering
-\begin{tabular}{c l c c c c}
-\toprule
-$\omega$ & Range & $\kappa^3$ & $\kappa^4$ & $\kappa^5 \ln$ \\
-\midrule
-7 & $0.1 - 0.6$ & 13.6676/-0.7050 & 13.3858/-0.6984 & Undefined \\
-  & $0.01 - 0.09$ & 4.3269/2.3156 & 4.3267/2.3234 & Undefined \\
-  & $0.001 - 0.009$ & 4.3289/2.2014 & 4.3289/2.2015 & 4.3289/2.2062 \\
-  & $0.0001 - 0.0009$ & 4.3289/2.3566 & 4.3289/2.3566 & 4.3289/2.3569 \\  
-\bottomrule
-\end{tabular}
-\caption{Hinckelmann Singlet Scattering Length and Effective Range}
-\label{tab:HinckScatLenSinglet}
-\end{table}
-
-
-\begin{table}[H]
-\centering
-\begin{tabular}{c l c c c c}
-\toprule
-$\omega$ & Range & $\kappa^3$ & $\kappa^4$ & $\kappa^5 \ln$ \\
-\midrule
-7 & $0.1 - 0.6$ & 1.7293/5.0014 & 1.4474/10.2684 & Undefined \\
-  & $0.01 - 0.09$ & 2.1370/1.9457 & 2.1371/1.9773 & 2.1369/1.9886 \\
-  & $0.001 - 0.009$ & 2.1369/2.0323 & 2.1369/2.0326 & 2.1368/2.0381 \\
-  & $0.0001 - 0.0009$ & 2.1369/1.9906 & 2.1369/1.9907 & 2.1368/1.9912 \\  
-\bottomrule
-\end{tabular}
-\caption{Hinckelmann Triplet Scattering Length and Effective Range}
-\label{tab:HinckScatLenTriplet}
-\end{table}
-
-Tables \ref{tab:HinckScatLenSinglet} and \ref{tab:HinckScatLenTriplet} have entries for the $\kappa^5 \ln$ term where the fitting cannot be used, since the fitting attempts to use a negative value of $d$, forcing the natural logarithm to return a complex value. The variable $d$ is given in their paper as the distance $r < d$ at which the van der Waals potential is negligible. We have to fit to $d$ in our problem, making this particular model not fit as well. The Flannery equation, equation \ref{eq:EffectiveRangeLong}, is a modified version of this and is easier to fit to our type of problem.
-
-\subsection{Analytic Solution}
-Arriola gives an analytic solution for the van der Waals effective range \cite{Arriola2010}:
-\beq
-\label{eq:EffRangeAnalytic}
-\frac{r_0}{R} = 1.395 - 1.333 \frac{R}{a_0} + 0.6373 \frac{R^2}{a_0^2} \,\,,
-\eeq
-where the van der Waals range, $R$, is
-\beq
-R = \left(\frac{M C}{\hbar^2}\right)^{\frac{1}{4}}.
-\eeq
-
-\noindent Using the values from table \ref{tab:ScatLenDef} for $a^\pm$, this equation produces the results in table \ref{tab:EffRangeArriola}.
-
-\begin{table}[H]
-\centering
-\begin{tabular}{c c c c c}
-\toprule
-$\omega$ & $r_0^+$ & $r_0^-$ \\
-\midrule
-5 & 2.2833 & 2.1764 \\
-6 & 2.2809 & 2.1839 \\
-7 & 2.2796 & 2.1878 \\
-\bottomrule
-\end{tabular}
-\caption{Effective Range from Analytic Equation}
-\label{tab:EffRangeArriola}
-\end{table}
-
-Equation \ref{eq:EffRangeAnalytic} is derived using a semiclassical approach and not a full effective range theory treatment; it nonetheless returns values for the effective range similar to that returned from the other models.
-
-
-\subsection{Gao Model}
-Gao's effective range theory treatment is the most complicated of the models tried. Gao solves the Schr\"{o}dinger equation for an attractive $r^{-6}$ potential to find an expression relating the phase shifts to a quantity he refers to as $K_l^0(\epsilon)$ \cite{Gao1998}.
-
-\beq
-\label{eq:GaoZEqn}
-\tan\delta_l = [Z_{ff} - K_l^0(\epsilon) Z_{gf}]^{-1} [K_l^0(\epsilon) Z_{gg} - Z_{fg}]
-\eeq
-
-\noindent The Z functions in this equation are complicated but described fully in his paper. The phase shifts are fitted to equation \ref{eq:GaoZEqn} to determine $K_l^0(\epsilon)$ for each $\kappa$ value. $K_l^0(\epsilon)$ must be expanded in a Taylor series as
-\beq
-\label{eq:GaoKTaylor}
-K_l^0(\epsilon) = K_l^0(0) + \xi_1 \epsilon + \xi_2 \epsilon^2 + \ldots.
-\eeq
-From this, $K_l^0(0)$ and ${K_l^0}^\prime(0)$ are determined. In another paper \cite{Gao1998a}, he performs an expansion of this expression for low $\kappa$ to generate expressions for $a$ and $r_0$:
-
-\beq
-\label{eq:GaoScatLen}
-a = \frac{2\pi}{[\Gamma(1/4)]^2} \frac{K_{l=0}^0(0) - 1}{K_{l=0}^0(0)} \beta_6
-\eeq
-
-\beq
-\label{eq:GaoEffRange}
-r_0 = \frac{[\Gamma(1/4)]^2}{3\pi} \frac{[K_{l=0}^0(0)]^2 + 1}{[K_{l=0}^0(0) - 1]^2} \beta_6 + \frac{[\Gamma(1/4)]^2}{\pi} \frac{{K_{l=0}^0}^\prime(0)^2(\hbar^2/2\mu)(1/\beta_6)^2}{[K_{l=0}^0(0) - 1]^2} \beta_6.
-\eeq
-
-\noindent $\beta_6$ is related to $C$ by $\beta_6 = (2\mu C/\hbar^2)^{1/4}$.
-
-Table \ref{tab:GaoResults} is found by taking equation \ref{eq:GaoKTaylor} out to the second term, which includes the $K_l^0$ derivative. Two values of $\kappa$ are used to solve the equations for the unknowns $K_{l=0}^0(0)$ and ${K_{l=0}^0}^\prime(0)$. These values are in the table and are used to determine $a$ and $r_0$ via equations \ref{eq:GaoScatLen} and \ref{eq:GaoEffRange}.
-
-\begin{table}[H]
-\centering
-\begin{tabular}{c c c c c c}
-\toprule
-\toprule
-& $\kappa$ & $K_l^0$ & $K_l^{0\prime}$ & $a$ & $r_0$ \\
-\midrule
-$^1S$ & $0.1, 0.2$ & -0.611384 & -1.63317 & 4.32678 & 2.34283 \\
- & $0.2, 0.3$ & -0.608792 & -1.89231 & 4.33821 & 2.31404 \\
- & $0.3, 0.4$ & -0.597468 & -2.39563 & 4.38932 & 2.26125 \\
- & $0.4, 0.5$ & -0.569266 & -3.10066 & 4.52544 & 2.19206 \\
- & $0.5, 0.6$ & -0.500657 & -4.19842 & 4.92064 & 2.09247 \\
-\midrule
-$^1S$ & 0.001, 0.002 & -0.610903 & -2.62093 & 4.32890 & 2.22722 \\
- & 0.002, 0.003 & -0.610902 & -3.07837 & 4.32890 & 2.17353 \\
- & 0.003, 0.004 & -0.610903 & -2.58573 & 4.32889 & 2.23135 \\
- & 0.004, 0.005 & -0.610903 & -2.72993 & 4.32890 & 2.21442 \\
- & 0.005, 0.006 & -0.610904 & -2.58189 & 4.32889 & 2.23180 \\
- & 0.006, 0.007 & -0.610903 & -2.70708 & 4.32890 & 2.21711 \\
- & 0.007, 0.008 & -0.610905 & -2.50404 & 4.32889 & 2.24093 \\
- & 0.008, 0.009 & -0.610903 & -2.65887 & 4.32890 & 2.22276 \\
-\midrule
-\midrule
-$^3S$ & $0.1, 0.2$ & -3.33351 & -20.9463 & 2.13412 & 2.74986 \\
- & $0.2, 0.3$ & -3.29935 & -24.3621 & 2.13921 & 2.67874 \\
- & $0.3, 0.4$ & -3.15084 & -30.9623 & 2.16267 & 2.49085 \\
- & $0.4, 0.5$ & -2.62982 & -43.9880 & 2.26589 & 1.86113 \\
- & $0.5, 0.6$ & -0.686168 & -75.0864 & 4.03413 & -5.56551 \\
-\midrule
-$^3S$ & 0.001, 0.002 & -3.31507 & -64.1297 & 2.13686 & 2.03551 \\
- & 0.002, 0.003 & -3.31507 & -61.5075 & 2.13686 & 2.07840 \\
- & 0.003, 0.004 & -3.31507 & -59.8674 & 2.13685 & 2.10523 \\
- & 0.004, 0.005 & -3.31507 & -59.2409 & 2.13685 & 2.11548 \\
- & 0.005, 0.006 & -3.31508 & -59.0905 & 2.13685 & 2.11794 \\
- & 0.006, 0.007 & -3.31510 & -56.2482 & 2.13685 & 2.16445 \\
- & 0.007, 0.008 & -3.31509 & -57.1905 & 2.13685 & 2.14903 \\
- & 0.008, 0.009 & -3.31512 & -55.5620 & 2.13685 & 2.17569 \\
-\bottomrule
-\bottomrule
-\end{tabular}
-\caption{Full Gao Model Scattering Length and Effective Range}
-\label{tab:GaoResults}
-\end{table}
-
-The values for $a$ are well-converged and compare well with the values in table \ref{tab:ScatLenDef} from the definition in equation \ref{eq:ScatLen}. The values of $r_0$ are not well-converged, but they compare well with the fittings in section \ref{sec:vanderWaalsERT}. We also attempted to carry the expansion in equation \ref{eq:GaoKTaylor} to the third term with the second derivative, but numerical inaccuracy proved to be a problem. The $\epsilon^2$ is proportional to $\kappa^4$, so this term is vanishingly small for most $\kappa$ values considered, making determining $\xi_2$ difficult.
-
-
-\subsection{Comparison of Effective Range Theories}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=5in]{ERT-Comparisons-Singlet-01.pdf}
-	\caption{Comparison of Effective Range Theories for $^1S$ Ps-H}
-	\label{fig:ERT-Comparisons-Singlet-01}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=5in]{ERT-Comparisons-Singlet-001.pdf}
-	\caption{Comparison of Effective Range Theories for $^1S$ Ps-H}
-	\label{fig:ERT-Comparisons-Singlet-001}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=5in]{ERT-Comparisons-Triplet-01.pdf}
-	\caption{Comparison of Effective Range Theories for $^3S$ Ps-H}
-	\label{fig:ERT-Comparisons-Triplet-01}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=5in]{ERT-Comparisons-Triplet-001.pdf}
-	\caption{Comparison of Effective Range Theories for $^3S$ Ps-H}
-	\label{fig:ERT-Comparisons-Triplet-001}
-\end{figure}
-
-To obtain the plots in figures \ref{fig:ERT-Comparisons-Singlet-01} - \ref{fig:ERT-Comparisons-Triplet-001}, after obtaining fits for each of the models, we solved the respective equations for the phase shifts.  This provides a reliable way to determine how well each model fits the phase shift data. When $\kappa$ is small, the different models agree extremely well, as seen in figures \ref{fig:ERT-Comparisons-Singlet-001} and \ref{fig:ERT-Comparisons-Triplet-001}. Higher order terms in each of the model equations become negligible as $\kappa$ gets smaller. Figures \ref{fig:ERT-Comparisons-Singlet-01}, \ref{fig:ERT-Comparisons-Singlet-001} and \ref{fig:ERT-Comparisons-Triplet-01} do not include the Hinckelmann results since, as seen in tables \ref{tab:HinckScatLenSinglet} and \ref{tab:HinckScatLenTriplet}, this expression does not generate valid results due to the need to fit to the $d$ parameter in equation \ref{eq:HinckelmannEqn}.
-
-
-
-\subsubsection{Other Groups' Results}
-\begin{table}[H]
-\centering
-\begin{tabular}{l l l l l}
-\toprule
-Method & \multicolumn{1}{c}{$a^+$} & \multicolumn{1}{c}{$r_0^+$} & \multicolumn{1}{c}{$a^-$} & \multicolumn{1}{c}{$r_0^-$}\\
-\midrule
-Static-exchange (Hara \emph{et al} 1975) \cite{Hara1975} & 7.275 & \,\,--- & 2.476 & \,\,--- \\
-Kohn 35 terms (Page 1976) \cite{Page1976} & 5.844 & 2.90 & 2.319 & \,\,--- \\
-Stabilization (Drachman \emph{et al} 1975) \cite{Drachman1975} & 5.33 & 2.54 & \,\,--- & \,\,--- \\
-Stabilization (Drachman \emph{et al} 1976) \cite{Drachman1976} & \,\,--- & \,\,--- & 2.36 & 1.31 \\
-9-state R-matrix (Campbell \emph{et al} 1998) \cite{Campbell1998} & 5.51 & 2.63 & 2.45 & 1.33 \\
-22-state R-matrix (Campbell \emph{et al} 1998) \cite{Campbell1998} & 5.20 & 2.52 & 2.45 & 1.32 \\
-5-state (Adhikari \emph{et al} 1999) \cite{Adhikari1999} & 3.72 & 1.67 & --- & --- \\
-6-state close coupling (Sinha \emph{et al} 2000) \cite{Sinha2000} & 5.90 & 2.73 & 2.32 & 1.29 \\
-Variational basis-set (Adhikari \emph{et al} 2001) \cite{Adhikari2001b} & 3.49 & \,\,--- & 2.46 & \,\,--- \\
-Stochastic variational (Ivanov \emph{et al} 2001) \cite{Ivanov2001} & 4.3 & --- & 2.2 & --- \\
-Diffusion Monte Carlo (Chiesa \emph{et al} 2002) \cite{Chiesa2002} & 4.375 & 2.228 & 2.246 & 1.425 \\
-Stochastic variational (Ivanov \emph{et al} 2002) \cite{Ivanov2002} & 4.34 & 2.39 & 2.22 & 1.29 \\
-R-matrix 14Ps14H (Blackwood \emph{et al} 2002) \cite{Blackwood2002} & 4.41 & 2.19 & 2.06 & 1.47 \\
-Kohn 721 terms (Van Reeth \emph{et al} 2003) \cite{VanReeth2003} & 4.334 & \,\,--- & 2.143 & \,\,--- \\
-Kohn extrapolated (Van Reeth \emph{et al} 2003) \cite{VanReeth2003} & 4.311 & 2.27 & 2.126 & 1.39 \\
-R-matrix 14Ps14H+H$^-$ (Walters \emph{et al} 2004) \cite{Blackwood2002} & 4.327 & \,\,--- & \,\,--- & \,\,--- \\
-\bottomrule
-\end{tabular}
-\caption{S-Wave Scattering Length and Effective Range}
-\label{tab:SWaveScatLenOther}
-\end{table}
 
 
 

@@ -5,13 +5,15 @@
 \pagebreak
 \newpage
 
-\chapter{Angular Integration}
+\chapter{Angular Integrations}
 \label{chp:AngularInt}
+
+\todoi{Change to cref references. Put eq: on labels}
 
 \section{Chebyshev-Gaussian Quadrature}
 \label{sec:ChebyshevGauss}
 
-We need to prove equation 5.4 of Peter Van Reeth's thesis (page 79).  Our integration is over $(0,2\pi)$.
+We need to prove equation 5.4 of Peter Van Reeth's thesis \cite[p.79]{VanReethThesis}. Our integration is over $(0,2\pi)$.
 
 \begin{equation}
 \Int{ D(\cos \phi_{23})}{\phi_{23},0,2\pi} \approx \frac{2\pi}{n}\sum_{i=1}^n D\left[\cos\left(\frac{2i-1}{2n}\pi\right)\right].
@@ -39,7 +41,7 @@ Starting from the left side of \ref{PVRAngNew}, we have
 \label{PVRAngNew2}
 \end{equation}
 
-Using the substitution $x = \cos \phi$ and $dx = -\sin \phi \:d\phi$ changes the limits to $x_{min} \!\!=\! \cos 0 \! =\! 1$ and $x_{max} = \cos \pi = -1$.  Equation (\ref{PVRAngNew2}) becomes
+Using the substitution $x = \cos \phi$ and $dx = -\sin \phi \:d\phi$ changes the limits to $x_{min} \!\!=\! \cos 0 \! =\! 1$ and $x_{max} = \cos \pi = -1$. \Cref{PVRAngNew2} becomes
 
 \begin{equation}
 \int_0^\pi  D\left( {\cos \phi } \right){\textrm{d}}\phi = - \int_1^{ - 1} \frac{1}{{\sqrt {1 - {x^2}} }}D\left( x \right){\textrm{d}}x = \int_{ - 1}^1 \frac{1}{{\sqrt {1 - {x^2}} }}D\left( x \right){\textrm{d}}x.
@@ -52,13 +54,13 @@ This is the exact form needed for Gauss-Chebyshev quadrature (with f = D):
 \label{AngQuadrature}
 \end{equation}
 
-This proves only form (\ref{PVRAngNew}).  To prove (\ref{PVRAng}), we split up the integration into two parts:
+This proves only form (\ref{PVRAngNew}). To prove (\ref{PVRAng}), we split up the integration into two parts:
 \begin{equation}
 \int_0^{2\pi } D\left( {\cos {\phi _{23}}} \right){\textrm{d}}{\phi _{23}} = \int_0^\pi  D\left( {\cos {\phi _{23}}} \right){\textrm{d}}{\phi _{23}} + \int _\pi ^{2\pi } D\left( {\cos {\phi _{23}}} \right){\textrm{d}}{\phi _{23}}.
 \label{AngSplit}
 \end{equation}
 
-The first integration is just (\ref{PVRAngNew}).  The only difference between the first and second integration is the limits.  Defining $y = \phi - \pi$ gives
+The first integration is just (\ref{PVRAngNew}). The only difference between the first and second integration is the limits. Defining $y = \phi - \pi$ gives
 
 \begin{equation}
 \int _\pi ^{2\pi } D\left( {\cos {\phi}} \right){\textrm{d}}{\phi} = \int_0^\pi D\left[\cos(\phi)\right] dy = \int_0^\pi D\left[\cos(y+\pi)\right] dy.
@@ -68,15 +70,16 @@ If we also define $z = \cos \phi = \cos(y+\pi)$ and $dz = \sin y \,dy$, we get a
 \begin{equation}
 \int_0^\pi D\left(\cos\phi\right) dy = \int_0^\pi \frac{1}{\sqrt{1-z^2}} D(z)\, sin\phi\, dy = \int_{-1}^1 \frac{1}{\sqrt{1-z^2}} D(z) dz
 \end{equation}
-
 Since this is the same as (\ref{PVRAngNew3}), we just combine this with (\ref{AngSplit}) and (\ref{AngQuadrature}) to get (\ref{PVRAng}), proving the first form.
 
 
 \section{Limits on Integration}
-As Peter Van Reeth points out in his thesis on page 78, $\phi_{23}$ is the angle between the planes of the triangles $(r_1,r_2,r_{12})$ and $(r_1,r_3,r_{13})$.  This angle can range between $\phi_{23} = 0$ and $\phi_{23} = 2 \pi$.
+As Peter Van Reeth points out in his thesis on page 78, $\phi_{23}$ is the angle between the planes of the triangles $(r_1,r_2,r_{12})$ and $(r_1,r_3,r_{13})$. This angle can range between $\phi_{23} = 0$ and $\phi_{23} = 2 \pi$.
 
 
 \section{Rotations}
+\label{sec:Rotations}
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=4.5in]{CoordinateSystemOriginal}
@@ -84,7 +87,7 @@ As Peter Van Reeth points out in his thesis on page 78, $\phi_{23}$ is the angle
 	\label{fig:CoordinateSystemOriginal}
 \end{figure}
 
-For the integrations involving long-range terms (see \ref{}), 
+For the integrations involving long-range terms (see \cref{}), 
 
 \begin{figure}[H]
 	\centering
@@ -94,10 +97,51 @@ For the integrations involving long-range terms (see \ref{}),
 \end{figure}
 
 
-%\begin{thebibliography}{}
-%\bibitem{MathworldChebyshevGauss} http://mathworld.wolfram.com/Chebyshev-GaussQuadrature.html
-%\bibitem{AbramowitzChebyshevGauss} Abramowitz and Stegun. \textsl{Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables}, page 889. Dover, New York, 1964.
-%\end{thebibliography}
+\section{External Angular Integrations}
+\label{sec:AngularInt}
+
+\todoi{Describe why these are needed}
+These are derived in a \emph{Mathematica} notebook entitled ``General Angular Integrations.nb''.
+\todoi{Describe how this notebook works, including ExtremeSimplify}
+
+
+
+\begin{align}
+\Int{&Y_0^0(\theta_\rho, \phi_\rho) Y_0^0(\theta_{\rho^\prime}, \phi_{\rho^\prime})}{\tau_{ext}, \tau_{ext}} = 2 \pi
+\end{align}
+
+\begin{align}
+\Int{&Y_1^0(\theta_\rho, \phi_\rho) Y_1^0(\theta_{\rho^\prime}, \phi_{\rho^\prime})}{\tau_{ext}, \tau_{ext}} = \frac{\pi}{4 \rho \rho^\prime}  \left[4 \left(\rho^2+{\rho^\prime}^2\right)-r_{23}^2\right]
+\end{align}
+
+
+\begin{align}
+\Int{Y_2^0(\theta_\rho, \phi_\rho) & Y_2^0(\theta_{\rho^\prime}, \phi_{\rho^\prime})}{\tau_{ext}, \tau_{ext}} = \frac{\pi}{64 \rho ^2 {\rho^\prime}^2}  \left[16 \left(3 \rho ^4+2 \rho ^2 {\rho^\prime}^2 +3 {\rho^\prime}^4\right)  \right. \nonumber \\
+& \left. +3 \text{r23}^4-24 r_{23}^2 \left(\rho ^2+{\rho^\prime}^2\right)\right]
+\end{align}
+
+
+\begin{align}
+\Int{&Y_3^0(\theta_\rho, \phi_\rho) Y_3^0(\theta_{\rho^\prime}, \phi_{\rho^\prime})}{\tau_{ext}, \tau_{ext}} = \frac{\pi}{512 \rho ^3 {\rho^\prime}^3} \left[64 \left(5 \rho ^6+3 \rho ^4 {\rho^\prime}^2+3 \rho ^2 {\rho^\prime}^4+5 {\rho^\prime}^6\right) \right.  \nonumber \\
+& \left. -5 r_{23}^6 +60 r_{23}^4 \left(\rho ^2+{\rho^\prime}^2\right)-48 r_{23}^2 \left(5 \rho ^4+6 \rho ^2 {\rho^\prime}^2+5 {\rho^\prime}^4\right)\right]
+\end{align}
+
+
+\begin{align}
+\Int{&Y_4^0(\theta_\rho, \phi_\rho) Y_4^0(\theta_{\rho^\prime}, \phi_{\rho^\prime})}{\tau_{ext}, \tau_{ext}} = \frac{\pi}{16384 \rho^4 {\rho^\prime}^4}  \left[8960 {\rho^\prime}^8+1280 {\rho^\prime}^6 \left(4 \rho^2-7 r_{23}^2\right) \right.  \nonumber \\
+& -80 {\rho^\prime}^2 \left(r_{23}^2-4 \rho ^2\right)^2 \left(7 r_{23}^2-4 \rho ^2\right)+35 \left(r_{23}^2-4 \rho ^2\right)^4 \nonumber \\
+& \left. +96 {\rho^\prime}^4 \left(48 \rho ^4+35 r_{23}^4-120 \rho ^2 r_{23}^2\right)\right]
+\end{align}
+
+
+\begin{align}
+\Int{&Y_5^0(\theta_\rho, \phi_\rho) Y_5^0(\theta_{\rho^\prime}, \phi_{\rho^\prime})}{\tau_{ext}, \tau_{ext}} = \frac{\pi}{131072 \rho ^5 {\rho^\prime}^5} \left[64512 {\rho^\prime}^{10}-8960 {\rho^\prime}^8 \left(9 r_{23}^2-4 \rho ^2\right) \right.  \nonumber \\
+& + 140 {\rho^\prime}^2 \left(r_{23}^2-4 \rho ^2\right)^3 \left(9 r_{23}^2-4 \rho ^2\right)-63 \left(r_{23}^2-4 \rho ^2\right)^5  \nonumber \\
+& + 1920 {\rho^\prime}^6 \left(16 \rho ^4+21 r_{23}^4-56 \rho^2 r_{23}^2\right)  \nonumber \\
+& \left. -480 {\rho^\prime}^4 (r_{23}-2 \rho ) (2 \rho +r_{23}) \left(16 \rho ^4+21 r_{23}^4-56 \rho ^2 r_{23}^2\right)\right]
+\end{align}
+
+This H-wave integral took approximately 1 hour and 26 minutes to calculate in \emph{Mathematica}. An I-wave version of this integral was attempted on the Talon2 cluster (single processor only), but it was killed after approximately 2 weeks of runtime. Without this result, the I-wave and higher cannot be calculated using our code. I have seen no way to generalize the results of these integrals over $Y_\ell^0(\theta_\rho, \phi_\rho) Y_\ell^0(\theta_{\rho^\prime}, \phi_{\rho^\prime})$.
 
 
 \biblio
