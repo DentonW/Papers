@@ -8,7 +8,9 @@
 \chapter{General Ps-H Formalism}
 \label{chp:General}
 
-\lettrine{\textcolor{startcolor}{F}}{or} the first two partial waves of the Ps-H system, we were able to compare our code and results, including individual matrix elements, with code previously written by Peter van Reeth. As there was no available code to compare against for the D-wave, we took steps to write a general code to compare against. The long-range code, covered in section \ref{sec:GeneralLong}, is a straightforward generalization from the previous codes. The short-range code, discussed in section \ref{sec:GeneralShort}, uses a different formalism, enabling us to compare two different methods.
+\todoi{Combine with Chapter 3?} 
+
+\lettrine{\textcolor{startcolor}{F}}{or} the first two partial waves of the Ps-H system, I was able to compare my code and results, including individual matrix elements, with code previously written by Peter van Reeth. As there was no available code to compare against for the D-wave, we took steps to write a general code to compare against. The long-range code, covered in section \ref{sec:GeneralLong}, is a straightforward generalization from the previous codes. The short-range code, discussed in section \ref{sec:GeneralShort}, uses a different formalism, enabling us to compare two different methods.
 
 \section{General Long-Range}
 \label{sec:GeneralLong}
@@ -17,11 +19,30 @@ If the ``mixed terms'' are not included for the D-wave, the P-wave and D-wave lo
 
 \subsection{Long-Long}
 \label{sec:GeneralLongLong}
-One major difference for similar matrix elements is the angular integrations. As shown in Appendix \ref{chp:AngularInt}, the external angular integrations for each partial wave have different results, due to the different spherical harmonics. $\bar{S}$ and $\bar{C}$ are also of a similar form between the partial waves, as seen in equations \ref{eq:PWaveSandCBar}, \ref{eq:PWaveSandC}, \ref{eq:DWaveSandCBar} and \ref{eq:DWaveSandC}. Other than the spherical harmonics, the spherical Bessel functions are different, as is the shielding function for $\bar{C}$. The spherical Bessel functions are easily called through the GNU Scientific Library \cite{GSL} for any $\ell$-value. The power of the shielding function varies as $(2\ell + 1)$. All of this allows us to easily generalize the long-long integrations.
+\todoi{$\widetilde{S}$ and $\widetilde{C}$}
+One major difference for similar matrix elements is the angular integrations. As shown in Appendix \ref{chp:AngularInt}, the external angular integrations for each partial wave have different results, due to the different spherical harmonics. $\bar{S}$ and $\bar{C}$ are also of a similar form between the partial waves, as seen in equations \ref{eq:PWaveSandCBar}, \ref{eq:PWaveSandC}, \ref{eq:DWaveSandCBar} and \ref{eq:DWaveSandC}. Other than the spherical harmonics, the spherical Bessel functions are different, as is the shielding function for $\bar{C}$. The spherical Bessel functions are easily called through the GNU Scientific Library \cite{GSL} for any $\ell$-value. The power of the shielding function varies as $m_\ell \geq (2\ell + 1)$. All of this allows us to easily generalize the long-long integrations.
+
+From \cref{eq:PartialWaveShielding}, the general shielding function for $\widetilde{C}$ to keep it regular at the origin is given by
+\begin{equation}
+  %\label{eq:PartialWaveShielding}
+  f_\ell(\rho) = \left[1 - \ee^{-\mu \rho} \left(1+\frac{\mu}{2}\rho\right)
+  \right]^{m_\ell}.
+\end{equation}
+From \cref{}, the derivatives $f_\ell^\prime(\rho)$ and $f_\ell^{\prime\prime}(\rho)$ are needed. In the \emph{Mathematica} notebook ``General Shielding Function.nb'', I found out that the derivatives can be written generally as
+\beq
+\label{eq:Shielding1Der}
+f_\ell^\prime(\rho) = -\frac{\mu m_\ell (\mu  \rho +1) \left[1-\frac{1}{2} e^{-\mu  \rho } (\mu  \rho +2)\right]^{m_\ell}}{\mu  \rho -2 e^{\mu  \rho }+2}
+\eeq
+and
+\beq
+\label{eq:Shielding1Der}
+f_\ell^{\prime\prime}(\rho) = \frac{\mu^2 m_\ell \left[-2 \mu  \rho  e^{\mu  \rho }+ m_\ell (\mu  \rho +1)^2-1\right] \left[1-\frac{1}{2} e^{-\mu  \rho } (\mu  \rho +2)\right]^{m_\ell}} {\left(\mu  \rho -2 e^{\mu  \rho }+2\right)^2}.
+\eeq
+
 
 \subsection{Short-Long}
 \label{sec:GeneralShortLong}
-The short-range functions are also easily generalizable. For the P-wave and D-wave, these are seen in equations \ref{eq:PWavePhiBar} and \ref{eq:DWavePhiBar}. The $\phi_i$ and $\phi_j$ parts for each are the same. This fact can only be easily used for the short-long calculations and not the short-short calculations, due to the action of the $L$-operator on these terms. The formalism we have used for the short-long terms at every stage only operates $L$ on the long-range parts. Section \ref{sec:GeneralShort} covers the calculations of the short-short terms using a general formalism.
+The short-range functions are also easily generalizable. For the P-wave and D-wave, these are seen in equations \ref{eq:PWavePhiBar} and \ref{eq:DWavePhiBar}. The $\phi_i$ and $\phi_j$ parts for each are the same. This fact can only be easily used for the short-long calculations and not the short-short calculations, due to the action of the $L$-operator on these terms. The formalism we have used for the short-long terms at every stage only operates $\mathcal{L}$ on the long-range parts. Section \ref{sec:GeneralShort} covers the calculations of the short-short terms using a general formalism.
 
 \subsection{Implementation}
 \label{sec:GeneralLongImp}
@@ -56,6 +77,7 @@ The wavefunction we use is slightly different from the form Drake and Yan use. S
 
 \subsection{Overlap Integrals}
 \label{sec:GenOverlap}
+\todoi{Note that these shouldn't be conjugated, but for the short-range terms with $m = 0$, it does not matter.}
 As mentioned in the previous section, Drake and Yan's wavefunction is similar but not exactly the same. Thus, we cannot use the equations directly from their paper. Using their notation, the overlap integrals are given by
 \begin{align}
 \nonumber I^1(1) = \left< \phi_L^1 \left| \phi_R^1 \right. \right> = \sum_{\text{all } m_i^\prime m_i} & \int \mathrm{d}\boldsymbol{r}_1 \, \mathrm{d}\boldsymbol{r}_2 \, \mathrm{d}\boldsymbol{r}_3 \, r_1^{\tilde{j}_1} r_2^{\tilde{j}_2} r_3^{\tilde{j}_3} r_{12}^{\tilde{j}_{12}} r_{23}^{\tilde{j}_{23}} r_{31}^{\tilde{j}_{31}} \ee^{-(\tilde{\alpha} r_1 + \tilde{\beta} r_2 + \tilde{\gamma} r_3)} \\

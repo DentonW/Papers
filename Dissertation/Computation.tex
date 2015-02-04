@@ -6,6 +6,7 @@
 \label{chp:Computation}
 
 \todoi{Should mention the Mathematica notebooks to generate Fortran lists for short-range matrix elements and possibly other programs}
+\todoi{Put in information from ``Integration Point Numbers.nb''}
 
 \section{Short-Range -- Short-Range Integrations}
 \label{sec:ShortShortIntegration}
@@ -712,11 +713,11 @@ $\kappa$ & $c^+$ & $p^+$ & $c^-$ & $p^-$ \\
 As described in section \ref{sec:ToddScattering}, we omit certain terms using Todd's method. The output of this method from the bound state program described in section \ref{sec:ToddBound} is not ordered in terms of increasing $\omega$. This leads to difficulties when attempting to do the extrapolation in equation \ref{eq:PhaseExtrap}. The tangent of the phase shifts cannot be fitted to a straight line. The results of such an attempt can be seen in figure \ref{}. If we reorder the short-range terms back into their original order while still omitting terms, the tangent of the phase shifts can now be fitted to this straight line, as can be seen in figure \ref{}. The reordering does not affect the phase shifts in any case that we tested, since more terms are normally omitted in the scattering problem than just the bound state problem.
 
 \subsection{Extrapolation Program}
-We wrote a Python \cite{Python} program to extrapolate the phase shifts for a run for all Kohn method variants, including the 35 values of $\tau$ used in the generalized Kohn. The extrapolation is performed with a least-squares fitting using the polyfit function of the SciPy package \cite{SciPy}. This program can do the extrapolation over any interval of $\omega$ values requested. The extrapolations from the 39 total Kohn variants are compared to see if there is any large discrepancy between them, indicating numerical instability. The phase shift can have a singularity in the generalized Kohn method as seen in figure \ref{fig:PhaseTau}, so care must be taken to ensure extrapolations are not taken around this interval.
+I wrote a Python \cite{Python} program to extrapolate the phase shifts for a run for all Kohn method variants, including the 35 values of $\tau$ used in the generalized Kohn. The extrapolation is performed with a least-squares fitting using the \texttt{polyfit} function of the SciPy package \cite{SciPy}. This program can do the extrapolation over any interval of $\omega$ values requested. The extrapolations from the 39 total Kohn variants are compared to see if there is any large discrepancy between them, indicating numerical instability. The phase shift can have a singularity in the generalized Kohn method as seen in figure \ref{fig:PhaseTau}, so care must be taken to ensure extrapolations are not taken around this interval.
 
 
 \section{Cusps}
-\textbf{@TODO:} Discussion about the existence of the cusps in the integrand, possibly with graphs illustrating them.
+\todoi{Discussion about the existence of the cusps in the integrand, possibly with graphs illustrating them.}
 
 For the S-wave, all runs were performed with the cusp parameters set at $r_1 = 100$. When $r_1 > 100$, the $r_2$ and $r_3$ integrations are done using only Gauss-Laguerre, since the cusp is considered unimportant at that distance. When $r_1 \leq 100$, we use Gauss-Legendre before the cusp and Gauss-Laguerre after the cusp, as described in sections \ref{sec:LongLongNoR23} and \ref{sec:LongLongR23}. 
 

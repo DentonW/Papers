@@ -69,6 +69,8 @@ The shielding function, $f_\ell(\rho)$, removes the singularity at the origin du
 \end{equation}
 At a minimum, $m_\ell$ is chosen so that $C_\ell$ behaves like $S_\ell$ as $\rho \to 0$. For more discussion of this, see \Cref{sec:ShieldingFunc}. The values used for the different partial waves are given in \cref{tab:Shielding}.
 
+\todoi{Put in plots from ``Shielding Function Plots.nb''}
+
 The Hylleraas-type short-range terms are similar to that used in the bound state in \cref{eq:BoundWavefn}. These are chosen to have two symmetries, one with a prefactor of $r_1^\ell$ and the other with a prefactor of $r_2^\ell$. From Refs.~\cite{Schwartz1961a,VanReethThesis}, the D-wave and higher can have additional symmetries where the angular momentum is shared between the Ps and H. We do not consider these mixed terms here. \todo{Justification}
 
 \begin{subequations}
@@ -213,14 +215,13 @@ H = -\frac{1}{4} \Laplacian_{\rho^\prime} - \frac{1}{2} \Laplacian_{r_2} - \Lapl
 \end{align}
 
 Some important cancellations are made in the matrix element equations in \cref{sec:??} by using the H and Ps ground state wave equations. Separately, the H and Ps equations are respectively (for large values of $\rho$)
-\beq
-\left(-\frac{1}{2} \Laplacian_{r_3} - \frac{1}{r_3}\right) \Phi_H(r_3) = E_H \Phi_H(r_3)
-\label{eq:HEqn}
-\eeq
-\beq
-\left(-\Laplacian_{r_{12}} - \frac{1}{r_{12}}\right) \Phi_{Ps}(r_{12}) = E_{Ps} \Phi_{Ps}(r_{12})
-\label{eq:PsEqn}
-\eeq
+\begin{subequations}
+\label{eq:HPsEqn}
+\begin{align}
+\left(-\frac{1}{2} \Laplacian_{r_3} - \frac{1}{r_3}\right) \Phi_H(r_3) &= E_H \Phi_H(r_3) \label{eq:HEqn} \\
+\left(-\Laplacian_{r_{12}} - \frac{1}{r_{12}}\right) \Phi_{Ps}(r_{12}) &= E_{Ps} \Phi_{Ps}(r_{12}) \label{eq:PsEqn}
+\end{align}
+\end{subequations}
 Realizing then that the Hamiltonians for H and Ps are given by
 \begin{subequations}
 \label{eq:HPsHamil}
@@ -668,6 +669,102 @@ This is a generalized form of the $S$ matrix Kohn. When $\tau = 0$, this reduces
 \section{Matrix Elements Involving Long-Range Terms}
 \label{sec:MatrixLong}
 The short-range--long-range and long-range--long-range matrix elements have a similar analysis. For all of these, the effect of the $\mathcal{L} = 2(H-E)$ operator on the long-range terms must be considered, and then integrations over the external angles (see \Cref{chp:AngularInt}) are performed. The remaining 6-dimensional integral is then numerically integrated as described in sections \ref{sec:LongLongInt} and \ref{sec:ShortLongInt}.
+
+\subsection{\texorpdfstring{$\mathcal{L}S$}{LS} Terms}
+The $(\widetilde{S},\mathcal{L}\widetilde{S})$, $(\widetilde{C},\mathcal{L}\widetilde{S})$, and $(\bar{\phi}_1,\mathcal{L}\widetilde{S})$ matrix elements in \cref{eq:GeneralKohnMatrix} require us to first determine $\mathcal{L}\widetilde{S}$. We start with examining $\mathcal{L}S$ first.
+
+\begin{align}
+\label{eq:LS1}
+\mathcal{L}S = &\left(-\frac{1}{2} \Laplacian_\rho - \Laplacian_{r_3} - 2 \Laplacian_{r_{12}} + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2} \kappa^2\right) \nonumber \\
+& \times \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,j_\ell\!\left(\kappa\rho\right)
+\end{align}
+
+
+\subsection{\texorpdfstring{$\mathcal{L}C$}{LC} Terms}
+To calculate the matrix elements in \cref{eq:GeneralKohnMatrix} that include $\widetilde{C}$ in the ket, we start by writing a general form of $\mathcal{L}C$ using \cref{eq:LDef,eq:GenCDef}:
+\begin{align}
+\label{eq:LC1}
+\mathcal{L}C = -&\left(-\frac{1}{2} \Laplacian_\rho - \Laplacian_{r_3} - 2 \Laplacian_{r_{12}} + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2} \kappa^2\right) \nonumber \\
+& \times \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,n_\ell\!\left(\kappa\rho\right) f_\ell(\rho) 
+\end{align}
+Similar to \cref{}, using \cref{eq:HPsEqn,eq:HPsHamil} reduces this to
+\begin{align}
+\label{eq:LC2}
+\mathcal{L}C = -&\left(-\frac{1}{2} \Laplacian_\rho + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2} \kappa^2\right) \nonumber \\
+& \times \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,n_\ell\!\left(\kappa\rho\right) f_\ell(\rho).
+\end{align}
+Unlike with $\mathcal{L}S$ in \cref{}, there is not a cancellation with the $\Laplacian_\rho$ and $\kappa^2$ terms. The combination of these terms was calculated in the ``First Partial Waves LC.nb'' \emph{Mathematica} notebook using the code given in \cref{fig:LCMath}. This is for the F-wave, and replacing the the $\ell$-value 3 in \texttt{SphericalBesselY} allows this to be used for any partial wave. The results of these derivations is given in \cref{tab:LCList}. The $\frac{1}{2} \left(\Laplacian_\rho + \kappa^2\right) \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} n_\ell(\kappa\rho) f_\ell(\rho)$ given in this table is substituted in \cref{eq:LC2} to find the full $\mathcal{L}C$.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=6.5in]{LC}
+	\caption{Listing of \emph{Mathematica} code in ``First Partial Waves LC.nb'' to calculate part of LC for the F-wave}
+	\label{fig:LCMath}
+\end{figure}
+
+{
+\renewcommand{\arraystretch}{3}  % To space out rows - could also look at the array environment.
+\begin{table}[H]
+\centering
+\begin{tabular}{c l}
+\toprule \\[-2.7cm]
+Partial & \\[-1.3cm]
+Wave & $\frac{1}{2} \left(\Laplacian_\rho + \kappa^2\right) \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} n_\ell(\kappa\rho) f_\ell(\rho)$ \\
+\midrule
+S-Wave & {$\!\begin{aligned} % http://tex.stackexchange.com/q/98482/16595 
+               \frac{2 \kappa  f^\prime(\rho ) \sin (\kappa  \rho )-f^{\prime\prime}(\rho ) \cos (\kappa  \rho )}{2 \kappa  \rho } \\    % http://tex.stackexchange.com/q/78788/16595
+           \end{aligned}$} \\
+P-Wave & {$\!\begin{aligned}
+				-\frac{\rho  f^{\prime\prime}(\rho ) \left[\kappa  \rho  \sin (\kappa  \rho )+\cos (\kappa  \rho )\right]+2 f^\prime(\rho ) \left[\left(\kappa ^2 \rho ^2-1\right) \cos (\kappa  \rho )-\kappa  \rho  \sin (\kappa \rho )\right]}{2 \kappa ^2 \rho ^3}
+			\end{aligned}$} \\
+D-Wave & {$\!\begin{aligned}
+		-\frac{1}{2 \kappa ^3 \rho ^4} &\left\{\rho  f^{\prime\prime}(\rho ) \left[\left(3-\kappa ^2 \rho ^2\right) \cos (\kappa  \rho )+3 \kappa  \rho  \sin (\kappa  \rho )\right] \right. \\
+		& \left.+2 f^\prime(\rho ) \left[\kappa  \rho  \left(\kappa ^2 \rho ^2-6\right) \sin (\kappa  \rho )+3 \left(\kappa ^2 \rho ^2-2\right) \cos (\kappa  \rho )\right] \right\}
+		\end{aligned}$} \\[0.6cm]
+F-Wave & {$\!\begin{aligned}
+	\frac{1}{2 \kappa ^4 \rho ^5} &\left\{\rho  f^{\prime\prime}(\rho ) \left[\kappa  \rho  \left(\kappa ^2 \rho ^2-15\right) \sin (\kappa  \rho )+3 \left(2 \kappa ^2 \rho ^2-5\right) \cos (\kappa  \rho )\right] \right. \\
+	& \left. +2 f^\prime(\rho ) \left[3 \kappa  \rho  \left(15-2 \kappa ^2 \rho ^2\right) \sin (\kappa  \rho )+\left(\kappa ^4 \rho ^4-21 \kappa ^2 \rho ^2+45\right) \cos (\kappa  \rho )\right]\right\}
+	\end{aligned}$} \\[1cm] 
+G-Wave & {$\!\begin{aligned}
+	\frac{1}{2 \kappa ^5 \rho ^6} & \left\{2 f^\prime(\rho ) \left[\kappa  \rho  \left(\kappa ^4 \rho ^4-55 \kappa ^2 \rho ^2+420\right) \sin (\kappa  \rho ) \right. \right. \\
+	& \left. +5 \left(2 \kappa ^4 \rho ^4-39 \kappa ^2 \rho ^2+84\right) \cos (\kappa  \rho )\right]-\rho  f^{\prime\prime}(\rho ) \left[5 \kappa  \rho  \left(21-2 \kappa ^2 \rho ^2\right) \sin (\kappa  \rho ) \right. \\
+	& \left. \left. +\left(\kappa ^4 \rho ^4-45 \kappa ^2 \rho ^2+105\right) \cos (\kappa  \rho )\right] \right\}
+	\end{aligned}$} \\[1.5cm]
+H-Wave & {$\!\begin{aligned}
+	-\frac{1}{2 \kappa ^6 \rho ^7} & \left\{\rho  f^{\prime\prime}(\rho ) \left[\kappa  \rho  \left(\kappa ^4 \rho ^4-105 \kappa ^2 \rho ^2+945\right) \sin (\kappa  \rho ) \right. \right. \\
+	& \left. +15 \left(\kappa ^4 \rho ^4-28 \kappa ^2 \rho ^2+63\right) \cos (\kappa  \rho )\right] \\
+	& + 2 f^\prime(\rho ) \left[\left(\kappa ^6 \rho ^6-120 \kappa ^4 \rho ^4+2205 \kappa ^2 \rho ^2-4725\right) \cos (\kappa  \rho ) \right. \\
+	& \left. \left. -15 \kappa  \rho  \left(\kappa ^4 \rho ^4-42 \kappa ^2 \rho ^2+315\right) \sin (\kappa  \rho )\right]\right\}
+	\end{aligned}$} \\
+\bottomrule
+\end{tabular}
+\caption{Part of LC derived for each partial wave}
+\label{tab:LCList}
+\end{table}
+}
+
+Matrix elements involving $\mathcal{L}C^\prime$ look similar but have the 2 and 3 coordinates swapped. In other words, $\rho \leftrightarrow \rho^\prime$.
+
+{
+\renewcommand{\arraystretch}{2}
+\begin{table}[H]
+\centering
+\begin{tabular}{l l l l}
+\toprule\\[-1.5cm]
+Partial Wave & $\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho}$ & $j_\ell(x)$ & $n_\ell(x)$ \\
+\midrule
+S-Wave & $\frac{1}{\sqrt{4\pi}}$ & & \\
+P-Wave & $\sqrt{\frac{3}{4\pi}} \cos \theta$ & & \\
+D-Wave & $\sqrt{\frac{5}{16\pi}} \left(3 \cos^2\theta - 1 \right)$ &  &  \\
+F-Wave & $\sqrt{\frac{7}{16\pi}} \left(5 \cos^3\theta - 3 \cos\theta \right)$ &  &  \\
+G-Wave & $\sqrt{\frac{9}{256\pi}} \left(35 \cos^4\theta - 30 \cos^2\theta + 3 \right)$ &  &  \\
+H-Wave & $\sqrt{\frac{11}{256\pi}} \left(63 \cos^5\theta - 70 \cos^3\theta + 15 \cos\theta \right)$ &  &  \\
+\bottomrule
+\end{tabular}
+\caption{Spherical harmonics, spherical Bessel, and spherical Neumann functions for partial waves through $\ell = 5$}
+\label{tab:SphHarmBessel}
+\end{table}
+}
 
 
 \biblio

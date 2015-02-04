@@ -383,7 +383,7 @@ Our current complex Kohn binding energy in the first line of the table compares 
 
 \subsection{``Bound State'': Triplet}
 
-Our code does not predict a true triplet bound state, making the singlet ground state the only possible configuration for PsH. Mitroy and Bromley have published a paper claiming a stable triplet bound state \cite{Mitroy2007}, but our code may not have the appropriate type of wavefunction to see this. They also use a very large configuration interaction basis, and this bound state is very shallow. Despite not predicting a bound state, we run the bound state code for the triplet so that we can use this for the short-range terms for the scattering program.
+Our code does not predict a true triplet bound state, making the singlet ground state the only possible configuration for PsH. Mitroy and Bromley have published a paper \cite{Mitroy2007} claiming a stable triplet bound state , but our code may not have the appropriate type of wavefunction to see this, since it is for a H($2p$) + Ps($2p$) state. They also use a very large configuration interaction basis, and this bound state is very shallow. Despite not predicting a bound state, we run the bound state code for the triplet so that we can use this for the short-range terms for the scattering program.
 
 This output is also used in the program for Todd's method, which is then fed into the scattering program (see \cref{sec:ToddScattering}). The triplet case was more sensitive to the accuracy of the matrix elements. With the singlet, we were able to use the full $\omega = 6$ set (924 terms) without the asymptotic expansion before linear dependence became an issue. With the triplet, we were only able to use 450 terms out of an $\omega = 7$ run if the asymptotic expansion was not used. Adding the asymptotic expansion in double precision let us use 1327 terms. Finally, changing the code to quadruple precision lets us use the full set of 1716 terms for an $\omega = 7$ run, as shown in \cref{tab:BoundEnergy3}. 
 
@@ -410,6 +410,7 @@ $\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (au) & $\Delta E
 \end{table}
 
 As described later in \cref{sec:ToddScattering}, we cannot use the full 1716 terms for the Ps-H scattering problem. \Cref{tab:BoundEnergyTodd1} gives the ground state energies using the restricted set of terms with Todd ordering. The cutoffs in $\omega$ are easily seen using the ViewOmegaCutoffs.py script described at \url{http://cas-bs5cph1.phys.unt.edu/wiki/index.php/ViewOmegaCutoffs.py} \cite{Wiki}.
+\todoi{More permanent URL}
 
 \setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
 \setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
