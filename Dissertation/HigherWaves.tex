@@ -11,6 +11,62 @@
 \todoi{Mention $\alpha$, $\beta$, and $\gamma$ used and any other parameters}
 \todoi{Talk about how angular integrations done}
 
+\Cref{tab:SphHarm,tab:SphBess,tab:SphNeum} show the spherical harmonics, spherical Bessel and spherical Neumann functions needed in \cref{eq:GeneralWaveTrial} to use the higher partial waves.
+
+{
+\renewcommand{\arraystretch}{1.5}
+\begin{table}[H]
+\centering
+\begin{tabular}{l l}
+\toprule\\[-1.2cm]
+Partial Wave & $\SphericalHarmonicY{\ell}{0}{\theta}{\phi}$ \\
+\midrule
+F-Wave & $\sqrt{\frac{7}{16\pi}} \left(5 \cos^3\theta - 3 \cos\theta \right)$ \\
+G-Wave & $\sqrt{\frac{9}{256\pi}} \left(35 \cos^4\theta - 30 \cos^2\theta + 3 \right)$ \\
+H-Wave & $\sqrt{\frac{11}{256\pi}} \left(63 \cos^5\theta - 70 \cos^3\theta + 15 \cos\theta \right)$ \\
+\bottomrule
+\end{tabular}
+\caption{Spherical harmonics for partial waves $\ell = 3$ through 5}
+\label{tab:SphHarm}
+\end{table}
+}
+
+{
+\renewcommand{\arraystretch}{1.5}
+\begin{table}[H]
+\centering
+\begin{tabular}{l l}
+\toprule\\[-1.2cm]
+Partial Wave & $j_\ell(z)$ \\
+\midrule
+F-Wave & $\frac{\left(z^2-15\right) \cos (z)}{z^3}-\frac{3 \left(2 z^2-5\right) \sin (z)}{z^4}$ \\
+G-Wave & $\frac{5 \left(2 z^2-21\right) \cos (z)}{z^4}+\frac{\left(z^4-45 z^2+105\right) \sin (z)}{z^5}$ \\
+H-Wave & $\frac{15 \left(z^4-28 z^2+63\right) \sin (z)}{z^6}+\frac{\left(-z^4+105 z^2-945\right) \cos (z)}{z^5}$ \\
+\bottomrule
+\end{tabular}
+\caption{Spherical Bessel functions for partial waves $\ell = 3$ through 5}
+\label{tab:SphBess}
+\end{table}
+}
+
+{
+\renewcommand{\arraystretch}{1.5}
+\begin{table}[H]
+\centering
+\begin{tabular}{l l}
+\toprule\\[-1.2cm]
+Partial Wave & $n_\ell(z)$ \\
+\midrule
+F-Wave & $\frac{3 \left(2 z^2-5\right) \cos (z)}{z^4}+\frac{\left(z^2-15\right) \sin (z)}{z^3}$ \\
+G-Wave & $\frac{5 \left(2 z^2-21\right) \sin (z)}{z^4}+\frac{\left(-z^4+45 z^2-105\right) \cos (z)}{z^5}$ \\
+H-Wave & $\frac{\left(-z^4+105 z^2-945\right) \sin (z)}{z^5}-\frac{15 \left(z^4-28 z^2+63\right) \cos (z)}{z^6}$ \\
+\bottomrule
+\end{tabular}
+\caption{Spherical Neumann functions for partial waves $\ell = 3$ through 5}
+\label{tab:SphNeum}
+\end{table}
+}
+
 \section{Resonances}
 For the S-wave through the D-wave, each has at least one resonance before the Ps(n=2) threshold. For the higher partial waves, we want to use the Born approximation (see \ref{sec:Born}). The Born approximation does not capture resonance behavior, so we can only do this for partial waves that do not contain resonances in this region. So far, the only publication that has calculated resonance parameters for the F-wave and G-wave is from Ho and Yan \cite{Ho2000}. Their calculated resonance parameters follow in table \ref{tab:HigherResonancesOther} (converted to eV). The Ps(n=2) threshold is at 5.10184 eV. Note that as L increases, the resonance positions (in tables \ref{tab:SWaveResonancesOther}, \ref{tab:PWaveResonancesOther} and \ref{tab:DWaveResonancesOther}) increase, until they are past the threshold for the F-wave and G-wave. 
 

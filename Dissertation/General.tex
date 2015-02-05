@@ -22,22 +22,22 @@ If the ``mixed terms'' are not included for the D-wave, the P-wave and D-wave lo
 \todoi{$\widetilde{S}$ and $\widetilde{C}$}
 One major difference for similar matrix elements is the angular integrations. As shown in Appendix \ref{chp:AngularInt}, the external angular integrations for each partial wave have different results, due to the different spherical harmonics. $\bar{S}$ and $\bar{C}$ are also of a similar form between the partial waves, as seen in equations \ref{eq:PWaveSandCBar}, \ref{eq:PWaveSandC}, \ref{eq:DWaveSandCBar} and \ref{eq:DWaveSandC}. Other than the spherical harmonics, the spherical Bessel functions are different, as is the shielding function for $\bar{C}$. The spherical Bessel functions are easily called through the GNU Scientific Library \cite{GSL} for any $\ell$-value. The power of the shielding function varies as $m_\ell \geq (2\ell + 1)$. All of this allows us to easily generalize the long-long integrations.
 
-From \cref{eq:PartialWaveShielding}, the general shielding function for $\widetilde{C}$ to keep it regular at the origin is given by
-\begin{equation}
-  %\label{eq:PartialWaveShielding}
-  f_\ell(\rho) = \left[1 - \ee^{-\mu \rho} \left(1+\frac{\mu}{2}\rho\right)
-  \right]^{m_\ell}.
-\end{equation}
-From \cref{}, the derivatives $f_\ell^\prime(\rho)$ and $f_\ell^{\prime\prime}(\rho)$ are needed. In the \emph{Mathematica} notebook ``General Shielding Function.nb'', I found out that the derivatives can be written generally as
-\beq
-\label{eq:Shielding1Der}
-f_\ell^\prime(\rho) = -\frac{\mu m_\ell (\mu  \rho +1) \left[1-\frac{1}{2} e^{-\mu  \rho } (\mu  \rho +2)\right]^{m_\ell}}{\mu  \rho -2 e^{\mu  \rho }+2}
-\eeq
-and
-\beq
-\label{eq:Shielding1Der}
-f_\ell^{\prime\prime}(\rho) = \frac{\mu^2 m_\ell \left[-2 \mu  \rho  e^{\mu  \rho }+ m_\ell (\mu  \rho +1)^2-1\right] \left[1-\frac{1}{2} e^{-\mu  \rho } (\mu  \rho +2)\right]^{m_\ell}} {\left(\mu  \rho -2 e^{\mu  \rho }+2\right)^2}.
-\eeq
+%From \cref{eq:PartialWaveShielding}, the general shielding function for $\widetilde{C}$ to keep it regular at the origin is given by
+%\begin{equation}
+  %%\label{eq:PartialWaveShielding}
+  %f_\ell(\rho) = \left[1 - \ee^{-\mu \rho} \left(1+\frac{\mu}{2}\rho\right)
+  %\right]^{m_\ell}.
+%\end{equation}
+%From \cref{}, the derivatives $f_\ell^\prime(\rho)$ and $f_\ell^{\prime\prime}(\rho)$ are needed. In the \emph{Mathematica} notebook ``General Shielding Function.nb'', I found out that the derivatives can be written generally as
+%\beq
+%\label{eq:Shielding1Der}
+%f_\ell^\prime(\rho) = -\frac{\mu m_\ell (\mu  \rho +1) \left[1-\frac{1}{2} e^{-\mu  \rho } (\mu  \rho +2)\right]^{m_\ell}}{\mu  \rho -2 e^{\mu  \rho }+2}
+%\eeq
+%and
+%\beq
+%\label{eq:Shielding1Der}
+%f_\ell^{\prime\prime}(\rho) = \frac{\mu^2 m_\ell \left[-2 \mu  \rho  e^{\mu  \rho }+ m_\ell (\mu  \rho +1)^2-1\right] \left[1-\frac{1}{2} e^{-\mu  \rho } (\mu  \rho +2)\right]^{m_\ell}} {\left(\mu  \rho -2 e^{\mu  \rho }+2\right)^2}.
+%\eeq
 
 
 \subsection{Short-Long}

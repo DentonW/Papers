@@ -14,6 +14,8 @@
 	%\label{fig:Untitled-2}
 %\end{figure}
 
+\subsection{First Derivative}
+\label{sec:SphBess1}
 
 From Abramowitz and Stegun \cite[p.437]{Abramowitz1965},
 \begin{subequations}
@@ -74,6 +76,35 @@ Using these with \cref{eq:SphBesExpan,eq:SphBesExpanDer}, we see that to first o
 {n_\ell}^\prime(z) &\approx j_\ell(z).
 \end{align}
 \end{subequations}
+
+
+\subsection{Second Derivative}
+\label{sec:SphBess2}
+
+The output we get from the \emph{Mathematica} notebook ``First Partial Waves LS General.nb'' is
+\begin{align}
+\label{eq:LSGenLapl1}
+\frac{\Laplacian_\rho \left[\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} j_\ell(\kappa\rho) \right]}{\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} j_\ell(\kappa\rho)} = \frac{(n + n^2 - \kappa^2 \rho^2) \LegendreP{\ell, \cos\theta} + 2 \cot\theta \, \AssocLegendreP{\ell}{1}{\cos\theta} + \AssocLegendreP{\ell}{2}{\cos\theta}} {\rho^2 \LegendreP{\ell, \cos\theta}}.
+\end{align}
+
+From Ref.~\cite{WolframPnm}, a recurrence relation for the associated Legendre polynomials is
+\beq
+\AssocLegendreP{\ell}{\mu+1}{z} - \left[\mu(\mu-1) - \ell(\ell+1)\right] \AssocLegendreP{\ell}{\mu-1}{z} + \frac{2 \mu z}{\sqrt{1-z^2}} \AssocLegendreP{\ell}{\mu}{z} = 0.
+\eeq
+Note that other books \cite{Abramowitz1965,Zwillinger2003} give slightly different forms of this recurrence relation. If we set $\mu = 1$ and $z = \cos\theta$, this becomes
+\beq
+\AssocLegendreP{\ell}{2}{\cos\theta} + \left(\ell^2+\ell \right) \AssocLegendreP{\ell}{0}{z} + \frac{2 \cos\theta}{\sin\theta} \AssocLegendreP{\ell}{1}{\cos\theta} = 0.
+\eeq
+Using the definition of $\cot$ and solving for $\left(\ell^2+\ell \right)\AssocLegendreP{\ell}{0}{z} = \left(\ell^2+\ell \right)\LegendreP{\ell, \cos\theta}$,
+\beq
+\left(\ell^2+\ell \right)\LegendreP{\ell, \cos\theta} = -\AssocLegendreP{\ell}{2}{\cos\theta} - 2 \cot\theta \, \AssocLegendreP{\ell}{1}{\cos\theta}.
+\eeq
+Substituting this back into \cref{eq:LSGenLapl1}, we get cancellations with the associated Legendre polynomials and see that $\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} j_\ell(\kappa\rho)$ is an eigenfunction of $\Laplacian_\rho$ with eigenvalue $-\kappa^2$:
+\begin{align}
+\label{eq:LSGenLapl2}
+\Laplacian_\rho \left[\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} j_\ell(\kappa\rho) \right] = \frac{(-\kappa^2 \rho^2) \LegendreP{\ell, \cos\theta} } {\rho^2 \LegendreP{\ell, \cos\theta}}
+= -\kappa^2 \, \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} j_\ell(\kappa\rho).
+\end{align}
 
 
 

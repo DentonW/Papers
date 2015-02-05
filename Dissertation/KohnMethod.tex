@@ -671,13 +671,40 @@ This is a generalized form of the $S$ matrix Kohn. When $\tau = 0$, this reduces
 The short-range--long-range and long-range--long-range matrix elements have a similar analysis. For all of these, the effect of the $\mathcal{L} = 2(H-E)$ operator on the long-range terms must be considered, and then integrations over the external angles (see \Cref{chp:AngularInt}) are performed. The remaining 6-dimensional integral is then numerically integrated as described in sections \ref{sec:LongLongInt} and \ref{sec:ShortLongInt}.
 
 \subsection{\texorpdfstring{$\mathcal{L}S$}{LS} Terms}
-The $(\widetilde{S},\mathcal{L}\widetilde{S})$, $(\widetilde{C},\mathcal{L}\widetilde{S})$, and $(\bar{\phi}_1,\mathcal{L}\widetilde{S})$ matrix elements in \cref{eq:GeneralKohnMatrix} require us to first determine $\mathcal{L}\widetilde{S}$. We start with examining $\mathcal{L}S$ first.
+The $(\widetilde{S},\mathcal{L}\widetilde{S})$, $(\widetilde{C},\mathcal{L}\widetilde{S})$, and $(\bar{\phi}_i,\mathcal{L}\widetilde{S})$ matrix elements in \cref{eq:GeneralKohnMatrix} require us to first determine $\mathcal{L}\widetilde{S}$. We start with examining $\mathcal{L}S$ first.
 
+Using \cref{eq:GenSDef,eq:LDef}, 
 \begin{align}
 \label{eq:LS1}
-\mathcal{L}S = &\left(-\frac{1}{2} \Laplacian_\rho - \Laplacian_{r_3} - 2 \Laplacian_{r_{12}} + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2} \kappa^2\right) \nonumber \\
-& \times \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,j_\ell\!\left(\kappa\rho\right)
+\mathcal{L}S_\ell = &\left(-\frac{1}{2} \Laplacian_\rho - \Laplacian_{r_3} - 2 \Laplacian_{r_{12}} + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2} \kappa^2\right) \nonumber \\
+& \times \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,j_\ell\!\left(\kappa\rho\right).
 \end{align}
+Since $S_\ell$ is independent of $r_3$ and $r_{12}$ except for the $\Phi_H$ and $\Phi_{Ps}$ functions, respectively, using \cref{eq:HPsEqn,eq:HPsHamil} simplifies this to
+\begin{align}
+\label{eq:LS2}
+\mathcal{L}S_\ell = \left(-\frac{1}{2} \Laplacian_\rho + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - \frac{1}{2} \kappa^2\right) \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,j_\ell\!\left(\kappa\rho\right).
+\end{align}
+From \cref{sec:SphBess2}, we find that $\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} j_\ell(\kappa\rho)$ is an eigenfunction of $\Laplacian_\rho$ with eigenvalue $-\kappa^2$:
+\begin{equation}
+\Laplacian_\rho \left[\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} j_\ell(\kappa\rho) \right] = \frac{(-\kappa^2 \rho^2) \LegendreP{\ell, \cos\theta} } {\rho^2 \LegendreP{\ell, \cos\theta}}
+= -\kappa^2 \, \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} j_\ell(\kappa\rho).
+\end{equation}
+Then \cref{eq:LS2} reduces down to
+\begin{equation}
+\label{eq:LS3}
+\mathcal{L}S_\ell = \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}}\right) \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,j_\ell\!\left(\kappa\rho\right)
+\end{equation}
+or
+\begin{equation}
+\label{eq:LSFinal}
+\mathcal{L}S_\ell = \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}}\right) S_\ell.
+\end{equation}
+
+$\mathcal{L}S_\ell^\prime$ is simply the same as \cref{eq:LSFinal} but with $2 \leftrightarrow 3$ due to the permutation operator, or
+\begin{equation}
+\label{eq:LSPrimeFinal}
+\mathcal{L}S_\ell^\prime = \left(\frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}}\right) S_\ell^\prime.
+\end{equation}
 
 
 \subsection{\texorpdfstring{$\mathcal{L}C$}{LC} Terms}
@@ -745,26 +772,45 @@ H-Wave & {$\!\begin{aligned}
 
 Matrix elements involving $\mathcal{L}C^\prime$ look similar but have the 2 and 3 coordinates swapped. In other words, $\rho \leftrightarrow \rho^\prime$.
 
-{
-\renewcommand{\arraystretch}{2}
-\begin{table}[H]
-\centering
-\begin{tabular}{l l l l}
-\toprule\\[-1.5cm]
-Partial Wave & $\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho}$ & $j_\ell(x)$ & $n_\ell(x)$ \\
-\midrule
-S-Wave & $\frac{1}{\sqrt{4\pi}}$ & & \\
-P-Wave & $\sqrt{\frac{3}{4\pi}} \cos \theta$ & & \\
-D-Wave & $\sqrt{\frac{5}{16\pi}} \left(3 \cos^2\theta - 1 \right)$ &  &  \\
-F-Wave & $\sqrt{\frac{7}{16\pi}} \left(5 \cos^3\theta - 3 \cos\theta \right)$ &  &  \\
-G-Wave & $\sqrt{\frac{9}{256\pi}} \left(35 \cos^4\theta - 30 \cos^2\theta + 3 \right)$ &  &  \\
-H-Wave & $\sqrt{\frac{11}{256\pi}} \left(63 \cos^5\theta - 70 \cos^3\theta + 15 \cos\theta \right)$ &  &  \\
-\bottomrule
-\end{tabular}
-\caption{Spherical harmonics, spherical Bessel, and spherical Neumann functions for partial waves through $\ell = 5$}
-\label{tab:SphHarmBessel}
-\end{table}
-}
+From \cref{eq:PartialWaveShielding}, the general shielding function for $\widetilde{C}$ to keep it regular at the origin is given by
+\begin{equation}
+  %\label{eq:PartialWaveShielding}
+  f_\ell(\rho) = \left[1 - \ee^{-\mu \rho} \left(1+\frac{\mu}{2}\rho\right)
+  \right]^{m_\ell}.
+\end{equation}
+From \cref{tab:LCList}, the derivatives $f_\ell^\prime(\rho)$ and $f_\ell^{\prime\prime}(\rho)$ are needed. In the \emph{Mathematica} notebook ``General Shielding Function.nb'', I found out that the derivatives can be written generally as
+\beq
+\label{eq:Shielding1Der}
+f_\ell^\prime(\rho) = -\frac{\mu m_\ell (\mu  \rho +1) \left[1-\frac{1}{2} e^{-\mu  \rho } (\mu  \rho +2)\right]^{m_\ell}}{\mu  \rho -2 e^{\mu  \rho }+2}
+\eeq
+and
+\beq
+\label{eq:Shielding1Der}
+f_\ell^{\prime\prime}(\rho) = \frac{\mu^2 m_\ell \left[-2 \mu  \rho  e^{\mu  \rho }+ m_\ell (\mu  \rho +1)^2-1\right] \left[1-\frac{1}{2} e^{-\mu  \rho } (\mu  \rho +2)\right]^{m_\ell}} {\left(\mu  \rho -2 e^{\mu  \rho }+2\right)^2}.
+\eeq
+
+
+
+%{
+%\renewcommand{\arraystretch}{2}
+%\begin{table}[H]
+%\centering
+%\begin{tabular}{l l l l}
+%\toprule\\[-1.5cm]
+%Partial Wave & $\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho}$ & $j_\ell(x)$ & $n_\ell(x)$ \\
+%\midrule
+%S-Wave & $\frac{1}{\sqrt{4\pi}}$ & & \\
+%P-Wave & $\sqrt{\frac{3}{4\pi}} \cos \theta$ & & \\
+%D-Wave & $\sqrt{\frac{5}{16\pi}} \left(3 \cos^2\theta - 1 \right)$ &  &  \\
+%F-Wave & $\sqrt{\frac{7}{16\pi}} \left(5 \cos^3\theta - 3 \cos\theta \right)$ &  &  \\
+%G-Wave & $\sqrt{\frac{9}{256\pi}} \left(35 \cos^4\theta - 30 \cos^2\theta + 3 \right)$ &  &  \\
+%H-Wave & $\sqrt{\frac{11}{256\pi}} \left(63 \cos^5\theta - 70 \cos^3\theta + 15 \cos\theta \right)$ &  &  \\
+%\bottomrule
+%\end{tabular}
+%\caption{Spherical harmonics, spherical Bessel, and spherical Neumann functions for partial waves through $\ell = 5$}
+%\label{tab:SphHarmBessel}
+%\end{table}
+%}
 
 
 \biblio
