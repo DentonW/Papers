@@ -10,7 +10,7 @@
 
 \section{Short-Range -- Short-Range Integrations}
 \label{sec:ShortShortIntegration}
-The short-range -- short-range integrals make up the bulk of the $A$ matrix (\cref{eq:GenKohnMatrixAXB}). The positronium hydride bound state problem in \cref{chp:PsHBound} consists of only these types of matrix elements (see \cref{eq:BoundWavefn}). The most general form of these short-range integrals is
+The short-range -- short-range integrals make up the bulk of the $A$ matrix (\cref{eq:GenKohnMatrixAXB}). The positronium hydride bound state problem in \cref{chp:PsHBound} consists of only these types of matrix elements (see \cref{eq:BoundWavefn}). The form of these short-range integrals is
 \beq
 \label{eq:FourBody}
 I \equiv I(k_i, l_i, m_i, n_i, p_i, q_i; \alpha, \beta, \gamma) = \int e^{-(\alpha r_1 + \beta r_2 + \gamma r_3)} r_1^{k_i} r_2^{l_i} r_{12}^{m_i} r_3^{n_i} r_{13}^{p_i} r_{23}^{q_i} d\textbf{r}_1 d\textbf{r}_2 d\textbf{r}_3,
@@ -633,7 +633,7 @@ As mentioned in section \ref{sec:GenKohn}, the generalized Kohn method described
 
 The phase shift program steps through $\tau = 0$ to $\tau = 3.0$ in increments of $0.1$ for each N. There is also an additional modified phase shift program that steps through $\tau = 0.05$ to $\tau = 3.05$, also in increments of $0.1$, to get points in between the first set. The code can also be easily modified to use any value of $\tau$, which was used in figure \ref{fig:PhaseTau}.
 
-The Kohn methods do not require a recalculation of the entire problem for each $\tau$. Once the original matrix equation (\ref{eq:KohnMatrix}) is calculated, along with the $(\bar{S},L\bar{S})$ term, the elements are reused to perform the other Kohn method calculations, as in (\ref{eq:ComplexKohnMatrix}) and (\ref{eq:GenKohnMatrix}).
+The Kohn methods do not require a recalculation of the entire problem for each $\tau$. Once the original matrix equation (\cref{eq:GeneralKohnMatrix}) is calculated with the $\textbf{u}$ in \cref{eq:uKohn}, along with the $(\bar{S},L\bar{S})$ term, the elements are reused to perform the other Kohn method calculations in \cref{sec:KohnApplied}.
 
 
 

@@ -8,7 +8,7 @@
 \chapter{Angular Integrations}
 \label{chp:AngularInt}
 
-\todoi{Change to cref references. Put eq: on labels}
+\todoi{Change to cref references. Put eq: on labels. More discussion from Peter's thesis?}
 
 \section{Chebyshev-Gaussian Quadrature}
 \label{sec:ChebyshevGauss}
@@ -77,8 +77,8 @@ Since this is the same as (\ref{PVRAngNew3}), we just combine this with (\ref{An
 As Peter Van Reeth points out in his thesis on page 78, $\phi_{23}$ is the angle between the planes of the triangles $(r_1,r_2,r_{12})$ and $(r_1,r_3,r_{13})$. This angle can range between $\phi_{23} = 0$ and $\phi_{23} = 2 \pi$.
 
 
-\section{Rotations}
-\label{sec:Rotations}
+\section{External Angular Integrations}
+\label{sec:AngularInt}
 
 \begin{figure}[H]
 	\centering
@@ -87,8 +87,6 @@ As Peter Van Reeth points out in his thesis on page 78, $\phi_{23}$ is the angle
 	\label{fig:CoordinateSystemOriginal}
 \end{figure}
 
-For the integrations involving long-range terms (see \cref{}), 
-
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=4.5in]{CoordinateSystemRotated}
@@ -96,14 +94,44 @@ For the integrations involving long-range terms (see \cref{}),
 	\label{fig:CoordinateSystemRotated}
 \end{figure}
 
-
-\section{External Angular Integrations}
-\label{sec:AngularInt}
-
 \todoi{Describe why these are needed}
 These are derived in a \emph{Mathematica} notebook entitled ``General Angular Integrations.nb''.
 \todoi{Describe how this notebook works, including ExtremeSimplify}
 
+\subsection{Terms with Identical Spherical Harmonics}
+\label{sec:AngSame}
+We are not integrating over all angles, so the orthogonality relations of the spherical harmonics do not hold. However, it can be seen that if we integrate over all external angles, $\tau_{ext}$, any spherical harmonic with itself will give $2\pi$, i.e.
+\beq
+\label{eq:AngSame}
+\Int{Y_\ell^0(\theta_i, \phi_i) Y_\ell^0(\theta_i, \phi_i)}{\tau_{ext}, \tau_{ext}} = 2 \pi,
+\eeq
+where $i$ = $1$, 2, 3, $\rho$ or $\rho^\prime$.
+
+
+\subsection{Terms with \texorpdfstring{$Y_\ell^0(\theta_i, \phi_i) Y_\ell^0(\theta_j, \phi_j)$}{Yi-Yj} }
+\label{sec:AngRiRj}
+These terms are not completely necessary to generalize here, because they only appear in the short--short calculations. My derivations and code for the S-, P-, and D-wave short--short calculations use these. The general code short--short derivations and code \cite{sec:} use a formalism from Drake and Yan \cite{Yan1997} that does not do these external angular integrations. The general code is used for the F-, G-, and H-waves and can be used for arbitrary $\ell$. Derivations for all of these can be seen in the \emph{Mathematica} notebook ``General Angular Integrations.nb''. Note that the result of $2\pi$ in \cref{sec:AngSame} is recovered if $i=j$. The general result is
+\beq
+\label{eq:AngRiRj}
+\Int{Y_\ell^0(\theta_i, \phi_i) Y_\ell^0(\theta_j, \phi_j)}{\tau_{ext}, \tau_{ext}} = 2 \pi \LegendreP{\ell, \cos\theta_{ij}}.
+\eeq
+It takes some work to show that the results in the \emph{Mathematica} notebook ``General Angular Integrations.nb'' are equivalent to this.
+
+These integrations for the first three partial waves are given below.
+\begin{subequations}
+\begin{align}
+\Int{Y_0^0(\theta_i, \phi_i) Y_0^0(\theta_j, \phi_j)}{\tau_{ext}, \tau_{ext}} &= 2 \pi \\
+\Int{Y_1^0(\theta_i, \phi_i) Y_1^0(\theta_j, \phi_j)}{\tau_{ext}, \tau_{ext}} &= 2 \pi \cos\theta_{ij} \\
+\Int{Y_2^0(\theta_i, \phi_i) Y_2^0(\theta_j, \phi_j)}{\tau_{ext}, \tau_{ext}} &= 2 \pi \left(3 \cos^2 \theta_{ij} - 1 \right)
+\end{align}
+\end{subequations}
+
+When performing the external angular integrations instead of using the general short-range integrals in \cref{sec:GeneralShort}, the very specific form of the short-short integrals has to be that of the four-body integrals in \cref{eq:FourBody}. From \cref{eq:AngRiRj}, the results here have a $\cos\theta_{ij}$, which does not appear in the four-body integrals. To use these results, we have to use the law of cosines to replace any $\cos\theta_{ij}$ terms by
+\beq
+\label{eq:LawCosines}
+\cos\theta_{ij} = \frac{r_i^2 + r_j^2 - r_{ij}^2}{2 r_i r_j}.
+\eeq
+This allows us to split these into multiple integrations with only polynomial $r_i$ and $r_{ij}$ terms with the decaying exponentials. Most of the other external angular integrations in this Appendix also end up with $\cos\theta_{ij}$, but those only apply to the long-range code, which does not have this restriction.
 
 
 \subsection{Terms with \texorpdfstring{$Y_\ell^0(\theta_1, \phi_1) Y_\ell^0(\theta_{\rho}, \phi_{\rho})$}{Y1-Yrho} and \texorpdfstring{$Y_\ell^0(\theta_1, \phi_1) Y_\ell^0(\theta_{\rho^\prime}, \phi_{\rho^\prime})$}{Y1-Yrho'}}
@@ -167,6 +195,7 @@ giving
 \beq
 \Int{Y_\ell^0(\theta_3, \phi_3) Y_\ell^0(\theta_{\rho}, \phi_{\rho})}{\tau_{ext}, \tau_{ext}} = 2 \pi \LegendreP{\ell, w_5}.
 \eeq
+\todoi{The $w_4$ and $w_5$ look similar to equation (B.14) in Peter's thesis}
 
 
 \subsection{Terms with \texorpdfstring{$Y_\ell^0(\theta_\rho, \phi_\rho) Y_\ell^0(\theta_{\rho^\prime}, \phi_{\rho^\prime})$}{Yrho-Yrho'}}

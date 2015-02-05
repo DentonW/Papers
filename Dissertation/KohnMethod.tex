@@ -43,8 +43,8 @@ u_{10} & u_{11}
 \begin{subequations}
 \label{eq:TildeSCDef}
 \begin{align}
-\widetilde{S}_\ell &= u_{00} \bar{S}_\ell + u_{01} \bar{C}_\ell \\
-\widetilde{C}_\ell &= u_{10} \bar{S}_\ell + u_{11} \bar{C}_\ell.
+\widetilde{S}_\ell &= u_{00} \bar{S}_\ell + u_{01} \bar{C}_\ell  \label{eq:TildeSDef} \\
+\widetilde{C}_\ell &= u_{10} \bar{S}_\ell + u_{11} \bar{C}_\ell. \label{eq:TildeCDef}
 \end{align}
 \end{subequations}
 
@@ -449,6 +449,7 @@ c_i\\
 \vdots
 \end{bmatrix}.
 \end{equation}
+\todoi{Be clear that in the long-range code, we only calculate the Kohn elements, and then we rearrange them to create the others in the phase shift code.}
 
 \noindent This matrix equation can be rewritten as
 \beq
@@ -547,6 +548,7 @@ K_\ell = \tan \delta_\ell = (u_{01} + u_{11} L_\ell)(u_{00} + u_{10} L_\ell)^{-1
 The $\textbf{u}$ and $\mathcal{L}_l$ for the various Kohn methods are described now. Note that for each of these, $\Det{\textbf{u}} = 1$.
 
 \subsubsection*{Kohn}
+\label{sec:Kohn}
 \beq
 \textbf{u} =
 \begin{bmatrix}
@@ -563,6 +565,7 @@ The $\textbf{u}$ and $\mathcal{L}_l$ for the various Kohn methods are described 
 
 
 \subsubsection*{Inverse Kohn}
+\label{sec:InvKohn}
 \beq
 \textbf{u} =
 \begin{bmatrix}
@@ -579,6 +582,7 @@ The $\textbf{u}$ and $\mathcal{L}_l$ for the various Kohn methods are described 
 
 
 \subsubsection*{Generalized Kohn}
+\label{sec:GenKohn}
 \beq
 \textbf{u} =
 \begin{bmatrix}
@@ -597,6 +601,7 @@ The $\textbf{u}$ and $\mathcal{L}_l$ for the various Kohn methods are described 
 
 
 \subsubsection*{Complex Kohn $T$-matrix}
+\label{sec:ComplexTKohn}
 \beq
 \textbf{u} =
 \begin{bmatrix}
@@ -615,6 +620,7 @@ The $\textbf{u}$ and $\mathcal{L}_l$ for the various Kohn methods are described 
 
 
 \subsubsection*{Complex Kohn $S$-matrix}
+\label{sec:ComplexSKohn}
 \beq
 \textbf{u} =
 \begin{bmatrix}
@@ -637,6 +643,7 @@ K_\ell = \frac{\ii(1-S_\ell)}{1+S_\ell},
 which is satisfied by the above $\textbf{u}$-matrix.
 
 \subsubsection*{Generalized $T$ matrix Kohn}
+\label{sec:GenComplexTKohn}
 \beq
 \textbf{u} =
 \begin{bmatrix}
@@ -649,6 +656,7 @@ This is a generalized form of the $T$ matrix Kohn, similar to how the generalize
 
 
 \subsubsection*{Generalized $S$ matrix Kohn}
+\label{sec:GenComplexSKohn}
 \beq
 \textbf{u} =
 \begin{bmatrix}
@@ -671,6 +679,7 @@ This is a generalized form of the $S$ matrix Kohn. When $\tau = 0$, this reduces
 The short-range--long-range and long-range--long-range matrix elements have a similar analysis. For all of these, the effect of the $\mathcal{L} = 2(H-E)$ operator on the long-range terms must be considered, and then integrations over the external angles (see \Cref{chp:AngularInt}) are performed. The remaining 6-dimensional integral is then numerically integrated as described in sections \ref{sec:LongLongInt} and \ref{sec:ShortLongInt}.
 
 \subsection{\texorpdfstring{$\mathcal{L}S$}{LS} Terms}
+\label{sec:LSTerms}
 The $(\widetilde{S},\mathcal{L}\widetilde{S})$, $(\widetilde{C},\mathcal{L}\widetilde{S})$, and $(\bar{\phi}_i,\mathcal{L}\widetilde{S})$ matrix elements in \cref{eq:GeneralKohnMatrix} require us to first determine $\mathcal{L}\widetilde{S}$. We start with examining $\mathcal{L}S$ first.
 
 Using \cref{eq:GenSDef,eq:LDef}, 
@@ -708,6 +717,7 @@ $\mathcal{L}S_\ell^\prime$ is simply the same as \cref{eq:LSFinal} but with $2 \
 
 
 \subsection{\texorpdfstring{$\mathcal{L}C$}{LC} Terms}
+\label{sec:LCTerms}
 To calculate the matrix elements in \cref{eq:GeneralKohnMatrix} that include $\widetilde{C}$ in the ket, we start by writing a general form of $\mathcal{L}C$ using \cref{eq:LDef,eq:GenCDef}:
 \begin{align}
 \label{eq:LC1}
@@ -720,7 +730,7 @@ Similar to \cref{}, using \cref{eq:HPsEqn,eq:HPsHamil} reduces this to
 \mathcal{L}C = -&\left(-\frac{1}{2} \Laplacian_\rho + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2} \kappa^2\right) \nonumber \\
 & \times \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,n_\ell\!\left(\kappa\rho\right) f_\ell(\rho).
 \end{align}
-Unlike with $\mathcal{L}S$ in \cref{}, there is not a cancellation with the $\Laplacian_\rho$ and $\kappa^2$ terms. The combination of these terms was calculated in the ``First Partial Waves LC.nb'' \emph{Mathematica} notebook using the code given in \cref{fig:LCMath}. This is for the F-wave, and replacing the the $\ell$-value 3 in \texttt{SphericalBesselY} allows this to be used for any partial wave. The results of these derivations is given in \cref{tab:LCList}. The $\frac{1}{2} \left(\Laplacian_\rho + \kappa^2\right) \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} n_\ell(\kappa\rho) f_\ell(\rho)$ given in this table is substituted in \cref{eq:LC2} to find the full $\mathcal{L}C$.
+Unlike with $\mathcal{L}S$ in \cref{sec:LSTerms}, there is not a cancellation with the $\Laplacian_\rho$ and $\kappa^2$ terms. The combination of these terms was calculated in the ``First Partial Waves LC.nb'' \emph{Mathematica} notebook using the code given in \cref{fig:LCMath}. This is for the F-wave, and replacing the the $\ell$-value 3 in \texttt{SphericalBesselY} allows this to be used for any partial wave. The results of these derivations is given in \cref{tab:LCList}. The $\frac{1}{2} \left(\Laplacian_\rho + \kappa^2\right) \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} n_\ell(\kappa\rho) f_\ell(\rho)$ given in this table is substituted in \cref{eq:LC2} to find the full $\mathcal{L}C$.
 
 \begin{figure}[H]
 	\centering
@@ -790,6 +800,38 @@ f_\ell^{\prime\prime}(\rho) = \frac{\mu^2 m_\ell \left[-2 \mu  \rho  e^{\mu  \rh
 \eeq
 
 
+\subsection{\texorpdfstring{$(\bar{S}_\ell,\mathcal{L}\bar{S}_\ell)$}{SLS} and \texorpdfstring{$(\bar{C}_\ell,\mathcal{L}\bar{S}_\ell)$}{CLS} Matrix Elements}
+\label{sec:SLSandCLS}
+
+From \cref{eq:TildeSCDef}, we see that, in general, any matrix element in \cref{eq:GeneralKohnMatrix} containing only long-range terms will contain both $(\bar{S}_\ell,\mathcal{L}\bar{S}_\ell)$ and $(\bar{C}_\ell,\mathcal{L}\bar{S}_\ell)$, along with the other two combinations given in \cref{sec:}. When $(\bar{S}_\ell,\mathcal{L}\bar{S}_\ell)$ is expanded,
+\beq
+(\bar{S}_\ell,\mathcal{L}\bar{S}_\ell) = \frac{1}{2} \left[ (S_\ell,\mathcal{L}S_\ell) \pm (S_\ell^\prime,\mathcal{L}S_\ell) \pm (S_\ell,\mathcal{L}S_\ell^\prime) \pm (S_\ell^\prime,\mathcal{L}S_\ell^\prime) \right]
+\eeq
+\todoi{Need to give reason why!}
+Due to \cref{},
+\beq
+(S_\ell,\mathcal{L}S_\ell) = (S_\ell^\prime,\mathcal{L}S_\ell^\prime) \text{ and } (S_\ell^\prime,\mathcal{L}S_\ell) = (S_\ell,\mathcal{L}S_\ell^\prime),
+\eeq
+so this becomes
+\beq
+(\bar{S}_\ell,\mathcal{L}\bar{S}_\ell) = (S_\ell,\mathcal{L}S_\ell) \pm (S_\ell^\prime,\mathcal{L}S_\ell).
+\eeq
+
+From \cref{eq:LSFinal,eq:LSPrimeFinal}, the Laplacian on $S_\ell$ and $S_\ell^\prime$ leaves only some of the potential terms. The potential terms in \cref{eq:LSFinal} are antisymmetric upon the $1 \leftrightarrow 2$ swap, and the terms in \cref{eq:LSPrimeFinal} are antisymmetric upon the $1 \leftrightarrow 3$ swap. $S_\ell$ and $S_\ell^\prime$ are symmetric with the $1 \leftrightarrow 2$ and $1 \leftrightarrow 3$ swaps, respectively. When these are integrated over these coordinates, the combination of symmetric with antisymmetric functions causes the integral to be 0:
+\beq
+\label{eq:SLS0Test}
+(S_\ell,\mathcal{L}S_\ell) = (S_\ell^\prime,\mathcal{L}S_\ell^\prime) = 0.
+\eeq
+\todoi{Reference this in computation section}
+Therefore,
+\beq
+(\bar{S}_\ell,\mathcal{L}\bar{S}_\ell) = \pm (S_\ell^\prime,\mathcal{L}S_\ell) = \pm (S_\ell,\mathcal{L}S_\ell^\prime).
+\eeq
+
+Since $C_\ell$ and $C_\ell^\prime$ are also symmetric with their respective swaps, the $(\bar{C}_\ell,\mathcal{L}\bar{S}_\ell)$ matrix element is a similar form given by
+\beq
+(\bar{C}_\ell,\mathcal{L}\bar{S}_\ell) = \pm (C_\ell^\prime,\mathcal{L}S_\ell) = \pm (C_\ell,\mathcal{L}S_\ell^\prime).
+\eeq
 
 %{
 %\renewcommand{\arraystretch}{2}
