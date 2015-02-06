@@ -280,7 +280,7 @@ The first integration excluding the $r_{23}^{-1}$ term has negative powers of $r
 
 \subsection{Integration without the \texorpdfstring{$r_{23}^{-1}$} {1/r23} term}
 \label{sec:LongLongNoR23}
-The simplest long-long matrix element to evaluate is $(\bar{S},L\bar{S})$.  From equation \ref{eq:SbarLSbar}, not including its $r_{23}^{-1}$ term, this is
+The simplest long-long matrix element to evaluate is $(\bar{S},L\bar{S})$.  From \cref{eq:SbarLSbar}, not including its $r_{23}^{-1}$ term, this is
 \beq
 (\bar{S},L\bar{S})_A = \pm \left(S^\prime,LS\right) = \pm \left(S^\prime, \left[ \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}}\right] S\right).
 \eeq
@@ -362,7 +362,8 @@ The integration over the $r_{23}^{-1}$ term is done the same way as the second i
 
 \section{Notation}
 \label{sec:CompNotation}
-The bound state problem is a generalized eigenvalue problem (\ref{eq:BoundGenEig}), but to simplify the following discussion, I will refer to the set of matrices \textbf{H} and \textbf{S} as a single matrix. The diagrams in this section show a single matrix, but it is in actuality a pair of matrices forming the generalized eigenvalue problem.
+\todoi{Put this elsewhere? Probably does not need its own section.}
+The bound state problem is a generalized eigenvalue problem (see \cref{eq:BoundGenEig}), but to simplify the following discussion, I will refer to the set of matrices \textbf{H} and \textbf{S} as a single matrix. The diagrams in this section show a single matrix, but it is in actuality a pair of matrices forming the generalized eigenvalue problem.
 
 \section{Linear Dependence in the Bound State Calculation}
 With infinite precision in calculations, all terms from the basis set could be used. However, due to the limited precision inherent in computer calculations, when using large basis sets, near linear dependences will exist in the matrices. The goal is to identify and eliminate terms that exhibit near linear dependence with other terms. These terms are not exactly linearly dependent, if infinite precision was possible, but they are linearly dependent to computer precision.
@@ -378,15 +379,57 @@ Another technique Yan et al.\ used was to partition the basis set into five sect
 
 \subsection{Allan Todd's Algorithm}
 \label{sec:ToddBound}
-In trying to determine the energy eigenvalues, we noticed that the ordering of the terms could determine whether there was linear dependence in the matrices. Allan Todd's algorithm was attractive, because it reorders the matrices to obtain the best possible energy, and it is a purely computational approach \cite{Todd2007}. So far, we have not seen any physical reason why certain terms should introduce a near linear dependence. A description of his algorithm as implemented by us follows.
+In trying to determine the energy eigenvalues, we noticed that the ordering 
+of the terms could determine whether there was linear dependence in the 
+matrices. Allan Todd's algorithm was attractive, because it reorders the 
+matrices to obtain the best possible energy, and it is a purely computational 
+approach \cite{Todd2007}. So far, we have not seen any physical reason why 
+certain terms should introduce a near linear dependence. A description of his 
+algorithm as implemented by us follows.
 
-The total number of terms to look at is $N = N(\omega)$ (see equation \ref{eq:NumberTermsOmega}). N matrices of size 1x1 are created for each term. This is done for the overlap and the $\left\langle \phi \left| \,H \right| \phi \right\rangle$ matrices together. The LAPACK dsygv routine is used to determine the lowest eigenvalue for each of these N sets. These energy eigenvalues are compared against one another, and the term with the lowest energy is chosen. In the next step, the first basis function from the previous step is combined with each unused term to create N-1 matrices of size 2x2. Again, the energy eigenvalues for each of the N-1 matrices are compared against each other, and the term yielding the lowest energy is chosen as the second basis function. This is done again with 3x3 matrices for each of the N-2 remaining terms combined with the basis functions chosen in the first two steps. This procedure is repeated until all terms have been used or the remaining terms are problematic.
+The total number of terms to look at is $N = N(\omega)$ (see \cref{eq:NumberTermsOmega}).
+ N matrices of size 1x1 are created for each term. This 
+is done for the overlap and the
+ $\left\langle \phi \left| \,H \right| \phi \right\rangle$
+ matrices together. The LAPACK \texttt{dsygv} routine is used to 
+determine the lowest eigenvalue for each of these N sets. These energy 
+eigenvalues are compared against one another, and the term with the lowest 
+energy is chosen. In the next step, the first basis function from the 
+previous step is combined with each unused term to create N-1 matrices of 
+size 2x2. Again, the energy eigenvalues for each of the N-1 matrices are 
+compared against each other, and the term yielding the lowest energy is 
+chosen as the second basis function. This is done again with 3x3 matrices for 
+each of the N-2 remaining terms combined with the basis functions chosen in 
+the first two steps. This procedure is repeated until all terms have been 
+used or the remaining terms are problematic.
 
-In his original algorithm, Allan Todd looked at the eigenvalues computed from the upper and lower triangular matrices. Normally, the overlap and H matrices are symmetric, but this is not true to machine precision due to truncation and rounding. If the energy eigenvalues from the upper and lower triangles differ by more than $10^{-7}$ (in atomic units), the last added term is considered problematic and discarded.
+In his original algorithm, Allan Todd looked at the eigenvalues computed from 
+the upper and lower triangular matrices. Normally, the overlap and H matrices 
+are symmetric, but this is not true to machine precision due to truncation 
+and rounding. If the energy eigenvalues from the upper and lower triangles 
+differ by more than $10^{-7}$ (in atomic units), the last added term is 
+considered problematic and discarded.
 
-In our testing for $\omega = 6$, no terms were omitted due to the reordering. As noted earlier, before implementing this algorithm, LAPACK would fail when trying to calculate the eigenvalues, so the ordering is important for getting the best possible energy. For $\omega$ = 7, 116 terms were omitted, out of a total of 1716 terms. The criteria that the eigenvalues for the upper and lower matrices differs by no more than a certain amount was not needed in this case. The Info parameter of the LAPACK dsygv function is checked for both the upper and lower matrix eigenvalue calculations, and the last added term is discarded if it causes an error due to linear dependence. When only the 116 problematic terms were left, every one of them caused LAPACK to error. If a term was problematic at any stage, it continued to be problematic in all further stages, so computation time can be decreased by immediately discarding it.
+In our testing for $\omega = 6$, no terms were omitted due to the reordering. 
+As noted earlier, before implementing this algorithm, LAPACK would fail when 
+trying to calculate the eigenvalues, so the ordering is important for getting 
+the best possible energy. For $\omega$ = 7, 116 terms were omitted, out of a 
+total of 1716 terms. The criteria that the eigenvalues for the upper and 
+lower matrices differs by no more than a certain amount was not needed in 
+this case. The Info parameter of the LAPACK dsygv function is checked for 
+both the upper and lower matrix eigenvalue calculations, and the last added 
+term is discarded if it causes an error due to linear dependence. When only 
+the 116 problematic terms were left, every one of them caused LAPACK to 
+error. If a term was problematic at any stage, it continued to be problematic 
+in all further stages, so computation time can be decreased by immediately 
+discarding it.
 
-For larger basis sets, this algorithm becomes extremely slow, as determining the eigenvalues is an $O(N^3)$ operation. It can easily be parallelized, since we are computing the eigenvalues for a large number of matrices. Our program has been parallelized using OpenMP for intranode communications and Open MPI for internode communications. Todd's algorithm provides the best converged energy for a set of terms, albeit at a cost of computational speed.
+For larger basis sets, this algorithm becomes extremely slow, as determining 
+the eigenvalues is an $O(N^3)$ operation. It can easily be parallelized, 
+since we are computing the eigenvalues for a large number of matrices. Our 
+program has been parallelized using OpenMP for intranode communications and 
+Open MPI for internode communications. Todd's algorithm provides the best 
+converged energy for a set of terms, albeit at a cost of computational speed.
 
 \begin{figure}[H]
 	\centering
@@ -397,36 +440,67 @@ For larger basis sets, this algorithm becomes extremely slow, as determining the
 
 
 \subsection{L\"uchow and Kleindienst Algorithm} \label{sec:LuchowBound}
-The algorithm that L\"uchow and Kleindienst propose \cite{Luchow1992} is similar to Todd's algorithm. They use all terms through $\omega = 5$, since none of these have linear dependence within this set. This fact could be applied to Allan Todd's algorithm to speed up the calculation. The rest of the terms are partitioned up into blocks of 300-400 terms, except the last block, which will have modulus(N - 462, block size) terms. A key difference from Allan Todd's algorithm is that the terms should be ordered in terms of increasing omega. In Allan Todd's algorithm, the initial ordering does not matter. The terms in the first block are added to the basis set for $\omega = 5$, which has 462 terms. If we use a block with 300 terms, then 300 matrices of size 463x463 are created, and their eigenvalues are determined. Whichever term gives the lowest energy when added to this set is saved to the basis set. This continues with ever-increasing matrix sizes, until all terms in the block are used, or a linear dependence is noticed. L\"uchow and Kleindienst propose that linear dependences can be prevented by omitting terms that do not contribute significantly to the energy. The energy from the previous step is saved, and the energy from the current step is compared to this. If the difference in energies is small, e.g. $\Delta E < 10^{-10} E_h$ in their paper, then that term is omitted. Since the lowest energy is chosen at each step, when this $\Delta E$ is too small, the rest of the block can be omitted.
+The algorithm that L\"uchow and Kleindienst propose \cite{Luchow1992} is 
+similar to Todd's algorithm. They use all terms through $\omega = 5$, since 
+none of these have linear dependence within this set. This fact could be 
+applied to Allan Todd's algorithm to speed up the calculation. The rest of 
+the terms are partitioned up into blocks of 300-400 terms, except the last 
+block, which will have modulus(N - 462, block size) terms. A key difference 
+from Allan Todd's algorithm is that the terms should be ordered in terms of 
+increasing omega. In Allan Todd's algorithm, the initial ordering does not 
+matter. The terms in the first block are added to the basis set for
+$\omega = 5$, which has 462 terms. If we use a block with 300 terms, then 300 matrices 
+of size 463x463 are created, and their eigenvalues are determined. Whichever 
+term gives the lowest energy when added to this set is saved to the basis 
+set. This continues with ever-increasing matrix sizes, until all terms in the 
+block are used, or a linear dependence is noticed. L\"uchow and Kleindienst 
+propose that linear dependences can be prevented by omitting terms that do 
+not contribute significantly to the energy. The energy from the previous step 
+is saved, and the energy from the current step is compared to this. If the 
+difference in energies is small, e.g. $\Delta E < 10^{-10} E_h$ in their 
+paper, then that term is omitted. Since the lowest energy is chosen at each 
+step, when this $\Delta E$ is too small, the rest of the block can be omitted.
 
-Two parameters that are adjustable in this algorithm are the block size and cutoff value for the energy. To determine the best values for each, $\omega$ was set to a value of 7, and one of the parameters was held constant. To determine the optimal block size, an energy cutoff of $5\e{-9}$ was used.
+Two parameters that are adjustable in this algorithm are the block size and 
+cutoff value for the energy. To determine the best values for each, $\omega$ 
+was set to a value of 7, and one of the parameters was held constant. To 
+determine the optimal block size, an energy cutoff of $5\e{-9}$ was used.
 \begin{center}
 \begin{tabular}{|c|c|c|c|}
 \hline
 Block size & Used terms & Energy & Time (min)\\
 \hline
-200 & 1041 & -0.7891818907 & 470 \\
-250 & 1024 & -0.7891845001 & 572 \\
-300 & 960 & -0.7891805208 & 749 \\
-350 & 999 & -0.7891819425 & unknown \\
-400 & 1012 & -0.7891855882 & 852 \\
-500 & 985 & -0.7891841163 & 764 \\
+200 & 1041 & -0.789 181 890 & 470 \\
+250 & 1024 & -0.789 184 500 & 572 \\
+300 & 960 &  -0.789 180 520 & 749 \\
+350 & 999 &  -0.789 181 942 & unknown \\
+400 & 1012 & -0.789 185 588 & 852 \\
+500 & 985 &  -0.789 184 116 & 764 \\
 \hline
 \end{tabular}
 \end{center}
 
-For most trials, increasing the block size also increased the time it took to complete the computation. It can be seen that a block size of N-462 gives a modified version of Todd's algorithm, since we are testing all terms at each step. A block size of 1 would correspond to no reordering of terms, leading to including problematic terms. The cutoff value for $\Delta E$, $E_{\text{cutoff}}$, is $10^{-10} E_h$ in L\"uchow and Kleindienst's paper [8], but a value of $10^{-10}$ in our calculations led to LAPACK errors due to linear dependences. The block size was set to 400, and it was determined that an energy cutoff of $10^{-9}$ was the largest value that caused linear dependences.
+For most trials, increasing the block size also increased the time it took to 
+complete the computation. It can be seen that a block size of N-462 gives a 
+modified version of Todd's algorithm, since we are testing all terms at each 
+step. A block size of 1 would correspond to no reordering of terms, leading 
+to including problematic terms. The cutoff value for $\Delta E$,
+$E_{\text{cutoff}}$, is $10^{-10} E_h$ in L\"uchow and Kleindienst's paper
+\cite{Luchow1992}, but a value of $10^{-10}$ in our calculations led to LAPACK 
+errors due to linear dependences. The block size was set to 400, and it was
+determined that an energy cutoff of $10^{-9}$ was the largest value that caused linear 
+dependences.
 
 \begin{center}
 \begin{tabular}{|c|c|c|}
 \hline
 Energy cutoff & Used terms & Energy\\
 \hline
-2\e{-9} & 1116 & -0.789185858 \\
-3\e{-9} & 1053 & -0.789186346 \\
-4\e{-9} & 1043 & -0.789185173 \\
-5\e{-9} & 1012 & -0.789185588 \\
-1\e{-8} & 963 & -0.789188024 \\
+2\e{-9} & 1116 & -0.789 185 858 \\
+3\e{-9} & 1053 & -0.789 186 346 \\
+4\e{-9} & 1043 & -0.789 185 173 \\
+5\e{-9} & 1012 & -0.789 185 588 \\
+1\e{-8} & 963 &  -0.789 188 024 \\
 \hline
 \end{tabular}
 \end{center}
@@ -811,7 +885,7 @@ The results were much better for the base set versus the ``plus 5'' set when har
 \begin{figure}[H]
 	\centering
 	\resizebox{1.0\textwidth}{!}{\includegraphics{QuadPoints/BasehardcodevsBase5hardcode.png}}
-	\caption{Base set with hardcoded values versus base set plus 5 with hardcoded values}
+	\caption[Base set with hardcoded values vs. base set plus 5 with hardcoded values]{Base set with hardcoded values versus base set plus 5 with hardcoded values}
 	\label{fig:BasehardcodevsBase5hardcode}
 \end{figure}
 

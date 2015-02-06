@@ -79,18 +79,19 @@ and \textbf{c} is the vector of coefficients for the wavefunction $\Psi$.  The n
 For PsH, the non-relativistic Hamiltonian is
 \beq
 \label{eq:BoundHamiltonian}
-H = -\frac{1}{2} \nabla_{r_1}^2 - \frac{1}{2} \nabla_{r_2}^2 - \frac{1}{2} \nabla_{r_3}^2 + \frac {1}{r_1}-\frac {1}{r_2}-\frac {1}{r_3}-\frac {1}{r_{12}}-\frac {1}{r_{13}}+\frac {1}{r_{23}}.
+H = -\frac{1}{2} \Laplacian_{r_1} - \frac{1}{2} \Laplacian_{r_2} - \frac{1}{2} \Laplacian_{r_3} + \frac {1}{r_1}-\frac {1}{r_2}-\frac {1}{r_3}-\frac {1}{r_{12}}-\frac {1}{r_{13}}+\frac {1}{r_{23}}.
 \eeq
 The Laplacians in \cref{eq:BoundHamiltonian} are complicated when applied to the $\phi_j$ function.  We exploit the short-range nature of $\phi_i$ and $\phi_j$ by using integration by parts, similar to equation (3.21) of Armour and Humberston \cite{Armour1991}.
 \beq
 \label{eq:BoundGradient}
--\Int{ \phi_i \left(\nabla_{r_1}^2 + \nabla_{r_2}^2 + \nabla_{r_3}^2 \right) \phi_j }{\tau} = \int \sum_{l=1}^3 \bm{\nabla}_{\!\bm{r}_l} \phi_i \bm{\cdot} \bm{\nabla}_{\!\bm{r}_l} \phi_j \, d\tau
+-\Int{ \phi_i \left(\Laplacian_{r_1} + \Laplacian_{r_2} + \Laplacian_{r_3} \right) \phi_j }{\tau} = \int \sum_{l=1}^3 \grad_{\!\bm{r}_l} \phi_i \bm{\cdot} \grad_{\!\bm{r}_l} \phi_j \, d\tau
 \eeq
 
-\noindent This expression is simpler than applying the Laplacian operators directly to $\phi_j$, and the summation is given by the following expression (a full derivation is given on the research Wiki \cite{Wiki}):
+\noindent The differential $\tau$ represents the 9-dimensional configuration space give by $r_1$, $r_2$, and $r_3$. \todo{Show $\tau$?} This expression is simpler than applying the Laplacian operators directly to $\phi_j$, and the summation is given by the following expression (a full derivation is given on the research Wiki \cite{Wiki}):
 
 \begin{align}
-\nonumber \sum_{l=1}^3 \bm{\nabla}_{\!\mathbf{r}_l} \phi_i \bm{\cdot} \bm{\nabla}_{\!\mathbf{r}_l} \phi_j = &\phi_i \phi_j \Bigg\{(\alpha^2 + \beta^2 + \gamma^2) - \frac{\alpha}{r_1}(k_i + k_j) - \frac{\beta}{r_2}(l_i + l_j) + \frac{\gamma}{r_3}(n_i + n_j) \\
+\label{eq:GradGradShort}
+\nonumber \sum_{l=1}^3 \grad_{\!\mathbf{r}_l} \phi_i \bm{\cdot} \grad_{\!\mathbf{r}_l} \phi_j = &\phi_i \phi_j \Bigg\{(\alpha^2 + \beta^2 + \gamma^2) - \frac{\alpha}{r_1}(k_i + k_j) - \frac{\beta}{r_2}(l_i + l_j) + \frac{\gamma}{r_3}(n_i + n_j) \\
 \nonumber  &+ \frac{k_i k_j}{r_1^2} + \frac{l_i l_j}{r_2^2} + \frac{n_i n_j}{r_3^2} + \frac{2 m_i m_j}{r_{12}^2} + \frac{2 p_i p_j}{r_{13}^2} + \frac{2 q_i q_j}{r_{23}^2} \\
 \nonumber  &+ \frac{r_1^2 + r_{12}^2 - r_2^2}{2 r_1^2 r_{12}^2} \left[-\alpha r_1(m_i+m_j) + (k_i m_j + k_j m_i)\right] \\
 \nonumber  &+ \frac{r_1^2 + r_{13}^2 - r_3^2}{2 r_1^2 r_{13}^2} \left[-\alpha r_1(p_i+p_j) + (k_i p_j + k_j p_i)\right] \\
@@ -106,7 +107,7 @@ The Laplacians in \cref{eq:BoundHamiltonian} are complicated when applied to the
 The full expression for $H_{ij}$ from \cref{eq:HijSij} after using \cref{eq:BoundHamiltonian,eq:BoundGradient} is then
 \beq
 \label{eq:BoundHFull}
-\left< \bar{\phi}_i \left| H \right| \bar{\phi}_j \right> = \Int{ \left[ \frac{1}{2}\sum_{l=1}^3 \boldsymbol{\nabla}_{\!\mathbf{r}_l} \bar{\phi}_i \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_l} \bar{\phi}_j + \left( \frac {1}{r_1}-\frac {1}{r_2}-\frac {1}{r_3}-\frac {1}{r_{12}}-\frac {1}{r_{13}}+\frac {1}{r_{23}} \right) \bar{\phi}_i \bar{\phi}_j \right]}{\tau}.
+\left< \bar{\phi}_i \left| H \right| \bar{\phi}_j \right> = \Int{ \left[ \frac{1}{2}\sum_{l=1}^3 \grad_{\!\mathbf{r}_l} \bar{\phi}_i \boldsymbol{\cdot} \grad_{\!\mathbf{r}_l} \bar{\phi}_j + \left( \frac {1}{r_1}-\frac {1}{r_2}-\frac {1}{r_3}-\frac {1}{r_{12}}-\frac {1}{r_{13}}+\frac {1}{r_{23}} \right) \bar{\phi}_i \bar{\phi}_j \right]}{\tau}.
 \eeq
 
 To reduce the number of integrations needed by half, we use a property of the permutation operator.  Since 
@@ -149,41 +150,42 @@ The next method I tried was Broyden's method \cite{Sauer2006}, which can solve f
 \setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
 \setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
 \begin{table}[H]
-\caption{Old Broyden Optimized Triplet Nonlinear Parameters}
 \centering
 \begin{tabular}{c c c c}
-\hline\hline
+\toprule
 $\omega$ & $\alpha$ & $\beta$ & $\gamma$ \\ [0.5ex]
-\hline
+\midrule
 1 & 0.264440 & 0.831645 & 0.498871 \\
 2 & 0.356175 & 0.452426 & 0.829591 \\
 3 & 0.347611 & 0.467298 & 0.814971 \\
 4 & 0.323300 & 0.333783 & 0.974653 \\
-\hline\hline
+\bottomrule
 \end{tabular}
+\caption{Old Broyden optimized $^3S$ nonlinear parameters}
 \label{table:NonlinearOptimized3SBroyden}
 \end{table}
+
 
 \subsection{Simplex Method}
 \label{sec:Simplex}
 
-\setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
-\setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
+%\setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
+%\setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
 \begin{table}[H]
-\caption{Simplex Optimized Singlet Nonlinear Parameters}
 \centering
 \begin{tabular}{c c c c}
-\hline\hline
+\toprule
 $\omega$ & $\alpha$ & $\beta$ & $\gamma$ \\ [0.5ex]
-\hline
+\midrule
 0 & 0.30226 & 0.45479 & 1.07962 \\
 1 & 0.53592 & 0.59453 & 1.02206 \\
 2 & 0.57450 & 0.65222 & 0.98020 \\
 3 & 0.58966 & 0.63150 & 0.97397 \\
 4 & 0.58493 & 0.60995 & 0.98610 \\
 5 & 0.58691 & 0.58045 & 1.03321 \\
-\hline\hline
+\bottomrule
 \end{tabular}
+\caption{Simplex optimized $^1S$ nonlinear parameters}
 \label{tab:NonlinearOptimized1SSimplex}
 \end{table}
 
@@ -214,7 +216,14 @@ With the work on the second formalism for the P-wave \cref{sec:PWaveOpt}, it was
 
 \section{Results}
 
-\todoi{Give binding energy equation}
+The binding energy (also known as the dissociation energy) is given by Ref. \cite{Page1974} as
+\beq
+\label{eq:DissociationE}
+E_d = -E_1 - \frac{3}{4} \text{ au}.
+\eeq
+The $-\frac{3}{4}$ comes from adding the ground state (or ionization) energies of Ps and H. If the PsH system has a lower energy than $-\frac{3}{4}$, the system is bound. 
+Alternatively, if the binding energy is greater than 0, the system is bound.
+Using the accurate Bubin and Adamowicz energy in \cref{tab:BoundEnergyOther}, this gives that $^1$S PsH is stable against dissociation into Ps and H by $\SI{0.039 196 765 251}{au}$ or $\SI{1.066 598 271 959}{eV}$. 
 
 \subsection{Bound State: Singlet}
 
@@ -438,14 +447,6 @@ $\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (au) & $\Delta E
 \section{Stabilization}
 
 
-The binding energy (also known as the dissociation energy) is given by Ref. \cite{Page1974} as
-\beq
-\label{eq:DissociationE}
-E_d = -E_1 - \frac{3}{4} \text{ au}.
-\eeq
-The $-\frac{3}{4}$ comes from adding the ground state (or ionization) energies of Ps and H. If the PsH system has a lower energy than $-\frac{3}{4}$, the system is bound. 
-Alternatively, if the binding energy is greater than 0, the system is bound.
-Using the accurate Bubin and Adamowicz energy in \cref{tab:BoundEnergyOther}, this gives that $^1$S PsH is stable against dissociation into Ps and H by $\SI{0.039 196 765 251}{au}$ or $\SI{1.066 598 271 959}{eV}$. 
 
 Hazi and Taylor \cite{Hazi1970} introduced the concept of stabilization plots to PsH bound state calculations. This can allow calculations of scattering parameters from a fully bound state calculation. Specifically, they plotted the four lowest eigenvalues with respect to $N$ and looked for avoided crossings. A resonance only exists if there is an avoided crossing between eigenvalues. The avoided crossing that they found at $\SI{0.428 985}{au}$ (or $\SI{5.8366}{eV}$ as shown in \cref{tab:SWaveResonancesOther}) corresponds roughly with the first $^1$S resonance. Van Reeth and Humberston \cite{VanReeth2004} also did an analysis of stabilized eigenvalues but with the same type of basis set that we use.
 

@@ -115,7 +115,7 @@ These terms are not completely necessary to generalize here, because they only a
 \label{eq:AngRiRj}
 \Int{Y_\ell^0(\theta_i, \phi_i) Y_\ell^0(\theta_j, \phi_j)}{\tau_{ext}, \tau_{ext}} = 2 \pi \LegendreP{\ell, \cos\theta_{ij}}.
 \eeq
-It takes some work to show that the results in the \emph{Mathematica} notebook ``General Angular Integrations.nb'' are equivalent to this.
+where $i$ = $1$, 2, 3, $\rho$ or $\rho^\prime$. It takes some work to show that the results in the \emph{Mathematica} notebook ``General Angular Integrations.nb'' are equivalent to this.
 
 These integrations for the first three partial waves are given below.
 \begin{subequations}
@@ -137,7 +137,7 @@ This allows us to split these into multiple integrations with only polynomial $r
 \subsection{Terms with \texorpdfstring{$Y_\ell^0(\theta_1, \phi_1) Y_\ell^0(\theta_{\rho}, \phi_{\rho})$}{Y1-Yrho} and \texorpdfstring{$Y_\ell^0(\theta_1, \phi_1) Y_\ell^0(\theta_{\rho^\prime}, \phi_{\rho^\prime})$}{Y1-Yrho'}}
 \label{sec:AngR1Rho}
 
-After doing these integrations by hand for the P-, D-, and F-wave (the S-wave is just $2\pi$), I realized that it is possible to generalize these. This can be seen in the ``Vector Gaussian Integration.cpp'' file of the general long-range integration code. If we define a function
+After doing these integrations by hand for the P-, D-, and F-wave (the S-wave is just $2\pi$), I realized that it is possible to generalize these. This can be seen in the ``Vector Gaussian Integration.cpp'' file of the general long-range integration code. If we define
 \beq
 w_1 = \frac{r_1 + r_2 \cos\theta_{12}}{2 \rho},
 \eeq
@@ -145,7 +145,7 @@ then
 \beq
 \Int{Y_\ell^0(\theta_1, \phi_1) Y_\ell^0(\theta_{\rho}, \phi_{\rho})}{\tau_{ext}, \tau_{ext}} = 2 \pi \LegendreP{\ell, w_1},
 \eeq
-where $P_\ell$ is the standard Legendre polynomial function. This easily lets us calculate these terms in the C++ code. Likewise, for
+where $P_\ell$ is the standard Legendre polynomial. This easily lets us calculate these terms in the C++ code. Likewise, for
 \beq
 w_1^\prime = \frac{r_1 + r_3 \cos\theta_{13}}{2 \rho^\prime},
 \eeq
