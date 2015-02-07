@@ -390,32 +390,32 @@ Similar to (\ref{eq:PhiLSPerm}), we have
 
 \subsection{Matrix Elements Involving Only Short-Range Terms}
 \label{sec:MatrixShort}
-The short-range -- short-range interactions are calculated in a separate document ``3.24 Using Spherical Coordinates''.
+The short-range--short-range interactions are calculated in a separate document ``3.24 Using Spherical Coordinates''.
 
 \beq
 \label{eq:SWaveShortShort}
 \left(\bar{\phi}_i, L \bar{\phi}_j\right) = \int \left[ \sum_{l=1}^3 \boldsymbol{\nabla}_{\!\mathbf{r}_l} \bar{\phi}_i \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_l} \bar{\phi}_j + \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_T \right) \bar{\phi}_i \bar{\phi}_j \right] d\tau.
 \eeq
 
-Lastly, we need to prove that $\left(\bar{\phi}_i, L \bar{\phi}_j\right) = \left(\bar{\phi}_j, L \bar{\phi}_i\right)$.  Consider the functional
+Lastly, we need to prove that $\left(\bar{\phi}_i, \mathcal{L} \bar{\phi}_j\right) = \left(\bar{\phi}_j, \mathcal{L} \bar{\phi}_i\right)$. Consider the functional
 \beq
-F = (\phi_i, L \phi_j) - (\phi_j L \phi_i).
+F = (\phi_i, \mathcal{L} \phi_j) - (\phi_j, \mathcal{L} \phi_i).
 \eeq
 
-Using (\ref{eq:Hamiltonian1}),
+Using \cref{eq:Hamiltonian1},
 \begin{align}
 	F=&\left({-\phi_i,{\frac {1}{2}{\nabla }_{{r}_{1}}^{2}\phi_j}}\right)+\left({\phi_j,{\frac {1}{2}{\nabla }_{{r}_{1}}^{2}\phi_i}}\right)+
 	\left({-\phi_i,{\frac {1}{2}{\nabla }_{{r}_{2}}^{2}\phi_j}}\right)+\left({\phi_j,{\frac {1}{2}{\nabla }_{{r}_{2}}^{2}\phi_i}}\right) \nonumber \\
 	&+\left({-\phi_i,{\frac {1}{2}{\nabla }_{{r}_{3}}^{2}\phi_j}}\right)+\left({\phi_j,{\frac {1}{2}{\nabla }_{{r}_{3}}^{2}\phi_i}}\right).
 \end{align}
 
-From (\ref{eq:PhiDef}), the $\bar{\phi}_i$ (and $\bar{\phi}_j$) have a decaying exponential dependence in $r_1$, $r_2$ and $r_3$, so the surface terms in the integrations will vanish.  Combining this fact with (\ref{PhiBarDef}) gives that $F = 0$.  Then
+From (\ref{eq:PhiDef}), the $\bar{\phi}_i$ (and $\bar{\phi}_j$) have a decaying exponential dependence in $r_1$, $r_2$ and $r_3$, so the surface terms in the integrations will vanish.  Combining this fact with (\ref{PhiBarDef}) gives that $F = 0$. Then
 \beq
 \left(\bar{\phi}_i, \mathcal{L} \bar{\phi}_j\right) = \left(\bar{\phi}_j, \mathcal{L} \bar{\phi}_i\right).
 \label{PhiLPhiPerm}
 \eeq
 
-The claims in (\ref{eq:PhiLSPerm}) and (\ref{eq:PhiLCPerm}) are proven using the same method.  Both (\ref{eq:PhiLSPerm}) and (\ref{eq:PhiLCPerm}) include $\bar{\phi}_i$, so these terms do have a decaying exponential dependence, making the claims true.
+The claims in (\ref{eq:PhiLSPerm}) and (\ref{eq:PhiLCPerm}) are proven using the same method. Both (\ref{eq:PhiLSPerm}) and (\ref{eq:PhiLCPerm}) include $\bar{\phi}_i$, so these terms do have a decaying exponential dependence, making the claims true.
 
 %(\bar{\phi}_i, \mathcal{L}\bar{C}) = \frac{\sqrt{2\kappa}}{4\pi} &\left( (\phi_i \pm \phi_i') \Phi_{Ps}(r_{12}) \Phi_H(r_3) \left\{ \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}}\right) \frac{\cos(\kr)}{\kr} \left[1 - e^{-\mr}\left(1 + \frac{\mu}{2}\rho\right)\right] \right.\right. \nonumber\\
 %&+ \frac{e^{-\mr}\mu^3\rho}{4} \frac{\cos(\kr)}{\kr} + \frac{e^{-\mr}}{2} \kappa\mu (1+\mr) \frac{\sin(\kr)} \left.\left. \right\}\right)
@@ -434,29 +434,12 @@ This section
 \section{Results}
 
 \subsection{Singlet}
-All runs here were performed using Peter's set, with an extra 10 points in all coordinates, except for the 2nd, 3rd and 4th (which gained an extra 5 points instead).  The phase shift is given at the last term.  The value in brackets after the extrapolated phase shift is the starting value of $\omega$ for the extrapolation.
-
-The following table shows some sample runs for one value of $\kappa$, $0.1$.  The extrapolation becomes less stable for higher $\kappa$, as is discussed in section (\ref{sec:Extrapolation}).  The highlighted line shows the choice of parameters that are used, since this leads to a more well-converged set of results.
-
-\begin{center}
-\begin{tabular}{|c|c|c|c|c|c|c|}
-\hline
-Description & $\alpha$, $\beta$ and $\gamma$ & $\omega$ & $\kappa$ & Terms & Phase Shift & Extrapolated\\
-\hline
-\rowcolor{LightCyan} Double, $10^{-6}$, with asymptotic expansion & 0.5, 0.6, 1.1 & 7 & 0.1 & 1450 & -0.426666 & -0.4254 (3) \\
-& & & & & & -0.4257 [4] \\
-Quadruple, $10^{-6}$, with asymptotic expansion & 0.5, 0.6, 1.1 & 7 & 0.1 & 1595 & -0.42647 & -0.42517 (3) \\
-Double, $10^{-6}$, with asymptotic expansion & 0.5, 0.6, 1.1 & 8 & 0.1 & 1614 & -0.426646 & -0.4254 (3) \\
-Double, $10^{-6}$, with asymptotic expansion & 0.6, 0.6, 1.0 & 8 & 0.1 & 1925 & -0.42662 & -0.4258 (3) \\
-& & & & & & -0.4259 (4) \\
-& & & & & & -0.4259 (5) \\
-\hline
-\end{tabular}
-\end{center}
-
+The extrapolation becomes less stable for higher $\kappa$, as is discussed in section (\ref{sec:Extrapolation}).
 
 
 \subsection{Phase Shifts}
+
+All runs here were performed using the set of integration points described in \cref{sec:QuadraturePoints}.
 
 \begin{table}[H]
 \centering
