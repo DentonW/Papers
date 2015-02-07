@@ -272,6 +272,9 @@ This quadrature is used for the internal angular integrations.  A discussion of 
 
 \section{Long-Range -- Long-Range}
 \label{sec:LongLongInt}
+
+\todoi{Not only the 1/r23 term - also can be 1/r12 and 1/r13}
+
 The scattering program calculates only the short-range -- long-range (short-long) and long-range -- long-range (long-long) matrix elements.  The volume element in equation \ref{eq:dtau} has an internal angle of $\phi_{23}$ to integrate over.  When a term has a a negative power of $r_{23}$, a large number of integration points must be used for reasonable accuracy.  Instead, we split the integration such that one part is missing the the $r_{23}^{-1}$ term and the other contains only the $r_{23}^{-1}$ term.
 
 The first integration excluding the $r_{23}^{-1}$ term has negative powers of $r_i$ and $r_{ij}$ cancelled by the corresponding terms in the volume element given by equation \ref{}.  For the integration over the $r_{23}^{-1}$ term, we use an alternative volume element, namely that given by equation \ref{}.  The $r_{23}^{-1}$ is then cancelled by the $r_{23}$ in this volume element.

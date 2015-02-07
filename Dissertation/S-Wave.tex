@@ -5,8 +5,9 @@
 \chapter{S-Wave}
 \label{chp:SWave}
 
-The S-wave is the simplest of the partial waves to consider, since it is the lowest angular momentum state, and the spherical harmonics in 
-As a condensed notation, the S-wave singlet and triplet are referred to as $^1$S and $^3$S, respectively (as shown in \cref{chp:nomenclature}).
+\lettrine{\textcolor{startcolor}{T}}{he} S-wave is the simplest of the partial waves to consider, since it is the lowest angular momentum state, and the spherical harmonics are constant, so there is no angular dependence.
+
+As a condensed notation, the S-wave singlet and triplet are referred to as $^1$S and $^3$S, respectively (as shown in the nomenclature on \pageref{chp:nomenclature}).
 
 %\section{Wavefunction}
 %\label{sec:SWaveFn}
@@ -75,9 +76,9 @@ As a condensed notation, the S-wave singlet and triplet are referred to as $^1$S
 
 \section{Matrix Elements}
 
-\subsection{Total Energy and H/Ps Wavefunctions}
-
-
+%\subsection{Total Energy and H/Ps Wavefunctions}
+%
+%
 %From equation \ref{eq:Wavenumber}, since positronium has twice the mass of a positron, $m \to 2m$, the kinetic energy of the positronium atom is $T = \frac{1}{4} \kappa^2$, where $\kappa$ is the wavenumber of Ps.  Including the dissociation energy of H and Ps to get the total energy gives
 %\beq
 %E_T = E_H + E_{Ps} + \frac{1}{4} \kappa^2.
@@ -87,24 +88,24 @@ As a condensed notation, the S-wave singlet and triplet are referred to as $^1$S
 %E_T = -\frac{1}{2} - \frac{1}{4} + \frac{1}{4} \kappa^2 = -\frac{3}{4} + \frac{1}{4} \kappa^2 \:\: \text{(in a.u.)}.
 %\label{eq:EnergyTotal}
 %\eeq
-
-Some important cancellations are made in the matrix element equations by using the H and Ps ground state wavefunctions. Separately, the H and Ps equations are respectively (for large values of $\rho$)
-\beq
-\left(-\frac{1}{2}\nabla_{r_3}^2 - \frac{1}{r_3}\right) \Phi_H(r_3) = E_H \Phi_H(r_3)
-\label{eq:HEqn}
-\eeq
-\beq
-\left(-\nabla_{r_{12}}^2 - \frac{1}{r_{12}}\right) \Phi_{Ps}(r_{12}) = E_{Ps} \Phi_{Ps}(r_{12})
-\label{eq:PsEqn}
-\eeq
+%
+%Some important cancellations are made in the matrix element equations by using the H and Ps ground state wavefunctions. Separately, the H and Ps equations are respectively (for large values of $\rho$)
+%\beq
+%\left(-\frac{1}{2}\nabla_{r_3}^2 - \frac{1}{r_3}\right) \Phi_H(r_3) = E_H \Phi_H(r_3)
+%\label{eq:HEqn}
+%\eeq
+%\beq
+%\left(-\nabla_{r_{12}}^2 - \frac{1}{r_{12}}\right) \Phi_{Ps}(r_{12}) = E_{Ps} \Phi_{Ps}(r_{12})
+%\label{eq:PsEqn}
+%\eeq
 
 \subsection{Matrix Elements Involving Long-Range Terms}
 \label{sec:MatrixLong}
-The short-range--long-range and long-range--long-range matrix elements have a similar analysis. For all of these, the effect of the $\mathcal{L} = 2(H-E)$ operator on the long-range terms must be considered, and then integrations over the external angles (see \Cref{chp:AngularInt}) are performed. The remaining 6-dimensional integral is then numerically integrated as described in sections \ref{sec:LongLongInt} and \ref{sec:ShortLongInt}.
+%The short-range--long-range and long-range--long-range matrix elements have a similar analysis. For all of these, the effect of the $\mathcal{L} = 2(H-E)$ operator on the long-range terms must be considered, and then integrations over the external angles (see \Cref{chp:AngularInt}) are performed. The remaining 6-dimensional integral is then numerically integrated as described in sections \ref{sec:LongLongInt} and \ref{sec:ShortLongInt}.
 
 \subsubsection{Elements with \texorpdfstring{$\mathcal{L}S$}{LS}}
 \label{sec:LSElements}
-The $(\tilde{C},\mathcal{L}\tilde{S})$ and $(\tilde{\phi}_i,\mathcal{L}\tilde{S})$ matrix elements have the $\mathcal{L}$-operator acting on $S$. While not explicitly in the matrix given by \ref{eq:GeneralKohnMatrix}, $(\tilde{S},\mathcal{L}\tilde{S})$ is required in the final equation \ref{eq:GenDFDT2}. Also from the general $\tilde{S}$ and $\tilde{C}$, equation \ref{eq:GenSCMatrix} gives that the evaluation of $(\tilde{S},\mathcal{L}\tilde{S})$ is needed. We first look at $L$ operating on $S$ and then determine the form of these matrix elements.
+The $(\tilde{C},\mathcal{L}\tilde{S})$ and $(\tilde{\phi}_i,\mathcal{L}\tilde{S})$ matrix elements have the $\mathcal{L}$-operator acting on $S$. While not explicitly in the matrix given by \cref{eq:GeneralKohnMatrix}, $(\tilde{S},\mathcal{L}\tilde{S})$ is required in the final \cref{eq:GenDFDT2}. Also from the general $\tilde{S}$ and $\tilde{C}$, \cref{eq:GenSCMatrix} gives that the evaluation of $(\tilde{S},\mathcal{L}\tilde{S})$ is needed. We first look at $L$ operating on $S$ and then determine the form of these matrix elements.
 
 %\begin{align}
 %\nonumber \mathcal{L}S &= \left(-\frac{1}{2}\nabla_\rho^2 - \nabla_{r_3}^2 - 2\nabla_{r_{12}}^2 + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_T\right) \Phi_{Ps}(r_{12}) \Phi_H(r_3) \frac{\sin(\kappa\rho)}{\kappa\rho} \sqrt{\frac{2\kappa}{4\pi}} \\
@@ -430,7 +431,7 @@ This section
 
 
 
-\section{Phase Shifts}
+\section{Results}
 
 \subsection{Singlet}
 All runs here were performed using Peter's set, with an extra 10 points in all coordinates, except for the 2nd, 3rd and 4th (which gained an extra 5 points instead).  The phase shift is given at the last term.  The value in brackets after the extrapolated phase shift is the starting value of $\omega$ for the extrapolation.
@@ -552,12 +553,12 @@ Figure \ref{fig:SWaveComparisons} shows the results from various groups for calc
 
 
 
-\section{S-Wave Resonances}
+\subsection{Resonances}
 \label{sec:SWaveResonances}
 
 There are two very obvious resonances before the Ps(n=2) channel threshold for $^1$S scattering, which can be seen in figure \ref{fig:SWavePhase}.  This threshold is at an incoming Ps energy of approximately 5.102 eV.  
 
-\subsection{Resonance Model}
+\subsubsection{Resonance Model}
 \label{sec:ResonanceModel}
 The resonance positions and widths can be calculated to high accuracy by fitting the data to the following standard curve:
 
@@ -576,7 +577,7 @@ The polynomial part of the above equation corresponds to hard-sphere scattering.
 	\label{fig:triplet-false-resonance}
 \end{figure}
 
-\subsection{Resonance Graphs}
+\subsubsection{Resonance Graphs}
 \label{sec:ResonanceGraphs}
 
 \begin{figure}[H]
@@ -622,7 +623,7 @@ The polynomial part of the above equation corresponds to hard-sphere scattering.
 \end{figure}
 
 
-\subsection{Resonance Values and Errors}
+\subsubsection{Resonance Values and Errors}
 \label{sec:ResonanceErrors}
 
 \begin{figure}[H]
@@ -660,7 +661,7 @@ The error for each parameter could be determined one of three ways.  The errors 
 
 
 
-\subsection{Resonance Parameters}
+\subsubsection{Resonance Parameters}
 
 \setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
 \setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example

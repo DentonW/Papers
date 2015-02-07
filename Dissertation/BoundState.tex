@@ -279,7 +279,7 @@ $\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (au) & Binding E
 \label{tab:BoundEnergy1}
 \end{table}
 
-The next and current version of the code uses quadruple precision and is able to do runs through $\omega = 8$ (not shown in \cref{tab:BoundEnergy1}). Linear dependence is also decreased when the nonlinear parameters are different (\cref{sec:BoundOpt} for parameter optimization). The Ps-H scattering problem (\cref{chp:SWave}) is much more difficult, so a run with $\omega = 7$ is all that is needed. \Cref{tab:BoundEnergy1} shows the PsH energies through $\omega = 7$ for the full set of terms described by \cref{eq:OmegaDef}.
+The next and current version of the code uses quadruple precision and is able to do runs through $\omega = 8$ (not shown in \cref{tab:BoundEnergy1}). Linear dependence is also decreased when the nonlinear parameters are different (\cref{sec:BoundOptimization} for parameter optimization). The Ps-H scattering problem (\cref{chp:SWave}) is much more difficult, so a run with $\omega = 7$ is all that is needed. \Cref{tab:BoundEnergy1} shows the PsH energies through $\omega = 7$ for the full set of terms described by \cref{eq:OmegaDef}.
 
 \setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
 \setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
@@ -390,7 +390,7 @@ The last six entries of this table give just the CC results of the Belfast group
 
 Our current complex Kohn binding energy in the first line of the table compares well with the accurate energies of Refs. \cite{Bubin2006, Mitroy2006, Yan1999}, but it is not as accurate of a calculation. The purpose of doing the PsH calculation was not to get the best result but to test how well the short-range terms for Ps-H scattering represent the short-range interactions. Based on \cref{tab:BoundEnergyOther}, the short-range interactions are described well. This also gave experience working with the Hylleraas basis set, and finding the PsH energy is a simpler problem than Ps-H scattering.
 
-\subsection{``Bound State'': Triplet}
+\subsection{Triplet Energy Eigenvalues}
 
 Our code does not predict a true triplet bound state, making the singlet ground state the only possible configuration for PsH. Mitroy and Bromley have published a paper \cite{Mitroy2007} claiming a stable triplet bound state , but our code may not have the appropriate type of wavefunction to see this, since it is for a H($2p$) + Ps($2p$) state. They also use a very large configuration interaction basis, and this bound state is very shallow. Despite not predicting a bound state, we run the bound state code for the triplet so that we can use this for the short-range terms for the scattering program.
 

@@ -7,6 +7,8 @@ As mentioned in the introduction, the Kohn variational method has been
 
 \section{General Wavefunction}
 
+\todoi{Mention $L = \ell$}
+
 The applications of the Kohn, inverse Kohn, complex Kohns, generalized Kohn, and generalized complex Kohns to our trial wavefunctions for each of the partial waves through the H-wave are all very similar in form. The trial wavefunctions for the partial waves (\cref{eq:SWaveTrialSimple,eq:PWaveSimple,eq:DWaveSimple}) can be written in a general form as
 
 \beq
@@ -231,7 +233,7 @@ Some important cancellations are made in the matrix element equations in \cref{s
 \label{eq:HPsEqn}
 \begin{align}
 \left(-\frac{1}{2} \Laplacian_{r_3} - \frac{1}{r_3}\right) \Phi_H(r_3) &= E_H \Phi_H(r_3) \label{eq:HEqn} \\
-\left(-\Laplacian_{r_{12}} - \frac{1}{r_{12}}\right) \Phi_{Ps}(r_{12}) &= E_{Ps} \Phi_{Ps}(r_{12}) \label{eq:PsEqn}
+\left(-\Laplacian_{r_{12}} - \frac{1}{r_{12}}\right) \Phi_{Ps}(r_{12}) &= E_{Ps} \Phi_{Ps}(r_{12}). \label{eq:PsEqn}
 \end{align}
 \end{subequations}
 Realizing then that the Hamiltonians for H and Ps are given by
@@ -687,7 +689,7 @@ This is a generalized form of the $S$ matrix Kohn. When $\tau = 0$, this reduces
 
 
 \section{Matrix Elements}
-In this section, we examine the matrix elements of \cref{eq:GeneralKohnMatrix}. The three types of matrix elements are short-range -- short-range, short-range -- long-range and long-range -- long-range.
+In this section, we examine the matrix elements of \cref{eq:GeneralKohnMatrix}. The three types of matrix elements are short-range--short-range (short-short), short-range--long-range (short-long) and long-range--long-range (long-long). The short-long and long-long matrix elements have a similar analysis. For these, the effect of the $\mathcal{L} = 2(H-E)$ operator on the long-range terms must be considered, and then integrations over the external angles (see \cref{chp:AngularInt}) are performed. The remaining 6-dimensional integral is then numerically integrated as described in sections \ref{sec:LongLongInt} and \ref{sec:ShortLongInt}.
 
 \subsection{Matrix Elements Involving Long-Range Terms}
 \label{sec:MatrixLong}
@@ -695,7 +697,7 @@ The short-range--long-range and long-range--long-range matrix elements have a si
 
 \subsubsection{\texorpdfstring{$\mathcal{L}S_\ell$}{LS} Terms}
 \label{sec:LSTerms}
-The $(\widetilde{S}_\ell,\mathcal{L}\widetilde{S}_\ell)$, $(\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell)$, and $(\bar{\phi}_i,\mathcal{L}\widetilde{S}_\ell)$ matrix elements in \cref{eq:GeneralKohnMatrix} require us to first determine $\mathcal{L}\widetilde{S}_\ell$. We start with examining $\mathcal{L}S_\ell$ first.
+The matrix elements in \cref{eq:GeneralKohnMatrix} require us to first determine $\mathcal{L}\bar{S}_\ell$. We start with examining $\mathcal{L}S_\ell$ first.
 
 Using \cref{eq:GenSDef,eq:LDef}, 
 \begin{align}
@@ -876,7 +878,7 @@ Using \cref{eq:BoundHFull} with \cref{eq:LDef} and realizing that the bra is not
 \label{eq:SWaveShortShort}
 \left(\bar{\Phi}_i, \mathcal{L} \bar{\Phi}_j\right) = \int \left[ \sum_{l=1}^3 \boldsymbol{\nabla}_{\!\mathbf{r}_l} \bar{\Phi}_i \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_l} \bar{\Phi}_j + \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E \right) \bar{\Phi}_i \bar{\Phi}_j \right] d\tau.
 \eeq
-Again, the $\Phi_i$ represents any of the short-range terms given in \cref{eq:PhiDef} and could also represent any other Hylleraas-type terms, such as the `mixed terms' (see \cref{}) or the second formalism of the P-wave (see \cref{sec:PWave2Formalism}).
+Again, the $\Phi_i$ represents any of the short-range terms given in \cref{eq:PhiDef} and could also represent any other Hylleraas-type terms, such as the mixed terms (see \cref{sec:MixedTerms}) or the second formalism of the P-wave (see \cref{sec:PWave2Formalism}).
 
 
 \section{Symmetries}

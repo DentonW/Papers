@@ -7,6 +7,8 @@
 
 \todoi{LOOK AT BISHOP THESIS}
 \todoi{Switch to BibLaTeX}
+\todoi{Lithium?, e- H, e+ He, e- He, McCurdy and Rescigno -> KVM mentioned how used for many systems, established method used by many groups}
+\todoi{Mention UCL and Australia groups}
 $\LaTeXe$
 
 \section{Positrons and Positronium}
@@ -34,22 +36,22 @@ The positronium system is similar to the hydrogen atom with the proton replaced 
 To obtain the Ps wavefunction, we can start with the wavefunction for H and replace $m_e \rightarrow \frac{m_e}{2}$.  The ground state wavefunction for H is
 \begin{equation}
 \Psi_{100,H} = \left(\frac{1}{\pi a_0^3}\right)^{\frac{1}{2}} \!\! \ee^{-\frac{r}{a_0}},
-\text{where } a_0 = \frac{\hbar^2}{m_e \,e^2}.
+\text{where } a_0 = \frac{\hbar^2}{m_e \,e^2} \;.
 \end{equation}
 The $100$ represents the $n \ell m$ quantum numbers, and we are only considering ground state H and Ps. 
-If we denote $a_0 \rightarrow a_0'$, where we replace $m_e$ by $\frac{m_e}{2}$, the positronium ground state wavefunction can be writen easily as
+If we denote $a_0 \rightarrow a_0'$, where we replace $m_e$ by $m_e/2$ $\frac{m_e}{2}$, the positronium ground state wavefunction can be writen easily as
 \begin{equation}
 \Psi_{100,Ps} = \left(\frac{1}{\pi {a_0'}^3}\right)^{\frac{1}{2}} \!\! \ee^{-\frac{r}{a_0'}},
-\text{where } a_0' = \frac{2\hbar^2}{m_e \,e^2}.
+\text{where } a_0' = \frac{2\hbar^2}{m_e \,e^2} \;.
 \end{equation}
-Working in atomic units \cite{Hartree1928}, $a_0 = 1$ (i.e. $\hbar = m_e = e = 1$), giving
+Working in atomic units (see \cref{sec:Units}), $a_0 = 1$ (i.e. $\hbar = m_e = e = 1$), giving
 \begin{equation}
 \Psi_H\left(r_3\right) \equiv \Psi_{100,H}\left(r_3\right) = \frac{1}{\sqrt{\pi}} \ee^{-r_3}
 \label{eq:HWave}
 \end{equation}
 and
 \begin{equation}
-\Psi_{Ps}\left(r_{12}\right) \equiv \Psi_{100,Ps}\left(r_{12}\right) = \frac{1}{\sqrt{8 \pi}} \ee^{-r_{12}/2}.
+\Psi_{Ps}\left(r_{12}\right) \equiv \Psi_{100,Ps}\left(r_{12}\right) = \frac{1}{\sqrt{8 \pi}} \ee^{-r_{12}/2} \;.
 \label{eq:PsWave}
 \end{equation}
 
@@ -109,6 +111,7 @@ Positronium hydride (PsH) is a molecule comprised of a hydrogen atom and a posit
 \todoi{Short-range term animations: \url{http://youtu.be/uVxK9iGZGm0}}
 \todoi{Plotly plots: \url{https://plot.ly/~Denton}}
 \todoi{Cite Hylleraas paper on He: \cite{Hylleraas1929}}
+\todoi{Consistent H and Ps abbreviations}
 
 \section{A Note on Units}
 \label{sec:Units}
@@ -121,7 +124,7 @@ http://exciting-code.org/ref:input
 http://physics.nist.gov/cuu/Constants/energy.html
 \end{verbatim}
 
-Unless otherwise stated, values throughout are given in atomic units, i.e. $\hbar = m_e = e = 4\pi\epsilon_0 = 1$. Energies are given in hartrees, with $\SI{1}{\hartree} = \SI{27.211 385 05(60)}{\electronvolt}$ \cite{Mohr2012,NISTConversions}. Momentum is given as units of $a_0^{-1}$. Cross sections are given in units of $\pi a_0^2$, unless otherwise noted.
+Unless otherwise stated, values throughout are given in atomic units, i.e. $\hbar = m_e = e = 4\pi\epsilon_0 = 1$ \cite{Hartree1928}. Energies are given in hartrees, with $\SI{1}{\hartree} = \SI{27.211 385 05(60)}{\electronvolt}$ \cite{Mohr2012,NISTConversions}. Momentum is given as units of $a_0^{-1}$. Cross sections are given in units of $\pi a_0^2$, unless otherwise noted.
 
 
 
