@@ -12,11 +12,12 @@ As mentioned in the introduction, the Kohn variational method has been
 The applications of the Kohn, inverse Kohn, complex Kohns, generalized Kohn, and generalized complex Kohns to our trial wavefunctions for each of the partial waves through the H-wave are all very similar in form. The trial wavefunctions for the partial waves (\cref{eq:SWaveTrialSimple,eq:PWaveSimple,eq:DWaveSimple}) can be written in a general form as
 
 \beq
-\Psi_\ell^{\pm,t} = \widetilde{S}_\ell + L_\ell^{\pm,t} \, \widetilde{C}_\ell + \sum_{i=1}^N c_i \bar{\Phi}_i.
+\Psi_\ell^{\pm,t} = \widetilde{S}_\ell + L_\ell^{\pm,t} \, \widetilde{C}_\ell + \sum_{i=1}^N c_i \bar{\phi}_i.
 \label{eq:GeneralWaveTrial}
 \eeq
 
-The short-range $\bar{\Phi}_i$ terms can represent terms of different symmetries, such as the $\bar{\phi}_{1i}$ and $\bar{\phi}_{2j}$ of the P-wave in \cref{eq:PWaveSimple}. The only requirement in this derivation is that these are Hylleraas-type short-range terms. In addition to letting the $\widetilde{S}$ and $\widetilde{C}$ represent the $\bar{S}$ and $\bar{C}$ for the different partial waves, we can define them in such a way as to use multiple Kohn methods (Kohn, inverse Kohn, etc.). We begin by defining a $2\times 2$ matrix $\textbf{u}$ which satisfies
+\todoi{Reconcile $\Phi_{Ps}$ and $\Phi_H$ with \cref{eq:PsWave,eq:HWave}}
+The short-range $\bar{\phi}_i$ terms can represent terms of different symmetries, such as the $\bar{\phi}_{1i}$ and $\bar{\phi}_{2j}$ of the P-wave in \cref{eq:PWaveSimple}. The only requirement in this derivation is that these are Hylleraas-type short-range terms. In addition to letting the $\widetilde{S}$ and $\widetilde{C}$ represent the $\bar{S}$ and $\bar{C}$ for the different partial waves, we can define them in such a way as to use multiple Kohn methods (Kohn, inverse Kohn, etc.). We begin by defining a $2\times 2$ matrix $\textbf{u}$ which satisfies
 \beq
 \label{eq:GenSCMatrix}
 \begin{bmatrix}
@@ -76,7 +77,7 @@ At a minimum, $m_\ell$ is chosen so that $C_\ell$ behaves like $S_\ell$ as $\rho
 
 \todoi{Put in plots from ``Shielding Function Plots.nb''}
 
-The Hylleraas-type short-range terms are similar to that used in the bound state in \cref{eq:BoundWavefn}. These are chosen to have two symmetries, one with a prefactor of $r_1^\ell$ and the other with a prefactor of $r_2^\ell$. From Refs.~\cite{Schwartz1961a,VanReethThesis}, the D-wave and higher can have additional symmetries where the angular momentum is shared between the Ps and H. We do not consider these mixed terms here. \todo{Justification}
+The Hylleraas-type short-range terms are similar to that used in the bound state in \cref{eq:BoundWavefn}. These are chosen to have two symmetries, one with a prefactor of $r_1^\ell$ and the other with a prefactor of $r_2^\ell$. From Refs.~\cite{Schwartz1961a,VanReethThesis}, the D-wave and higher can have additional symmetries where the angular momentum is shared between the Ps and H. We do not consider these mixed terms in this work (see \cref{sec:MixedTerms}).
 
 \begin{subequations}
 \label{eq:PhiDef}
@@ -90,7 +91,9 @@ The Hylleraas-type short-range terms are similar to that used in the bound state
 \end{align}
 \end{subequations}
 
-The S-wave only has a single symmetry, so $\bar{\Phi}_i$ is a single set of terms.
+\todoi{Replace $\bar{\phi}_i$ with $\bar{\phi}_i$ for general!}
+
+The S-wave only has a single symmetry, so $\bar{\phi}_i$ is a single set of terms.
 Similar to \cref{sec:BoundWavefn}, the $\frac{1}{\sqrt{2}}$ is absorbed into $c_i$. The full S-wave trial wavefunction can be written as
 \begin{equation}
   \label{eq:TrialWave}
@@ -213,7 +216,7 @@ H = -\frac{1}{2} \Laplacian_{r_1} - \frac{1}{2} \Laplacian_{r_2} - \frac{1}{2} \
 H = -\frac{1}{4} \Laplacian_\rho - \frac{1}{2} \Laplacian_{r_3} - \Laplacian_{r_{12}} + \frac{1}{r_1} - \frac{1}{r_2} - \frac{1}{r_3} - \frac{1}{r_{12}} - \frac{1}{r_{13}} + \frac{1}{r_{23}}
 \label{eq:Hamiltonian2}
 \end{align}
-and
+and for the permuted version,
 \begin{align}
 H = -\frac{1}{4} \Laplacian_{\rho^\prime} - \frac{1}{2} \Laplacian_{r_2} - \Laplacian_{r_{13}} + \frac{1}{r_1} - \frac{1}{r_2} - \frac{1}{r_3} - \frac{1}{r_{12}} - \frac{1}{r_{13}} + \frac{1}{r_{23}}.
 \label{eq:Hamiltonian3}
@@ -251,7 +254,7 @@ and rearranging terms, \cref{eq:IlPsiVariation3} becomes
 + &2 \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{V_\rho} \Psi_\ell \left[H_H + H_{Ps} + \frac{1}{r_1} - \frac{1}{r_2} - \frac{1}{r_{13}} + \frac{1}{r_{23}} - E_H - E_{Ps} - \frac{1}{4}\kappa^2 \right] \delta\Psi_\ell \,d\tau_\rho d\tau_{r_3} d\tau_{r_{12}} \nonumber \\
 - &2 \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{V_\rho} \delta\Psi_\ell \left[H_H + H_{Ps} + \frac{1}{r_1} - \frac{1}{r_2} - \frac{1}{r_{13}} + \frac{1}{r_{23}} - E_H - E_{Ps} - \frac{1}{4}\kappa^2 \right] \Psi_\ell \,d\tau_\rho d\tau_{r_3} d\tau_{r_{12}}.
 \end{align}
-Due to the exponential form of $\Phi_{Ps}(r_{12})$ and $\Phi_H(r_3)$ given in \cref{}, the last two lines cancel each other.
+Due to the exponential form of $\Phi_{Ps}(r_{12})$ and $\Phi_H(r_3)$ given in \cref{eq:PsWave,eq:HWave}, the last two lines cancel each other.
 
 From Green's theorem,
 \begin{align}
@@ -279,7 +282,7 @@ From \cref{eq:PsilTrialRelation} and \cref{eq:GeneralWaveTrial},
 Substituting this into \cref{eq:IlPsiVariation4} with \cref{eq:GreensThm},
 \beq
 \label{eq:IlPsiVariation5}
-\delta I_\ell^\prime = -\frac{1}{2} (L_\ell^t - L_\ell) \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{S_\rho} \left[(\widetilde{S}_d + L_\ell \, \widetilde{C}_d) \grad_\rho \widetilde{C}_d - \widetilde{C}_d \grad_\rho (\widetilde{S}_d + L_\ell \, \widetilde{C}_d) \right] \cdot d\bm{\sigma}_\rho d\tau_{12} d\tau_3.
+\delta I_\ell^\prime = -\frac{1}{2} (L_\ell^t - L_\ell) \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{S_\rho} \left[(\widetilde{S}_d + L_\ell \, \widetilde{C}_d) \grad_\rho \widetilde{C}_d - \widetilde{C}_d \grad_\rho (\widetilde{S}_d + L_\ell \, \widetilde{C}_d) \right] \cdot d\bm{\sigma}_\rho d\tau_{12} d\tau_3 \;.
 \eeq
 
 From \cref{eq:SphBesDerRel,eq:GenSandC}, to first order, the gradient acting on $\widetilde{S}_d$ and $\widetilde{C}_d$ in \cref{eq:TildeSCDef} gives
@@ -875,147 +878,103 @@ Since $C_\ell$ and $C_\ell^\prime$ are also symmetric with their respective swap
 Using \cref{eq:BoundHFull} with \cref{eq:LDef} and realizing that the bra is not conjugated in the Kohn variational methods, the short-range--short-range (short-short) integrals are of the form
 \beq
 \label{eq:SWaveShortShort}
-\left(\bar{\Phi}_i, \mathcal{L} \bar{\Phi}_j\right) = \int \left[ \sum_{l=1}^3 \boldsymbol{\nabla}_{\!\mathbf{r}_l} \bar{\Phi}_i \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_l} \bar{\Phi}_j + \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E \right) \bar{\Phi}_i \bar{\Phi}_j \right] d\tau.
+\left(\bar{\phi}_i, \mathcal{L} \bar{\phi}_j\right) = \int \left[ \sum_{l=1}^3 \boldsymbol{\nabla}_{\!\mathbf{r}_l} \bar{\phi}_i \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_l} \bar{\phi}_j + \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E \right) \bar{\phi}_i \bar{\phi}_j \right] d\tau.
 \eeq
-Again, the $\Phi_i$ represents any of the short-range terms given in \cref{eq:PhiDef} and could also represent any other Hylleraas-type terms, such as the mixed terms (see \cref{sec:MixedTerms}) or the second formalism of the P-wave (see \cref{sec:PWave2Formalism}).
+Again, the $\bar{\phi}$ represents any of the short-range terms given in \cref{eq:PhiDef} and could also represent any other Hylleraas-type terms, such as the mixed terms (see \cref{sec:MixedTerms}) or the second formalism of the P-wave (see \cref{sec:PWave2Formalism}). These matrix elements are numerically integrated using the methods described in \cref{sec:ShortInt}.
 
 
-\section{Symmetries}
+\section{Matrix Element Symmetries}
 \label{sec:Symmetries}
 
-Not all matrix elements in \cref{eq:GeneralKohnMatrix} have to be calculated as presented. Some matrix elements are identical to other matrix elements, such as $(\widetilde{C},\mathcal{L}\bar{\phi}_i) = (\bar{\phi}_i,\mathcal{L}\widetilde{C})$. In this particular case, it is much easier to calculate $(\bar{\phi}_i,\mathcal{L}\widetilde{C})$ instead of $(\widetilde{C},\mathcal{L}\bar{\phi}_i)$, due to the complexity of operating $\mathcal{L}$ on $\bar{\phi}_i$ (see \cref{eq:GradGradShort,tab:LCList}). We prove these claims in this section.
+Not all matrix elements in \cref{eq:GeneralKohnMatrix} have to be calculated as presented. Some matrix elements are identical to other matrix elements, such as $(\widetilde{C}_\ell,\mathcal{L}\bar{\phi}_i) = (\bar{\phi}_i,\mathcal{L}\widetilde{C}_\ell)$. In this particular case, it is much easier to calculate $(\bar{\phi}_i,\mathcal{L}\widetilde{C}_\ell)$ instead of $(\widetilde{C}_\ell,\mathcal{L}\bar{\phi}_i)$, due to the complexity of operating $\mathcal{L}$ on $\bar{\phi}_i$ (see \cref{eq:GradGradShort,tab:LCList}). We prove these claims in this section.
 
-\subsection{Matrix Element Symmetry}
-The claims in equations \ref{eq:PhiLSPerm} and \ref{eq:PhiLCPerm} can be proven by starting with the functional
+These arguments follow that of Appendix A of Peter Van Reeth's thesis \cite{VanReethThesis}.
+We start with the functional
 \begin{align}
-	F \equiv \left(g,\mathcal{L}f \right)-\left(f,\mathcal{L}g \right).
+	\label{eq:Fsymm}
+	F \equiv \left(g,\mathcal{L}f \right)-\left(f,\mathcal{L}g \right) \; ,
 \end{align}
-
-Only the first three terms of the above functional have to be evaluated, as the other terms go to 0 with the subtraction.
+with $\mathcal{L}$ given by \cref{eq:LDef}. The functions $f$ and $g$ are any of $\widetilde{S}_\ell$, $\widetilde{C}_\ell$ and $\bar{\phi}_i$.
+Using the Hamiltonian given by \cref{eq:Hamiltonian1}, only the first
+three terms of the above functional have to be evaluated, as the other terms go to 0 with the subtraction.
 \begin{align}
-	F=&\left({-g,\frac{1}{2} \nabla_{r_1}^2 f}\right)+\left({f,\frac{1}{2} \nabla_{r_1}^2 g}\right)+
-	\left({-g,\frac{1}{2} \nabla_{r_2}^2 f}\right)+\left({f,\frac{1}{2} \nabla_{r_2}^2 g}\right) \nonumber \\
-	&+\left({-g,\frac{1}{2} \nabla_{r_3}^2 f}\right)+\left({f,\frac{1}{2} \nabla_{r_3}^2 g}\right)
+	F=&\left({-g,\frac{1}{2} \Laplacian_{r_1} f}\right)+\left({f,\frac{1}{2} \Laplacian_{r_1} g}\right)+
+	\left({-g,\frac{1}{2} \Laplacian_{r_2} f}\right)+\left({f,\frac{1}{2} \Laplacian_{r_2} g}\right) \nonumber \\
+	&+\left({-g,\frac{1}{2} \Laplacian_{r_3} f}\right)+\left({f,\frac{1}{2} \Laplacian_{r_3} g}\right)  \nonumber \\
+=& \int\limits_{V_3} \int\limits_{V_2} \int\limits_{V_1} \left[
+	-g  \Laplacian_{r_1} f + f \Laplacian_{r_1} g
+	-g \Laplacian_{r_2} f + f \Laplacian_{r_2} g - g \Laplacian_{r_3} f + f \Laplacian_{r_3} g \right] \,d\tau_1 d\tau_2 d\tau_3
 \end{align}
-
-We can use Green's theorem on each pair of terms:
-
-\todoi{Is it really only 2 volumes, not 3?}
-
+Using Green's theorem on each pair of terms,
 \begin{align}
-	{\int _{V_2}{{\int_{V_1}{\left[{u{\nabla }_1^2 v-v{\nabla }_1^2 u}\right]{d \tau_1}}}{d \tau_2}}}
-	= \int_{V_2} \int_{S_1} \left[u \vec{\nabla}_1 v - v \vec{\nabla}_1 u \right] \cdot d\vec{\sigma}_1 d\tau_2
+F = \int\limits_{V_3} \int\limits_{V_2} \int\limits_{S_1} & \left[-g \grad_{r_1} f + f \grad_{r_1} g \right] \cdot d\bm{\sigma}_1 d\tau_2 d\tau_3 + \int\limits_{V_3} \int\limits_{V_1} \int\limits_{S_2} \left[ -g \grad_{r_2} f + f \grad_{r_2} g \right] \cdot d\bm{\sigma}_2 d\tau_1 d\tau_3 \nonumber \\
+	& + \int\limits_{V_1} \int\limits_{V_2} \int\limits_{S_3} \left[ -g \grad_{r_3} f + f \grad_{r_3} g \right] \cdot d\bm{\sigma}_3 d\tau_2 d\tau_1 \;.
 \end{align}
-
-\todoi{These do not immediately follow from the above line. Expand this. Look at Appendix A of Peter's thesis.}
+For the first pair of terms, the differential surface element contains $r_1^2$. The surface we are integrating over is at $r_1 \rightarrow \infty$, so if the integrand falls off faster than $r_1^{-2}$, the integral vanishes, the same as the argument in \cref{eq:IlPsiVariation4}. The same argument applies for $r_2^2$ and $r_3^2$ in the second and third pairs of terms, respectively. The short-range Hylleraas-type terms in \cref{eq:PhiDef} fulfill this requirement for $r_1$, $r_2$, and $r_3$, so if the matrix elements contain $\bar{\phi}_i$, the right hand side is equal to 0. From \cref{eq:Fsymm}, this gives that matrix elements with short-range terms are symmetric, or that
 \begin{subequations}
-\label{eq:elem_symm}
+\label{eq:ShortElemSymm}
 \begin{align}
 \left(\bar{\phi}_i, \mathcal{L} \bar{\phi}_j \right) &= \left(\bar{\phi}_j, \mathcal{L} \bar{\phi}_i \right) \\
-\left(\bar{\phi}_i, \mathcal{L} \bar{S} \right) &= \left(\bar{S}, \mathcal{L} \bar{\phi}_i \right) \label{eq:SLPhi} \\
-\left(\bar{\phi}_i, \mathcal{L} \bar{C} \right) &= \left(\bar{C}, \mathcal{L} \bar{\phi}_i \right) \label{eq:CLPhi}
+\left(\bar{\phi}_i, \mathcal{L} \widetilde{S}_\ell \right) &= \left(\widetilde{S}_\ell, \mathcal{L} \bar{\phi}_i \right) \label{eq:SLPhi} \\
+\left(\bar{\phi}_i, \mathcal{L} \widetilde{C}_\ell \right) &= \left(\widetilde{C}_\ell, \mathcal{L} \bar{\phi}_i \right) \label{eq:CLPhi}.
 \end{align}
 \end{subequations}
+From \cref{eq:LDef,eq:BoundHFull,eq:GradGradShort}, the form of $\mathcal{L}\phi_i$ is very complicated, but \cref{eq:SLPhi,eq:CLPhi} allow us to avoid having to operate $\mathcal{L}$ on the $\bar{\phi}_i$ terms.
 
-\noindent Equations \ref{eq:SLPhi} and \ref{eq:CLPhi} allow us to avoid having to operate $\mathcal{L}$ on the $\phi$ terms. From equation \ref{}, the form of $\mathcal{L}\phi_i$ is very complicated, so our 
-
-We just need to consider the long-range--long-range matrix elements. Examining the functional
- $F = \left(\bar{S}, \mathcal{L}\bar{C}\right) - \left(\bar{C}, \mathcal{L}\bar{S}\right)$:
-\begin{equation*}
-F = \left(\frac{1}{\sqrt{2}} \left[S \pm S^\prime \right], \mathcal{L} \frac{1}{\sqrt{2}}\left[C \pm C^\prime \right] \right) -
-    \left(\frac{1}{\sqrt{2}} \left[C \pm C^\prime \right], \mathcal{L} \frac{1}{\sqrt{2}}\left[S \pm S^\prime \right] \right)
-\end{equation*}
-\begin{equation}
-= \frac{1}{2}\left[(S,\mathcal{L}C) \pm (S,\mathcal{L}C^\prime) \pm (S^\prime,\mathcal{L}C) + (S^\prime,\mathcal{L}C^\prime) - (C,\mathcal{L}S) \mp (C,\mathcal{L}S^\prime) \mp (C^\prime,\mathcal{L}S) - (C^\prime,\mathcal{L}S^\prime)\right]
-\end{equation}
-
-From (\ref{}), $(S,\mathcal{L}C) = (S^\prime,\mathcal{L}C^\prime)$, $(S^\prime,\mathcal{L}C) = (S,\mathcal{L}C^\prime)$, $(C,\mathcal{L}S) = (S^\prime,\mathcal{L}C^\prime)$ and $(C^\prime,\mathcal{L}S) = (C,\mathcal{L}S^\prime)$, causing the above to reduce to
-\beqs
-F = \left[ (S,\mathcal{L}C) - (C,\mathcal{L}S)\right] \pm \left[ (S,\mathcal{L}C^\prime) - (C^\prime,\mathcal{L}S)\right].
-\eeqs
-\beq
-\equiv G \pm G^\prime
+Now if we let $g = \bar{S}_\ell$ and $f = \bar{C}_\ell$ in \cref{eq:Fsymm},
+\begin{align}
+F &= \left(\frac{1}{\sqrt{2}} \left[S_\ell \pm S_\ell^\prime \right], \mathcal{L} \frac{1}{\sqrt{2}}\left[C_\ell \pm C_\ell^\prime \right] \right) -
+    \left(\frac{1}{\sqrt{2}} \left[C_\ell \pm C_\ell^\prime \right], \mathcal{L} \frac{1}{\sqrt{2}}\left[S_\ell \pm S_\ell^\prime \right] \right) \nonumber \\
+& = \frac{1}{2}\left[(S_\ell,\mathcal{L}C_\ell) \pm (S_\ell,\mathcal{L}C_\ell^\prime) \pm (S_\ell^\prime,\mathcal{L}C_\ell) + (S_\ell^\prime,\mathcal{L}C_\ell^\prime) \right. \nonumber\\
+& \left. \phantom{move} - (C_\ell,\mathcal{L}S_\ell) \mp (C_\ell,\mathcal{L}S_\ell^\prime) \mp (C_\ell^\prime,\mathcal{L}S_\ell) - (C_\ell^\prime,\mathcal{L}S_\ell^\prime)\right]
+\end{align}
+From the property of the permutation operators, $(S_\ell,\mathcal{L}C_\ell) = (S_\ell^\prime,\mathcal{L}C_\ell^\prime)$, $(S_\ell^\prime,\mathcal{L}C_\ell) = (S_\ell,\mathcal{L}C_\ell^\prime)$, $(C_\ell,\mathcal{L}S_\ell) = (S_\ell^\prime,\mathcal{L}C_\ell^\prime)$ and $(C_\ell^\prime,\mathcal{L}S_\ell) = (C_\ell,\mathcal{L}S_\ell^\prime)$, causing the above to reduce to
+\begin{align}
+F = &\left[ (S_\ell,\mathcal{L}C_\ell) - (C_\ell,\mathcal{L}S_\ell)\right] \pm \left[ (S_\ell,\mathcal{L}C_\ell^\prime) - (C_\ell^\prime,\mathcal{L}S_\ell)\right] \nonumber \\
+&\equiv G \pm G^\prime.
 \label{GBarDef}
-\eeq
-
-By Green's theorem,
-\begin{align}
-\nonumber
-G = &\int\limits_{V_3} \int\limits_{V_{12}} \int\limits_{S_\rho} \left[ S \frac{\nabla_\rho}{2} C - C \frac{\nabla}{2} S\right] \cdot d\vec{\sigma}_\rho d\tau_{12} d\tau_3
-  + \int\limits_{V_\rho} \int\limits_{V_{12}} \int\limits_{S_3} \left[ S \nabla_{r_3} C - C \nabla_{r_3} S\right] \cdot d\vec{\sigma}_3 d\tau_{12} d\tau_{\rho} \\
-  + &\int\limits_{V_\rho} \int\limits_{V_{13}}\int\limits_{S_{12}} \left[ S \: 2 \nabla_{r_{12}} C - C \: 2 \nabla_{r_{12}} S\right] \cdot d\vec{\sigma}_{12} d\tau_{13} d\tau_\rho
-  \label{GDef}
 \end{align}
-The $\frac{1}{2}$ in the first term, the 1 in the second and the 2 in the third are from the appropriate Hamiltonian (\ref{Hamiltonian2}).
-The positronium and hydrogen functions have an exponential dependence on $r_3$ and $r_{12}$, respectively.  So the second term goes to 0 due to the $r_3$ dependence, and so does the third term ($r_{12}$ dependence).
-
-The surface elements under consideration are normal to $\hat{\rho}$, so we can ignore the angular dependence in $\vec{\nabla}_\rho$.  Then (\ref{Gdef}) becomes
+Using \cref{eq:Hamiltonian2} and Green's theorem,
+\begin{align}
+G &= \frac{1}{2} \int\limits_{V_3} \int\limits_{V_{12}} \int\limits_{S_\rho} \left[ S_\ell \grad_\rho C_\ell - C_\ell \grad_\rho S_\ell \right] \cdot d\bm{\sigma}_\rho d\tau_{12} d\tau_3
+  + \int\limits_{V_\rho} \int\limits_{V_{12}} \int\limits_{S_3} \left[ S_\ell \grad_{r_3} C_\ell - C_\ell \grad_{r_3} S_\ell\right] \cdot d\bm{\sigma}_3 d\tau_{12} d\tau_{\rho} \nonumber \\
+  &+ 2 \int\limits_{V_\rho} \int\limits_{V_{13}}\int\limits_{S_{12}} \left[ S_\ell \grad_{r_{12}} C_\ell - C_\ell \grad_{r_{12}} S_\ell \right] \cdot d\bm{\sigma}_{12} d\tau_{13} d\tau_\rho
+  \label{eq:GDef}
+\end{align}
+As before, the Ps and H functions have an exponential dependence on $r_3$ and $r_{12}$,
+respectively, so the second and third terms go to 0. The surface elements under consideration at $\rho \rightarrow \infty$
+ are normal to $\hat{\rho}$, so we can ignore the angular dependence in $\grad_\rho$. Then \cref{eq:GDef} becomes
 \beq
-G = \frac{1}{2} \int\limits_{V_3} \int\limits_{V_{12}} \left[\int\limits_{S_\rho} \left(C \frac{\partial S}{\partial \rho} - S \frac{\partial C}{\partial \rho} \right) \rho^2 \sin \theta_\rho d\theta_\rho d\varphi_\rho \right] d\tau_{12} d\tau_3
-\label{GDef2}
+G = \frac{1}{2} \int\limits_{V_3} \int\limits_{V_{12}} \left[\int\limits_{S_\rho} \left(S_\ell \frac{\partial C_\ell}{\partial \rho} - C_\ell \frac{\partial S}{\partial \rho} \right) \rho^2 \sin \theta_\rho d\theta_\rho d\varphi_\rho \right] d\tau_{12} d\tau_3.
+\label{eq:GDef2}
 \eeq
 
-Using (\ref{eq:SCPhiDef}), we have
+Using \cref{eq:GenSandC} and realizing that $f_\ell \rightarrow 1$ as $\rho \rightarrow \infty$, from the \emph{Mathematica} notebook ``SLC - CLS Proof.nb'', we have
+\begin{equation}
+\label{eq:CSderdiff}
+\left(S_\ell \frac{\partial C_\ell}{\partial \rho} - C_\ell \frac{\partial S_\ell}{\partial \rho} \right) = \frac{2}{\rho^2} \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho}^2 \Phi_{Ps}\left(r_{12}\right)^2 \Phi_H\left(r_3\right)^2 .
+\end{equation}
+Substituting \cref{eq:CSderdiff} into \cref{eq:GDef2} yields
 \begin{align}
-\nonumber\frac{\partial S}{\partial \rho} & \asymplim{\rho} Y_{0,0} \left(\theta_\rho,\varphi_\rho \right) \Phi_{Ps}(r_{12}) \Phi_{H}(r_{3}) \sqrt{2\kappa} \frac{\partial}{\partial\rho} \frac{\sin(\kappa\rho)}{\kappa\rho} \\
-\nonumber & \;\: = \frac{1}{\sqrt{4\pi}} \Phi_{Ps}(r_{12}) \Phi_{H}(r_{3}) \sqrt{2\kappa} \left(\frac{\cos(\kappa\rho)}{\rho} - \frac{\sin(\kappa\rho)}{\kappa\rho^2}\right) \\
-& \;\: =\frac{1}{\sqrt{4\pi}} \Phi_{Ps}(r_{12}) \Phi_{H}(r_{3}) \sqrt{2\kappa} \left(\frac{\kappa\rho\cos(\kappa\rho) - \sin(\kappa\rho)}{\kappa\rho^2} \right)
-\label{SPartial}
+G &= \cancel{\frac{1}{2}} \int\limits_{V_3} \int\limits_{V_{12}} \left[\int\limits_{S_\rho} \cancel{\frac{2}{\rho^2}} \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho}^2 \Phi_{Ps}\left(r_{12}\right)^2 \Phi_H\left(r_3\right)^2 \cancel{\rho^2} \sin \theta_\rho d\theta_\rho d\varphi_\rho \right] d\tau_{12} d\tau_3  \nonumber \\
+&= \int\limits_{V_3} \int\limits_{V_{12}} \Phi_{Ps}(r_{12})^2 \Phi_{H}(r_{3})^2 \left[ \int\limits_{S_\rho} \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho}^2 \sin \theta_\rho d\theta_\rho d\varphi_\rho \right] d\tau_{12} d\tau_3  \nonumber \\
+&= \int\limits_{V_3} \int\limits_{V_{12}} \Phi_{Ps}(r_{12})^2 \Phi_{H}(r_{3})^2 d\tau_{12} d\tau_3 = 1,
+\label{eq:GDef2}
 \end{align}
-
-For $\displaystyle \frac{\partial C}{\partial \rho}$, notice that the shielding factor $(1-e^{-\mu\rho})(1+\frac{\mu}{2}\rho)$ goes to 1 as $\rho\to\infty$.
-\begin{align}
-\nonumber\frac{\partial S}{\partial \rho} & \asymplim{\rho} Y_{0,0} \left(\theta_\rho,\varphi_\rho \right) \Phi_{Ps}(r_{12}) \Phi_{H}(r_{3}) \sqrt{2\kappa} \frac{\partial}{\partial\rho} \frac{\cos(\kappa\rho)}{\kappa\rho} \\
-\nonumber & \;\: = \frac{1}{\sqrt{4\pi}} \Phi_{Ps}(r_{12}) \Phi_{H}(r_{3}) \sqrt{2\kappa} \left(\frac{\sin(\kappa\rho)}{\rho} + \frac{\cos(\kappa\rho)}{\kappa\rho^2}\right) \\
-& \;\: =\frac{1}{\sqrt{4\pi}} \Phi_{Ps}(r_{12}) \Phi_{H}(r_{3}) \sqrt{2\kappa} \left(\frac{\kappa\rho\sin(\kappa\rho) + \cos(\kappa\rho)}{\kappa\rho^2} \right)
-\label{CPartial}
-\end{align}
-
-Substituting (\ref{SPartial}) and (\ref{CPartial}) into the parentheses of (\ref{GDef2}) yields
-\begin{align}
-\nonumber & \left(C \frac{\partial S}{\partial \rho} - S \frac{\partial C}{\partial \rho} \right) \\
-\nonumber & \asymplim{\rho} \frac{1}{4\pi} \Phi_{Ps}(r_{12})^2 \Phi_{H}(r_{3})^2 \:2 \kappa
-\left[\frac{\cos(\kappa\rho)}{\kappa\rho}\left(\frac{\kappa\rho\cos(\kappa\rho) - \sin(\kappa\rho)}{\kappa\rho^2}\right)
-+ \frac{\sin(\kappa\rho)}{\kappa\rho}\left(\frac{\kappa\rho\sin(\kappa\rho) + \cos(\kappa\rho)}{\kappa\rho^2}\right) \right] \\
-\nonumber & \;\: = \Phi_{Ps}(r_{12})^2 \Phi_{H}(r_{3})^2 \left[\frac{\kappa \rho \cos^2(\kappa\rho) - \cos(\kappa\rho)\sin(\kappa\rho) + \kappa\rho \sin^2(\kappa\rho) + \sin(\kappa\rho)\cos(\kappa\rho)}{2 \pi \kappa \rho^3} \right] \\
-& \;\: = \frac{\Phi_{Ps}(r_{12})^2 \Phi_{H}(r_{3})^2}{2\pi\rho^2}
-\end{align}
-
-Substituting this into equation (\ref{GDef2}) gives
-\begin{align}
-\nonumber G &= \frac{1}{4\pi} \int\limits_{V_3} \int\limits_{V_{12}} \left[ \int\limits_{S_\rho} \Phi_{Ps}(r_{12})^2 \Phi_{H}(r_{3})^2 \rho^2 \sin \theta_\rho d\theta_\rho d\varphi_\rho \right] d\tau_{12} d\tau_3 \\
-&= \frac{1}{4\pi} \int\limits_{V_3} \int\limits_{V_{12}} \Phi_{Ps}(r_{12})^2 \Phi_{H}(r_{3})^2 \left[ \int\limits_{S_\rho} \rho^2 \sin \theta_\rho d\theta_\rho d\varphi_\rho \right] d\tau_{12} d\tau_3
-\end{align}
-
-Performing the integration in brackets simply yields $4\pi$, so
+which follows from the orthonormality of the spherical harmonics and the normalization of the Ps and H wavefunctions.
+These, when combined in \cref{GBarDef}, give that
 \beq
-G = \int\limits_{V_3} \int\limits_{V_{12}} \Phi_{Ps}(r_{12})^2 \Phi_{H}(r_{3})^2 d\tau_{12} d\tau_3
+(S_\ell,\mathcal{L}C_\ell) = (C_\ell,\mathcal{L}S_\ell) + 1.
+\label{eq:SLCandCLSdirect}
 \eeq
-
-Since $\Phi_{Ps}(r_{12})$ is only dependent on $r_{12}$ and $\Phi_{H}(r_{3})$ is only dependent on $r_3$, plus the fact that they are both orthonormal, the integration gives 1.  So we finally have
-\beq
-G = 1.
-\eeq
-
-From (\ref{GBarDef}), $G = (S,\mathcal{L}C) - (C,\mathcal{L}S)$, so
-\beq
-(S,\mathcal{L}C) = (C,\mathcal{L}S) + 1.
-\label{eq:SLCandCLS}
-\eeq
-
-\noindent As this also applies to the permuted versions, writing this in terms of $\bar{S}$ and $\bar{C}$ gives the final relation of
+As this also applies to the permuted versions, writing this in terms of $\bar{S}_\ell$ and $\bar{C}_\ell$ gives the final relation of
 \beq
 \label{eq:SLCandCLS}
-\left(\bar{S},\mathcal{L}\bar{C}\right) = \left(\bar{C},\mathcal{L}\bar{S}\right) + 1.
+\left(\bar{S}_\ell,\mathcal{L}\bar{C}_\ell\right) = \left(\bar{C}_\ell,\mathcal{L}\bar{S}_\ell\right) + 1.
 \eeq
 
-
-
-
-
-\subsection{General \texorpdfstring{$(\widetilde{S}_\ell, \mathcal{L}\widetilde{C}_\ell)$ and $(\widetilde{C}_\ell, \mathcal{L}\widetilde{S}_\ell)$}{SLC and CLS} Relation}
-\label{sec:GenSLCandCLS}
-
+This can also be shown more generally for the $(\widetilde{S}_\ell,\mathcal{L}\widetilde{C}_\ell)$
+and $(\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell)$ matrix elements.
 From the definitions of $\widetilde{S}_\ell$ and $\widetilde{C}_\ell$ in \cref{eq:TildeSCDef},
 \begin{align}
 \nonumber (\widetilde{S}_\ell,\mathcal{L}\widetilde{C}_\ell) &= \left((u_{00}\bar{S}_\ell + u_{01}\bar{C}_\ell),\mathcal{L}(u_{10}\bar{S}_\ell + u_{11}\bar{C}_\ell)\right) \\
@@ -1041,15 +1000,14 @@ Likewise,
 \beq
 (\widetilde{S}_\ell,\mathcal{L}\widetilde{C}_\ell) - (\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell) = (\bar{S}_\ell,\mathcal{L}\bar{C}_\ell) - (\bar{C}_\ell,\mathcal{L}\bar{S}_\ell).
 \eeq
-
-\noindent This can finally be written as the general form of equation \ref{eq:SLCandCLS}, giving
+This is finally written as the general form of equation \ref{eq:SLCandCLS}, giving
 \beq
 (\widetilde{S}_\ell,\mathcal{L}\widetilde{C}_\ell) = (\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell) + 1.
 \label{eq:GenSLCandCLS}
 \eeq
 
 This relation can let us obtain the $(\widetilde{S}_\ell,\mathcal{L}\widetilde{C}_\ell)$ matrix element from $(\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell)$, but it also gives us a nice numerical check. I calculate these two matrix elements separately in my code and calculate their difference. If it is close to 1, this gives us confidence that the long-range--long-range integrations are accurate.
-\todoi{Make sure that this is mentioned in the computation chapter}
+\todoi{Make sure that this is mentioned in the computation chapter.}
 
 
 

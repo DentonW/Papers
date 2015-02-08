@@ -5,7 +5,7 @@
 \pagebreak
 \newpage
 
-\chapter{Higher Partial Waves and Cross Sections}
+\chapter{Higher Partial Waves}
 \label{chp:HigherWaves}
 
 \todoi{Mention $\alpha$, $\beta$, and $\gamma$ used and any other parameters}
@@ -216,7 +216,24 @@ $\kappa$ & Kohn $\delta_3^+$ & Born $\delta_3^+$ & Kohn $\delta_3^-$ & Born $\de
 \label{tab:GWavePhase}
 \end{table}
 
-Similarly to the F-wave (section \ref{sec:FWave}), the Born approximation does not work well for this partial wave. In fact, the G-wave triplet Kohn calculation is fully positive, yet the Born approximation is fully negative. This gets the physics wrong, as indicated by Bransden and Joachain \citep[pg. 589]{Bransden2003}. The Born approximation gives a repulsive potential ($\delta_3^- < 0$), while the Kohn calculation gives an attractive potential ($\delta_3^- > 0$).
+Similarly to the F-wave (section \ref{sec:FWave}), the Born approximation 
+does not work well for this partial wave. In fact, the G-wave triplet Kohn 
+calculation is fully positive, yet the Born approximation is fully negative. 
+This gets the physics wrong, as indicated by Bransden and Joachain
+\citep[p.589]{Bransden2003}. The Born approximation gives a repulsive potential
+($\delta_4^- < 0$), while the Kohn calculation gives an attractive potential
+($\delta_4^- > 0$).
+
+For the S-wave through the F-wave, each has at least one resonance before or 
+shortly after the Ps(n=2) threshold. For the higher partial waves, we want to 
+use the Born approximation (see \ref{sec:Born}). The Born approximation does 
+not capture resonance behavior, so we can only do this for partial waves that 
+do not contain resonances in this region. As $\ell$ increases, the resonance positions
+(in \cref{tab:SWaveResonancesOther,tab:PWaveResonancesOther,tab:DWaveResonancesOther,tab:FWaveResonanceComparisons})
+increase, until they are past the threshold fully for the G-wave. Ho and Yan
+\cite{Ho2000} calculate the G-wave resonance at \SI{5.486}{eV} with a width of
+\SI{0.0109}{eV}.
+
 
 
 \section{H-Wave}
@@ -253,71 +270,6 @@ The Born approximation is also not sufficient for describing the H-wave. Like th
 
 \textbf{@TODO:} Include cross section graphs.
 
-
-\section{Resonances}
-\label{sec:AllResonances}
-
-For the S-wave through the D-wave, each has at least one resonance before the 
-Ps(n=2) threshold. For the higher partial waves, we want to use the Born 
-approximation (see \ref{sec:Born}). The Born approximation does not capture 
-resonance behavior, so we can only do this for partial waves that do not 
-contain resonances in this region. So far, the only publication that has 
-calculated resonance parameters for the F-wave and G-wave is from Ho and Yan 
-\cite{Ho2000}. Their calculated resonance parameters follow in table 
-\ref{tab:HigherResonancesOther} (converted to eV). The Ps(n=2) threshold is at 5.10184 eV. Note that as $\ell$ increases, the resonance positions (in tables 
-\ref{tab:SWaveResonancesOther}, \ref{tab:PWaveResonancesOther} and
-\ref{tab:DWaveResonancesOther}) increase, until they are past the threshold for 
-the F-wave and G-wave. 
-\todoi{Move to respective F-wave and G-wave sections}
-
-\setlength{\abovecaptionskip}{6pt}
-\setlength{\belowcaptionskip}{6pt}
-\begin{table}[H]
-\centering
-\begin{tabular}{c c c}
-\toprule
-Partial Wave & $E_R \text{ (eV)}$ & $\Gamma \text{ (eV)}$ \\
-\midrule
-F-Wave & $5.166$ & $0.0174$ \\
-G-Wave & $5.486$ & $0.0109$ \\
-\bottomrule
-\end{tabular}
-\caption{Higher Partial Wave Resonance Parameters}
-\label{tab:HigherResonancesOther}
-\end{table}
-
-\setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
-\setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
-% Similar to the table in Walters 2004
-\begin{table}[H]
-\centering
-\begin{tabular}{l l l l}
-\toprule
- & & & Yan and Ho \cite{Yan1999, Yan1998a} \\
-Resonance & This work & Walters et al.\ \cite{Walters2004} & Ho and Yan \cite{Ho1998, Ho2000} \\
-\midrule
-S(1) & $4.0061$ & $4.149$ & $4.0058 \pm 0.0005$ \\
-     & $(0.0955)$ & $(0.103)$ & $(0.0952 \pm 0.0011)$ \\
-\\
-S(2) & $5.0277$ & $4.877$ & $4.9479 \pm 0.0014$ \\
-     & $(0.0608)$ & $(0.0164)$ & $(0.0585 \pm 0.0027)$ \\
-\\
-P(1) & $4.2856$ & $4.475$ & $4.2850 \pm 0.0014$ \\
-     & $(0.0445)$ & $(0.0827)$ & $(0.0435 \pm 0.0027)$ \\
-\\
-P(2) & $5.0581$ & $4.905$ & $5.0540 \pm 0.0027$ \\
-     & $(0.0456)$ & $(0.0043)$ & $(0.0585 \pm 0.0054)$ \\
-\\
-D(1) & $4.724$ & $4.899$ & $4.710 \pm 0.0027$ \\
-     & $(0.0819)$ & $(0.0872)$ & $(0.0925 \pm 0.0054)$ \\
-\\
-F(1) & $5.1867$ & $5.200$ & $5.1661 \pm 0.0014$ \\
-     & $(0.0125)$ & $(0.0095)$ & $(0.00174 \pm 0.0027)$ \\
-\bottomrule
-\end{tabular}
-\caption{All resonance parameters (in eV)}
-\label{tab:AllResonanceComparisons}
-\end{table}
 
 
 

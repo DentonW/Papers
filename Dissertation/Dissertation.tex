@@ -41,8 +41,8 @@
 \usepackage{pdflscape}  % For landscape page
 \usepackage{dcolumn}
 %\usepackage[arrowdel,notrig]{physics}  % Unfortunately conflicts with other packages
-
-\usepackage{tocstyle}
+\usepackage[makeroom]{cancel}  % For crossing out items in equations
+\usepackage{tocstyle}  % For spacing out table of contents numbers from ellipses
 
 \usepackage{cleveref}
 \crefname{equation}{equation}{equations}
@@ -285,14 +285,13 @@ $^1S$, $^3S$ & S-wave singlet, S-wave triplet  \\
 \subfile{D-Wave.tex}
 \subfile{General.tex}
 \subfile{HigherWaves.tex}
+\subfile{CrossSections.tex}
 \subfile{EffectiveRangeTheories.tex}
 %\subfile{Exponential.tex}
 \subfile{Conclusion.tex}
 
 \appendix
-%\settocdepth{section}
 \subfile{AngularIntegration.tex}
-%\settocdepth{subsection}
 \subfile{RhoDefinition.tex}
 \subfile{ExtraDerivations.tex}
 \subfile{RPowersCoeffs.tex}
