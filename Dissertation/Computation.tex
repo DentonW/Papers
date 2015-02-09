@@ -708,9 +708,10 @@ For the extrapolation method discussed in section \ref{sec:Extrapolation}, it is
 \label{sec:CompGenKohn}
 As mentioned in section \ref{sec:GenKohn}, the generalized Kohn method described by Cooper et al.\ allows for an adjustable parameter $\tau$ to be used. For our calculations of the Kohn and inverse Kohn, we set $\tau = 0$ and $\tau = \frac{\pi}{2}$, respectively. Before we started using the generalized Kohn method, it was difficult to tell if the difference between the Kohn and inverse Kohn phase shifts was due to a Schwartz singularity or a problem with linear dependence. With the generalized Kohn, we have a large number of individual Kohn methods to compare the results with.
 
+\todo{Update}
 The phase shift program steps through $\tau = 0$ to $\tau = 3.0$ in increments of $0.1$ for each N. There is also an additional modified phase shift program that steps through $\tau = 0.05$ to $\tau = 3.05$, also in increments of $0.1$, to get points in between the first set. The code can also be easily modified to use any value of $\tau$, which was used in figure \ref{fig:PhaseTau}.
 
-The Kohn methods do not require a recalculation of the entire problem for each $\tau$. Once the original matrix equation (\cref{eq:GeneralKohnMatrix}) is calculated with the $\textbf{u}$ in \cref{eq:uKohn}, along with the $(\bar{S},L\bar{S})$ term, the elements are reused to perform the other Kohn method calculations in \cref{sec:KohnApplied}.
+The Kohn methods do not require a recalculation of the entire problem for each Kohn method. Once the original matrix equation (\cref{eq:GeneralKohnMatrix}) is calculated with the $\textbf{u}$ in \cref{eq:uKohn}, along with the $(\bar{S},L\bar{S})$ term, the elements are reused to perform the other Kohn method calculations in \cref{sec:KohnApplied}.
 
 
 
@@ -1021,6 +1022,8 @@ Some fittings are better than others for this particular type of function. The F
 \cite{Tennyson1984} \cite{Stibbe1998} \cite{Sochi2013}
 
 
+\section{MySQL Database and IPython}
+\label{sec:MySQL}
 
 
 \biblio

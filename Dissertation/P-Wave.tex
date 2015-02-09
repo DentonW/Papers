@@ -5,6 +5,22 @@
 \chapter{P-Wave}
 \label{chp:PWave}
 
+\beq
+\SphericalHarmonicY{1}{0}{\theta_\rho}{\phi_\rho} = \frac{1}{\sqrt{4\pi}}
+\eeq
+
+\beq
+j_1(\kappa \rho) = \frac{\sin(\kappa\rho)}{\kappa\rho}
+\eeq
+
+\beq
+n_1(\kappa \rho) = -\frac{\cos(\kappa\rho)}{\kappa\rho}
+\eeq
+
+\beq
+\frac{1}{2} \left(\Laplacian_\rho + \kappa^2\right) \SphericalHarmonicY{1}{0}{\theta_\rho}{\phi_\rho} n_1(\kappa\rho) f_1(\rho) = -\frac{\rho  f^{\prime\prime}(\rho ) \left[\kappa  \rho  \sin (\kappa  \rho )+\cos (\kappa  \rho )\right]+2 f^\prime(\rho ) \left[\left(\kappa ^2 \rho ^2-1\right) \cos (\kappa  \rho )-\kappa  \rho  \sin (\kappa \rho )\right]}{2 \kappa ^2 \rho ^3}
+\eeq
+
 \section{P-Wave Wavefunction}
 \label{sec:PWaveFn}
 The P-wave wavefunction is similar in form to that of the S-wave (\ref{eq:SWaveTrialSimple}).

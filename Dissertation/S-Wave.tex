@@ -5,12 +5,14 @@
 \chapter{S-Wave}
 \label{chp:SWave}
 
-\lettrine{\textcolor{startcolor}{T}}{he} S-wave is the simplest of the partial waves to consider, since it is the lowest angular momentum state, and the spherical harmonics are constant, so there is no angular dependence.
+\lettrine{\textcolor{startcolor}{T}}{he} S-wave is the simplest of the partial waves to consider, since it is the lowest angular momentum state, and the spherical harmonics are constant, so there is no angular dependence. As a condensed notation, the S-wave singlet and triplet are referred to as $^1S$ and $^3S$, respectively (as shown in the nomenclature on page \pageref{chp:nomenclature}).
 
-As a condensed notation, the S-wave singlet and triplet are referred to as $^1$S and $^3$S, respectively (as shown in the nomenclature on \pageref{chp:nomenclature}).
+The form of the Kohn matrix elements was derived in \cref{chp:WaveKohn} for general $\ell$, but as mentioned in \cref{}, when we started this project, we derived the S-wave first and wrote code to compute this partial wave only. To keep this chapter in line with the S-wave code, I will show the matrix elements specifically for the S-wave, but the results in \cref{chp:WaveKohn} are directly applicable to the S-wave. The code described in \cref{chp:General} works for any partial wave but can be slower than the S-wave specific code.
 
-%\section{Wavefunction}
-%\label{sec:SWaveFn}
+\section{Wavefunction}
+\label{sec:SWaveFn}
+
+
 %Our trial wavefunction for the s-wave partial wave of positronium scattering from hydrogen is
 %\begin{equation}
 %\Psi_t^\pm = \bar{S} + \tan \eta_t^\pm \, \bar{C} + \sum_{i=1}^N c_i \bar{\phi}_i^t ,
@@ -38,40 +40,20 @@ As a condensed notation, the S-wave singlet and triplet are referred to as $^1$S
 %\end{subequations}
 %
 %\noindent The $\frac{1}{\sqrt{2}}$ and $Y_{0,0}\left( \theta_\rho, \phi_\rho \right) = \frac{1}{\sqrt{4\pi}}$ for $\bar{\phi}_i^t$ are included in the $c_i$ coefficients in (\ref{eq:SWaveTrialSimple}).
-%
-%$\rho$ and $\rho'$ are defined as (refer to figure \ref{fig:PsHCoords})
-%\begin{subequations}
-%\begin{align}
-%\vec{\rho} &= \frac{1}{2}\left(\vec{r_1} + \vec{r_2}\right) \label{eq:RhoDef}\\
-%\vec{\rho}^\prime &= \frac{1}{2}\left(\vec{r_1} + \vec{r_3}\right) \label{eq:RhopDef}.
-%\end{align}
-%\end{subequations}
-%As a shortcut, we can also write
-%\begin{equation}
-%S^\prime = P_{23} S \text{ and } C^\prime = P_{23} C.
-%\label{eq:SCprime}
-%\end{equation}
-%The short-range Hylleraas-type terms are given by the $\phi_i$ in equation \ref{eq:SWaveTrialSimple}. 
-
-%The Hamiltonian for the fundamental Coulombic system is
-%\begin{align}
-%\label{eq:Hamiltonian1}
-%H = -\frac{1}{2} \nabla_{r_1}^2 - \frac{1}{2} \nabla_{r_2}^2 - \frac{1}{2} \nabla_{r_3}^2 + \frac{1}{r_1} - \frac{1}{r_2} - \frac{1}{r_3} - \frac{1}{r_{12}} -\frac {1}{r_{13}} + \frac{1}{r_{23}}.
-%\end{align}
-%
-%\noindent The Hamiltonian can also be expressed in terms of other variables as
-%\begin{align}
-%H = -\frac{1}{4} \nabla_{\rho}^2 - \frac{1}{2} \nabla_{r_3}^2 - \nabla_{r_{12}}^2 + \frac{1}{r_1} - \frac{1}{r_2} - \frac{1}{r_3} - \frac{1}{r_{12}} - \frac{1}{r_{13}} + \frac{1}{r_{23}}
-%\label{eq:Hamiltonian2Dup}
-%\end{align}
-%and
-%\begin{align}
-%H = -\frac{1}{4} \nabla_{\rho^\prime}^2 - \frac{1}{2} \nabla_{r_2}^2 - \nabla_{r_{13}}^2 + \frac{1}{r_1} - \frac{1}{r_2} - \frac{1}{r_3} - \frac{1}{r_{12}} - \frac{1}{r_{13}} + \frac{1}{r_{23}}.
-%\label{eq:Hamiltonian3}
-%\end{align}
 
 
 
+\begin{subequations}
+\begin{align}
+\SphericalHarmonicY{0}{0}{\theta_\rho}{\varphi_\rho} &= \frac{1}{\sqrt{4\pi}} \\
+j_0(\kappa \rho) &= \frac{\sin(\kappa\rho)}{\kappa\rho} \\
+n_0(\kappa \rho) &= -\frac{\cos(\kappa\rho)}{\kappa\rho} 
+\end{align}
+\end{subequations}
+
+\beq
+\frac{1}{2} \left(\Laplacian_\rho + \kappa^2\right) \SphericalHarmonicY{0}{0}{\theta_\rho}{\phi_\rho} n_0(\kappa\rho) f_0(\rho) = \frac{2 \kappa  f^\prime(\rho ) \sin (\kappa \rho )-f^{\prime\prime}(\rho ) \cos (\kappa \rho )}{2 \kappa \rho}
+\eeq
 
 
 \section{Matrix Elements}
@@ -105,7 +87,7 @@ As a condensed notation, the S-wave singlet and triplet are referred to as $^1$S
 
 \subsubsection{Elements with \texorpdfstring{$\mathcal{L}S$}{LS}}
 \label{sec:LSElements}
-The $(\tilde{C},\mathcal{L}\tilde{S})$ and $(\tilde{\phi}_i,\mathcal{L}\tilde{S})$ matrix elements have the $\mathcal{L}$-operator acting on $S$. While not explicitly in the matrix given by \cref{eq:GeneralKohnMatrix}, $(\tilde{S},\mathcal{L}\tilde{S})$ is required in the final \cref{eq:GenDFDT2}. Also from the general $\tilde{S}$ and $\tilde{C}$, \cref{eq:GenSCMatrix} gives that the evaluation of $(\tilde{S},\mathcal{L}\tilde{S})$ is needed. We first look at $L$ operating on $S$ and then determine the form of these matrix elements.
+The $(\widetilde{C},\mathcal{L}\widetilde{S})$ and $(\widetilde{\phi}_i,\mathcal{L}\widetilde{S})$ matrix elements have the $\mathcal{L}$-operator acting on $S$. While not explicitly in the matrix given by \cref{eq:GeneralKohnMatrix}, $(\widetilde{S},\mathcal{L}\widetilde{S})$ is required in the final \cref{eq:GenDFDT2}. Also from the general $\widetilde{S}$ and $\widetilde{C}$, \cref{eq:GenSCMatrix} gives that the evaluation of $(\widetilde{S},\mathcal{L}\widetilde{S})$ is needed. We first look at $\mathcal{L}$ operating on $S$ and then determine the form of these matrix elements.
 
 %\begin{align}
 %\nonumber \mathcal{L}S &= \left(-\frac{1}{2}\nabla_\rho^2 - \nabla_{r_3}^2 - 2\nabla_{r_{12}}^2 + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_T\right) \Phi_{Ps}(r_{12}) \Phi_H(r_3) \frac{\sin(\kappa\rho)}{\kappa\rho} \sqrt{\frac{2\kappa}{4\pi}} \\
@@ -155,7 +137,7 @@ The $(\tilde{C},\mathcal{L}\tilde{S})$ and $(\tilde{\phi}_i,\mathcal{L}\tilde{S}
 %
 %From (\ref{SCphiBarDef}),
 %\beq
-%(\bar{S},\mathcal{L}\bar{S}) = \frac{1}{2} \left((S \pm S^\prime),\mathcal{L}(S \pm S^\prime)\right) = \frac{1}{2} \left[(S,\mathcal{L}S) \pm (S,\mathcal{L}S^\prime) \pm (S^\prime,\mathcal{L}S) + (S^\prime,\mathcal{L} S^\prime) \right]
+%(\bar{S}_\ell,\mathcal{L}\bar{S}) = \frac{1}{2} \left((S \pm S^\prime),\mathcal{L}(S \pm S^\prime)\right) = \frac{1}{2} \left[(S,\mathcal{L}S) \pm (S,\mathcal{L}S^\prime) \pm (S^\prime,\mathcal{L}S) + (S^\prime,\mathcal{L} S^\prime) \right]
 %\eeq
 %
 %\noindent From the symmetry of these elements (as in (\ref{})),
@@ -169,19 +151,19 @@ The $(\tilde{C},\mathcal{L}\tilde{S})$ and $(\tilde{\phi}_i,\mathcal{L}\tilde{S}
 %\eeq
 %
 %%\beq
-%%(\bar{S},\mathcal{L}\bar{S}) = \pm \left(S^\prime,\mathcal{L}S\right) = \pm \left(S^\prime, \left[ \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right] S\right)
+%%(\bar{S}_\ell,\mathcal{L}\bar{S}) = \pm \left(S^\prime,\mathcal{L}S\right) = \pm \left(S^\prime, \left[ \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right] S\right)
 %%\label{eq:SbarLSbar}
 %%\eeq
 %
 %%The same computation applies for $\bar{C}$:
 %%\beq
-%%(\bar{C},\mathcal{L}\bar{S}) = \pm \left(C^\prime,\mathcal{L}S\right) = \pm \left(C^\prime, \left[ \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right] S\right)
+%%(\bar{C}_\ell,\mathcal{L}\bar{S}) = \pm \left(C^\prime,\mathcal{L}S\right) = \pm \left(C^\prime, \left[ \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right] S\right)
 %%\label{eq:CbarLSbar}
 %%\eeq
 %
-%We can use (\ref{eq:SLCandCLS}) to find $(\bar{S},\mathcal{L}\bar{C})$ from this:
+%We can use (\ref{eq:SLCandCLS}) to find $(\bar{S}_\ell,\mathcal{L}\bar{C})$ from this:
 %\beq
-%\left(\bar{S},\mathcal{L}\bar{C}\right) = \left(\bar{C},\mathcal{L}\bar{S}\right) + 1
+%\left(\bar{S}_\ell,\mathcal{L}\bar{C}\right) = \left(\bar{C}_\ell,\mathcal{L}\bar{S}\right) + 1
 %\label{eq:SLCandCLSBar}
 %\eeq
 %
@@ -191,39 +173,6 @@ The $(\tilde{C},\mathcal{L}\tilde{S})$ and $(\tilde{\phi}_i,\mathcal{L}\tilde{S}
 %\mathcal{L}S' = \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) S'.
 %\eeq
 
-So $(\bar{\phi}_i, \mathcal{L}\bar{S})$ is a straightforward calculation.
-\beq
-\label{eq:PhiBarLSBar1}
-(\bar{\phi}_i, \mathcal{L}\bar{S}) = \left( (\phi_i \pm \phi_i') L \frac{(S \pm S')}{\sqrt{2}}\right)
-= \frac{1}{\sqrt{2}} \left(\phi_i L S \pm \phi_i L S' \pm \phi_i' L S + \phi_i' L S'\right)
-\eeq
-
-Again, from the properties of the $P_{23}$ permutation operator,
-\beq
-(\phi_i,\mathcal{L}S) = (\phi_i',\mathcal{L}S') \text{ and } (\phi_i,\mathcal{L}S') = (\phi_i',\mathcal{L}S).
-\eeq
-
-Equation (\ref{eq:PhiBarLSBar1}) becomes
-\begin{subequations}
-\label{eq:PhiBarLSBar2}
-\begin{align}
-(\bar{\phi}_i, \mathcal{L}\bar{S}) = \frac{1}{\sqrt{2}} \left[2(\phi_i,\mathcal{L}S) \pm 2(\phi_i',\mathcal{L}S)\right] &= \frac{2}{\sqrt{2}} \left[(\phi_i,\mathcal{L}S) \pm (\phi_i',\mathcal{L}S)\right] \label{eq:PhiBarLSBar2a} \\
- &= \frac{2}{\sqrt{2}} \left[(\phi_i,\mathcal{L}S) \pm (\phi_i,\mathcal{L}S')\right]  \label{eq:PhiBarLSBar2b}
-\end{align}
-\end{subequations}
-
-Notice that (\ref{eq:PhiBarLSBar2a}) and (\ref{eq:PhiBarLSBar2b}) are equivalent ways of writing this expression.  Either could be used, depending on the form desired for the computation.
-From (\ref{eq:LS2}) and (\ref{eq:LSP2}),
-\begin{align}
-(\bar{\phi}_i, \mathcal{L}\bar{S}) &= \frac{2}{\sqrt{2}} \left[\left( \phi_i \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S\right) \pm \left( \phi_i' \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S\right)\right] \\
- &= \frac{2}{\sqrt{2}} \left[\left( \phi_i \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S\right) \pm \left( \phi_i \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) S'\right)\right]
-\end{align}
-
-\noindent We also have that
-\beq
-(\bar{\phi}_i, \mathcal{L}\bar{S}) = (\bar{S}, \mathcal{L}\bar{\phi}_i).
-\label{eq:PhiLSPerm}
-\eeq
 
 
 \subsubsection{Elements with \texorpdfstring{$\mathcal{L}C$}{LC}}
@@ -308,72 +257,68 @@ From (\ref{eq:LS2}) and (\ref{eq:LSP2}),
 %\label{LCBar}
 %\end{align}
 
-The properties of the permutation operator give that
-\beq
-(C,\mathcal{L}C) = (C',\mathcal{L}C') \text{ and } (C,\mathcal{L}C') = (C',\mathcal{L}C)
-\eeq
-
-Using these two relations gives that
+Using \cref{eq:PermPropFull,eq:SCBarDef},
 \begin{align}
-\left(\bar{C},\mathcal{L}\bar{C}\right) &= \frac{1}{2}\left(\left(C \pm C'\right),\mathcal{L}(C \pm C')\right) \nonumber\\
- &= \frac{1}{2}\left[(C,\mathcal{L}C) \pm (C,\mathcal{L}C') \pm (C',\mathcal{L}C) + (C',\mathcal{L}C')\right] = \frac{1}{2}\left[2(C,\mathcal{L}C) \pm 2(C',\mathcal{L}C)\right] \nonumber\\
- &= (C,\mathcal{L}C) \pm (C',\mathcal{L}C).
- \label{CLC1}
+\left(\bar{C}_\ell,\mathcal{L}\bar{C}\right) = \frac{1}{2}\left[2(C_\ell,\mathcal{L}C_\ell) \pm 2(C_\ell',\mathcal{L}C_\ell)\right] 
+ = (C_\ell,\mathcal{L}C_\ell) \pm (C_\ell',\mathcal{L}C_\ell).
+ \label{eq:CLC1}
 \end{align}
 
-Substitute (\ref{eq:CDef}) and (\ref{eq:LC}) in (\ref{CLC1}) to get
+Substitute (\ref{eq:CDef}) and (\ref{eq:LC}) in (\ref{eq:CLC1}) to get
 \begin{align}
-\left(\bar{C},\mathcal{L}\bar{C}\right) = &(C,\mathcal{L}C) \pm (C',\mathcal{L}C) = \left((C \pm C'),\mathcal{L}C\right) \nonumber\\
- = &\left((C \pm C') \Phi_{Ps}(r_{12}) \Phi_H(r_3) \sqrt{\frac{2\kappa}{4\pi}} \left\{ \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) \frac{\cos(\kr)}{\kr} \left[1 - e^{-\mr}\left(1 + \frac{\mu}{2}\rho \right) \right] \right.\right. \\
-   &+ \left.\left. \frac{e^{-\mr} \mu^3 \rho}{4} \frac{\cos(\kr)}{\kr} + \frac{e^{-\mr}}{2} \kappa\mu (1+\mr) \frac{\sin(\kr)}{\kr} \right\} \right).
- \label{CBarLCBar1}
+\left(\bar{C}_\ell,\mathcal{L}\bar{C}_\ell\right) = &(C_\ell,\mathcal{L}C_\ell) \pm (C_\ell',\mathcal{L}C_\ell) = \left((C_\ell \pm C_\ell'),\mathcal{L}C_\ell \right) \nonumber\\
+ = &\left((C_\ell \pm C_\ell') \Phi_{Ps}(r_{12}) \Phi_H(r_3) \sqrt{\frac{2\kappa}{4\pi}} \left\{ \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) \frac{\cos(\kr)}{\kr} \right.\right.  \nonumber \\
+   &\times \left[1 - e^{-\mr}\left(1 + \frac{\mu}{2}\rho \right) \right] + \left.\left. \frac{e^{-\mr} \mu^3 \rho}{4} \frac{\cos(\kr)}{\kr} + \frac{e^{-\mr}}{2} \kappa\mu (1+\mr) \frac{\sin(\kr)}{\kr} \right\} \right).
+ \label{eq:CBarLCBar1}
 \end{align}
 
 These can be split up to simplify:
 \begin{align}
-\left(\bar{C},\mathcal{L}\bar{C}\right) = &\sqrt{\frac{2\kappa}{4\pi}} \frac{\kappa\mu}{2} \left((C \pm C') e^{-\mr}(1+\mr) \frac{\sin(\kr)}{\kr} \Phi_{Ps}(r_{12}) \Phi_H(r_3) \right)  \nonumber\\
- &+ \sqrt{\frac{2\kappa}{4\pi}} \frac{\mu^3}{4} \left((C \pm C') e^{-\mr} \frac{\cos(\kr)}{\kr} \Phi_{Ps}(r_{12}) \Phi_H(r_3) \right) \nonumber\\
- &+ \sqrt{\frac{2\kappa}{4\pi}} \left((C \pm C') \left(\frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}}\right) \frac{\cos(\kr)}{\kr} \left[1 - e^{-\mr}\left(1 + \frac{\mu}{2}\rho \right)\right] \Phi_{Ps}(r_{12}) \Phi_H(r_3) \right) \nonumber\\
-= &\frac{\kappa\mu}{2} \left((C \pm C') e^{-\mr}(1+\mr) S\right) \nonumber\\
- &+ \sqrt{\frac{2\kappa}{4\pi}} \frac{\mu^3}{4} \left((C \pm C') e^{-\mr} \frac{\cos(\kr)}{\kr} \Phi_{Ps}(r_{12}) \Phi_H(r_3) \right) \nonumber\\
- &+ \left((C \pm C') \left(\frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}}\right) C \right).
- \label{CBarLCBar2}
+\left(\bar{C}_\ell,\mathcal{L}\bar{C}_\ell\right) = &\sqrt{\frac{2\kappa}{4\pi}} \frac{\kappa\mu}{2} \left((C_\ell \pm C_\ell^\prime) e^{-\mr}(1+\mr) \frac{\sin(\kr)}{\kr} \Phi_{Ps}(r_{12}) \Phi_H(r_3) \right)  \nonumber\\
+ &+ \sqrt{\frac{2\kappa}{4\pi}} \frac{\mu^3}{4} \left((C_\ell \pm C_\ell') e^{-\mr} \frac{\cos(\kr)}{\kr} \Phi_{Ps}(r_{12}) \Phi_H(r_3) \right) \nonumber\\
+ &+ \sqrt{\frac{2\kappa}{4\pi}} \left((C_\ell \pm C_\ell') \left(\frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}}\right) \frac{\cos(\kr)}{\kr} \right.  \nonumber \\
+ &\times \left. \left[1 - e^{-\mr}\left(1 + \frac{\mu}{2}\rho \right)\right] \Phi_{Ps}(r_{12}) \Phi_H(r_3) \right) \nonumber\\
+= &\frac{\kappa\mu}{2} \left((C_\ell \pm C_\ell^\prime) e^{-\mr}(1+\mr) S_\ell \right) \nonumber\\
+ &+ \sqrt{\frac{2\kappa}{4\pi}} \frac{\mu^3}{4} \left((C_\ell \pm C_\ell^\prime) e^{-\mr} \frac{\cos(\kr)}{\kr} \Phi_{Ps}(r_{12}) \Phi_H(r_3) \right) \nonumber\\
+ &+ \left((C_\ell \pm C_\ell^\prime) \left(\frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}}\right) C_\ell \right).
+ \label{eq:CBarLCBar2}
 \end{align}
 
 Looking at just the last term:
-\beq
-\left((C \pm C') \left(\frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}}\right) C \right) = \left( \left(\frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}}\right) C^2 \right) \pm \left( \left(\frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}}\right) C'C \right)
-\eeq
+\begin{align}
+&\left((C_\ell \pm C_\ell') \left(\frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}}\right) C_\ell \right) \nonumber \\
+ &\phantom{Space} = \left( \left(\frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}}\right) C_\ell^2 \right) \pm \left( \left(\frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}}\right) C_\ell' C_\ell \right)
+\end{align}
 
-\noindent The first set of parentheses has the same form as (\ref{eq:SLS}).  These terms in parentheses are antisymmetric with respect to the $1 \leftrightarrow 2$ permutation.  Also, $C$ is symmetric with respect to this permutation.  So the first set of parentheses is 0.  Thus,
+\noindent The first set of parentheses has the same form as \cref{eq:SbarLSbar}. These terms in parentheses are antisymmetric with respect to the $1 \leftrightarrow 2$ permutation. Also, $C_\ell$ is symmetric with respect to this permutation. So the first set of parentheses is 0.  Thus,
 \beq
-\left((C \pm C') \left(\frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}}\right) C \right) = \pm \left(C' \left(\frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}}\right) C \right)
+\left((C_\ell \pm C_\ell') \left(\frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}}\right) C_\ell \right) = \pm \left(C_\ell' \left(\frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}}\right) C_\ell \right)
 \eeq
 
 \noindent We finally have that
 \begin{align}
-\left(\bar{C},\mathcal{L}\bar{C}\right) = \: &\frac{\kappa\mu}{2} \left((C \pm C') e^{-\mr}(1+\mr) S\right) \nonumber\\
- &+ \sqrt{\frac{2\kappa}{4\pi}} \frac{\mu^3}{4} \left((C \pm C') e^{-\mr} \frac{\cos(\kr)}{\kr} \Phi_{Ps}(r_{12}) \Phi_H(r_3) \right) \nonumber\\
- &\pm \left(C' \left(\frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}}\right) C \right).
+\left(\bar{C}_\ell,\mathcal{L}\bar{C}_\ell\right) = \: &\frac{\kappa\mu}{2} \left((C_\ell \pm C_\ell') e^{-\mr}(1+\mr) S_\ell \right) \nonumber\\
+ &+ \sqrt{\frac{2\kappa}{4\pi}} \frac{\mu^3}{4} \left((C_\ell \pm C_\ell') e^{-\mr} \frac{\cos(\kr)}{\kr} \Phi_{Ps}(r_{12}) \Phi_H(r_3) \right) \nonumber\\
+ &\pm \left(C_\ell' \left(\frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}}\right) C_\ell \right).
  \label{CBarLCBar}
 \end{align}
 
 \textbf{@TODO:} Put this elsewhere.
-We chose to absorb both the $\frac{1}{\sqrt{2}}$ and $Y_{0,0}(\theta_\rho,\varphi_\rho) = \frac{1}{\sqrt{4\pi}}$ into the $c_i$ constants of the short-range terms (\ref{eq:PhiDef}).
+We chose to absorb both the $\frac{1}{\sqrt{2}}$ and $Y_{0,0}(\theta_\rho,\varphi_\rho) = \frac{1}{\sqrt{4\pi}}$ into the $c_i$ constants of the short-range terms in \cref{eq:PhiDef}.
 
 
-The analysis for $(\bar{\phi}_i, \mathcal{L}\bar{C})$ and $(\bar{C}, L\bar{\phi}_i)$ is similar to the analysis in section \ref{sec:LSElements}.
+The analysis for $(\bar{\phi}_i, \mathcal{L}\bar{C}_\ell)$ and $(\bar{C}_\ell, L\bar{\phi}_i)$ is similar to the analysis in \cref{sec:LSElements}.
 \begin{subequations}
 \begin{align}
-(\bar{\phi}_i, \mathcal{L}\bar{C}) &= \frac{2}{\sqrt{2}} \left[(\phi_i,\mathcal{L}C) \pm (\phi_i',\mathcal{L}C)\right] \label{PhiBarLCBar2a} \\
- &= \frac{2}{\sqrt{2}} \left[(\phi_i,\mathcal{L}C) \pm (\phi_i,\mathcal{L}C')\right]  \label{PhiBarLCBar2b}
+(\bar{\phi}_i, \mathcal{L}\bar{C}_\ell) &= \frac{2}{\sqrt{2}} \left[(\phi_i,\mathcal{L}C_\ell) \pm (\phi_i',\mathcal{L}C_\ell)\right] \label{PhiBarLCBar2a} \\
+ &= \frac{2}{\sqrt{2}} \left[(\phi_i,\mathcal{L}C_\ell) \pm (\phi_i,\mathcal{L}C_\ell')\right]  \label{PhiBarLCBar2b}
 \end{align}
 \end{subequations}
 
-Using (\ref{eq:LC}) and (\ref{eq:LCP}) in the above gives our final result for $(\bar{\phi}_i, \mathcal{L}\bar{C})$.
+Using \cref{eq:LC,eq:LCP}) in the above gives our final result for $(\bar{\phi}_i, \mathcal{L}\bar{C})$.
 \begin{subequations}
 \begin{align}
-(\bar{\phi}_i, \mathcal{L}\bar{C}) = \sqrt{\frac{\kappa}{\pi}} &\left( (\phi_i \pm \phi_i') \Phi_{Ps}(r_{12}) \Phi_H(r_3) \left\{ \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}}\right) \frac{\cos(\kr)}{\kr} \left[1 - e^{-\mr}\left(1 + \frac{\mu}{2}\rho\right)\right] \right.\right. \nonumber\\
+(\bar{\phi}_i, \mathcal{L}\bar{C}_\ell) = \sqrt{\frac{\kappa}{\pi}} &\left( (\phi_i \pm \phi_i') \Phi_{Ps}(r_{12}) \Phi_H(r_3) \left\{ \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}}\right) \frac{\cos(\kr)}{\kr} \left[1 - e^{-\mr}\left(1 + \frac{\mu}{2}\rho\right)\right] \right.\right. \nonumber\\
 &+ \left.\left.\frac{e^{-\mr}\mu^3\rho}{4} \frac{\cos(\kr)}{\kr} + \frac{e^{-\mr}}{2} \kappa\mu (1+\mr) \frac{\sin(\kr)}{\kr}  \right\}\right) \\
 = \sqrt{\frac{\kappa}{\pi}} &\left( \phi_i \Phi_{Ps}(r_{12}) \Phi_H(r_3) \left\{ \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}}\right) \frac{\cos(\kr)}{\kr} \left[1 - e^{-\mr}\left(1 + \frac{\mu}{2}\rho\right)\right] \right.\right. \nonumber\\
 &+ \left.\left.\frac{e^{-\mr}\mu^3\rho}{4} \frac{\cos(\kr)}{\kr} + \frac{e^{-\mr}}{2} \kappa\mu (1+\mr) \frac{\sin(\kr)}{\kr}  \right\}\right) \nonumber\\
@@ -382,62 +327,13 @@ Using (\ref{eq:LC}) and (\ref{eq:LCP}) in the above gives our final result for $
 \end{align}
 \end{subequations}
 
-Similar to (\ref{eq:PhiLSPerm}), we have
-\beq
-(\bar{\phi}_i, \mathcal{L}\bar{C}) = (\bar{C}, L\bar{\phi}_i).
-\label{eq:PhiLCPerm}
-\eeq
-
-\subsection{Matrix Elements Involving Only Short-Range Terms}
-\label{sec:MatrixShort}
-The short-range--short-range interactions are calculated in a separate document ``3.24 Using Spherical Coordinates''.
-
-\beq
-\label{eq:SWaveShortShort}
-\left(\bar{\phi}_i, L \bar{\phi}_j\right) = \int \left[ \sum_{l=1}^3 \boldsymbol{\nabla}_{\!\mathbf{r}_l} \bar{\phi}_i \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_l} \bar{\phi}_j + \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_T \right) \bar{\phi}_i \bar{\phi}_j \right] d\tau.
-\eeq
-
-Lastly, we need to prove that $\left(\bar{\phi}_i, \mathcal{L} \bar{\phi}_j\right) = \left(\bar{\phi}_j, \mathcal{L} \bar{\phi}_i\right)$. Consider the functional
-\beq
-F = (\phi_i, \mathcal{L} \phi_j) - (\phi_j, \mathcal{L} \phi_i).
-\eeq
-
-Using \cref{eq:Hamiltonian1},
-\begin{align}
-	F=&\left({-\phi_i,{\frac {1}{2}{\nabla }_{{r}_{1}}^{2}\phi_j}}\right)+\left({\phi_j,{\frac {1}{2}{\nabla }_{{r}_{1}}^{2}\phi_i}}\right)+
-	\left({-\phi_i,{\frac {1}{2}{\nabla }_{{r}_{2}}^{2}\phi_j}}\right)+\left({\phi_j,{\frac {1}{2}{\nabla }_{{r}_{2}}^{2}\phi_i}}\right) \nonumber \\
-	&+\left({-\phi_i,{\frac {1}{2}{\nabla }_{{r}_{3}}^{2}\phi_j}}\right)+\left({\phi_j,{\frac {1}{2}{\nabla }_{{r}_{3}}^{2}\phi_i}}\right).
-\end{align}
-
-From (\ref{eq:PhiDef}), the $\bar{\phi}_i$ (and $\bar{\phi}_j$) have a decaying exponential dependence in $r_1$, $r_2$ and $r_3$, so the surface terms in the integrations will vanish.  Combining this fact with (\ref{PhiBarDef}) gives that $F = 0$. Then
-\beq
-\left(\bar{\phi}_i, \mathcal{L} \bar{\phi}_j\right) = \left(\bar{\phi}_j, \mathcal{L} \bar{\phi}_i\right).
-\label{PhiLPhiPerm}
-\eeq
-
-The claims in (\ref{eq:PhiLSPerm}) and (\ref{eq:PhiLCPerm}) are proven using the same method. Both (\ref{eq:PhiLSPerm}) and (\ref{eq:PhiLCPerm}) include $\bar{\phi}_i$, so these terms do have a decaying exponential dependence, making the claims true.
-
-%(\bar{\phi}_i, \mathcal{L}\bar{C}) = \frac{\sqrt{2\kappa}}{4\pi} &\left( (\phi_i \pm \phi_i') \Phi_{Ps}(r_{12}) \Phi_H(r_3) \left\{ \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}}\right) \frac{\cos(\kr)}{\kr} \left[1 - e^{-\mr}\left(1 + \frac{\mu}{2}\rho\right)\right] \right.\right. \nonumber\\
-%&+ \frac{e^{-\mr}\mu^3\rho}{4} \frac{\cos(\kr)}{\kr} + \frac{e^{-\mr}}{2} \kappa\mu (1+\mr) \frac{\sin(\kr)} \left.\left. \right\}\right)
-
-
-
-
-
-
-\subsection{Summary of Matrix Elements}
-\label{SWaveMatrixSummary}
-This section 
-
 
 
 \section{Results}
 
-\subsection{Singlet}
-The extrapolation becomes less stable for higher $\kappa$, as is discussed in section (\ref{sec:Extrapolation}).
-
 
 \subsection{Phase Shifts}
+The extrapolation becomes less stable for higher $\kappa$, as is discussed in section (\ref{sec:Extrapolation}).
 
 All runs here were performed using the set of integration points described in \cref{sec:QuadraturePoints}.
 
@@ -562,6 +458,8 @@ The polynomial part of the above equation corresponds to hard-sphere scattering.
 
 \subsubsection{Resonance Graphs}
 \label{sec:ResonanceGraphs}
+
+\todoi{Mention how we add or subtract $\pi$}
 
 \begin{figure}[H]
 	\centering
