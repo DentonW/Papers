@@ -71,6 +71,36 @@ H-Wave & $\frac{\left(-z^4+105 z^2-945\right) \sin (z)}{z^5}-\frac{15 \left(z^4-
 \section{Born Approximation}
 \label{sec:Born}
 
+The Born approximation comes from using only the first term in \cref{eq:TrialWave,eq:TrialWaveHigher}. Specifically, this is done with the Kohn variational method to get an estimate for the $K$ matrix, giving \cite[p.???]{Bransden2003}
+\begin{equation}
+\label{eq:Born}
+\tan\delta_\ell \approx -(\widetilde{S}_\ell,\mathcal{L}\widetilde{S}_\ell )\,.
+\end{equation}
+We have also done a modified Born approximation that uses the first two terms ($\bar{S}$ and $\bar{C}$) in \cref{eq:TrialWave,eq:TrialWaveHigher}. This was calculated for the first three partial waves but showed huge discrepancies, especially for the S-wave.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=5.25in]{swave-phase-born}
+	\caption{$^{1,3}$S phase shift comparison between S-matrix complex Kohn and Born approximation}
+	\label{fig:SWavePhaseBorn}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=5.25in]{pwave-phase-born}
+	\caption{$^{1,3}$P phase shift comparison between S-matrix complex Kohn and Born approximation}
+	\label{fig:PWavePhaseBorn}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=5.25in]{dwave-phase-born}
+	\caption{$^{1,3}$D phase shift comparison between S-matrix complex Kohn and Born approximation}
+	\label{fig:DWavePhaseBorn}
+\end{figure}
+
+
+
 
 \section{F-Wave}
 \label{sec:FWave}
@@ -82,7 +112,7 @@ H-Wave & $\frac{\left(-z^4+105 z^2-945\right) \sin (z)}{z^5}-\frac{15 \left(z^4-
 	\label{fig:FWavePhase}
 \end{figure}
 
-We have calculated the F-wave phase shifts for $\omega = 5$ with $\alpha = 0.5$, $\beta = 0.6$, $\gamma = 1.1$ and $\mu = 0.7$ for the first two short-range symmetries using the general codes described in sections \ref{sec:GeneralLong} and \ref{sec:GeneralShort}. Figure \ref{fig:FWavePhase} and table \ref{tab:FWavePhase} show the phase shifts for the F-wave.
+We have calculated the F-wave phase shifts for $\omega = 5$ with $\alpha = 0.5$, $\beta = 0.6$, $\gamma = 1.1$ and $\mu = 0.7$ for the first two short-range symmetries using the general codes described in \cref{sec:GeneralLong,sec:GeneralShort}. \Cref{fig:FWavePhase} and \cref{tab:FWavePhase} show the phase shifts for the F-wave.
 
 \setlength{\abovecaptionskip}{6pt}
 \setlength{\belowcaptionskip}{6pt}
