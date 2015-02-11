@@ -48,6 +48,7 @@
 \crefname{equation}{equation}{equations}
 \crefname{table}{Table}{Tables}
 \crefname{figure}{Figure}{Figures}
+%\crefname{chapter}{Chapter}{Chapters}
 %\usepackage{showlabels}
 
 % For dcolumn
@@ -68,7 +69,7 @@
 %\documentclass[draft]{}
 %\usepackage[nobysame]{amsrefs}
 
-%\usepackage[dvips,letterpaper,margin=0.75in,bottom=0.5in]{geometry}  % For smaller page margins
+%\usepackage[dvips,letterpaper,margin=0.75in,bottom=0.75in]{geometry}  % For smaller page margins
 %\usepackage{setspace}
 %\singlespacing
 %\onehalfspacing
@@ -269,19 +270,23 @@ A lot of people helped me. Special thanks goes to Ryan Bosca, who helped me at t
 \clearpage
 \chapter*{Nomenclature}
 \label{chp:nomenclature}
+\addcontentsline{toc}{chapter}{Nomenclature}
 \begin{table*}
 	\begin{tabular}{l l}
 short-short & short-range--short-range \\
 long-short & long-range--short-range \\
 long-long & long-range--long-range \\
 $^1S$, $^3S$ & S-wave singlet, S-wave triplet  \\
-... & ...                \\
+CC & close coupling                \\
+SVM & stochastic variational method  \\
+DMC & diffusion Monte Carlo \\
+CVM & confined variational method \\
 	\end{tabular}
 \end{table*}
 
 \subfile{Introduction.tex}
 \subfile{BoundState.tex}
-\subfile{KohnMethod.tex}
+\subfile{Theory.tex}
 \subfile{Computation.tex}
 %%%%%%\settocdepth{subsection}
 \subfile{S-Wave.tex}

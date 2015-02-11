@@ -1017,9 +1017,86 @@ I finally wrote a custom MATLAB\textsuperscript{\textregistered} \cite{matlab} s
 
 Some fittings are better than others for this particular type of function. The Fair, Huber and Logistic weightings get the positions and widths of the resonances nearly correct, but the resulting curve clearly does not fit the data points leading to the first resonance, as can be seen in these figures. For a more rigorous examination of the fittings, the residuals were calculated for each point and graphed in figures \ref{fig:ResOmega=6,Residuals} and \ref{fig:ResOmega=7,Residuals}. I also calculated the residual sum of squares (RSS), which are shown in these figures. The Fair, Huber and Logistic weightings are clearly the worst fits for this function, though they are still respectable, giving parameters that are extremely close. It should be noted that the data will fit poorly to equation (\ref{eq:ResonanceCurve}) as the energy is decreased (i.e. far from the resonances), so the fits all have larger residuals for low energies.
 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=5in]{swave-phases-reson-pi}
+	\caption{$^1$S resonance data showing raw data from complex Kohn and the corrected version. The solid gray line shows the polynomial background.}
+	\label{fig:swave-phases-reson-pi}
+\end{figure}
+
+
+\todoi{Mention how we add or subtract $\pi$}
+
 \todoi{Cite Mathematica, SciPy and MATLAB. Show results of Mathematica and Python fittings. Do I need to write function names differently (e.g. FindFit)?}
 
 \cite{Tennyson1984} \cite{Stibbe1998} \cite{Sochi2013}
+
+
+
+\subsubsection{Resonance Graphs}
+\label{sec:ResonanceGraphs}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=7in]{ResOmega=7,pg1}
+	\caption{First set of resonance fitting graphs for $\omega = 7$}
+	\label{fig:ResOmega=7,pg1}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=7in]{ResOmega=7,pg2}
+	\caption{Second set of resonance fitting graphs for $\omega = 7$}
+	\label{fig:ResOmega=7,pg2}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=7in]{ResOmega=7,Residuals}
+	\caption{Graphs of residuals for the resonance fittings for $\omega = 7$}
+	\label{fig:ResOmega=7,Residuals}
+\end{figure}
+
+
+
+\subsubsection{Resonance Values and Errors}
+\label{sec:ResonanceErrors}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=5in]{KohnFitting}
+	\caption{Kohn fitting ($\tau = 0.0$) with different weighting functions for $\omega = 7$}
+	\label{fig:KohnFitting}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=5in]{07Fitting}
+	\caption{Fitting for $\tau = 0.7$ with different weighting functions for $\omega = 7$}
+	\label{fig:07Fitting}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=5in]{pi4Fitting}
+	\caption{Fitting for $\frac{\pi}{4}$ with different weighting functions for $\omega = 7$}
+	\label{fig:pi4Fitting}
+\end{figure}
+
+The results for the resonance parameters normally differ slightly for each of the Kohn methods.  To determine these, we gathered the data for all $\kappa$ values below the Ps(2s)+H(1s) channel threshold for a given Kohn method.  An example of the resultant graph for $\tau = 0.0$ (Kohn) can be seen in figure \ref{fig:KohnFitting}.  As described in section \ref{sec:ResonanceFit}, MATLAB's nonlinear fitting routine, nlinfit, is used with 8 different weighting functions to try various fits.  All 8 weighting functions give at least respectable fits to the data, but some fits are obviously worse than others.  For our data, the Fair, Logistic and Huber do not fit well for the second resonance.  The Cauchy will fit it close but not as close as the Andrews, Bisquare, Talwar and Welsch.  Out of the closest fittings, the Talwar is usually the worst of the four.
+
+The closeness of the fits can be determined somewhat by plotting the residuals or looking at the values of the residual sum of squares, but these can be misleading near the resonances.  The MATLAB script that does the fittings also generates graphs for each fit with the data points superimposed.  The quality of the fitting is easily evaluated visually.  Due to the narrowness of the second resonance, the poor fits will usually overestimate its width and/or give the wrong position, causing the curve to not intersect the data points.
+
+An example of a good set of fits is given in figure \ref{fig:KohnFitting}.  The graphs in this section are plotted with respect to the positronium energy, unlike the graphs in section \ref{sec:ResonanceGraphs}, which are plotted with respect to the momentum, $\kappa$.  All three of the plotted fitting curves follow the data nicely, with the exception of the extreme points near $\delta^+ = 0$.  This is not a failure of the fitting but instead a side effect of using the model given by \ref{eq:ResonanceCurve}.  The range of $\arctan$ is $(-\frac{\pi}{2},\frac{\pi}{2})$, so the $\arctan$ parts of this model cannot bring the phase shift from the background (near 2.0) all the way to 0.0, as it can only add up to $\frac{\pi}{2}$.  Regardless of this, the fits are nearly perfect in this example.
+
+For some values of $\tau$, we have what appear to be Schwartz singularities.  Section \ref{sec:SchwartzSing} has more discussion on how these arise.  Figure \ref{fig:07Fitting} has a series of data points to the right of the second singularity that do not agree with runs for other values of $\tau$.  MATLAB attempts to fit with these, leading to incorrect parameters for the second resonance.  This type of behavior is observed for $\kappa = 0.7$ and $0.8$, so these runs are not included in the final results.  A similar problem is seen in figure \ref{fig:pi4Fitting}.  One data point at 5 eV is obviously shifted from where it ``should'' be.  The different weighting functions assign different importance to this point, so all three weighting functions gives different positions and widths of the second resonance.  This run for $\kappa = \frac{\pi}{4}$ was also discarded. 
+
+The resonance parameters are calculated separately for each Kohn method (Kohn, inverse Kohn, etc.).  The ``good'' fits for all Kohn methods are all compiled in an Excel spreadsheet, where the mean, mode and errors are determined for each of the four resonance parameters.
+
+The error for each parameter could be determined one of three ways.  The errors given in table \ref{tab:SWaveResonances} are simply the standard deviation.  We could have also used the standard error, which is given as $SE = \sigma / \sqrt{n}$.  The standard error is typically too small, since we are using approximately 100 tests.  For instance, using $\omega = 7$, for $^1E_R$, we get a standard error of $0.00001$, which implies a greater precision and agreement than our results have.  Another possible method for determining the error that we have looked at is to find the maximum deviation from the mean.  However, this overemphasizes the importance of outliers.  Using $\omega = 6$, the maximum deviation from the mean is $0.00586$ for $^2E_R$, which is $4.0$ times as large as the standard deviation. 
+
+
 
 
 \section{MySQL Database and IPython}

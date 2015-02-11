@@ -15,7 +15,7 @@
 \usepackage{graphicx}  % Include figure files
 %\usepackage[draft]{graphicx}  % Do not include figure files
 \usepackage{dcolumn} % Align table columns on decimal point
-\usepackage{bm} % bold math
+\usepackage{bm} % bold mathFor
 \usepackage{float}  % @TODO: Take this out before submission!
 \usepackage{todonotes}
 \usepackage[hidelinks]{hyperref}  % For clickable references
@@ -392,16 +392,20 @@ For partial waves with $\ell>1$, the orbital angular momentum could also be
 shared between both particles in the Ps atom \cite{Schwartz1961a}. 
 Investigation of e$^+$-H scattering \cite{VanReeth2015} has shown 
 that these mixed terms can be important for that 
-system. At very low energies, the mixed terms are negligible, and near
-the Ps formation threshold, the mixed terms can contribute up to 10\%
+system. At very low energies, the mixed terms are negligible, contributing 
+less than 1\% to the phase shifts at $\kappa = 0.1$, and near
+the Ps formation threshold, contribute up to 10\%
 of the final value of the phase shifts. Likewise, investigation into
 e$^-$-H scattering \cite{VanReeth2015} indicates that the mixed terms
-are negligible at very low energies but contribute to the $^1D$ phase
-shifts by up to 25\% at higher energies. These contribute less than 1\%
-to the $^3D$ phase shifts at higher energies.
-Due to the complexity of the analytical evaluation of the various 
-matrix elements for Ps-H scattering, we have not included the mixed
-symmetry terms where angular momentum is shared.
+are negligible at very low energies, contributing less than 0.1\% at
+$\kappa = 0.1$, but contribute to the $^1D$ phase
+shifts by up to 25\% at $\kappa = 0.8$. These contribute less than 1\%
+to the $^3D$ phase shifts for e$^-$-H scattering.
+The analytical evaluation of the various matrix elements are more
+complicated for Ps-H scattering than these two other systems, particularly
+evaluating the mixed symmetry terms with the other short-range terms and
+with themselves. Due to this complexity, we have not included the terms
+where angular momentum is shared.
 
 
 % THE HAMILTONIAN
@@ -1021,6 +1025,10 @@ graphs are similar, but the percentage difference between the $^1D$ phase
 shifts is about 39\% at low $\kappa$ and decreases to less than 1\% for
 higher $\kappa$. The larger discrepancy comes with the $^3D$ phase shifts,
 which have a percentage difference of over 30\% through the entire range.
+We note that the percentage difference with the CC results for $^3P$ is
+also large at lower $\kappa$ values, even though there are no mixed terms
+for this partial wave, and our $^3P$ results converge well, as seen in
+Table \ref{tab:PWavePhase}. 
 
 The phase shifts are small for $^3D$, and its contribution to the integrated 
 elastic cross section given in Fig. \ref{fig:combined-cross-sections} is 
@@ -1076,7 +1084,7 @@ current complex Kohn $\omega = 7$ and $\omega \rightarrow \infty$ results.}
 \begin{center}
 \begin{ruledtabular}
 \begin{tabular}{c c c c c c c c c c}
-$\kappa$ (au) & $\delta_1^+ (\omega = 7)$ & $\delta_1^+ (\omega \rightarrow \infty)$ & \% Diff$^+$ & $\delta_1^+$ (CC) \cite{Walters2004} & $\delta_1^- (\omega = 7)$ & $\delta_1^- (\omega \rightarrow \infty)$ & \% Diff$^-$ & $\delta_1^-$ (CC) \cite{Blackwood2002} \\
+$\kappa$ (au) & $\delta_1^+ (\omega = 7)$ & $\delta_1^+ (\omega \rightarrow \infty)$ & \% Diff$^+$ & $\delta_1^+$ (CC) \cite{Walters2004} & $\delta_1^- (\omega = 7)$ & $\delta_1^- (\omega \rightarrow \infty)$ & \% Diff$^-$ & $\delta_1^-$ (CC 14Ps14H) \cite{Blackwood2002} \\
 \colrule
 0.1 & $0.226^{-1}$ & $0.227^{-1}$ & $0.465\%$ & $0.221^{-1}$ & $-0.178^{-2}$ & $-0.172^{-2}$ & $3.176\%$ & $-0.953^{-3}$ \\
 0.2 & $0.191$      & $0.192$      & $0.306\%$ & $0.183$      & $-0.167^{-1}$ & $-0.165^{-1}$ & $0.993\%$ & $-0.122^{-1}$ \\
@@ -1156,7 +1164,7 @@ $^3S$ CC phase shifts \cite{Blackwood2002} are given by
 \mbox{\textcolor{red}{\textbf{+}}}. The CVM $^1S$ and $^3S$ phase shifts
 \cite{Zhang2012} are blue (dark gray) and red (light gray) circles,
 respectively. Vertical dashed lines denote the complex rotation resonance
-positions \cite{Yan1999,Yan1998a,Ho1998}}
+positions \cite{Yan1999,Yan1998a,Ho1998}.}
 	\label{fig:spd-wave-phases}
 \end{figure}
 

@@ -45,9 +45,6 @@ There is one notable difference about what we did here for the S-wave versus the
 \section{Matrix Elements with \texorpdfstring{$\mathcal{L}\bar{C}$}{LC}}
 \label{sec:LCElements}
 
-\todoi{Put this paragraph elsewhere.}
-The short-long and long-long matrix elements have a similar analysis. For all of these, the effect of the $\mathcal{L} = 2(H-E)$ operator on the long-range terms must be considered, and then integrations over the external angles (see \Cref{chp:AngularInt}) are performed. The remaining 6-dimensional integral is then numerically integrated as described in sections \ref{sec:LongLongInt} and \ref{sec:ShortLongInt}.
-
 %\subsection{Elements with \texorpdfstring{$\mathcal{L}C$}{LC}}
 These can be calculated using the results in \cref{sec:LCTerms}, but the S-wave code was written using these derivations, before we came up with a general formalism. 
 The analysis for $\mathcal{L}C_0$ is more difficult than that of $\mathcal{L}S_0$ in \cref{eq:LSFinal} and \cref{eq:LSPrimeFinal}. The shielding factor, $f_0(\rho)$, complicates the derivatives slightly.
@@ -115,7 +112,7 @@ These can be split up to simplify:
  &+ \sqrt{\frac{2\kappa}{4\pi}} \frac{\mu^3}{4} \left((C_0 \pm C_0') e^{-\mr} \frac{\cos(\kr)}{\kr} \Phi_{Ps}(r_{12}) \Phi_H(r_3) \right) \nonumber\\
  &+ \sqrt{\frac{2\kappa}{4\pi}} \left((C_0 \pm C_0') \left(\frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}}\right) \frac{\cos(\kr)}{\kr} \right.  \nonumber \\
  &\times \left. \left[1 - e^{-\mr}\left(1 + \frac{\mu}{2}\rho \right)\right] \Phi_{Ps}(r_{12}) \Phi_H(r_3) \right) \nonumber\\
-= &\frac{\kappa\mu}{2} \left((C_0 \pm C_0^\prime) e^{-\mr}(1+\mr) S_- \right) \nonumber\\
+= &\frac{\kappa\mu}{2} \left((C_0 \pm C_0^\prime) e^{-\mr}(1+\mr) S_0 \right) \nonumber\\
  &+ \sqrt{\frac{2\kappa}{4\pi}} \frac{\mu^3}{4} \left((C_0 \pm C_0^\prime) e^{-\mr} \frac{\cos(\kr)}{\kr} \Phi_{Ps}(r_{12}) \Phi_H(r_3) \right) \nonumber\\
  &+ \left((C_0 \pm C_0^\prime) \left(\frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}}\right) C_0 \right).
  \label{eq:CBarLCBar2}
@@ -148,11 +145,11 @@ From \cref{eq:PermPropFull},
 \begin{subequations}
 \begin{align}
 (\bar{\phi}_i, \mathcal{L}\bar{C}_0) &= \frac{2}{\sqrt{2}} \left[(\phi_i,\mathcal{L}C_0) \pm (\phi_i',\mathcal{L}C_0)\right] \label{PhiBarLCBar2a} \\
- &= \frac{2}{\sqrt{2}} \left[(\phi_i,\mathcal{L}C_0) \pm (\phi_i,\mathcal{L}C_0')\right]  \label{PhiBarLCBar2b}
+ &= \frac{2}{\sqrt{2}} \left[(\phi_i,\mathcal{L}C_0) \pm (\phi_i,\mathcal{L}C_0')\right].  \label{PhiBarLCBar2b}
 \end{align}
 \end{subequations}
 
-Using \cref{eq:LC,eq:LCBar}) in the above gives our final results for $(\bar{\phi}_i, \mathcal{L}\bar{C}_0)$.
+\noindent Using \cref{eq:LC,eq:LCBar}) in the above gives our final results for $(\bar{\phi}_i, \mathcal{L}\bar{C}_0)$.
 \begin{subequations}
 \begin{align}
 (\bar{\phi}_i, \mathcal{L}\bar{C}_0) = &\sqrt{\frac{\kappa}{\pi}} \left( (\phi_i \pm \phi_i') \Phi_{Ps}(r_{12}) \Phi_H(r_3) \left\{ \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}}\right) \frac{\cos(\kr)}{\kr} \right.\right. \nonumber\\
@@ -168,12 +165,13 @@ Either of these can be used, depending on which is easier to implement in the co
 
 
 \section{Results}
-
+The primary quantity computed with the Kohn variational method is the phase shifts. From this, other quantities can be calculated, such as resonance parameters (\cref{sec:SWaveResonances}), scattering lengths (\cref{chp:ERT}), effective ranges (\cref{chp:ERT}), and cross sections (\cref{chp:CrossSections}). \todo{Elsewhere?} 
 
 \subsection{Phase Shifts}
-The extrapolation becomes less stable for higher $\kappa$, as is discussed in section (\ref{sec:Extrapolation}).
-
-All runs here were performed using the set of integration points described in \cref{sec:QuadraturePoints}.
+All runs here were performed using the set of integration points described in \cref{sec:QuadraturePoints}. The phase shifts are calculated with the program described in \cite{}. \Cref{tab:SWavePhase} shows the $^{1,3}$S phase shifts calculated using the complex Kohn at regular intervals of $\kappa$, which we can compare to the results from other groups in \cref{tab:SWaveComparisons}. The extrapolations in the fourth and fifth columns are performed using the technique described in \cref{sec:Extrapolation}. The last two columns show the percent difference given by
+\beq
+\% \text{ Diff}(a,b) = \left|\frac{a - b}{\left(\frac{a+b}{2}\right)}\right| \times 100\%
+\eeq
 
 \begin{table}[H]
 \centering
@@ -181,79 +179,102 @@ All runs here were performed using the set of integration points described in \c
 \toprule
 $\kappa$ & $\delta^+ (\omega = 7)$ & $\delta^- (\omega = 7)$ & $\delta^+ (\omega \rightarrow \infty)$ & $\delta^- (\omega \rightarrow \infty)$ & \% Diff$^+$ & \% Diff$^-$ \\
 \midrule
-0.1 & -0.427 & -0.215 & -0.426 & -0.214 & 0.223\% & 0.120\% \\
-0.2 & -0.820 & -0.431 & -0.819 & -0.432 & 0.019\% & 0.063\% \\
-0.3 & -1.161 & -0.645 & -1.161 & -0.645 & 0.040\% & 0.094\% \\
-0.4 & -1.446 & -0.850 & -1.446 & -0.850 & 0.022\% & 0.130\% \\
-0.5 & -1.678 & -1.041 & -1.677 & -1.040 & 0.031\% & 0.166\% \\
-0.6 & -1.858 & -1.217 & -1.857 & -1.215 & 0.040\% & 0.273\% \\
-0.7 & -1.964 & -1.375 & -1.963 & -1.373 & 0.045\% & 0.250\% \\
+0.1 & $-0.427$ & $-0.215$ & $-0.426$ & $-0.214$ & $0.223\%$ & $0.120\%$ \\
+0.2 & $-0.820$ & $-0.431$ & $-0.819$ & $-0.431$ & $0.010\%$ & $0.063\%$ \\
+0.3 & $-1.161$ & $-0.645$ & $-1.161$ & $-0.645$ & $0.040\%$ & $0.094\%$ \\
+0.4 & $-1.446$ & $-0.850$ & $-1.446$ & $-0.849$ & $0.022\%$ & $0.130\%$ \\
+0.5 & $-1.678$ & $-1.041$ & $-1.677$ & $-1.040$ & $0.031\%$ & $0.166\%$ \\
+0.6 & $-1.858$ & $-1.217$ & $-1.857$ & $-1.214$ & $0.040\%$ & $0.273\%$ \\
+0.7 & $-1.964$ & $-1.375$ & $-1.963$ & $-1.372$ & $0.045\%$ & $0.250\%$ \\
 \bottomrule
 \end{tabular}
-\caption{S-Wave complex Kohn phase shifts}
+\caption{$^{1,3}$S complex Kohn phase shifts. \% Diff$^+$ and \% Diff$^-$ are the percent differences between the
+ current complex Kohn $\omega = 7$ and $\omega \rightarrow \infty$ results.}
 \label{tab:SWavePhase}
 \end{table}
 
-Table \ref{tab:SWavePhase} contains the phase shifts for regular intervals of $\kappa$, which we can compare to the results from other groups in Tables \ref{tab:SWaveSingletOther} and \ref{tab:SWaveTripletOther} starting on page \pageref{tab:SWaveSingletOther}.  Our phase shifts at $\omega = 7$ from this table are exactly the same as Van Reeth and Humberston's results for $\omega = 6$ \cite{VanReeth2003}, with some exceptions in the last digit.  Figure \ref{fig:SWavePhaseOmega=7} has the fuller set of phase shifts plotted with respect to the positronium momentum, $\kappa$.
-
-\textbf{@TODO:} What are our results for $\omega = 6$?
-
-As mentioned in Section \ref{sec:Extrapolation}, extrapolation to $\omega = \infty$ has been problematic with larger numbers of terms.
+Our complex Kohn phase shifts at $\omega = 7$ from this table are exactly the same as Van Reeth and Humberston's results for $\omega = 6$ \cite{VanReeth2003}, with some exceptions in the last digit. This indicates that the prior Kohn variational method S-wave phase shifts were well converged. \Cref{fig:SWavePhase} has the more complete set of phase shifts plotted with respect to the incoming Ps energy, $E_{\bm \kappa}$. This compares the complex Kohn phase shifts to that of the $^1$S CC \cite{Walters2004} and the $^3$S CC \cite{Blackwood2002}, along with the $^{1,3}$S CVM \cite{Zhang2012}.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=7in]{swave-phases}
-	\caption{$^{1,3}$S phase shifts}
+	\caption{$^{1,3}$S complex Kohn phase shifts. The $^1S$ CC phase shifts
+\cite{Walters2004} are given by \mbox{\textcolor{blue}{$\times$}}, and the
+$^3S$ CC phase shifts \cite{Blackwood2002} are given by
+\mbox{\textcolor{red}{\textbf{+}}}. The CVM $^1S$ and $^3S$ phase shifts
+\cite{Zhang2012} are blue and red circles,
+respectively. Vertical dashed lines denote the complex rotation resonance
+positions \cite{Yan1999,Yan1998a,Ho1998}}
 	\label{fig:SWavePhase}
 \end{figure}
 
+In the inset in \cref{fig:SWavePhase}. 
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{c c c c c c c c}
+\toprule
+ & Kohn & Kohn & & CC & CC & & 5-state \\
+ & $\omega = 6$ & $\omega \rightarrow \infty$ & CVM & 14Ps14H+H$^-$ & 14Ps14H & CC & CC \\
+$\kappa$ & $\delta_0^+$ \cite{VanReeth2003} & $\delta_0^+$ \cite{VanReeth2003} & $\delta_0^+$ \cite{Zhang2012} & $\delta_0^+$ \cite{Blackwood2002} & $\delta_0^+$ \cite{Walters2004} & $\delta_0^+$ \cite{Ray1997} & $\delta_0^+$ \cite{Adhikari1999} \\
+\midrule
+$0.1$ & $-0.427$ & $-0.425$ & $-0.42636$ & $-0.434$ & $-0.428$ & $-0.692$ & $-0.362$ \\
+$0.2$ & $-0.820$ & $-0.817$ & $-0.81973$ & $-0.834$ & $-0.825$ & $-1.212$ & $-0.702$ \\
+$0.3$ & $-1.161$ & $-1.158$ &    ---     & $-1.178$ & $-1.167$ & $-1.592$ & $-1.002$ \\
+$0.4$ & $-1.446$ & $-1.443$ &    ---     & $-1.467$ & $-1.453$ & $-1.902$ & $-1.252$ \\
+$0.5$ & $-1.677$ & $-1.674$ &    ---     & $-1.704$ & $-1.685$ & $-2.142$ & $-1.462$ \\
+$0.6$ & $-1.857$ & $-1.852$ &    ---     & $-1.890$ & $-1.867$ & $-2.362$ & $-1.622$ \\
+$0.7$ & $-1.964$ & $-1.959$ &    ---     & $-2.018$ & $-1.992$ & $-2.512$ & $-1.712$ \\
+\bottomrule
+\end{tabular}
+\caption{$^1$S Results from Other Groups}
+\label{tab:SWaveSingletOther}
+\end{table}
+
+\todoi{Add \cite{Biswas2001} results}
 
 \begin{table}[H]
 \centering
 \begin{tabular}{c c c c c c c}
 \toprule
- & $(\omega = 6)$ & $(\omega \rightarrow \infty)$ &  &  &  & \\
-$\kappa$ & $\delta^+$ \cite{VanReeth2003} & $\delta^+$ \cite{VanReeth2003} & $\delta^+$ \cite{Blackwood2002} & $\delta^+$ \cite{Walters2004} & $\delta^+$ \cite{Ray1997} & $\delta^+$ \cite{Adhikari1999} \\
+ & Kohn & Kohn &  & CC &  & 5-state \\
+ & $\omega = 6$ & $\omega \rightarrow \infty$ & CVM & 14Ps14H & CC &  CC  \\
+$\kappa$ & $\delta_0^-$ \cite{VanReeth2003} & $\delta^-$ \cite{VanReeth2003} & $\delta_0^-$ \cite{Zhang2012} & $\delta^-$ \cite{Blackwood2002} & $\delta^-$ \cite{Ray1997} & $\delta^-$ \cite{Adhikari1999} \\
 \midrule
-$0.05$ & --- & --- & $-0.219$ & --- & --- & --- \\
-$0.1$ & $-0.427$ & $-0.425$ & $-0.434$ & $-0.428$ & $-0.692$ & $-0.362$ \\
-$0.2$ & $-0.820$ & $-0.817$ & $-0.834$ & $-0.825$ & $-1.212$ & $-0.702$ \\
-$0.3$ & $-1.161$ & $-1.158$ & $-1.178$ & $-1.167$ & $-1.592$ & $-1.002$ \\
-$0.4$ & $-1.446$ & $-1.443$ & $-1.467$ & $-1.453$ & $-1.902$ & $-1.252$ \\
-$0.5$ & $-1.677$ & $-1.674$ & $-1.704$ & $-1.685$ & $-2.142$ & $-1.462$ \\
-$0.6$ & $-1.857$ & $-1.852$ & $-1.890$ & $-1.867$ & $-2.362$ & $-1.622$ \\
-$0.7$ & $-1.964$ & $-1.959$ & $-2.018$ & $-1.992$ & $-2.512$ & $-1.712$ \\
-$0.8$ &    --- &    --- &    --- &    --- & $-2.652$ & $-2.163$ \\
+$0.1$ & $-0.215$ & $-0.214$ & $-0.21464$ & $-0.206$ & $-0.252$ & $-0.167$ \\
+$0.2$ & $-0.432$ & $-0.431$ & $-0.43159$ & $-0.414$ & $-0.502$ & $-0.327$ \\
+$0.3$ & $-0.645$ & $-0.645$ &    ---     & $-0.624$ & $-0.722$ & $-0.474$ \\
+$0.4$ & $-0.850$ & $-0.849$ &    ---     & $-0.838$ & $-0.942$ & $-0.602$ \\
+$0.5$ & $-1.040$ & $-1.038$ &    ---     & $-1.037$ & $-1.142$ & $-0.706$ \\
+$0.6$ & $-1.215$ & $-1.211$ &    ---     & $-1.213$ & $-1.332$ & $-0.784$ \\
+$0.7$ & $-1.373$ & $-1.366$ &    ---     & $-1.367$ & $-1.502$ & $-0.833$ \\
 \bottomrule
 \end{tabular}
-\caption{S-Wave Singlet Results from Other Groups}
-\label{tab:SWaveSingletOther}
+\caption{$^3$S Results from Other Groups}
+\label{tab:SWaveTripletOther}
 \end{table}
 
-\todoi{Put labels on these}
-\todoi{Add \cite{Biswas2001} results}
+
 
 \begin{table}[H]
 \centering
-\begin{tabular}{c c c c c c}
+\footnotesize
+\begin{tabular}{c c c c c c c c}
 \toprule
- & $(\omega = 6)$ & $(\omega \rightarrow \infty)$ &  &  &   \\
-$\kappa$ & $\delta^-$ \cite{VanReeth2003} & $\delta^-$ \cite{VanReeth2003} & $\delta^-$ \cite{Blackwood2002} & $\delta^-$ \cite{Ray1997} & $\delta^-$ \cite{Adhikari1999} \\
+Method & 0.1 & 0.2 & 0.3 & 0.4 & 0.5 & 0.6 & 0.7 \\
 \midrule
-$0.05$ & --- & --- & $-0.103$ & --- & --- \\
-$0.1$ & $-0.215$ & $-0.214$ & $-0.206$ & $-0.252$ & $-0.167$ \\
-$0.2$ & $-0.432$ & $-0.431$ & $-0.414$ & $-0.502$ & $-0.327$ \\
-$0.3$ & $-0.645$ & $-0.645$ & $-0.624$ & $-0.722$ & $-0.474$ \\
-$0.4$ & $-0.850$ & $-0.849$ & $-0.838$ & $-0.942$ & $-0.602$ \\
-$0.5$ & $-1.040$ & $-1.038$ & $-1.037$ & $-1.142$ & $-0.706$ \\
-$0.6$ & $-1.215$ & $-1.211$ & $-1.213$ & $-1.332$ & $-0.784$ \\
-$0.7$ & $-1.373$ & $-1.366$ & $-1.367$ & $-1.502$ & $-0.833$ \\
-$0.8$ &    --- &    --- &    --- & $-1.652$ & $-0.851$ \\
+Kohn $\omega = 6$ \cite{VanReeth2003} & $-0.427$ & $-0.820$ & $-1.161$ & $-1.446$ & $-1.677$ & $-1.857$ & $-1.964$ \\
+\midrule
+Kohn $\omega \rightarrow \infty$ \cite{VanReeth2003} $\delta_0^-$ & $-0.214$ & $-0.431$ & $-0.645$ & $-0.849$ & $-1.038$ & $-1.211$ & $-1.366$ \\
+CVM \cite{Zhang2012} $\delta_0^-$ & $-0.21464$ & $-0.43159$ & --- & --- &  --- &  --- &  --- \\
+CC 14Ps14H+H$^-$ \cite{Blackwood2002} $\delta_0^-$ & $-0.206$ & $-0.414$ & $-0.624$ & $-0.838$ & $-1.037$ & $-1.213$ & $-1.367$ \\
 \bottomrule
 \end{tabular}
-\caption{S-Wave Triplet Results from Other Groups}
-\label{tab:SWaveTripletOther}
+\caption{$^1$S Results from other groups. Values in the header are $\kappa$ in au.}
+\label{tab:SWaveComparisons}
 \end{table}
+
 
 
 \begin{figure}[H]
@@ -273,121 +294,13 @@ Figure \ref{fig:SWaveComparisons} shows the results from various groups for calc
 \subsection{Resonances}
 \label{sec:SWaveResonances}
 
-There are two very obvious resonances before the Ps(n=2) channel threshold for $^1$S scattering, which can be seen in figure \ref{fig:SWavePhase}.  This threshold is at an incoming Ps energy of approximately 5.102 eV.  
-
-\subsubsection{Resonance Model}
-\label{sec:ResonanceModel}
-The resonance positions and widths can be calculated to high accuracy by fitting the data to the following standard curve:
-
-\beq
-\label{eq:ResonanceCurve}
-\delta(E) = A + BE + CE^2 + \arctan\left[ \frac{^1\Gamma}{2\left(^1E_R-E\right)} \right] + \arctan\left[ \frac{^2\Gamma}{2\left(^2E_R-E\right)} \right]
-\eeq
-The polynomial part of the above equation corresponds to hard-sphere scattering. The arctangent parts correspond to the first and second Fano resonances \cite{Fano1961,Macek1970,Hazi1979}, with $^1E_R$ and $^2E_R$ as the positions of the resonances and $^1\Gamma$ and $^2\Gamma$ as the widths of the respective resonances.
-
-\todoi{Refer back to the Bransden and Joachain book and/or the Ray paper about decomposing this equation into the different parts. Refer to the discussions in Peter's paper and Yan/Ho's paper about the resonances corresponding to 2S and 3S.  Discussion on energy levels elsewhere for H and Ps, along with what the threshold is. Ray has an analysis about the resonance width versus the lifetime.}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=7in]{triplet-false-resonance}
-	\caption{$^3$S plot showing false resonance (Schwartz singularity) at low $N$}
-	\label{fig:triplet-false-resonance}
-\end{figure}
-
-\subsubsection{Resonance Graphs}
-\label{sec:ResonanceGraphs}
-
-\todoi{Mention how we add or subtract $\pi$}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=7in]{ResOmega=6,pg1}
-	\caption{First set of resonance fitting graphs for $\omega = 6$}
-	\label{fig:ResOmega=6,pg1}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=7in]{ResOmega=6,pg2}
-	\caption{Second set of resonance fitting graphs for $\omega = 6$}
-	\label{fig:ResOmega=6,pg2}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=7in]{ResOmega=6,Residuals}
-	\caption{Graphs of residuals for the resonance fittings for $\omega = 6$}
-	\label{fig:ResOmega=6,Residuals}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=7in]{ResOmega=7,pg1}
-	\caption{First set of resonance fitting graphs for $\omega = 7$}
-	\label{fig:ResOmega=7,pg1}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=7in]{ResOmega=7,pg2}
-	\caption{Second set of resonance fitting graphs for $\omega = 7$}
-	\label{fig:ResOmega=7,pg2}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=7in]{ResOmega=7,Residuals}
-	\caption{Graphs of residuals for the resonance fittings for $\omega = 7$}
-	\label{fig:ResOmega=7,Residuals}
-\end{figure}
-
-
-\subsubsection{Resonance Values and Errors}
-\label{sec:ResonanceErrors}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=5in]{KohnFitting}
-	\caption{Kohn fitting ($\tau = 0.0$) with different weighting functions for $\omega = 7$}
-	\label{fig:KohnFitting}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=5in]{07Fitting}
-	\caption{Fitting for $\tau = 0.7$ with different weighting functions for $\omega = 7$}
-	\label{fig:07Fitting}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=5in]{pi4Fitting}
-	\caption{Fitting for $\frac{\pi}{4}$ with different weighting functions for $\omega = 7$}
-	\label{fig:pi4Fitting}
-\end{figure}
-
-The results for the resonance parameters normally differ slightly for each of the Kohn methods.  To determine these, we gathered the data for all $\kappa$ values below the Ps(2s)+H(1s) channel threshold for a given Kohn method.  An example of the resultant graph for $\tau = 0.0$ (Kohn) can be seen in figure \ref{fig:KohnFitting}.  As described in section \ref{sec:ResonanceFit}, MATLAB's nonlinear fitting routine, nlinfit, is used with 8 different weighting functions to try various fits.  All 8 weighting functions give at least respectable fits to the data, but some fits are obviously worse than others.  For our data, the Fair, Logistic and Huber do not fit well for the second resonance.  The Cauchy will fit it close but not as close as the Andrews, Bisquare, Talwar and Welsch.  Out of the closest fittings, the Talwar is usually the worst of the four.
-
-The closeness of the fits can be determined somewhat by plotting the residuals or looking at the values of the residual sum of squares, but these can be misleading near the resonances.  The MATLAB script that does the fittings also generates graphs for each fit with the data points superimposed.  The quality of the fitting is easily evaluated visually.  Due to the narrowness of the second resonance, the poor fits will usually overestimate its width and/or give the wrong position, causing the curve to not intersect the data points.
-
-An example of a good set of fits is given in figure \ref{fig:KohnFitting}.  The graphs in this section are plotted with respect to the positronium energy, unlike the graphs in section \ref{sec:ResonanceGraphs}, which are plotted with respect to the momentum, $\kappa$.  All three of the plotted fitting curves follow the data nicely, with the exception of the extreme points near $\delta^+ = 0$.  This is not a failure of the fitting but instead a side effect of using the model given by \ref{eq:ResonanceCurve}.  The range of $\arctan$ is $(-\frac{\pi}{2},\frac{\pi}{2})$, so the $\arctan$ parts of this model cannot bring the phase shift from the background (near 2.0) all the way to 0.0, as it can only add up to $\frac{\pi}{2}$.  Regardless of this, the fits are nearly perfect in this example.
-
-For some values of $\tau$, we have what appear to be Schwartz singularities.  Section \ref{sec:SchwartzSing} has more discussion on how these arise.  Figure \ref{fig:07Fitting} has a series of data points to the right of the second singularity that do not agree with runs for other values of $\tau$.  MATLAB attempts to fit with these, leading to incorrect parameters for the second resonance.  This type of behavior is observed for $\kappa = 0.7$ and $0.8$, so these runs are not included in the final results.  A similar problem is seen in figure \ref{fig:pi4Fitting}.  One data point at 5 eV is obviously shifted from where it ``should'' be.  The different weighting functions assign different importance to this point, so all three weighting functions gives different positions and widths of the second resonance.  This run for $\kappa = \frac{\pi}{4}$ was also discarded. 
-
-The resonance parameters are calculated separately for each Kohn method (Kohn, inverse Kohn, etc.).  The ``good'' fits for all Kohn methods are all compiled in an Excel spreadsheet, where the mean, mode and errors are determined for each of the four resonance parameters.
-
-The error for each parameter could be determined one of three ways.  The errors given in table \ref{tab:SWaveResonances} are simply the standard deviation.  We could have also used the standard error, which is given as $SE = \sigma / \sqrt{n}$.  The standard error is typically too small, since we are using approximately 100 tests.  For instance, using $\omega = 7$, for $^1E_R$, we get a standard error of $0.00001$, which implies a greater precision and agreement than our results have.  Another possible method for determining the error that we have looked at is to find the maximum deviation from the mean.  However, this overemphasizes the importance of outliers.  Using $\omega = 6$, the maximum deviation from the mean is $0.00586$ for $^2E_R$, which is $4.0$ times as large as the standard deviation. 
-
-
-
-\subsubsection{Resonance Parameters}
+As Blackwood et al. \cite{Blackwood2002} mention, there are an infinite number of Rydberg resonances in each partial wave converging on the $e^+$+H$^-$ threshold at \SI{6.05}{eV}. Before the Ps(n=2) threshold at \SI{5.102}{eV}, there are two very clear resonances for $^1$S scattering, which can be seen in figure \ref{fig:SWavePhase}. The trial wavefunction we use cannot be extended past this threshold without modifications to take into account the Ps(n=2) channel. We use the numerical methods described in \cref{sec:ResonanceFit} to accurately determine the resonance parameters.
 
 \setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
 \setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
 \begin{table}[H]
 \footnotesize
 \centering
-
 \begin{tabular}{l l l l l}
 \toprule
 Method & \thead{$^1E_R \text{ (eV)}$} & \thead{$^1\Gamma \text{ (eV)}$} & \thead{$^2E_R \text{ (eV)}$} & \thead{$^2\Gamma \text{ (eV)}$} \\
@@ -411,11 +324,22 @@ Stabilization \cite{Hazi1970} & $5.8366$ & $0.2693$ & --- & --- \\
 \label{tab:SWaveResonancesOther}
 \end{table}
 
-\textbf{@TODO:} Create comparison graph like in \cite{Ho1998}.
-\textbf{@TODO:} Discussion of Peter's previous calculations and omitted terms.
+The current complex Kohn resonance parameters in \cref{tab:SWaveResonancesOther} are very similar to that of the previous Kohn calculations \cite{VanReeth2004}, but the first resonance position matches better with the complex rotation \cite{Yan1999}. The complex rotation from Yan and Ho can be considered one of the best calculations for these resonances, and the stabilization method in Ref.~\cite{Yan2003} from the same authors agrees well with the complex rotation. Both the complex Kohn and prior Kohn calculations have a second resonance position that is at a higher energy than the complex rotation, but the current results agree relatively well with the complex rotation for most parameters.
 
+The CC calculation of Ref.~\cite{Walters2004} is a comparable full scattering calculation, and they tabulate resonance parameters through the F-wave singlet. Their resonance parameters are close to the complex Kohn and CC results, but there is a significant difference in the second resonance width, which is much smaller than the other calculations. Other calculations shown in this table agree approximately on the position and width of the resonances, with the exception of the much earlier stabilization by Hazi and Taylor \cite{Hazi1970}.
 
+\todoi{Create comparison graph like in \cite{Ho1998}?}
+\todoi{Discussion of Peter's previous calculations and omitted terms. Elsewhere.}
 
+Ray \cite{Ray2006} reports a $^3$S resonance in a 3-state CC approximation. This has not been reported by any other groups, and it appears that this may not be a true resonance. 
+More extensive CC calculations of Blackwood et al. \cite{Blackwood2002} with 9 Ps and 9 H pseudo- and eigenstates do not show this resonance. They note that they do not expect to find a triplet resonance for this system. \Cref{fig:triplet-false-resonance} shows that for a small number of terms, we get a Schwartz singularity in the triplet. As the number of terms increases, this singularity disappears. The complex Kohn method is different than the CC, but this can illustrate how critical it is to have basis sets with a large number of terms for Ps-H scattering.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=5in]{triplet-false-resonance}
+	\caption{$^3$S plot showing Schwartz singularity at low $N$}
+	\label{fig:triplet-false-resonance}
+\end{figure}
 
 
 
