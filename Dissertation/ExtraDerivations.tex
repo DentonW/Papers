@@ -84,7 +84,7 @@ Using these with \cref{eq:SphBesExpan,eq:SphBesExpanDer}, we see that to first o
 The output we get from the \emph{Mathematica} notebook ``First Partial Waves LS General.nb'' is
 \begin{align}
 \label{eq:LSGenLapl1}
-\frac{\Laplacian_\rho \left[\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} j_\ell(\kappa\rho) \right]}{\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} j_\ell(\kappa\rho)} = \frac{(n + n^2 - \kappa^2 \rho^2) \LegendreP{\ell, \cos\theta} + 2 \cot\theta \, \AssocLegendreP{\ell}{1}{\cos\theta} + \AssocLegendreP{\ell}{2}{\cos\theta}} {\rho^2 \LegendreP{\ell, \cos\theta}}.
+\frac{\Laplacian_\rho \left[\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} j_\ell(\kappa\rho) \right]}{\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} j_\ell(\kappa\rho)} = \frac{(n + n^2 - \kappa^2 \rho^2) \LegendreP{\ell, \cos\theta} + 2 \cot\theta \, \AssocLegendreP{\ell}{1}{\cos\theta} + \AssocLegendreP{\ell}{2}{\cos\theta}} {\rho^2 \LegendreP{\ell, \cos\theta}}.
 \end{align}
 
 From Ref.~\cite{WolframPnm}, a recurrence relation for the associated Legendre polynomials is
@@ -99,11 +99,11 @@ Using the definition of $\cot$ and solving for $\left(\ell^2+\ell \right)\AssocL
 \beq
 \left(\ell^2+\ell \right)\LegendreP{\ell, \cos\theta} = -\AssocLegendreP{\ell}{2}{\cos\theta} - 2 \cot\theta \, \AssocLegendreP{\ell}{1}{\cos\theta}.
 \eeq
-Substituting this back into \cref{eq:LSGenLapl1}, we get cancellations with the associated Legendre polynomials and see that $\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} j_\ell(\kappa\rho)$ is an eigenfunction of $\Laplacian_\rho$ with eigenvalue $-\kappa^2$:
+Substituting this back into \cref{eq:LSGenLapl1}, we get cancellations with the associated Legendre polynomials and see that $\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} j_\ell(\kappa\rho)$ is an eigenfunction of $\Laplacian_\rho$ with eigenvalue $-\kappa^2$:
 \begin{align}
 \label{eq:LSGenLapl2}
-\Laplacian_\rho \left[\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} j_\ell(\kappa\rho) \right] = \frac{(-\kappa^2 \rho^2) \LegendreP{\ell, \cos\theta} } {\rho^2 \LegendreP{\ell, \cos\theta}}
-= -\kappa^2 \, \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} j_\ell(\kappa\rho).
+\Laplacian_\rho \left[\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} j_\ell(\kappa\rho) \right] = \frac{(-\kappa^2 \rho^2) \LegendreP{\ell, \cos\theta} } {\rho^2 \LegendreP{\ell, \cos\theta}}
+= -\kappa^2 \, \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} j_\ell(\kappa\rho).
 \end{align}
 
 

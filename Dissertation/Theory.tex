@@ -9,8 +9,6 @@
 
 \section{General Wavefunction}
 
-\todoi{Mention $L = \ell$}
-
 The applications of the Kohn, inverse Kohn, complex Kohns, generalized Kohn, and generalized complex Kohns to our trial wavefunctions for each of the partial waves through the H-wave are all very similar in form. The trial wavefunctions for the partial waves (\cref{eq:SWaveTrialSimple,eq:PWaveSimple,eq:DWaveSimple}) can be written in a general form as
 \beq
 \Psi_\ell^{\pm,t} = \widetilde{S}_\ell + L_\ell^{\pm,t} \, \widetilde{C}_\ell + \sum_{i=1}^N c_i \bar{\phi}_i.
@@ -18,7 +16,6 @@ The applications of the Kohn, inverse Kohn, complex Kohns, generalized Kohn, and
 \eeq
 To avoid confusion with $L_\ell^{\pm,t}$ here and $\mathcal{L}$ in \cref{eq:LDef}, since the orbital angular momentum $\ell$ of the incoming Ps is the same as the total angular momentum L, we use $\ell$ to indicate the partial wave.
 
-\todoi{Reconcile $\Phi_{Ps}$ and $\Phi_H$ with \cref{eq:PsWave,eq:HWave}}
 The short-range $\bar{\phi}_i$ terms can represent terms of different symmetries, such as the $\bar{\phi}_{1i}$ and $\bar{\phi}_{2j}$ of the P-wave in \cref{eq:PWaveSimple}. The only requirement in this derivation is that these are Hylleraas-type short-range terms. In addition to letting the $\widetilde{S}$ and $\widetilde{C}$ represent the $\bar{S}$ and $\bar{C}$ for the different partial waves, we can define them in such a way as to use multiple Kohn methods (Kohn, inverse Kohn, etc.). We begin by defining a $2\times 2$ matrix $\textbf{u}$ which satisfies
 \beq
 \label{eq:GenSCMatrix}
@@ -67,8 +64,8 @@ The general form for the long-range terms $S_\ell$ and $C_\ell$ is
 \begin{subequations}
 \label{eq:GenSandC}
 \begin{align}
-S_\ell = \,&\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,j_\ell\!\left(\kappa\rho\right) \label{eq:GenSDef} \\
-C_\ell = -&\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,n_\ell\!\left(\kappa\rho\right) f_\ell(\rho) \label{eq:GenCDef}.
+S_\ell = \,&\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,j_\ell\!\left(\kappa\rho\right) \label{eq:GenSDef} \\
+C_\ell = -&\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,n_\ell\!\left(\kappa\rho\right) f_\ell(\rho) \label{eq:GenCDef}.
 \end{align}
 \end{subequations}
 The shielding function, $f_\ell(\rho)$, removes the singularity at the origin due to the Neumann function, $n_\ell$. The form that we have chosen for this is
@@ -86,10 +83,10 @@ The Hylleraas-type short-range terms are similar to that used in the bound state
 \begin{subequations}
 \label{eq:PhiDef}
 \begin{align}
-  \bar{\phi}_{1i} &= \left(1 \pm P_{23}\right) \SphericalHarmonicY{\ell}{0}{\theta_1}{\phi_1}
+  \bar{\phi}_{1i} &= \left(1 \pm P_{23}\right) \SphericalHarmonicY{\ell}{0}{\theta_1}{\varphi_1}
   e^{-(\alpha r_1 + \beta r_2 + \gamma r_3)}
   r_1^{\ell} r_1^{k_i} r_2^{l_i} r_{12}^{m_i} r_3^{n_i} r_{13}^{p_i} r_{23}^{q_i} \label{eq:PhiDef1} \\
-  \bar{\phi}_{2j} &= \left(1 \pm P_{23}\right) \SphericalHarmonicY{\ell}{0}{\theta_2}{\phi_2}
+  \bar{\phi}_{2j} &= \left(1 \pm P_{23}\right) \SphericalHarmonicY{\ell}{0}{\theta_2}{\varphi_2}
   e^{-(\alpha r_1 + \beta r_2 + \gamma r_3)}
   r_2^{\ell} r_1^{k_j} r_2^{l_j} r_{12}^{m_j} r_3^{n_j} r_{13}^{p_j} r_{23}^{q_j} \label{eq:PhiDef2}
 \end{align}
@@ -314,7 +311,7 @@ Omitting terms quadratic in $L_\ell$ or $L_\ell^t$, including $L_\ell^t L_\ell$,
 
 The rest of this derivation considers only the direct terms. The final result applies as well when the exchanged terms are included. Since we are considering the surface as $\rho \rightarrow \infty$, $f_\ell(\rho)$ in \cref{eq:GenCDef} becomes 1. Then from \cref{eq:GenSandC},
 \beq
-S^2 + C^2 = \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho}^2 \Phi_{Ps}\left(r_{12}\right)^2 \Phi_H\left(r_3\right)^2 (2 \kappa) \left[j_\ell\!\left(\kappa\rho\right)^2 + n_\ell\!\left(\kappa\rho\right)^2\right].
+S^2 + C^2 = \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho}^2 \Phi_{Ps}\left(r_{12}\right)^2 \Phi_H\left(r_3\right)^2 (2 \kappa) \left[j_\ell\!\left(\kappa\rho\right)^2 + n_\ell\!\left(\kappa\rho\right)^2\right].
 \eeq
 The asymptotic forms of $j_\ell$ and $n_\ell$ are given by \cite[p.729]{Arfken2005}
 \begin{subequations}
@@ -326,14 +323,14 @@ The asymptotic forms of $j_\ell$ and $n_\ell$ are given by \cite[p.729]{Arfken20
 \end{subequations}
 As $\rho \to \infty$,
 \beq
-S^2 + C^2 = \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho}^2 \Phi_{Ps}\left(r_{12}\right)^2 \Phi_H\left(r_3\right)^2 (2 \kappa) \frac{1}{\kappa^2 \rho^2}.
+S^2 + C^2 = \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho}^2 \Phi_{Ps}\left(r_{12}\right)^2 \Phi_H\left(r_3\right)^2 (2 \kappa) \frac{1}{\kappa^2 \rho^2}.
 \eeq
 
 Substituting this in \cref{eq:IlPsiVariation6b} and expanding the $d\sigma_\rho$ differential,
 \begin{align}
 \label{eq:IlPsiVariation7}
-\delta I_\ell^\prime =& \kappa (L_\ell^t - L_\ell) \Det{\textbf{u}} \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{S_\rho} \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho}^2 \Phi_{Ps}\left(r_{12}\right)^2 \Phi_H\left(r_3\right)^2 \frac{1}{\kappa \rho^2} \rho^2 \sin\theta_\rho d\theta_\rho d\phi_\rho d\tau_{12} d\tau_3 \nonumber \\
-=& (L_\ell^t - L_\ell) \Det{\textbf{u}} \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{S_\rho} \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho}^2 \Phi_{Ps}\left(r_{12}\right)^2 \Phi_H\left(r_3\right)^2 \sin\theta_\rho d\theta_\rho d\phi_\rho d\tau_{12} d\tau_3.
+\delta I_\ell^\prime =& \kappa (L_\ell^t - L_\ell) \Det{\textbf{u}} \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{S_\rho} \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho}^2 \Phi_{Ps}\left(r_{12}\right)^2 \Phi_H\left(r_3\right)^2 \frac{1}{\kappa \rho^2} \rho^2 \sin\theta_\rho d\theta_\rho d\varphi_\rho d\tau_{12} d\tau_3 \nonumber \\
+=& (L_\ell^t - L_\ell) \Det{\textbf{u}} \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{S_\rho} \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho}^2 \Phi_{Ps}\left(r_{12}\right)^2 \Phi_H\left(r_3\right)^2 \sin\theta_\rho d\theta_\rho d\varphi_\rho d\tau_{12} d\tau_3.
 \end{align}
 Since the Ps and H eigenfunctions are normalized, i.e.
 \beq
@@ -343,12 +340,12 @@ Since the Ps and H eigenfunctions are normalized, i.e.
 we now have
 \beq
 \label{eq:IlPsiVariation8}
-\delta I_\ell^\prime = (L_\ell^t - L_\ell) \Det{\textbf{u}} \int\limits_{S_\rho} \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho}^2 \sin\theta_\rho d\theta_\rho d\phi_\rho.
+\delta I_\ell^\prime = (L_\ell^t - L_\ell) \Det{\textbf{u}} \int\limits_{S_\rho} \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho}^2 \sin\theta_\rho d\theta_\rho d\varphi_\rho.
 \eeq
 The spherical harmonics are normalized so that \cite[p.788]{Arfken2005}
 \beq
 \label{eq:SphHarmNorm}
-\int\limits_{S_\rho} \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho}^2 d\Omega = 1.
+\int\limits_{S_\rho} \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho}^2 d\Omega = 1.
 \eeq
 This gives that
 \beq
@@ -375,8 +372,6 @@ This was only derived using the direct terms, but the exchange terms follow the 
 
 \section{Application of the Kohn Methods}
 \label{sec:KohnApplied}
-
-\todoi{$\ell$ subscripts}
 
 We use the general Kohn variational method (\cref{eq:GenKohn}) with our full trial wavefunction to get
 \beq
@@ -777,12 +772,12 @@ G = \frac{1}{2} \int\limits_{V_3} \int\limits_{V_{12}} \left[\int\limits_{S_\rho
 Using \cref{eq:GenSandC} and realizing that $f_\ell \rightarrow 1$ as $\rho \rightarrow \infty$, from the \emph{Mathematica} notebook ``SLC - CLS Proof.nb'', we have
 \begin{equation}
 \label{eq:CSderdiff}
-\left(S_\ell \frac{\partial C_\ell}{\partial \rho} - C_\ell \frac{\partial S_\ell}{\partial \rho} \right) = \frac{2}{\rho^2} \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho}^2 \Phi_{Ps}\left(r_{12}\right)^2 \Phi_H\left(r_3\right)^2 .
+\left(S_\ell \frac{\partial C_\ell}{\partial \rho} - C_\ell \frac{\partial S_\ell}{\partial \rho} \right) = \frac{2}{\rho^2} \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho}^2 \Phi_{Ps}\left(r_{12}\right)^2 \Phi_H\left(r_3\right)^2 .
 \end{equation}
 Substituting \cref{eq:CSderdiff} into \cref{eq:GDef2} yields
 \begin{align}
-G &= \cancel{\frac{1}{2}} \int\limits_{V_3} \int\limits_{V_{12}} \left[\int\limits_{S_\rho} \cancel{\frac{2}{\rho^2}} \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho}^2 \Phi_{Ps}\left(r_{12}\right)^2 \Phi_H\left(r_3\right)^2 \cancel{\rho^2} \sin \theta_\rho d\theta_\rho d\varphi_\rho \right] d\tau_{12} d\tau_3  \nonumber \\
-&= \int\limits_{V_3} \int\limits_{V_{12}} \Phi_{Ps}(r_{12})^2 \Phi_{H}(r_{3})^2 \left[ \int\limits_{S_\rho} \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho}^2 \sin \theta_\rho d\theta_\rho d\varphi_\rho \right] d\tau_{12} d\tau_3  \nonumber \\
+G &= \cancel{\frac{1}{2}} \int\limits_{V_3} \int\limits_{V_{12}} \left[\int\limits_{S_\rho} \cancel{\frac{2}{\rho^2}} \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho}^2 \Phi_{Ps}\left(r_{12}\right)^2 \Phi_H\left(r_3\right)^2 \cancel{\rho^2} \sin \theta_\rho d\theta_\rho d\varphi_\rho \right] d\tau_{12} d\tau_3  \nonumber \\
+&= \int\limits_{V_3} \int\limits_{V_{12}} \Phi_{Ps}(r_{12})^2 \Phi_{H}(r_{3})^2 \left[ \int\limits_{S_\rho} \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho}^2 \sin \theta_\rho d\theta_\rho d\varphi_\rho \right] d\tau_{12} d\tau_3  \nonumber \\
 &= \int\limits_{V_3} \int\limits_{V_{12}} \Phi_{Ps}(r_{12})^2 \Phi_{H}(r_{3})^2 d\tau_{12} d\tau_3 = 1,
 \label{eq:GDef2}
 \end{align}
@@ -847,22 +842,22 @@ Using \cref{eq:GenSDef,eq:LDef},
 \begin{align}
 \label{eq:LS1}
 \mathcal{L}S_\ell = &\left(-\frac{1}{2} \Laplacian_\rho - \Laplacian_{r_3} - 2 \Laplacian_{r_{12}} + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2} \kappa^2\right) \nonumber \\
-& \times \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,j_\ell\!\left(\kappa\rho\right).
+& \times \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,j_\ell\!\left(\kappa\rho\right).
 \end{align}
 Since $S_\ell$ is independent of $r_3$ and $r_{12}$ except for the $\Phi_H$ and $\Phi_{Ps}$ functions, respectively, using \cref{eq:HPsEqn,eq:HPsHamil} simplifies this to
 \begin{align}
 \label{eq:LS2}
-\mathcal{L}S_\ell = \left(-\frac{1}{2} \Laplacian_\rho + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - \frac{1}{2} \kappa^2\right) \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,j_\ell\!\left(\kappa\rho\right).
+\mathcal{L}S_\ell = \left(-\frac{1}{2} \Laplacian_\rho + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - \frac{1}{2} \kappa^2\right) \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,j_\ell\!\left(\kappa\rho\right).
 \end{align}
-From \cref{sec:SphBess2}, we find that $\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} j_\ell(\kappa\rho)$ is an eigenfunction of $\Laplacian_\rho$ with eigenvalue $-\kappa^2$:
+From \cref{sec:SphBess2}, we find that $\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} j_\ell(\kappa\rho)$ is an eigenfunction of $\Laplacian_\rho$ with eigenvalue $-\kappa^2$:
 \begin{equation}
-\Laplacian_\rho \left[\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} j_\ell(\kappa\rho) \right] = \frac{(-\kappa^2 \rho^2) \LegendreP{\ell, \cos\theta} } {\rho^2 \LegendreP{\ell, \cos\theta}}
-= -\kappa^2 \, \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} j_\ell(\kappa\rho).
+\Laplacian_\rho \left[\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} j_\ell(\kappa\rho) \right] = \frac{(-\kappa^2 \rho^2) \LegendreP{\ell, \cos\theta} } {\rho^2 \LegendreP{\ell, \cos\theta}}
+= -\kappa^2 \, \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} j_\ell(\kappa\rho).
 \end{equation}
 Then \cref{eq:LS2} reduces down to
 \begin{equation}
 \label{eq:LS3}
-\mathcal{L}S_\ell = \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}}\right) \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,j_\ell\!\left(\kappa\rho\right)
+\mathcal{L}S_\ell = \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}}\right) \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,j_\ell\!\left(\kappa\rho\right)
 \end{equation}
 or
 \begin{equation}
@@ -883,13 +878,13 @@ To calculate the matrix elements in \cref{eq:GeneralKohnMatrix} that include $\b
 \begin{align}
 \label{eq:LC1}
 \mathcal{L}C_\ell = -&\left(-\frac{1}{2} \Laplacian_\rho - \Laplacian_{r_3} - 2 \Laplacian_{r_{12}} + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2} \kappa^2\right) \nonumber \\
-& \times \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,n_\ell\!\left(\kappa\rho\right) f_\ell(\rho) 
+& \times \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,n_\ell\!\left(\kappa\rho\right) f_\ell(\rho) 
 \end{align}
 Similar to \cref{eq:LS2}, using \cref{eq:HPsEqn,eq:HPsHamil} reduces this to
 \begin{align}
 \label{eq:LC2}
 \mathcal{L}C_\ell = -&\left(-\frac{1}{2} \Laplacian_\rho + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2} \kappa^2\right) \nonumber \\
-& \times \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,n_\ell\!\left(\kappa\rho\right) f_\ell(\rho).
+& \times \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,n_\ell\!\left(\kappa\rho\right) f_\ell(\rho).
 \end{align}
 Unlike with $\mathcal{L}S_\ell$ in \cref{sec:LSTerms}, there is not a cancellation 
 with the $\Laplacian_\rho$ and $\kappa^2$ terms. The combination of these 
@@ -898,7 +893,7 @@ notebook using the code given in \cref{fig:LCMath}. This is for the F-wave,
 and replacing the $\ell$-value of 3 in \texttt{SphericalBesselY} allows this 
 to be used for any partial wave. The results of these derivations is given in 
 \cref{tab:LCList}. The
-$\frac{1}{2} \left(\Laplacian_\rho + \kappa^2\right) \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} n_\ell(\kappa\rho) f_\ell(\rho)$
+$\frac{1}{2} \left(\Laplacian_\rho + \kappa^2\right) \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} n_\ell(\kappa\rho) f_\ell(\rho)$
 given in this table is substituted in \cref{eq:LC2} to find the full $\mathcal{L}C_\ell$.
 
 \begin{figure}[H]
@@ -915,7 +910,7 @@ given in this table is substituted in \cref{eq:LC2} to find the full $\mathcal{L
 \begin{tabular}{c l}
 \toprule \\[-2.7cm]
 Partial & \\[-1.3cm]
-Wave & $\frac{1}{2} \left(\Laplacian_\rho + \kappa^2\right) \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho} n_\ell(\kappa\rho) f_\ell(\rho)$ \\
+Wave & $\frac{1}{2} \left(\Laplacian_\rho + \kappa^2\right) \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} n_\ell(\kappa\rho) f_\ell(\rho)$ \\
 \midrule
 S-Wave & {$\!\begin{aligned} % http://tex.stackexchange.com/q/98482/16595 
                \frac{2 \kappa  f^\prime(\rho ) \sin (\kappa  \rho )-f^{\prime\prime}(\rho ) \cos (\kappa  \rho )}{2 \kappa  \rho } \\    % http://tex.stackexchange.com/q/78788/16595
@@ -1068,7 +1063,7 @@ Again, the $\bar{\phi}$ represents any of the short-range terms given in \cref{e
 %\centering
 %\begin{tabular}{l l l l}
 %\toprule\\[-1.5cm]
-%Partial Wave & $\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\phi_\rho}$ & $j_\ell(x)$ & $n_\ell(x)$ \\
+%Partial Wave & $\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho}$ & $j_\ell(x)$ & $n_\ell(x)$ \\
 %\midrule
 %S-Wave & $\frac{1}{\sqrt{4\pi}}$ & & \\
 %P-Wave & $\sqrt{\frac{3}{4\pi}} \cos \theta$ & & \\

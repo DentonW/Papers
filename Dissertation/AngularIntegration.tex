@@ -16,65 +16,63 @@
 We need to prove equation 5.4 of Peter Van Reeth's thesis \cite[p.79]{VanReethThesis}. Our integration is over $(0,2\pi)$.
 
 \begin{equation}
-\Int{ D(\cos \phi_{23})}{\phi_{23},0,2\pi} \approx \frac{2\pi}{n}\sum_{i=1}^n D\left[\cos\left(\frac{2i-1}{2n}\pi\right)\right].
-\label{PVRAng}
+\Int{ D(\cos \varphi_{23})}{\varphi_{23},0,2\pi} \approx \frac{2\pi}{n}\sum_{i=1}^n D\left[\cos\left(\frac{2i-1}{2n}\pi\right)\right].
+\label{eq:PVRAng}
 \end{equation}
 
 
 The form that we will need is
 \begin{equation}
-\Int{ D(\cos \phi_{23}) }{\phi_{23},0,\pi} \approx \frac{\pi}{n}\sum_{i=1}^n D\left[\cos\left(\frac{2i-1}{2n}\pi\right)\right].
-\label{PVRAngNew}
+\Int{ D(\cos \varphi_{23}) }{\varphi_{23},0,\pi} \approx \frac{\pi}{n}\sum_{i=1}^n D\left[\cos\left(\frac{2i-1}{2n}\pi\right)\right].
+\label{eq:PVRAngNew}
 \end{equation}
 
 Both of these equations are variations on Gaussian quadratures. The Chebyshev-Gauss quadrature is given by \cite{Abramowitz1965} \cite{MathworldChebyshevGauss}
 \begin{equation}
 \Int{ \frac{f\left( x \right)}{\sqrt{1 - x^2}} }{x,-1,1} \approx \sum_{i = 1}^n {w_i}f\left( {{x_i}} \right),
-\label{ChebyshevGauss}
+\label{eq:ChebyshevGauss}
 \end{equation}
 
 with $w_i = \frac{\pi}{n}$ and $x_i = \cos\left(\frac{2i-1}{2n}\pi\right)$.
 
-Starting from the left side of \ref{PVRAngNew}, we have
-\begin{equation}
-\Int{ D\left( {\cos \phi } \right) }{\phi,0,\pi} = \Int{ \frac{1}{{\sqrt {1 - {{\cos }^2}\phi } }}\sqrt {1 - {{\cos }^2}\phi } \: D\!\left( {\cos \phi } \right) }{\phi,0,\pi} = \Int{ \frac{1}{{\sqrt {1 - {{\cos }^2}\phi } }} D\!\left( {\cos \phi } \right)\sin \phi \: }{\phi,0,\pi}.
-\label{PVRAngNew2}
-\end{equation}
+Starting from the left side of \cref{eq:PVRAngNew}, we have
+\begin{align}
+\Int{ D\left( {\cos \varphi } \right) }{\varphi,0,\pi} &= \Int{ \frac{1}{{\sqrt {1 - {{\cos }^2}\varphi } }}\sqrt {1 - {{\cos }^2}\varphi } \: D\!\left( {\cos \varphi } \right) }{\varphi,0,\pi} \\
+& = \Int{ \frac{1}{{\sqrt {1 - {{\cos }^2}\varphi } }} D\!\left( {\cos \varphi } \right)\sin \varphi \: }{\varphi,0,\pi}.
+\label{eq:PVRAngNew2}
+\end{align}
 
-Using the substitution $x = \cos \phi$ and $dx = -\sin \phi \:d\phi$ changes the limits to $x_{min} \!\!=\! \cos 0 \! =\! 1$ and $x_{max} = \cos \pi = -1$. \Cref{PVRAngNew2} becomes
+Using the substitution $x = \cos \varphi$ and $dx = -\sin \varphi \:d\varphi$ changes the limits to $x_{min} \!\!=\! \cos 0 \! =\! 1$ and $x_{max} = \cos \pi = -1$. \Cref{eq:PVRAngNew2} becomes
 
 \begin{equation}
-\int_0^\pi  D\left( {\cos \phi } \right){\textrm{d}}\phi = - \int_1^{ - 1} \frac{1}{{\sqrt {1 - {x^2}} }}D\left( x \right){\textrm{d}}x = \int_{ - 1}^1 \frac{1}{{\sqrt {1 - {x^2}} }}D\left( x \right){\textrm{d}}x.
-\label{PVRAngNew3}
+\int_0^\pi  D\left( {\cos \varphi } \right){\textrm{d}}\varphi = - \int_1^{ - 1} \frac{1}{{\sqrt {1 - {x^2}} }}D\left( x \right){\textrm{d}}x = \int_{ - 1}^1 \frac{1}{{\sqrt {1 - {x^2}} }}D\left( x \right){\textrm{d}}x.
+\label{eq:PVRAngNew3}
 \end{equation}
 
 This is the exact form needed for Gauss-Chebyshev quadrature (with f = D):
 \begin{equation}
-\int_0^\pi  D\left( {\cos \phi } \right){\textrm{d}}\phi \approx \frac{\pi }{n} \sum_{i = 1}^n D\!\left[ {\cos \left( {\frac{{2i - 1}}{{2n}}\pi } \right)} \right]
-\label{AngQuadrature}
+\int_0^\pi  D\left( {\cos \varphi } \right){\textrm{d}}\varphi \approx \frac{\pi }{n} \sum_{i = 1}^n D\!\left[ {\cos \left( {\frac{{2i - 1}}{{2n}}\pi } \right)} \right]
+\label{eq:AngQuadrature}
 \end{equation}
 
-This proves only form (\ref{PVRAngNew}). To prove (\ref{PVRAng}), we split up the integration into two parts:
+This proves only form \cref{eq:PVRAngNew}. To prove \cref{eq:PVRAng}, we split up the integration into two parts:
 \begin{equation}
-\int_0^{2\pi } D\left( {\cos {\phi _{23}}} \right){\textrm{d}}{\phi _{23}} = \int_0^\pi  D\left( {\cos {\phi _{23}}} \right){\textrm{d}}{\phi _{23}} + \int _\pi ^{2\pi } D\left( {\cos {\phi _{23}}} \right){\textrm{d}}{\phi _{23}}.
-\label{AngSplit}
+\int_0^{2\pi } D\left( {\cos {\varphi_{23}}} \right){\textrm{d}}{\varphi_{23}} = \int_0^\pi  D\left( {\cos {\varphi_{23}}} \right){\textrm{d}}{\varphi_{23}} + \int _\pi ^{2\pi } D\left( {\cos {\varphi _{23}}} \right){\textrm{d}}{\varphi _{23}}.
+\label{eq:AngSplit}
 \end{equation}
-
-The first integration is just (\ref{PVRAngNew}). The only difference between the first and second integration is the limits. Defining $y = \phi - \pi$ gives
-
+The first integration is just \cref{eq:PVRAngNew}. The only difference between the first and second integration is the limits. Defining $y = \varphi - \pi$ gives
 \begin{equation}
-\int _\pi ^{2\pi } D\left( {\cos {\phi}} \right){\textrm{d}}{\phi} = \int_0^\pi D\left[\cos(\phi)\right] dy = \int_0^\pi D\left[\cos(y+\pi)\right] dy.
+\int _\pi ^{2\pi } D\left( {\cos {\varphi}} \right){\textrm{d}}{\varphi} = \int_0^\pi D\left[\cos(\varphi)\right] dy = \int_0^\pi D\left[\cos(y+\pi)\right] dy.
 \end{equation}
-
-If we also define $z = \cos \phi = \cos(y+\pi)$ and $dz = \sin y \,dy$, we get an expression the same as (\ref{PVRAngNew3}):
+If we also define $z = \cos \varphi = \cos(y+\pi)$ and $dz = \sin y \,dy$, we get an expression the same as \cref{eq:PVRAngNew3}:
 \begin{equation}
-\int_0^\pi D\left(\cos\phi\right) dy = \int_0^\pi \frac{1}{\sqrt{1-z^2}} D(z)\, sin\phi\, dy = \int_{-1}^1 \frac{1}{\sqrt{1-z^2}} D(z) dz
+\int_0^\pi D\left(\cos\varphi\right) dy = \int_0^\pi \frac{1}{\sqrt{1-z^2}} D(z)\, sin\varphi\, dy = \int_{-1}^1 \frac{1}{\sqrt{1-z^2}} D(z) dz
 \end{equation}
-Since this is the same as (\ref{PVRAngNew3}), we just combine this with (\ref{AngSplit}) and (\ref{AngQuadrature}) to get (\ref{PVRAng}), proving the first form.
+Since this is the same as \cref{eq:PVRAngNew3}, we just combine this with \cref{eq:AngSplit,eq:AngQuadrature} to get \cref{eq:PVRAng}, proving the first form.
 
 
 \section{Limits on Integration}
-As Peter Van Reeth points out in his thesis on page 78, $\phi_{23}$ is the angle between the planes of the triangles $(r_1,r_2,r_{12})$ and $(r_1,r_3,r_{13})$. This angle can range between $\phi_{23} = 0$ and $\phi_{23} = 2 \pi$.
+As Peter Van Reeth points out in his thesis on page 78, $\varphi_{23}$ is the angle between the planes of the triangles $(r_1,r_2,r_{12})$ and $(r_1,r_3,r_{13})$. This angle can range between $\varphi_{23} = 0$ and $\varphi_{23} = 2 \pi$.
 
 
 \section{External Angular Integrations}
@@ -103,26 +101,26 @@ These are derived in a \emph{Mathematica} notebook entitled ``General Angular In
 We are not integrating over all angles, so the orthogonality relations of the spherical harmonics do not hold. However, it can be seen that if we integrate over all external angles, $\tau_{ext}$, any spherical harmonic with itself will give $2\pi$, i.e.
 \beq
 \label{eq:AngSame}
-\Int{Y_\ell^0(\theta_i, \phi_i) Y_\ell^0(\theta_i, \phi_i)}{\tau_{ext}, \tau_{ext}} = 2 \pi,
+\Int{Y_\ell^0(\theta_i, \varphi_i) Y_\ell^0(\theta_i, \varphi_i)}{\tau_{ext}, \tau_{ext}} = 2 \pi,
 \eeq
 where $i$ = $1$, 2, 3, $\rho$ or $\rho^\prime$.
 
 
-\subsection{Terms with \texorpdfstring{$Y_\ell^0(\theta_i, \phi_i) Y_\ell^0(\theta_j, \phi_j)$}{Yi-Yj} }
+\subsection{Terms with \texorpdfstring{$Y_\ell^0(\theta_i, \varphi_i) Y_\ell^0(\theta_j, \varphi_j)$}{Yi-Yj} }
 \label{sec:AngRiRj}
 These terms are not completely necessary to generalize here, because they only appear in the short--short calculations. My derivations and code for the S-, P-, and D-wave short--short calculations use these. The general code short--short derivations and code \cite{sec:} use a formalism from Drake and Yan \cite{Yan1997} that does not do these external angular integrations. The general code is used for the F-, G-, and H-waves and can be used for arbitrary $\ell$. Derivations for all of these can be seen in the \emph{Mathematica} notebook ``General Angular Integrations.nb''. Note that the result of $2\pi$ in \cref{sec:AngSame} is recovered if $i=j$. The general result is
 \beq
 \label{eq:AngRiRj}
-\Int{Y_\ell^0(\theta_i, \phi_i) Y_\ell^0(\theta_j, \phi_j)}{\tau_{ext}, \tau_{ext}} = 2 \pi \LegendreP{\ell, \cos\theta_{ij}}.
+\Int{Y_\ell^0(\theta_i, \varphi_i) Y_\ell^0(\theta_j, \varphi_j)}{\tau_{ext}, \tau_{ext}} = 2 \pi \LegendreP{\ell, \cos\theta_{ij}}.
 \eeq
 where $i$ = $1$, 2, 3, $\rho$ or $\rho^\prime$. It takes some work to show that the results in the \emph{Mathematica} notebook ``General Angular Integrations.nb'' are equivalent to this.
 
 These integrations for the first three partial waves are given below.
 \begin{subequations}
 \begin{align}
-\Int{Y_0^0(\theta_i, \phi_i) Y_0^0(\theta_j, \phi_j)}{\tau_{ext}, \tau_{ext}} &= 2 \pi \\
-\Int{Y_1^0(\theta_i, \phi_i) Y_1^0(\theta_j, \phi_j)}{\tau_{ext}, \tau_{ext}} &= 2 \pi \cos\theta_{ij} \\
-\Int{Y_2^0(\theta_i, \phi_i) Y_2^0(\theta_j, \phi_j)}{\tau_{ext}, \tau_{ext}} &= 2 \pi \left(3 \cos^2 \theta_{ij} - 1 \right)
+\Int{Y_0^0(\theta_i, \varphi_i) Y_0^0(\theta_j, \varphi_j)}{\tau_{ext}, \tau_{ext}} &= 2 \pi \\
+\Int{Y_1^0(\theta_i, \varphi_i) Y_1^0(\theta_j, \varphi_j)}{\tau_{ext}, \tau_{ext}} &= 2 \pi \cos\theta_{ij} \\
+\Int{Y_2^0(\theta_i, \varphi_i) Y_2^0(\theta_j, \varphi_j)}{\tau_{ext}, \tau_{ext}} &= 2 \pi \left(3 \cos^2 \theta_{ij} - 1 \right)
 \end{align}
 \end{subequations}
 
@@ -134,7 +132,7 @@ When performing the external angular integrations instead of using the general s
 This allows us to split these into multiple integrations with only polynomial $r_i$ and $r_{ij}$ terms with the decaying exponentials. Most of the other external angular integrations in this Appendix also end up with $\cos\theta_{ij}$, but those only apply to the long-range code, which does not have this restriction.
 
 
-\subsection{Terms with \texorpdfstring{$Y_\ell^0(\theta_1, \phi_1) Y_\ell^0(\theta_{\rho}, \phi_{\rho})$}{Y1-Yrho} and \texorpdfstring{$Y_\ell^0(\theta_1, \phi_1) Y_\ell^0(\theta_{\rho^\prime}, \phi_{\rho^\prime})$}{Y1-Yrho'}}
+\subsection{Terms with \texorpdfstring{$Y_\ell^0(\theta_1, \varphi_1) Y_\ell^0(\theta_{\rho}, \varphi_{\rho})$}{Y1-Yrho} and \texorpdfstring{$Y_\ell^0(\theta_1, \varphi_1) Y_\ell^0(\theta_{\rho^\prime}, \varphi_{\rho^\prime})$}{Y1-Yrho'}}
 \label{sec:AngR1Rho}
 
 After doing these integrations by hand for the P-, D-, and F-wave (the S-wave is just $2\pi$), I realized that it is possible to generalize these. This can be seen in the ``Vector Gaussian Integration.cpp'' file of the general long-range integration code. If we define
@@ -143,7 +141,7 @@ w_1 = \frac{r_1 + r_2 \cos\theta_{12}}{2 \rho},
 \eeq
 then
 \beq
-\Int{Y_\ell^0(\theta_1, \phi_1) Y_\ell^0(\theta_{\rho}, \phi_{\rho})}{\tau_{ext}, \tau_{ext}} = 2 \pi \LegendreP{\ell, w_1},
+\Int{Y_\ell^0(\theta_1, \varphi_1) Y_\ell^0(\theta_{\rho}, \varphi_{\rho})}{\tau_{ext}, \tau_{ext}} = 2 \pi \LegendreP{\ell, w_1},
 \eeq
 where $P_\ell$ is the standard Legendre polynomial. This easily lets us calculate these terms in the C++ code. Likewise, for
 \beq
@@ -151,11 +149,11 @@ w_1^\prime = \frac{r_1 + r_3 \cos\theta_{13}}{2 \rho^\prime},
 \eeq
 then
 \beq
-\Int{Y_\ell^0(\theta_1, \phi_1) Y_\ell^0(\theta_{\rho^\prime}, \phi_{\rho^\prime})}{\tau_{ext}, \tau_{ext}} = 2 \pi \LegendreP{\ell, w_1^\prime}.
+\Int{Y_\ell^0(\theta_1, \varphi_1) Y_\ell^0(\theta_{\rho^\prime}, \varphi_{\rho^\prime})}{\tau_{ext}, \tau_{ext}} = 2 \pi \LegendreP{\ell, w_1^\prime}.
 \eeq
 
 
-\subsection{Terms with \texorpdfstring{$Y_\ell^0(\theta_2, \phi_2) Y_\ell^0(\theta_{\rho}, \phi_{\rho})$}{Y2-Yrho} and \texorpdfstring{$Y_\ell^0(\theta_3, \phi_3) Y_\ell^0(\theta_{\rho^\prime}, \phi_{\rho^\prime})$}{Y3-Yrho'}}
+\subsection{Terms with \texorpdfstring{$Y_\ell^0(\theta_2, \varphi_2) Y_\ell^0(\theta_{\rho}, \varphi_{\rho})$}{Y2-Yrho} and \texorpdfstring{$Y_\ell^0(\theta_3, \varphi_3) Y_\ell^0(\theta_{\rho^\prime}, \varphi_{\rho^\prime})$}{Y3-Yrho'}}
 \label{sec:AngR2Rho}
 
 Similar to \cref{sec:AngR1Rho}, these integrals are also generalizable and are used in the C++ file ``Vector Gaussian Integration.cpp''. Defining
@@ -164,7 +162,7 @@ w_2 = \frac{r_2 + r_1 \cos\theta_{12}}{2 \rho},
 \eeq
 then
 \beq
-\Int{Y_\ell^0(\theta_2, \phi_2) Y_\ell^0(\theta_{\rho}, \phi_{\rho})}{\tau_{ext}, \tau_{ext}} = 2 \pi \LegendreP{\ell, w_2}.
+\Int{Y_\ell^0(\theta_2, \varphi_2) Y_\ell^0(\theta_{\rho}, \varphi_{\rho})}{\tau_{ext}, \tau_{ext}} = 2 \pi \LegendreP{\ell, w_2}.
 \eeq
 Since $\rho^\prime$ is constructed from $r_3$, we can do the same method for the next set. We define
 \beq
@@ -172,11 +170,11 @@ w_3 = \frac{r_3 + r_1 \cos\theta_{13}}{2 \rho^\prime},
 \eeq
 which gives
 \beq
-\Int{Y_\ell^0(\theta_3, \phi_3) Y_\ell^0(\theta_{\rho^\prime}, \phi_{\rho^\prime})}{\tau_{ext}, \tau_{ext}} = 2 \pi \LegendreP{\ell, w_3}.
+\Int{Y_\ell^0(\theta_3, \varphi_3) Y_\ell^0(\theta_{\rho^\prime}, \varphi_{\rho^\prime})}{\tau_{ext}, \tau_{ext}} = 2 \pi \LegendreP{\ell, w_3}.
 \eeq
 
 
-\subsection{Terms with \texorpdfstring{$Y_\ell^0(\theta_2, \phi_2) Y_\ell^0(\theta_{\rho^\prime}, \phi_{\rho^\prime})$}{Y2-Yrho'} and \texorpdfstring{$Y_\ell^0(\theta_3, \phi_3) Y_\ell^0(\theta_{\rho}, \phi_{\rho})$}{Y3-Yrho}}
+\subsection{Terms with \texorpdfstring{$Y_\ell^0(\theta_2, \varphi_2) Y_\ell^0(\theta_{\rho^\prime}, \varphi_{\rho^\prime})$}{Y2-Yrho'} and \texorpdfstring{$Y_\ell^0(\theta_3, \varphi_3) Y_\ell^0(\theta_{\rho}, \varphi_{\rho})$}{Y3-Yrho}}
 \label{sec:AngR2Rhop}
 
 This set is more complicated than those in \cref{sec:AngR2Rho} but look similar. We first define
@@ -185,7 +183,7 @@ w_4 = \frac{r_1 \cos\theta_{12} + r_3 \cos\theta_{23}}{2 \rho^\prime},
 \eeq
 and then
 \beq
-\Int{Y_\ell^0(\theta_2, \phi_2) Y_\ell^0(\theta_{\rho^\prime}, \phi_{\rho^\prime})}{\tau_{ext}, \tau_{ext}} = 2 \pi \LegendreP{\ell, w_4}.
+\Int{Y_\ell^0(\theta_2, \varphi_2) Y_\ell^0(\theta_{\rho^\prime}, \varphi_{\rho^\prime})}{\tau_{ext}, \tau_{ext}} = 2 \pi \LegendreP{\ell, w_4}.
 \eeq
 For the permuted version of this, we use
 \beq
@@ -193,12 +191,12 @@ w_5 = \frac{r_1 \cos\theta_{13} + r_2 \cos\theta_{23}}{2 \rho},
 \eeq
 giving
 \beq
-\Int{Y_\ell^0(\theta_3, \phi_3) Y_\ell^0(\theta_{\rho}, \phi_{\rho})}{\tau_{ext}, \tau_{ext}} = 2 \pi \LegendreP{\ell, w_5}.
+\Int{Y_\ell^0(\theta_3, \varphi_3) Y_\ell^0(\theta_{\rho}, \varphi_{\rho})}{\tau_{ext}, \tau_{ext}} = 2 \pi \LegendreP{\ell, w_5}.
 \eeq
 \todoi{The $w_4$ and $w_5$ look similar to equation (B.14) in Peter's thesis}
 
 
-\subsection{Terms with \texorpdfstring{$Y_\ell^0(\theta_\rho, \phi_\rho) Y_\ell^0(\theta_{\rho^\prime}, \phi_{\rho^\prime})$}{Yrho-Yrho'}}
+\subsection{Terms with \texorpdfstring{$Y_\ell^0(\theta_\rho, \varphi_\rho) Y_\ell^0(\theta_{\rho^\prime}, \varphi_{\rho^\prime})$}{Yrho-Yrho'}}
 
 These are the most difficult angular integrations considered. After performing these integrations by hand through the D-wave, I came up with a way to compute them in \emph{Mathematica}. These are derived in a \emph{Mathematica} notebook entitled ``General Angular Integrations.nb''. Using this method, the H-wave integral ($\ell = 5$) took approximately 1 hour and 26 minutes to calculate in \emph{Mathematica}. An I-wave version of this integral was attempted on the Talon2 cluster (single processor only), but it was killed after approximately 2 weeks of runtime. Without this result, the I-wave and higher cannot be calculated using this method.
 
@@ -208,36 +206,36 @@ y = \frac{4\left(\rho^2 + {\rho^\prime}^2\right) - r_{23}^2}{8 \rho \rho^\prime}
 \eeq
 these integrals can be generalized to
 \begin{equation}
-\Int{Y_\ell^0(\theta_\rho, \phi_\rho) Y_\ell^0(\theta_{\rho^\prime}, \phi_{\rho^\prime})}{\tau_{ext}, \tau_{ext}} = 2 \pi \LegendreP{\ell, y}.
+\Int{Y_\ell^0(\theta_\rho, \varphi_\rho) Y_\ell^0(\theta_{\rho^\prime}, \varphi_{\rho^\prime})}{\tau_{ext}, \tau_{ext}} = 2 \pi \LegendreP{\ell, y}.
 \end{equation}
 The results of these integrals for the first six partial waves follow.
 
 \begin{align}
-\Int{&Y_0^0(\theta_\rho, \phi_\rho) Y_0^0(\theta_{\rho^\prime}, \phi_{\rho^\prime})}{\tau_{ext}, \tau_{ext}} = 2 \pi
+\Int{&Y_0^0(\theta_\rho, \varphi_\rho) Y_0^0(\theta_{\rho^\prime}, \varphi_{\rho^\prime})}{\tau_{ext}, \tau_{ext}} = 2 \pi
 \end{align}
 
 \begin{align}
-\Int{&Y_1^0(\theta_\rho, \phi_\rho) Y_1^0(\theta_{\rho^\prime}, \phi_{\rho^\prime})}{\tau_{ext}, \tau_{ext}} = \frac{\pi}{4 \rho \rho^\prime}  \left[4 \left(\rho^2+{\rho^\prime}^2\right)-r_{23}^2\right]
+\Int{&Y_1^0(\theta_\rho, \varphi_\rho) Y_1^0(\theta_{\rho^\prime}, \varphi_{\rho^\prime})}{\tau_{ext}, \tau_{ext}} = \frac{\pi}{4 \rho \rho^\prime}  \left[4 \left(\rho^2+{\rho^\prime}^2\right)-r_{23}^2\right]
 \end{align}
 
 \begin{align}
-\Int{Y_2^0(\theta_\rho, \phi_\rho) & Y_2^0(\theta_{\rho^\prime}, \phi_{\rho^\prime})}{\tau_{ext}, \tau_{ext}} = \frac{\pi}{64 \rho ^2 {\rho^\prime}^2}  \left[16 \left(3 \rho ^4+2 \rho ^2 {\rho^\prime}^2 +3 {\rho^\prime}^4\right)  \right. \nonumber \\
+\Int{Y_2^0(\theta_\rho, \varphi_\rho) & Y_2^0(\theta_{\rho^\prime}, \varphi_{\rho^\prime})}{\tau_{ext}, \tau_{ext}} = \frac{\pi}{64 \rho ^2 {\rho^\prime}^2}  \left[16 \left(3 \rho ^4+2 \rho ^2 {\rho^\prime}^2 +3 {\rho^\prime}^4\right)  \right. \nonumber \\
 & \left. +3 r_{23}^4-24 r_{23}^2 \left(\rho ^2+{\rho^\prime}^2\right)\right]
 \end{align}
 
 \begin{align}
-\Int{&Y_3^0(\theta_\rho, \phi_\rho) Y_3^0(\theta_{\rho^\prime}, \phi_{\rho^\prime})}{\tau_{ext}, \tau_{ext}} = \frac{\pi}{512 \rho ^3 {\rho^\prime}^3} \left[64 \left(5 \rho ^6+3 \rho ^4 {\rho^\prime}^2+3 \rho ^2 {\rho^\prime}^4+5 {\rho^\prime}^6\right) \right.  \nonumber \\
+\Int{&Y_3^0(\theta_\rho, \varphi_\rho) Y_3^0(\theta_{\rho^\prime}, \varphi_{\rho^\prime})}{\tau_{ext}, \tau_{ext}} = \frac{\pi}{512 \rho ^3 {\rho^\prime}^3} \left[64 \left(5 \rho ^6+3 \rho ^4 {\rho^\prime}^2+3 \rho ^2 {\rho^\prime}^4+5 {\rho^\prime}^6\right) \right.  \nonumber \\
 & \left. -5 r_{23}^6 +60 r_{23}^4 \left(\rho ^2+{\rho^\prime}^2\right)-48 r_{23}^2 \left(5 \rho ^4+6 \rho ^2 {\rho^\prime}^2+5 {\rho^\prime}^4\right)\right]
 \end{align}
 
 \begin{align}
-\Int{&Y_4^0(\theta_\rho, \phi_\rho) Y_4^0(\theta_{\rho^\prime}, \phi_{\rho^\prime})}{\tau_{ext}, \tau_{ext}} = \frac{\pi}{16384 \rho^4 {\rho^\prime}^4}  \left[8960 {\rho^\prime}^8+1280 {\rho^\prime}^6 \left(4 \rho^2-7 r_{23}^2\right) \right.  \nonumber \\
+\Int{&Y_4^0(\theta_\rho, \varphi_\rho) Y_4^0(\theta_{\rho^\prime}, \varphi_{\rho^\prime})}{\tau_{ext}, \tau_{ext}} = \frac{\pi}{16384 \rho^4 {\rho^\prime}^4}  \left[8960 {\rho^\prime}^8+1280 {\rho^\prime}^6 \left(4 \rho^2-7 r_{23}^2\right) \right.  \nonumber \\
 & -80 {\rho^\prime}^2 \left(r_{23}^2-4 \rho ^2\right)^2 \left(7 r_{23}^2-4 \rho ^2\right)+35 \left(r_{23}^2-4 \rho ^2\right)^4 \nonumber \\
 & \left. +96 {\rho^\prime}^4 \left(48 \rho ^4+35 r_{23}^4-120 \rho ^2 r_{23}^2\right)\right]
 \end{align}
 
 \begin{align}
-\Int{&Y_5^0(\theta_\rho, \phi_\rho) Y_5^0(\theta_{\rho^\prime}, \phi_{\rho^\prime})}{\tau_{ext}, \tau_{ext}} = \frac{\pi}{131072 \rho ^5 {\rho^\prime}^5} \left[64512 {\rho^\prime}^{10}-8960 {\rho^\prime}^8 \left(9 r_{23}^2-4 \rho ^2\right) \right.  \nonumber \\
+\Int{&Y_5^0(\theta_\rho, \varphi_\rho) Y_5^0(\theta_{\rho^\prime}, \varphi_{\rho^\prime})}{\tau_{ext}, \tau_{ext}} = \frac{\pi}{131072 \rho ^5 {\rho^\prime}^5} \left[64512 {\rho^\prime}^{10}-8960 {\rho^\prime}^8 \left(9 r_{23}^2-4 \rho ^2\right) \right.  \nonumber \\
 & + 140 {\rho^\prime}^2 \left(r_{23}^2-4 \rho ^2\right)^3 \left(9 r_{23}^2-4 \rho ^2\right)-63 \left(r_{23}^2-4 \rho ^2\right)^5  \nonumber \\
 & + 1920 {\rho^\prime}^6 \left(16 \rho ^4+21 r_{23}^4-56 \rho^2 r_{23}^2\right)  \nonumber \\
 & \left. -480 {\rho^\prime}^4 (r_{23}-2 \rho ) (2 \rho +r_{23}) \left(16 \rho ^4+21 r_{23}^4-56 \rho ^2 r_{23}^2\right)\right]

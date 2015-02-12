@@ -35,23 +35,23 @@ The positronium system is similar to the hydrogen atom with the proton replaced 
 
 To obtain the Ps wavefunction, we can start with the wavefunction for H and replace $m_e \rightarrow \frac{m_e}{2}$.  The ground state wavefunction for H is
 \begin{equation}
-\Psi_{100,H} = \left(\frac{1}{\pi a_0^3}\right)^{\frac{1}{2}} \!\! \ee^{-\frac{r}{a_0}},
+\Phi_{100,H} = \left(\frac{1}{\pi a_0^3}\right)^{\frac{1}{2}} \!\! \ee^{-\frac{r}{a_0}},
 \text{where } a_0 = \frac{\hbar^2}{m_e \,e^2} \;.
 \end{equation}
 The $100$ represents the $n \ell m$ quantum numbers, and we are only considering ground state H and Ps. 
 If we denote $a_0 \rightarrow a_0'$, where we replace $m_e$ by $m_e/2$ $\frac{m_e}{2}$, the positronium ground state wavefunction can be writen easily as
 \begin{equation}
-\Psi_{100,Ps} = \left(\frac{1}{\pi {a_0'}^3}\right)^{\frac{1}{2}} \!\! \ee^{-\frac{r}{a_0'}},
+\Phi_{100,Ps} = \left(\frac{1}{\pi {a_0'}^3}\right)^{\frac{1}{2}} \!\! \ee^{-\frac{r}{a_0'}},
 \text{where } a_0' = \frac{2\hbar^2}{m_e \,e^2} \;.
 \end{equation}
 Working in atomic units (see \cref{sec:Units}), $a_0 = 1$ (i.e. $\hbar = m_e = e = 1$), giving
 \begin{equation}
-\Psi_H\left(r_3\right) \equiv \Psi_{100,H}\left(r_3\right) = \frac{1}{\sqrt{\pi}} \ee^{-r_3}
+\Phi_H\left(r_3\right) \equiv \Phi_{100,H}\left(r_3\right) = \frac{1}{\sqrt{\pi}} \ee^{-r_3}
 \label{eq:HWave}
 \end{equation}
 and
 \begin{equation}
-\Psi_{Ps}\left(r_{12}\right) \equiv \Psi_{100,Ps}\left(r_{12}\right) = \frac{1}{\sqrt{8 \pi}} \ee^{-r_{12}/2} \;.
+\Phi_{Ps}\left(r_{12}\right) \equiv \Phi_{100,Ps}\left(r_{12}\right) = \frac{1}{\sqrt{8 \pi}} \ee^{-r_{12}/2} \;.
 \label{eq:PsWave}
 \end{equation}
 
@@ -84,6 +84,7 @@ For a given level $n$, the energy of positronium is half that of hydrogen. The i
 \section{Positronium Hydride}
 \label{sec:PsH}
 Positronium hydride (PsH) is a molecule \todo{Not exactly true} comprised of a hydrogen atom and a positronium atom. After Wheeler \cite{Wheeler1946} showed that positrons could be part of what he called a polyelectronic compound, Ore shortly thereafter predicted PsH in 1951 \cite{Ore1951}. PsH was not experimentally verified until 1992 by Schrader \cite{Schrader1992}. There was the question of whether PsH was atomic or molecular, but Saito \cite{Saito2000} showed that it was more like a molecule of Ps with H.
+\todoi{Move structure discussion to \cref{sec:PsHStructure}.}
 
 \todoi{Use \cite{Bressanini2003}}
 \todoi{Use \cite{Heyrovska2011}}

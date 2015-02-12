@@ -226,6 +226,7 @@ Alternatively, if the binding energy is greater than 0, the system is bound.
 Using the accurate Bubin and Adamowicz energy in \cref{tab:BoundEnergyOther}, this gives that $^1$S PsH is stable against dissociation into Ps and H by $\SI{0.039 196 765 251}{au}$ or $\SI{1.066 598 271 959}{eV}$. 
 
 \subsection{Bound State: Singlet}
+\label{sec:BoundSinglet}
 
 \setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
 \setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
@@ -403,6 +404,7 @@ The last six entries of this table give just the CC results of the Belfast group
 Our current complex Kohn binding energy in the first line of the table compares well with the accurate energies of Refs. \cite{Bubin2006, Mitroy2006, Yan1999}, but it is not as accurate of a calculation. The purpose of doing the PsH calculation was not to get the best result but to test how well the short-range terms for Ps-H scattering represent the short-range interactions. Based on \cref{tab:BoundEnergyOther}, the short-range interactions are described well. This also gave experience working with the Hylleraas basis set, and finding the PsH energy is a simpler problem than Ps-H scattering.
 
 \subsection{Triplet Energy Eigenvalues}
+\label{sec:TripletEigenvalues}
 
 Our code does not predict a true triplet bound state, making the singlet ground state the only possible configuration for PsH. Mitroy and Bromley have published a paper \cite{Mitroy2007} claiming a stable triplet bound state , but our code may not have the appropriate type of wavefunction to see this, since it is for a H($2p$) + Ps($2p$) state. They also use a very large configuration interaction basis, and this bound state is very shallow. Despite not predicting a bound state, we run the bound state code for the triplet so that we can use this for the short-range terms for the scattering program.
 
@@ -567,6 +569,10 @@ $^1$D & 4.73 & ---   \\
 \Cref{tab:Stabilization} gives the resonance positions found using the stabilization method. Despite the fact that this stabilization method does not give very accurate resonance positions in our case, we can learn some things from these. First, we can determine the number of resonances before the Ps(n=2) threshold and where to look for them in the full complex Kohn calculations. Secondly, the triplet states do not have resonances before this threshold for any of these partial waves. Lastly, for $\ell > 0$, both the first and second symmetries are needed to accurately describe the system. The first symmetry alone cannot adequately describe the P-wave and D-wave.
 
 
+
+\section{Structure}
+\label{sec:PsHStructure}
+Biswas and Darewych \cite{Biswas2002} find that the difference between the S(1) resonance and the binding energy (\cref{sec:BoundSinglet}) for various calculations of differing accuracy is roughly constant. They suggest that this means that PsH is less like e$^+$ orbiting H$^-$ and more like a molecule.
 
 
 \biblio
