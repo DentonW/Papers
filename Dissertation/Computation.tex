@@ -7,6 +7,7 @@
 
 \todoi{Should mention the Mathematica notebooks to generate Fortran lists for short-range matrix elements and possibly other programs}
 \todoi{Put in information from ``Integration Point Numbers.nb''}
+\todoi{Be clear that in the long-range code, we only calculate the Kohn elements, and then we rearrange them to create the others in the phase shift code. (Mentioned in \cref{sec:Kohn})}
 
 \section{Short-Range -- Short-Range Integrations}
 \label{sec:ShortInt}
@@ -803,7 +804,9 @@ For the S-wave, all runs were performed with the cusp parameters set at $r_1 = 1
 
 Van Reeth used cusp parameters set at $r_1 = 25$, with little apparent loss of precision over using $r_1 = 100$ \cite{}. With $\kappa$ set at $0.1$, several tests were performed with different cusp parameters. With cusp parameters of 100, for $\omega = 6$, we are able to use 910 terms, giving a phase shift of $-0.427$. Doing the same run with cusp parameters of 25 allows us to use the same number of terms and gives a phase shift of $-0.427$ as well. In this particular example, the two sets of cusp parameters (25 and 100) differ in the sixth decimal place. As an example, for the inverse Kohn, $\delta = -0.42707291$ for the cusp parameters of 100, while $\delta = -0.42707370$ for cusp parameters of 25. To the required accuracy, the cusp parameters of 25 are sufficient for this example.
 
-Smaller values for these cusp parameters were also tried, and these tests are summarized in table \ref{tab:SWaveCuspParameters}. When the cusp parameters are too small, such as the cases of 5, 10 and 15, the phase shifts do not converge well and start to diverge much earlier. The second column in this table shows the number of terms we can use for each set, but the number of terms to use is not exact due to the lack of good convergence, so the values here are approximate for small cusp parameters. The phase shift given for these three tests are therefore approximate as well. From this table, we conclude that 20 is the minimum value needed, at least for the $\kappa = 0.1$ case tested here for the S-wave. To be conservative, future runs will use cusp parameters of 25. Further testing with other $\kappa$ values should be performed to verify that these results hold for higher momenta.
+Smaller values for these cusp parameters were also tried, and these tests are summarized in table \ref{tab:SWaveCuspParameters}. When the cusp parameters are too small, such as the cases of 5, 10 and 15, the phase shifts do not converge well and start to diverge much earlier. The second column in this table shows the number of terms we can use for each set, but the number of terms to use is not exact due to the lack of good convergence, so the values here are approximate for small cusp parameters. The phase shift given for these three tests are therefore approximate as well. From this table, we conclude that 20 is the minimum value needed, at least for the $\kappa = 0.1$ case tested here for the S-wave. To be conservative, runs use cusp parameters of 100. 
+
+\todoi{Do we have cases for P-wave or D-wave?}
 
 \begin{table}[H]
 \centering
@@ -838,11 +841,11 @@ For the P-wave, we noticed that the phase shifts for smaller $\kappa$ values wer
 \subsection{Comparison Program}
 We wrote the program \emph{Comparison} to visually compare two runs with different numbers of integration points. This program calculates the relative difference between similar matrix elements of the two input files. The relative difference is given by
 \beq
-diff_{rel} = \left| \frac{elem_1 - elem_2}{(elem_1 + elem_2) / 2} \right|.
+\text{diff}_{rel} = \left| \frac{elem_1 - elem_2}{(elem_1 + elem_2) / 2} \right|.
 \eeq
 Since the values of matrix elements can range over many orders of magnitude, the relative difference is an appropriate measure of the change caused by varying the number of integration points. The other option would have been to use the absolute difference, which is given by 
 \beq
-diff_{abs} = \left| elem_1 - elem_2 \right|.
+\text{diff}_{abs} = \left| elem_1 - elem_2 \right|.
 \eeq
 However, this is a poor measure of the differences, and the relative differences give much more useful information for our purposes.
 
@@ -1005,7 +1008,7 @@ Extra points & Phase shift \\
 \label{tab:678thcoordExtraPoints}
 \end{table}
 
-\textbf{@TODO: Table of final integration points}
+\todoi{Table of final integration points}
 
 
 \section{Fittings}
@@ -1023,7 +1026,7 @@ Some fittings are better than others for this particular type of function. The F
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=5in]{swave-phases-reson-pi}
-	\caption{$^1$S resonance data showing raw data from complex Kohn and the corrected version. The solid gray line shows the polynomial background.}
+	\caption[$^1$S resonance data showing correction]{$^1$S resonance data showing raw data from complex Kohn and the corrected version. The solid gray line shows the polynomial background.}
 	\label{fig:swave-phases-reson-pi}
 \end{figure}
 
@@ -1098,6 +1101,8 @@ The resonance parameters are calculated separately for each Kohn method (Kohn, i
 
 The error for each parameter could be determined one of three ways.  The errors given in table \ref{tab:SWaveResonances} are simply the standard deviation.  We could have also used the standard error, which is given as $SE = \sigma / \sqrt{n}$.  The standard error is typically too small, since we are using approximately 100 tests.  For instance, using $\omega = 7$, for $^1E_R$, we get a standard error of $0.00001$, which implies a greater precision and agreement than our results have.  Another possible method for determining the error that we have looked at is to find the maximum deviation from the mean.  However, this overemphasizes the importance of outliers.  Using $\omega = 6$, the maximum deviation from the mean is $0.00586$ for $^2E_R$, which is $4.0$ times as large as the standard deviation. 
 
+
+\todoi{Extrapolations here?}
 
 
 

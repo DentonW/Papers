@@ -53,6 +53,7 @@
 
 % For dcolumn
 \newcolumntype{d}[1]{D{.}{\cdot}{#1}}
+\newcolumntype{.}{D{.}{.}{-1}}
 
 % To center table head (when more than one decimal point)
 \newcommand*{\thead}[1]{\multicolumn{1}{c}{#1}}
@@ -304,7 +305,6 @@ SE & static-exchange \\
 
 \appendix
 \subfile{AngularIntegration.tex}
-\subfile{RhoDefinition.tex}
 \subfile{ExtraDerivations.tex}
 \subfile{RPowersCoeffs.tex}
 \subfile{WLimits.tex}

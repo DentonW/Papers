@@ -13,6 +13,7 @@
 
 \Cref{tab:SphHarm,tab:SphBess,tab:SphNeum} show the spherical harmonics, spherical Bessel and spherical Neumann functions needed in \cref{eq:GeneralWaveTrial} to use the higher partial waves.
 
+\todoi{Split up tables into each respective section}
 {
 \renewcommand{\arraystretch}{1.5}
 \begin{table}[H]
@@ -70,13 +71,16 @@ H-Wave & $\frac{\left(-z^4+105 z^2-945\right) \sin (z)}{z^5}-\frac{15 \left(z^4-
 
 \section{Born Approximation}
 \label{sec:Born}
+\todoi{Put something like these in the cross section chapter}
+Only a finite number of partial waves can be used to find the cross sections (\cref{chp:CrossSections}), 
+The formulas to find the cross sections (\cref{chp:CrossSections}) have infinite summations, and we have to truncate these
 
-The Born approximation comes from using only the first term in \cref{eq:TrialWave,eq:TrialWaveHigher}. Specifically, this is done with the Kohn variational method to get an estimate for the $K$ matrix, giving \cite[p.???]{Bransden2003}
+In an attempt to approximate the partial waves past the D-wave, we turned to the Born approximation. The Born approximation comes from using only the first term in \cref{eq:TrialWave,eq:TrialWaveHigher}. Specifically, this is done with the Kohn variational method to get an estimate for the $K$ matrix, giving \cite[p.???]{Bransden2003}
 \begin{equation}
 \label{eq:Born}
 \tan\delta_\ell \approx -(\widetilde{S}_\ell,\mathcal{L}\widetilde{S}_\ell )\,.
 \end{equation}
-We have also done a modified Born approximation that uses the first two terms ($\bar{S}$ and $\bar{C}$) in \cref{eq:TrialWave,eq:TrialWaveHigher}. This was calculated for the first three partial waves but showed huge discrepancies, especially for the S-wave.
+We have also done a modified Born approximation that uses the first two terms ($\bar{S}$ and $\bar{C}$) in \cref{eq:TrialWave,eq:TrialWaveHigher}. This modified Born approximation is very similar and lines up nearly exactly with the Born on most partial waves, so we normally just use the Born approximation.
 
 \begin{figure}[H]
 	\centering
@@ -99,11 +103,21 @@ We have also done a modified Born approximation that uses the first two terms ($
 	\label{fig:DWavePhaseBorn}
 \end{figure}
 
+\todoi{Show both Born and modified Born}
+
+These Born approximations were calculated for the first three partial waves but showed huge discrepancies, especially for the S-wave, as seen in \cref{fig:SWavePhaseBorn,fig:PWavePhaseBorn,fig:DWavePhaseBorn}. These somewhat get the triplet shapes right, but it would be a poor approximation for these. The $^1$S, $^1$P, and $^1$D partial waves have resonances, which we would not expect to be represented by these approximations.
+
+Due to the obvious discrepancies with even the D-wave, we decided to do a full Kohn calculation for the F-wave to compare, again finding that the Born approximation does not match up as well as we would like for either $^1$F or $^3$F. We tried the same for the G-wave and H-wave, with the same results. The results of using the Born approximation for the higher partial waves are shown later in this chapter in \cref{fig:FWavePhase,fig:GWavePhase,fig:HWavePhase}. The Born approximation unfortunately does not represent any of the partial waves through the H-wave well for this system.
+
+\todoi{Cross sections with Born}
 
 
 
 \section{F-Wave}
 \label{sec:FWave}
+
+\subsection{Phase Shifts}
+\label{sec:FWavePhase}
 
 \begin{figure}[H]
 	\centering
@@ -140,9 +154,13 @@ We can see that the phase shifts for the (modified) Born approximation do not ag
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=6in]{fwave-phases-full}
-	\caption{F-Wave Phase Shifts}
+	\caption[Full $^1$F phase shifts]{$^1$F phase shifts showing full resonance past the inelastic threshold}
 	\label{fig:FWavePhaseFull}
 \end{figure}
+\todoi{Remove Born and triplet}
+
+\subsection{Resonance}
+\label{sec:FWaveResonance}
 
 There is the start of a resonance shortly before the threshold cutoff in figure \ref{fig:FWavePhase}. Figure \ref{fig:FWavePhaseFull} gives the rough plotting past this resonance. As our code does not contain the open channels required to extend into the region that contains the rest of the resonance, we likely cannot measure the resonance parameters as accurately. Tables \ref{tab:FWaveResonanceBefore} and \ref{tab:FWaveResonanceFull} give the resonance parameter fittings using our MATLAB script (\ref{?}).
 
@@ -160,9 +178,9 @@ Fitting & a & b & c & $E_R$ (eV) & $\Gamma$ (eV) \\
 Bisquare	& 0.033382 & -0.017062 & 0.0062664 & 5.1913 & 0.013232 \\
 Andrews		& 0.033390 & -0.017066 & 0.0062668 & 5.1913 & 0.013232 \\
 Cauchy		& 0.037941 & -0.019297 & 0.0065459 & 5.1899 & 0.012976 \\
-Fair			& 0.038145 & -0.019401 & 0.0065597 & 5.1898 & 0.012956 \\
+Fair		& 0.038145 & -0.019401 & 0.0065597 & 5.1898 & 0.012956 \\
 Welsch		& 0.038211 & -0.019432 & 0.0065632 & 5.1898 & 0.012964 \\
-Huber			& 0.038173 & -0.019410 & 0.0065601 & 5.1898 & 0.012962 \\
+Huber		& 0.038173 & -0.019410 & 0.0065601 & 5.1898 & 0.012962 \\
 Logistic	& 0.037609 & -0.019191 & 0.0065409 & 5.1895 & 0.012921 \\
 Talwar		& 0.033688 & -0.017208 & 0.0062841 & 5.1913 & 0.013220 \\
 \bottomrule

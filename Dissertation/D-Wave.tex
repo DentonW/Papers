@@ -15,6 +15,17 @@
 \end{equation}
 
 
+\beq
+\SphericalHarmonicY{2}{0}{\theta_\rho}{\varphi_\rho} = \sqrt{\frac{5}{16\pi}} \left(3 \cos^2\theta_\rho - 1 \right)
+\eeq
+
+\beq
+j_2(\kappa \rho) = \left(\frac{3}{(\kappa\rho)^2} - 1 \right) \frac{\sin(\kappa\rho)}{\kappa\rho} - \frac{3 \cos(\kappa\rho)}{(\kappa\rho)^2}
+\eeq
+
+\beq
+n_2(\kappa \rho) = \left(-\frac{3}{(\kappa\rho)^2} + 1 \right) \frac{\cos(\kappa\rho)}{\kappa\rho} - \frac{3 \sin(\kappa\rho)}{(\kappa\rho)^2}
+\eeq
 
 
 
@@ -22,8 +33,8 @@
 \begin{subequations}
 \label{eq:DWaveSandCBar}
 \begin{align}
-\bar{S} &= \frac{Y_{20}(\theta_\rho,\varphi_\rho)S_{22} \pm Y_{20}(\theta_{\rho^\prime},\phi_{\rho^\prime})S_{23} }{\sqrt{2}} \label{eq:DWaveSBar} \\
-\bar{C} &= \frac{Y_{20}(\theta_\rho,\varphi_\rho)C_{22} \pm Y_{20}(\theta_{\rho^\prime},\phi_{\rho^\prime})C_{23} }{\sqrt{2}} \label{eq:DWaveCBar} 
+\bar{S} &= \frac{Y_{20}(\theta_\rho,\varphi_\rho)S_{22} \pm Y_{20}(\theta_{\rho^\prime},\varphi_{\rho'})S_{23} }{\sqrt{2}} \label{eq:DWaveSBar} \\
+\bar{C} &= \frac{Y_{20}(\theta_\rho,\varphi_\rho)C_{22} \pm Y_{20}(\theta_{\rho^\prime},\varphi_{\rho'})C_{23} }{\sqrt{2}} \label{eq:DWaveCBar} 
 \end{align}
 \end{subequations}
 
@@ -238,50 +249,42 @@ Each of the following equations has two forms that can be used.
 
 
 \section{Results}
+\label{sec:DWaveResults}
+
+\subsection{Phase Shifts}
+\label{sec:DWavePhase}
 
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|c|c|c|c|c|c|}
-\hline
-$\kappa$ & $\delta^+ (\omega = 6)$ & $\delta^+$ \cite{Blackwood2002} & $\delta^+$ \cite{Walters2004} & $\delta^+$ \cite{Ray1997} & $\delta^+$ \cite{Adhikari1999} \\
-\hline
-$0.05$ & $4.832^{-6}$ & $6.01^{-6}$ & --- & --- & --- \\
-$0.1$ & $1.358^{-4}$ & $1.46^{-4}$ & $2.02^{-4}$ & $3.18^{-5}$ & $1.8^{-5}$ \\
-$0.2$ & $2.987^{-3}$ & $3.15^{-3}$ & $3.49^{-3}$ & $9.17^{-4}$ & $5.3^{-4}$ \\
-$0.3$ & $1.592^{-2}$ & $1.65^{-2}$ & $1.73^{-2}$ & $5.87^{-3}$ & $3.5^{-3}$ \\
-$0.4$ & $4.933^{-2}$ & $4.95^{-2}$ & $5.22^{-2}$ & $1.97^{-2}$ & $1.2^{-2}$ \\
-$0.5$ & $1.113^{-1}$ & $1.08^{-1}$ & $1.16^{-1}$ & $4.54^{-2}$ & $2.9^{-2}$ \\
-$0.6$ & $2.027^{-1}$ & $1.94^{-1}$ & $2.08^{-1}$ & $8.09^{-2}$ & $5.5^{-2}$ \\
-$0.7$ & $3.215^{-1}$ & $3.02^{-1}$ & $3.24^{-1}$ & $1.19^{-1}$ & $8.8^{-2}$ \\
-\hline
+\setlength{\tabcolsep}{-2pt}
+\footnotesize
+\begin{tabular}{@{\hskip 0.1cm}l . . . . . . .}
+\toprule
+Method & \multicolumn{1}{c}{\phantom{1}0.1} & \multicolumn{1}{c}{\phantom{1}0.2} & \multicolumn{1}{c}{\phantom{1}0.3} & \multicolumn{1}{c}{\phantom{1}0.4} & \multicolumn{1}{c}{\phantom{1}0.5} & \multicolumn{1}{c}{\phantom{1}0.6} & \multicolumn{1}{c}{\phantom{1}0.7} \\
+\midrule
+This work $(\omega = 6)$ $\delta_2^+$ 				& 1.358^{-4} & 2.987^{-3} & 1.592^{-2} & 4.933^{-2} & 1.113^{-1} & 2.027^{-1} & 3.215^{-1} \\
+CC 14Ps14H+H$^-$ \cite{Walters2004} $\delta_2^+$	& 2.02^{-4}  & 3.49^{-3}  & 1.73^{-2} & 5.22^{-2} & 1.16^{-1} & 2.08^{-1} & 3.24^{-1} \\
+CC 14Ps14H \cite{Blackwood2002} $\delta_2^+$		& 1.46^{-4}  & 3.15^{-3}  & 1.65^{-2} & 4.95^{-2} & 1.08^{-1} & 1.94^{-1} & 3.02^{-1} \\
+3-state CC \cite{Sinha1997} $\delta_2^-$			& 3.22^{-5} & 9.29^{-4} & 5.96^{-3} & 2.01^{-2} & 4.63^{-2} & 8.29^{-2} & 1.23^{-1} \\
+SE \cite{Ray1997} $\delta_2^+$ 						& 3.18^{-5}  & 9.17^{-4}  & 5.87^{-3} & 1.97^{-2} & 4.54^{-2} & 8.09^{-2} & 1.19^{-1} \\
+5-state CC \cite{Adhikari1999} $\delta_2^+$			& 1.8^{-5}   & 5.3^{-4}   & 3.5^{-3} & 1.2^{-2} & 2.9^{-2} & 5.5^{-2} & 8.8^{-2} \\
+SE \cite{Hara1975} $\delta_2^+$						& 0.0        & 0.0009     & 0.0058 & 0.0195 & 0.0453 & 0.0810 & 0.1194 \\
+\midrule
+This work $(\omega = 6)$ $\delta_2^-$ 				& 5.808^{-5}  & 7.120^{-4}  & 1.065^{-3}  & -2.002^{-3} & -1.122^{-2} & -2.647^{-2} & -4.451^{-2} \\
+CC 14Ps14H \cite{Blackwood2002} $\delta_2^-$		& 8.48^{-5}   & 1.15^{-3} & 2.84^{-3} & 2.37^{-3} & -4.66^{-3} & -1.85^{-2} & -3.27^{-2} \\
+3-state CC \cite{Sinha1997} $\delta_2^-$			& -2.74^{-5} & -7.77^{-4} & -4.83^{-3} & -1.55^{-2} & -3.41^{-2} & -5.83^{-2} & -8.25^{-2} \\
+SE \cite{Ray1997} $\delta_2^+$ 						& -3.00^{-5}  & -8.56^{-4} & -5.37^{-3} & -1.76^{-2} & -3.95^{-2} & -7.03^{-2} & -1.06^{-1} \\
+5-state CC \cite{Adhikari1999} $\delta_2^+$			& -1.4^{-5}   & -4.0^{-4} & -2.6^{-3} & -8.6^{-3} & -2.0^{-2} & -3.6^{-2} & -5.5^{-2} \\
+SE \cite{Hara1975} $\delta_2^+$						& 0.0         & -8.0^{-4} & -5.3^{-3} & -1.74^{-2} & -3.95^{-2} & -7.04^{-2} & -1.062^{-1} \\
+\bottomrule
 \end{tabular}
-\caption{D-Wave Singlet Results}
-\label{tab:DWaveSinglet}
+\caption{$^{1,3}$D comparisons. Values in the header are $\kappa$ in au. Exponents denote powers of 10.}
+\label{tab:DWaveComparisons}
 \end{table}
 
-
-\todoi{Add Fraser, Biswas?, etc. Put in format of S-wave}
-
-\begin{table}[H]
-\centering
-\begin{tabular}{|c|c|c|c|c|}
-\hline
-$\kappa$ & $\delta^- (\omega = 6)$ & $\delta^-$ \cite{Blackwood2002} & $\delta^-$ \cite{Ray1997} & $\delta^-$ \cite{Adhikari1999} \\
-\hline
-$0.05$ & $2.352^{-6}$ & $4.16^{-6}$ & --- & --- \\
-$0.1$ & $5.808^{-5}$ & $8.48^{-5}$ & $-3.00^{-5}$ & $-1.4^{-5}$ \\
-$0.2$ & $7.120^{-4}$ & $1.15^{-3}$ & $-8.56^{-4}$ & $-4.0^{-4}$ \\
-$0.3$ & $1.065^{-3}$ & $2.84^{-3}$ & $-5.37^{-3}$ & $-2.6^{-3}$ \\
-$0.4$ & $-2.002^{-3}$ & $2.37^{-3}$ & $-1.76^{-2}$ & $-8.6^{-3}$ \\
-$0.5$ & $-1.122^{-2}$ & $-4.66^{-3}$ & $-3.95^{-2}$ & $-2.0^{-2}$ \\
-$0.6$ & $-2.647^{-2}$ & $-1.85^{-2}$ & $-7.03^{-2}$ & $-3.6^{-2}$ \\
-$0.7$ & $-4.451^{-2}$ & $-3.27^{-2}$ & $-1.06^{-1}$ & $-5.5^{-2}$ \\
-\hline
-\end{tabular}
-\caption{D-Wave Triplet Results}
-\label{tab:DWaveTriplet}
-\end{table}
+\todoi{Maybe use dcolumn}
+\todoi{Comparisons and discussion similar to what's in PRA paper}
 
 
 \begin{figure}[H]
@@ -301,6 +304,7 @@ $0.7$ & $-4.451^{-2}$ & $-3.27^{-2}$ & $-1.06^{-1}$ & $-5.5^{-2}$ \\
 
 
 \subsection{Extrapolations}
+\label{sec:DWaveExtrap}
 
 
 \begin{table}[H]
@@ -325,6 +329,9 @@ $\kappa$ & $\delta^+ (\omega \rightarrow \infty) (4-6)$ & $\delta^- (\omega \rig
 
 
 \subsection{Resonance Parameters}
+\label{sec:DWaveResonance}
+
+
 
 \setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
 \setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
@@ -341,7 +348,7 @@ Coupled-pseudostate \cite{Campbell1998} & $5.28$ & $0.47$ \\
 CC (9Ps9H) \cite{Blackwood2002}) & $5.16$ & $0.15$ \\
 CC (22Ps1H + H$^-$) \cite{Blackwood2002b} & $4.814$ & $0.065$ \\
 Optical potential \cite{DiRienzi2002a} & $4.729$ & $0.327$ \\
-Complex rotation (Yan et al.\ 1998) \cite{Ho1998} & $4.710 \pm 0.0027$ & $0.0925 \pm 0.0054$  \\
+Complex rotation \cite{Ho1998} & $4.710 \pm 0.0027$ & $0.0925 \pm 0.0054$  \\
 \bottomrule
 \end{tabular}
 \caption{D-Wave Resonance Parameters}

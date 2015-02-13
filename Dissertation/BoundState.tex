@@ -145,7 +145,7 @@ With this, the wavefunction is minimized using the 1-D Newton's method for each 
 
 \subsection{Broyden's Method}
 \label{sec:Broyden}
-The next method I tried was Broyden's method \cite{Sauer2006}, which can solve for all three nonlinear parameters simultaneously. This was more stable than than 1-D Newton method. The second Broyden's method, sometimes referred to as the ``bad Broyden's method'' was used here. As Kvaalen points out, this method is perfectly usable and can be faster than the first Broyden's method \cite{Kvaalen1991}. \Cref{table:NonlinearOptimized3SBroyden} shows the nonlinear parameters used for $^3$S. All other partial waves used the simplex method described in \cref{sec:Simplex}. This is because I already had a number of results for $^3$S, and I was able to use even more terms than I could use for $^1$S \ref{}, so running everything again for simplex-optimized nonlinear parameters was unnecessary.
+The next method I tried was Broyden's method \cite{Sauer2006}, which can solve for all three nonlinear parameters simultaneously. This was more stable than than 1-D Newton method. The second Broyden's method, sometimes referred to as the ``bad Broyden's method'' was used here. As Kvaalen points out, this method is perfectly usable and can be faster than the first Broyden's method \cite{Kvaalen1991}. \Cref{table:NonlinearOptimized3SBroyden,BroydenPWaveSingOpt} show the nonlinear parameters used for $^3$S and $^1$P. All other partial waves used the simplex method described in \cref{sec:Simplex}. This is because I already had a number of results for $^3$S and $^1$P, so running everything again for simplex-optimized nonlinear parameters was unnecessary. For $^3$S, I was able to use even more terms than I could use for $^1$S \cref{}, and I was able to use the same number of terms for $^1$P and $^3$P.
 
 \setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
 \setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
@@ -161,9 +161,27 @@ $\omega$ & $\alpha$ & $\beta$ & $\gamma$ \\ [0.5ex]
 4 & 0.323300 & 0.333783 & 0.974653 \\
 \bottomrule
 \end{tabular}
-\caption{Old Broyden optimized $^3S$ nonlinear parameters}
+\caption{Broyden optimized $^3S$ nonlinear parameters}
 \label{table:NonlinearOptimized3SBroyden}
 \end{table}
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{c c c c}
+\toprule
+$\omega$ & $\alpha$ & $\beta$ & $\gamma$ \\ [0.5ex]
+\midrule
+1 & 0.47767 & 0.50273 & 0.97498 \\
+2 & 0.48253 & 0.49342 & 0.96874 \\
+3 & 0.42803 & 0.43099 & 0.98993 \\
+4 & 0.39740 & 0.37617 & 0.96205 \\
+\bottomrule
+\end{tabular}
+\caption{Broyden optimized $^1$P nonlinear parameters}
+\label{tab:BroydenPWaveSingOpt}
+\end{table}
+
 
 
 \subsection{Simplex Method}
@@ -198,7 +216,6 @@ Broyden's method was more stable than Newton's method for this work, but I also 
 \toprule
 Partial Wave & $\alpha$ & $\beta$ & $\gamma$ \\
 \midrule
-$^1$P & 0.397 & 0.376 & 0.962 \\
 $^3$P & 0.310 & 0.311 & 0.995 \\
 $^1$D & 0.359 & 0.368 & 0.976 \\
 $^3$D & 0.356 & 0.365 & 0.976 \\

@@ -465,7 +465,6 @@ c_i\\
 \vdots
 \end{bmatrix}.
 \end{equation}
-\todoi{Be clear that in the long-range code, we only calculate the Kohn elements, and then we rearrange them to create the others in the phase shift code.}
 
 \noindent This matrix equation can be rewritten as
 \beq
@@ -560,6 +559,7 @@ K_\ell = \tan \delta_\ell = (u_{01} + u_{11} L_\ell)(u_{00} + u_{10} L_\ell)^{-1
 \end{equation}
 
 The $\textbf{u}$ and $\mathcal{L}_l$ for the various Kohn methods are described now. Note that for each of these, $\Det{\textbf{u}} = 1$.
+When we create the matrix in \cref{eq:GeneralKohnMatrix}, we only calculate the matrix elements for the Kohn, along with $(\bar{S},\mathcal{L}\bar{S})$ and $(\bar{S},\mathcal{L}\bar{C})$. Then from the definitions in \cref{eq:TildeSCDef}, this matrix can be changed to any of the other Kohn methods without recomputing any of the integrals. This is described further in \cref{sec:PhaseProgram}.
 
 \subsubsection*{Kohn}
 \label{sec:Kohn}
@@ -943,6 +943,7 @@ H-Wave & {$\!\begin{aligned}
 \label{tab:LCList}
 \end{table}
 }
+\todoi{Put in each partial wave section}
 
 Matrix elements involving $\mathcal{L}C_\ell^\prime$ look similar but have the 2 and 3 coordinates swapped. In other words, $\rho \leftrightarrow \rho^\prime$.
 
@@ -1119,7 +1120,7 @@ To find the resonance parameters, we use the phase shifts instead of the cross s
 \label{eq:ResonanceCurve}
 \delta(E) = A + BE + CE^2 + \arctan\left[ \frac{^1\Gamma}{2\left(^1E_R-E\right)} \right] + \arctan\left[ \frac{^2\Gamma}{2\left(^2E_R-E\right)} \right].
 \eeq
-The polynomial part of the above equation corresponds to hard sphere scattering. The arctangent parts correspond to the first and second Fano resonances \cite{Fano1961,Macek1970,Hazi1979}, with $^1E_R$ and $^2E_R$ as the positions of the resonances and $^1\Gamma$ and $^2\Gamma$ as the widths of the respective resonances. This fitting is preferred over over \cref{fig:FanoCross}, since it is simple to add more resonance terms, and there is no additional $q$ parameter to determine.
+The polynomial part of the above equation corresponds to hard sphere scattering. The arctangent parts correspond to the first and second Fano resonances \cite{Fano1961,Macek1970,Hazi1979}, with $^1E_R$ and $^2E_R$ as the positions of the resonances and $^1\Gamma$ and $^2\Gamma$ as the widths of the respective resonances. This fitting is preferred over over \cref{fig:FanoCross}, since it is simple to add more resonance terms, and there is no additional $q$ parameter to determine. The $^1$S and $^1$P partial waves use this fitting, and the $^1$D and $^1$F partial waves omit the second term, since we consider only a single resonance. See \cref{sec:SWaveResonances,sec:PWaveResonances,sec:DWaveResonance,sec:FWaveResonance} for further discussion of the resonances for each partial wave.
 
 According to Ray \cite{Ray2006,Ray2007}, resonances are metastable states with lifetimes of
 \beq
@@ -1129,7 +1130,7 @@ Ray also points out that this is longer than a typical collision time.
 
 For Ps-H scattering, Drachman predicted that these resonances correspond to the metastable state of e$^+$ with the H$^-$ ion \cite{Drachman1979}. A set of close coupling papers \cite{Blackwood2002,Blackwood2002b,Walters2004} confirms that the H$^-$ channel is important for the resonances, indicating that Drachman's prediction was correct.
 
-\todoi{Refer to the discussions in Peter's paper and Yan/Ho's paper about the resonances corresponding to 2S and 3S. Discussion on energy levels elsewhere for H and Ps, along with what the threshold is. Ray has an analysis about the resonance width versus the lifetime.}
+\todoi{Refer to the discussions in Peter's paper and Yan/Ho's paper about the resonances corresponding to 2S and 3S. Discussion on energy levels elsewhere for H and Ps, along with what the threshold is.}
 
 
 

@@ -6,36 +6,42 @@
 \label{chp:PWave}
 
 \beq
-\SphericalHarmonicY{1}{0}{\theta_\rho}{\varphi_\rho} = \frac{1}{\sqrt{4\pi}}
+\SphericalHarmonicY{1}{0}{\theta_\rho}{\varphi_\rho} = \sqrt{\frac{3}{4\pi}} \cos \theta_\rho
 \eeq
 
 \beq
-j_1(\kappa \rho) = \frac{\sin(\kappa\rho)}{\kappa\rho}
+j_1(\kappa \rho) = \frac{\sin(\kappa\rho)}{(\kappa\rho)^2} - \frac{\cos(\kappa\rho)}{\kappa\rho}
 \eeq
 
 \beq
-n_1(\kappa \rho) = -\frac{\cos(\kappa\rho)}{\kappa\rho}
+n_1(\kappa \rho) = -\frac{\cos(\kappa\rho)}{(\kappa\rho)^2} - \frac{\sin(\kappa\rho)}{\kappa\rho}
 \eeq
 
-\beq
-\frac{1}{2} \left(\Laplacian_\rho + \kappa^2\right) \SphericalHarmonicY{1}{0}{\theta_\rho}{\varphi_\rho} n_1(\kappa\rho) f_1(\rho) = -\frac{\rho  f^{\prime\prime}(\rho ) \left[\kappa  \rho  \sin (\kappa  \rho )+\cos (\kappa  \rho )\right]+2 f^\prime(\rho ) \left[\left(\kappa ^2 \rho ^2-1\right) \cos (\kappa  \rho )-\kappa  \rho  \sin (\kappa \rho )\right]}{2 \kappa ^2 \rho ^3}
-\eeq
+\begin{align}
+\frac{1}{2} & \left(\Laplacian_\rho + \kappa^2\right) \SphericalHarmonicY{1}{0}{\theta_\rho}{\varphi_\rho} n_1(\kappa\rho) f_1(\rho)  \nonumber \\
+&= -\frac{\rho  f^{\prime\prime}(\rho ) \left[\kappa  \rho  \sin (\kappa  \rho )+\cos (\kappa  \rho )\right]+2 f^\prime(\rho ) \left[\left(\kappa ^2 \rho ^2-1\right) \cos (\kappa  \rho )-\kappa  \rho  \sin (\kappa \rho )\right]}{2 \kappa ^2 \rho ^3}
+\end{align}
+\todoi{How it relates to the following}
 
 \section{P-Wave Wavefunction}
 \label{sec:PWaveFn}
-The P-wave wavefunction is similar in form to that of the S-wave (\ref{eq:SWaveTrialSimple}).
+We include two short-range symmetries for the P-wave, so that \cref{eq:GeneralWaveTrial} becomes
+\beq
+\label{eq:PWaveTrial}
+\Psi_1^{\pm,t} = \widetilde{S}_1 + L_1^{\pm,t} \, \widetilde{C}_1 + \sum_{i=1}^{N'(\omega)} c_i \bar{\phi}_{1i} + \sum_{j=1}^{N'(\omega)} d_j \bar{\phi}_{2j}.
+\eeq
+Like for the S-wave and as mentioned in \cref{sec:KohnApplied}, we compute only matrix elements with the barred versions of $S_1$ and $C_1$, 
 
-\begin{equation}
-\Psi_t^\pm = \bar{S} + \tan \eta_t^\pm \, \bar{C} + \sum_{i=1}^N c_i \bar{\phi}_{i1} + \sum_{j=1}^N d_j \bar{\phi}_{j2}
-\label{eq:PWaveSimple}
-\end{equation}
+\todoi{Describe $N'(\omega)$}
+\todoi{Pairing terms - how really 2x}
 
-\noindent The $\bar{S}$ and $\bar{C}$ must have both symmetries, so \textbf{@TODO: Explain}
+\noindent To simplify the notation, 
+The $\bar{S}$ and $\bar{C}$ must have both symmetries, so \textbf{@TODO: Explain}
 \begin{subequations}
 \label{eq:PWaveSandCBar}
 \begin{align}
-\bar{S} &= \frac{Y_{10}(\theta_\rho,\varphi_\rho)S_{22} \pm Y_{10}(\theta_{\rho^\prime},\phi_{\rho^\prime})S_{23} }{\sqrt{2}} \label{eq:PWaveSBar} \\
-\bar{C} &= \frac{Y_{10}(\theta_\rho,\varphi_\rho)C_{22} \pm Y_{10}(\theta_{\rho^\prime},\phi_{\rho^\prime})C_{23} }{\sqrt{2}} \label{eq:PWaveCBar} 
+\bar{S}_1 &= \frac{Y_{10}(\theta_\rho,\varphi_\rho)S_{22} \pm Y_{10}(\theta_{\rho^\prime},\varphi_{\rho'})S_{23} }{\sqrt{2}} \label{eq:PWaveSBar} \\
+\bar{C}_1 &= \frac{Y_{10}(\theta_\rho,\varphi_\rho)C_{22} \pm Y_{10}(\theta_{\rho^\prime},\varphi_{\rho'})C_{23} }{\sqrt{2}} \label{eq:PWaveCBar} 
 \end{align}
 \end{subequations}
 
@@ -68,8 +74,8 @@ f_{sh}^{\prime\prime}(\rho) &= \frac{3}{2} \ee^{-\mu \rho} \mu^2 \left[1 - \ee^{
 \begin{subequations}
 \label{eq:PWavePhiBar}
 \begin{align}
-\bar{\phi}_{i1} &= \left(1 \pm P_{23}\right) Y_{10}(\theta_1) r_1 \phi_i \label{eq:PWavePhi1i}\\
-\bar{\phi}_{j2} &= \left(1 \pm P_{23}\right) Y_{10}(\theta_2) r_2 \phi_j \label{eq:PWavePhi2j},
+\bar{\phi}_{1i} &= \left(1 \pm P_{23}\right) Y_{10}(\theta_1) r_1 \phi_i \label{eq:PWavePhi1i}\\
+\bar{\phi}_{2j} &= \left(1 \pm P_{23}\right) Y_{10}(\theta_2) r_2 \phi_j \label{eq:PWavePhi2j},
 \end{align}
 \end{subequations}
 
@@ -108,8 +114,7 @@ Y_{10}(\theta) = Y_{10}(\theta,\varphi) = \sqrt{\frac{3}{4\pi}} \cos\theta.
 \section{P-Wave Matrix Equation}
 \label{sec:PWaveMatrix}
 
-As to be expected, the P-wave matrix equation is similar in form to the S-wave result in equation \ref{eq:KohnMatrix}.
-
+Since the P-wave trial wavefunction has two sets of short-range terms, the matrix equation can be seen from \cref{eq:GeneralKohnMatrix} to be
 {\small
 \begin{equation}
 \label{eq:PWaveKohnMatrix}
@@ -144,10 +149,7 @@ As to be expected, the P-wave matrix equation is similar in form to the S-wave r
 \end{equation}
 }
 
-\noindent This matrix equation can be rewritten as
-\beq
-\textbf{\emph{AX = -B}}.
-\eeq
+The rest of the analysis in \cref{sec:KohnApplied} applies directly to the P-wave.
 
 
 
@@ -156,14 +158,14 @@ As to be expected, the P-wave matrix equation is similar in form to the S-wave r
 
 \begin{align}
 \label{eq:PWavePhi1Phi1}
-\left(\bar{\phi}_{1i},L \bar{\phi}_{1j}\right) = &2 \cdot 2\pi \int{ \Bigg\{ \sum_{k=1}^3 \left[ \boldsymbol{\nabla}_{\!\mathbf{r}_k} \nonumber \phi_{1i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1j} \pm \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1j}^\prime \right] } \\
+\left(\bar{\phi}_{1i},\mathcal{L} \bar{\phi}_{1j}\right) = &2 \cdot 2\pi \int{ \Bigg\{ \sum_{k=1}^3 \left[ \boldsymbol{\nabla}_{\!\mathbf{r}_k} \nonumber \phi_{1i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1j} \pm \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1j}^\prime \right] } \\
 \nonumber  &+ \left. \left[\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2}\kappa^2 + \frac{2}{r_1^2} \right] \right. \\
  &\;\;\;\;\; \times \left(\phi_{1i} \phi_{1j} \pm \phi_{1i} \phi_{1j}^\prime \right) \Bigg\} d\tau_{int}
 \end{align}
 
 \begin{align}
 \label{eq:PWavePhi2Phi2}
-\left(\bar{\phi}_{2i},L \bar{\phi}_{2j}\right) = 2 & \cdot 2\pi \int \Bigg\{ \sum_{k=1}^3 \left[ \boldsymbol{\nabla}_{\!\mathbf{r}_k} \nonumber \phi_{2i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2j} \pm \cos\theta_{23} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2j}^\prime \right]  + \frac{2}{r_2^2}\phi_{2i}\phi_{2j} \\
+\left(\bar{\phi}_{2i},\mathcal{L} \bar{\phi}_{2j}\right) = 2 & \cdot 2\pi \int \Bigg\{ \sum_{k=1}^3 \left[ \boldsymbol{\nabla}_{\!\mathbf{r}_k} \nonumber \phi_{2i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2j} \pm \cos\theta_{23} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2j}^\prime \right]  + \frac{2}{r_2^2}\phi_{2i}\phi_{2j} \\
  \nonumber &\mp \phi_{2i} \phi_{2j}^\prime \left[p_i \frac{r_1}{r_3 r_{13}^2} (\cos\theta_{12} - \cos\theta_{23} \cos\theta_{13}) + m_j^\prime \frac{r_1}{r_2 r_{12}^2}(\cos\theta_{13}-\cos\theta_{23} \cos\theta_{12})\right.\\
  \nonumber & \left. \;\;\;\;\;  + \sin^2\theta_{23} \left(q_i \frac{r_2}{r_3 r_{23}^2} + q_j^\prime \frac{r_3}{r_2 r_{23}^2} \right) \right] \\
  \nonumber &+ \left. \left[\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2}\kappa^2 \right] \right. \\
@@ -172,7 +174,7 @@ As to be expected, the P-wave matrix equation is similar in form to the S-wave r
 
 \begin{align}
 \label{eq:PWavePhi1Phi2}
-\left(\bar{\phi}_{1i},L \bar{\phi}_{2j}\right) = 2 & \cdot 2\pi \int \Bigg\{ \sum_{k=1}^3 \left[ \cos\theta_{12} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \nonumber \phi_{1i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2j} \pm \cos\theta_{13} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2j}^\prime \right] \\
+\left(\bar{\phi}_{1i},\mathcal{L} \bar{\phi}_{2j}\right) = 2 & \cdot 2\pi \int \Bigg\{ \sum_{k=1}^3 \left[ \cos\theta_{12} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \nonumber \phi_{1i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2j} \pm \cos\theta_{13} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2j}^\prime \right] \\
  \nonumber &\mp \phi_{1i} \phi_{2j} \left[q_i \frac{r_3}{r_2 r_{23}^2} (\cos\theta_{13} - \cos\theta_{12} \cos\theta_{23}) + p_j \frac{r_3}{r_1 r_{13}^2}(\cos\theta_{23}-\cos\theta_{12} \cos\theta_{13})\right.\\
  \nonumber & \left. \;\;\;\;\;  + \sin^2\theta_{12} \left(m_i \frac{r_1}{r_2 r_{12}^2} + m_j \frac{r_2}{r_1 r_{12}^2} \right) \right] \\
  \nonumber &\mp \phi_{1i} \phi_{2j}^\prime \left[q_i \frac{r_2}{r_3 r_{23}^2} (\cos\theta_{12} - \cos\theta_{13} \cos\theta_{23}) + m_j^\prime \frac{r_2}{r_1 r_{12}^2}(\cos\theta_{23}-\cos\theta_{12} \cos\theta_{13})\right.\\
@@ -183,7 +185,7 @@ As to be expected, the P-wave matrix equation is similar in form to the S-wave r
 
 \begin{align}
 \label{eq:PWavePhi2Phi1}
-\left(\bar{\phi}_{2i},L \bar{\phi}_{1j}\right) = 2 & \cdot 2\pi \int \Bigg\{ \sum_{k=1}^3 \cos\theta_{12} \left[ \boldsymbol{\nabla}_{\!\mathbf{r}_k} \nonumber \phi_{2i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1j} \pm \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1j}^\prime \right] \\
+\left(\bar{\phi}_{2i},\mathcal{L} \bar{\phi}_{1j}\right) = 2 & \cdot 2\pi \int \Bigg\{ \sum_{k=1}^3 \cos\theta_{12} \left[ \boldsymbol{\nabla}_{\!\mathbf{r}_k} \nonumber \phi_{2i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1j} \pm \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1j}^\prime \right] \\
  \nonumber &\mp \phi_{2i} \phi_{1j} \left[p_i \frac{r_3}{r_1 {r_{13}}^2} (\cos\theta_{23} - \cos\theta_{12} \cos\theta_{13}) + q_j \frac{r_3}{r_2 {r_{23}}^2}(\cos\theta_{13}-\cos\theta_{12} \cos\theta_{23})\right.\\
  \nonumber & \left. \;\;\;\;\;  + \sin^2\theta_{12} \left(m_i \frac{r_2}{r_1 {r_{12}}^2} + m_j \frac{r_1}{r_2 {r_{12}}^2} \right) \right] \\
  \nonumber &\mp \phi_{2i} \phi_{1j}^\prime \left[p_i \frac{r_3}{r_1 r_{13}^2} (\cos\theta_{23} - \cos\theta_{12} \cos\theta_{13}) + q_j^\prime \frac{r_3}{r_2 {r_{23}}^2}(\cos\theta_{13}-\cos\theta_{12} \cos\theta_{23})\right.\\
@@ -198,14 +200,14 @@ As to be expected, the P-wave matrix equation is similar in form to the S-wave r
 
 \begin{align}
 \label{eq:PWavePhi1SBar}
-\nonumber \left(\bar{\phi}_{1i},L \bar{S}\right) = \sqrt{2} \pi & \int \left[ \frac{r_1 + r_2 \cos\theta_{12}}{\rho} \left(\phi_{1i} \pm \phi_{1i}^\prime \right) \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_{22} \right] d\tau_{int} \\
+\nonumber \left(\bar{\phi}_{1i},\mathcal{L} \bar{S}\right) = \sqrt{2} \pi & \int \left[ \frac{r_1 + r_2 \cos\theta_{12}}{\rho} \left(\phi_{1i} \pm \phi_{1i}^\prime \right) \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_{22} \right] d\tau_{int} \\
 \nonumber = \sqrt{2} \pi & \int \phi_{1i} \left[ \frac{r_1 + r_2 \cos\theta_{12}}{\rho} \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_{22} \right. \\
 & \pm \left. \frac{r_1 + r_3 \cos\theta_{13}}{\rho^\prime} \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) S_{23} \right]  d\tau_{int}
 \end{align}
 
 \begin{align}
 \label{eq:PWavePhi1CBar}
-\nonumber \left(\bar{\phi}_{1i},L \bar{C}\right) = -2 \pi &\sqrt{\kappa} \int \phi_{1i} \left\{ \frac{r_1 + r_2 \cos\theta_{12}}{\rho} \Phi_{Ps}(r_{12}) \Phi_H(r_3) \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) n_1(\kappa\rho) f_{sh}(\rho) \right. \right. \\
+\nonumber \left(\bar{\phi}_{1i},\mathcal{L} \bar{C}\right) = -2 \pi &\sqrt{\kappa} \int \phi_{1i} \left\{ \frac{r_1 + r_2 \cos\theta_{12}}{\rho} \Phi_{Ps}(r_{12}) \Phi_H(r_3) \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) n_1(\kappa\rho) f_{sh}(\rho) \right. \right. \\
 \nonumber & + \left.\left. \left[f_{sh}^\prime(\rho) \frac{1}{\rho} \left( n_1(\kappa\rho) + \cos(\kappa\rho) \right) - \frac{1}{2} f_{sh}^{\prime\prime}(\rho) n_1(\kappa\rho) \right]\right] \pm \frac{r_1 + r_3 \cos\theta_{13}}{\rho^\prime}  \Phi_{Ps}(r_{13}) \Phi_H(r_2) \right. \\
 \nonumber & \times \left. \left[ \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) n_1(\kappa\rho^\prime) f_{sh}(\rho^\prime) + \left[f_{sh}^\prime(\rho^\prime) \frac{1}{\rho^\prime} \left( n_1(\kappa\rho^\prime) + \cos(\kappa\rho^\prime) \right) - \frac{1}{2} f_{sh}^{\prime\prime}(\rho^\prime) n_1(\kappa\rho^\prime) \right]\right]\right\} d\tau_{int} \\
 \nonumber = -2 \pi &\sqrt{\kappa} \int \left\{ \left( \phi_{1i} \pm \phi_{1i}^\prime \right) \frac{r_1 + r_2 \cos\theta_{12}}{\rho} \Phi_{Ps}(r_{12}) \Phi_H(r_3) \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) n_1(\kappa\rho) f_{sh}(\rho) \right.\right. \\
@@ -214,14 +216,14 @@ As to be expected, the P-wave matrix equation is similar in form to the S-wave r
 
 \begin{align}
 \label{eq:PWavePhi2SBar}
-\nonumber \left(\bar{\phi}_{2j},L \bar{S}\right) = \sqrt{2} \pi & \int \left\{ \frac{1}{\rho} \left[ \phi_{2j} \left(r_2 + r_1 \cos\theta_{12}\right) \pm \phi_{2j}^\prime \left(r_1 \cos\theta_{13} + r_2 \cos\theta_{23} \right) \right] \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_{22} \right\} d\tau_{int} \\
+\nonumber \left(\bar{\phi}_{2j},\mathcal{L} \bar{S}\right) = \sqrt{2} \pi & \int \left\{ \frac{1}{\rho} \left[ \phi_{2j} \left(r_2 + r_1 \cos\theta_{12}\right) \pm \phi_{2j}^\prime \left(r_1 \cos\theta_{13} + r_2 \cos\theta_{23} \right) \right] \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_{22} \right\} d\tau_{int} \\
 \nonumber = \sqrt{2} \pi & \int \phi_{2j} \left[ \frac{1}{\rho} \left(r_2 + r_1 \cos\theta_{12}\right) \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_{22} \right. \\
 & \pm \left. \frac{1}{\rho^\prime} \left(r_1 \cos\theta_{12} + r_3 \cos\theta_{23}\right) \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) S_{23} \right]  d\tau_{int}
 \end{align}
 
 \begin{align}
 \label{eq:PWavePhi2CBar}
-\nonumber \left(\bar{\phi}_{2j},L \bar{C}\right) = -2 \uppi &\sqrt{\kappa} \int \phi_{2j} \left\{ \frac{r_2 + r_1 \cos\theta_{12}}{\rho} \Phi_{Ps}(r_{12}) \Phi_H(r_3) \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) n_1(\kappa\rho) f_{sh}(\rho) \right. \right. \\
+\nonumber \left(\bar{\phi}_{2j},\mathcal{L} \bar{C}\right) = -2 \uppi &\sqrt{\kappa} \int \phi_{2j} \left\{ \frac{r_2 + r_1 \cos\theta_{12}}{\rho} \Phi_{Ps}(r_{12}) \Phi_H(r_3) \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) n_1(\kappa\rho) f_{sh}(\rho) \right. \right. \\
 \nonumber & + \left.\left. \left[f_{sh}^\prime(\rho) \frac{1}{\rho} \left( n_1(\kappa\rho) + \cos(\kappa\rho) \right) - \frac{1}{2} f_{sh}^{\prime\prime}(\rho) n_1(\kappa\rho) \right]\right] \pm \frac{r_1 \cos\theta_{12} + r_3 \cos\theta_{23}}{\rho^\prime}  \Phi_{Ps}(r_{13}) \Phi_H(r_2) \right. \\
 \nonumber & \times \left. \left[ \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) n_1(\kappa\rho^\prime) f_{sh}(\rho^\prime) + \left[f_{sh}^\prime(\rho^\prime) \frac{1}{\rho^\prime} \left( n_1(\kappa\rho^\prime) + \cos(\kappa\rho^\prime) \right) - \frac{1}{2} f_{sh}^{\prime\prime}(\rho^\prime) n_1(\kappa\rho^\prime) \right]\right]\right\} \\
 \nonumber = -2 \uppi &\sqrt{\kappa} \int \left( \phi_{2j} \frac{r_2 + r_1 \cos\theta_{12}}{\rho} \pm \phi_{2j}^\prime \frac{r_1 \cos\theta_{13} + r_2 \cos\theta_{23}}{\rho} \right) \\
@@ -255,6 +257,15 @@ As to be expected, the P-wave matrix equation is similar in form to the S-wave r
 \section{P-Wave Second Formalism}
 \label{sec:PWave2Formalism}
 
+Van Reeth and Humberston had difficulty with convergence of the $^3$P phase shifts \cite{VanReeth2004}. They specifically state:
+\begin{quote}
+The present triplet p-wave phase shifts are not yet fully converged; at very low energies we
+estimate them to be $\approx 20\%$ below the fully converged values and $\approx 3\%$ in the higher energy range. This relatively poor convergence is due to the fact
+that we have not yet included in the wavefunction a set of terms for which the unit of angular momentum is on the electron in the H atom.
+\end{quote}
+
+
+
 \subsection{Wavefunction}
 \begin{equation}
 \Psi_t^\pm = \bar{S} + \tan \eta_t^\pm \, \bar{C} + \sum_{i=1}^N c_i \bar{\phi}_{\rho i} + \sum_{j=1}^N d_j \bar{\phi}_{3j}
@@ -270,7 +281,7 @@ As to be expected, the P-wave matrix equation is similar in form to the S-wave r
 \end{align}
 \end{subequations}
 
-The short-range -- long-range terms can be directly computed by changing the short-range terms, but the integration routines (section \ref{sec:ShortInt}) for the short-range -- short-range terms cannot handle the $\rho$ factor of $\bar{\phi}_{\rho 1}$ directly. The following relations must be used:
+The short-range -- long-range terms can be directly computed by changing the short-range terms, but the integration routines (section \ref{sec:ShortInt}) for the short-range -- short-range terms cannot handle the $\rho$ factor of $\bar{\phi}_{\rho 1}$ directly. The following relations must be used:  \todoi{Ref?}
 
 \begin{subequations}
 \begin{align}
@@ -285,23 +296,23 @@ The short-range -- long-range terms can be directly computed by changing the sho
 \label{sec:PWave2ndShortShort}
 In terms of the first formalism,
 \beq
-\left(\bar{\phi}_{\rho i},L \bar{\phi}_{\rho j}\right) = \frac{1}{4} \left[ \left(\bar{\phi}_{1i},L \bar{\phi}_{1j}\right)_{1st} + \left(\bar{\phi}_{1i},L \bar{\phi}_{2j}\right)_{1st} + \left(\bar{\phi}_{2i},L \bar{\phi}_{1j}\right)_{1st} + \left(\bar{\phi}_{2i},L \bar{\phi}_{2j}\right)_{1st} \right].
+\left(\bar{\phi}_{\rho i},\mathcal{L} \bar{\phi}_{\rho j}\right) = \frac{1}{4} \left[ \left(\bar{\phi}_{1i},\mathcal{L} \bar{\phi}_{1j}\right)_{1st} + \left(\bar{\phi}_{1i},\mathcal{L} \bar{\phi}_{2j}\right)_{1st} + \left(\bar{\phi}_{2i},\mathcal{L} \bar{\phi}_{1j}\right)_{1st} + \left(\bar{\phi}_{2i},\mathcal{L} \bar{\phi}_{2j}\right)_{1st} \right].
 \eeq
 
 The other types of terms cannot be expressed as combinations of the first formalism results, but these calculations are similar to the first formalism.
 
 \begin{align}
-\nonumber \left(\bar{\phi}_{\rho i},L \bar{\phi}_{3j}\right) = &(Y_{10}(\theta_1) r_1 \phi_i, L Y_{10}(\theta_3) r_3 \phi_j) + (Y_{10}(\theta_2) r_2 \phi_i, L Y_{10}(\theta_3) r_3 \phi_j) \\
-\pm &(Y_{10}(\theta_1) r_1 \phi_i, L Y_{10}(\theta_2) r_2 \phi_j^\prime) \pm (Y_{10}(\theta_2) r_2 \phi_i, L Y_{10}(\theta_2) r_2 \phi_j^\prime)
+\nonumber \left(\bar{\phi}_{\rho i},\mathcal{L} \bar{\phi}_{3j}\right) = &(Y_{10}(\theta_1) r_1 \phi_i, \mathcal{L} Y_{10}(\theta_3) r_3 \phi_j) + (Y_{10}(\theta_2) r_2 \phi_i, \mathcal{L} Y_{10}(\theta_3) r_3 \phi_j) \\
+\pm &(Y_{10}(\theta_1) r_1 \phi_i, \mathcal{L} Y_{10}(\theta_2) r_2 \phi_j^\prime) \pm (Y_{10}(\theta_2) r_2 \phi_i, \mathcal{L} Y_{10}(\theta_2) r_2 \phi_j^\prime)
 \end{align}
 
 \begin{align}
-\nonumber \left(\bar{\phi}_{\rho i},L \bar{\phi}_{3j}\right) = \pm &(Y_{10}(\theta_2) r_2 \phi_i^\prime, L Y_{10}(\theta_1) r_1 \phi_j) \pm (Y_{10}(\theta_2) r_2 \phi_i^\prime, L Y_{10}(\theta_2) r_2 \phi_j) \\
-+ &(Y_{10}(\theta_2) r_2 \phi_i^\prime, L Y_{10}(\theta_1) r_1 \phi_j^\prime) + (Y_{10}(\theta_2) r_2 \phi_i^\prime, L Y_{10}(\theta_3) r_3 \phi_j^\prime)
+\nonumber \left(\bar{\phi}_{\rho i},\mathcal{L} \bar{\phi}_{3j}\right) = \pm &(Y_{10}(\theta_2) r_2 \phi_i^\prime, \mathcal{L} Y_{10}(\theta_1) r_1 \phi_j) \pm (Y_{10}(\theta_2) r_2 \phi_i^\prime, \mathcal{L} Y_{10}(\theta_2) r_2 \phi_j) \\
++ &(Y_{10}(\theta_2) r_2 \phi_i^\prime, \mathcal{L} Y_{10}(\theta_1) r_1 \phi_j^\prime) + (Y_{10}(\theta_2) r_2 \phi_i^\prime, \mathcal{L} Y_{10}(\theta_3) r_3 \phi_j^\prime)
 \end{align}
 
 \beq
-\nonumber \left(\bar{\phi}_{\rho i},L \bar{\phi}_{3j}\right) = 2 \left[ \pm(Y_{10}(\theta_2) r_2 \phi_i, L Y_{10}(\theta_3) r_3 \phi_j) + (Y_{10}(\theta_2) r_2 \phi_i^\prime, L Y_{10}(\theta_2) r_2 \phi_j^\prime) \right]
+\nonumber \left(\bar{\phi}_{\rho i},\mathcal{L} \bar{\phi}_{3j}\right) = 2 \left[ \pm(Y_{10}(\theta_2) r_2 \phi_i, \mathcal{L} Y_{10}(\theta_3) r_3 \phi_j) + (Y_{10}(\theta_2) r_2 \phi_i^\prime, \mathcal{L} Y_{10}(\theta_2) r_2 \phi_j^\prime) \right]
 \eeq
 
 \subsection{Short-Range -- Long-Range Integrals}
@@ -310,47 +321,18 @@ In terms of the first formalism,
 
 \begin{subequations}
 \begin{align}
-\left(\bar{\phi}_{\rho i},L \bar{S}\right) &= \frac{1}{2} \left[ \left(\bar{\phi}_{1i},L \bar{S}\right)_{1st} + \left(\bar{\phi}_{2i},L \bar{S}\right)_{1st} \right] \\
-\left(\bar{\phi}_{\rho i},L \bar{C}\right) &= \frac{1}{2} \left[ \left(\bar{\phi}_{1i},L \bar{C}\right)_{1st} + \left(\bar{\phi}_{2i},L \bar{C}\right)_{1st} \right]
+\left(\bar{\phi}_{\rho i},\mathcal{L} \bar{S}\right) &= \frac{1}{2} \left[ \left(\bar{\phi}_{1i},\mathcal{L} \bar{S}\right)_{1st} + \left(\bar{\phi}_{2i},\mathcal{L} \bar{S}\right)_{1st} \right] \\
+\left(\bar{\phi}_{\rho i},\mathcal{L} \bar{C}\right) &= \frac{1}{2} \left[ \left(\bar{\phi}_{1i},\mathcal{L} \bar{C}\right)_{1st} + \left(\bar{\phi}_{2i},\mathcal{L} \bar{C}\right)_{1st} \right]
 \end{align}
 \end{subequations}
 
 
-\subsection{Long-Range -- Long-Range Integrals}
-\label{sec:PWave2ndLongLong}
 
 
-\section{Optimization}
+\section{Nonlinear Parameter Optimization}
 \label{sec:PWaveOpt}
 
-\subsection{Singlet}
-
-\begin{table}[H]
-\centering
-\begin{tabular}{c c}
-\toprule
-\toprule
-$\omega$ & 1st formalism / 1 set \\
-\midrule
-\midrule
-1 & 0.47767, 0.50273, 0.97498 \\
-  & $\textbf{-0.6668199686}$ \\
-\midrule
-2 & 0.48253, 0.49342, 0.96874 \\
-  & $\textbf{-0.7006810696}$ \\
-\midrule
-3 & 0.42803, 0.43099, 0.98993 \\
-  & $\textbf{-0.7180931727}$ \\
-\midrule
-4 & 0.39740, 0.37617, 0.96205 \\
-  & $\textbf{-0.7277620286}$ \\
-\bottomrule
-\bottomrule
-\end{tabular}
-\caption{Broyden's P-Wave Singlet Short-Range Optimization}
-\label{tab:BroydenPWaveSingOpt}
-\end{table}
-
+Using the simplex method described in \cref{sec:Simplex}, we optimized the nonlinear parameters for both the first and second formalisms. \Cref{tab:SimplexPWaveSingOpt,tab:SimplexPWaveTripOpt} show the results of these optimizations in the second and third columns. We also let each symmetry have its own set of nonlinear parameters for each symmetry in the fourth and fifth columns. This was inspired by the work of Yan and Ho \cite{Yan1999}, where they used 5 different sets of nonlinear parameters to calculate the PsH ground state energy.
 
 \begin{table}[H]
 \footnotesize
@@ -388,8 +370,6 @@ $\omega$ & 1st formalism / 1 set & 2nd formalism / 1 set & 1st formalism / 2 set
 \end{table}
 
 
-\subsection{Triplet}
-
 \begin{table}[H]
 \footnotesize
 \centering
@@ -415,8 +395,8 @@ $\omega$ & 1st formalism / 1 set & 2nd formalism / 1 set & 1st formalism / 2 set
 4 & 0.33574, 0.33663, 0.99365 & 0.34276, 0.35544, 0.96801 & 0.31623, 0.35391, 0.99890 & 0.16242, 0.65645, 0.95127 \\
  & $\textbf{-0.721696022987}$ & $\textbf{-0.720513417195}$ & $\textbf{-0.721859567659}$ & $\textbf{-0.720596381145}$ \\
 \midrule
- &  &  & 0.31847, 0.30382, 0.99355 & 0.31772 0.32715 0.97691 \\
-5 & 0.31060, 0.31092, 0.99531 & 0.31829 0.32758 0.96828 & 0.30259, 0.31860, 0.99667 & 0.11426 0.42744 1.10880 \\
+ &  &  & 0.31847, 0.30382, 0.99355 & 0.31772, 0.32715, 0.97691 \\
+5 & 0.31060, 0.31092, 0.99531 & 0.31829 0.32758 0.96828 & 0.30259, 0.31860, 0.99667 & 0.11426, 0.42744, 1.10880 \\
  & $\textbf{-0.731463030326}$ & $\textbf{-0.730592482596}$ & $\textbf{-0.731486455300}$ & $\textbf{-0.730615490923}$ \\
 \bottomrule
 \bottomrule
@@ -425,53 +405,145 @@ $\omega$ & 1st formalism / 1 set & 2nd formalism / 1 set & 1st formalism / 2 set
 \label{tab:SimplexPWaveTripOpt}
 \end{table}
 
+From \cref{tab:SimplexPWaveSingOpt,tab:SimplexPWaveTripOpt}, we see that lower energy eigenvalues are always obtained with the first formalism with 1 set versus the second formalism with 1 set. Likewise, the first formalism has lower energy eigenvalues than the second formalism when both have 2 sets. For $\omega \geq 2$, the first formalism with 1 set even has lower energy eigenvalues than the second symmetry with 2 sets. We had trouble obtaining phase shifts with two different sets of nonlinear parameters, but for higher $\omega$, we also see that the energy does not change much. Using more than one set of nonlinear parameters could be explored further in future work, and we have done preliminary investigation into this for the S-wave.
+
 
 \section{Results}
 
 \subsection{Phase Shifts}
 
+
+%\begin{table}[H]
+%\centering
+%\footnotesize
+%\begin{tabular}{l c c c c c c c}
+%\toprule
+%Method & 0.1 & 0.2 & 0.3 & 0.4 & 0.5 & 0.6 & 0.7 \\
+%\midrule
+%This work $(\omega = 7)$ $\delta_1^+$ 					& $0.226^{-1}$ & $0.191$ & $0.609$ & $0.994$ & $1.140$ & $1.162$ & $1.152$ \\
+%This work $(\omega \rightarrow \infty)$ $\delta_1^+$	& $0.227^{-1}$ & $0.192$ & $0.611$ & $0.996$ & $1.142$ & $1.163$ & $1.154$ \\
+%\% Diff$^+$												& $0.465\%$ & $0.306\%$ & $0.314\%$ & $0.205\%$ & $0.140\%$ & $0.137\%$ & $0.181\%$ \\
+%\arrayrulecolor[RGB]{220,220,220}\midrule\arrayrulecolor{black}
+%Kohn $(\omega = 6)$ \cite{VanReethPrivate} $\delta_1^+$	& $0.226^{-1}$ & $0.192$ & $0.612$ & $0.997$ & $1.143$ & $1.165$ & $1.155$ \\
+%CC 14Ps14H+H$^-$ \cite{Walters2004} $\delta_1^+$		& $0.221^{-1}$ & $0.183$ & $0.580$ & $0.956$ & $1.106$ & $1.134$ & $1.133$ \\
+%CC 14Ps14H \cite{Blackwood2002} $\delta_1^+$			& $0.213^{-1}$ & $0.175$ & $0.545$ & $0.908$ & $1.068$ & $1.103$ & $1.099$ \\
+%SE \cite{Ray1997} $\delta_1^+$ 							& $0.798^{-2}$ & $0.614^{-1}$ & $0.186$ & $0.349$ & $0.477$ & $0.536$ & $0.538$ \\
+%5-state CC \cite{Adhikari1999} $\delta_1^+$				& $0.477^{-2}$ & $0.370^{-1}$ & $0.116$ & $0.239$ & $0.372$ & $0.478$ & $0.541$ \\
+%\midrule
+%This work $(\omega = 7)$ $\delta_1^-$					& $-0.178^{-2}$ & $-0.167^{-1}$ & $-0.552^{-1}$ & $-0.115$ & $-0.183$ & $-0.248$ & $-0.292$ \\
+%This work $(\omega \rightarrow \infty)$ $\delta_1^-$	& $-0.172^{-2}$ & $-0.165^{-1}$ & $-0.540^{-1}$ & $-0.114$ & $-0.182$ & $-0.246$ & $-0.281$ \\
+%\% Diff$^+$												& $3.176\%$ & $0.993\%$ & $0.749\%$ & $0.698\%$ & $0.749\%$ & $0.896\%$ & $1.237\%$ \\
+%\arrayrulecolor[RGB]{220,220,220}\midrule\arrayrulecolor{black}
+%CC 14Ps14H \cite{Blackwood2002} $\delta_1^-$			& $-0.953^{-3}$ & $-0.122^{-1}$ & $-0.456^{-1}$ & $-0.104$ & $-0.178$ & $-0.247$ & $-0.295$ \\
+%SE \cite{Ray1997} $\delta_1^-$							& $-0.503^{-2}$ & $-0.352^{-1}$ & $-0.980^{-1}$ & $-0.186$ & $-0.287$ & $-0.390$ & $-0.488$ \\
+%5-state CC \cite{Adhikari1999} $\delta_1^-$				& $-0.233^{-2}$ & $-0.167^{-1}$ & $-0.476^{-1}$ & $-0.918^{-1}$ & $-0.142$ & $-0.190$ & $-0.228$ \\
+%\bottomrule
+%\end{tabular}
+%\caption{$^{1,3}$P comparisons. \% Diff$^\pm$ is the percent difference
+%between the current complex Kohn $\omega = 7$ and $\omega \rightarrow \infty$
+%results. Values in the header are $\kappa$ in au. Exponents denote powers of 10.}
+%\label{tab:PWaveComparisons}
+%\end{table}
+
+
+
 \begin{table}[H]
 \centering
-\begin{tabular}{c | c c c c c c c}
+\setlength{\tabcolsep}{-2pt}
+\footnotesize
+\begin{tabular}{@{\hskip 0.1cm}l . . . . . . .}
 \toprule
-$\kappa$ & $\delta^+ (\omega = 6)$ & $\delta^+ (\omega = 7)$ & $\delta^+$ \cite{VanReethPrivate} & $\delta^+$ \cite{Blackwood2002} & $\delta^+$ \cite{Walters2004} & $\delta^+$ \cite{Ray1997} & $\delta^+$ \cite{Adhikari1999} \\
+Method & \multicolumn{1}{c}{\phantom{1}0.1} & \multicolumn{1}{c}{\phantom{1}0.2} & \multicolumn{1}{c}{\phantom{1}0.3} & \multicolumn{1}{c}{\phantom{1}0.4} & \multicolumn{1}{c}{\phantom{1}0.5} & \multicolumn{1}{c}{\phantom{1}0.6} & \multicolumn{1}{c}{\phantom{1}0.7} \\
 \midrule
-0.05 & $2.772^{-3}$ & $2.776^{-3}$ & --- & $2.64^{-3}$ & --- & --- & --- \\
-0.1 & $2.255^{-2}$ & $2.256^{-2}$ & $2.26^{-2}$ & $2.13^{-2}$ & $2.21^{-2}$ & $7.98^{-3}$ & $4.77^{-3}$ \\
-0.2 & $1.909^{-1}$ & $1.913^{-1}$ & $1.92^{-1}$ & $1.75^{-1}$ & $1.83^{-1}$ & $6.14^{-2}$ & $3.70^{-2}$ \\
-0.3 & $6.082^{-1}$ & $6.093^{-1}$ & $6.12^{-1}$ & $5.45^{-1}$ & $5.80^{-1}$ & $1.86^{-1}$ & $1.16^{-1}$ \\
-0.4 & $9.930^{-1}$ & $9.939^{-1}$ & $9.97^{-1}$ & $9.08^{-1}$ & $9.56^{-1}$ & $3.49^{-1}$ & $2.39^{-1}$ \\
-0.5 & $1.140$ & $1.140$ & $1.143$ & $1.068$ & $1.106$ & $4.77^{-1}$ & $3.72^{-1}$ \\
-0.6 & $1.161$ & $1.162$ & $1.165$ & $1.103$ & $1.134$ & $5.36^{-1}$ & $4.78^{-1}$ \\
-0.7 & $1.151$ & $1.152$ & $1.155$ & $1.099$ & $1.133$ & $5.38^{-1}$ & $5.41^{-1}$ \\
+This work $(\omega = 7)$ $\delta_1^+$ 					& 0.226^{-1} & 0.191 & 0.609 & 0.994 & 1.140 & 1.162 & 1.152 \\
+This work $(\omega \rightarrow \infty)$ $\delta_1^+$	& 0.227^{-1} & 0.192 & 0.611 & 0.996 & 1.142 & 1.163 & 1.154 \\
+\% Diff$^+$												& 0.465\% & 0.306\% & 0.314\% & 0.205\% & 0.140\% & 0.137\% & 0.181\% \\
+\arrayrulecolor[RGB]{220,220,220}\midrule\arrayrulecolor{black}
+Kohn $(\omega = 6)$ \cite{VanReethPrivate} $\delta_1^+$	& 0.226^{-1} & 0.192 & 0.612 & 0.997 & 1.143 & 1.165 & 1.155 \\
+CC 14Ps14H+H$^-$ \cite{Walters2004} $\delta_1^+$		& 0.221^{-1} & 0.183 & 0.580 & 0.956 & 1.106 & 1.134 & 1.133 \\
+CC 14Ps14H \cite{Blackwood2002} $\delta_1^+$			& 0.213^{-1} & 0.175 & 0.545 & 0.908 & 1.068 & 1.103 & 1.099 \\
+3-state CC \cite{Sinha1997} $\delta_1^+$				& 8.14^{-3} & 6.27^{-2} & 1.90^{-1} & 3.58^{-1} & 4.89^{-1} & 5.51^{-1} & 5.56^{-1} \\
+SE \cite{Ray1997} $\delta_1^+$ 							& 0.798^{-2} & 0.614^{-1} & 0.186 & 0.349 & 0.477 & 0.536 & 0.538 \\
+5-state CC \cite{Adhikari1999} $\delta_1^+$				& 0.477^{-2} & 0.370^{-1} & 0.116 & 0.239 & 0.372 & 0.478 & 0.541 \\
+SE \cite{Hara1975} $\delta_1^+$							& 0.79^{-2}  & 0.611^{-1} & 0.1853 & 0.3487 & 0.4772 & 0.5361 & 0.5388 \\
+\midrule                                                
+This work $(\omega = 7)$ $\delta_1^-$					& -0.178^{-2} & -0.167^{-1} & -0.552^{-1} & -0.115 & -0.183 & -0.248 & -0.292 \\
+This work $(\omega \rightarrow \infty)$ $\delta_1^-$	& -0.172^{-2} & -0.165^{-1} & -0.540^{-1} & -0.114 & -0.182 & -0.246 & -0.281 \\
+\% Diff$^+$												& 3.176\% & 0.993\% & 0.749\% & 0.698\% & 0.749\% & 0.896\% & 1.237\% \\
+\arrayrulecolor[RGB]{220,220,220}\midrule\arrayrulecolor{black}
+CC 14Ps14H \cite{Blackwood2002} $\delta_1^-$			& -0.953^{-3} & -0.122^{-1} & -0.456^{-1} & -0.104 & -0.178 & -0.247 & -0.295 \\
+3-state CC \cite{Sinha1997} $\delta_1^-$				& -4.43^{-3} & -3.08^{-2} & -8.51^{-2} & -1.59^{-1} & -2.36^{-1} & -3.02^{-1} & -3.32^{-1} \\
+SE \cite{Ray1997} $\delta_1^-$							& -0.503^{-2} & -0.352^{-1} & -0.980^{-1} & -0.186 & -0.287 & -0.390 & -0.488 \\
+5-state CC \cite{Adhikari1999} $\delta_1^-$				& -0.233^{-2} & -0.167^{-1} & -0.476^{-1} & -0.918^{-1} & -0.142 & -0.190 & -0.228 \\
+SE \cite{Hara1975} $\delta_1^-$							& -0.50^{-2}  & -0.350^{-1} & -0.978^{-1} & -0.1860 & -0.2872 & -0.3906 & -0.4882 \\
 \bottomrule
 \end{tabular}
-\caption{P-Wave Singlet Results}
-\label{tab:PWaveSinglet}
+\caption{$^{1,3}$P comparisons. \% Diff$^\pm$ is the percent difference
+between the current complex Kohn $\omega = 7$ and $\omega \rightarrow \infty$
+results. Values in the header are $\kappa$ in au. Exponents denote powers of 10.}
+\label{tab:PWaveComparisons}
 \end{table}
 
 
-\todoi{Add Fraser, Biswas?, etc. Put in format of S-wave}
-
 \begin{table}[H]
 \centering
-\begin{tabular}{c | c c c c c}
+\begin{tabular}{c c c}
 \toprule
-$\kappa$ & $\delta^- (\omega = 6)$ & $\delta^- (\omega = 7)$ & $\delta^-$ \cite{Blackwood2002} & $\delta^-$ \cite{Ray1997} & $\delta^-$ \cite{Adhikari1999} \\
+$\kappa$ & $1^{st}$ Formalism $\delta^+ (\omega = 6)$ & $2^{nd}$ Formalism $\delta^+ (\omega = 6)$ \\
 \midrule
-0.05 & --- & --- & $-7.63^{-5}$ & --- & --- \\
-0.1 & $-1.785^{-3}$ & $-1.775^{-3}$ & $-9.53^{-4}$ & $-5.03^{-3}$ & $-2.33^{-3}$ \\
-0.2 & $-1.676^{-2}$ & $-1.669^{-2}$ & $-1.22^{-2}$ & $-3.52^{-2}$ & $-1.67^{-2}$ \\
-0.3 & $-5.536^{-2}$ & $-5.518^{-2}$ & $-4.56^{-2}$ & $-9.80^{-2}$ & $-4.76^{-2}$ \\
-0.4 & $-1.149^{-1}$ & $-1.146^{-1}$ & $-1.04^{-1}$ & $-1.86^{-1}$ & $-9.18^{-2}$ \\
-0.5 & $-1.840^{-1}$ & $-1.834^{-1}$ & $-1.78^{-1}$ & $-2.87^{-1}$ & $-1.42^{-1}$ \\
-0.6 & $-2.486^{-1}$ & $-2.477^{-1}$ & $-2.47^{-1}$ & $-3.90^{-1}$ & $-1.90^{-1}$ \\
-0.7 & $-2.932^{-1}$ & $-2.917^{-1}$ & $-2.95^{-1}$ & $-4.88^{-1}$ & $-2.28^{-1}$ \\
+0.1 & $2.255^{-2}$ & $2.255^{-2}$ \\
+0.2 & $1.909^{-1}$ & $1.908^{-1}$ \\
+0.3 & $6.082^{-1}$ & $6.080^{-1}$ \\
+0.4 & $9.930^{-1}$ & $9.927^{-1}$ \\
+0.5 & $1.140$      & $1.140$      \\
+0.6 & $1.161$      & $1.161$      \\
+0.7 & $1.151$      & $1.150$      \\
 \bottomrule
 \end{tabular}
-\caption{P-Wave Triplet Results}
-\label{tab:PWaveTriplet}
+\caption{Comparison of $^1$P phase shifts for the first and second formalisms}
+\label{tab:PWaveFormalPhase}
 \end{table}
+
+The phase shifts for $^1$P were not improved by using the second formalism and were even slightly lower in some cases. The energy eigenvalues in \cref{tab:SimplexPWaveSingOpt,tab:SimplexPWaveTripOpt} were also lower for the first formalism, so we did not pursue using the second formalism any further. The second formalism was not tried for the D-wave.
+
+
+%\begin{table}[H]
+%\centering
+%\begin{tabular}{c | c c c c c c c}
+%\toprule
+%$\kappa$ & $\delta^+ (\omega = 6)$ & $\delta^+ (\omega = 7)$ & $\delta^+$ \cite{VanReethPrivate} & $\delta^+$ \cite{Blackwood2002} & $\delta^+$ \cite{Walters2004} & $\delta^+$ \cite{Ray1997} & $\delta^+$ \cite{Adhikari1999} \\
+%\midrule
+%0.1 & $2.255^{-2}$ & $2.256^{-2}$ & $2.26^{-2}$ & $2.13^{-2}$ & $2.21^{-2}$ & $7.98^{-3}$ & $4.77^{-3}$ \\
+%0.2 & $1.909^{-1}$ & $1.913^{-1}$ & $1.92^{-1}$ & $1.75^{-1}$ & $1.83^{-1}$ & $6.14^{-2}$ & $3.70^{-2}$ \\
+%0.3 & $6.082^{-1}$ & $6.093^{-1}$ & $6.12^{-1}$ & $5.45^{-1}$ & $5.80^{-1}$ & $1.86^{-1}$ & $1.16^{-1}$ \\
+%0.4 & $9.930^{-1}$ & $9.939^{-1}$ & $9.97^{-1}$ & $9.08^{-1}$ & $9.56^{-1}$ & $3.49^{-1}$ & $2.39^{-1}$ \\
+%0.5 & $1.140$ & $1.140$ & $1.143$ & $1.068$ & $1.106$ & $4.77^{-1}$ & $3.72^{-1}$ \\
+%0.6 & $1.161$ & $1.162$ & $1.165$ & $1.103$ & $1.134$ & $5.36^{-1}$ & $4.78^{-1}$ \\
+%0.7 & $1.151$ & $1.152$ & $1.155$ & $1.099$ & $1.133$ & $5.38^{-1}$ & $5.41^{-1}$ \\
+%\bottomrule
+%\end{tabular}
+%\caption{P-Wave Singlet Results}
+%\label{tab:PWaveSinglet}
+%\end{table}
+
+%\begin{table}[H]
+%\centering
+%\begin{tabular}{c | c c c c c}
+%\toprule
+%$\kappa$ & $\delta^- (\omega = 6)$ & $\delta^- (\omega = 7)$ & $\delta^-$ \cite{Blackwood2002} & $\delta^-$ \cite{Ray1997} & $\delta^-$ \cite{Adhikari1999} \\
+%\midrule
+%0.1 & $-1.785^{-3}$ & $-1.775^{-3}$ & $-9.53^{-4}$ & $-5.03^{-3}$ & $-2.33^{-3}$ \\
+%0.2 & $-1.676^{-2}$ & $-1.669^{-2}$ & $-1.22^{-2}$ & $-3.52^{-2}$ & $-1.67^{-2}$ \\
+%0.3 & $-5.536^{-2}$ & $-5.518^{-2}$ & $-4.56^{-2}$ & $-9.80^{-2}$ & $-4.76^{-2}$ \\
+%0.4 & $-1.149^{-1}$ & $-1.146^{-1}$ & $-1.04^{-1}$ & $-1.86^{-1}$ & $-9.18^{-2}$ \\
+%0.5 & $-1.840^{-1}$ & $-1.834^{-1}$ & $-1.78^{-1}$ & $-2.87^{-1}$ & $-1.42^{-1}$ \\
+%0.6 & $-2.486^{-1}$ & $-2.477^{-1}$ & $-2.47^{-1}$ & $-3.90^{-1}$ & $-1.90^{-1}$ \\
+%0.7 & $-2.932^{-1}$ & $-2.917^{-1}$ & $-2.95^{-1}$ & $-4.88^{-1}$ & $-2.28^{-1}$ \\
+%\bottomrule
+%\end{tabular}
+%\caption{P-Wave Triplet Results}
+%\label{tab:PWaveTriplet}
+%\end{table}
 
 
 \begin{table}[H]
@@ -529,6 +601,15 @@ $\kappa$ & $\delta^- (\omega \rightarrow \infty) (3-6)$ & $\delta^- (\omega \rig
 
 
 \subsection{Resonance Parameters}
+\label{sec:PWaveResonances}
+
+Similar to the S-wave in \cref{sec:SWaveResonances}, the P-wave has two 
+resonances before the inelastic threshold. Di Rienzi and Drachman found that 
+the first $^1$P resonance is associated with the $3p$ state, not the $2p$ 
+state as might be expected \cite{DiRienzi2002b}. These resonances are shifted 
+to higher energies than the S-wave, and we use the numerical fittings described
+in \cref{sec:ResonanceFit} to determine the resonance parameters given in
+\cref{tab:PWaveResonancesOther}.
 
 \setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
 \setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
@@ -537,7 +618,7 @@ $\kappa$ & $\delta^- (\omega \rightarrow \infty) (3-6)$ & $\delta^- (\omega \rig
 \centering
 \begin{tabular}{l l l l l}
 \toprule
-Method & $^1E_R \text{ (eV)}$ & $^1\Gamma \text{ (eV)}$ & $^2E_R \text{ (eV)}$ & $^2\Gamma \text{ (eV)}$ \\
+Method & \thead{$^1E_R \text{ (eV)}$} & \thead{$^1\Gamma \text{ (eV)}$} & \thead{$^2E_R \text{ (eV)}$} & \thead{$^2\Gamma \text{ (eV)}$} \\
 \midrule
 This work & $4.2856 \pm 0.0001$ & $0.0444 \pm 0.0001$ & $5.0578 \pm 0.0001$ & $0.0456 \pm 0.0002$ \\
 Kohn variational \cite{VanReeth2004} & $4.29 \pm 0.01$ & $0.042 \pm 0.005$ & --- & --- \\
@@ -545,17 +626,19 @@ CC (9Ps9H + H$^-$) \cite{Walters2004} & $4.475$ & $0.0827$ & $4.905$ & $0.0043$ 
 Stabilization \cite{Yan2003} & $4.287$ & $0.0446$ & $5.062$ & $0.0563$ \\
 CC (22Ps1H + H$^-$) \cite{Blackwood2002b} & $4.401$ & $0.029$ & $5.108$ & $0.017$ \\
 Optical potential \cite{DiRienzi2002b} & $4.472$ & $0.082$ & --- & --- \\
-Five-state CC\cite{Adhikari2001e} & $5.08$ & $0.004$ & --- & --- \\
+Five-state CC \cite{Adhikari2001e} & $5.08$ & $0.004$ & --- & --- \\
 CC (9Ps9H) \cite{Blackwood2002} & $4.66$ & $0.084$ & --- & --- \\
+Complex rotation \cite{Yan1999} & $4.2850 \pm 0.0014$ & $0.0435 \pm 0.0027$ & $5.0540 \pm 0.0027$ & $0.0925 \pm 0.0054$ \\
 Coupled-pseudostate \cite{Campbell1998} & $4.88$ & $0.058$ & --- & --- \\
-Complex rotation (Yan et al.\ 1998) \cite{Yan1999} & $4.2850 \pm 0.0014$ & $0.0435 \pm 0.0027$ & $5.0540 \pm 0.0027$ & $0.0925 \pm 0.0054$ \\
-Complex rotation (Drachman et al.\ 1979) \cite{Drachman1979} & $-0.57725$ & --- & $-0.6338$ & --- \\
 \bottomrule
 \end{tabular}
 \caption{P-wave resonance parameters}
 \label{tab:PWaveResonancesOther}
 \end{table}
 
+\Cref{tab:PWaveResonancesOther} has the P-wave resonances calculated in this work and compared to that of calculations from other groups. The complex rotation result of Yan and Ho \cref{Yan1999} is one of the most accurate calculations of these resonance parameters. The positions of the first and resonances using the complex Kohn agree very well with the complex rotation, as does the width of the first resonance. We find a width for the second resonance about half that of the complex rotation. A more recent result of Yan and Ho uses a stabilization method \cite{Yan2003}, which brings the second resonance width more in line with the complex Kohn.
+
+The CC results of the Belfast group \cite{Blackwood2002,Blackwood2002b,Walters2004} shows again that the H$^-$ channel is important for the resonances. 
 
 
 \biblio
