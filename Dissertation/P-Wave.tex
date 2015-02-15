@@ -5,22 +5,14 @@
 \chapter{P-Wave}
 \label{chp:PWave}
 
-\beq
-\SphericalHarmonicY{1}{0}{\theta_\rho}{\varphi_\rho} = \sqrt{\frac{3}{4\pi}} \cos \theta_\rho
-\eeq
+Like the S-wave in \cref{chp:SWave}, the general formalism in \cref{chp:WaveKohn} was developed much after the P-wave derivations and code was developed. So though the analysis in \cref{chp:WaveKohn} will work properly for the P-wave, it is worthwhile to show the exact formulas that are used in the P-wave long-range code.
 
-\beq
-j_1(\kappa \rho) = \frac{\sin(\kappa\rho)}{(\kappa\rho)^2} - \frac{\cos(\kappa\rho)}{\kappa\rho}
-\eeq
-
-\beq
-n_1(\kappa \rho) = -\frac{\cos(\kappa\rho)}{(\kappa\rho)^2} - \frac{\sin(\kappa\rho)}{\kappa\rho}
-\eeq
-
+The part of $\mathcal{L}C_1$ calculated by the \emph{Mathematica} code in \cref{fig:LCMath} is
 \begin{align}
 \frac{1}{2} & \left(\Laplacian_\rho + \kappa^2\right) \SphericalHarmonicY{1}{0}{\theta_\rho}{\varphi_\rho} n_1(\kappa\rho) f_1(\rho)  \nonumber \\
 &= -\frac{\rho  f^{\prime\prime}(\rho ) \left[\kappa  \rho  \sin (\kappa  \rho )+\cos (\kappa  \rho )\right]+2 f^\prime(\rho ) \left[\left(\kappa ^2 \rho ^2-1\right) \cos (\kappa  \rho )-\kappa  \rho  \sin (\kappa \rho )\right]}{2 \kappa ^2 \rho ^3}
 \end{align}
+
 \todoi{How it relates to the following}
 
 \section{P-Wave Wavefunction}
@@ -148,7 +140,6 @@ Since the P-wave trial wavefunction has two sets of short-range terms, the matri
 	\end{bmatrix}.
 \end{equation}
 }
-
 The rest of the analysis in \cref{sec:KohnApplied} applies directly to the P-wave.
 
 
@@ -198,12 +189,16 @@ The rest of the analysis in \cref{sec:KohnApplied} applies directly to the P-wav
 \section{P-Wave Short-Range -- Long-Range Integrals}
 \label{sec:PWaveShortLong}
 
+Like the S-wave in \cref{sec:LCElements}, we derived these and wrote code using these results before we developed a general formalism described in \cref{chp:WaveKohn}. They are equivalent, but it is easier to compare these to the P-wave long-range code.
+
 \begin{align}
 \label{eq:PWavePhi1SBar}
 \nonumber \left(\bar{\phi}_{1i},\mathcal{L} \bar{S}\right) = \sqrt{2} \pi & \int \left[ \frac{r_1 + r_2 \cos\theta_{12}}{\rho} \left(\phi_{1i} \pm \phi_{1i}^\prime \right) \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_{22} \right] d\tau_{int} \\
 \nonumber = \sqrt{2} \pi & \int \phi_{1i} \left[ \frac{r_1 + r_2 \cos\theta_{12}}{\rho} \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_{22} \right. \\
 & \pm \left. \frac{r_1 + r_3 \cos\theta_{13}}{\rho^\prime} \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) S_{23} \right]  d\tau_{int}
 \end{align}
+
+\todoi{Get these to fit on fully on the page now that they're 12 point.}
 
 \begin{align}
 \label{eq:PWavePhi1CBar}
@@ -237,12 +232,14 @@ The rest of the analysis in \cref{sec:KohnApplied} applies directly to the P-wav
 
 \begin{align}
 \label{eq:PWaveSBarSBar}
-\left(\bar{S},L\bar{S}\right) = \pm \frac{\pi}{2} \int \frac{1}{\rho\rho^\prime} \left[S_{22} S_{23} \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) \left(r_1^2 + r_1 r_2 \cos\theta_{12} + r_1 r_3 \cos\theta_{13} + r_2 r_3 \cos\theta_{23} \right) \right] d\tau_{int}
+\left(\bar{S},L\bar{S}\right) = \pm \frac{\pi}{2} \int \frac{1}{\rho\rho^\prime} & \left[S_{22} S_{23} \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) \right.  \nonumber \\
+& \left. \times \left(r_1^2 + r_1 r_2 \cos\theta_{12} + r_1 r_3 \cos\theta_{13} + r_2 r_3 \cos\theta_{23} \right) \right] d\tau_{int}
 \end{align}
 
 \begin{align}
 \label{eq:PWaveCBarSBar}
-\left(\bar{C},L\bar{S}\right) = \pm \frac{\pi}{2} \int \frac{1}{\rho\rho^\prime} \left[C_{23} S_{22} \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) \left(r_1^2 + r_1 r_2 \cos\theta_{12} + r_1 r_3 \cos\theta_{13} + r_2 r_3 \cos\theta_{23} \right) \right] d\tau_{int}
+\left(\bar{C},L\bar{S}\right) = \pm \frac{\pi}{2} \int \frac{1}{\rho\rho^\prime} & \left[C_{23} S_{22} \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) \right.  \nonumber \\
+& \left. \times \left(r_1^2 + r_1 r_2 \cos\theta_{12} + r_1 r_3 \cos\theta_{13} + r_2 r_3 \cos\theta_{23} \right) \right] d\tau_{int}
 \end{align}
 
 \begin{align}
@@ -263,26 +260,26 @@ The present triplet p-wave phase shifts are not yet fully converged; at very low
 estimate them to be $\approx 20\%$ below the fully converged values and $\approx 3\%$ in the higher energy range. This relatively poor convergence is due to the fact
 that we have not yet included in the wavefunction a set of terms for which the unit of angular momentum is on the electron in the H atom.
 \end{quote}
-
-
+Due to this, we looked at a second formalism that includes these short-range terms instead of what we call the first formalism in \cref{sec:PWaveFn}. 
 
 \subsection{Wavefunction}
+The trial wavefunction that we use for the second formalism is similar to the first formalism in \cref{sec:PWaveFn}.
 \begin{equation}
-\Psi_t^\pm = \bar{S} + \tan \eta_t^\pm \, \bar{C} + \sum_{i=1}^N c_i \bar{\phi}_{\rho i} + \sum_{j=1}^N d_j \bar{\phi}_{3j}
+\Psi_1^{\pm,t} = \bar{S}_1 + L_1^{\pm,t} \, \bar{C}_1 + \sum_{i=1}^{N'(\omega)} c_i \bar{\phi}_{\rho i} + \sum_{j=1}^{N'(\omega)} d_j \bar{\phi}_{3j}
 \label{eq:PWave2ndWavefn}
 \end{equation}
 
-\noindent The short-range terms are given by
+\noindent The new short-range terms are given by
 \begin{subequations}
 \label{eq:PWave2ndPhiBar}
 \begin{align}
 \bar{\phi}_{\rho i} &= \left(1 \pm P_{23}\right) Y_{10}(\theta_\rho) \rho \phi_i \label{eq:PWave2ndPhi1i}\\
-\bar{\phi}_{3j} &= \left(1 \pm P_{23}\right) Y_{10}(\theta_3) r_3 \phi_j \label{eq:PWave2ndPhi2j},
+\bar{\phi}_{3j} &= \left(1 \pm P_{23}\right) Y_{10}(\theta_3) r_3 \phi_j \label{eq:PWave2ndPhi2j}.
 \end{align}
 \end{subequations}
+These place the angular momentum on the Ps and on the electron of H, instead of on the positron and the electron in the Ps. In the first formalism, some amount of the angular momentum is placed on the second electron through the $P_{23}$ permutation operator.
 
-The short-range -- long-range terms can be directly computed by changing the short-range terms, but the integration routines (section \ref{sec:ShortInt}) for the short-range -- short-range terms cannot handle the $\rho$ factor of $\bar{\phi}_{\rho 1}$ directly. The following relations must be used:  \todoi{Ref?}
-
+The short-long terms can be directly computed by changing the short-range terms in the code, but the integration routines (see \cref{sec:ShortInt}) for the short-short terms cannot handle the $\rho$ factor of $\bar{\phi}_{\rho 1}$ directly. The following relations must be used:  \todoi{Ref?}
 \begin{subequations}
 \begin{align}
 \rho Y_{10}(\theta_\rho) &= \frac{1}{2}\left[ r_1 Y_{10}(\theta_1) + r_2 Y_{10}(\theta_2) \right] \\
@@ -318,15 +315,38 @@ The other types of terms cannot be expressed as combinations of the first formal
 \subsection{Short-Range -- Long-Range Integrals}
 \label{sec:PWave2ndShortLong}
 In terms of the first formalism,
-
 \begin{subequations}
 \begin{align}
 \left(\bar{\phi}_{\rho i},\mathcal{L} \bar{S}\right) &= \frac{1}{2} \left[ \left(\bar{\phi}_{1i},\mathcal{L} \bar{S}\right)_{1st} + \left(\bar{\phi}_{2i},\mathcal{L} \bar{S}\right)_{1st} \right] \\
-\left(\bar{\phi}_{\rho i},\mathcal{L} \bar{C}\right) &= \frac{1}{2} \left[ \left(\bar{\phi}_{1i},\mathcal{L} \bar{C}\right)_{1st} + \left(\bar{\phi}_{2i},\mathcal{L} \bar{C}\right)_{1st} \right]
+\left(\bar{\phi}_{\rho i},\mathcal{L} \bar{C}\right) &= \frac{1}{2} \left[ \left(\bar{\phi}_{1i},\mathcal{L} \bar{C}\right)_{1st} + \left(\bar{\phi}_{2i},\mathcal{L} \bar{C}\right)_{1st} \right].
 \end{align}
 \end{subequations}
+This is a straightforward adaptation of the code for the first formalism.
 
 
+\subsection{Phase Shifts}
+\label{sec:PWave2ndPhase}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{c c c c c}
+\toprule
+$\kappa$ & $1^{st}$ Formalism $\delta_1^+$ & $2^{nd}$ Formalism $\delta_1^+$ & $1^{st}$ Formalism $\delta_1^-$ & $2^{nd}$ Formalism $\delta_1^-$ \\
+\midrule
+0.1 & $2.255^{-2}$ & $2.255^{-2}$ & $-1.785^{-3}$ & $-1.923^{-3}$ \\
+0.2 & $1.909^{-1}$ & $1.908^{-1}$ & $-1.676^{-2}$ & $-1.708^{-2}$ \\
+0.3 & $6.082^{-1}$ & $6.080^{-1}$ & $-5.536^{-2}$ & $-5.601^{-2}$ \\
+0.4 & $9.930^{-1}$ & $9.927^{-1}$ & $-1.149^{-1}$ & $-1.161^{-1}$ \\
+0.5 & $1.140$      & $1.140$      & $-1.840^{-1}$ & $-1.860^{-1}$ \\
+0.6 & $1.161$      & $1.161$      & $-2.486^{-1}$ & $-2.519^{-3}$ \\
+0.7 & $1.151$      & $1.150$      & $-2.932^{-1}$ & $-2.993^{-1}$ \\
+\bottomrule
+\end{tabular}
+\caption{Comparison of $^{1,3}$P phase shifts for the first and second formalisms $(\omega = 6)$}
+\label{tab:PWaveFormalPhase}
+\end{table}
+
+The phase shifts for $^1$P and $^3$P in \cref{tab:PWaveFormalPhase} were not improved by using the second formalism and were even lower in some cases. The energy eigenvalues in \cref{tab:SimplexPWaveSingOpt,tab:SimplexPWaveTripOpt} were also lower for the first formalism, so we did not pursue using the second formalism any further. The second formalism was not tried for the D-wave.
 
 
 \section{Nonlinear Parameter Optimization}
@@ -408,44 +428,13 @@ $\omega$ & 1st formalism / 1 set & 2nd formalism / 1 set & 1st formalism / 2 set
 From \cref{tab:SimplexPWaveSingOpt,tab:SimplexPWaveTripOpt}, we see that lower energy eigenvalues are always obtained with the first formalism with 1 set versus the second formalism with 1 set. Likewise, the first formalism has lower energy eigenvalues than the second formalism when both have 2 sets. For $\omega \geq 2$, the first formalism with 1 set even has lower energy eigenvalues than the second symmetry with 2 sets. We had trouble obtaining phase shifts with two different sets of nonlinear parameters, but for higher $\omega$, we also see that the energy does not change much. Using more than one set of nonlinear parameters could be explored further in future work, and we have done preliminary investigation into this for the S-wave.
 
 
+
+
 \section{Results}
 
 \subsection{Phase Shifts}
 
-
-%\begin{table}[H]
-%\centering
-%\footnotesize
-%\begin{tabular}{l c c c c c c c}
-%\toprule
-%Method & 0.1 & 0.2 & 0.3 & 0.4 & 0.5 & 0.6 & 0.7 \\
-%\midrule
-%This work $(\omega = 7)$ $\delta_1^+$ 					& $0.226^{-1}$ & $0.191$ & $0.609$ & $0.994$ & $1.140$ & $1.162$ & $1.152$ \\
-%This work $(\omega \rightarrow \infty)$ $\delta_1^+$	& $0.227^{-1}$ & $0.192$ & $0.611$ & $0.996$ & $1.142$ & $1.163$ & $1.154$ \\
-%\% Diff$^+$												& $0.465\%$ & $0.306\%$ & $0.314\%$ & $0.205\%$ & $0.140\%$ & $0.137\%$ & $0.181\%$ \\
-%\arrayrulecolor[RGB]{220,220,220}\midrule\arrayrulecolor{black}
-%Kohn $(\omega = 6)$ \cite{VanReethPrivate} $\delta_1^+$	& $0.226^{-1}$ & $0.192$ & $0.612$ & $0.997$ & $1.143$ & $1.165$ & $1.155$ \\
-%CC 14Ps14H+H$^-$ \cite{Walters2004} $\delta_1^+$		& $0.221^{-1}$ & $0.183$ & $0.580$ & $0.956$ & $1.106$ & $1.134$ & $1.133$ \\
-%CC 14Ps14H \cite{Blackwood2002} $\delta_1^+$			& $0.213^{-1}$ & $0.175$ & $0.545$ & $0.908$ & $1.068$ & $1.103$ & $1.099$ \\
-%SE \cite{Ray1997} $\delta_1^+$ 							& $0.798^{-2}$ & $0.614^{-1}$ & $0.186$ & $0.349$ & $0.477$ & $0.536$ & $0.538$ \\
-%5-state CC \cite{Adhikari1999} $\delta_1^+$				& $0.477^{-2}$ & $0.370^{-1}$ & $0.116$ & $0.239$ & $0.372$ & $0.478$ & $0.541$ \\
-%\midrule
-%This work $(\omega = 7)$ $\delta_1^-$					& $-0.178^{-2}$ & $-0.167^{-1}$ & $-0.552^{-1}$ & $-0.115$ & $-0.183$ & $-0.248$ & $-0.292$ \\
-%This work $(\omega \rightarrow \infty)$ $\delta_1^-$	& $-0.172^{-2}$ & $-0.165^{-1}$ & $-0.540^{-1}$ & $-0.114$ & $-0.182$ & $-0.246$ & $-0.281$ \\
-%\% Diff$^+$												& $3.176\%$ & $0.993\%$ & $0.749\%$ & $0.698\%$ & $0.749\%$ & $0.896\%$ & $1.237\%$ \\
-%\arrayrulecolor[RGB]{220,220,220}\midrule\arrayrulecolor{black}
-%CC 14Ps14H \cite{Blackwood2002} $\delta_1^-$			& $-0.953^{-3}$ & $-0.122^{-1}$ & $-0.456^{-1}$ & $-0.104$ & $-0.178$ & $-0.247$ & $-0.295$ \\
-%SE \cite{Ray1997} $\delta_1^-$							& $-0.503^{-2}$ & $-0.352^{-1}$ & $-0.980^{-1}$ & $-0.186$ & $-0.287$ & $-0.390$ & $-0.488$ \\
-%5-state CC \cite{Adhikari1999} $\delta_1^-$				& $-0.233^{-2}$ & $-0.167^{-1}$ & $-0.476^{-1}$ & $-0.918^{-1}$ & $-0.142$ & $-0.190$ & $-0.228$ \\
-%\bottomrule
-%\end{tabular}
-%\caption{$^{1,3}$P comparisons. \% Diff$^\pm$ is the percent difference
-%between the current complex Kohn $\omega = 7$ and $\omega \rightarrow \infty$
-%results. Values in the header are $\kappa$ in au. Exponents denote powers of 10.}
-%\label{tab:PWaveComparisons}
-%\end{table}
-
-
+\Cref{tab:PWaveComparisons} compares the current complex Kohn results for the first P-wave formalism with that of other groups. We use $\omega = 4 - 7$ phase shifts to do the extrapolations for $\omega \rightarrow \infty$. The \% Diff entries give an estimate of the error for our results. The singlet results are converged very well. The triplet results are also converged well, but there is more possible error at $\kappa = 0.1$ and $\kappa = 0.7$. Even with these slightly larger percentages, our $^3$P phase shifts appear to be well converged.
 
 \begin{table}[H]
 \centering
@@ -462,17 +451,17 @@ This work $(\omega \rightarrow \infty)$ $\delta_1^+$	& 0.227^{-1} & 0.192 & 0.61
 Kohn $(\omega = 6)$ \cite{VanReethPrivate} $\delta_1^+$	& 0.226^{-1} & 0.192 & 0.612 & 0.997 & 1.143 & 1.165 & 1.155 \\
 CC 14Ps14H+H$^-$ \cite{Walters2004} $\delta_1^+$		& 0.221^{-1} & 0.183 & 0.580 & 0.956 & 1.106 & 1.134 & 1.133 \\
 CC 14Ps14H \cite{Blackwood2002} $\delta_1^+$			& 0.213^{-1} & 0.175 & 0.545 & 0.908 & 1.068 & 1.103 & 1.099 \\
-3-state CC \cite{Sinha1997} $\delta_1^+$				& 8.14^{-3} & 6.27^{-2} & 1.90^{-1} & 3.58^{-1} & 4.89^{-1} & 5.51^{-1} & 5.56^{-1} \\
+3-state CC \cite{Sinha1997} $\delta_1^+$				& 8.14^{-3} & 6.27^{-2} & 0.190 & 0.358 & 0.489 & 0.551 & 0.556 \\
 SE \cite{Ray1997} $\delta_1^+$ 							& 0.798^{-2} & 0.614^{-1} & 0.186 & 0.349 & 0.477 & 0.536 & 0.538 \\
 5-state CC \cite{Adhikari1999} $\delta_1^+$				& 0.477^{-2} & 0.370^{-1} & 0.116 & 0.239 & 0.372 & 0.478 & 0.541 \\
 SE \cite{Hara1975} $\delta_1^+$							& 0.79^{-2}  & 0.611^{-1} & 0.1853 & 0.3487 & 0.4772 & 0.5361 & 0.5388 \\
 \midrule                                                
 This work $(\omega = 7)$ $\delta_1^-$					& -0.178^{-2} & -0.167^{-1} & -0.552^{-1} & -0.115 & -0.183 & -0.248 & -0.292 \\
-This work $(\omega \rightarrow \infty)$ $\delta_1^-$	& -0.172^{-2} & -0.165^{-1} & -0.540^{-1} & -0.114 & -0.182 & -0.246 & -0.281 \\
-\% Diff$^+$												& 3.176\% & 0.993\% & 0.749\% & 0.698\% & 0.749\% & 0.896\% & 1.237\% \\
+This work $(\omega \rightarrow \infty)$ $\delta_1^-$	& -0.172^{-2} & -0.165^{-1} & -0.540^{-1} & -0.114 & -0.182 & -0.246 & -0.288 \\
+\% Diff$^-$												& 3.176\% & 0.993\% & 0.749\% & 0.698\% & 0.749\% & 0.896\% & 1.237\% \\
 \arrayrulecolor[RGB]{220,220,220}\midrule\arrayrulecolor{black}
 CC 14Ps14H \cite{Blackwood2002} $\delta_1^-$			& -0.953^{-3} & -0.122^{-1} & -0.456^{-1} & -0.104 & -0.178 & -0.247 & -0.295 \\
-3-state CC \cite{Sinha1997} $\delta_1^-$				& -4.43^{-3} & -3.08^{-2} & -8.51^{-2} & -1.59^{-1} & -2.36^{-1} & -3.02^{-1} & -3.32^{-1} \\
+3-state CC \cite{Sinha1997} $\delta_1^-$				& -4.43^{-3} & -3.08^{-2} & -8.51^{-2} & -0.159 & -0.236 & -0.302 & -0.332 \\
 SE \cite{Ray1997} $\delta_1^-$							& -0.503^{-2} & -0.352^{-1} & -0.980^{-1} & -0.186 & -0.287 & -0.390 & -0.488 \\
 5-state CC \cite{Adhikari1999} $\delta_1^-$				& -0.233^{-2} & -0.167^{-1} & -0.476^{-1} & -0.918^{-1} & -0.142 & -0.190 & -0.228 \\
 SE \cite{Hara1975} $\delta_1^-$							& -0.50^{-2}  & -0.350^{-1} & -0.978^{-1} & -0.1860 & -0.2872 & -0.3906 & -0.4882 \\
@@ -484,27 +473,7 @@ results. Values in the header are $\kappa$ in au. Exponents denote powers of 10.
 \label{tab:PWaveComparisons}
 \end{table}
 
-
-\begin{table}[H]
-\centering
-\begin{tabular}{c c c}
-\toprule
-$\kappa$ & $1^{st}$ Formalism $\delta^+ (\omega = 6)$ & $2^{nd}$ Formalism $\delta^+ (\omega = 6)$ \\
-\midrule
-0.1 & $2.255^{-2}$ & $2.255^{-2}$ \\
-0.2 & $1.909^{-1}$ & $1.908^{-1}$ \\
-0.3 & $6.082^{-1}$ & $6.080^{-1}$ \\
-0.4 & $9.930^{-1}$ & $9.927^{-1}$ \\
-0.5 & $1.140$      & $1.140$      \\
-0.6 & $1.161$      & $1.161$      \\
-0.7 & $1.151$      & $1.150$      \\
-\bottomrule
-\end{tabular}
-\caption{Comparison of $^1$P phase shifts for the first and second formalisms}
-\label{tab:PWaveFormalPhase}
-\end{table}
-
-The phase shifts for $^1$P were not improved by using the second formalism and were even slightly lower in some cases. The energy eigenvalues in \cref{tab:SimplexPWaveSingOpt,tab:SimplexPWaveTripOpt} were also lower for the first formalism, so we did not pursue using the second formalism any further. The second formalism was not tried for the D-wave.
+\Cref{tab:PWaveComparisons,fig:PWavePhase} give good comparisons with the CC results of the Belfast group \cite{Blackwood2002,Walters2004}. The complex Kohn phase shifts are higher for $^1$P, but they are slightly lower for much of the range for $^3$P. We note that this was also the case for the S-wave (see \cref{tab:SWaveComparisons} on \pageref{tab:SWaveComparisons}), but the CVM results seem to confirm the complex Kohn $^3$S phase shifts. Both the complex Kohn and the CC phase shifts of the Belfast group appear to give the most accurate sets of phase shifts, and the current complex Kohn can potentially be viewed as benchmark results.
 
 
 %\begin{table}[H]
@@ -546,44 +515,43 @@ The phase shifts for $^1$P were not improved by using the second formalism and w
 %\end{table}
 
 
-\begin{table}[H]
-\centering
-\begin{tabular}{c | c c c}
-\toprule
-$\kappa$ & $\delta^+ (\omega \rightarrow \infty) (3-6)$ & $\delta^+ (\omega \rightarrow \infty) (3-7)$ & $\delta^+ (\omega \rightarrow \infty) (4-7)$\\
-\midrule
-0.1 & $2.30^{-2}$ & $2.28^{-2}$ & $2.27^{-1}$ \\
-0.2 & $1.93^{-1}$ & $0.192^{-1}$ & $1.92^{-1}$ \\
-0.3 & $6.13^{-1}$ & $6.12^{-1}$ & $6.11^{-1}$ \\
-0.4 & $9.99^{-1}$ & $9.97^{-1}$ & $9.96^{-1}$ \\
-0.5 & $1.146$ & $1.144$ & $1.142$ \\
-0.6 & $1.170$ & $1.167$ & $1.163$ \\
-0.7 & $1.164$ & $1.159$ & $1.154$ \\
-\bottomrule
-\end{tabular}
-\caption{P-Wave Singlet Extrapolation Results}
-\label{tab:PWaveSingletExtrap}
-\end{table}
-
-
-\begin{table}[H]
-\centering
-\begin{tabular}{c | c c c}
-\toprule
-$\kappa$ & $\delta^- (\omega \rightarrow \infty) (3-6)$ & $\delta^- (\omega \rightarrow \infty) (3-7)$ & $\delta^- (\omega \rightarrow \infty) (4-7)$\\
-\midrule
-0.1 & $-1.447^{-3}$ & $-1.606^{-3}$ & $-1.720^{-3}$ \\
-0.2 & $-1.586^{-2}$ & $-1.619^{-2}$ & $-1.652^{-2}$ \\
-0.3 & $-5.323^{-2}$ & $-5.477^{-2}$ & $-5.401^{-2}$ \\
-0.4 & $-1.111^{-1}$ & $-1.124^{-1}$ & $-1.138^{-1}$ \\
-0.5 & $-1.771^{-1}$ & $-1.797^{-1}$ & $-1.821^{-1}$ \\
-0.6 & $-2.373^{-1}$ & $-2.417^{-1}$ & $-2.455^{-1}$ \\
-0.7 & $-2.755^{-1}$ & $-2.822^{-1}$ & $-2.881^{-1}$ \\
-\bottomrule
-\end{tabular}
-\caption{P-Wave Triplet Extrapolation Results}
-\label{tab:PWaveTripletExtrap}
-\end{table}
+%\begin{table}[H]
+%\centering
+%\begin{tabular}{c c c c}
+%\toprule
+%$\kappa$ & $\delta^+ (\omega \rightarrow \infty) (3-6)$ & $\delta^+ (\omega \rightarrow \infty) (3-7)$ & $\delta^+ (\omega \rightarrow \infty) (4-7)$\\
+%\midrule
+%0.1 & $2.30^{-2}$ & $2.28^{-2}$ & $2.27^{-1}$ \\
+%0.2 & $1.93^{-1}$ & $0.192^{-1}$ & $1.92^{-1}$ \\
+%0.3 & $6.13^{-1}$ & $6.12^{-1}$ & $6.11^{-1}$ \\
+%0.4 & $9.99^{-1}$ & $9.97^{-1}$ & $9.96^{-1}$ \\
+%0.5 & $1.146$ & $1.144$ & $1.142$ \\
+%0.6 & $1.170$ & $1.167$ & $1.163$ \\
+%0.7 & $1.164$ & $1.159$ & $1.154$ \\
+%\bottomrule
+%\end{tabular}
+%\caption{$^1$P extrapolation results}
+%\label{tab:PWaveSingletExtrap}
+%\end{table}
+%
+%\begin{table}[H]
+%\centering
+%\begin{tabular}{c c c c}
+%\toprule
+%$\kappa$ & $\delta^- (\omega \rightarrow \infty) (3-6)$ & $\delta^- (\omega \rightarrow \infty) (3-7)$ & $\delta^- (\omega \rightarrow \infty) (4-7)$\\
+%\midrule
+%0.1 & $-1.447^{-3}$ & $-1.606^{-3}$ & $-1.720^{-3}$ \\
+%0.2 & $-1.586^{-2}$ & $-1.619^{-2}$ & $-1.652^{-2}$ \\
+%0.3 & $-5.323^{-2}$ & $-5.477^{-2}$ & $-5.401^{-2}$ \\
+%0.4 & $-1.111^{-1}$ & $-1.124^{-1}$ & $-1.138^{-1}$ \\
+%0.5 & $-1.771^{-1}$ & $-1.797^{-1}$ & $-1.821^{-1}$ \\
+%0.6 & $-2.373^{-1}$ & $-2.417^{-1}$ & $-2.455^{-1}$ \\
+%0.7 & $-2.755^{-1}$ & $-2.822^{-1}$ & $-2.881^{-1}$ \\
+%\bottomrule
+%\end{tabular}
+%\caption{$^3$P extrapolation results}
+%\label{tab:PWaveTripletExtrap}
+%\end{table}
 
 \begin{figure}[H]
 	\centering
@@ -599,17 +567,19 @@ $\kappa$ & $\delta^- (\omega \rightarrow \infty) (3-6)$ & $\delta^- (\omega \rig
 	\label{fig:PWaveComparisons}
 \end{figure}
 
+\Cref{fig:PWaveComparisons} gives a detailed comparison to phase shifts from many other groups, similar to the S-wave comparisions in \cref{fig:SWaveComparisons}. The 5-state CC method of Adhikari and Biswas \cite{Adhikari1999} again gives phase shifts that do not agree well with other methods, and Ivanov et al. \cite{Ivanov2002} has a detailed discussion of this. The SVM results of Ivanov et al. \cite{Ivanov2002} follow along well with the current complex Kohn and the CC \cite{Blackwood2002,Walters2004} but are below throughout the energy range. We would not expect the SE \cite{Hara1975,Ray1997} and smaller CC calculations \cite{Sinha1997} to match our phase shifts well.
+
 
 \subsection{Resonance Parameters}
 \label{sec:PWaveResonances}
 
 Similar to the S-wave in \cref{sec:SWaveResonances}, the P-wave has two 
-resonances before the inelastic threshold. Di Rienzi and Drachman found that 
-the first $^1$P resonance is associated with the $3p$ state, not the $2p$ 
-state as might be expected \cite{DiRienzi2002b}. These resonances are shifted 
-to higher energies than the S-wave, and we use the numerical fittings described
-in \cref{sec:ResonanceFit} to determine the resonance parameters given in
-\cref{tab:PWaveResonancesOther}.
+resonances before the inelastic threshold, as seen in \cref{fig:PWavePhase}. 
+Di Rienzi and Drachman found that the first $^1$P resonance is associated 
+with the $3p$ state, not the $2p$ state as might be expected
+\cite{DiRienzi2002b}. These resonances are shifted to higher energies than the
+S-wave, and we use the numerical fittings described in \cref{sec:ResonanceFit}
+to determine the resonance parameters given in \cref{tab:PWaveResonancesOther}.
 
 \setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
 \setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
@@ -636,9 +606,9 @@ Coupled-pseudostate \cite{Campbell1998} & $4.88$ & $0.058$ & --- & --- \\
 \label{tab:PWaveResonancesOther}
 \end{table}
 
-\Cref{tab:PWaveResonancesOther} has the P-wave resonances calculated in this work and compared to that of calculations from other groups. The complex rotation result of Yan and Ho \cref{Yan1999} is one of the most accurate calculations of these resonance parameters. The positions of the first and resonances using the complex Kohn agree very well with the complex rotation, as does the width of the first resonance. We find a width for the second resonance about half that of the complex rotation. A more recent result of Yan and Ho uses a stabilization method \cite{Yan2003}, which brings the second resonance width more in line with the complex Kohn.
+\Cref{tab:PWaveResonancesOther} has the P-wave resonances calculated in this work and compared to that of calculations from other groups. The complex rotation result of Yan and Ho \cite{Yan1999} is one of the most accurate calculations of these resonance parameters. The positions of the first and resonances using the complex Kohn agree very well with the complex rotation, as does the width of the first resonance. We find a width for the second resonance about half that of the complex rotation. A more recent result of Yan and Ho uses a stabilization method \cite{Yan2003}, which brings the second resonance width more in line with the complex Kohn.
 
-The CC results of the Belfast group \cite{Blackwood2002,Blackwood2002b,Walters2004} shows again that the H$^-$ channel is important for the resonances. 
+The CC results of the Belfast group \cite{Blackwood2002,Blackwood2002b,Walters2004} show again that the H$^-$ channel is important for the resonances. Going from the 9Ps9H approximation to the 9Ps9H+H$^-$ significantly improves the first resonance position. The $^1E_R$ that they calculate is still higher than this work and that of Yan and Ho, but it is roughly comparable. Including the H$^-$ channel also allowed them to compute the second resonance's parameters. The $^2E_R$ they calculate is lower than the complex Kohn, stabilization and complex rotation, although it is also close. The CC does not seem to capture the width of the second resonance well.
 
 
 \biblio
