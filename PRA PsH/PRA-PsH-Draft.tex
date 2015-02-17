@@ -407,38 +407,49 @@ For partial waves with $\ell>1$, the orbital angular momentum could also be
 shared between both particles in the Ps atom, giving a total of
 $\ell + 1$ sets of short-range terms \cite{Schwartz1961a}. For the
 D-wave, this gives another set of short-range terms in
-Eq.~\ref{eq:TrialWaveHigher} with a set of spherical harmonics and
+Eq.~(\ref{eq:TrialWaveHigher}) with a set of spherical harmonics and
 Clebsch-Gordan coefficients given by
 \begin{align}
 \label{sec:MixedTerms}
-\psi(1,1,2,0) = Y&_{1,-1}(\theta_1,\varphi_1) Y_{1,+1}(\theta_2,\varphi_2)
+\psi(\ell_1,\ell_2,L,M) = \psi(1,1,2,0) = Y&_{1,-1}(\theta_1,\varphi_1) Y_{1,+1}(\theta_2,\varphi_2)
     \left< 1,-1,1,+1 | 2,0 \right> \nonumber \\
 &+ Y_{1,0}(\theta_1,\varphi_1) Y_{1,0}(\theta_2,\varphi_2)
     \left< 1,0,1,0 | 2,0 \right> \nonumber \\
 &+ Y_{1,+1}(\theta_1,\varphi_1) Y_{1,-1}(\theta_2,\varphi_2)
    \left< 1,+1,1,-1 | 2,0 \right>.
 \end{align}
-We did not explicitly include the mixed terms for Ps-H scattering due 
+The mixed terms were included for the three-body system of e$^+$-H in earlier
+work of
+Refs.~\cite{Brown1985a,BrownThesis,WattsThesis,Humberston1997,VanReeth1997}.
+Van Reeth and Humberston \cite{VanReeth1997} found that these
+mixed terms contributed less than 1.5\% to the $K$ matrix elements for e$^+$-H
+scattering, but this result now appears to be in error.
+New preliminary investigation \cite{VanReeth2015} has shown 
+that these mixed terms can be important for that 
+system. At very low energies, the mixed terms are negligible, contributing 
+less than 1\% to the phase shifts at $\kappa = 0.1$, and near
+the Ps formation threshold, contribute up to 10\%
+of the final value of the phase shifts.
+Likewise, preliminary investigation into e$^-$-H scattering
+\cite{VanReeth2015} indicates that the mixed terms are negligible at very low
+energies, contributing less than 0.1\% at $\kappa = 0.1$ but contribute to the
+$^1D$ phase shifts by up to 25\% at $\kappa = 0.8$. These contribute less than
+1\% to the $^3D$ phase shifts for e$^-$-H scattering.
+
+In their work on e$^+$-He scattering, treated similar to our four-body system
+of Ps-H, Van Reeth and Humberston \cite{VanReeth1999} do not include the mixed
+terms. The evaluation of the various matrix elements is more complicated for
+Ps-H scattering than with the e$^-$-H and e$^+$-H systems,
+particularly evaluating the mixed symmetry terms with the 
+other short-range terms and with themselves. 
+We do not explicitly include the mixed terms for Ps-H scattering due 
 partially to the complexity of these terms. As discussed in
 Sec.~\ref{sec:Results}, the D-wave contributes only a small amount to the
 integrated 
 elastic cross sections away from the D-wave resonance. We note, however, that 
 the inclusion of the mixed terms may improve the convergence of the $^{1,3}D$ 
 phase shifts.
-Investigation of e$^+$-H scattering \cite{VanReeth2015} has shown 
-that these mixed terms can be important for that 
-system. At very low energies, the mixed terms are negligible, contributing 
-less than 1\% to the phase shifts at $\kappa = 0.1$, and near
-the Ps formation threshold, contribute up to 10\%
-of the final value of the phase shifts.
-Likewise, investigation into e$^-$-H scattering
-\cite{VanReeth2015} indicates that the mixed terms are negligible at very low
-energies, contributing less than 0.1\% at $\kappa = 0.1$ but contribute to the
-$^1D$ phase shifts by up to 25\% at $\kappa = 0.8$. These contribute less than
-1\% to the $^3D$ phase shifts for e$^-$-H scattering. The evaluation of the 
-various matrix elements are more complicated for Ps-H scattering than these 
-other systems, particularly evaluating the mixed symmetry terms with the 
-other short-range terms and with themselves.
+
 
 % THE HAMILTONIAN
 The Hamiltonian for the Ps-H system is
@@ -599,45 +610,45 @@ This leads to the Born approximation (B1) given by
 We also consider a modified Born approximation that uses both long-range terms
 in Eqs. (\ref{eq:TrialWave}) and (\ref{eq:TrialWaveHigher}).
 
-\subsection{Cross Sections}
-We calculate the integrated and differential elastic cross sections using
-\cite{Bransden2003}, respectively,
-\begin{equation}
-\label{eq:TotalCross}
-\sigma_{el}^\pm = \frac{4}{\kappa^2} \sum_{\ell=0}^\infty (2\ell+1) \sin^2
-   \delta_\ell^\pm
-\end{equation}
-and
-\begin{align}
-\label{eq:DiffCross}
-\nonumber \frac{d\sigma_{el}^\pm}{d\Omega} = \frac{1}{\kappa^2} & \sum_{\ell=0}
-  ^\infty \sum_{\ell^\prime=0}^\infty (2\ell+1)(2\ell^\prime+1) \exp
-  \left\{\ii \left[\delta_\ell(\kappa) - \delta_{\ell^\prime}(\kappa) \right]
-  \right\} \\
-& \times \sin\delta_\ell^\pm(\kappa) \sin\delta_{\ell^\prime}^\pm(\kappa) P_\ell
-  (\cos\theta) P_{\ell^\prime}(\cos\theta)\,.
-\end{align}
-The momentum transfer cross section can be useful in plasma applications
-\cite{Wang2014, McEachran2014}. These cross sections have been measured for Ps
-with multiple atomic and molecular targets \cite{Nagashima1998,Saito2003}. The
-momentum transfer cross section is given by \cite{Bransden2003}
-\begin{equation}
-\label{eq:MomentumCross}
-\sigma_{m}^\pm = \frac{4}{\kappa^2} \sum_{\ell=0}^\infty (\ell+1) \sin^2
-  (\delta_\ell^\pm - \delta_{\ell+1}^\pm) .
-\end{equation}
-The singlet for each of the partial waves contributes $1/4$ to the integrated,
-differential, and momentum transfer cross sections, while the triplet
-contributes $3/4$. The ortho-para conversion cross section gives the conversion
-of the projectile ortho-Ps to para-Ps by \cite{Hara1975}
-\begin{equation}
-\label{eq:OrthoParaCross}
-\sigma_{c} = \frac{1}{4 \kappa^2} \sum_{\ell=0}^\infty (2 \ell+1) \sin^2
-  (\delta_\ell^+ - \delta_\ell^-).
-\end{equation}
-Equations (\ref{eq:TotalCross}), (\ref{eq:MomentumCross}), and
-(\ref{eq:OrthoParaCross}) are in units of $\pi a_0^2$, and
-Eq. (\ref{eq:DiffCross}) is in units of $a_0^2 / \rm{sr}$. 
+%\subsection{Cross Sections}
+%We calculate the integrated and differential elastic cross sections using
+%\cite{Bransden2003}, respectively,
+%\begin{equation}
+%\label{eq:TotalCross}
+%\sigma_{el}^\pm = \frac{4}{\kappa^2} \sum_{\ell=0}^\infty (2\ell+1) \sin^2
+%   \delta_\ell^\pm
+%\end{equation}
+%and
+%\begin{align}
+%\label{eq:DiffCross}
+%\nonumber \frac{d\sigma_{el}^\pm}{d\Omega} = \frac{1}{\kappa^2} & \sum_{\ell=0}
+%  ^\infty \sum_{\ell^\prime=0}^\infty (2\ell+1)(2\ell^\prime+1) \exp
+%  \left\{\ii \left[\delta_\ell(\kappa) - \delta_{\ell^\prime}(\kappa) \right]
+%  \right\} \\
+%& \times \sin\delta_\ell^\pm(\kappa) \sin\delta_{\ell^\prime}^\pm(\kappa) P_\ell
+%  (\cos\theta) P_{\ell^\prime}(\cos\theta)\,.
+%\end{align}
+%The momentum transfer cross section can be useful in plasma applications
+%\cite{Wang2014, McEachran2014}. These cross sections have been measured for Ps
+%with multiple atomic and molecular targets \cite{Nagashima1998,Saito2003}. The
+%momentum transfer cross section is given by \cite{Bransden2003}
+%\begin{equation}
+%\label{eq:MomentumCross}
+%\sigma_{m}^\pm = \frac{4}{\kappa^2} \sum_{\ell=0}^\infty (\ell+1) \sin^2
+%  (\delta_\ell^\pm - \delta_{\ell+1}^\pm) .
+%\end{equation}
+%The singlet for each of the partial waves contributes $1/4$ to the integrated,
+%differential, and momentum transfer cross sections, while the triplet
+%contributes $3/4$. The ortho-para conversion cross section gives the conversion
+%of the projectile ortho-Ps to para-Ps by \cite{Hara1975}
+%\begin{equation}
+%\label{eq:OrthoParaCross}
+%\sigma_{c} = \frac{1}{4 \kappa^2} \sum_{\ell=0}^\infty (2 \ell+1) \sin^2
+%  (\delta_\ell^+ - \delta_\ell^-).
+%\end{equation}
+%Equations (\ref{eq:TotalCross}), (\ref{eq:MomentumCross}), and
+%(\ref{eq:OrthoParaCross}) are in units of $\pi a_0^2$, and
+%Eq. (\ref{eq:DiffCross}) is in units of $a_0^2 / \rm{sr}$. 
 
 
 \subsection{Effective Range Theories}
@@ -686,47 +697,24 @@ We use the van der Waals coefficient, C, given by Martin and Fraser as
 
 Gao \cite{Gao1998} has developed a quantum defect theory (QDT) treatment,
 solving the Schr\"{o}dinger equation for an attractive $r^{-6}$ potential
-to find an expression relating the phase shifts to a quantity he refers to as
-$K_\ell^0(E_{\bm \kappa})$.
+to find an expression relating the phase shifts to a quantity Gao refers
+to as $K_\ell^0(E_{\bm \kappa})$.
 \begin{equation}
 \label{eq:GaoZEqn}
 \tan\delta_\ell = [Z_{ff} - K_\ell^0(E_{\bm \kappa}) Z_{gf}]^{-1}
   [K_\ell^0(E_{\bm \kappa}) Z_{gg} - Z_{fg}]
 \end{equation}
 The Z functions in this equation are given in Gao's paper \cite{Gao1998}. We 
-fit the phase shifts are to Eq.~(\ref{eq:GaoZEqn}) to determine $K_\ell^0(E)$ 
-for each $\kappa$ value. Since it varies slowly with energy, $K_\ell^0(E)$ is 
-expanded in a Taylor series as
+fit the phase shifts to Eq.~(\ref{eq:GaoZEqn}) to determine
+$K_\ell^0(E_{\bm \kappa})$ 
+for each $\kappa$ value. Since it varies slowly with energy,
+$K_\ell^0(E_{\bm \kappa})$ is expanded in a Taylor series as
 \begin{equation}
 \label{eq:GaoKTaylor}
 K_\ell^0(E_{\bm \kappa}) = K_\ell^0(0) + {K_\ell^0}^\prime(0) E_{\bm \kappa}
   + \ldots.
 \end{equation}
-We retain the first two terms in the expansion only. From this, $K_\ell^0(0)$
-and ${K_\ell^0}^\prime(0)$ are determined. In Ref. \cite{Gao1998a},
-Gao performed an expansion of this expression for low $\kappa$ to generate
-expressions for $a_\ell$ and $r_0$:
-
-\begin{equation}
-\label{eq:GaoScatLenS}
-a_{\ell=0} = \frac{2\pi}{[\Gamma(1/4)]^2} \frac{K_{\ell=0}^0(0) - 1}
-  {K_{\ell=0}^0(0)} \beta_6
-\end{equation}
-
-\begin{equation}
-\label{eq:GaoScatLenP}
-a_{\ell=1} = -\frac{\pi}{18[\Gamma(1/4)]^2} \frac{K_{\ell=1}^0(0) + 1}
-  {K_{\ell=1}^0(0)} \beta_6^3
-\end{equation}
-
-\begin{align}
-\label{eq:GaoEffRange}
-r_{\ell=0} = &\frac{[\Gamma(1/4)]^2}{3\pi} \frac{[K_{\ell=0}^0(0)]^2 + 1}
-  {[K_{\ell=0}^0(0) - 1]^2} \beta_6 \nonumber \\
-&+ \frac{[\Gamma(1/4)]^2}{\pi} \frac{{K_{\ell=0}^0}^\prime(0)^2(\hbar^2/2\mu)
-  (1/\beta_6)^2}{[K_{\ell=0}^0(0) - 1]^2} \beta_6.
-\end{align}
-The term $\beta_6$ is related to $C$ by $\beta_6 = (2\mu C/\hbar^2)^{1/4}$.
+We retain the first two terms in the expansion only.
 
 Lastly, we use an expression from Ref. \cite{Blackwood2002} to get an estimate
 of the $^1S$ effective range, given by
@@ -1071,7 +1059,7 @@ CC, as shown in Fig. \ref{fig:spd-wave-phases}(c). The overall shapes in these
 graphs are similar, but the percentage difference between the $^1D$ phase
 shifts is about 39\% at low $\kappa$ and decreases to less than 1\% for
 higher $\kappa$. The larger discrepancy comes with the $^3D$ phase shifts,
-which have a percentage difference of over 30\%, often often much larger,
+which have a percentage difference of over 30\%, often much larger,
 through the entire range.
 We note that the percentage difference with the CC results for $^3P$ is
 also large at lower $\kappa$ values, even though there are no mixed terms
@@ -1272,17 +1260,24 @@ Ref. \cite{Walters2004}.}
 	\label{fig:combined-cross-sections}
 \end{figure}
 
-The integrated cross section for the singlet and triplet come from the phase 
-shifts using Eq. (\ref{eq:TotalCross}). There is good comparison with the 
+The singlet for each of the partial waves contributes $1/4$ to the integrated,
+differential, and momentum transfer cross sections, while the triplet
+contributes $3/4$. The integrated and momentum transfer cross sections are
+in units of $\pi a_0^2$ in this work, and the differential cross
+sections is in units of $a_0^2 / \rm{sr}$.
+The integrated cross sections are calculated
+from the phase shifts using the expression in Ref.~\cite{Bransden2003}.
+There is good comparison with the 
 CC cross section \cite{Walters2004} for much of the range, but there is a 
 clear shift in the positions of the resonances, which can also be seen in 
 Tables \ref{tab:SWaveResonances}, \ref{tab:PWaveResonances}, and
 \ref{tab:DWaveResonances}.
 
-The differential cross sections shown in Figs.
+The differential cross section, calculated using the expression in
+Ref.~\cite{Bransden2003}, are shown in Figs.
 \ref{fig:diff-cross-section-2D-theta}, \ref{fig:diff-cross-section-2D-kappa},
-and \ref{fig:combined-diff-cross-sections} require more partial waves, and
-the contributions to these do 
+and \ref{fig:combined-diff-cross-sections}. This requires more partial waves,
+and the contributions to this does
 not become negligible until the $H$-wave. The percent difference when adding 
 the $H$-wave is approximately $4.1\%$ at its largest near the resonances and an 
 average of $0.27\%$ throughout the full $E$ and $\theta$ range. As expected, 
@@ -1329,6 +1324,10 @@ Ref.~\cite{Blackwood2002}. Static exchange data is from Ref.~\cite{Hara1975}.}
 	\label{fig:cross-section-comparisons}
 \end{figure}
 
+The momentum transfer cross section can be useful in plasma applications
+\cite{Wang2014, McEachran2014}. These cross sections have been measured for Ps
+with multiple atomic and molecular targets \cite{Nagashima1998,Saito2003}. The
+momentum transfer cross section expression is given in Ref.~\cite{Bransden2003}.
 From Eq. (\ref{eq:ScatLenCross}), $\sigma_m = \sigma_{el}$ for zero energy, 
 and we see this in Fig. \ref{fig:cross-section-comparisons}. For very low 
 energies ($E_{\bm \kappa} < 10^{-6}$ eV),
@@ -1339,12 +1338,14 @@ noted in Ref. \cite{Blackwood2002c}, this is due to the differential elastic
 cross section only being isotropic at very low energy
 (see Fig. \ref{fig:diff-cross-section-2D-kappa}).
 
-The ortho-para conversion cross section, $\sigma_c$, is much lower than the 
-elastic integrated and momentum transfer cross sections. As with the 
-elastic integrated cross section, the CC $\sigma_c$ curve \cite{Blackwood2002}
-is approximately the same as ours, but the resonances are clearly shifted. 
-The static exchange $\sigma_m$ curve \cite{Hara1975} does not agree well with 
-the complex Kohn results, but the static exchange is an earlier calculation 
+The ortho-para conversion cross section, $\sigma_c$, gives the conversion
+of the projectile ortho-Ps to para-Ps \cite{Hara1975}.
+This cross section, $\sigma_c$, is much lower than the elastic integrated and
+momentum transfer cross sections. As with the elastic integrated cross
+section, the CC $\sigma_c$ curve \cite{Blackwood2002} is approximately the
+same as the complex Kohn, but the resonances are clearly shifted. The static
+exchange $\sigma_m$ curve \cite{Hara1975} does not agree well with the
+complex Kohn results, but the static exchange is an earlier calculation 
 that did not give resonances.
 
 \subsection{Resonances}
@@ -1539,10 +1540,9 @@ Waals terms does not change the scattering length and only changes the
 effective range slightly.
 
 We also investigate this low $\kappa$ range using the quantum-defect theory 
-of Gao \cite{Gao1998} in Eqs. (\ref{eq:GaoScatLenS}) and
-(\ref{eq:GaoEffRange}), which give scattering lengths and effective ranges
+of Gao \cite{Gao1998}, which gives scattering lengths and effective ranges
 that agree relatively well with the long-range van der Waals expression in
-Eq.~\ref{eq:EffectiveRangeLongAu}. The scattering 
+Eq.~(\ref{eq:EffectiveRangeLongAu}). The scattering 
 lengths obtained with the QDT expansion agree with results using the other 
 ERTs and approximation to the scattering length definition. However, the 
 effective ranges obtained with the QDT expansion do not agree with the 
@@ -1570,7 +1570,7 @@ ERT Short - Eq. (\ref{eq:EffectiveRangeShort}) & $0.001 - 0.009$ & $4.331 \pm 0.
 ERT Short - Eq. (\ref{eq:EffectiveRangeShort}) & $0.1 - 0.5$ & $4.308 \pm 0.003$ & 2.275 & $2.162 \pm 0.003$ & 1.343 \\
 ERT VDW - Eq. (\ref{eq:EffectiveRangeLongAu}) & $0.001 - 0.009$ & $4.331 \pm 0.012$ & 2.221 & $2.137 \pm 0.008$ & 2.137 \\
 QDT - Eqs. (\ref{eq:GaoZEqn}), (\ref{eq:GaoKTaylor}) & $0.002, 0.003$ & $4.331 \pm 0.012$ & 2.210 & $2.137 \pm 0.008$ & 2.151 \\
-QDT expansion - Eqs. (\ref{eq:GaoScatLenS}), (\ref{eq:GaoEffRange}) & $0.001$ & $4.331 \pm 0.012$ & 2.535 & $2.137 \pm 0.008$ & 3.085 \\
+QDT expansion \cite{Gao1998a} & $0.001$ & $4.331 \pm 0.012$ & 2.535 & $2.137 \pm 0.008$ & 3.085 \\
 Eq. (\ref{eq:BlackwoodERT}) & --- & --- & 2.106 & --- & --- \\
 \colrule
 Kohn 721 terms \cite{VanReeth2003} & $0 - 0.5$ & 4.334 & \,\,--- & 2.143 & \,\,--- \\
@@ -1588,7 +1588,7 @@ SVM \cite{Ivanov2002} & --- & 4.34 & 2.39 & 2.22 & 1.29 \\
 The $P$-wave does not have effective ranges but does have scattering lengths 
 \cite{Levy1963}. Table \ref{tab:PWaveScatLen} gives the scattering lengths 
 using the QDT expressions and the approximation to the definition in
-Eq.~\ref{eq:ScatLenApprox} evaluated at $\kappa = 0.01$. The $^1P$ scattering 
+Eq.~(\ref{eq:ScatLenApprox}) evaluated at $\kappa = 0.01$. The $^1P$ scattering 
 lengths from the different methods agree relatively well, but there is less 
 agreement for the $^3P$ scattering lengths. The SVM \cite{Ivanov2002} $^1P$ 
 scattering length is comparable to the complex Kohn values, but the $^3P$ 
@@ -1604,7 +1604,7 @@ Model & $\kappa$ & $a_1^+$ & $a_1^-$ \\
 \colrule
 Approximation to def. - Eq. (\ref{eq:ScatLenApprox}) & 0.01 & $-22.130 \pm 0.173$ & $1.4530 \pm 0.1104$ \\
 QDT - Eq. (\ref{eq:GaoZEqn}) & 0.01, 0.02 & $-22.200 \pm 0.173$ & $1.4158 \pm 0.1107$ \\
-QDT expansion - Eq. (\ref{eq:GaoScatLenP}) & 0.01 & $-22.198 \pm 0.172$ & $1.4102 \pm 0.1104$ \\
+QDT expansion \cite{Gao1998a} & 0.01 & $-22.198 \pm 0.172$ & $1.4102 \pm 0.1104$ \\
 \colrule
 SVM \cite{Ivanov2002} & --- & $-20.7$ & $6.80$ 
 \end{tabular}
