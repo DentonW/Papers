@@ -215,6 +215,31 @@ _2F_1(1,a;c;z) = 1 + \left( \frac{a}{c} \right) z \,\,_2F_1(1,a+1;c+1;z).
 
 
 
+\section{Mixed Terms}
+\label{sec:MixedDerivation}
+
+This derivation proves \cref{eq:MixedAngSimple}. Using \cref{sec:MixedTerms} and substituting the appropriate spherical harmonics and Clebsch-Gordan coefficients,
+\begin{align}
+\psi_{(1,1,2,0)} = &\sum_{m=-1}^{+1} Y_{1,m}(\theta_1,\varphi_1) Y_{1,m}(\theta_2,\varphi_2) \left< 1,m; 1,-m,0 | 2,0 \right> \nonumber \\
+	= &-\sqrt{\frac{3}{8\uppi}} \sin\theta_1 \ee^{-\ii \varphi_1} \sqrt{\frac{3}{8\uppi}} \sin\theta_2 \ee^{\ii \varphi_1} \frac{1}{\sqrt{6}} \nonumber \\
+	& + \sqrt{\frac{3}{4\uppi}} \cos\theta_1 \sqrt{\frac{3}{4\uppi}} \sin\theta_2 \frac{2}{\sqrt{6}} \nonumber \\
+	& -\sqrt{\frac{3}{8\uppi}} \sin\theta_1 \ee^{\ii \varphi_1} \sqrt{\frac{3}{8\uppi}} \sin\theta_2 \ee^{-\ii \varphi_1} \frac{1}{\sqrt{6}}.
+\end{align}
+From \cref{},
+\beq
+\cos\theta_{12} = \sin\theta_1 \sin\theta_2 \cos(\varphi_1 - \varphi_2) + \cos\theta_1 \cos\theta_2.
+\eeq
+Using this with the standard
+\beq
+\cos\theta = \frac{\ee^{\ii \theta} + \ee^{-\ii \theta}}{2},
+\eeq
+we obtain \cref{eq:MixedAngSimple}:
+\begin{align}
+\psi_{(1,1,2,0)} &= -\frac{3}{8\uppi} \frac{1}{\sqrt{6}} \sin\theta_1 \sin\theta_2 \cdot 2 \cos(\varphi_1 - \varphi_2) + \frac{3}{4\uppi} \frac{1}{\sqrt{6}} \cdot 2 \cos\theta_1 \cos\theta_2 \nonumber \\
+&= \frac{3}{4\uppi} \frac{1}{\sqrt{6}} \left(3 \cos\theta_1 \cos\theta_2 - \cos\theta_{12} \right).
+\end{align}
+
+
 
 
 \biblio

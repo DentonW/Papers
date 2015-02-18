@@ -407,20 +407,21 @@ For partial waves with $\ell>1$, the orbital angular momentum could also be
 shared between both particles in the Ps atom, giving a total of
 $\ell + 1$ sets of short-range terms \cite{Schwartz1961a}. For the
 D-wave, this gives another set of short-range terms in
-Eq.~(\ref{eq:TrialWaveHigher}) \cite{Humberston1997,VanReethThesis}.
+Eq.~(\ref{eq:TrialWaveHigher})
+\cite{Humberston1997,VanReethThesis,BrownThesis}.
 The mixed symmetry terms were included for the three-body system of e$^+$-H
 in earlier work of
 Refs.~\cite{Brown1985a,BrownThesis,WattsThesis,Humberston1997,VanReeth1997}.
 Van Reeth and Humberston \cite{VanReeth1997} found that these
 mixed symmetry terms contributed less than 1.5\% to the $K$ matrix elements
 for e$^+$-H scattering, but this result now appears to be in error.
-New preliminary investigation \cite{VanReeth2015} has shown 
+New investigation \cite{VanReeth2015} has shown 
 that these mixed symmetry terms can be important for that 
 system. At very low energies, the mixed symmetry terms are negligible,
 contributing less than 1\% to the phase shifts at $\kappa = 0.1$, and near
 the Ps formation threshold, contribute up to 10\%
 of the final value of the phase shifts.
-Likewise, preliminary investigation into e$^-$-H scattering
+Likewise, investigation into e$^-$-H scattering
 \cite{VanReeth2015} indicates that the mixed symmetry terms are negligible
 at very low
 energies, contributing less than 0.1\% at $\kappa = 0.1$ but contribute to the
@@ -575,18 +576,23 @@ scattering problem. The wavefunction we use for the bound state is
 where $\bar{\phi}_{1i}^\pm$ is the same as in Eq. (\ref{eq:PhiDef}) with
 $\ell = 0$. We use the Rayleigh-Ritz method and optimize the 
 nonlinear parameters using the Newton \cite{Yan1999}, Broyden
-\cite{Sauer2006} and simplex methods \cite{GSL}. For the $^3S$ case
+\cite{Sauer2006} and simplex \cite{GSL} methods. For the $^3S$ case
 and $\ell \neq 0$, even though there is not a bound state, we use the same
 method to optimize the nonlinear parameters to get the lowest energy.
 For $\ell > 0$, as in the scattering problem, the wavefunction includes
 both sets of short-range terms for this 
 optimization. While not necessarily the optimum choice, these optimized 
-nonlinear parameters are used in the scattering problem. There is an 
+nonlinear parameters are used in the scattering problem.
+There is an 
 additional nonlinear parameter $\mu$ in the scattering problem that would be 
 impractical to simultaneously optimize with these nonlinear parameters due to 
 computational costs. Once these nonlinear parameters are chosen, $\mu$ is 
-chosen so that the phase shifts are the most positive. We give the choices
-of all parameters in Table \ref{tab:Nonlinear}.
+chosen so that the phase shifts are the most positive through the D-wave.
+
+Due to computational costs, these optimizations are only performed through
+the D-wave. A reasonable set of nonlinear parameters is chosen for the F-wave
+and higher, including choosing $\mu$ the same as for the D-wave.
+We give the choices of all parameters in Table \ref{tab:Nonlinear}.
 
 \subsection{Born Approximation}
 The Born approximation to the $K$ matrix \cite{Bransden2003} is given by
@@ -795,7 +801,7 @@ introduce an extra $e^{-\lambda r_i}$ and remove it with $e^{\lambda r_i}$
 after the quadrature, bringing the abscissae closer to the origin without 
 increasing the number of integration points.
 
-\subsection{Todd's procedure}
+\subsection{Todd's Procedure}
 \label{sec:Todd}
 We use a method from Todd \cite{Todd2007} to remove short-range terms that 
 contribute to linear dependence. This is a variation of the procedure from
@@ -840,6 +846,7 @@ dependence becomes apparent visually. We use this criteria to determine where
 to truncate the basis set, stopping at 1505 terms for $^1S$. We did not see a 
 similar effect for $^3S$ or other partial waves.
 
+
 \subsection{Fittings}
 As with the previous Kohn calculation \cite{VanReeth2004},
 we fit our computed phase shifts near the resonances for
@@ -866,7 +873,7 @@ eight fits and compared.
 The Kohn variational method and variants of the method do not give exact
 bounds to the phase shifts, but it found to give empirical bounds except
 near Schwartz singularities. We extrapolate the complex Kohn phase shifts
-in Tables\ref{tab:SWaveSingletPhase}, \ref{tab:SWaveTripletPhase}, and
+in Tables \ref{tab:SWaveSingletPhase}, \ref{tab:SWaveTripletPhase}, and
 \ref{tab:SWaveSingletPhase} according to the empirical formula
 \cite{Armour1991,VanReeth2003}
 \begin{equation}
