@@ -5,6 +5,7 @@
 \label{chp:WLimits}
 \todoi{Write this all in terms of $j_i$, $k_i$, $l_i$, etc. instead of $k_1$, $k_2$, $k_{12}$, etc.}
 \todoi{Get rid of all old equation environments.}
+\todoi{$\omega$, not $\Omega$}
 
 \lettrine{\textcolor{startcolor}{P}}{recalculating} the results of the W function yields significant improvements to the speed of this program.  The number of terms in the trial function increases greatly with increasing $\omega$.  The number of elements of the matrices Phi2HPhi and PhiPhi is $N(\omega)^2$.  Only half of each of these matrices is calculated, since the upper triangular portion mirrors the bottom triangle.  The W function is called repeatedly for each element, but the parameters are not unique between elements of the matrices.
 
@@ -72,18 +73,19 @@ The \emph{n} parameter is
 
 \begin{table}[H]
 \centering
-\begin{tabular}{| c | c | c |}
-  \hline
-  Parameter & Minimum & Maximum \\
-  \hline
-  l & 1 & $2\Omega + 2q + 4$ \\
-  m & 0 & $2\Omega + 3$ \\
-  n	& $-1 - 2q$ & $2\Omega + 2$ \\
-  \hline
+\begin{tabular}{c c c}
+\toprule
+Parameter & Minimum & Maximum \\
+\midrule
+  l & 1 & $2\omega + 2q + 4$ \\
+  m & 0 & $2\omega + 3$ \\
+  n	& $-1 - 2q$ & $2\omega + 2$ \\
+\bottomrule
 \end{tabular}
 \caption{W Function Limits Summary}
 \label{tab:WLimits}
 \end{table}
+
 
 
 

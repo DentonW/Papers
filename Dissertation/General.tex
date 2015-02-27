@@ -52,7 +52,7 @@ The short-range functions are also easily generalizable. For the P-wave and D-wa
 \section{General Short-Range}
 \label{sec:GeneralShort}
 
-\todoi{Look at Harris paper \cite{Harris2009}}
+\todoi{Look at Harris paper \cite{Harris2009}. \cite{Harris2005a}}
 
 The short-range--short-range integrals are complicated more due to the gradient-gradient formalism we have used (see equation \ref{eq:BoundGradient}). As an example of the nature of these, refer to section \ref{sec:DWaveShortShort}. The derivations were previously performed by rotating the coordinate system and integrating over external angles first, as described in Appendix \ref{chp:AngularInt}. This approach works, but it cannot be extended to higher partial waves without completing a full derivation for each partial wave. This also introduces terms that may be too singular for higher partial waves. Drake and Yan \cite{Yan1997} expand upon their previous work for the three-electron Hylleraas integrals to include the spherical harmonics. It is this approach that we take here. All equations used from their paper have been rederived in my notes.
 
@@ -104,6 +104,8 @@ where $\tilde{j}_1 = j_1^\prime + j_1$, etc. The $I_R$ function is only dependen
 & \times \ThreeJSymbol{l_1^\prime,-m_1^\prime}{l_1,m_1}{n_1,t_1} \ThreeJSymbol{l_2^\prime,-m_2^\prime}{l_2,m_2}{n_2,t_2} \ThreeJSymbol{l_1^\prime,-m_1^\prime}{l_3,m_3}{n_3,t_3}.
 \end{align}
 From the selection rules for the 3j symbol, $t_i = m_i^\prime - m_i$. The factor $(2\ell+1)$ appears often in these types of derivations, so we adopt the shorthand notation of $(l,m,n,\ldots) = (2l+1)(2m+1)(2n+1) \ldots$.
+
+\todoi{Mention \cite{Luscombe1998,Wei1998,Rasch2003} for possible speedups in this code.}
 
 \subsection{Spherical Harmonic Terms}
 \label{sec:GenSphHarm}

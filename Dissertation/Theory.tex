@@ -687,6 +687,18 @@ This is a generalized form of the $S$ matrix Kohn. When $\tau = 0$, this reduces
 
 I think one of the Humberston group theses has some links/discussion on Schwartz singularities. Definitely mention Cooper, Lucchese, and McCurdy.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{schwartz-singularity}
+	\caption{Example of Schwartz singularities for $^1$S at $\omega = 7$. The generalized Kohn method with $\tau = 1.4$ is shown in (a). The $S$ matrix complex Kohn is shown in (b).}
+	\label{fig:schwartz-singularity}
+\end{figure}
+
+\Cref{fig:schwartz-singularity}(a) shows an example of Schwartz singularities for the generalized Kohn method with $\tau = 1.4$. A clear Schwartz singularity exists at $\kappa = 0.851$ or $E = \SI{4.927}{eV}$, which can be seen as a point on the graph that is far away from the red fitting curve. There is also a Schwartz singularity at $\kappa = 0.85$ or $E = \SI{4.915}{eV}$, seen as a slight deviation from the fitting curve.
+
+In (a), the second resonances parameters are not as accurate. The fitting routine described in \cref{sec:ResonanceFit} chooses fitting parameters here of $^2E_R = \SI{5.0295}{eV}$ and $^2\Gamma = \SI{0.06011}{eV}$.
+In (b), where there are no Schwartz singularities, $^2E_R = \SI{5.0278}{eV}$ and $^2\Gamma = \SI{0.06075}{eV}$. This highlights the importance of using multiple Kohn methods and trying to detect Schwartz singularities.
+
 
 \section{Matrix Elements}
 In this section, we examine the matrix elements of \cref{eq:GeneralKohnMatrix}. The three types of matrix elements are short-range--short-range (short-short), short-range--long-range (short-long) and long-range--long-range (long-long). The short-long and long-long matrix elements have a similar analysis. For these, the effect of the $\mathcal{L} = 2(H-E)$ operator on the long-range terms must be considered, and then integrations over the external angles (see \cref{chp:AngularInt}) are performed. The remaining 6-dimensional integral is then numerically integrated as described in sections \ref{sec:LongLongInt} and \ref{sec:ShortLongInt}.
@@ -1122,7 +1134,7 @@ To find the resonance parameters, we use the phase shifts instead of the cross s
 \eeq
 The polynomial part of the above equation corresponds to hard sphere scattering. The arctangent parts correspond to the first and second Fano resonances \cite{Fano1961,Macek1970,Hazi1979}, with $^1E_R$ and $^2E_R$ as the positions of the resonances and $^1\Gamma$ and $^2\Gamma$ as the widths of the respective resonances. This fitting is preferred over over \cref{fig:FanoCross}, since it is simple to add more resonance terms, and there is no additional $q$ parameter to determine. The $^1$S and $^1$P partial waves use this fitting, and the $^1$D and $^1$F partial waves omit the second term, since we consider only a single resonance. See \cref{sec:SWaveResonances,sec:PWaveResonances,sec:DWaveResonance,sec:FWaveResonance} for further discussion of the resonances for each partial wave.
 
-According to Ray \cite{Ray2006,Ray2007}, resonances are metastable states with lifetimes of
+From Refs.~\cite{Ray2006,Ray2007} and Ref.~\cite[p.599]{Bransden2003}, resonances are metastable states with lifetimes of
 \beq
 \tau \approx \hbar / \Gamma.
 \eeq

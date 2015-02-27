@@ -27,7 +27,8 @@ The form that we will need is
 \label{eq:PVRAngNew}
 \end{equation}
 
-Both of these equations are variations on Gaussian quadratures. The Chebyshev-Gauss quadrature is given by \cite{Abramowitz1965} \cite{MathworldChebyshevGauss}
+Both of these equations are variations on Gaussian quadratures. The Chebyshev-Gauss quadrature is given by \cite{Abramowitz1965,MathworldChebyshevGauss}
+\todoi{Mathworld has a specific citation at end of page}
 \begin{equation}
 \Int{ \frac{f\left( x \right)}{\sqrt{1 - x^2}} }{x,-1,1} \approx \sum_{i = 1}^n {w_i}f\left( {{x_i}} \right),
 \label{eq:ChebyshevGauss}
@@ -95,6 +96,19 @@ As Peter Van Reeth points out in his thesis on page 78, $\varphi_{23}$ is the an
 \todoi{Describe why these are needed}
 These are derived in a \emph{Mathematica} notebook entitled ``General Angular Integrations.nb''.
 \todoi{Describe how this notebook works, including ExtremeSimplify}
+
+
+\subsection{Volume Elements}
+\label{sec:AngVolume}
+
+
+\todoi{Show these}
+
+\beq
+\label{eq:dtau1}
+d\tau = 8\pi^2 dr_1 r_2 dr_2 r_3 dr_3 r_{12} dr_{12} r_{13} dr_{13} d\phi_{23}.
+\eeq
+
 
 \subsection{Terms with Identical Spherical Harmonics}
 \label{sec:AngSame}
