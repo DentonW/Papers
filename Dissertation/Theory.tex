@@ -561,6 +561,7 @@ K_\ell = \tan \delta_\ell = (u_{01} + u_{11} L_\ell)(u_{00} + u_{10} L_\ell)^{-1
 The $\textbf{u}$ and $\mathcal{L}_l$ for the various Kohn methods are described now. Note that for each of these, $\Det{\textbf{u}} = 1$.
 When we create the matrix in \cref{eq:GeneralKohnMatrix}, we only calculate the matrix elements for the Kohn, along with $(\bar{S},\mathcal{L}\bar{S})$ and $(\bar{S},\mathcal{L}\bar{C})$. Then from the definitions in \cref{eq:TildeSCDef}, this matrix can be changed to any of the other Kohn methods without recomputing any of the integrals. This is described further in \cref{sec:PhaseProgram}.
 
+\todoi{Subequations for each of these?}
 \subsubsection*{Kohn}
 \label{sec:Kohn}
 \beq
@@ -685,7 +686,7 @@ This is a generalized form of the $S$ matrix Kohn. When $\tau = 0$, this reduces
 \section{Schwartz Singularities}
 \label{eq:SchwartzSing}
 
-I think one of the Humberston group theses has some links/discussion on Schwartz singularities. Definitely mention Cooper, Lucchese, and McCurdy.
+A disadvantage of the Kohn variational methods is the presence of spurious singularities in the phase shifts. Looking at \cref{eq:GeneralKohnMatrix}, if $\textbf{\emph{A}}$ becomes near-singular (i.e. $\Det{\textbf{\emph{A}}} \approx 0$), solving this matrix equation will yield incorrect phase shifts. These ``Schwartz singularities'' were described first by Schwartz \cite{Schwartz1961}. These singularities do not make the Kohn variational methods unusable however. These singularities are often easily noticeable, because they do not follow the pattern of other phase shifts.
 
 \begin{figure}[H]
 	\centering
@@ -694,10 +695,58 @@ I think one of the Humberston group theses has some links/discussion on Schwartz
 	\label{fig:schwartz-singularity}
 \end{figure}
 
-\Cref{fig:schwartz-singularity}(a) shows an example of Schwartz singularities for the generalized Kohn method with $\tau = 1.4$. A clear Schwartz singularity exists at $\kappa = 0.851$ or $E = \SI{4.927}{eV}$, which can be seen as a point on the graph that is far away from the red fitting curve. There is also a Schwartz singularity at $\kappa = 0.85$ or $E = \SI{4.915}{eV}$, seen as a slight deviation from the fitting curve.
+As an example, refer to \cref{fig:schwartz-singularity}(a). This shows an example of Schwartz singularities for the generalized Kohn method with $\tau = 1.4$. A clear Schwartz singularity exists at $\kappa = 0.851$ or $E = \SI{4.927}{eV}$, which can be seen as a point on the graph that is far away from the red fitting curve. There is also a Schwartz singularity at $\kappa = 0.85$ or $E = \SI{4.915}{eV}$, seen as a slight deviation from the fitting curve.
 
-In (a), the second resonances parameters are not as accurate. The fitting routine described in \cref{sec:ResonanceFit} chooses fitting parameters here of $^2E_R = \SI{5.0295}{eV}$ and $^2\Gamma = \SI{0.06011}{eV}$.
-In (b), where there are no Schwartz singularities, $^2E_R = \SI{5.0278}{eV}$ and $^2\Gamma = \SI{0.06075}{eV}$. This highlights the importance of using multiple Kohn methods and trying to detect Schwartz singularities.
+The same calculation as in \cref{fig:schwartz-singularity}(a) is performed using the $S$ matrix complex Kohn in \cref{fig:schwartz-singularity}(b), but no Schwartz singularities are evident. Normally, if one Kohn variational method described in the previous section (\cref{sec:KohnApplied}) has a Schwartz singularity, other Kohn methods will not. This gives us a strategy of simply rejecting Kohn methods that have obvious Schwartz singularities.
+
+Interestingly, adding terms will change which Kohn method has a Schwartz singularity. \Cref{fig:PhaseTau-Omega} shows how increasing $\omega$ (adding terms) will change the $\tau$ in the generalized Kohn where a Schwartz singularity occurs. \Cref{fig:Det-Omega=6,Kappa=01} also shows how for the same set of short-range terms, varying $\kappa$ will change the $\tau$ value where a these singularities occur.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{PhaseTau-Omega}
+	\caption{Phase shifts versus $\tau$ for $\kappa = 0.1$ and varying $\omega$ values}
+	\label{fig:PhaseTau-Omega}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{PhaseTau-Kappa}
+	\caption{Phase shifts versus $\tau$ for $\omega = 7$ and varying $\kappa$ values}
+	\label{fig:PhaseTau-Kappa}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=4in]{Det-Omega=6,Kappa=01}
+	\caption{Determinant of $\textbf{\emph{A}}$ versus $\tau$ for $\omega = 6$ with 875 terms of Todd reordering}
+	\label{fig:Det-Omega=6}
+\end{figure}
+
+Cooper et al. \cite{Cooper2009} showed that if $\Det{\textbf{\emph{A}}}$ is 
+plotted with respect to $\tau$, there are actually two $\tau$ values where
+$\Det{\textbf{\emph{A}}} \approx 0$, but only one of them corresponds to a 
+Schwartz singularity. They refer to the second root as an anomaly-free 
+singularity. \Cref{fig:Det-Omega=6} shows an equivalent plot for our 
+data. The roots of $\Det{\textbf{\emph{A}}}$ are at approximately
+$\tau = 0.125$ and $\tau = 1.144$. The first root corresponds well with the
+singularity in the $\omega = 6$ graph in \cref{fig:PhaseTau-Omega}. The second
+root is referred to as an ``anomaly-free singularity'' in
+Cooper et al.\ \cite{Cooper2009} and does not correspond to a Schwartz
+singularity. The roots are easily found by fitting the data to equation (20)
+and solving equation (21) in Cooper et al.\ \cite{Cooper2009}.
+
+Additionally, the complex Kohn methods in \cref{eq:uCompTKohn,eq:uCompSKohn,eq:uGenTKohn,eq:uGenSKohn} are far less likely to suffer from these singularities. A complex-valued Kohn variational method was first proposed by Miller et al. \cite{Miller1987} and used the same year by McCurdy et al. \cite{McCurdy1987}. Subsequent work by Lucchese \cite{Lucchese1989} showed that the complex Kohn methods can indeed have Schwartz singularities, but they are not likely to show up in practice. Cooper et al. \cite{Cooper2010} also showed that the phase shifts obtained using the complex Kohn variational method can be obtained exactly from the real-valued generalized Kohn method in \cite{eq:uGenKohn}, but we do not use this method.
+
+There is also much less variability in the results of the different complex Kohn variational methods, and even for different values of $\tau$ in \cref{eq:uGenTKohn,eq:uGenSKohn}, the phase shifts generally agree to great precision (greater than the accuracy that we quote for our phase shifts). Due to the stability of the complex Kohn variational methods, the results quoted throughout this paper are for the $S$ matrix complex Kohn unless noted otherwise.
+
+
+
+
+
+
+
+
+\todoi{I think one of the Humberston group theses has some links/discussion on Schwartz singularities. Definitely mention Cooper, Lucchese, and McCurdy.}
 
 
 \section{Matrix Elements}
@@ -1100,7 +1149,7 @@ papers refer to these resonances as Breit-Wigner resonances
 \cite[p.596]{Bransden2003}, Breit-Wigner resonances are a special case of Fano
 resonances with $q = \pm\infty$. This corresponds to a resonance with a flat cross section 
 background, which we do not have, as seen later in \cref{fig:singlet-cross-sections}.
-Fano's equation for the cross section is
+Fano's equation for the cross section is \cite[p.596]{Bransden2003}
 \beq
 \label{eq:FanoRes}
 \sigma_\ell = \frac{4\pi}{\kappa^2} (2\ell+1) \sin^2 \xi_\ell \frac{(q+
@@ -1118,7 +1167,9 @@ The effect of this $q$ parameter is seen in \cref{fig:FanoCross}. This allows
 the cross section to have an asymmetric shape near a resonance. Notice that 
 the special case of a Breit-Wigner resonance is given as $q = \pm\infty$. The 
 dotted line is the curve $4 \pi (2\ell+1) / \kappa^2$, which gives an 
-envelope to this function.
+envelope to this function. An interactive demonstration of Fano resonances
+(but restricted to $q \geq 0$ is available from the Wolfram Demonstrations
+Project \cite{FanoDemo}.
 
 \begin{figure}[H]
 	\centering
@@ -1132,7 +1183,7 @@ To find the resonance parameters, we use the phase shifts instead of the cross s
 \label{eq:ResonanceCurve}
 \delta(E) = A + BE + CE^2 + \arctan\left[ \frac{^1\Gamma}{2\left(^1E_R-E\right)} \right] + \arctan\left[ \frac{^2\Gamma}{2\left(^2E_R-E\right)} \right].
 \eeq
-The polynomial part of the above equation corresponds to hard sphere scattering. The arctangent parts correspond to the first and second Fano resonances \cite{Fano1961,Macek1970,Hazi1979}, with $^1E_R$ and $^2E_R$ as the positions of the resonances and $^1\Gamma$ and $^2\Gamma$ as the widths of the respective resonances. This fitting is preferred over over \cref{fig:FanoCross}, since it is simple to add more resonance terms, and there is no additional $q$ parameter to determine. The $^1$S and $^1$P partial waves use this fitting, and the $^1$D and $^1$F partial waves omit the second term, since we consider only a single resonance. See \cref{sec:SWaveResonances,sec:PWaveResonances,sec:DWaveResonance,sec:FWaveResonance} for further discussion of the resonances for each partial wave.
+The polynomial part of the above equation corresponds to hard sphere scattering. The arctangent parts correspond to the first and second Fano resonances \cite{Fano1961,Macek1970,Hazi1979}, with $^1E_R$ and $^2E_R$ as the positions of the resonances and $^1\Gamma$ and $^2\Gamma$ as the widths of the respective resonances. This fitting is preferred over \cref{eq:FanoRes}, since it is simple to add more resonance terms, and there is no additional $q$ parameter to determine. The $^1$S and $^1$P partial waves use this fitting, and the $^1$D and $^1$F partial waves omit the second term, since we consider only a single resonance. See \cref{sec:SWaveResonances,sec:PWaveResonances,sec:DWaveResonance,sec:FWaveResonance} for further discussion of the resonances for each partial wave.
 
 From Refs.~\cite{Ray2006,Ray2007} and Ref.~\cite[p.599]{Bransden2003}, resonances are metastable states with lifetimes of
 \beq

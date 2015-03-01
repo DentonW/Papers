@@ -1033,28 +1033,7 @@ The Kohn methods do not require a recalculation of the entire problem for each K
 	\label{fig:PhaseTau}
 \end{figure}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{PhaseTau-Omega}
-	\caption{Phase shifts versus $\tau$ for $\kappa = 0.1$ and varying $\omega$ values}
-	\label{fig:PhaseTau-Omega}
-\end{figure}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{PhaseTau-Kappa}
-	\caption{Phase shifts versus $\tau$ for $\omega = 7$ and varying $\kappa$ values}
-	\label{fig:PhaseTau-Kappa}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=4in]{Det-Omega=6,Kappa=01}
-	\caption{Determinant of $A$ versus $\tau$ for $\omega = 6$ with 875 terms of Todd reordering}
-	\label{fig:Det-Omega=6,Kappa=01}
-\end{figure}
-
-The roots of $det(A)$ are at approximately $\tau = 0.125$ and $\tau = 1.144$. The first root corresponds well with the singularity in the $\omega = 6$ graph in figure \ref{fig:PhaseTau-Omega}. The second root is referred to as an ``anomaly-free singularity'' in Cooper et al.\ \cite{Cooper2009} and does not correspond to a Schwartz singularity. The roots are easily found by fitting the data to equation (20) and solving equation (21) in Cooper et al.\ \cite{Cooper2009}.
 
 
 \section{Extrapolation}
@@ -1091,46 +1070,16 @@ I wrote a Python \cite{Python} program to extrapolate the phase shifts for a run
 
 \subsection{Resonance Fitting}
 \label{sec:ResonanceFit}
-To fit the data, I first tried the \texttt{Fit} and \texttt{FindFit} functions of Mathematica\textsuperscript{\textregistered} 8.0 \cite{Mathematica}, but these were unable to fit our data to this complicated nonlinear function. I next tried the \texttt{curve\_fit} function of SciPy \cite{SciPy} in Python\textsuperscript{\textregistered} 2.6 \cite{Python}, which was better able to fit the nonresonant (polynomial) part.
 
-I finally wrote a custom MATLAB\textsuperscript{\textregistered} \cite{matlab} script (with the help of Ryan Bosca) that uses the \texttt{nlinfit} routine of MATLAB. \texttt{nlinfit} is specifically designed for fitting to nonlinear functions, and its robust option allows for a variety of weighting functions to be used. Our script does the fitting for all eight of the possible weightings: Bisquare, Andrews, Cauchy, Fair, Huber, Logistic, Talwar and Welsch. This fitting routine is also not as sensitive to the initial conditions as the Mathematica and SciPy routines. The resulting graphs for $\omega = 7$ are in figures \ref{fig:ResOmega=7,pg1} and \ref{fig:ResOmega=7,pg2}.
+To find the resonance parameters (positions and widths), the phase shifts for multiple energy values are fitted to \cref{eq:ResonanceCurve}. There have been multiple programs described in the literature \cite{Tennyson1984, Stibbe1998, Sochi2013} to do these fittings, which I was not aware of when I originally wrote code to do these. Some of the difficulty with this type of fitting is choosing appropriate guesses for the resonance parameters. Ref.~\cite{Sochi2013} describes methods that some groups use to try to identify resonance parameters.
 
-Some fittings are better than others for this particular type of function. 
-The Fair, Huber and Logistic weightings get the positions and widths of the 
-resonances nearly correct, but the resulting curve clearly does not fit the 
-data points leading to the first resonance, as can be seen in these figures. 
-For a more rigorous examination of the fittings, the residuals were 
-calculated for each point and graphed in figures
-\ref{fig:ResOmega=6,Residuals} and \ref{fig:ResOmega=7,Residuals}.
-I also calculated the residual sum of 
-squares (RSS), which are shown in these figures. The Fair, Huber and Logistic 
-weightings are clearly the worst fits for this function, though they are 
-still respectable, giving parameters that are extremely close. It should be 
-noted that the data will fit poorly to equation (\ref{eq:ResonanceCurve}) as 
-the energy is decreased (i.e. far from the resonances), so the fits all have 
-larger residuals for low energies.
+This nonlinear fitting can be difficult for general programs. I first tried the \texttt{Fit} and \texttt{FindFit} functions of Mathematica\textsuperscript{\textregistered} 8.0 \cite{Mathematica}, but these were unable to fit our data to this complicated nonlinear function. I next tried the \texttt{curve\_fit} function of SciPy \cite{SciPy} in Python\textsuperscript{\textregistered} 2.6 \cite{Python}, which was better able to fit the nonresonant (polynomial) part but had trouble with the $\arctan$ terms.
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=5in]{swave-phases-reson-pi}
-	\caption[$^1$S resonance data showing correction]{$^1$S resonance data showing raw data from complex Kohn and the corrected version. The solid gray line shows the polynomial background.}
-	\label{fig:swave-phases-reson-pi}
-\end{figure}
+With the help of Ryan Bosca, I wrote a MATLAB\textsuperscript{\textregistered} \cite{matlab} script that uses the \texttt{nlinfit} routine of MATLAB. \texttt{nlinfit} is specifically designed for fitting to nonlinear functions, and its robust option allows for a variety of weighting functions to be used. This script does the fitting for all eight of the possible weightings: Bisquare, Andrews, Cauchy, Fair, Huber, Logistic, Talwar and Welsch. This fitting routine is also not as sensitive to the initial guesses as the Mathematica and SciPy routines.
 
+Later on, I adapted this resonance fitting code to be called from IPython \cite{ipython} using the mlabwrap \cite{mlabwrap} Python to MATLAB wrapper. This allows fits and graphs of the fittings to be in the same IPython notebook, including the flexibility of querying the MySQL database for the phase shift data for any partial wave at any number of terms (see \cref{sec:XMLSQLIPy}). The mlabwrap package is difficult to install properly, requiring a compilation against MATLAB. The mlabwrap-purepy package \cite{mlabwrappurepy} has been created to simplify this, but we have not tried it yet.
 
-\todoi{Mention how we add or subtract $\pi$}
-
-\todoi{Talk about mlabwrap in Programs appendix}
-
-\todoi{Cite Mathematica, SciPy and MATLAB. Show results of Mathematica and Python fittings. Do I need to write function names differently (e.g. FindFit)?}
-
-\cite{Tennyson1984} \cite{Stibbe1998} \cite{Sochi2013}
-
-
-
-\subsubsection{Resonance Graphs}
-\label{sec:ResonanceGraphs}
-
+The results of fitting the phase shifts from the $S$ matrix are shown in \cref{fig:swave-resonance-uncorrected-fits1,fig:swave-resonance-uncorrected-fits2} for each of the weighting functions, and the resonance parameters are given in each subfigure. There is good agreement between the fits performed with each of the weighting functions, and the Fair is the furthest from the others. In our testing, the Cauchy is consistently one of the best choices for fitting. In addition, \cref{fig:swave-resonance-uncorrected-res} has plots of the residuals (the absolute value of the difference between the fitted curve and the actual phase shifts). Each graph also has the residual sum of squares (RSS) calculated. The RSS gives an easy way to compare the performance of the weightings with each other. The Fair has a notably larger RSS than all of the other fittings.
 
 \begin{figure}[H]
 	\centering
@@ -1152,6 +1101,89 @@ larger residuals for low energies.
 	\caption{Residuals for uncorrected resonance fitting graphs for $^1$S at $\omega = 7$}
 	\label{fig:swave-resonance-uncorrected-res}
 \end{figure}
+
+One important thing to notice with the fits in \cref{fig:swave-resonance-uncorrected-fits1,fig:swave-resonance-uncorrected-fits2} is that the $S$ matrix phase shifts extend above the fitted curve at the resonances before matching up again on the right side of the resonance below $-3.0$. The red curves still fit to the data well, but the fits can be improved by correcting for these. 
+
+In \cref{eq:ResonanceCurve}, the first three polynomial terms form the background, and the two $\arctan$ terms represent the resonances. The range of $\arctan$ is $(-\frac{\pi}{2},\frac{\pi}{2})$, so the $\arctan$ parts of this model cannot bring the phase shift from the background (near 2.0) all the way to 0.0, as it can only add up to $\frac{\pi}{2}$ to the background. It is important to realize that the Kohn methods will only return phase shifts in a certain range. From \cref{eq:GenKohnL}, we are not finding the phase shifts directly but are rather calculating $\tan \delta_\ell$. The phase shifts found this way sometimes have to have $\pi$ added or subtracted to get them in the proper range.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=5in]{swave-phases-reson-pi}
+	\caption[$^1$S resonance data showing correction]{$^1$S resonance data showing raw data from complex Kohn and the corrected version. The solid gray line shows the polynomial background, and the vertical dashed lines give the calculated resonance positions.}
+	\label{fig:swave-phases-reson-pi}
+\end{figure}
+
+\Cref{fig:swave-phases-reson-pi} shows the results of subtracting $\pi$ from phase shifts that are more than $\frac{\pi}{2}$ above the background. The original and the corrected data are both shown on this plot, and the background is given as a gray line. Note that the slope of the original data changes when crossing over the vertical dashed lines, which gives the resonance positions. When corrected, these upper points are moved down to their appropriate place, shown as x's on the graph. These match up better with the fitting curve. This fitting is an iterative process, because the background polynomial has to be determined with \cref{eq:ResonanceCurve} before we can do this correction. Then the phase shifts are fitted again after performing the correction.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{swave-resonance-corrected-fits1}
+	\caption{First set of corrected resonance fitting graphs for $^1$S at $\omega = 7$}
+	\label{fig:swave-resonance-corrected-fits1}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{swave-resonance-corrected-fits2}
+	\caption{Second set of corrected resonance fitting graphs for $^1$S at $\omega = 7$}
+	\label{fig:swave-resonance-corrected-fits2}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{swave-resonance-corrected-res}
+	\caption{Residuals for corrected resonance fitting graphs for $^1$S at $\omega = 7$}
+	\label{fig:swave-resonance-corrected-res}
+\end{figure}
+
+Finally, this corrected and re-fitted data is shown in \cref{fig:swave-resonance-corrected-fits1,fig:swave-resonance-corrected-fits2}. The different weighting methods agree extremely well now, with the only notable differences being in the $^2\Gamma$ width of the second resonance for the Bisquare, Andrews, and Talwar fits. This is still a very small difference, and the other resonance parameters are almost all identical. \Cref{fig:swave-resonance-corrected-res} gives the residuals and RSS for the corrected phase shifts, similar to \cref{fig:swave-resonance-uncorrected-res}. The Bisquare, Andrews, and Talwar weightings have larger RSS values than the other weightings, indicating that their fits are not quite as accurate, but they are still relatively accurate.
+
+The differences between the different weighting methods gives us one way to determine errors for our resonance parameters. Additionally, comparing the different Kohn methods gives us an idea of the error. The real-valued generalized Kohn methods give more disagreement, so we compute the resonance parameters for each of these Kohn methods. We also have to take into account Schwartz singularities. In \cref{fig:schwartz-singularity}(a) on \pageref{fig:schwartz-singularity}, the second resonance parameters are not as accurate. The fitting routine described here chooses fitting parameters of $^2E_R = \SI{5.0295}{eV}$ and $^2\Gamma = \SI{0.06011}{eV}$.
+In \cref{fig:schwartz-singularity}(b), where there are no Schwartz singularities, $^2E_R = \SI{5.0278}{eV}$ and $^2\Gamma = \SI{0.06075}{eV}$. This highlights the importance of using multiple Kohn methods and trying to detect Schwartz singularities. After removing obvious Schwartz singularities, the mean value of the different Kohn methods for all weightings is taken for each resonance parameter, and these are the results listed for each of the partial waves in \cref{sec:SWaveResonances,sec:PWaveResonances,sec:DWaveResonance,sec:FWaveResonance}. The errors given in these tables are simply the standard deviation with all Kohn methods and weightings used for each resonance parameter. For this, we do not use the generalized $S$ or $T$ matrices, because using these would decrease the error, as they agree to a significant precision.
+
+\todoi{IPython notebook?}
+
+
+
+
+\subsection{Resonance Fitting}
+\label{sec:ResonanceFit}
+To fit the data, I first tried the \texttt{Fit} and \texttt{FindFit} functions of Mathematica\textsuperscript{\textregistered} 8.0 \cite{Mathematica}, but these were unable to fit our data to this complicated nonlinear function. I next tried the \texttt{curve\_fit} function of SciPy \cite{SciPy} in Python\textsuperscript{\textregistered} 2.6 \cite{Python}, which was better able to fit the nonresonant (polynomial) part.
+
+I finally wrote a custom MATLAB\textsuperscript{\textregistered} \cite{matlab} script (with the help of Ryan Bosca) that uses the \texttt{nlinfit} routine of MATLAB. \texttt{nlinfit} is specifically designed for fitting to nonlinear functions, and its robust option allows for a variety of weighting functions to be used. Our script does the fitting for all eight of the possible weightings: Bisquare, Andrews, Cauchy, Fair, Huber, Logistic, Talwar and Welsch. This fitting routine is also not as sensitive to the initial conditions as the Mathematica and SciPy routines. The resulting graphs for $\omega = 7$ are in figures \ref{fig:ResOmega=7,pg1} and \ref{fig:ResOmega=7,pg2}.
+
+Some fittings are better than others for this particular type of function. 
+The Fair, Huber and Logistic weightings get the positions and widths of the 
+resonances nearly correct, but the resulting curve clearly does not fit the 
+data points leading to the first resonance, as can be seen in these figures. 
+For a more rigorous examination of the fittings, the residuals were 
+calculated for each point and graphed in figures
+\ref{fig:ResOmega=6,Residuals} and \ref{fig:ResOmega=7,Residuals}.
+I also calculated the residual sum of 
+squares (RSS), which are shown in these figures. The Fair, Huber and Logistic 
+weightings are clearly the worst fits for this function, though they are 
+still respectable, giving parameters that are extremely close. It should be 
+noted that the data will fit poorly to \cref{eq:ResonanceCurve} as 
+the energy is decreased (i.e. far from the resonances), so the fits all have 
+larger residuals for low energies.
+
+
+
+\todoi{Mention how we add or subtract $\pi$}
+
+\todoi{Talk about mlabwrap in Programs appendix}
+
+\todoi{Cite Mathematica, SciPy and MATLAB. Show results of Mathematica and Python fittings. Do I need to write function names differently (e.g. FindFit)?}
+
+\cite{Tennyson1984} \cite{Stibbe1998} \cite{Sochi2013}
+
+
+
+\subsubsection{Resonance Graphs}
+\label{sec:ResonanceGraphs}
+
+
+
 
 
 
