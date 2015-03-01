@@ -9,9 +9,19 @@
 \todoi{Put in information from ``Integration Point Numbers.nb''}
 \todoi{Be clear that in the long-range code, we only calculate the Kohn elements, and then we rearrange them to create the others in the phase shift code. (Mentioned in \cref{sec:Kohn})}
 
-\section{Short-Range -- Short-Range Integrations}
+
+\section{Short-Range Terms}
+\label{sec:CompShort}
+
+Matrix elements in \cref{eq:GeneralKohnMatrix} involving only short-range terms are handled differently than those that involve long-range terms (short-long and long-long). \cref{eq:BoundHFull} and 
+
+\todoi{More lead in}
+The bound state problem is a generalized eigenvalue problem (see \cref{eq:BoundGenEig}), but to simplify the following discussion, I will refer to the set of matrices \textbf{H} and \textbf{S} as a single matrix. The diagrams in this section show a single matrix, but it is in actuality a pair of matrices forming the generalized eigenvalue problem.
+
+
+\subsection{Short-Range -- Short-Range Integrations}
 \label{sec:ShortInt}
-The short-range -- short-range integrals make up the bulk of the $A$ matrix
+The short-range -- short-range integrals make up the bulk of the $\textbf{\emph{A}}$ matrix
 (\cref{eq:GenKohnMatrixAXB}). The PsH bound state problem in 
 \cref{chp:PsHBound} consists of only these types of matrix elements
 (see \cref{eq:BoundWavefn}). The form of these short-range integrals is
@@ -19,11 +29,11 @@ The short-range -- short-range integrals make up the bulk of the $A$ matrix
 \label{eq:FourBody}
 I \equiv I(k_i, l_i, m_i, n_i, p_i, q_i; \alpha, \beta, \gamma) = \int e^{-(\alpha r_1 + \beta r_2 + \gamma r_3)} r_1^{k_i} r_2^{l_i} r_{12}^{m_i} r_3^{n_i} r_{13}^{p_i} r_{23}^{q_i} d\textbf{r}_1 d\textbf{r}_2 d\textbf{r}_3,
 \eeq
-with real-valued $\alpha, \beta, \gamma > 0$ and integers $k_i, l_i, n_i \geq -2$ and $m_i, p_i, q_i \geq -1$.
+with real-valued $\alpha, \beta, \gamma > 0$.
 
 This class of integrals, the Hylleraas three-electron or four-body 
-integrals, has been studied extensively. See references \cite{Drake1995}, 
-\cite{Frolov2003}, \cite{Pelzl1998} and \cite{Pachucki2004} for just some of 
+integrals, has been studied extensively. See
+Refs.~\cite{Drake1995,Frolov2003,Pelzl1998,Pachucki2004} for just some of 
 the papers detailing strategies on how to compute these integrals. The first 
 three papers here use the same infinite summation to numerically solve this 
 integral but use different techniques to accelerate the convergence, as the 
@@ -75,7 +85,7 @@ I = \int e^{-(\alpha r_1 + \beta r_2 + \gamma r_3 + a_{12} r_{12} + a_{13} r_{13
 Fromm and Hill give an analytic solution to this \cite{Fromm1987}, but it is extremely difficult to work with. Harris more recently solved this problem analytically using recursion relations \cite{Harris2009}, using a similar method to the recursion relations of Pachucki et al.\ \cite{Pachucki2004}. Both of these solutions restrict the powers of $r_i$ and $r_{ij}$ to $k_i, l_i, m_i, n_i, p_i, q_i \geq -1$. We have also looked at a subset of these integrals (refer to \cref{chp:Exponential}). As another extension of the Hylleraas basis set, some four-electron integrals can be reduced down to the three-electron integrals \cite{King1993,Pelzl2002}.
 
 
-\subsection{Asymptotic Expansion}
+\subsubsection{Asymptotic Expansion}
 \label{sec:AsymptoticExpansion}
 For cases of \cref{eq:FourBodyExpansion} with all odd powers of $r_{ij}$, the $q$ summation is infinite, and the summation converges slowly. The convergence accelerator approach of Pelzl and King \cite{Pelzl1998,Pelzl2002} is one way to deal with this. I did limited testing with this approach but chose to instead use the asymptotic expansion method of Drake and Yan \cite{Drake1995}. In my testing, it was more numerically stable, and it has been generalized to arbitrary angular momenta \cite{Yan1997}.
 
@@ -113,7 +123,7 @@ the difference between successive direct sums.}
 \label{tab:AsympExpan}
 \end{table}
 
-\subsection{Recursion Relations}
+\subsubsection{Recursion Relations}
 \label{sec:RecursionRelations}
 After the S-wave calculations were completed, we learned of an analytic, 
 instead of numerical, solution to these three-electron integrals, derived by 
@@ -141,7 +151,7 @@ Ref.~\cite{Pachucki2005}. However, the asymptotic expansion method has proven
 to be stable and accurate so far.
 
 
-\subsection{W Functions}
+\subsubsection{W Functions}
 \label{sec:WFunctions}
 
 While evaluating the integrals in the PsH short-range code, we noticed that the
@@ -212,239 +222,7 @@ not the $W$ function arguments.
 
 
 
-\section{Perimetric Coordinates}
-\label{sec:PerimetricCoords}
-
-Perimetric coordinates are used for the long-long integrations for the S-wave. If perimetric coordinates are used for $r_1$, $r_2$ and $r_{12}$, then these are defined by \cite{Armour1991}
-
-\begin{align}
-\label{eq:PerimetricCoords1}
-\nonumber x &= r_1 + r_2 - r_{12} \\
-\nonumber y &= r_2 + r_{12} - r_1 \\
-z &= r_{12} + r_1 - r_2.
-\end{align}
-
-These can alternately be written as
-\begin{align}
-\label{eq:PerimetricCoords2}
-\nonumber r_1 &= \frac{x+z}{2} \\
-\nonumber r_2 &= \frac{x+y}{2} \\
-\nonumber r_{12} &= \frac{y+z}{2}.
-\end{align}
-
-From equation \cref{eq:dtau1}, the volume element after integration over the external angles is
-\beq
-d\tau = 8\pi^2 dr_1 r_2 dr_2 r_3 dr_3 r_{12} dr_{12} r_{13} dr_{13} d\phi_{23}.
-\eeq
-We need to perform a change of variables to use perimetric coordinates for $r_1$, $r_2$ and $r_{12}$. The Jacobian is
-\beq
-\label{eq:PerimetricJacobian}
-J(x,y,z) = 
-\left| {\begin{array}{ccc}
- \frac{\partial r_1}{\partial x} & \frac{\partial r_1}{\partial y} & \frac{\partial r_1}{\partial z}  \\
- \frac{\partial r_2}{\partial x} & \frac{\partial r_2}{\partial y} & \frac{\partial r_2}{\partial z}  \\
- \frac{\partial r_{12}}{\partial x} & \frac{\partial r_{12}}{\partial y} & \frac{\partial r_{12}}{\partial z}  \\
- \end{array} } \right|
-=
-\left| {\begin{array}{ccc}
- \frac{1}{2} & 0 & \frac{1}{2} \\
- \frac{1}{2} & \frac{1}{2} & 0 \\
- 0 & \frac{1}{2} & \frac{1}{2}
- \end{array} } \right|
-=
-\frac{1}{4}.
-\eeq
-
-\noindent This gives a transformed volume element of
-\beq
-\label{eq:PerimetricVolEl}
-d\tau = 2\pi^2 r_2 r_3 r_{12} r_{13} dx\, dy\, dz\, dr_3\, dr_{13}\, d\phi_{23}.
-\eeq
-
-\noindent The limits for each of the perimetric coordinates are 0 to $\infty$.
-
-
-\section{Gaussian Quadratures}
-\label{sec:GaussQuad}
-\todoi{Mention looking into \cite{Bailey2004,Ma1996,Mori2001,Odrzywolek2011,Fukuda2005}}
-Gaussian quadratures are used to integrate many classes of integrals. In their most general form, these quadratures are given by \cite[p.887]{Abramowitz1965}
-\beq
-\label{eq:GeneralQuadratures}
-\int_a^b W(x) f(x) dx \approx \sum_{i=1}^n w_i f(x_i).
-\eeq
-Gaussian quadratures are particularly attractive, since they give exact results for polynomials up to degree $2n-1$. The weight function $W(x)$ can be chosen for certain classes of integrals. Three main types of weight functions are used in this work.
-
-
-\subsection{Gauss-Legendre Quadrature}
-\label{sec:GaussLegendre}
-If the weight function is chosen as $W(x)=1$, and the integration interval is $(-1,1)$, this is known as Gauss-Legendre quadrature (or sometimes known simply as Gaussian quadrature). The orthogonal polynomials used are the Legendre polynomials, $P_n(x)$. Equation \ref{eq:GeneralQuadratures} becomes
-\beq
-\label{eq:GaussLeg}
-\int_{-1}^1 f(x) dx \approx \sum_{i=1}^n w_i f(x_i),
-\eeq
-where the $x_i$ abscissas are the $i^{th}$ zeros of $L_n(x)$, and the weights are given by
-\beq
-\label{eq:GaussLegWeights}
-w_i = \frac{2}{(1-x_i^2)[P^\prime_n(x_i)]^2}.
-\eeq
-The limits of integration must be from $-1$ to $1$, but this is generalized by using the transformation \cite{Abramowitz1965}
-\begin{align}
-\label{eq:GaussLegGen}
-\int_a^b f(x) dx &= \frac{b-a}{2} \int_{-1}^1 f \left(\frac{b-a}{2} x + \frac{a+b}{2}\right) dx \\
-&\approx \frac{b-a}{2} \sum_{i=1}^n w_i f \left(\frac{b-a}{2} x_i + \frac{a+b}{2}\right).
-\end{align}
-
-
-\subsection{Gauss-Laguerre Quadrature}
-\label{sec:GaussLag}
-The Gauss-Legendre quadrature cannot be used on semi-infinite intervals, so we use the Gauss-Laguerre quadrature in these cases. The orthogonal polynomials in this case are the Laguerre polynomials, $L_n(x)$, and the weight function is $W(x) = e^{-x}$. Equation \ref{eq:GeneralQuadratures} becomes
-\beq
-\label{eq:GaussLag}
-\int_0^\infty e^{-x} f(x) dx \approx \sum_{i=1}^n w_i f(x_i),
-\eeq
-where the $x_i$ abscissas are the $i^{th}$ zeros of $L_n(x)$, and the weights are given by
-\beq
-\label{eq:GaussLagWeights}
-w_i = \frac{x_i}{(n+1)^2 [L_{n+1}(x_i)]^2}.
-\eeq
-
-When the integration is over the interval $(a,\infty)$, equation \ref{eq:GaussLag} is easily transformed by
-\beq
-\label{eq:GaussLagGen1}
-\int_a^\infty e^{-x} f(x) dx = \int_0^\infty e^{-(x+a)} f(x+a) dx = e^{-a} \int_0^\infty e^{-x} f(x+a) dx \approx e^{-a} \sum_{i=1}^n w_i f(x_i+a).
-\eeq
-
-\noindent A more general form of this is obtained by using a coefficient in the exponential, i.e.
-\beq
-\label{eq:GaussLagGen2}
-\int_a^\infty e^{-m x} f(x) dx = \frac{1}{m} \int_a^\infty e^{-y} f\left(\frac{y}{m}\right) dy,
-\eeq
-where we have defined $y = m x$.  This allows for equation \ref{eq:GaussLagGen1} to be generalized to
-\begin{align}
-\label{eq:GaussLagGen}
-\nonumber \int_a^\infty e^{-m x} f(x) dx &= \frac{1}{m} \int_{ma}^\infty e^{-y} f\left(\frac{y}{m}\right) dy = \frac{1}{m} \int_0^\infty e^{-(y+ma)} f\left(\frac{y}{m}+a\right) dy \\
-& = \frac{e^{-ma}}{m} \int_0^\infty e^{-y} f\left(\frac{y}{m}+a\right) dy \approx \frac{e^{-ma}}{m} \sum_{i=1}^n w_i f\left(\frac{y_i}{m}+a\right).
-\end{align}
-The $y_i$ abscissas and $w_i$ weights are the same as the less general case in equations \ref{eq:GaussLag} and \ref{eq:GaussLagWeights}.  This general form of Gauss-Laguerre quadrature is what we use for our semi-infinite integrations.
-
-
-\subsection{Chebyshev--Gauss Quadrature}
-\label{sec:ChebyshevGauss1}
-If the weight function is chosen as $W(x)=\frac{1}{\sqrt{1-x^2}}$, and the integration interval is $(-1,1)$, this is known as Chebyshev-Gauss quadrature. The orthogonal polynomials used are the Chebyshev polynomials of the first kind, $T_n(x)$.  Equation \ref{eq:GeneralQuadratures} becomes
-\beq
-\label{eq:GaussCheb}
-\int_{-1}^1 \frac{f(x)}{\sqrt{1-x^2}} dx \approx \sum_{i=1}^n w_i f(x_i),
-\eeq
-where
-\beq
-\label{eq:GaussChebAbsWeights}
-x_i = \cos\left(\frac{2i-1}{n}\pi\right) \text{ and } w_i = \frac{\pi}{n}.
-\eeq
-This quadrature is used for the internal angular integrations.  A discussion of how to use this for these integrations is found in appendix \ref{sec:ChebyshevGauss}.
-
-\section{Long-Range -- Long-Range}
-\label{sec:LongLongInt}
-
-The scattering program calculates only the short-long and long-long matrix elements. The volume element in equation \ref{eq:dtau} has an internal angle of $\phi_{23}$ to integrate over.  When a term has a a negative power of $r_{23}$, a large number of integration points must be used for reasonable accuracy. Instead, we split the integration such that one part is missing the the $r_{23}^{-1}$ term and the other contains only the $r_{23}^{-1}$ term.
-
-The first integration excluding the $r_{23}^{-1}$ term has negative powers of $r_i$ and $r_{ij}$ cancelled by the corresponding terms in the volume element given by equation \ref{}.  For the integration over the $r_{23}^{-1}$ term, we use an alternative volume element, namely that given by equation \ref{}.  The $r_{23}^{-1}$ is then cancelled by the $r_{23}$ in this volume element.
-
-\todoi{Add the section about the volume elements in an appendix.}
-\todoi{$\mathcal{L}$ instead of L}
-
-\subsection{Integration without the \texorpdfstring{$r_{23}^{-1}$} {1/r23} term}
-\label{sec:LongLongNoR23}
-The simplest long-long matrix element to evaluate is $(\bar{S},\mathcal{L} \bar{S})$.  From \cref{eq:SbarLSbar}, not including its $r_{23}^{-1}$ term, this is
-\beq
-(\bar{S},\mathcal{L} \bar{S})_A = \pm \left(S^\prime,\mathcal{L} S\right) = \pm \left(S^\prime, \left[ \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}}\right] S\right).
-\eeq
-
-For this type of integration, we use perimetric coordinates as described in section \ref{sec:PerimetricCoords}.
-\begin{align}
-\label{eq:SBarSBarInt}
-(\bar{S},\mathcal{L} \bar{S})_A = \pm &2\pi^2 \int_0^\infty \int_0^\infty \int_0^\infty \int_0^\infty \int_{|r_1 - r_3|}^{|r_1 + r_3|} \int_0^{2\pi}  S^\prime S \left[ \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}}\right] \\
-&\times r_2 r_3 r_{12} r_{13}\, d\phi_{23}\, dr_{13}\, dr_3\, dz\, dy\, dx
-\end{align}
-
-The $\phi_{23}$ integration is done analytically. Since $S$ and $S^\prime$ have no $r_{23}$ dependence and there is no $r_{23}$ term in the brackets, the integration over $\phi_{23}$ is simply $2\pi$.  The $r_{13}$ integration uses the Gauss-Laguerre quadrature from section \ref{sec:GaussLegendre}. The $x$, $y$ and $z$ integrations use Gauss-Laguerre quadrature (section \ref{sec:GaussLag}), since they are semi-infinite.
-
-The $r_3$ integration could also be performed using just the Gauss-Laguerre 
-quadrature. However, the integrand for the $r_3$ integration has a 
-discontinuity in its slope at $r_3=r_1$, creating a cusp
-(see \cref{sec:Cusps}), so the accuracy is improved greatly if we split the
-integration interval into two parts and employ different quadratures for each.
-The integration is split to use Gauss-Legendre on the interval $(0,r_1)$ and
-Gauss-Laguerre on the interval $(r_1,\infty)$.
-
-\subsection{Integration over the \texorpdfstring{$r_{23}^{-1}$} {1/r23} term}
-%\subsection[Integration over the 1/r23 term]{Integration over the $r_{23}^{-1}$ term}
-\label{sec:LongLongR23}
-The other part of the $(\bar{S},\mathcal{L} \bar{S})$ integral contains the $r_{23}^{-1}$ term.
-
-\beq
-(\bar{S},\mathcal{L} \bar{S})_B = \pm \left(S^\prime, \left[ \frac{2}{r_{23}}\right] S\right)
-\eeq
-
-\textbf{@TODO:} Why exactly do we use perimetric coordinates?
-
-\noindent The volume element for this integral is $d\tau^\prime$ from equation \ref{}.  The integration also does not need to be converted to perimetric coordinates, so its form is
-\beq
-(\bar{S},\mathcal{L} \bar{S})_B = \pm 8\pi^2 \int_0^\infty \int_0^\infty \int_0^\infty \int_{|r_1 - r_3|}^{|r_1 + r_3|} \int_{|r_2 - r_3|}^{|r_2 + r_3|} \int_0^{2\pi}  S^\prime S \frac{2}{r_{23}} r_1 r_2 r_{13} r_{23}\, d\phi_{12}\, dr_{23}\, dr_{13}\, dr_2\, dr_3\, dr_1.
-\eeq
-
-The $r_{13}$ and $r_{23}$ integrals have finite limits, so here we use Gauss-Legendre quadrature.  Again, for the internal angular integration, this time over $\phi_{12}$, we use Chebyshev-Gauss quadrature.  The cusp in the $r_3$ integration is at $r_3 = r_1$, and the cusp in the $r_2$ integration is at $r_2 = r_3$.  Similar to before, we split up these integrations by using Gauss-Legendre before the cusp and Gauss-Laguerre after the cusp.
-
-The $(\bar{C},\mathcal{L} \bar{S})$ and $(\bar{C},\mathcal{L} \bar{C})$ terms are integrated in the same manner as the $(\bar{S},\mathcal{L} \bar{S})$ integral just described.
-
-
-\section{Short-Range -- Long-Range}
-\label{sec:ShortLongInt}
-We will consider only the $(\bar{\phi}_i,\mathcal{L} \bar{S})$ integrations here, as the $(\bar{\phi}_i,\mathcal{L} \bar{C})$ integrals are evaluated in the same manner.  As in the case of long-range -- long-range integrations in section \ref{sec:LongLongInt}, we split up the integration into two parts -- one containing the $r_{23}^{-1}$ term and another containing the rest of the terms.  The short-range terms have the added benefit of the possibility of the polynomial $r_{23}^{\,q_i}$ being present, which cancels the $r_{23}^{-1}$ term or gives it an overall positive power.
-
-
-From \ref{eq:PhiBarLSBar2b}, \ref{eq:LS2} and \ref{eq:LSP2}, 
-
-\begin{align}
-\label{eq:PhiLSBarInt}
-\nonumber (\bar{\phi}_i, L\bar{S}) &= \frac{2}{\sqrt{2}} \left(\phi_i,\mathcal{L} \bar{S}\right) \\
- &= \frac{2}{\sqrt{2}} \int \phi_i \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right)S \pm \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) S^\prime \right]  d\tau.
-\end{align}
-
-\subsection{Case I: \texorpdfstring{$q_i > 0$}{qi > 0}}
-\label{sec:Swaveqigt0}
-When $q_i > 0$ in $\phi_i$ (equation \ref{eq:PhiDef}), the power of $r_{23}$ is equal to or greater than 0.  Gaussian quadratures can safely integrate this type of term, so we integrate the full expression in equation \ref{eq:PhiLSBarInt}.
-\begin{align}
-\label{eq:PhiLSBarIntFull}
-\nonumber (\bar{\phi}_i, L\bar{S}) =& \, \frac{2}{\sqrt{2}} \cdot 8\pi^2  \int_0^\infty \int_0^\infty \int_0^\infty \int_{|r_1 - r_2|}^{|r_1 + r_2|} \int_{|r_1 - r_3|}^{|r_1 + r_3|} \int_0^{2\pi} \phi_i \\
-&\times \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right)S \pm \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) S^\prime \right] \\
-&\times r_2 r_3 r_{12} r_{13}\, d\phi_{23}\, dr_{13}\, dr_{12}\, dr_3\, dr_2\, dr_1
-\end{align}
-
-Similar to the long-long integrations from section \ref{sec:LongLongInt}, the $r_1$ integration is performed using the Gauss-Laguerre quadrature.  The $r_2$ integral is broken into two parts at the cusp of $r_2 = r_1$, with the Gauss-Legendre quadrature before the cusp and the Gauss-Laguerre quadrature after the cusp.  In the $r_3$ coordinate, there is a cusp at $r_3 = r_2$, so the integration is also split up into Gauss-Legendre before the cusp and Gauss-Laguerre after the cusp.  The finite intervals for $r_{12}$ and $r_{13}$ ensure that we can use Gauss-Legendre quadratures for these coordinates.  The $\phi_{23}$ integration uses the Chebyshev-Gauss quadrature.
-
-\subsection{Case II: \texorpdfstring{$q_i = 0$}{qi = 0}}
-When $q_i = 0$, the overall power of the $r_{23}^{-1}$ term is $-1$, so we cannot use the Gaussian quadratures in the form of \ref{eq:PhiLSBarIntFull}.  Similar to the long-long integrations, the $r_{23}^{-1}$ term is integrated separately, using the same type of integrations as equation \ref{eq:PhiLSBarIntFull}.  Refer to the previous section for the description of the quadratures used.
-\begin{align}
-\label{eq:PhiLSBarIntNoR23}
-\nonumber (\bar{\phi}_i, L\bar{S}) =& \,\frac{2}{\sqrt{2}} \int \phi_i \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} \right)S \pm \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} \right) S^\prime \right]  d\tau \\
-=&\, \frac{2}{\sqrt{2}} \cdot 8\pi^2  \int_0^\infty \int_0^\infty \int_0^\infty \int_{|r_1 - r_2|}^{|r_1 + r_2|} \int_{|r_1 - r_3|}^{|r_1 + r_3|} \int_0^{2\pi} \phi_i \\
-&\times \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} \right)S \pm \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} \right) S^\prime \right]  r_2 r_3 r_{12} r_{13}\, d\phi_{23}\, dr_{13}\, dr_{12}\, dr_3\, dr_2\, dr_1
-\end{align}
-
-The integration over the $r_{23}^{-1}$ term is done the same way as the second integration of the long-long matrix elements in section \ref{sec:LongLongInt}.  The $r_{23}$ in the $d\tau^\prime$ volume element cancels the $r_{23}^{-1}$ term.  Refer to section \ref{sec:LongLongR23} for a description of the quadratures used here.
-\begin{align}
-\label{eq:PhiLSBarIntR23}
-(\bar{\phi}_i, L\bar{S}) =& \,\frac{2}{\sqrt{2}} \int \phi_i \left[ \frac{2}{r_{23}}\left(S \pm S^\prime\right) \right] d\tau^\prime  \nonumber \\
-=&\, \frac{2}{\sqrt{2}} \cdot 8\pi^2  \int_0^\infty \int_0^\infty \int_0^\infty \int_{|r_1 - r_3|}^{|r_1 + r_3|} \int_{|r_2 - r_3|}^{|r_2 + r_3|} \int_0^{2\pi} \phi_i \left[ \frac{2}{r_{23}}\left(S \pm S^\prime\right) \right]  \nonumber \\
-&\times  r_1 r_2 r_{13} r_{23}\, d\phi_{12}\, dr_{23}\, dr_{13}\, dr_2\, dr_3\, dr_1
-\end{align}
-
-\section{Notation}
-\label{sec:CompNotation}
-\todoi{Put this elsewhere? Probably does not need its own section.}
-The bound state problem is a generalized eigenvalue problem (see \cref{eq:BoundGenEig}), but to simplify the following discussion, I will refer to the set of matrices \textbf{H} and \textbf{S} as a single matrix. The diagrams in this section show a single matrix, but it is in actuality a pair of matrices forming the generalized eigenvalue problem.
-
-\section{Linear Dependence in the Bound State Calculation}
+\subsection{Linear Dependence in the Bound State Calculation}
 With infinite precision in calculations, all terms from the basis set could be used. However, due to the limited precision inherent in computer calculations, when using large basis sets, near linear dependences will exist in the matrices. The goal is to identify and eliminate terms that exhibit near linear dependence with other terms. These terms are not exactly linearly dependent, if infinite precision was possible, but they are linearly dependent to computer precision.
 
 To calculate the eigenvalues of the generalized eigenproblem, the LAPACK routine \texttt{dsygv} is used \cite{dsygv}. For the basis set consisting of terms from $\omega$ = 5, LAPACK computes the eigenvalues without errors. Adding in terms corresponding to $\omega = 6$ for some sets of nonlinear parameters causes \texttt{dsygv} to fail with an error set in the last parameter, Info. This error is always an integer greater than the number of terms, indicating from the library documentation that ``the leading minor of order i of B is not positive definite'' \cite{dsygv}. L\"uchow and Kleindienst also encountered a similar problem using NAG and EISPACK \cite{Luchow1993}.
@@ -597,7 +375,241 @@ We decided to use the Todd algorithm (\ref{sec:ToddBound}) due to the better ene
 
 
 
-\section{Quadrature Points}
+\section{Long-Range Terms}
+\label{sec:CompLong}
+
+collectively referred to as long-range integrations
+
+
+\subsection{Perimetric Coordinates}
+\label{sec:PerimetricCoords}
+
+Perimetric coordinates are used for the long-long integrations for the S-wave. If perimetric coordinates are used for $r_1$, $r_2$ and $r_{12}$, then these are defined by \cite{Armour1991}
+
+\begin{align}
+\label{eq:PerimetricCoords1}
+\nonumber x &= r_1 + r_2 - r_{12} \\
+\nonumber y &= r_2 + r_{12} - r_1 \\
+z &= r_{12} + r_1 - r_2.
+\end{align}
+
+These can alternately be written as
+\begin{align}
+\label{eq:PerimetricCoords2}
+\nonumber r_1 &= \frac{x+z}{2} \\
+\nonumber r_2 &= \frac{x+y}{2} \\
+\nonumber r_{12} &= \frac{y+z}{2}.
+\end{align}
+
+From equation \cref{eq:dtau1}, the volume element after integration over the external angles is
+\beq
+d\tau = 8\pi^2 dr_1 r_2 dr_2 r_3 dr_3 r_{12} dr_{12} r_{13} dr_{13} d\phi_{23}.
+\eeq
+We need to perform a change of variables to use perimetric coordinates for $r_1$, $r_2$ and $r_{12}$. The Jacobian is
+\beq
+\label{eq:PerimetricJacobian}
+J(x,y,z) = 
+\left| {\begin{array}{ccc}
+ \frac{\partial r_1}{\partial x} & \frac{\partial r_1}{\partial y} & \frac{\partial r_1}{\partial z}  \\
+ \frac{\partial r_2}{\partial x} & \frac{\partial r_2}{\partial y} & \frac{\partial r_2}{\partial z}  \\
+ \frac{\partial r_{12}}{\partial x} & \frac{\partial r_{12}}{\partial y} & \frac{\partial r_{12}}{\partial z}  \\
+ \end{array} } \right|
+=
+\left| {\begin{array}{ccc}
+ \frac{1}{2} & 0 & \frac{1}{2} \\
+ \frac{1}{2} & \frac{1}{2} & 0 \\
+ 0 & \frac{1}{2} & \frac{1}{2}
+ \end{array} } \right|
+=
+\frac{1}{4}.
+\eeq
+
+\noindent This gives a transformed volume element of
+\beq
+\label{eq:PerimetricVolEl}
+d\tau = 2\pi^2 r_2 r_3 r_{12} r_{13} dx\, dy\, dz\, dr_3\, dr_{13}\, d\phi_{23}.
+\eeq
+
+\noindent The limits for each of the perimetric coordinates are 0 to $\infty$.
+
+
+\subsection{Gaussian Quadratures}
+\label{sec:GaussQuad}
+\todoi{Mention looking into \cite{Bailey2004,Ma1996,Mori2001,Odrzywolek2011,Fukuda2005}}
+Gaussian quadratures are used to integrate many classes of integrals. In their most general form, these quadratures are given by \cite[p.887]{Abramowitz1965}
+\beq
+\label{eq:GeneralQuadratures}
+\int_a^b W(x) f(x) dx \approx \sum_{i=1}^n w_i f(x_i).
+\eeq
+Gaussian quadratures are particularly attractive, since they give exact results for polynomials up to degree $2n-1$. The weight function $W(x)$ can be chosen for certain classes of integrals. Three main types of weight functions are used in this work.
+
+
+\subsection{Gauss-Legendre Quadrature}
+\label{sec:GaussLegendre}
+If the weight function is chosen as $W(x)=1$, and the integration interval is $(-1,1)$, this is known as Gauss-Legendre quadrature (or sometimes known simply as Gaussian quadrature). The orthogonal polynomials used are the Legendre polynomials, $P_n(x)$. Equation \ref{eq:GeneralQuadratures} becomes
+\beq
+\label{eq:GaussLeg}
+\int_{-1}^1 f(x) dx \approx \sum_{i=1}^n w_i f(x_i),
+\eeq
+where the $x_i$ abscissas are the $i^{th}$ zeros of $L_n(x)$, and the weights are given by
+\beq
+\label{eq:GaussLegWeights}
+w_i = \frac{2}{(1-x_i^2)[P^\prime_n(x_i)]^2}.
+\eeq
+The limits of integration must be from $-1$ to $1$, but this is generalized by using the transformation \cite{Abramowitz1965}
+\begin{align}
+\label{eq:GaussLegGen}
+\int_a^b f(x) dx &= \frac{b-a}{2} \int_{-1}^1 f \left(\frac{b-a}{2} x + \frac{a+b}{2}\right) dx \\
+&\approx \frac{b-a}{2} \sum_{i=1}^n w_i f \left(\frac{b-a}{2} x_i + \frac{a+b}{2}\right).
+\end{align}
+
+
+\subsection{Gauss-Laguerre Quadrature}
+\label{sec:GaussLag}
+The Gauss-Legendre quadrature cannot be used on semi-infinite intervals, so we use the Gauss-Laguerre quadrature in these cases. The orthogonal polynomials in this case are the Laguerre polynomials, $L_n(x)$, and the weight function is $W(x) = e^{-x}$. Equation \ref{eq:GeneralQuadratures} becomes
+\beq
+\label{eq:GaussLag}
+\int_0^\infty e^{-x} f(x) dx \approx \sum_{i=1}^n w_i f(x_i),
+\eeq
+where the $x_i$ abscissas are the $i^{th}$ zeros of $L_n(x)$, and the weights are given by
+\beq
+\label{eq:GaussLagWeights}
+w_i = \frac{x_i}{(n+1)^2 [L_{n+1}(x_i)]^2}.
+\eeq
+
+When the integration is over the interval $(a,\infty)$, equation \ref{eq:GaussLag} is easily transformed by
+\beq
+\label{eq:GaussLagGen1}
+\int_a^\infty e^{-x} f(x) dx = \int_0^\infty e^{-(x+a)} f(x+a) dx = e^{-a} \int_0^\infty e^{-x} f(x+a) dx \approx e^{-a} \sum_{i=1}^n w_i f(x_i+a).
+\eeq
+
+\noindent A more general form of this is obtained by using a coefficient in the exponential, i.e.
+\beq
+\label{eq:GaussLagGen2}
+\int_a^\infty e^{-m x} f(x) dx = \frac{1}{m} \int_a^\infty e^{-y} f\left(\frac{y}{m}\right) dy,
+\eeq
+where we have defined $y = m x$.  This allows for equation \ref{eq:GaussLagGen1} to be generalized to
+\begin{align}
+\label{eq:GaussLagGen}
+\nonumber \int_a^\infty e^{-m x} f(x) dx &= \frac{1}{m} \int_{ma}^\infty e^{-y} f\left(\frac{y}{m}\right) dy = \frac{1}{m} \int_0^\infty e^{-(y+ma)} f\left(\frac{y}{m}+a\right) dy \\
+& = \frac{e^{-ma}}{m} \int_0^\infty e^{-y} f\left(\frac{y}{m}+a\right) dy \approx \frac{e^{-ma}}{m} \sum_{i=1}^n w_i f\left(\frac{y_i}{m}+a\right).
+\end{align}
+The $y_i$ abscissas and $w_i$ weights are the same as the less general case in equations \ref{eq:GaussLag} and \ref{eq:GaussLagWeights}.  This general form of Gauss-Laguerre quadrature is what we use for our semi-infinite integrations.
+
+
+\subsection{Chebyshev--Gauss Quadrature}
+\label{sec:ChebyshevGauss1}
+If the weight function is chosen as $W(x)=\frac{1}{\sqrt{1-x^2}}$, and the integration interval is $(-1,1)$, this is known as Chebyshev-Gauss quadrature. The orthogonal polynomials used are the Chebyshev polynomials of the first kind, $T_n(x)$.  Equation \ref{eq:GeneralQuadratures} becomes
+\beq
+\label{eq:GaussCheb}
+\int_{-1}^1 \frac{f(x)}{\sqrt{1-x^2}} dx \approx \sum_{i=1}^n w_i f(x_i),
+\eeq
+where
+\beq
+\label{eq:GaussChebAbsWeights}
+x_i = \cos\left(\frac{2i-1}{n}\pi\right) \text{ and } w_i = \frac{\pi}{n}.
+\eeq
+This quadrature is used for the internal angular integrations.  A discussion of how to use this for these integrations is found in appendix \ref{sec:ChebyshevGauss}.
+
+\subsection{Long-Range -- Long-Range}
+\label{sec:LongLongInt}
+
+The scattering program calculates only the short-long and long-long matrix elements. The volume element in equation \ref{eq:dtau} has an internal angle of $\phi_{23}$ to integrate over.  When a term has a a negative power of $r_{23}$, a large number of integration points must be used for reasonable accuracy. Instead, we split the integration such that one part is missing the the $r_{23}^{-1}$ term and the other contains only the $r_{23}^{-1}$ term.
+
+The first integration excluding the $r_{23}^{-1}$ term has negative powers of $r_i$ and $r_{ij}$ cancelled by the corresponding terms in the volume element given by equation \ref{}.  For the integration over the $r_{23}^{-1}$ term, we use an alternative volume element, namely that given by equation \ref{}.  The $r_{23}^{-1}$ is then cancelled by the $r_{23}$ in this volume element.
+
+\todoi{Add the section about the volume elements in an appendix.}
+\todoi{$\mathcal{L}$ instead of L}
+
+\subsection{Integration without the \texorpdfstring{$r_{23}^{-1}$} {1/r23} term}
+\label{sec:LongLongNoR23}
+The simplest long-long matrix element to evaluate is $(\bar{S},\mathcal{L} \bar{S})$.  From \cref{eq:SbarLSbar}, not including its $r_{23}^{-1}$ term, this is
+\beq
+(\bar{S},\mathcal{L} \bar{S})_A = \pm \left(S^\prime,\mathcal{L} S\right) = \pm \left(S^\prime, \left[ \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}}\right] S\right).
+\eeq
+
+For this type of integration, we use perimetric coordinates as described in section \ref{sec:PerimetricCoords}.
+\begin{align}
+\label{eq:SBarSBarInt}
+(\bar{S},\mathcal{L} \bar{S})_A = \pm &2\pi^2 \int_0^\infty \int_0^\infty \int_0^\infty \int_0^\infty \int_{|r_1 - r_3|}^{|r_1 + r_3|} \int_0^{2\pi}  S^\prime S \left[ \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}}\right] \\
+&\times r_2 r_3 r_{12} r_{13}\, d\phi_{23}\, dr_{13}\, dr_3\, dz\, dy\, dx
+\end{align}
+
+The $\phi_{23}$ integration is done analytically. Since $S$ and $S^\prime$ have no $r_{23}$ dependence and there is no $r_{23}$ term in the brackets, the integration over $\phi_{23}$ is simply $2\pi$.  The $r_{13}$ integration uses the Gauss-Laguerre quadrature from section \ref{sec:GaussLegendre}. The $x$, $y$ and $z$ integrations use Gauss-Laguerre quadrature (section \ref{sec:GaussLag}), since they are semi-infinite.
+
+The $r_3$ integration could also be performed using just the Gauss-Laguerre 
+quadrature. However, the integrand for the $r_3$ integration has a 
+discontinuity in its slope at $r_3=r_1$, creating a cusp
+(see \cref{sec:Cusps}), so the accuracy is improved greatly if we split the
+integration interval into two parts and employ different quadratures for each.
+The integration is split to use Gauss-Legendre on the interval $(0,r_1)$ and
+Gauss-Laguerre on the interval $(r_1,\infty)$.
+
+\subsection{Integration over the \texorpdfstring{$r_{23}^{-1}$} {1/r23} term}
+%\subsection[Integration over the 1/r23 term]{Integration over the $r_{23}^{-1}$ term}
+\label{sec:LongLongR23}
+The other part of the $(\bar{S},\mathcal{L} \bar{S})$ integral contains the $r_{23}^{-1}$ term.
+
+\beq
+(\bar{S},\mathcal{L} \bar{S})_B = \pm \left(S^\prime, \left[ \frac{2}{r_{23}}\right] S\right)
+\eeq
+
+\textbf{@TODO:} Why exactly do we use perimetric coordinates?
+
+\noindent The volume element for this integral is $d\tau^\prime$ from equation \ref{}.  The integration also does not need to be converted to perimetric coordinates, so its form is
+\beq
+(\bar{S},\mathcal{L} \bar{S})_B = \pm 8\pi^2 \int_0^\infty \int_0^\infty \int_0^\infty \int_{|r_1 - r_3|}^{|r_1 + r_3|} \int_{|r_2 - r_3|}^{|r_2 + r_3|} \int_0^{2\pi}  S^\prime S \frac{2}{r_{23}} r_1 r_2 r_{13} r_{23}\, d\phi_{12}\, dr_{23}\, dr_{13}\, dr_2\, dr_3\, dr_1.
+\eeq
+
+The $r_{13}$ and $r_{23}$ integrals have finite limits, so here we use Gauss-Legendre quadrature.  Again, for the internal angular integration, this time over $\phi_{12}$, we use Chebyshev-Gauss quadrature.  The cusp in the $r_3$ integration is at $r_3 = r_1$, and the cusp in the $r_2$ integration is at $r_2 = r_3$.  Similar to before, we split up these integrations by using Gauss-Legendre before the cusp and Gauss-Laguerre after the cusp.
+
+The $(\bar{C},\mathcal{L} \bar{S})$ and $(\bar{C},\mathcal{L} \bar{C})$ terms are integrated in the same manner as the $(\bar{S},\mathcal{L} \bar{S})$ integral just described.
+
+
+\subsection{Short-Range -- Long-Range}
+\label{sec:ShortLongInt}
+We will consider only the $(\bar{\phi}_i,\mathcal{L} \bar{S}_\ell)$ integrations here, as the $(\bar{\phi}_i,\mathcal{L} \bar{C}_\ell)$ integrals are evaluated in the same manner. As in the case of long-range -- long-range integrations in section \ref{sec:LongLongInt}, we split up the integration into two parts -- one containing the $r_{23}^{-1}$ term and another containing the rest of the terms. The short-range terms have the added benefit of the possibility of the polynomial $r_{23}^{\,q_i}$ being present, which cancels the $r_{23}^{-1}$ term or gives it an overall positive power.
+
+
+From \ref{eq:PhiBarLSBar2b}, \ref{eq:LS2} and \ref{eq:LSP2}, 
+
+\begin{align}
+\label{eq:PhiLSBarInt}
+\nonumber (\bar{\phi}_i, L\bar{S}_\ell) &= \frac{2}{\sqrt{2}} \left(\phi_i,\mathcal{L} \bar{S}_\ell\right) \\
+ &= \frac{2}{\sqrt{2}} \int \phi_i \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right)S_\ell \pm \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) S_\ell^\prime \right]  d\tau.
+\end{align}
+
+\subsubsection{Case I: \texorpdfstring{$q_i > 0$}{qi > 0}}
+\label{sec:Swaveqigt0}
+When $q_i > 0$ in $\phi_i$ (equation \ref{eq:PhiDef}), the power of $r_{23}$ is equal to or greater than 0.  Gaussian quadratures can safely integrate this type of term, so we integrate the full expression in equation \ref{eq:PhiLSBarInt}.
+\begin{align}
+\label{eq:PhiLSBarIntFull}
+\nonumber (\bar{\phi}_i, L\bar{S}_\ell) =& \, \frac{2}{\sqrt{2}} \cdot 8\pi^2  \int_0^\infty \int_0^\infty \int_0^\infty \int_{|r_1 - r_2|}^{|r_1 + r_2|} \int_{|r_1 - r_3|}^{|r_1 + r_3|} \int_0^{2\pi} \phi_i \\
+&\times \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right)S_\ell \pm \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) S_\ell^\prime \right] \\
+&\times r_2 r_3 r_{12} r_{13}\, d\phi_{23}\, dr_{13}\, dr_{12}\, dr_3\, dr_2\, dr_1
+\end{align}
+
+Similar to the long-long integrations from section \ref{sec:LongLongInt}, the $r_1$ integration is performed using the Gauss-Laguerre quadrature.  The $r_2$ integral is broken into two parts at the cusp of $r_2 = r_1$, with the Gauss-Legendre quadrature before the cusp and the Gauss-Laguerre quadrature after the cusp.  In the $r_3$ coordinate, there is a cusp at $r_3 = r_2$, so the integration is also split up into Gauss-Legendre before the cusp and Gauss-Laguerre after the cusp.  The finite intervals for $r_{12}$ and $r_{13}$ ensure that we can use Gauss-Legendre quadratures for these coordinates.  The $\phi_{23}$ integration uses the Chebyshev-Gauss quadrature.
+
+\subsubsection{Case II: \texorpdfstring{$q_i = 0$}{qi = 0}}
+When $q_i = 0$, the overall power of the $r_{23}^{-1}$ term is $-1$, so we cannot use the Gaussian quadratures in the form of \ref{eq:PhiLSBarIntFull}.  Similar to the long-long integrations, the $r_{23}^{-1}$ term is integrated separately, using the same type of integrations as equation \ref{eq:PhiLSBarIntFull}.  Refer to the previous section for the description of the quadratures used.
+\begin{align}
+\label{eq:PhiLSBarIntNoR23}
+\nonumber (\bar{\phi}_i, L\bar{S}_\ell) =& \,\frac{2}{\sqrt{2}} \int \phi_i \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} \right)S_\ell \pm \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} \right) S_\ell^\prime \right]  d\tau \\
+=&\, \frac{2}{\sqrt{2}} \cdot 8\pi^2  \int_0^\infty \int_0^\infty \int_0^\infty \int_{|r_1 - r_2|}^{|r_1 + r_2|} \int_{|r_1 - r_3|}^{|r_1 + r_3|} \int_0^{2\pi} \phi_i \\
+&\times \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} \right)S_\ell \pm \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} \right) S_\ell^\prime \right]  r_2 r_3 r_{12} r_{13}\, d\phi_{23}\, dr_{13}\, dr_{12}\, dr_3\, dr_2\, dr_1
+\end{align}
+
+The integration over the $r_{23}^{-1}$ term is done the same way as the second integration of the long-long matrix elements in section \ref{sec:LongLongInt}.  The $r_{23}$ in the $d\tau^\prime$ volume element cancels the $r_{23}^{-1}$ term.  Refer to section \ref{sec:LongLongR23} for a description of the quadratures used here.
+\begin{align}
+\label{eq:PhiLSBarIntR23}
+(\bar{\phi}_i, L\bar{S}_\ell) =& \,\frac{2}{\sqrt{2}} \int \phi_i \left[ \frac{2}{r_{23}}\left(S_\ell \pm S_\ell^\prime\right) \right] d\tau^\prime  \nonumber \\
+=&\, \frac{2}{\sqrt{2}} \cdot 8\pi^2  \int_0^\infty \int_0^\infty \int_0^\infty \int_{|r_1 - r_3|}^{|r_1 + r_3|} \int_{|r_2 - r_3|}^{|r_2 + r_3|} \int_0^{2\pi} \phi_i \left[ \frac{2}{r_{23}}\left(S_\ell \pm S_\ell^\prime\right) \right]  \nonumber \\
+&\times  r_1 r_2 r_{13} r_{23}\, d\phi_{12}\, dr_{23}\, dr_{13}\, dr_2\, dr_3\, dr_1
+\end{align}
+
+
+\subsection{Quadrature Points}
 \label{sec:QuadraturePoints}
 
 
@@ -664,7 +676,7 @@ Integral & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
 \end{table}
 
 
-\section{Selection of Quadrature Points}
+\subsection{Selection of Quadrature Points}
 \label{sec:SelQuadPoints1}
 The number of quadrature points for each coordinate in the 6-dimensional integrations is critical to have fully converged results. In our testing, the $r_1$ coordinate (the coordinate of $e^+$) was the most important, requiring more integration points than any other. The $r_2$ and $r_3$ coordinates were the second most important, and the interparticle terms ($r_{12}$, $r_{13}$ and $r_{23}$) were the least important. These results only apply to the long-range--long-range and long-range--short-range terms, as the short-range--short-range terms are integrated using the same asymptotic expansion method as the bound state problem (see section \ref{sec:MatrixShort}).
 
@@ -695,7 +707,7 @@ To determine an optimal set of points, 10 points were added to Van Reeth's set i
 
 
 
-\section{Selection of Quadrature Points}
+\subsection{Selection of Quadrature Points}
 \label{sec:SelQuadPoints2}
 
 \begin{figure}[H]
@@ -879,7 +891,7 @@ Extra points & Phase shift \\
 \todoi{Table of final integration points}
 
 
-\section{Cusp Behavior}
+\subsection{Cusp Behavior}
 \label{sec:Cusps}
 \todoi{Discussion about the existence of the cusps in the integrand, possibly with graphs illustrating them.}
 
@@ -968,10 +980,13 @@ Cusp parameter & $\delta_2^+$ & Time (hours) \\
 \end{table}
 
 
-\section{Phase Shift Convergence and Singularities}
+\section{Phase Shifts}
+\label{sec:CompPhase}
+
+\subsection{Phase Shift Convergence and Singularities}
 Schwartz singularities are well-documented \cite{Lucchese1989,Cooper2009} and are non-physical ``resonances''. To avoid these singularities, we use multiple forms of the Kohn method: Kohn, inverse Kohn, generalized Kohn, generalized S-matrix complex Kohn, and generalized T-matrix complex Kohn. There may also be spurious results if the matrix elements are not converged, with one example being the feature at approximately 600 terms in figure \ref{fig:OriginalPhaseShifts-pvr} for the inverse Kohn. With the original ordering of the short-range terms, the phase shifts always break up at around 1100 terms, even when the matrix elements are converged. To alleviate this problem, we have implemented the Todd algorithm.
 
-\section{Todd Algorithm Applied to the Scattering Problem}
+\subsection{Todd Algorithm Applied to the Scattering Problem}
 \label{sec:ToddScattering}
 From the bound state calculation using Todd's algorithm mentioned in section \ref{sec:ToddBound}, we know which short-range Hylleraas terms approximate the wavefunction of PsH best. We have observed that the short-range--short-range terms used in the same order as the output of the Todd algorithm will generate well-converged phase shifts. The separate code to determine the phase shifts uses the output from the bound state code. Again, the phase shift is plotted with respect to the number of short-range terms. The result is in figure \ref{fig:ToddPhaseShifts-pvrplus5}. The phase shifts are converged well until term 1216. A magnification of the graph in the small region around this term is provided in the inset graph.
 
@@ -985,7 +1000,7 @@ At term 1216, the Kohn method result starts to diverge from the others. Shortly 
 \end{figure}
 
 
-\section{Todd Algorithm with Optimized Quadrature}
+\subsection{Todd Algorithm with Optimized Quadrature}
 
 
 \begin{figure}[H]
@@ -1013,7 +1028,7 @@ For the extrapolation method discussed in section \ref{sec:Extrapolation}, it is
 \todoi{Table of number of terms chosen from paper}
 
 
-\section{Generalized Kohn}
+\subsection{Generalized Kohn}
 \label{sec:CompGenKohn}
 As mentioned in section \ref{sec:GenKohn}, the generalized Kohn method described by Cooper et al.\ allows for an adjustable parameter $\tau$ to be used. For our calculations of the Kohn and inverse Kohn, we set $\tau = 0$ and $\tau = \frac{\pi}{2}$, respectively. Before we started using the generalized Kohn method, it was difficult to tell if the difference between the Kohn and inverse Kohn phase shifts was due to a Schwartz singularity or a problem with linear dependence. With the generalized Kohn, we have a large number of individual Kohn methods to compare the results with.
 
@@ -1036,10 +1051,12 @@ The Kohn methods do not require a recalculation of the entire problem for each K
 
 
 
-\section{Extrapolation}
-\label{sec:Extrapolation}
+\section{Extrapolations}
+\label{sec:Extrapolations}
 
 \subsection{Extrapolation Description}
+
+\todoi{Also extrapolate scattering lengths}
 
 The tangent of the phase shifts is fitted to the function
 \beq
@@ -1064,11 +1081,7 @@ I wrote a Python \cite{Python} program to extrapolate the phase shifts for a run
 
 
 
-
-\section{Fittings}
-\label{sec:Fittings}
-
-\subsection{Resonance Fitting}
+\section{Resonance Fitting}
 \label{sec:ResonanceFit}
 
 To find the resonance parameters (positions and widths), the phase shifts for multiple energy values are fitted to \cref{eq:ResonanceCurve}. There have been multiple programs described in the literature \cite{Tennyson1984, Stibbe1998, Sochi2013} to do these fittings, which I was not aware of when I originally wrote code to do these. Some of the difficulty with this type of fitting is choosing appropriate guesses for the resonance parameters. Ref.~\cite{Sochi2013} describes methods that some groups use to try to identify resonance parameters.
@@ -1146,7 +1159,7 @@ In \cref{fig:schwartz-singularity}(b), where there are no Schwartz singularities
 
 
 
-\subsection{Resonance Fitting}
+\section{Resonance Fitting}
 \label{sec:ResonanceFit}
 To fit the data, I first tried the \texttt{Fit} and \texttt{FindFit} functions of Mathematica\textsuperscript{\textregistered} 8.0 \cite{Mathematica}, but these were unable to fit our data to this complicated nonlinear function. I next tried the \texttt{curve\_fit} function of SciPy \cite{SciPy} in Python\textsuperscript{\textregistered} 2.6 \cite{Python}, which was better able to fit the nonresonant (polynomial) part.
 

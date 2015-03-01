@@ -15,7 +15,7 @@
 \section{General Long-Range}
 \label{sec:GeneralLong}
 
-If the ``mixed terms'' are not included for the D-wave, the P-wave and D-wave long-range codebases are very similar. The S-wave is not much different as well, but it only has a single symmetry.
+If the ``mixed terms'' in \cref{sec:MixedTerms} are not included for the D-wave, the P-wave and D-wave long-range codebases are very similar. The S-wave is not much different as well, but it only has a single symmetry.
 
 \subsection{Long-Long}
 \label{sec:GeneralLongLong}
@@ -77,35 +77,73 @@ H = \sum_{i=1}^3 \left(-\frac{1}{2} \nabla_i^2 - \frac{1}{r_i} \right) + \sum_{i
 
 \noindent This is the form when the mass polarization terms are unimportant (with $\mu \rightarrow 0$). As defined in Ref. \cite{Yan1997}, $\hat{\boldsymbol{r}_j} = \boldsymbol{r}_i/r_i$ and $\hat{\nabla}_i^Y = r_i \nabla_i^Y$. The terms involving $\nabla_i^Y$ only operate on the spherical harmonics, and they will be discussed in section \ref{sec:GenSphHarm}.
 
-The wavefunction we use is slightly different from the form Drake and Yan use. Specifically, we handle the antisymmetrization operator differently in our code, and we do not include the $\Omega$ function, given by equation (10) in their paper. Part of the difference here is that we are working with two electrons and one positron, whereas they are working with systems that have three electrons.
+The wavefunction we use is slightly different from the form Drake and Yan use. Specifically, we handle the antisymmetrization operator differently in our code, and we do not include the $\Omega$ function, given by equation (10) in their paper. Part of the difference here is that we are working with two electrons and one positron, whereas they are working with systems that have three electrons, such as binding energy calculations of Li.
 
 \subsection{Overlap Integrals}
 \label{sec:GenOverlap}
 \todoi{Note that these shouldn't be conjugated, but for the short-range terms with $m = 0$, it does not matter.}
-As mentioned in the previous section, Drake and Yan's wavefunction is similar but not exactly the same. Thus, we cannot use the equations directly from their paper. Using their notation, the overlap integrals are given by
+%As mentioned in the previous section, Drake and Yan's wavefunction is similar but not exactly the same. Thus, we cannot use the equations directly from their paper. Using their notation, the overlap integrals are given by
+%\begin{align}
+%\nonumber I^1(1) = \left< \phi_L^1 \left| \phi_R^1 \right. \right> = \sum_{\text{all } m_i^\prime m_i} & \int \mathrm{d}\boldsymbol{r}_1 \, \mathrm{d}\boldsymbol{r}_2 \, \mathrm{d}\boldsymbol{r}_3 \, r_1^{\tilde{j}_1} r_2^{\tilde{j}_2} r_3^{\tilde{j}_3} r_{12}^{\tilde{j}_{12}} r_{23}^{\tilde{j}_{23}} r_{31}^{\tilde{j}_{31}} \ee^{-(\tilde{\alpha} r_1 + \tilde{\beta} r_2 + \tilde{\gamma} r_3)} \\
+%& \times Y_{\ell_1^\prime m_1^\prime}^* (\boldsymbol{r}_1) Y_{\ell_2^\prime m_2^\prime}^* (\boldsymbol{r}_2) Y_{\ell_3^\prime m_3^\prime}^* (\boldsymbol{r}_3) Y_{\ell_1 m_1} (\boldsymbol{r}_1) Y_{\ell_2 m_2} (\boldsymbol{r}_2) Y_{\ell_3 m_3} (\boldsymbol{r}_3).
+%\end{align}
+%This can be split into angular and radial parts, given by
+%\begin{align}
+%\nonumber I^1(1) = & \sum_{q_{12}=0}^{M_{12}} \sum_{q_{23}=0}^{M_{23}} \sum_{q_{31}=0}^{M_{31}} \sum_{k_{12}=0}^{L_{12}} \sum_{k_{23}=0}^{L_{23}} \sum_{k_{31}=0}^{L_{31}} C^1(1) \\
+%& \times I_R \left(q_{12}, q_{23}, q_{31}, k_{12}, k_{23}, k_{31}; \tilde{j}_1, \tilde{j}_2, \tilde{j}_3, \tilde{j}_{12}, \tilde{j}_{23}, \tilde{j}_{31}; \tilde{\alpha}, \tilde{\beta}, \tilde{\gamma} \right),
+%\end{align}
+%where $\tilde{j}_1 = j_1^\prime + j_1$, etc. The $I_R$ function is only dependent on the radial coordinates and is given by equation (30) of their paper. The $C^1(1)$ function differs from theirs, as we do not have the 3j symbols in their $\Omega$ function. This is given in two parts as
+%\begin{align}
+%\nonumber C^1(1) =\, & (-1)^{q_{12} + q_{23} + q_{31}} \left(\ell_1^\prime,\ell_2^\prime,\ell_3^\prime,\ell_1,\ell_2,\ell_3 \right)^{1/2} \sum_{n_1 n_2 n_3} (n_1,n_2,n_3) \ThreeJSymbol{\ell_1^\prime,0}{\ell_1,0}{n_1,0}  \\
+%& \times \ThreeJSymbol{\ell_2^\prime,0}{\ell_2,0}{n_2,0} \ThreeJSymbol{\ell_3^\prime,0}{\ell_3,0}{n_3,0} \ThreeJSymbol{q_{31},0}{q_{12},0}{n_1,0} \ThreeJSymbol{q_{12},0}{q_{23},0}{n_2,0} \nonumber \\
+%& \times \ThreeJSymbol{q_{23},0}{q_{31},0}{n_3,0} \SixJSymbol{n_1,n_2,n_3}{q_{23},q_{31},q_{12}} \tilde{C}^1(1)
+%\end{align}
+%\noindent and
+%\begin{align}
+%\tilde{C}^1(1) = & \sum_{\text{all } m_i^\prime m_i t_i} (-1)^{m_1 + m_2 + m_3} \ThreeJSymbol{n_1,t_1}{n_2,t_2}{n_3,t_3} \nonumber \\
+%& \times \ThreeJSymbol{l_1^\prime,-m_1^\prime}{l_1,m_1}{n_1,t_1} \ThreeJSymbol{l_2^\prime,-m_2^\prime}{l_2,m_2}{n_2,t_2} \ThreeJSymbol{l_1^\prime,-m_1^\prime}{l_3,m_3}{n_3,t_3}.
+%\end{align}
+%From the selection rules for the 3j symbol, $t_i = m_i^\prime - m_i$. The factor $(2\ell+1)$ appears often in these types of derivations, so we adopt the shorthand notation of $(l,m,n,\ldots) = (2l+1)(2m+1)(2n+1) \ldots$.
+
 \begin{align}
-\nonumber I^1(1) = \left< \phi_L^1 \left| \phi_R^1 \right. \right> = \sum_{\text{all } m_i^\prime m_i} & \int \mathrm{d}\boldsymbol{r}_1 \, \mathrm{d}\boldsymbol{r}_2 \, \mathrm{d}\boldsymbol{r}_3 \, r_1^{\tilde{j}_1} r_2^{\tilde{j}_2} r_3^{\tilde{j}_3} r_{12}^{\tilde{j}_{12}} r_{23}^{\tilde{j}_{23}} r_{31}^{\tilde{j}_{31}} \ee^{-(\tilde{\alpha} r_1 + \tilde{\beta} r_2 + \tilde{\gamma} r_3)} \\
-& \times Y_{\ell_1^\prime m_1^\prime}^* (\boldsymbol{r}_1) Y_{\ell_2^\prime m_2^\prime}^* (\boldsymbol{r}_2) Y_{\ell_3^\prime m_3^\prime}^* (\boldsymbol{r}_3) Y_{\ell_1 m_1} (\boldsymbol{r}_1) Y_{\ell_2 m_2} (\boldsymbol{r}_2) Y_{\ell_3 m_3} (\boldsymbol{r}_3).
+\label{eq:ShortIntGen}
+\nonumber I(\ell_1^\prime m_1^\prime, \ell_2^\prime m_2^\prime, &\ell_3^\prime m_3^\prime; j_1,j_2,j_3,j_{12},j_{23},j_{31}; \alpha, \beta, \gamma) = \int d \textit{\textbf{r}}_1 d \textit{\textbf{r}}_2 d \textit{\textbf{r}}_3
+r_1^{j_1} r_2^{j_2} r_3^{j_3} r_{12}^{j_{12}}
+r_{23}^{j_{23}} r_{31}^{j_{31}}
+e^{-(\bar{\alpha} r_1 + \bar{\beta} r_2 + \bar{\gamma} r_3)} \\
+& \times Y_{\ell_1^\prime m_1^\prime}^* (\textit{\textbf{r}}_1) Y_{\ell_2^\prime m_2^\prime}^* (\textit{\textbf{r}}_2) Y_{\ell_3^\prime m_3^\prime}^* (\textit{\textbf{r}}_3) Y_{\ell_1 m_1} (\textit{\textbf{r}}_1) Y_{\ell_2 m_2} (\textit{\textbf{r}}_2) Y_{\ell_3 m_3} (\textit{\textbf{r}}_3)\, .
 \end{align}
-This can be split into angular and radial parts, given by
+
+\todoi{Note different $\alpha$, etc. than what is used in our wavefunction}
+
+After some manipulation, this integral can be written as
 \begin{align}
-\nonumber I^1(1) = & \sum_{q_{12}=0}^{M_{12}} \sum_{q_{23}=0}^{M_{23}} \sum_{q_{31}=0}^{M_{31}} \sum_{k_{12}=0}^{L_{12}} \sum_{k_{23}=0}^{L_{23}} \sum_{k_{31}=0}^{L_{31}} C^1(1) \\
-& \times I_R \left(q_{12}, q_{23}, q_{31}, k_{12}, k_{23}, k_{31}; \tilde{j}_1, \tilde{j}_2, \tilde{j}_3, \tilde{j}_{12}, \tilde{j}_{23}, \tilde{j}_{31}; \tilde{\alpha}, \tilde{\beta}, \tilde{\gamma} \right),
+\label{eq:ShortIntGen2}
+I(\ell_1^\prime m_1^\prime, \ell_2^\prime m_2^\prime, &\ell_3^\prime m_3^\prime; j_1,j_2,j_3,j_{12},j_{23},j_{31}; \bar{\alpha}, \bar{\beta}, \bar{\gamma})  \nonumber \\
+= & \; \sum_{q_{12}=0}^{M_{12}} \sum_{q_{23}=0}^{M_{23}} \sum_{q_{31}=0}^{M_{31}} \sum_{k_{12}=0}^{L_{12}} \sum_{k_{23}=0}^{L_{23}} \sum_{k_{31}=0}^{L_{31}}  \nonumber \\
+& \times I_{\rm{ang}}(\ell_1^\prime m_1^\prime, \ell_2^\prime m_2^\prime, \ell_3^\prime m_3^\prime; q_{12}, q_{23}, q_{31})  \nonumber \\
+& \times I_{\rm{R}}(q_{12}, q_{23}, q_{31}, k_{12}, k_{23}, k_{31}; j_1, j_2, j_3, j_{12}, j_{23}, j_{31}; \alpha, \beta, \gamma)
 \end{align}
-where $\tilde{j}_1 = j_1^\prime + j_1$, etc. The $I_R$ function is only dependent on the radial coordinates and is given by equation (30) of their paper. The $C^1(1)$ function differs from theirs, as we do not have the 3j symbols in their $\Omega$ function. This is given in two parts as
+
 \begin{align}
-\nonumber C^1(1) =\, & (-1)^{q_{12} + q_{23} + q_{31}} \left(\ell_1^\prime,\ell_2^\prime,\ell_3^\prime,\ell_1,\ell_2,\ell_3 \right)^{1/2} \sum_{n_1 n_2 n_3} (n_1,n_2,n_3) \ThreeJSymbol{\ell_1^\prime,0}{\ell_1,0}{n_1,0}  \\
-& \times \ThreeJSymbol{\ell_2^\prime,0}{\ell_2,0}{n_2,0} \ThreeJSymbol{\ell_3^\prime,0}{\ell_3,0}{n_3,0} \ThreeJSymbol{q_{31},0}{q_{12},0}{n_1,0} \ThreeJSymbol{q_{12},0}{q_{23},0}{n_2,0} \nonumber \\
-& \times \ThreeJSymbol{q_{23},0}{q_{31},0}{n_3,0} \SixJSymbol{n_1,n_2,n_3}{q_{23},q_{31},q_{12}} \tilde{C}^1(1)
+\label{eq:DrakeGenAng}
+I_{\rm{ang}}(\ell_1^\prime m_1^\prime, & \ell_2^\prime m_2^\prime, \ell_3^\prime m_3^\prime; q_{12}, q_{23}, q_{31})  \nonumber \\
+= & \;(-1)^{m_1^\prime + m_2^\prime + m_3^\prime + q_{12} + q_{23} + q_{31}} (\ell_1^\prime, \ell_2^\prime, \ell_3^\prime, \ell_1, \ell_2, \ell_3)^{1/2} \sum_{n_1 n_2 n_3} (n_1,n_2,n_3)  \nonumber \\
+& \times \SixJSymbol{n_1,n_2,n_3}{q_{23},q_{31},q_{12}} \ThreeJSymbol{n_1, m_1^\prime - m_1}{n_2, m_2^\prime - m_2}{n_3, m_3^\prime - m_3}  \nonumber \\
+& \times \ThreeJSymbol{\ell_1^\prime,-m_1^\prime}{\ell_1,m_1}{n_1, m_1^\prime - m_1} \ThreeJSymbol{\ell_2^\prime,-m_2^\prime}{\ell_2,m_2}{n_2,m_2^\prime - m_2}  \nonumber \\
+& \times \ThreeJSymbol{\ell_1^\prime,-m_1^\prime}{\ell_3,m_3}{n_3,m_3^\prime - m_3} \ThreeJSymbol{\ell_1^\prime,0}{\ell_1,0}{n_1,0} \ThreeJSymbol{\ell_2^\prime,0}{\ell_2,0}{n_2,0}  \nonumber \\
+& \times \ThreeJSymbol{\ell_3^\prime,0}{\ell_3,0}{n_3,0} \ThreeJSymbol{q_{31},0}{q_{12},0}{n_1,0} \ThreeJSymbol{q_{12},0}{q_{23},0}{n_2,0} \ThreeJSymbol{q_{23},0}{q_{31},0}{n_3,0}
 \end{align}
-\noindent and
-\begin{align}
-\tilde{C}^1(1) = & \sum_{\text{all } m_i^\prime m_i t_i} (-1)^{m_1 + m_2 + m_3} \ThreeJSymbol{n_1,t_1}{n_2,t_2}{n_3,t_3} \nonumber \\
-& \times \ThreeJSymbol{l_1^\prime,-m_1^\prime}{l_1,m_1}{n_1,t_1} \ThreeJSymbol{l_2^\prime,-m_2^\prime}{l_2,m_2}{n_2,t_2} \ThreeJSymbol{l_1^\prime,-m_1^\prime}{l_3,m_3}{n_3,t_3}.
-\end{align}
-From the selection rules for the 3j symbol, $t_i = m_i^\prime - m_i$. The factor $(2\ell+1)$ appears often in these types of derivations, so we adopt the shorthand notation of $(l,m,n,\ldots) = (2l+1)(2m+1)(2n+1) \ldots$.
+
+This expression includes summations over both the Wigner 3-j and 6-j coefficients \cite{Edmonds1996,Brink1993,Rose1995}, also known as the 3-j and 6-j symbols. The 3-j symbols are related to the Clebsch-Gordan coefficients by \cite{Edmonds1996}
+\begin{equation}
+\label{eq:Clebsch3J}
+\ThreeJSymbol{j_1,m_1}{j_2,m_2}{j_3,m_3} = (-1)^{j_1 - j_2 + m_3} \sqrt{2 j_3 + 1} \ClebschGordon{j_1,m_1}{j_2,m_2}{j_3,-m_3}.
+\end{equation}
+The advantage of the 3-j symbols over the Clebsch-Gordan coefficients is that they are a more symmetric representation of angular momentum. The factor $(2\ell+1)$ appears often in these types of derivations, so we adopt their shorthand notation of $(l,m,n,\ldots) = (2l+1)(2m+1)(2n+1) \ldots$.
 
 \todoi{Mention \cite{Luscombe1998,Wei1998,Rasch2003} for possible speedups in this code.}
+
 
 \subsection{Spherical Harmonic Terms}
 \label{sec:GenSphHarm}

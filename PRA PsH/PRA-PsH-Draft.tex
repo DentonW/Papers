@@ -575,8 +575,9 @@ scattering problem. The wavefunction we use for the bound state is
 \end{equation}
 where $\bar{\phi}_{1i}^\pm$ is the same as in Eq. (\ref{eq:PhiDef}) with
 $\ell = 0$. We use the Rayleigh-Ritz method and optimize the 
-nonlinear parameters using the Newton \cite{Yan1999}, Broyden
-\cite{Sauer2006} and simplex \cite{GSL} methods. For the $^3S$ case
+nonlinear parameters using a combination of manual optimization,
+Newton \cite{Yan1999}, Broyden \cite{Sauer2006} and simplex \cite{GSL}
+methods. For the $^3S$ case
 and $\ell \neq 0$, even though there is not a bound state, we use the same
 method to optimize the nonlinear parameters to get the lowest energy.
 For $\ell > 0$, as in the scattering problem, the wavefunction includes
@@ -756,10 +757,11 @@ For $\ell > 0$, the short-range integrals have the form of
 \begin{widetext}
 \begin{align}
 \label{eq:ShortIntGen}
-\nonumber I(\ell_1^\prime m_1^\prime, \ell_2^\prime m_2^\prime, &\ell_3^\prime m_3^\prime; j_1,j_2,j_3,j_{12},j_{23},j_{31}; \bar{\alpha}, \bar{\beta}, \bar{\gamma}) = \int d \textit{\textbf{r}}_1 d \textit{\textbf{r}}_2 d \textit{\textbf{r}}_3
+\nonumber I(\ell_1^\prime m_1^\prime, \ell_2^\prime m_2^\prime, &\ell_3^\prime m_3^\prime, \ell_1 m_1, \ell_2 m_2, \ell_3 m_3; j_1,j_2,j_3,j_{12},j_{23},j_{31}; \bar{\alpha}, \bar{\beta}, \bar{\gamma}) \\
+= & \; \int d \textit{\textbf{r}}_1 d \textit{\textbf{r}}_2 d \textit{\textbf{r}}_3
 r_1^{j_1} r_2^{j_2} r_3^{j_3} r_{12}^{j_{12}}
 r_{23}^{j_{23}} r_{31}^{j_{31}}
-e^{-(\bar{\alpha} r_1 + \bar{\beta} r_2 + \bar{\gamma} r_3)} \\
+e^{-(\bar{\alpha} r_1 + \bar{\beta} r_2 + \bar{\gamma} r_3)}  \nonumber \\
 & \times Y_{\ell_1^\prime m_1^\prime}^* (\textit{\textbf{r}}_1) Y_{\ell_2^\prime m_2^\prime}^* (\textit{\textbf{r}}_2) Y_{\ell_3^\prime m_3^\prime}^* (\textit{\textbf{r}}_3) Y_{\ell_1 m_1} (\textit{\textbf{r}}_1) Y_{\ell_2 m_2} (\textit{\textbf{r}}_2) Y_{\ell_3 m_3} (\textit{\textbf{r}}_3)\, .
 \end{align}
 \end{widetext}
@@ -829,7 +831,8 @@ Eq.~(\ref{eq:GenKohn}). We further truncate this basis set where the phase
 shifts for the different Kohn methods begin to diverge, as seen in
 Fig.~\ref{fig:swave-phase-divergence}. This method gives a reliable set of
 short-range terms, which we use in the $S$ matrix complex Kohn to generate
-the results in Sec.~\ref{sec:Results}.
+the results in Sec.~\ref{sec:Results}. For $^1S$ only, we were able to determine
+the cutoff by performing variations of $\mu$.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=3.3in]{swave-phase-divergence}
@@ -837,8 +840,6 @@ the results in Sec.~\ref{sec:Results}.
 to number of short-range terms}
 	\label{fig:swave-phase-divergence}
 \end{figure}
-For $^1S$, we were able to determine the cutoff by performing variations
-of $\mu$.
 
 \subsection{Fittings}
 As with the previous Kohn calculation \cite{VanReeth2004},
