@@ -5,7 +5,7 @@
 \chapter{Scattering Theory}
 \label{chp:WaveKohn}
 \lettrine{\textcolor{startcolor}{A}}{s} mentioned in the introduction, the Kohn variational method has been used for many types of systems. This chapter discusses the trial wavefunction used, derives the Kohn variational methods, and applies them to this system.
-\todoi{Description of partial waves?}
+%\todoi{Description of partial waves?}
 
 \section{General Wavefunction}
 
@@ -155,7 +155,7 @@ Note that the exact wavefunction $\Psi_\ell$ solves the Schr\"{o}dinger equation
 \label{eq:Il0}
 I[\Psi_\ell] = 0.
 \eeq
-Normally, the bra in bra-ket notation is conjugated, but as noted by Cooper et al. \cite{Cooper2010}, the bra is not conjugated for the Kohn variational methods.
+\label{BraNote} Normally, the bra in bra-ket notation is conjugated, but as noted by Cooper et al. \cite{Cooper2010}, the bra is not conjugated for the Kohn variational methods.
 
 The trial wavefunction is related to the exact solution by
 \beq
@@ -176,13 +176,11 @@ The $(\delta\Psi_\ell, \mathcal{L} \,\delta\Psi_\ell)$ term is of second order i
 \label{eq:IlPrimeDef}
 \delta I_\ell^\prime = \delta I_\ell - (\delta\Psi_\ell, \mathcal{L} \,\delta\Psi_\ell).
 \eeq
-
 Since $\mathcal{L}\Psi_\ell = 0$,
 \beq
 (\delta\Psi_\ell, \mathcal{L} \Psi_\ell) = -(\delta\Psi_\ell, \mathcal{L} \Psi_\ell),
 \eeq
-
-\noindent which combined with the definition of $\mathcal{L}$ from \cref{eq:LDef}, allows us to write the above equation as
+which combined with the definition of $\mathcal{L}$ from \cref{eq:LDef}, allows us to write the above equation as
 \beq
 \delta I_\ell^\prime = 2 \Braket{\Psi_\ell^\star | H\!-\!E | \delta\Psi_\ell} - 2 \Braket{\delta\Psi_\ell^\star | H\!-\!E | \Psi_\ell }.
 \label{eq:IlPsiVariation2}
@@ -190,10 +188,9 @@ Since $\mathcal{L}\Psi_\ell = 0$,
 
 The wavenumber is defined as
 \beq
-\kappa = \frac{\sqrt{2 m E}}{\hbar}
 \label{eq:Wavenumber}
+\kappa = \frac{\sqrt{2 m E}}{\hbar}.
 \eeq
-
 From \cref{eq:Wavenumber}, since Ps has twice the mass of a positron, $m \to 2m$, the kinetic energy of the positronium atom is $T = \frac{1}{4} \kappa^2$, where $\kappa$ is the wavenumber of Ps. Including the dissociation energy of H and Ps to get the total energy gives
 \beq
 E = E_H + E_{Ps} + \frac{1}{4} \kappa^2.
@@ -1178,12 +1175,24 @@ Project \cite{FanoDemo}.
 	\label{fig:FanoCross}
 \end{figure}
 
-To find the resonance parameters, we use the phase shifts instead of the cross sections. The resonance positions and widths can be calculated to high accuracy by fitting the phase shift data to the following curve:
+To find the resonance parameters, we use the phase shifts instead of the 
+cross sections. The resonance positions and widths can be calculated to high 
+accuracy by fitting the phase shift data to the following curve:
 \beq
 \label{eq:ResonanceCurve}
 \delta(E) = A + BE + CE^2 + \arctan\left[ \frac{^1\Gamma}{2\left(^1E_R-E\right)} \right] + \arctan\left[ \frac{^2\Gamma}{2\left(^2E_R-E\right)} \right].
 \eeq
-The polynomial part of the above equation corresponds to hard sphere scattering. The arctangent parts correspond to the first and second Fano resonances \cite{Fano1961,Macek1970,Hazi1979}, with $^1E_R$ and $^2E_R$ as the positions of the resonances and $^1\Gamma$ and $^2\Gamma$ as the widths of the respective resonances. This fitting is preferred over \cref{eq:FanoRes}, since it is simple to add more resonance terms, and there is no additional $q$ parameter to determine. The $^1$S and $^1$P partial waves use this fitting, and the $^1$D and $^1$F partial waves omit the second term, since we consider only a single resonance. See \cref{sec:SWaveResonances,sec:PWaveResonances,sec:DWaveResonance,sec:FWaveResonance} for further discussion of the resonances for each partial wave.
+The polynomial part of the above equation corresponds to hard sphere 
+scattering. The arctangent parts correspond to the first and second Fano 
+resonances \cite{Fano1961,Macek1970,Hazi1979}, with $^1E_R$ and $^2E_R$ as 
+the positions of the resonances and $^1\Gamma$ and $^2\Gamma$ as the widths 
+of the respective resonances. This fitting is preferred over \cref{eq:FanoRes},
+since it is simple to add more resonance terms, and there is no additional
+$q$ parameter to determine. The $^1$S and $^1$P partial waves use this 
+fitting, and the $^1$D and $^1$F partial waves omit the second term, since we 
+consider only a single resonance. See
+\cref{sec:SWaveResonances,sec:PWaveResonances,sec:DWaveResonance,sec:FWaveResonance}
+for further discussion of the resonances for each partial wave.
 
 From Refs.~\cite{Ray2006,Ray2007} and Ref.~\cite[p.599]{Bransden2003}, resonances are metastable states with lifetimes of
 \beq
@@ -1191,7 +1200,8 @@ From Refs.~\cite{Ray2006,Ray2007} and Ref.~\cite[p.599]{Bransden2003}, resonance
 \eeq
 Ray also points out that this is longer than a typical collision time.
 
-For Ps-H scattering, Drachman predicted that these resonances correspond to the metastable state of e$^+$ with the H$^-$ ion \cite{Drachman1979}. A set of close coupling papers \cite{Blackwood2002,Blackwood2002b,Walters2004} confirms that the H$^-$ channel is important for the resonances, indicating that Drachman's prediction was correct.
+For Ps-H scattering, Drachman predicted that these resonances correspond to the metastable state of e$^+$ with the H$^-$ ion \cite{Drachman1979}.
+A set of close coupling papers \cite{Blackwood2002,Blackwood2002b,Walters2004} confirms that the H$^-$ channel is important for the resonances, indicating that Drachman's prediction was correct. Biswas \cite{Biswas2001} also showed that H$^-$ formation is important for describing this system.
 
 \todoi{Refer to the discussions in Peter's paper and Yan/Ho's paper about the resonances corresponding to 2S and 3S. Discussion on energy levels elsewhere for H and Ps, along with what the threshold is.}
 

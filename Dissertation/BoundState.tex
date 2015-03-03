@@ -228,12 +228,10 @@ $^3$D & 0.356 & 0.365 & 0.976 \\
 With the work on the second formalism for the P-wave \cref{sec:PWaveOpt}, it was also possible to use the simplex method to optimize all 6 nonlinear parameters simultaneously instead of having to optimize each symmetry separately. If the sector-based method of Drake and Yan \cite{Yan1995} is ever implemented for this problem, it would be possible to optimize all 15 parameters simultaneously, but it may be much more computationally feasible to optimize each sector separately.
 
 
-\section{Program}
-
-
 \section{Results}
+\label{sec:BoundResults}
 
-The binding energy (also known as the dissociation energy) is given by Ref. \cite{Page1974} as
+The binding energy (also known as the dissociation energy) is given by Ref.~\cite{Page1974} as
 \beq
 \label{eq:DissociationE}
 E_d = -E_1 - \frac{3}{4} \text{ au}.
@@ -387,6 +385,7 @@ Saito (1995) \cite{Saito1995} & Restricted Hartree-Fock & --- & -0.776 & 0.70$^\
 Strasburger (1995) \cite{Strasburger1995} & CI & --- & -0.746 5$^\star$ & -0.0952 4 \\
 Strasburger (1995) \cite{Strasburger1995} & SCF & --- & -0.666 9$^\star$ & -2.261 \\
 Ho (1986) \cite{Ho1986} & Variational with Hylleraas & 396 & -0.788 945$^\star$ & 1.059 75 \\*
+Maruyama (1985) \cite{Maruyama1985,Saito2003a} & Hylleraas & --- & -0.788 211$^\star$ & 1.039 77 \\*
 Ho (1978) \cite{Ho1978} & Variational with Hylleraas & 210 & -0.787 525$^\star$ & 1.021 12$^\star$ \\*
 Clary (1976) \cite{Clary1976} & Variational & 67 & -0.784 161$^\star$ & 0.929 568 \\*
 Page (1974) \cite{Page1974} & Variational & 70 & -0.786 79$^\star$ & 1.00 11 \\*
@@ -419,7 +418,7 @@ The latest by Frolov \cite{Frolov2010} is more of an introduction of a modified 
 
 The last six entries of this table give just the CC results of the Belfast group. These are grouped together to show how different states and pseudostates in the CC calculations can give better approximations to the binding energy. It is particularly clear that adding the H$^-$ channel vastly improves the accuracy.
 
-Our current complex Kohn binding energy in the first line of the table compares well with the accurate energies of Refs. \cite{Bubin2006, Mitroy2006, Yan1999}, but it is not as accurate of a calculation. The purpose of doing the PsH calculation was not to get the best result but to test how well the short-range terms for Ps-H scattering represent the short-range interactions. Based on \cref{tab:BoundEnergyOther}, the short-range interactions are described well. This also gave experience working with the Hylleraas basis set, and finding the PsH energy is a simpler problem than Ps-H scattering.
+Our current Hylleraas binding energy in the first line of the table compares well with the accurate energies of Refs.~\cite{Bubin2006, Mitroy2006, Yan1999}, but it is not as accurate of a calculation. The purpose of doing the PsH calculation was not to get the best result but to test how well the short-range terms for Ps-H scattering represent the short-range interactions. Based on \cref{tab:BoundEnergyOther}, the short-range interactions are described well. This also gave experience working with the Hylleraas basis set, and finding the PsH energy is a simpler problem than Ps-H scattering.
 
 \subsection{Triplet Energy Eigenvalues}
 \label{sec:TripletEigenvalues}
@@ -587,10 +586,19 @@ $^1$D & 4.73 & ---   \\
 \Cref{tab:Stabilization} gives the resonance positions found using the stabilization method. Despite the fact that this stabilization method does not give very accurate resonance positions in our case, we can learn some things from these. First, we can determine the number of resonances before the Ps(n=2) threshold and where to look for them in the full complex Kohn calculations. Secondly, the triplet states do not have resonances before this threshold for any of these partial waves. Lastly, for $\ell > 0$, both the first and second symmetries are needed to accurately describe the system. The first symmetry alone cannot adequately describe the P-wave and D-wave.
 
 
-
 \section{Structure}
 \label{sec:PsHStructure}
-Biswas and Darewych \cite{Biswas2002} find that the difference between the S(1) resonance and the binding energy (\cref{sec:BoundSinglet}) for various calculations of differing accuracy is roughly constant. They suggest that this means that PsH is less like e$^+$ orbiting H$^-$ and more like a molecule.
+There has been some discussion in the literature about whether PsH is more like an atomic structure or more like a molecule with Ps and H. Bressanini and Morosi \cite{Bressanini2003} give a good overview of the lack of consensus on this. 
+
+Frolov and Smith \cite{Frolov1997c} note that they expect PsH to be a cluster consisting of a Ps atom and an H atom. Then from their calculations, they conclude that it acts as some kind of sum of H$^-$ with Ps$^-$.
+
+Saito \cite{Saito2000} attempted to answer this question using Ho's \cite{Ho1986} Hylleraas basis set by plotting e$^+$ and e$^-$ densities. Saito's conclusion was that PsH has an atomic structure but also has a diatomic molecular structure, or Ps with H. Bromley and Mitroy \cite{Bromley2001} also state that PsH has a molecular structure, comparing it ``to a light isotope of the H$_2$ molecule.''
+
+Biswas and Darewych \cite{Biswas2002} find that the difference between the S(1) resonance and the binding energy (\cref{sec:BoundSinglet}) for various calculations of differing accuracy is roughly constant. They suggest that this means that PsH is less like e$^+$ orbiting H$^-$ and more like a diatomic molecule.
+
+\cite{Mitroy2002}
+
+Bressanini and Morosi \cite{Bressanini2003} perform calculations on PsH with a highly optimized one term wavefunction to determine the structure and conclude that PsH cannot be viewed as Ps+H or e$^-$ orbiting around H$^-$. They state, ``Keeping in mind the quantum nature of the leptons and so the impossibility of defining a structure, we suggest to look at PsH as a hydrogen negative ion with the positron that, staying more distant from the nucleus than the electrons, correlates its motion with those of both the electrons. Its attraction on the electrons squeezes them nearer to each other and nearer to the nucleus.''
 
 
 \biblio

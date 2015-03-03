@@ -54,13 +54,25 @@ The short-range functions are also easily generalizable. For the P-wave and D-wa
 
 \todoi{Look at Harris paper \cite{Harris2009}. \cite{Harris2005a}}
 
-The short-range--short-range integrals are complicated more due to the gradient-gradient formalism we have used (see equation \ref{eq:BoundGradient}). As an example of the nature of these, refer to section \ref{sec:DWaveShortShort}. The derivations were previously performed by rotating the coordinate system and integrating over external angles first, as described in Appendix \ref{chp:AngularInt}. This approach works, but it cannot be extended to higher partial waves without completing a full derivation for each partial wave. This also introduces terms that may be too singular for higher partial waves. Drake and Yan \cite{Yan1997} expand upon their previous work for the three-electron Hylleraas integrals to include the spherical harmonics. It is this approach that we take here. All equations used from their paper have been rederived in my notes.
+The short-range--short-range integrals are complicated more due to the 
+gradient-gradient formalism we have used (see equation \ref{eq:BoundGradient}).
+As an example of the nature of these, refer to\cref{sec:DWaveShortShort}.
+The derivations were previously performed by rotating 
+the coordinate system and integrating over external angles first, as 
+described in Appendix \ref{chp:AngularInt}. This approach works, but it 
+cannot be extended to higher partial waves without completing a full 
+derivation for each partial wave. This also introduces terms that may be too 
+singular for higher partial waves. Drake and Yan \cite{Yan1997} expand upon 
+their previous work for the three-electron Hylleraas integrals to include the 
+spherical harmonics. It is this approach that we take here. All equations 
+used from their paper have been rederived in my notes.
 
 \todoi{Point out that very slow compared to previous codes}
 
 \subsection{Hamiltonian}
 \label{sec:GenShortHam}
-As we have for the bound state problem, the Hamiltonian is given compactly as in \cref{eq:BoundHamiltonian} by
+As we have for the bound state problem, the Hamiltonian is given compactly
+as in \cref{eq:BoundHamiltonian} by
 \beq
 \label{eq:GenHam1}
 H = \sum_{i=1}^3 \left(-\frac{1}{2} \nabla_i^2 - \frac{1}{r_i} \right) + \sum_{i>j}^3 \frac{1}{r_{ij}}.
@@ -75,13 +87,22 @@ H = \sum_{i=1}^3 \left(-\frac{1}{2} \nabla_i^2 - \frac{1}{r_i} \right) + \sum_{i
 \end{align}
 % & \left. + \sum_{i>j}^3 \frac{1}{r_{ij}} \frac{r_i}{r_j} \frac{\partial}{\partial r_{ij}} \left( r_i^\hat \cdot \nabla_j^Y \right) \right]
 
-\noindent This is the form when the mass polarization terms are unimportant (with $\mu \rightarrow 0$). As defined in Ref. \cite{Yan1997}, $\hat{\boldsymbol{r}_j} = \boldsymbol{r}_i/r_i$ and $\hat{\nabla}_i^Y = r_i \nabla_i^Y$. The terms involving $\nabla_i^Y$ only operate on the spherical harmonics, and they will be discussed in section \ref{sec:GenSphHarm}.
+\noindent This is the form when the mass polarization terms are unimportant
+(with $\mu \rightarrow 0$). As defined in Ref. \cite{Yan1997},
+$\hat{\boldsymbol{r}_j} = \boldsymbol{r}_i/r_i$ and $\hat{\nabla}_i^Y = r_i \nabla_i^Y$.
+The terms involving $\nabla_i^Y$ only operate on the spherical 
+harmonics, and they will be discussed in section \ref{sec:GenSphHarm}.
 
-The wavefunction we use is slightly different from the form Drake and Yan use. Specifically, we handle the antisymmetrization operator differently in our code, and we do not include the $\Omega$ function, given by equation (10) in their paper. Part of the difference here is that we are working with two electrons and one positron, whereas they are working with systems that have three electrons, such as binding energy calculations of Li.
+The wavefunction we use is slightly different from the form Drake and Yan 
+use. Specifically, we handle the antisymmetrization operator differently in 
+our code, and we do not include the $\Omega$ function, given by equation (10) 
+in their paper. Part of the difference here is that we are working with two 
+electrons and one positron, whereas they are working with systems that have 
+three electrons, such as binding energy calculations of Li.
 
-\subsection{Overlap Integrals}
+\subsection{General Integrals}
 \label{sec:GenOverlap}
-\todoi{Note that these shouldn't be conjugated, but for the short-range terms with $m = 0$, it does not matter.}
+\todoi{Note that these shouldn't be conjugated, but for the short-range terms with $m = 0$, it does not matter. \pageref{BraNote}}
 %As mentioned in the previous section, Drake and Yan's wavefunction is similar but not exactly the same. Thus, we cannot use the equations directly from their paper. Using their notation, the overlap integrals are given by
 %\begin{align}
 %\nonumber I^1(1) = \left< \phi_L^1 \left| \phi_R^1 \right. \right> = \sum_{\text{all } m_i^\prime m_i} & \int \mathrm{d}\boldsymbol{r}_1 \, \mathrm{d}\boldsymbol{r}_2 \, \mathrm{d}\boldsymbol{r}_3 \, r_1^{\tilde{j}_1} r_2^{\tilde{j}_2} r_3^{\tilde{j}_3} r_{12}^{\tilde{j}_{12}} r_{23}^{\tilde{j}_{23}} r_{31}^{\tilde{j}_{31}} \ee^{-(\tilde{\alpha} r_1 + \tilde{\beta} r_2 + \tilde{\gamma} r_3)} \\
@@ -105,48 +126,174 @@ The wavefunction we use is slightly different from the form Drake and Yan use. S
 %\end{align}
 %From the selection rules for the 3j symbol, $t_i = m_i^\prime - m_i$. The factor $(2\ell+1)$ appears often in these types of derivations, so we adopt the shorthand notation of $(l,m,n,\ldots) = (2l+1)(2m+1)(2n+1) \ldots$.
 
+Using the notation in Ref.~\cite{Yan1997}, the terms in \cref{eq:GenHam2} without the spherical harmonic operator, $\hat{\nabla}_i^Y$, will be of the general form
 \begin{align}
 \label{eq:ShortIntGen}
-\nonumber I(\ell_1^\prime m_1^\prime, \ell_2^\prime m_2^\prime, &\ell_3^\prime m_3^\prime; j_1,j_2,j_3,j_{12},j_{23},j_{31}; \alpha, \beta, \gamma) = \int d \textit{\textbf{r}}_1 d \textit{\textbf{r}}_2 d \textit{\textbf{r}}_3
+\nonumber I(\ell_1^\prime m_1^\prime, \ell_2^\prime m_2^\prime, &\ell_3^\prime m_3^\prime, \ell_1 m_1, \ell_2 m_2, \ell_3 m_3; j_1,j_2,j_3,j_{12},j_{23},j_{31}; \alpha, \beta, \gamma) \\
+= & \; \int d \textit{\textbf{r}}_1 d \textit{\textbf{r}}_2 d \textit{\textbf{r}}_3
 r_1^{j_1} r_2^{j_2} r_3^{j_3} r_{12}^{j_{12}}
 r_{23}^{j_{23}} r_{31}^{j_{31}}
-e^{-(\bar{\alpha} r_1 + \bar{\beta} r_2 + \bar{\gamma} r_3)} \\
+e^{-(\alpha r_1 + \beta r_2 + \gamma r_3)}  \nonumber \\
 & \times Y_{\ell_1^\prime m_1^\prime}^* (\textit{\textbf{r}}_1) Y_{\ell_2^\prime m_2^\prime}^* (\textit{\textbf{r}}_2) Y_{\ell_3^\prime m_3^\prime}^* (\textit{\textbf{r}}_3) Y_{\ell_1 m_1} (\textit{\textbf{r}}_1) Y_{\ell_2 m_2} (\textit{\textbf{r}}_2) Y_{\ell_3 m_3} (\textit{\textbf{r}}_3)\, .
 \end{align}
-
-\todoi{Note different $\alpha$, etc. than what is used in our wavefunction}
-
-After some manipulation, this integral can be written as
+Note that $\alpha$, $\beta$, and $\gamma$ are not necessarily the same as those in \cref{eq:PhiDef}. These will be $2\alpha$, $2\beta$, and $2\gamma$ for the direct-direct terms and $2\alpha$, $\beta+\gamma$, $\gamma+\beta$ for the direct-exchange terms. After some manipulation, this integral can be written as
 \begin{align}
 \label{eq:ShortIntGen2}
-I(\ell_1^\prime m_1^\prime, \ell_2^\prime m_2^\prime, &\ell_3^\prime m_3^\prime; j_1,j_2,j_3,j_{12},j_{23},j_{31}; \bar{\alpha}, \bar{\beta}, \bar{\gamma})  \nonumber \\
+I(\ell_1^\prime m_1^\prime, &\ell_2^\prime m_2^\prime, \ell_3^\prime m_3^\prime, \ell_1 m_1, \ell_2 m_2, \ell_3 m_3; j_1,j_2,j_3,j_{12},j_{23},j_{31}; \alpha, \beta, \gamma)  \nonumber \\
 = & \; \sum_{q_{12}=0}^{M_{12}} \sum_{q_{23}=0}^{M_{23}} \sum_{q_{31}=0}^{M_{31}} \sum_{k_{12}=0}^{L_{12}} \sum_{k_{23}=0}^{L_{23}} \sum_{k_{31}=0}^{L_{31}}  \nonumber \\
-& \times I_{\rm{ang}}(\ell_1^\prime m_1^\prime, \ell_2^\prime m_2^\prime, \ell_3^\prime m_3^\prime; q_{12}, q_{23}, q_{31})  \nonumber \\
-& \times I_{\rm{R}}(q_{12}, q_{23}, q_{31}, k_{12}, k_{23}, k_{31}; j_1, j_2, j_3, j_{12}, j_{23}, j_{31}; \alpha, \beta, \gamma)
+& \times I_{\rm{ang}}(\ell_1^\prime m_1^\prime, \ell_2^\prime m_2^\prime, \ell_3^\prime m_3^\prime, \ell_1 m_1, \ell_2 m_2, \ell_3 m_3; q_{12}, q_{23}, q_{31})  \nonumber \\
+& \times I_{\rm{R}}(q_{12}, q_{23}, q_{31}, k_{12}, k_{23}, k_{31}; j_1, j_2, j_3, j_{12}, j_{23}, j_{31}; \alpha, \beta, \gamma).
 \end{align}
+For even values of $j_{12}$, $M_{12} = \frac{1}{2}j_{12}$ and $L_{12} = \frac{1}{2}j_{12} - q_{12}$. For odd values of $j_{12}$, $M_{12} = \infty$ and $L_{12} = \frac{1}{2}(j_{12}+1)$. The same type of upper limits apply to the $j_{23}$ and $j_{31}$ terms.
 
+The angular part of $I$ is given by
 \begin{align}
 \label{eq:DrakeGenAng}
-I_{\rm{ang}}(\ell_1^\prime m_1^\prime, & \ell_2^\prime m_2^\prime, \ell_3^\prime m_3^\prime; q_{12}, q_{23}, q_{31})  \nonumber \\
+I_{\rm{ang}}(\ell_1^\prime m_1^\prime, & \ell_2^\prime m_2^\prime, \ell_3^\prime m_3^\prime, \ell_1 m_1, \ell_2 m_2, \ell_3 m_3; q_{12}, q_{23}, q_{31})  \nonumber \\
 = & \;(-1)^{m_1^\prime + m_2^\prime + m_3^\prime + q_{12} + q_{23} + q_{31}} (\ell_1^\prime, \ell_2^\prime, \ell_3^\prime, \ell_1, \ell_2, \ell_3)^{1/2} \sum_{n_1 n_2 n_3} (n_1,n_2,n_3)  \nonumber \\
 & \times \SixJSymbol{n_1,n_2,n_3}{q_{23},q_{31},q_{12}} \ThreeJSymbol{n_1, m_1^\prime - m_1}{n_2, m_2^\prime - m_2}{n_3, m_3^\prime - m_3}  \nonumber \\
 & \times \ThreeJSymbol{\ell_1^\prime,-m_1^\prime}{\ell_1,m_1}{n_1, m_1^\prime - m_1} \ThreeJSymbol{\ell_2^\prime,-m_2^\prime}{\ell_2,m_2}{n_2,m_2^\prime - m_2}  \nonumber \\
 & \times \ThreeJSymbol{\ell_1^\prime,-m_1^\prime}{\ell_3,m_3}{n_3,m_3^\prime - m_3} \ThreeJSymbol{\ell_1^\prime,0}{\ell_1,0}{n_1,0} \ThreeJSymbol{\ell_2^\prime,0}{\ell_2,0}{n_2,0}  \nonumber \\
-& \times \ThreeJSymbol{\ell_3^\prime,0}{\ell_3,0}{n_3,0} \ThreeJSymbol{q_{31},0}{q_{12},0}{n_1,0} \ThreeJSymbol{q_{12},0}{q_{23},0}{n_2,0} \ThreeJSymbol{q_{23},0}{q_{31},0}{n_3,0}
+& \times \ThreeJSymbol{\ell_3^\prime,0}{\ell_3,0}{n_3,0} \ThreeJSymbol{q_{31},0}{q_{12},0}{n_1,0} \ThreeJSymbol{q_{12},0}{q_{23},0}{n_2,0} \ThreeJSymbol{q_{23},0}{q_{31},0}{n_3,0}.
 \end{align}
-
-This expression includes summations over both the Wigner 3-j and 6-j coefficients \cite{Edmonds1996,Brink1993,Rose1995}, also known as the 3-j and 6-j symbols. The 3-j symbols are related to the Clebsch-Gordan coefficients by \cite{Edmonds1996}
+This expression includes summations over both the Wigner 3-j and 6-j coefficients \cite{Edmonds1996,Brink1993,Rose1995}, also known as the 3-j and 6-j symbols. The 3-j symbols are related to the Clebsch-Gordan coefficients by \cite[p.46]{Edmonds1996}
 \begin{equation}
 \label{eq:Clebsch3J}
-\ThreeJSymbol{j_1,m_1}{j_2,m_2}{j_3,m_3} = (-1)^{j_1 - j_2 + m_3} \sqrt{2 j_3 + 1} \ClebschGordon{j_1,m_1}{j_2,m_2}{j_3,-m_3}.
+\ThreeJSymbol{j_1,m_1}{j_2,m_2}{j_3,m_3} = (-1)^{j_1 - j_2 + m_3} (2 j_3 + 1)^{-1/2} \ClebschGordon{j_1,m_1}{j_2,m_2}{j_3,-m_3}.
 \end{equation}
-The advantage of the 3-j symbols over the Clebsch-Gordan coefficients is that they are a more symmetric representation of angular momentum. The factor $(2\ell+1)$ appears often in these types of derivations, so we adopt their shorthand notation of $(l,m,n,\ldots) = (2l+1)(2m+1)(2n+1) \ldots$.
+The advantage of the 3-j symbols over the Clebsch-Gordan coefficients is that 
+they are a more symmetric representation of angular momentum. The factor
+$(2\ell+1)$ appears often in these types of derivations, so we adopt their 
+shorthand notation of $(l,m,n,\ldots) = (2l+1)(2m+1)(2n+1) \cdots$.
+
+The radial part of \cref{eq:ShortIntGen2} is 
+\begin{align}
+\label{eq:ShortGenIR}
+I_{\rm{R}}(q_{12}, q_{23}, q_{31}&, k_{12}, k_{23}, k_{31}; j_1, j_2, j_3, j_{12}, j_{23}, j_{31}; \alpha, \beta, \gamma)  \nonumber \\
+= & \; C_{j_{12} q_{12} k_{12}} C_{j_{23} q_{23} k_{23}} C_{j_{31} q_{31} k_{31}}  \nonumber \\
+& \times W_{\rm{R}}(q_{12}, q_{23}, q_{31}, k_{12}, k_{23}, k_{31}; j_1, j_2, j_3, j_{12}, j_{23}, j_{31}; \alpha, \beta, \gamma).
+\end{align}
+The $C_{jqk}$ coefficients are the same as in \cref{eq:Ccoeff}. The $W_{\rm{R}}$ function is built from the $W$ functions in \cref{eq:Wfunc} as
+\begin{align}
+\label{eq:ShortGenWR}
+W_{\rm{R}}(&q_{12}, q_{23}, q_{31}, k_{12}, k_{23}, k_{31}; j_1, j_2, j_3, j_{12}, j_{23}, j_{31}; \alpha, \beta, \gamma)  \nonumber \\
+=\; \; & W(j_1 + 2 + s_{12} + s_{31}, j_2 + 2 + j_{12} - s_{12} + s_{23}, j_3 + 2 + j_{23} - s_{23} + j_{31} - s_{31}; \alpha, \beta, \gamma)  \nonumber \\
++ & W(j_1 + 2 + s_{12} + s_{31}, j_3 + 2 + s_{23} + j_{31} - s_{31}, j_2 + 2 + j_{12} - s_{12} + j_{23} - s_{23}; \alpha, \gamma, \beta)  \nonumber \\
++ & W(j_2 + 2 + s_{12} + s_{23}, j_1 + 2 + j_{12} - s_{12} + s_{31}, j_3 + 2 + j_{23} - s_{23} + j_{31} - s_{31}; \beta, \alpha, \gamma)  \nonumber \\
++ & W(j_2 + 2 + s_{12} + s_{23}, j_3 + 2 + j_{23} - s_{23} + s_{31}, j_1 + 2 + j_{12} - s_{12} + j_{31} - s_{31}; \beta, \gamma, \alpha)  \nonumber \\
++ & W(j_3 + 2 + s_{23} + s_{31}, j_1 + 2 + s_{12} + j_{31} - s_{31}, j_2 + 2 + j_{12} - s_{12} + j_{23} - s_{23}; \gamma, \alpha, \beta)  \nonumber \\
++ & W(j_3 + 2 + s_{23} + s_{31}, j_2 + 2 + s_{12} + j_{23} - s_{23}, j_1 + 2 + j_{12} - s_{12} + j_{31} - s_{31}; \gamma, \beta, \alpha),
+\end{align}
+with $s_{ij} = q_{ij} + 2 k_{ij}$.
+Note that there are similarities with \cref{eq:FourBodyExpansion}.
+
 
 \todoi{Mention \cite{Luscombe1998,Wei1998,Rasch2003} for possible speedups in this code.}
 
 
 \subsection{Spherical Harmonic Terms}
 \label{sec:GenSphHarm}
+
+The terms in \cref{eq:GenHam2} involving the spherical harmonic operator $\hat{\nabla}_i^Y$ have to be handled differently than the other terms. In Ref.~\cite{Yan1997}, they do different permutations for the three-electron problem, so for the $p$ in their paper, we always use $p = 1$.
+
+\begin{align}
+\label{eq:GenY12}
+I^1(\hat{\boldsymbol{r}_1} \cdot \hat{\nabla}_2^Y) = &\sum_{q_{12}=0}^{M_{12}} \sum_{q_{23}=0}^{M_{23}} \sum_{q_{31}=0}^{M_{31}} \sum_{k_{12}=0}^{L_{12}} \sum_{k_{23}=0}^{L_{23}} \sum_{k_{31}=0}^{L_{31}} \sum_{T_1 T_2} b(\ell_2; T_2) C^1(\hat{\textit{\textbf{r}}}_1 \bm{\cdot} \hat{\textit{\textbf{r}}}_2)  \nonumber \\
+& \times I_{\rm{R}}(q_{12}, q_{23}, q_{31}, k_{12}, k_{23}, k_{31}; j_1, j_2, j_3, j_{12}, j_{23}, j_{31}; \alpha, \beta, \gamma)
+\end{align}
+The $b$ function here is defined by
+\begin{align}
+\label{eq:bfunc}
+b(\ell; \ell - 1) &= \ell + 1  \nonumber \\
+b(\ell; \ell + 1) &= -\ell
+\end{align}
+For any other values of the arguments, $b$ gives 0. $C^1$ is given by
+\begin{align}
+\label{eq:CP12}
+C^1(\hat{\textit{\textbf{r}}}_1 & \bm{\cdot} \hat{\textit{\textbf{r}}}_2) = (\ell_1^\prime, \ell_2^\prime, \ell_3^\prime, \ell_1, \ell_2, \ell_3)^{1/2} (-1)^{q_{12} + q_{23} + q_{31}} \sum_{n_1 n_2 n_3} (n_1, n_2, n_3, T_1, T_2)  \nonumber \\
+& \times \ThreeJSymbol{1,0}{\ell_1,0}{T_1,0} \ThreeJSymbol{1,0}{\ell_2,0}{T_1,0} \ThreeJSymbol{\ell_1^\prime,0}{T_1,0}{n_1,0} \ThreeJSymbol{\ell_2^\prime,0}{T_2,0}{n_2,0} \ThreeJSymbol{\ell_3^\prime,0}{\ell_3,0}{n_3,0}  \nonumber \\
+& \times \ThreeJSymbol{q_{31},0}{q_{12},0}{n_1,0} \ThreeJSymbol{q_{12},0}{q_{23},0}{n_2,0} \ThreeJSymbol{q_{23},0}{q_{31},0}{n_3,0} \SixJSymbol{n_1,n_2,n_3}{q_{23},q_{31},q_{12}} \tilde{C}^1(\hat{\textit{\textbf{r}}}_1 \bm{\cdot} \hat{\textit{\textbf{r}}}_2)
+\end{align}
+with
+\begin{align}
+\label{eq:CPtilde12}
+\tilde{C}^1(\hat{\textit{\textbf{r}}}_1 & \bm{\cdot} \hat{\textit{\textbf{r}}}_2) = \sum_\mu (-1)^{\mu-m_3} \ThreeJSymbol{1,\mu}{\ell_1,m_1}{T_1,-\mu-m_1} \ThreeJSymbol{1,-\mu}{\ell_2,m_2}{T_2,\mu-m_2}  \nonumber \\
+& \times \ThreeJSymbol{\ell_3^\prime,-m_3^\prime}{\ell_3,m_3}{n_3,m_3^\prime-m_3} \ThreeJSymbol{\ell_1^\prime,-m_1^\prime}{T_1,\mu+m_1}{n_1,m_1^\prime-\mu-m_1}  \nonumber \\
+& \times \ThreeJSymbol{\ell_2^\prime,-m_2^\prime}{T_2,-\mu+m_2}{n_2,m_2^\prime+\mu-m_2} \ThreeJSymbol{n_1,m_1^\prime-\mu-m_1}{n_2,m_2^\prime+\mu-m_2}{n_3,m_3^\prime-m_3}.
+\end{align}
+The values that $\mu$ can take are $-1$, $0$, and $1$.
+
+Considering the properties of the 3-j symbols in \cref{eq:CPtilde12}, the 
+limits for the $T_1$ summation in \cref{eq:GenY12} are $\abs{1 - \ell_1}$ to
+$1 + \ell_1$. Similarly, for the $T_2$ summation, the limits are
+$\abs{1 - \ell_2}$ to $1 + \ell_2$. However, considering that the $b$
+function in \cref{eq:bfunc} can give 0, not all $T_2$ in this range are used.
+
+Unlike the previous section, the expressions here are not exactly the same as 
+that in Yan and Drake \cite{Yan1997}, since as noted, their wavefunction has 
+an extra set of coefficients given by
+\begin{align}
+\Omega(\ell_1, \ell_2, \ell_{12}, &\ell_3, L, M_L, m_1, m_2, m_3) = (-1)^{\ell_1 - \ell_2 + m_{12} + \ell_{12} - \ell_3 + M_L} (\ell_{12}, L)^{1/2}  \nonumber \\
+& \times \ThreeJSymbol{\ell_1, m_1}{\ell_2,m_2}{\ell_{12},-m_{12}} \ThreeJSymbol{\ell_{12},m_{12}}{\ell_3,m_3}{L,-M_L}.
+\end{align}
+This addition to their wavefunction is included in the
+$\tilde{C}^1(\hat{\textit{\textbf{r}}}_1 \bm{\cdot} \hat{\textit{\textbf{r}}}_2)$
+and allows them to reduce these using graphical methods as in
+Ref.~\cite{Lindgren2012,Brink1993}. Unfortunately, such simplifications are not possible with the 
+form of our wavefunction.
+
+We note that $C^1(\hat{\textit{\textbf{r}}}_1 \bm{\cdot} \hat{\textit{\textbf{r}}}_2) = C^1(\hat{\textit{\textbf{r}}}_2 \bm{\cdot} \hat{\textit{\textbf{r}}}_1)$, but $I^1(\hat{\boldsymbol{r}_1} \cdot \hat{\nabla}_2^Y) \neq I^1(\hat{\boldsymbol{r}_2} \cdot \hat{\nabla}_1^Y)$. Namely,
+\begin{align}
+\label{eq:GenY21}
+I^1(\hat{\boldsymbol{r}_2} \cdot \hat{\nabla}_1^Y) = &\sum_{q_{12}=0}^{M_{12}} \sum_{q_{23}=0}^{M_{23}} \sum_{q_{31}=0}^{M_{31}} \sum_{k_{12}=0}^{L_{12}} \sum_{k_{23}=0}^{L_{23}} \sum_{k_{31}=0}^{L_{31}} \sum_{T_1 T_2} b(\ell_1; T_1) C^1(\hat{\textit{\textbf{r}}}_1 \bm{\cdot} \hat{\textit{\textbf{r}}}_2)  \nonumber \\
+& \times I_{\rm{R}}(q_{12}, q_{23}, q_{31}, k_{12}, k_{23}, k_{31}; j_1, j_2, j_3, j_{12}, j_{23}, j_{31}; \alpha, \beta, \gamma).
+\end{align}
+More generally, these integrals can be written as
+\begin{align}
+\label{eq:GenYij}
+I^1(\hat{\boldsymbol{r}_i} \cdot \hat{\nabla}_j^Y) = &\sum_{q_{12}=0}^{M_{12}} \sum_{q_{23}=0}^{M_{23}} \sum_{q_{31}=0}^{M_{31}} \sum_{k_{12}=0}^{L_{12}} \sum_{k_{23}=0}^{L_{23}} \sum_{k_{31}=0}^{L_{31}} \sum_{T_i T_j} b(\ell_j; T_j) C^1(\hat{\textit{\textbf{r}}}_i \bm{\cdot} \hat{\textit{\textbf{r}}}_j)  \nonumber \\
+& \times I_{\rm{R}}(q_{12}, q_{23}, q_{31}, k_{12}, k_{23}, k_{31}; j_1, j_2, j_3, j_{12}, j_{23}, j_{31}; \alpha, \beta, \gamma),
+\end{align}
+and $C^1(\hat{\textit{\textbf{r}}}_i \bm{\cdot} \hat{\textit{\textbf{r}}}_j) = C^1(\hat{\textit{\textbf{r}}}_j \bm{\cdot} \hat{\textit{\textbf{r}}}_i)$. Using cyclic permutations,
+\begin{align}
+\label{eq:CP23}
+C^1(\hat{\textit{\textbf{r}}}_2 & \bm{\cdot} \hat{\textit{\textbf{r}}}_3) = (\ell_1^\prime, \ell_2^\prime, \ell_3^\prime, \ell_1, \ell_2, \ell_3)^{1/2} (-1)^{q_{12} + q_{23} + q_{31}} \sum_{n_1 n_2 n_3} (n_1, n_2, n_3, T_2, T_3)  \nonumber \\
+& \times \ThreeJSymbol{1,0}{\ell_2,0}{T_2,0} \ThreeJSymbol{1,0}{\ell_3,0}{T_3,0} \ThreeJSymbol{\ell_1^\prime,0}{\ell_1,0}{n_1,0} \ThreeJSymbol{\ell_2^\prime,0}{T_2,0}{n_2,0} \ThreeJSymbol{\ell_3^\prime,0}{T_3,0}{n_3,0}  \nonumber \\
+& \times \ThreeJSymbol{q_{31},0}{q_{12},0}{n_1,0} \ThreeJSymbol{q_{12},0}{q_{23},0}{n_2,0} \ThreeJSymbol{q_{23},0}{q_{31},0}{n_3,0} \SixJSymbol{n_1,n_2,n_3}{q_{23},q_{31},q_{12}} \tilde{C}^1(\hat{\textit{\textbf{r}}}_2 \bm{\cdot} \hat{\textit{\textbf{r}}}_3)
+\end{align}
+with
+\begin{align}
+\label{eq:CPtilde23}
+\tilde{C}^1(\hat{\textit{\textbf{r}}}_2 & \bm{\cdot} \hat{\textit{\textbf{r}}}_3) = \sum_\mu (-1)^{\mu-m_1} \ThreeJSymbol{1,\mu}{\ell_2,m_2}{T_2,-\mu-m_2} \ThreeJSymbol{1,-\mu}{\ell_3,m_3}{T_3,\mu-m_3}  \nonumber \\
+& \times \ThreeJSymbol{\ell_1^\prime,-m_1^\prime}{\ell_1,m_1}{n_1,m_1^\prime-m_1} \ThreeJSymbol{\ell_2^\prime,-m_2^\prime}{T_2,\mu+m_2}{n_2,m_2^\prime-\mu-m_2}  \nonumber \\
+& \times \ThreeJSymbol{\ell_3^\prime,-m_3^\prime}{T_3,-\mu+m_3}{n_3,m_3^\prime+\mu-m_3} \ThreeJSymbol{n_1,m_1^\prime-m_1}{n_2,m_2^\prime-\mu-m_2}{n_3,m_3^\prime+\mu-m_3},
+\end{align}
+and
+\begin{align}
+\label{eq:CP31}
+C^1(\hat{\textit{\textbf{r}}}_3 & \bm{\cdot} \hat{\textit{\textbf{r}}}_1) = (\ell_1^\prime, \ell_2^\prime, \ell_3^\prime, \ell_1, \ell_2, \ell_3)^{1/2} (-1)^{q_{12} + q_{23} + q_{31}} \sum_{n_1 n_2 n_3} (n_1, n_2, n_3, T_3, T_1)  \nonumber \\
+& \times \ThreeJSymbol{1,0}{\ell_3,0}{T_3,0} \ThreeJSymbol{1,0}{\ell_1,0}{T_1,0} \ThreeJSymbol{\ell_2^\prime,0}{\ell_2,0}{n_2,0} \ThreeJSymbol{\ell_3^\prime,0}{T_3,0}{n_3,0} \ThreeJSymbol{\ell_1^\prime,0}{T_1,0}{n_1,0}  \nonumber \\
+& \times \ThreeJSymbol{q_{31},0}{q_{12},0}{n_1,0} \ThreeJSymbol{q_{12},0}{q_{23},0}{n_2,0} \ThreeJSymbol{q_{23},0}{q_{31},0}{n_3,0} \SixJSymbol{n_1,n_2,n_3}{q_{23},q_{31},q_{12}} \tilde{C}^1(\hat{\textit{\textbf{r}}}_3 \bm{\cdot} \hat{\textit{\textbf{r}}}_1)
+\end{align}
+with
+\begin{align}
+\label{eq:CPtilde31}
+\tilde{C}^1(\hat{\textit{\textbf{r}}}_3 & \bm{\cdot} \hat{\textit{\textbf{r}}}_1) = \sum_\mu (-1)^{\mu-m_2} \ThreeJSymbol{1,\mu}{\ell_3,m_3}{T_3,-\mu-m_3} \ThreeJSymbol{1,-\mu}{\ell_1,m_1}{T_1,\mu-m_1}  \nonumber \\
+& \times \ThreeJSymbol{\ell_2^\prime,-m_2^\prime}{\ell_2,m_2}{n_2,m_2^\prime-m_2} \ThreeJSymbol{\ell_3^\prime,-m_3^\prime}{T_3,\mu+m_3}{n_3,m_3^\prime-\mu-m_3}  \nonumber \\
+& \times \ThreeJSymbol{\ell_1^\prime,-m_1^\prime}{T_1,-\mu+m_1}{n_1,m_1^\prime+\mu-m_1} \ThreeJSymbol{n_1,m_1^\prime+\mu-m_1}{n_2,m_2^\prime-m_2}{n_3,m_3^\prime-\mu-m_3}.
+\end{align}
+
+
+\section{Program}
+\label{sec:GenShortProg}
+The 
+
+\cref{eq:FourBodyExpansion}
+
+\cref{eq:ShortIntGen2}
+
+\cref{eq:GenYij}
+
 
 
 

@@ -72,10 +72,26 @@ I &= (4\pi)^3 \sum_{q=0}^\infty \sum_{k_{12} = 0}^{L_{12}} \sum_{k_{12} = 0}^{L_
       & + W(\tilde{l}_i + 2q + 2 k_{12} + 2 k_{23}, \tilde{k}_i + m_i - 2 k_{12} + 2 k_{13}, \tilde{n}_i + q_i - 2 q - 2 k_{23} + p_i - 2 k_{13}; \beta, \alpha, \gamma) \nonumber \\
       & + W(\tilde{l}_i + 2q + 2 k_{12} + 2 k_{23}, \tilde{n}_i + q_i - 2 k_{23} + 2 k_{13}, \tilde{k}_i + m_i - 2 q - 2 k_{23} + p_i - 2 k_{13}; \beta, \gamma, \alpha) \nonumber \\
       & + W(\tilde{n}_i + 2q + 2 k_{23} + 2 k_{13}, \tilde{k}_i + p_i - 2 k_{13} + 2 k_{12}, \tilde{l}_i + m_i - 2 q - 2 k_{23} + q_i - 2 k_{13}; \gamma, \alpha, \beta) \nonumber \\
-      & + W(\tilde{n}_i + 2q + 2 k_{23} + 2 k_{13}, \tilde{l}_i + q_i - 2 k_{23} + 2 k_{12}, \tilde{k}_i + m_i - 2 q - 2 k_{23} + p_i - 2 k_{13}; \gamma, \beta, \alpha)]
+      & + W(\tilde{n}_i + 2q + 2 k_{23} + 2 k_{13}, \tilde{l}_i + q_i - 2 k_{23} + 2 k_{12}, \tilde{k}_i + m_i - 2 q - 2 k_{23} + p_i - 2 k_{13}; \gamma, \beta, \alpha)].
 \end{align}
+The $C_{j,q,k}$ coefficients are given by Perkins as \cite{Perkins1968}
+\beq
+\label{eq:Ccoeff}
+C_{j,q,k} = \frac{2q+1}{j+2} \Binomial{j+2}{2k+1} \prod_{t=0}^{\min{(q-1),\frac{1}{2}(j+1)}} \frac{2k+2t-j}{2k+2q-2t+1}.
+\eeq
+The $W$ functions are expressed as an infinite summation of the $_2F_1$ hypergeometric functions \cite{Drake1995}:
+\begin{align}
+\label{eq:Wfunc}
+W(l,m,n;\alpha,\beta,\gamma) = &\frac{\Factorial{l}}{(\alpha+\beta+\gamma)^{l+m+n+3}} \sum_{p=0}^\infty \frac{\Factorial{(l+m+n+p+2)}}{\Factorial{(l+1+p)} (l+m+2+p)} \left( \frac{\alpha}{\alpha+\beta+\gamma} \right)^p  \nonumber \\
+& \times \Hypergeometric{2}{1}{1,l+m+n+p+3}{l+m+p+3}{\frac{\alpha+\beta}{\alpha+\beta+\gamma}}.
+\end{align}
+To reduce computation time, we also use the recursion relation in their paper of
+\beq
+\Hypergeometric{2}{1}{1,a}{c}{z} = 1 + \left( \frac{a}{c} \right) z \,\, \Hypergeometric{2}{1}{1,a+1}{c+1}{z}
+\eeq
+A derivation of this is given in \cref{sec:Hypergeometric}.
 
-The $k_{ij}$ summations are all finite. If all powers of $r_{ij}$ are odd, the $q$ summation is infinite, and if any of $r_{ij}$ is even, the $q$ summation becomes finite. For the finite $q$ sums, these direct sums are solved very accurately, but for the infinite sums, some integrals converge slowly. Particularly when all three $r_{ij}$ powers are odd and at least one is $-1$, the integrals converge the slowest. It is possible to restrict the basis set described by \cref{eq:OmegaDef} so that at least one of the $r_{ij}$ powers is even, making solving the integrals easier. However, this leads to slow convergence in the energy \cite{Drake1995}.
+The $k_{ij}$ summations in \cref{eq:FourBodyExpansion} are all finite. If all powers of $r_{ij}$ are odd, the $q$ summation is infinite, and if any of $r_{ij}$ is even, the $q$ summation becomes finite. For the finite $q$ sums, these direct sums are solved very accurately, but for the infinite sums, some integrals converge slowly. Particularly when all three $r_{ij}$ powers are odd and at least one is $-1$, the integrals converge the slowest. It is possible to restrict the basis set described by \cref{eq:OmegaDef} so that at least one of the $r_{ij}$ powers is even, making solving the integrals easier. However, this leads to slow convergence in the energy \cite{Drake1995}.
 
 As Frolov and Bailey \cite{Frolov2003} note, these four-body integrals only work for systems with one infinitely heavy particle, such as PsH or Ps-H scattering. For systems with arbitrary masses, such as Ps$_2$ or Ps-Ps scattering, this has to be generalized to
 \beq
@@ -906,7 +922,7 @@ Due to the integration limits of the $r_{13}$ and $r_{23}$ integrations, the $r_
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=5in]{Cusp}
+	\includegraphics[width=5in]{cusp}
 	\caption{Example of cusp in S-wave short-long integration for $1/r_{23}$ term of $(\bar{\phi}_3, \mathcal{L}\bar{C}_0)$ with \mbox{$r_1 = 18.201$}}
 	\label{fig:cusp}
 \end{figure}

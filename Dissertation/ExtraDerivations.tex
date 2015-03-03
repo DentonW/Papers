@@ -159,13 +159,13 @@ Substituting this back into \cref{eq:LSGenLapl1}, we get cancellations with the 
 
 
 
-\section{\texorpdfstring{$_2F_1$}{Hypergeometric} Identity}
+\section{\texorpdfstring{$_2F_1$}{Hypergeometric} Recursion Relation}
 \label{sec:Hypergeometric}
 
 The backwards recursion relation for the hypergeometric function is given in Refs. \cite{Drake1995} and \cite{Frolov2003} as
 \beq
 \label{eq:HyperIdentity}
-_2F_1(1,a;c;z) = 1 + \left( \frac{a}{c} \right) z \,\,_2F_1(1,a+1;c+1;z).
+\Hypergeometric{2}{1}{1,a}{c}{z} = 1 + \left( \frac{a}{c} \right) z \,\, \Hypergeometric{2}{1}{1,a+1}{c+1}{z}.
 \eeq
 
 From Abramowitz and Stegun \cite{Abramowitz1965}, the definition of the hypergeometric function is given by
@@ -185,7 +185,6 @@ Using the above definition of the Pochhammer symbol, we can easily see that
 \label{eq:PochPlus1}
 (x+1)_n = \frac{(x+n)}{(x)} \cdot (x)_n = \frac{(x)_{n+1}}{x}.
 \eeq
-
 From \ref{eq:HyperDef} and \ref{eq:PochPlus1}, 
 \begin{align}
 \nonumber _2F_1(1,a+1;c+1;z) &= 1 + \sum_{n=1}^{\infty} \frac{(1)_n \cdot (a+1)_n}{(c+1)_n} \frac{z^n}{n!} = 1 + \sum_{n=1}^{\infty} \frac{(a+1)_n}{(c+1)_n} z^n \\
@@ -194,9 +193,8 @@ From \ref{eq:HyperDef} and \ref{eq:PochPlus1},
 Multiplying by $\left(\frac{c}{a}\right) z$, we now have
 \beq
 \label{eq:Hyper1}
-\left(\frac{c}{a}\right) z _2F_1(1,a+1;c+1;z) = \left(\frac{c}{a}\right) z + \sum_{n=2}^{\infty} \frac{(a)_n}{(c)_n} z^n = \sum_{n=1}^{\infty} \frac{(a)_n}{(c)_n} z^n.
+\left(\frac{c}{a}\right) z \,\, _2F_1(1,a+1;c+1;z) = \left(\frac{c}{a}\right) z + \sum_{n=2}^{\infty} \frac{(a)_n}{(c)_n} z^n = \sum_{n=1}^{\infty} \frac{(a)_n}{(c)_n} z^n.
 \eeq
-
 From the definition in equation \ref{eq:HyperDef},
 \beq
 \label{eq:Hyper2}
