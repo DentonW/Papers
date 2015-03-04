@@ -1,4 +1,16 @@
 *.pdf
+*.bbl
+*.blg
+*.brf
+*.log
+*.out
+*.synctex
+*.dvi
+*.tmb
+*.toc
+*.tiw
+*.bcf
+*.aux
 PRA PsH/IPython/.ipynb_checkpoints/Paper Images - Plot.ly-checkpoint.ipynb
 PRA PsH/IPython/.ipynb_checkpoints/Paper Images - Copy-checkpoint.ipynb
 PRA PsH/IPython/.ipynb_checkpoints/Paper Images-checkpoint.ipynb
