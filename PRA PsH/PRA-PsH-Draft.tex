@@ -105,25 +105,6 @@ our work of the application of the complex Kohn variational
 method to elastic Ps(1s)-H(1s) scattering in the energies up to the 
 excitation threshold of Ps(n=2) at 5.101 eV.
 
-Ps formation is important in the galactic core \cite{Kinzer1996} and the 
-interstellar medium \cite{Guessoum2005}, and Ps-atom 
-scattering is of interest in the study of solar processes \cite{Crannell1976}.
-As well as the basic interest of Ps-atom scattering in atomic physics, Ps 
-is also important in material science. As Ps is neutral, it penetrates deeper 
-into material than a charged particle, such as a positron. Ps scattering also 
-has applications in other areas of physics such as biophysics and 
-astrophysics \cite{Laricchia2012}.
-
-Brawley et al. \cite{Brawley2010a,Brawley2010} found that for many targets,
-equal velocity e$^-$ and Ps scattering cross sections are similar between 0.5
-and 2.0 a.u. This is despite the fact that Ps has twice
-the mass as e$^-$ and is neutral. Fabrikant and Gribakin recently found that
-for Ps-Kr and Ps-Ar low-velocity scattering, the cross sections are comparable
-to that of e$^-$-Kr and e$^-$-Ar scattering
-\cite{Fabrikant2014,Fabrikant2014a}. The tentative conclusion is that the
-positron plays a much smaller role in the scattering process than the electron
-in Ps-atom and Ps-molecule scattering.
-
 Ps-H scattering is a fundamental four-body Coulomb process. The Kohn (and 
 inverse Kohn) variational method has previously been applied to Ps-H 
 collisions by Van Reeth and Humberston \cite{VanReeth2003,VanReeth2004}, who 
@@ -157,19 +138,18 @@ resonances for the first four partial waves and compare the positions and
 widths to that of the earlier Kohn \cite{VanReeth2003,VanReeth2004}, close 
 coupling (CC) \cite{Walters2004} and complex rotation calculations
 \cite{Yan1999,Yan1998a,Ho1998,Ho2000}. In addition, we compute the scattering
-lengths and effective ranges using multiple effective range theories. We also
-use the short-range part of the full scattering wavefunction to compute the
-binding energy of PsH. Comparing the binding energy with the most elaborate 
-variational results gives an indication of the reliability of describing the 
-Ps-H system at short distances.
+lengths and effective ranges using multiple effective range theories.
 
-The binding energy of PsH, $E_b$, has been calculated using various methods. 
-Ho \cite{Ho1986} performed a variational calculation with a Hylleraas basis
-set, and Yan and Ho \cite{Yan1999} later did a more extensive calculation.
-Mitroy \cite{Mitroy2006} used the stochastic variational method (SVM) with
-1800 explicitly correlated Gaussians (ECGs), and Bubin
-and Adamowicz \cite{Bubin2006} found the most accurate value using 5000 ECGs
-in a variational calculation.
+We also use the short-range part of the full scattering wavefunction to 
+compute the binding energy of PsH. Comparing the binding energy with the most 
+elaborate variational results gives an indication of the reliability of 
+describing the Ps-H system at short distances. The binding energy of PsH,
+$E_b$, has been calculated using various methods. Ho \cite{Ho1986} performed a 
+variational calculation with a Hylleraas basis set, and Yan and Ho
+\cite{Yan1999} later did a more extensive calculation. Mitroy \cite{Mitroy2006}
+used the stochastic variational method (SVM) with 1800 explicitly correlated 
+Gaussians (ECGs), and Bubin and Adamowicz \cite{Bubin2006} found the most 
+accurate value using 5000 ECGs in a variational calculation.
 
 There have been a number of other calculations for Ps-H scattering. A much 
 earlier Kohn variational calculation was performed by Page \cite{Page1976} 
@@ -202,7 +182,11 @@ al.~\cite{Walters2004} extended the earlier CC calculations
 accurate Kohn variational results \cite{VanReeth2003}. They speculated that the
 inclusion of the virtual Ps$^-$ formation channel may be needed to obtain 
 agreement with the Kohn variational results for Ps(1s)-H(1s) scattering 
-\cite{Blackwood2002}.
+\cite{Blackwood2002}. A recent calculation of Ps-H scattering uses the
+confined variational method (CVM) \cite{Zhang2012}. This provides accurate
+results but has the drawback of being very computationally expensive. In
+Ref.~\cite{Zhang2012}, Zhang and Yan calculate phase shifts for 2 momenta for
+both $^1S$ and $^3S$.
 
 Unlike the SVM and DMC methods, the Kohn variational method gives rigorous 
 bounds on the scattering lengths and, except for Schwartz singularities, 
@@ -214,14 +198,9 @@ other calculations can be compared. Unlike the SVM, the Kohn variational
 method can treat inelastic as well as elastic scattering and thus can be 
 extended to higher energies. 
 
-A recent calculation of Ps-H scattering uses the confined variational 
-method (CVM) \cite{Zhang2012}. This provides accurate results but has the 
-drawback of being very computationally expensive. In Ref.~\cite{Zhang2012},
-Zhang and Yan calculate phase shifts for 2 momenta for both $^1S$ and $^3S$.
-
 Phase shifts are expressed in radians. Atomic units are used throughout 
 unless otherwise stated. For conversions to electron-volts (eV), we use the 
-conversion factor 1 au = {27.21138505(60) eV}
+conversion factor 1 a.u. = {27.21138505(60) eV}
 \cite{Mohr2012,*NISTConversions}.
 
 %\emph{Add \cite{Shipman2014}, \cite{Barker2012}, \cite{Laricchia2009}?}
@@ -243,7 +222,7 @@ conversion factor 1 au = {27.21138505(60) eV}
 We are investigating low-energy elastic scattering of ground-state Ps
 with ground-state 
 hydrogen, Ps(1s)+H(1s), for incident energies up to the excitation threshold 
-of Ps(n=2)+H(1s), which is at an energy of $\tfrac{3}{16}$ au ($5.102$ eV). 
+of Ps(n=2)+H(1s), which is at an energy of $\tfrac{3}{16}$ a.u. ($5.102$ eV). 
 Previous work on Ps-H scattering used the Kohn and inverse Kohn approach
 \cite{VanReeth2003, VanReeth2004}. The complex Kohn methods are more stable and
 suffer less from Schwartz singularities than the Kohn, inverse Kohn and 
@@ -258,7 +237,7 @@ For $S$-wave Ps(1s)-H(1s) elastic scattering, the flexible scattering
 wavefunction is given by
 \begin{equation}
 \Psi_0^{\pm,t} = \widetilde{S}_0 + L_0^{\pm,t} \, \widetilde{C}_0
-  + \sum_{i=1}^{N(\omega)} c_{i,0} \bar{\phi}_{i1},
+  + \sum_{i=1}^{N(\omega)} c_{i0} \bar{\phi}_{i\ell 1},
 \label{eq:TrialWave}
 \end{equation}
 where the superscript $t$ indicates that this is a trial wavefunction. The plus
@@ -269,13 +248,13 @@ ground-state Ps, $\ell$. For partial waves $\ell > 0$, we consider a trial
 wavefunction of the form
 \begin{equation}
 \Psi_\ell^{\pm,t} = \widetilde{S}_\ell + L^{\pm,t}_\ell \, \widetilde{C}_\ell
- + \sum_{i=1}^{N(\omega)} c_{i,\ell} \bar{\phi}_{i1}
- + \!\!\!\sum_{i=N(\omega)+1}^{2N(\omega)} \!\! d_{i,\ell} \bar{\phi}_{i2}.
+ + \sum_{i=1}^{N(\omega)} c_{i\ell} \bar{\phi}_{i\ell 1}
+ + \!\!\!\sum_{i=N(\omega)+1}^{2N(\omega)} \!\! d_{i\ell} \bar{\phi}_{i\ell 2}.
 \label{eq:TrialWaveHigher}
 \end{equation}
 The scattering wavefunctions contain both the long-range terms $\bar{S}$ and
-$\bar{C}$ and the short-range correlation terms $\phi_{i1}$ for small
-interparticle distances. We show the coordinate system for Ps-H in 
+$\bar{C}$ and the short-range correlation terms $\bar{\phi_{i\ell k}}$ for
+small interparticle distances. We show the coordinate system for Ps-H in 
 Fig. \ref{fig:PsHCoords}. The vector
 $\bm{\rho} = \frac{1}{2}\left(\bm{r_1} + \bm{r_2}\right)$ is the position
 vector of the center of mass of the Ps atom with respect to the proton. The 
@@ -357,7 +336,7 @@ The short-range terms are highly correlated Hylleraas-type functions, including
 all interparticle distances, given by
 \begin{equation}
 \label{eq:PhiDef}
-\bar{\phi}_{ik} = \left(1 \pm P_{23}\right) Y_{\ell 0}(\theta_k,\phi_k)
+\bar{\phi}_{i\ell k} = \left(1 \pm P_{23}\right) Y_{\ell 0}(\theta_k,\phi_k)
 e^{-(\alpha r_1 + \beta r_2 + \gamma r_3)}
 r_k^{\ell} r_1^{k_i} r_2^{l_i} r_{12}^{m_i} r_3^{n_i} r_{13}^{p_i} r_{23}^{q_i}.
 \end{equation}
@@ -644,7 +623,8 @@ We use the approximation with small $\kappa$ of
 a_\ell^\pm \approx
   - \frac{\tan{\delta_\ell^\pm}}{\kappa^{2\ell+1}}.
 \end{equation}
-To avoid confusion with the Bohr radius, $a_0$, we define $a = a_{\ell=0}$. The
+In this paper, to avoid confusion with the Bohr radius, $a_0$, we denote
+the $S$-wave scattering length $a_{\ell=0}$ as $a$. The
 Kohn variational methods give an exact upper bound on the scattering length
 \cite{Joachain1979}. The scattering length can give information about whether
 there is a bound state in the system, and at zero energy \cite{Buckman1989},
@@ -653,56 +633,55 @@ there is a bound state in the system, and at zero energy \cite{Buckman1989},
 \sigma_m^\pm = \sigma_{el}^\pm = 4 (a^\pm)^2 .
 \end{equation}
 
-For short-range potentials, the effective range $r_0$ is given by
-\cite{Bethe1949,Blatt1949}
+For short-range interactions, the $S$-wave effective range theory (ERT)
+expansion is given by \cite{Bethe1949,Blatt1949}
 \begin{equation}
 \label{eq:EffectiveRangeShort}
-\kappa \cot\delta_0^\pm = -\frac{1}{a^\pm} + \frac{1}{2} r_0^\pm \kappa^2.
+\kappa \cot\delta_0^\pm = -\frac{1}{a^\pm} + \frac{1}{2} r_0^\pm \kappa^2,
 \end{equation}
-The effective range is a measure of the interaction region of the scattering
-problem. This is the fitting used throughout the literature
-\cite{Ivanov2002,VanReeth2003,Blackwood2002,Walters2004}. As pointed out in
-Ref.~\cite{Fabrikant2014}, the van der Waals interaction should be taken into
-account for low-energy Ps-atom scattering. An effective range theory (ERT)
-expansion for the van der Waals interaction is given by \cite{Drake2006}
+where $r_0^\pm$ is the effective range.
+This ERT expansion has been used in the literature
+\cite{Ivanov2002,VanReeth2003,Blackwood2002,Walters2004} to compute the
+scattering length and effective range for Ps-H scattering. The van
+der Waals interaction should be taken into account for low-energy Ps-H
+scattering \cite{Fabrikant2014,VanReeth2003}. For the van der Waals
+interaction, the scattering length is only defined for the $S$- and
+$P$-waves, and the 
+effective range is defined for the $S$-wave \cite{Levy1963}.
+An $S$-wave ERT expansion for the van der Waals interaction is given in
+Ref.~\cite{Drake2006}, which for Ps-H scattering where the mass of Ps
+is 2, has the form
 \begin{equation}
 \label{eq:EffectiveRangeLongAu}
-\kappa \cot\delta_0^\pm = -\frac{1}{a} + \frac{1}{2} r_0^\pm \kappa^2 - 
+\kappa \cot\delta_0 = -\frac{1}{a} + \frac{1}{2} r_0^\pm \kappa^2 - 
   \frac{4 \pi C}{15 a^2} \kappa^3 - 
   \frac{16 C}{15 a} \kappa^4 \ln \left(\kappa \right).
 \end{equation}
-We use the van der Waals coefficient, C, given by Martin and Fraser as
-34.78473 au \cite{Martin1980}.
+We use the van der Waals coefficient, C, of 34.78473 a.u. as given by
+by Martin and Fraser \cite{Martin1980}.
 
-Gao \cite{Gao1998} has developed a quantum defect theory (QDT) treatment,
-solving the Schr\"{o}dinger equation for an attractive $r^{-6}$ potential
-to find an expression relating the phase shifts to a quantity Gao refers
-to as $K_\ell^0(E_{\bm \kappa})$.
+Gao \cite{Gao1998} has developed a quantum defect theory (QDT),
+for an attractive $r^{-6}$ potential, obtaining an equation relating
+the tangent of phase shifts to elements of a $Z$ matrix
+(see Ref.\cite{Gao1998}) and an analytic function of energy $K_\ell^0$
+\cite{Gao1998a}.
 \begin{equation}
 \label{eq:GaoZEqn}
 \tan\delta_\ell = [Z_{ff} - K_\ell^0(E_{\bm \kappa}) Z_{gf}]^{-1}
   [K_\ell^0(E_{\bm \kappa}) Z_{gg} - Z_{fg}]
 \end{equation}
-The Z functions in this equation are given in Gao's paper \cite{Gao1998}. We 
-fit the phase shifts to Eq.~(\ref{eq:GaoZEqn}) to determine
-$K_\ell^0(E_{\bm \kappa})$ 
-for each $\kappa$ value. Since it varies slowly with energy,
-$K_\ell^0(E_{\bm \kappa})$ is expanded in a Taylor series as
+$K_\ell^0$ can be expanded in powers of the energy of the incoming Ps atom.
 \begin{equation}
 \label{eq:GaoKTaylor}
 K_\ell^0(E_{\bm \kappa}) = K_\ell^0(0) + {K_\ell^0}^\prime(0) E_{\bm \kappa}
   + \ldots.
 \end{equation}
-We retain the first two terms in the expansion only.
-
-Lastly, we use an expression from Ref. \cite{Blackwood2002} to get an estimate
-of the $^1S$ effective range, given by
-\begin{equation}
-\label{eq:BlackwoodERT}
-r_0^+ = \frac{a^+ \sqrt{4 E_b} - 1}{2 a^+ E_b}.
-\end{equation}
-There is not an equivalent expression for $r_0^-$, as there is not a $^3S$
-PsH bound state.
+We retain the first two terms in the expansion and determine the coefficients
+$K_\ell^0(0)$ and ${K_\ell^0}^\prime(0)$ by fitting the phase shifts to
+Eq.~(\ref{eq:GaoKTaylor}). We compute the $S$- and $P$-wave scattering lengths
+and $S$-wave effective ranges for the singlet and triplet using the expressions
+given by Gao \cite{Gao1998a} which relates these quantities to the
+coefficients.
 
 
 \section{Numerics}
@@ -765,7 +744,7 @@ and Gauss-Legendre quadratures. Due to the cusp at $r_1 = r_2$ and
 $r_2 = r_3$ in the integrands, we split the $r_2$ and $r_3$ integrations into 
 Gauss-Legendre quadratures before the cusp and Gauss-Laguerre after the cusp. 
 Previous calculations \cite{VanReeth2003,VanReeth2004} treated these cusps as 
-unimportant by 25 au, while we have extended it to 100 au before we consider 
+unimportant by 25 a.u., while we have extended it to 100 a.u. before we consider 
 them unimportant. We find that this increases the convergence of the matrix 
 elements.
 
@@ -809,7 +788,7 @@ use more short-range terms before linear dependence becomes an issue.
 The phase shifts are calculated using this set of short-range terms for the 
 generalized Kohn variational method for multiple $\tau$ values in
 Eq.~(\ref{eq:GenKohn}). We further truncate this basis set where the phase
-shifts for the different Kohn methods begin to diverge, as seen in
+shifts for the different real-valued Kohn methods begin to diverge, as seen in
 Fig.~\ref{fig:swave-phase-divergence}. This method gives a reliable set of
 short-range terms, which we use in the $S$ matrix complex Kohn to generate
 the results in Sec.~\ref{sec:Results}. For $^1S$ only, we were able to determine
@@ -940,7 +919,7 @@ PsH system.
 \begin{ruledtabular}  % From http://www.latex-community.org/forum/viewtopic.php?f=45&t=20722
 \begin{tabular}{l c l l}
 %\toprule
-Method & Terms & \thead{$E$ (au)} & \thead{$E_b$ (eV)}\\
+Method & Terms & \thead{$E$ (a.u.)} & \thead{$E_b$ (eV)}\\
 %\hline
 \colrule
 %\midrule
@@ -1055,7 +1034,7 @@ $^{1,3}D$ phase shifts (less than $0.084\%$).
 \centering
 \begin{ruledtabular}
 \begin{tabular}{c c c c c c c}
-$\kappa$ (au) & $\delta_0^+ (\omega = 7)$ & $\delta_0^+ (\omega \rightarrow \infty)$ & \% Diff$^+$ & $\delta_0^+$ (Kohn) \cite{VanReeth2003} & $\delta_0^+$ (CC 14Ps14H+H$^-$) \cite{Walters2004} & $\delta_0^+$ (CVM) \cite{Zhang2012} \\
+$\kappa$ (a.u.) & $\delta_0^+ (\omega = 7)$ & $\delta_0^+ (\omega \rightarrow \infty)$ & \% Diff$^+$ & $\delta_0^+$ (Kohn) \cite{VanReeth2003} & $\delta_0^+$ (CC 14Ps14H+H$^-$) \cite{Walters2004} & $\delta_0^+$ (CVM) \cite{Zhang2012} \\
 \colrule
 0.1 & $-0.427$ & $-0.426$ & $0.223\%$ & $-0.427$ & $-0.432$ & $-0.42636$ \\
 0.2 & $-0.820$ & $-0.819$ & $0.010\%$ & $-0.820$ & $-0.833$ & $-0.81973$ \\
@@ -1076,7 +1055,7 @@ between the complex Kohn $\omega = 7$ and $\omega \rightarrow \infty$ results.}
 \centering
 \begin{ruledtabular}
 \begin{tabular}{c c c c c c c}
-$\kappa$ (au) & $\delta_0^- (\omega = 7)$ & $\delta_0^- (\omega \rightarrow \infty)$ & \% Diff$^-$ & $\delta_0^-$ (Kohn) \cite{VanReeth2003} & $\delta_0^-$ (CC 14Ps14H) \cite{Blackwood2002} & $\delta_0^-$ (CVM) \cite{Zhang2012} \\
+$\kappa$ (a.u.) & $\delta_0^- (\omega = 7)$ & $\delta_0^- (\omega \rightarrow \infty)$ & \% Diff$^-$ & $\delta_0^-$ (Kohn) \cite{VanReeth2003} & $\delta_0^-$ (CC 14Ps14H) \cite{Blackwood2002} & $\delta_0^-$ (CVM) \cite{Zhang2012} \\
 \colrule
 0.1 & $-0.215$ & $-0.214$ & $0.120\%$ & $-0.214$ & $-0.206$ & $-0.21464$ \\
 0.2 & $-0.431$ & $-0.431$ & $0.063\%$ & $-0.432$ & $-0.414$ & $-0.43159$ \\
@@ -1097,7 +1076,7 @@ current complex Kohn $\omega = 7$ and $\omega \rightarrow \infty$ results.}
 \begin{center}
 \begin{ruledtabular}
 \begin{tabular}{c c c c c c c c c c}
-$\kappa$ (au) & $\delta_1^+ (\omega = 7)$ & $\delta_1^+ (\omega \rightarrow \infty)$ & \% Diff$^+$ & $\delta_1^+$ (CC) \cite{Walters2004} & $\delta_1^- (\omega = 7)$ & $\delta_1^- (\omega \rightarrow \infty)$ & \% Diff$^-$ & $\delta_1^-$ (CC 14Ps14H) \cite{Blackwood2002} \\
+$\kappa$ (a.u.) & $\delta_1^+ (\omega = 7)$ & $\delta_1^+ (\omega \rightarrow \infty)$ & \% Diff$^+$ & $\delta_1^+$ (CC) \cite{Walters2004} & $\delta_1^- (\omega = 7)$ & $\delta_1^- (\omega \rightarrow \infty)$ & \% Diff$^-$ & $\delta_1^-$ (CC 14Ps14H) \cite{Blackwood2002} \\
 \colrule
 0.1 & $0.226^{-1}$ & $0.227^{-1}$ & $0.465\%$ & $0.221^{-1}$ & $-0.178^{-2}$ & $-0.172^{-2}$ & $3.176\%$ & $-0.953^{-3}$ \\
 0.2 & $0.191$      & $0.192$      & $0.306\%$ & $0.183$      & $-0.167^{-1}$ & $-0.165^{-1}$ & $0.993\%$ & $-0.122^{-1}$ \\
@@ -1121,7 +1100,7 @@ results. Powers of 10 are denoted by exponents.}
 \begin{center}
 \begin{ruledtabular}
 \begin{tabular}{c c c c c}
-$\kappa$ (au) & $\delta_2^+ (\omega = 6)$ & $\delta_2^+$ (CC 14Ps14H+H$^-$) \cite{Walters2004} & $\delta_2^- (\omega = 6)$ & $\delta_2^-$ (CC 14Ps14H) \cite{Blackwood2002} \\
+$\kappa$ (a.u.) & $\delta_2^+ (\omega = 6)$ & $\delta_2^+$ (CC 14Ps14H+H$^-$) \cite{Walters2004} & $\delta_2^- (\omega = 6)$ & $\delta_2^-$ (CC 14Ps14H) \cite{Blackwood2002} \\
 \colrule
 $0.1$ & $1.36^{-4}$ & $1.46^{-4}$ & $5.81^{-5}$ & $8.48^{-5}$ \\
 $0.2$ & $2.99^{-3}$ & $3.15^{-3}$ & $7.12^{-4}$ & $1.15^{-3}$ \\
