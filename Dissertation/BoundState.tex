@@ -1,3 +1,4 @@
+% -*- root: Dissertation.tex -*-
 \documentclass[Dissertation.tex]{subfiles} 
 \begin{document}
 
@@ -382,8 +383,9 @@ Frolov (1997) \cite{Frolov1997a} & James-Coolidge variational & 924 & -0.789 136
 Frolov (1997) \cite{Frolov1997a} & James-Coolidge variational & --- & -0.789 181 8$^\star$ & 1.066 191 \\
 Frolov (1997) \cite{Frolov1997c} & Kolesnikov-Tarasov variational & --- & -0.789 179 4$^\star$ & 1.066 126 \\
 Frolov (1997) \cite{Frolov1997c} & Kolesnikov-Tarasov variational$^a$ & --- & -0.788 853 4$^\star$ & 1.057 254 \\
+Ryzhikh (1997) \cite{Ryzhikh1997} & SVM & 400 & -0.789 183$^\star$ & 1.066 22 \\
 Yoshida (1996) \cite{Yoshida1996} & DMC & --- & -0.789 1$^\star$ & 1.06$^\star$ \\
-Saito (1995) \cite{Saito1995} & Restricted Hartree-Fock & --- & -0.776 & 0.70$^\star$ \\
+Saito (1995) \cite{Saito1995} & Restricted Hartree-Fock & --- & -0.776 & 0.70$^\star$ \\*
 Strasburger (1995) \cite{Strasburger1995} & CI & --- & -0.763 7$^\star$ & 0.372 8 \\*
 Strasburger (1995) \cite{Strasburger1995} & SCF & --- & -0.666 9$^\star$ & -2.261 \\*
 Schrader (1992) \cite{Schrader1992} & Experiment & --- & -0.790 & $1.1 \pm 0.2$ \\*
@@ -457,8 +459,7 @@ $\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (au) & $\Delta E
 \label{tab:BoundEnergy3}
 \end{table}
 
-As described later in \cref{sec:ToddScattering}, we cannot use the full 1716 terms for the Ps-H scattering problem. \Cref{tab:BoundEnergyTodd1} gives the ground state energies using the restricted set of terms with Todd ordering. The cutoffs in $\omega$ are easily seen using the ViewOmegaCutoffs.py script described at \url{http://cas-bs5cph1.phys.unt.edu/wiki/index.php/ViewOmegaCutoffs.py} \cite{Wiki}.
-\todoi{More permanent URL}
+As described later in \cref{sec:ToddScattering}, we cannot use the full 1716 terms for the Ps-H scattering problem. \Cref{tab:BoundEnergyTodd1} gives the ground state energies using the restricted set of terms with Todd ordering. The cutoffs in $\omega$ are easily seen using the ViewOmegaCutoffs.py script described in the Wiki \cite{Wiki}.
 
 \setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
 \setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
@@ -484,8 +485,6 @@ $\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (au) & $\Delta E
 
 
 \section{Stabilization}
-
-
 
 Hazi and Taylor \cite{Hazi1970} introduced the concept of stabilization plots to PsH bound state calculations. This can allow calculations of scattering parameters from a fully bound state calculation. Specifically, they plotted the four lowest eigenvalues with respect to $N$ and looked for avoided crossings. A resonance only exists if there is an avoided crossing between eigenvalues. The avoided crossing that they found at $\SI{0.428 985}{au}$ (or $\SI{5.8366}{eV}$ as shown in \cref{tab:SWaveResonancesOther}) corresponds roughly with the first $^1$S resonance. Van Reeth and Humberston \cite{VanReeth2004} also did an analysis of stabilized eigenvalues but with the same type of basis set that we use.
 
