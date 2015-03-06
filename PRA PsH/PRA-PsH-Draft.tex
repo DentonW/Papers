@@ -60,9 +60,9 @@ Gower Street, London WC1E 6BT, UK}
 \date{\today}
 
 \begin{abstract}
-We investigate the four-body Coulomb process of low-energy elastic positronium
--hydrogen (Ps-H) scattering below the Ps(n=2) excitation threshold with a 
-Hylleraas-type basis set. Using the complex Kohn variational method, we 
+We investigate the four-body Coulomb process of low-energy elastic
+positronium-hydrogen (Ps-H) scattering below the Ps(n=2) excitation threshold
+with a Hylleraas-type basis set. Using the complex Kohn variational method, we 
 compute phase shifts through the $^{1,3}H$-wave. The $^{1,3}S$- and
 $^{1,3}P$-wave phase shifts can be viewed as benchmark results. The complex
 Kohn variational results compare well to a number of other calculations for 
@@ -128,7 +128,7 @@ integrations. We have also significantly increased the number of integration
 points for matrix
 elements that involve the long-range terms, along with implementing a method to
 accelerate the convergence of these integrals. We also extend the 
-calculations to the next four partial waves through to the $H$-wave, which
+calculations to the next two partial waves through to the $F$-wave, which
 enables us to calculate the differential elastic, integrated elastic, momentum
 transfer, and ortho-para conversion cross sections.
 
@@ -789,7 +789,8 @@ The phase shifts are calculated using this set of short-range terms for the
 generalized Kohn variational method for multiple $\tau$ values in
 Eq.~(\ref{eq:GenKohn}). We further truncate this basis set where the phase
 shifts for the different real-valued Kohn methods begin to diverge, as seen in
-Fig.~\ref{fig:swave-phase-divergence}. This method gives a reliable set of
+Fig.~\ref{fig:swave-phase-divergence}, or when there is a large jump in the
+phase shifts at high $\omega$. This method gives a reliable set of
 short-range terms, which we use in the $S$ matrix complex Kohn to generate
 the results in Sec.~\ref{sec:Results}. For $^1S$ only, we were able to determine
 the cutoff by performing variations of $\mu$.
@@ -854,18 +855,18 @@ length is considered the error in tables \ref{tab:SWaveScatLenERT} and
 \begin{table}[H]
   \centering
 	\begin{ruledtabular}
-    \begin{tabular}{cccccccccc}
-    Param. & $^1S$ & $^3S$ & $^1P$ & $^3P$ & $^1D$ & $^3D$ & $^{1,3}$F & $^{1,3}$G & $^{1,3}$H \\
+    \begin{tabular}{cccccccc}
+    Param. & $^1S$ & $^3S$ & $^1P$ & $^3P$ & $^1D$ & $^3D$ & $^{1,3}$F  \\
     \colrule
-	$\omega$           & 7     & 7     & 7     & 7     & 6     & 6     & 5    & 5   & 5 \\
-	$N^\prime(\omega)$ & 1505  & 1633  & 1000  & 1000  & 916 $(\kappa < 0.3)$   & 919 $(\kappa < 0.3)$   & 462  & 462 & 462 \\
-	$N^\prime(\omega)$ &   &   &   &   & 913 $(\kappa \geq 0.3)$   & 913 $(\kappa \geq 0.3)$   &   &  &  \\
-	$\alpha$           & 0.586 & 0.323 & 0.397 & 0.310 & 0.359 $(\kappa < 0.3)$ & 0.356 $(\kappa < 0.3)$ & 0.5  & 0.5 & 0.5 \\
-	$\alpha$    &  &  &  &  & 0.6 $(\kappa \geq 0.3)$ & 0.6 $(\kappa \geq 0.3)$ &   &  &  \\
-	$\beta$            & 0.580 & 0.334 & 0.376 & 0.311 & 0.368 & 0.365 & 0.6  & 0.6 & 0.6 \\
-	$\gamma$           & 1.093 & 0.975 & 0.962 & 0.995 & 0.976 & 0.976 & 1.1  & 1.1 & 1.1 \\
-	$\mu$              & 0.9   & 0.9   & 0.9   & 0.9   & 0.7   & 0.7   & 0.7  & 0.7 & 0.7 \\
-	$m_\ell$           & 1     & 1     & 3     & 3     & 7     & 7     & 7    & 9   & 11 \\
+	$\omega$           & 7     & 7     & 7     & 7     & 6     & 6     & 5   \\
+	$N^\prime(\omega)$ & 1505  & 1633  & 1000  & 1000  & 916 $(\kappa < 0.3)$   & 919 $(\kappa < 0.3)$   & 462   \\
+	$N^\prime(\omega)$ &   &   &   &   & 913 $(\kappa \geq 0.3)$   & 913 $(\kappa \geq 0.3)$   &  \\
+	$\alpha$           & 0.586 & 0.323 & 0.397 & 0.310 & 0.359 $(\kappa < 0.3)$ & 0.356 $(\kappa < 0.3)$ & 0.5  \\
+	$\alpha$    &  &  &  &  & 0.6 $(\kappa \geq 0.3)$ & 0.6 $(\kappa \geq 0.3)$ &   \\
+	$\beta$            & 0.580 & 0.334 & 0.376 & 0.311 & 0.368 & 0.365 & 0.6   \\
+	$\gamma$           & 1.093 & 0.975 & 0.962 & 0.995 & 0.976 & 0.976 & 1.1  \\
+	$\mu$              & 0.9   & 0.9   & 0.9   & 0.9   & 0.7   & 0.7   & 0.7   \\
+	$m_\ell$           & 1     & 1     & 3     & 3     & 7     & 7     & 7    \\
     \end{tabular}
   \end{ruledtabular}
   \caption{Parameters for each partial wave}
@@ -1000,24 +1001,27 @@ complex Kohn and CC results agree relatively well.
 
 We have difficulty performing extrapolations on the $D$-wave phase shifts. 
 For $\kappa = 0.2 - 0.7$, the percentage difference between the $^1D$ 
-extrapolations and $\omega = 6$ results is less than $11\%$. The percentage 
-differences for $^3D$ for the same range are less than $23\%$, with the 
-exception of $\kappa = 0.4$. This has a larger percentage difference of $48.7
-\%$, and this is also where the $^3D$ phase shifts go from positive to 
+extrapolations and $\omega = 6$ results is less than $6.3\%$. The percentage 
+differences for $^3D$ for the same range are less than $25\%$, with the 
+exception of $\kappa = 0.4$. This has a larger percentage difference of
+$40\%$, and this is also where the $^3D$ phase shifts go from positive to 
 negative. The convergence of the $^{1,3}D$ phase shifts could possibly be
-improved with the explicit inclusion of the mixed symmetry terms. We note, however,
-that the
-$\omega = 5$ and $\omega = 6$ phase shifts differ by no more than 8.6\% for
-$^1D$ and 10.3\% for $^3D$. Both the $^1D$ and $^3D$ phase shifts are below the 
+improved with the explicit inclusion of the mixed symmetry terms. We note,
+however, that the
+$\omega = 5$ and $\omega = 6$ phase shifts differ by no more than 9.5\% for
+$^1D$. For $^3D$, this difference is up to 33.3\% for $\kappa=0.4$
+but much less for other $\kappa$ values, down to $10.8\%$ for $\kappa = 0.6$.
+Both the $^1D$ and $^3D$ phase shifts are below the 
 CC, as shown in Fig. \ref{fig:spd-wave-phases}(c). The overall shapes in these
-graphs are similar, but the percentage difference between the $^1D$ phase
+graphs are similar, but the percentage difference between the CC and
+complex Kohn $^1D$ phase
 shifts is about 39\% at low $\kappa$ and decreases to less than 1\% for
 higher $\kappa$. The larger discrepancy comes with the $^3D$ phase shifts,
 which have a percentage difference of over 30\%, often much larger,
 through the entire range.
 We note that the percentage difference with the CC results for $^3P$ is
-also large at lower $\kappa$ values, even though there are no mixed symmetry terms
-for this partial wave, and our $^3P$ results converge well, as seen in
+also large at lower $\kappa$ values, even though there are no mixed symmetry
+terms for this partial wave, and our $^3P$ results converge well, as seen in
 Table \ref{tab:PWavePhase}. 
 
 The $^3D$ phase shifts are small, and their contribution to the integrated 
@@ -1102,13 +1106,13 @@ results. Powers of 10 are denoted by exponents.}
 \begin{tabular}{c c c c c}
 $\kappa$ (a.u.) & $\delta_2^+ (\omega = 6)$ & $\delta_2^+$ (CC 14Ps14H+H$^-$) \cite{Walters2004} & $\delta_2^- (\omega = 6)$ & $\delta_2^-$ (CC 14Ps14H) \cite{Blackwood2002} \\
 \colrule
-$0.1$ & $1.36^{-4}$ & $1.46^{-4}$ & $5.81^{-5}$ & $8.48^{-5}$ \\
-$0.2$ & $2.99^{-3}$ & $3.15^{-3}$ & $7.12^{-4}$ & $1.15^{-3}$ \\
-$0.3$ & $1.60^{-2}$ & $1.65^{-2}$ & $1.10^{-3}$ & $2.84^{-3}$ \\
-$0.4$ & $4.98^{-2}$ & $4.95^{-2}$ & $-1.80^{-3}$ & $2.37^{-3}$ \\
-$0.5$ & $1.13^{-1}$ & $1.08^{-1}$ & $-1.07^{-2}$ & $-4.66^{-3}$ \\
-$0.6$ & $2.06^{-1}$ & $1.94^{-1}$ & $-2.54^{-2}$ & $-1.85^{-2}$ \\
-$0.7$ & $3.28^{-1}$ & $3.02^{-1}$ & $-4.28^{-2}$ & $-3.27^{-2}$ \\
+$0.1$ & $1.36^{-4}$ & $2.02^{-4}$ & $5.81^{-5}$ & $8.48^{-5}$ \\
+$0.2$ & $2.99^{-3}$ & $3.49^{-3}$ & $7.12^{-4}$ & $1.15^{-3}$ \\
+$0.3$ & $1.60^{-2}$ & $1.73^{-2}$ & $1.10^{-3}$ & $2.84^{-3}$ \\
+$0.4$ & $4.98^{-2}$ & $5.22^{-2}$ & $-1.80^{-3}$ & $2.37^{-3}$ \\
+$0.5$ & $1.13^{-1}$ & $1.16^{-1}$ & $-1.07^{-2}$ & $-4.66^{-3}$ \\
+$0.6$ & $2.06^{-1}$ & $2.08^{-1}$ & $-2.54^{-2}$ & $-1.85^{-2}$ \\
+$0.7$ & $3.28^{-1}$ & $3.24^{-1}$ & $-4.28^{-2}$ & $-3.27^{-2}$ \\
 \end{tabular}
 \end{ruledtabular}
 \caption{$^{1,3}D$ phase shifts for Ps-H scattering. $\delta_2^\pm$ are the current
@@ -1166,37 +1170,35 @@ positions \cite{Yan1999,Yan1998a,Ho1998}.}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=3.3in]{fgh-wave-phases}
-	\caption{(Color online) Phase shifts for Ps-H scattering:
-(a) $F$-wave; (b) $G$-wave; (c) $H$-wave. Singlet phase shifts are given in blue
+	\includegraphics[width=3.3in]{fwave-phases}
+	\caption{(Color online) $F$-wave phase shifts for Ps-H scattering.
+Singlet phase shifts are given in blue
 (dark gray), and triplet phase shifts are red (light gray). This compares the
 complex Kohn phase shifts with the phase shifts obtained by the Born
 approximation.}
-	\label{fig:fgh-wave-phases}
+	\label{fig:fwave-phases}
 \end{figure}
 
-Figure \ref{fig:fgh-wave-phases} shows the $F$-wave, $G$-wave and $H$-wave 
-complex Kohn phase shifts compared to their Born approximations. The $F$-wave 
+Figure \ref{fig:fwave-phases} shows the $F$-wave
+complex Kohn phase shifts compared to the Born approximations. The $F$-wave 
 has a resonance above the Ps(n=2) threshold, but the beginning of the 
-resonance is evident in Fig. \ref{fig:fgh-wave-phases}(a). For these three 
-partial waves, the modified Born is approximately equivalent to the Born 
-results, so we show only the Born results in these graphs. Even for these 
-higher partial waves, the Born approximation is not particularly good, being 
-much lower. The Born approximation does not even have the correct sign for 
-the phase shifts for the $^1G$ and $^1H$. This comparison is not shown for 
+resonance is evident in Fig. \ref{fig:fwave-phases}. The modified Born is
+approximately equivalent to the Born results, so we show only the Born results
+in these graphs. The Born approximation is not particularly good, being 
+much lower. This comparison is not shown for 
 the first three partial waves, as there is very little agreement. Thus, in
 computing the integrated elastic cross sections, we would not be comfortable
-matching on the Born results for $\ell \geq 5$.
+matching on the Born results for $\ell \geq 3$.
 
-We perform full complex Kohn calculations on all first six partial waves, but 
+We perform full complex Kohn calculations on all first four partial waves, but 
 we do more extensive calculations for the first three partial waves, as shown 
 by the parameters and terms used in Sec. \ref{sec:Parameters}. For the
-$F$-wave through the $H$-wave, the phase shifts and partial elastic cross 
+$F$-wave, the phase shifts and partial elastic cross 
 sections become very small, so their overall contribution to the integrated 
-elastic cross section becomes negligible by the $H$-wave. The $H$-wave only 
-contributes up to $0.009\%$ of the integrated elastic cross section near the 
-threshold and much less at lower energies. For
-Fig.~\ref{fig:combined-cross-sections}, we extract the CC data of
+elastic cross section becomes negligible for higher partial waves.
+The maximum estimated $G$-wave contribution to the integrated elastic cross
+section is $0.1\%$ and much less at energies before the threshold.
+For Fig.~\ref{fig:combined-cross-sections}, we extract the CC data of
 Ref.~\cite{Walters2004} using the CurveSnap program \cite{CurveSnap}.
 
 \begin{figure}[H]
@@ -1223,12 +1225,11 @@ Tables \ref{tab:SWaveResonances}, \ref{tab:PWaveResonances}, and
 The differential cross section, calculated using the expression in
 Ref.~\cite{Bransden2003}, are shown in Figs.
 \ref{fig:diff-cross-section-2D-theta}, \ref{fig:diff-cross-section-2D-kappa},
-and \ref{fig:combined-diff-cross-sections}. This requires more partial waves,
-and the contributions to this does
-not become negligible until the $H$-wave. The percent difference when adding 
-the $H$-wave is approximately $4.1\%$ at its largest near the resonances and an 
-average of $0.27\%$ throughout the full $E$ and $\theta$ range. As expected, 
-Fig. \ref{fig:diff-cross-section-2D-kappa} shows that the cross section is 
+and \ref{fig:combined-diff-cross-sections}. The estimated change of adding
+the $G$-wave to the differential cross sections is a maximum of $12\%$ near
+the $F$-wave resonance but only an average of $0.88\%$ throughout the full
+$E$ and $\theta$ range. As expected, 
+Fig.~\ref{fig:diff-cross-section-2D-kappa} shows that the cross section is 
 isotropic at zero incident energy and becomes slightly more backward peaked 
 as the energy is increased up to about \mbox{0.5 eV} ($\kappa = 0.27$). 
 However, around this energy, there is an abrupt change in the differential 
@@ -1586,28 +1587,28 @@ us to obtain more stable phase shifts.
 %approximation do not agree well with the complex Kohn results.
 
 The $^{1,3}S$ and $^{1,3}P$ phase shifts can be considered benchmark results. 
-The discrepancy in the D-wave phase shifts, especially the $^3D$, between the 
+The discrepancy in the $D$-wave phase shifts, especially the $^3D$, between the 
 complex Kohn variational and CC methods needs further investigation, such as 
 explicitly including mixed symmetry terms into the trial wavefunction. One would 
 expect that the mixed symmetry terms will improve the convergence of the $^{1,3}D$ 
-phase shifts. Fortunately, $^{1,3}$D contribution to the elastic differential 
-cross section is small and the $^1$D resonance computed with the complex Kohn 
+phase shifts. Fortunately, the $^{1,3}$D contribution to the elastic differential 
+cross section is small, and the $^1$D resonance computed with the complex Kohn 
 phase shifts is reasonably good, providing some confidence in the reliability 
 of the short-range part of the trial wavefunction describing the $^1D$ Ps-H 
-system at short distances.
+system at short distances. The $^{1,3}F$ partial wave has very small phase 
+shifts and does not contribute greatly to the elastic integrated, momentum transfer
+or ortho-para conversion cross sections.
 
-The $^{1,3}F$, $^{1,3}G$, and $^{1,3}H$ partial waves have very small phase 
-shifts and do not contribute greatly to the elastic integrated cross 
-sections. We present the elastic differential, elastic integrated, momentum 
+We present the elastic differential, elastic integrated, momentum 
 transfer and ortho-para conversion cross sections using the $S$ matrix 
-complex Kohn variational phase shifts for the first six partial waves. 
-Interestingly, we note that even by the $H$-wave, the phase shifts obtained 
+complex Kohn variational phase shifts for the first four partial waves. 
+Interestingly, we note that even by the $F$-wave, the phase shifts obtained 
 by the Born or the modified Born approximations do not agree well with the 
 complex Kohn results.
 
 We calculate resonance positions and widths for the $^1S$, $^1P$, $^1D$, and
 $^1F$ partial waves, which favorably compare to the accurate complex 
-rotation results of Refs. \cite{Yan1999,Yan1998a,Ho1998,Ho2000}. We also 
+rotation results of Refs.~\cite{Yan1999,Yan1998a,Ho1998,Ho2000}. We also 
 provide a detailed investigation of the effective ranges and scattering 
 lengths for $^{1,3}S$, along with the $^{1,3}P$ scattering lengths. We 
 present results using multiple effective range theories.
