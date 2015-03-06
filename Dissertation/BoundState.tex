@@ -87,7 +87,8 @@ The Laplacians in \cref{eq:BoundHamiltonian} are complicated when applied to the
 -\Int{ \phi_i \left(\Laplacian_{r_1} + \Laplacian_{r_2} + \Laplacian_{r_3} \right) \phi_j }{\tau} = \int \sum_{l=1}^3 \grad_{\!\bm{r}_l} \phi_i \bm{\cdot} \grad_{\!\bm{r}_l} \phi_j \, d\tau
 \eeq
 
-\noindent The differential $\tau$ represents the 9-dimensional configuration space give by $r_1$, $r_2$, and $r_3$. \todo{Show $\tau$?} This expression is simpler than applying the Laplacian operators directly to $\phi_j$, and the summation is given by the following expression (a full derivation is given on the research Wiki \cite{Wiki}):
+%\todoi{Show $\tau$? Reference to Appendix?}
+\noindent The differential $d\tau$ represents the 9-dimensional configuration space given by $r_1$, $r_2$, and $r_3$. This expression is simpler than applying the Laplacian operators directly to $\phi_j$, and the summation is given by the following expression (a full derivation is given on the research Wiki \cite{Wiki}):
 
 \begin{align}
 \label{eq:GradGradShort}
@@ -109,7 +110,6 @@ The full expression for $H_{ij}$ from \cref{eq:HijSij} for real-valued $\phi$ af
 \label{eq:BoundHFull}
 \left< \bar{\phi}_i \left| H \right| \bar{\phi}_j \right> = \Int{ \left[ \frac{1}{2}\sum_{l=1}^3 \grad_{\!\mathbf{r}_l} \bar{\phi}_i \boldsymbol{\cdot} \grad_{\!\mathbf{r}_l} \bar{\phi}_j + \left( \frac {1}{r_1}-\frac {1}{r_2}-\frac {1}{r_3}-\frac {1}{r_{12}}-\frac {1}{r_{13}}+\frac {1}{r_{23}} \right) \bar{\phi}_i \bar{\phi}_j \right]}{\tau}.
 \eeq
-
 To reduce the number of integrations needed by half, we use a property of the permutation operator.  Since 
 \beq
 \left< \phi_i \left| H \right| \phi_j \right> = \left< P_{23} \phi_i \left| H \right| P_{23} \phi_j \right>
@@ -125,7 +125,7 @@ expression \ref{eq:BoundHFull} becomes
 \nonumber \left< (1 \pm P_{23}) \phi_i \left| H \right| (1 \pm P_{23}) \phi_j \right> =& \left< \phi_i \left| H \right| \phi_j \right> \pm \left< P_{23} \phi_i \left| H \right| \phi_j \right> \\
 &\pm \left< \phi_i \left| H \right| P_{23} \phi_j \right> + \left< P_{23} \phi_i \left| H \right| P_{23} \phi_j \right> \\
 =& 2 \left[ \left< \phi_i \left| H \right| \phi_j \right> \pm \left< P_{23} \phi_i \left| H \right| \phi_j \right> \right] \\
-=& 2 \left[ \left< \phi_i \left| H \right| \phi_j \right> \pm \left< \phi_i \left| H \right| P_{23} \phi_j \right> \right]
+=& 2 \left[ \left< \phi_i \left| H \right| \phi_j \right> \pm \left< \phi_i \left| H \right| P_{23} \phi_j \right> \right].
 \end{align}
 \end{subequations}
 
@@ -349,7 +349,7 @@ As described later in \cref{sec:ToddScattering}, we cannot use the full 1716 ter
 \rowcolor{white} \caption[Positronium hydride energy values]{Positronium hydride energy values. Starred values are the reported values. Unstarred values are obtained by using the conversion factor given in section \ref{sec:Units}. Results marked by $^a$ take into account the finite mass correction.} \\
 \endfoot
 
-\caption{continued from previous page}
+\caption{Continued from previous page. Positronium hydride energy values. Starred values are the reported values. Unstarred values are obtained by using the conversion factor given in section \ref{sec:Units}. Results marked by $^a$ take into account the finite mass correction.}
 \endlastfoot
 \rowcolors{2}{gray!15}{white}
 Current work & Variational Hylleraas $(\omega = 7)$ & 1505 & -0.789 189 725 & 1.066 406 705 \\
@@ -364,12 +364,14 @@ Bressanini (2003) \cite{Bressanini2003} & Variational Monte Carlo & 1 & -0.786 0
 Saito (2003) \cite{Saito2003a} & CI & 13230 & -0.786 793$^\star$ & 1.001 19 \\
 Bromley (2001) \cite{Bromley2001} & CI & 95324 & -0.786 776 1$^\star$ & 1.000 729 \\
 Saito (2000) \cite{Saito2000} & Hylleraas & 396 & -0.788 951$^\star$ & 1.059 91 \\
+Bromley (2000) \cite{Bromley2000} & CI & --- & -0.784 301 8$^\star$ & 0.933 399 5 \\
 Yan (1999) \cite{Yan1999} & Variational Hylleraas $(\omega = 12)$ & 5741 & -0.789 196 705 1$^\star$ & 1.066 596 635 \\
 Yan (1999) \cite{Yan1999} & Variational Hylleraas $(\omega \rightarrow \infty)$ & --- & -0.789 196 714 7$^\star$ & 1.066 596 896 \\
 Yan (1999) \cite{Yan1999a} & Variational Hylleraas$^a$ & 4705 & -0.788 853 107$^\star$ & 1.057 246 85 \\
 Ryzhikh (1999) \cite{Ryzhikh1999} & ECGs & 750 & -0.789 196 0$^\star$ & 1.066 577 \\
 Adhikari (1999) \cite{Adhikari1999} & Five-state CC & --- & -0.788 6 & 1.05$^\star$ \\
-Mella (1999) \cite{Mella1999} & DMC & --- & -0.789 15$^\star$ & 1.06 53 \\
+Mella (1999) \cite{Mella1999} & DMC & --- & -0.789 15$^\star$ & 1.065 3 \\
+Ryzhikh (1998) \cite{Ryzhikh1998} & ECGs with SVM & 500 & -0.789 194 4$^\star$ & 1.066 534 \\
 Strasburger (1998) \cite{Strasburger1998} & ECGs & 332 & -0.789 185$^\star$ & 1.066 278 \\
 Bressanini (1998) \cite{Bressanini1998} & DMC & --- & -0.789 175$^\star$ & 1.066 01 \\
 Jiang (1998) \cite{Jiang1998} & DMC & --- & -0.789 18$^\star$ & 1.066 1 \\
@@ -382,8 +384,9 @@ Frolov (1997) \cite{Frolov1997c} & Kolesnikov-Tarasov variational & --- & -0.789
 Frolov (1997) \cite{Frolov1997c} & Kolesnikov-Tarasov variational$^a$ & --- & -0.788 853 4$^\star$ & 1.057 254 \\
 Yoshida (1996) \cite{Yoshida1996} & DMC & --- & -0.789 1$^\star$ & 1.06$^\star$ \\
 Saito (1995) \cite{Saito1995} & Restricted Hartree-Fock & --- & -0.776 & 0.70$^\star$ \\
-Strasburger (1995) \cite{Strasburger1995} & CI & --- & -0.746 5$^\star$ & -0.0952 4 \\
-Strasburger (1995) \cite{Strasburger1995} & SCF & --- & -0.666 9$^\star$ & -2.261 \\
+Strasburger (1995) \cite{Strasburger1995} & CI & --- & -0.763 7$^\star$ & 0.372 8 \\*
+Strasburger (1995) \cite{Strasburger1995} & SCF & --- & -0.666 9$^\star$ & -2.261 \\*
+Schrader (1992) \cite{Schrader1992} & Experiment & --- & -0.790 & $1.1 \pm 0.2$ \\*
 Ho (1986) \cite{Ho1986} & Variational with Hylleraas & 396 & -0.788 945$^\star$ & 1.059 75 \\*
 Maruyama (1985) \cite{Maruyama1985,Saito2003a} & Hylleraas & --- & -0.788 211$^\star$ & 1.039 77 \\*
 Ho (1978) \cite{Ho1978} & Variational with Hylleraas & 210 & -0.787 525$^\star$ & 1.021 12$^\star$ \\*
@@ -393,7 +396,7 @@ Navin (1974) \cite{Navin1974} & Variational & 17 & -0.779 2$^\star$ & 0.794 6 \\
 Houston (1973) \cite{Houston1973} & Variational & 56 & -0.774 7$^\star$ & 0.672 5 \\*
 Lebeda (1969) \cite{Lebeda1969} & Variational & 12 & -0.774 2$^\star$ & 0.658 5 \\*
 Ludwig (1966) \cite{Ludwig1966} & Configuration interaction & 9 & -0.759 0$^\star$ & 0.244 9 \\*
-Goldanskii (1964) \cite{Clary1976} & --- & --- & -0.667 7$^\star$ & -2.2395 \\*
+Goldanskii (1964) \cite{Goldanskii1964,Clary1976} & --- & --- & -0.667 7$^\star$ & -2.2395 \\*
 Neamtan (1962) \cite{Neamtan1962} & Variational exponential & 2 & -0.758 4$^\star$ & 0.228 6 \\*
 Ore (1951) \cite{Ore1951} & Variational exponential & 2 & -0.752 51$^\star$ & 0.068 301 \\*
 Walters (2004) \cite{Walters2004} & CC 14Ps14H + H$^-$ & --- & -0.787 9 & 1.03$^\star$\\*
@@ -407,16 +410,21 @@ Campbell (1998) \cite{Campbell1998} & CC 22Ps1H & --- & -0.773 3 & 0.634$^\star$
 \end{center}
 %\end{landscape}
 
-\todoi{Check \cite{Usukura1998}}
-\todoi{Check Rychlewski book pg. 452 (in ``Research/My Documentation/Books/Explicitly Correlated Wave Functions'')}
+\todoi{See if I can get the Jiang and Bressanini papers mentioned in \cite{Mitroy2006}.
 
-\todoi{See if I can get the Jiang and Bressanini papers mentioned in \cite{Mitroy2006}. \url{http://scitation.aip.org/content/aip/journal/jcp/102/20/10.1063/1.469002}  \url{http://dx.doi.org/10.1063/1.1531101}  \url{http://scitation.aip.org/content/aip/journal/jcp/108/12/10.1063/1.475887}  \url{http://scitation.aip.org/content/aip/journal/jcp/109/21/10.1063/1.477604}}
+ \url{http://scitation.aip.org/content/aip/journal/jcp/102/20/10.1063/1.469002}
+
+ \url{http://dx.doi.org/10.1063/1.1531101}
+
+  \url{http://scitation.aip.org/content/aip/journal/jcp/108/12/10.1063/1.475887}
+
+  \url{http://scitation.aip.org/content/aip/journal/jcp/109/21/10.1063/1.477604}}
 
 There have been a large number of calculations of the PsH binding energy over the years, starting with Ore's prediction in 1951 that PsH could exist \cite{Ore1951}. As computing power increased, using a Hylleraas basis set with hundreds or even thousands of terms became possible \cite{Ho1978,Ho1986,Yan1999,VanReeth2003}. The Hylleraas results were the most accurate until very accurate ECG results from Mitroy \cite{Mitroy2006} and Bubin and Adamowicz \cite{Bubin2004,Bubin2006}. The ECGs do not satisfy the Kato cusp condition, but good optimization of the basis set can give good results \cite{Mitroy2013}.
 
 The latest by Frolov \cite{Frolov2010} is more of an introduction of a modified basis set to this problem, showing how only 84 terms gives a better energy than a much larger Hylleraas set. Yan and Ho \cite{Yan1999} use a Hylleraas basis set with 5 sectors that each have different nonlinear parameters. Frolov's work essentially uses the same basis set but gives each term its own set of nonlinear parameters, optimizing all of them simultaneously.
 
-The last six entries of this table give just the CC results of the Belfast group. These are grouped together to show how different states and pseudostates in the CC calculations can give better approximations to the binding energy. It is particularly clear that adding the H$^-$ channel vastly improves the accuracy.
+The last six entries of this table give the CC results of the Belfast group. These are grouped together to show how different states and pseudostates in the CC calculations can give better approximations to the binding energy. It is particularly clear that adding the H$^-$ channel vastly improves the accuracy.
 
 Our current Hylleraas binding energy in the first line of the table compares well with the accurate energies of Refs.~\cite{Bubin2006, Mitroy2006, Yan1999}, but it is not as accurate of a calculation. The purpose of doing the PsH calculation was not to get the best result but to test how well the short-range terms for Ps-H scattering represent the short-range interactions. Based on \cref{tab:BoundEnergyOther}, the short-range interactions are described well. This also gave experience working with the Hylleraas basis set, and finding the PsH energy is a simpler problem than Ps-H scattering.
 
@@ -588,15 +596,13 @@ $^1$D & 4.73 & ---   \\
 
 \section{Structure}
 \label{sec:PsHStructure}
-There has been some discussion in the literature about whether PsH is more like an atomic structure or more like a molecule with Ps and H. Bressanini and Morosi \cite{Bressanini2003} give a good overview of the lack of consensus on this. 
+There has been some discussion in the literature about whether PsH is more like an atomic structure or more like a molecule with Ps and H. We did not attempt this problem, since the PsH system is not the goal of this work. Bressanini and Morosi \cite{Bressanini2003} give a good overview of the lack of consensus on this problem. 
 
 Frolov and Smith \cite{Frolov1997c} note that they expect PsH to be a cluster consisting of a Ps atom and an H atom. Then from their calculations, they conclude that it acts as some kind of sum of H$^-$ with Ps$^-$.
 
 Saito \cite{Saito2000} attempted to answer this question using Ho's \cite{Ho1986} Hylleraas basis set by plotting e$^+$ and e$^-$ densities. Saito's conclusion was that PsH has an atomic structure but also has a diatomic molecular structure, or Ps with H. Bromley and Mitroy \cite{Bromley2001} also state that PsH has a molecular structure, comparing it ``to a light isotope of the H$_2$ molecule.''
 
 Biswas and Darewych \cite{Biswas2002} find that the difference between the S(1) resonance and the binding energy (\cref{sec:BoundSinglet}) for various calculations of differing accuracy is roughly constant. They suggest that this means that PsH is less like e$^+$ orbiting H$^-$ and more like a diatomic molecule.
-
-\cite{Mitroy2002}
 
 Bressanini and Morosi \cite{Bressanini2003} perform calculations on PsH with a highly optimized one term wavefunction to determine the structure and conclude that PsH cannot be viewed as Ps+H or e$^-$ orbiting around H$^-$. They state, ``Keeping in mind the quantum nature of the leptons and so the impossibility of defining a structure, we suggest to look at PsH as a hydrogen negative ion with the positron that, staying more distant from the nucleus than the electrons, correlates its motion with those of both the electrons. Its attraction on the electrons squeezes them nearer to each other and nearer to the nucleus.''
 
