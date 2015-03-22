@@ -6,12 +6,13 @@
 \chapter{D-Wave}
 \label{chp:DWave}
 
+\todoi{Variation of $\mu$ to get 0.7. Latest variation of other nonlinear parameters} 
 
 \section{D-Wave Wavefunction}
 \label{sec:DWaveFn}
 
 \begin{equation}
-\Psi_t^\pm = \bar{S} + \tan \eta_t^\pm \, \bar{C} + \sum_{i=1}^N c_i \bar{\phi}_{1i} + \sum_{j=1}^N d_j \bar{\phi}_{2j} + \sum_{j=1}^N f_k \bar{\phi}_{12k}
+\Psi_t^\pm = \bar{S} + L_2^{\pm,t} \, \bar{C} + \sum_{i=1}^N c_i \bar{\phi}_{1i} + \sum_{j=1}^N d_j \bar{\phi}_{2j} + \sum_{j=1}^N f_k \bar{\phi}_{12k}
 \label{eq:DWaveSimple}
 \end{equation}
 
@@ -30,7 +31,7 @@ n_2(\kappa \rho) = \left(-\frac{3}{(\kappa\rho)^2} + 1 \right) \frac{\cos(\kappa
 
 
 
-\noindent The $\bar{S}$ and $\bar{C}$ must have both symmetries, so \textbf{@TODO: Explain}
+\noindent Including exchange, $\bar{S}$ and $\bar{C}$ are
 \begin{subequations}
 \label{eq:DWaveSandCBar}
 \begin{align}
@@ -38,8 +39,7 @@ n_2(\kappa \rho) = \left(-\frac{3}{(\kappa\rho)^2} + 1 \right) \frac{\cos(\kappa
 \bar{C} &= \frac{Y_{20}(\theta_\rho,\varphi_\rho)C_{22} \pm Y_{20}(\theta_{\rho^\prime},\varphi_{\rho'})C_{23} }{\sqrt{2}} \label{eq:DWaveCBar} 
 \end{align}
 \end{subequations}
-
-\noindent with
+with
 \begin{subequations}
 \label{eq:DWaveSandC}
 \begin{alignat}{2}

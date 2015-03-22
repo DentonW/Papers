@@ -14,11 +14,11 @@ A four-dimensional matrix is constructed with ranges of all possible inputs to t
 
 \section{\texorpdfstring{$\alpha$, $\beta$ and $\gamma$} {alpha, beta and gamma} Definitions}
 
-The last three parameters of the W function are $\alpha$, $\beta$ and $\gamma$.  There are exactly six permutations of these parameters.  All six of these occur in the T function for a set of l, m and n parameters.  Since there are only six possibilities from equation (6) of Drake and Yan \cite{Drake1995}, the last dimension of the WMatrix is 6.  If this fact was not used, a six-dimensional matrix would have to be used.
+The last three parameters of the W function are $\alpha$, $\beta$ and $\gamma$. There are exactly six permutations of these parameters. All six of these occur in the T function for a set of l, m and n parameters. Since there are only six possibilities from equation (6) of Drake and Yan \cite{Drake1995}, the last dimension of the WMatrix is 6. If this fact was not used, a six-dimensional matrix would have to be used.
 
 \section{Limits of convergence on W}
 
-The first three parameters of the W function are called $l$, $m$ and $n$ (in order).  From \cite{}, there are three conditions for the first three parameters that determine whether W converges.
+The first three parameters of the W function are called $l$, $m$ and $n$ (in order). From \cite{}, there are three conditions for the first three parameters that determine whether W converges.
 \[l \geq 0, ~~~~ l+m+1 \geq 0, ~~~~ l+m+n+2 \geq 0\]
 The other limits that must be taken into account are that $j_{\mu \nu} \geq -1$ and $j_{\mu} \geq -2$.  However, for this program, none of $j_{\mu \nu}$ or $j_{\mu}$ are more singular than -1.  Also, the lower limits of $\Omega$ and $q$ are 0.
 
@@ -29,7 +29,7 @@ The first parameter, \emph{l}, is
 \begin{equation}
 	\label{l_Param}j_1 + 2 + 2q + 2 k_{12} + 2 k_{31}.
 \end{equation}
-\underline{Min}: Let $j_{12} = -1$, $j_{23} = j_{31} = 0$.  From this, we have the upper limits of the summations of equation () of \cite{Drake1995} as $k_{12} = \tfrac{1}{2} (j_{12} + 1) = 0$, $k_{23} = 0$ and $k_{31} = 0$.  With $j_1$ as its minimum of -1 and the above conditions, this becomes 1.
+\underline{Min}: Let $j_{12} = -1$, $j_{23} = j_{31} = 0$.  From this, we have the upper limits of the summations of equation () of \cite{Drake1995} as $k_{12} = \tfrac{1}{2} (j_{12} + 1) = 0$, $k_{23} = 0$ and $k_{31} = 0$. With $j_1$ as its minimum of -1 and the above conditions, this becomes 1.
 
 \noindent\underline{Max}: Choosing $j_1 = 2 \Omega$ and $j_{12} = j_{13} = -1$, \cref{l_Param} becomes $2 \Omega + 2q + 4$.  This is the upper limit of $l$.
 

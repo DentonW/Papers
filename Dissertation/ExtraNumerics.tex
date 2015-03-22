@@ -1,0 +1,224 @@
+% -*- root: Dissertation.tex -*-
+\documentclass[Dissertation.tex]{subfiles} 
+\begin{document}
+
+\chapter{Extra Numerics}
+\label{chp:ExtraNumerics}
+
+\section{Selection of Quadrature Points}
+\label{sec:SelQuadPoints1}
+The number of quadrature points for each coordinate in the 6-dimensional integrations is critical to have fully converged results. In our testing, the $r_1$ coordinate (the coordinate of $e^+$) was the most important, requiring more integration points than any other. The $r_2$ and $r_3$ coordinates were the second most important, and the interparticle terms ($r_{12}$, $r_{13}$ and $r_{23}$) were the least important. These results only apply to the long-range--long-range and long-range--short-range terms, as the short-range--short-range terms are integrated using the same asymptotic expansion method as the bound state problem (see section \ref{sec:MatrixShort}).
+
+To determine this, we held the number of integration points fixed, except for one coordinate, which we increased in steps. The difference in the output between steps was used to analyze how important each coordinate was. Also, some terms are more sensitive to the number of integration points than other. For instance, the $(\bar{S},\mathcal{L} \bar{S})$ term converges relatively quickly, while the $(\bar{C},\mathcal{L} \bar{C})$ term requires more integration points.
+
+We also used a sample input file from Van Reeth for the number of quadrature points he used in his code. In figure \ref{fig:OriginalPhaseShifts-pvr}, this set of points was used. After approximately 525 short-range terms, it is immediately apparent that the phase shifts diverge, with a particularly large deviation in the inverse Kohn output. The Kohn and complex Kohn methods converge again shortly before 600 terms and stay converged up to 1000 terms.
+
+Adding 5 points to all integrations yields a much more well-behaved graph in figure \ref{fig:OriginalPhaseShifts-pvrplus5}. There are slight variations, one of which can be seen in the inset graph at about 540 terms, but the results are overall converged up to 1100 terms.
+
+Increasing the number of points can have a huge impact on performance. Adding 5 points to an $\omega = 0$ calculation takes 3.5 hours, while adding 10 points makes it take 6.1 hours, or approximately twice the time. So we have to make a trade-off between accuracy and performance.
+
+To determine an optimal set of points, 10 points were added to Van Reeth's set in all coordinates, and a run was done with this set. Then 5 points were subtracted from one coordinate from this set for each run, once for each coordinate. The difference in the matrix elements and phase shifts was small for the 2nd, 3rd and 4th coordinates. A final run using 5 points extra from Van Reeth's set for the 2nd, 3rd and 4th coordinates, along with 10 points extra in all other coordinates, showed small differences from the first set that had 10 points extra in all coordinates. Reducing the points of any of the other coordinates resulted in larger differences from the set with 10 extra points in all coordinates. This final set, referred to as the ``optimal set'', is used in all of our current runs. Increasing the number of integration points further than could potentially lead to better accuracy, though numerical instabilities start appearing with 15 extra points over the base set.
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{OriginalPhaseShifts-pvr}
+	\caption{Phase shifts with original ordering $(\omega = 7)$}
+	\label{fig:OriginalPhaseShifts-pvr}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{OriginalPhaseShifts-pvrplus5}
+	\caption{Phase shifts with original ordering and 5 extra points $(\omega = 7)$}
+	\label{fig:OriginalPhaseShifts-pvrplus5}
+\end{figure}
+
+
+
+\section{Selection of Quadrature Points}
+\label{sec:SelQuadPoints2}
+
+\begin{figure}[H]
+	\resizebox{1.0\textwidth}{!}{\includegraphics{QuadPoints/ColorKey.pdf}}
+	\caption{Color key for differences}
+	\label{fig:ColorKey}
+\end{figure}
+
+For the P-wave, we noticed that the phase shifts for smaller $\kappa$ values were more sensitive to the number of integration points than higher $\kappa$ values. In general, the smaller the value of $\kappa$, the smaller the phase shift will be. The smaller phase shifts for the P-wave also caused it to be more sensitive than the S-wave.
+
+\subsection{Comparison Program}
+I wrote the program \emph{Comparison} \cite{} to visually compare two runs with different numbers of integration points. This program calculates the relative difference between similar matrix elements of the two input files. The relative difference is given by
+\beq
+\text{diff}_{rel} = \left| \frac{elem_1 - elem_2}{(elem_1 + elem_2) / 2} \right|.
+\eeq
+Since the values of matrix elements can range over many orders of magnitude, the relative difference is an appropriate measure of the change caused by varying the number of integration points. The other option would have been to use the absolute difference, which is given by 
+\beq
+\text{diff}_{abs} = \left| elem_1 - elem_2 \right|.
+\eeq
+However, this is a poor measure of the differences, and the relative differences give much more useful information for our purposes.
+
+The \emph{Comparison} program calculates these relative differences for each matrix element between the two input files and creates an image using the colors in figure \ref{fig:ColorKey}. So if a column of pixels in the output image is yellow, then the relative difference for that matrix element is on the order of $10^{-6}$. This is an example image from running this program:
+\begin{figure}[H]
+	\centering
+	\resizebox{0.8\textwidth}{!}{\includegraphics{QuadPoints/Example.png}}
+	\caption{Example matrix element comparison image}
+	\label{fig:QuadExample}
+\end{figure}
+This only looks at the output from the long-range programs, and this is the first row (or column) of the $A$ matrix. The \emph{Comparison} program outputs a vertical line for each matrix element to make them more visible than outputting a single pixel. More examples and descriptions of the command line syntax are available on the \htmladdnormallink{Wiki}{http://cas-bs5cph1.phys.unt.edu/wiki/index.php/Long-range_graphical_comparison_program} \cite{Wiki}.
+
+\section{Application to the P-Wave}
+
+Using the comparison program, we found that the $1/r_{23}$ term in the potential needed more integration points when $q_i = 0$. The integrations for the other three potential terms already produced reasonably converged results. All runs in this section are performed with $\kappa = 0.1$.
+
+If we took the set of integration points that we used in the S-wave problem as our base set, then compared this with the same set but an extra 5 points in the $1^{st}$ coordinate, the resulting difference image for the $A$ matrix looks like this:
+\begin{figure}[H]
+	\centering
+	\resizebox{1.0\textwidth}{!}{\includegraphics{QuadPoints/BasevsBaseplus5.png}}
+	\caption{Base set versus base set plus 5 in $r_1$}
+	\label{fig:BasevsBaseplus5}
+\end{figure}
+\noindent Notice that there is little blue and plenty of yellows, oranges and reds. The goal is to get as much black and blue as possible, though it is impossible to get entirely black and blue with our limited precision. It is evident that the matrix elements are not well-converged when we compare the phase shifts from these two runs. For the first run with the base set, the phase shift is 0.02346176. The corresponding phase shift for the second run is 0.02294583. We desire three significant figures in our phase shifts, so this is certainly not good enough.
+
+Doing a similar run with the base set and another with the base set plus 10 in $r_1$, the difference image is given by figure \ref{fig:BasevsBaseplus10}.
+\begin{figure}[H]
+	\centering
+	\resizebox{1.0\textwidth}{!}{\includegraphics{QuadPoints/BasevsBaseplus10.png}}
+	\caption{Base set versus base set plus 10 in $r_1$}
+	\label{fig:BasevsBaseplus10}
+\end{figure}
+\noindent This image is not much different from the previous image. Even when we compare the ``plus 5'' run with the ``plus 10'' run \textbf{@TODO: Where is this image?}, the image does not change much. The phase shift for the ``plus 10'' run is 0.02257283, which is still significantly different from the ``plus 5'' run.
+
+We tried adding up to 25 extra points to the $1^{st}$ coordinate of the base set, but the matrix elements (and consequently, the phase shifts) still did not converge well enough. To perform the Gauss-Laguerre and Gauss-Legendre quadratures described in section \ref{sec:GaussQuad}, we have to compute the abscissae and weights for the Laguerre and Legendre polynomials. The weights depend on the abscissae, and the abscissae depend only on $n$, the number of quadrature points to use. This allows us to hardcode values for the abscissae and weights to speed up computations marginally. Previously, the long-range code used hardcoded values for some multiples of 5 but not all that were used. This code also did not have values hardcoded when the value of $n$ was not a multiple of 5. The integration points were then changed to use values that were multiples of 5, and all were hardcoded. The hardcoded values were also done in extended precision by using \emph{Mathematica}.
+
+Figure \ref{fig:Base5vsBase5hardcoderound} shows the changes going from a previous ``plus 5'' run to a ``plus 5'' run with all hardcoded abscissae and weights. There is a relatively large difference in the matrix elements by making this change.
+\begin{figure}[H]
+	\centering
+	\resizebox{1.0\textwidth}{!}{\includegraphics{QuadPoints/Base5vsBase5hardcoderound.png}}
+	\caption{Changes going to hardcoded abscissae and weights}
+	\label{fig:Base5vsBase5hardcoderound}
+\end{figure}
+
+The results were much better for the base set versus the ``plus 5'' set when hardcoded values for the abscissae and weight were used. Figure \ref{fig:BasehardcodevsBase5hardcode} shows this comparison, which has the large sections of black. All black and dark blue values are for terms where $q_i > 0$. This integration is done separately, as discussed in section \ref{sec:Swaveqigt0} for the S-wave.
+\begin{figure}[H]
+	\centering
+	\resizebox{1.0\textwidth}{!}{\includegraphics{QuadPoints/BasehardcodevsBase5hardcode.png}}
+	\caption[Base set with hardcoded values vs. base set plus 5 with hardcoded values]{Base set with hardcoded values versus base set plus 5 with hardcoded values}
+	\label{fig:BasehardcodevsBase5hardcode}
+\end{figure}
+
+We then completed a series of runs where we increased the number of integration points for each coordinate for $\omega = 2$. Figure \ref{fig:PlusCoord1-d} shows that the $1/r_{23}$ integration needs an extra 15 points in the first coordinate. The runs for the other coordinates were all performed with an extra 15 points in the first coordinate as well. From figures \ref{fig:PlusCoord2} through \ref{fig:PlusCoord8}, we see that the $5^{th}$ through $8^{th}$ coordinates possibly need more integration points.
+
+\begin{figure}[H]
+\centering
+\subfloat[Part 1][Base vs. plus 5]{\includegraphics[height=1.2in]{QuadPoints/R23-BasevsBaseplus5-1st.png} \label{fig:PlusCoord1-a}}
+\subfloat[Part 2][Plus 5 vs. plus 10]{\includegraphics[height=1.2in]{QuadPoints/R23-Baseplus5vsBaseplus10-1st.png} \label{fig:PlusCoord1-b}}
+\subfloat[Part 3][Plus 10 vs. plus 15]{\includegraphics[height=1.2in]{QuadPoints/R23-Baseplus10vsBaseplus15-1st.png} \label{fig:PlusCoord1-c}}
+\subfloat[Part 4][Plus 15 vs. plus 20]{\includegraphics[height=1.2in]{QuadPoints/R23-Baseplus15vsBaseplus20-1st.png} \label{fig:PlusCoord1-d}}
+\caption{Comparison of extra points in $1^{st}$ coordinate after hardcoded abscissae}
+\label{fig:PlusCoord1}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\subfloat[Part 1][Plus 5 vs. plus 10]{\includegraphics[height=0.8in]{QuadPoints/r23-2nd-plus5vsplus10.png} \label{fig:PlusCoord2-a}}
+\subfloat[Part 2][Plus 10 vs. plus 15]{\includegraphics[height=0.8in]{QuadPoints/r23-2nd-plus5vsplus10.png} \label{fig:PlusCoord2-b}}
+\subfloat[Part 3][Plus 15 vs. plus 20]{\includegraphics[height=0.8in]{QuadPoints/r23-2nd-plus5vsplus10.png} \label{fig:PlusCoord2-c}}
+\caption{Comparison of extra points in $2^{nd}$ coordinate after hardcoded abscissae}
+\label{fig:PlusCoord2}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\subfloat[Part 1][Plus 5 vs. plus 10]{\includegraphics[height=0.8in]{QuadPoints/r23-3rd-plus5vsplus10.png} \label{fig:PlusCoord3-a}}
+\subfloat[Part 2][Plus 10 vs. plus 15]{\includegraphics[height=0.8in]{QuadPoints/r23-3rd-plus5vsplus10.png} \label{fig:PlusCoord3-b}}
+\subfloat[Part 3][Plus 15 vs. plus 20]{\includegraphics[height=0.8in]{QuadPoints/r23-3rd-plus5vsplus10.png} \label{fig:PlusCoord3-c}}
+\caption{Comparison of extra points in $3^{rd}$ coordinate after hardcoded abscissae}
+\label{fig:PlusCoord3}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\subfloat[Part 1][Plus 5 vs. plus 10]{\includegraphics[height=0.8in]{QuadPoints/r23-4th-plus5vsplus10.png} \label{fig:PlusCoord4-a}}
+\caption{Comparison of extra points in $4^{th}$ coordinate after hardcoded abscissae}
+\label{fig:PlusCoord4}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\subfloat[Part 1][Plus 5 vs. plus 10]{\includegraphics[height=0.8in]{QuadPoints/r23-5th-plus5vsplus10.png} \label{fig:PlusCoord5-a}}
+\subfloat[Part 2][Plus 10 vs. plus 15]{\includegraphics[height=0.8in]{QuadPoints/r23-5th-plus5vsplus10.png} \label{fig:PlusCoord5-b}}
+\subfloat[Part 3][Plus 15 vs. plus 20]{\includegraphics[height=0.8in]{QuadPoints/r23-5th-plus5vsplus10.png} \label{fig:PlusCoord5-c}}
+\caption{Comparison of extra points in $5^{th}$ coordinate after hardcoded abscissae}
+\label{fig:PlusCoord5}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\subfloat[Part 1][Plus 5 vs. plus 10]{\includegraphics[height=0.8in]{QuadPoints/r23-6th-plus5vsplus10.png} \label{fig:PlusCoord6-a}}
+\subfloat[Part 2][Plus 10 vs. plus 15]{\includegraphics[height=0.8in]{QuadPoints/r23-6th-plus5vsplus10.png} \label{fig:PlusCoord6-b}}
+\subfloat[Part 3][Plus 15 vs. plus 20]{\includegraphics[height=0.8in]{QuadPoints/r23-6th-plus5vsplus10.png} \label{fig:PlusCoord6-c}}
+\caption{Comparison of extra points in $6^{th}$ coordinate after hardcoded abscissae}
+\label{fig:PlusCoord6}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\subfloat[Part 1][Plus 5 vs. plus 10]{\includegraphics[height=0.8in]{QuadPoints/r23-7th-plus5vsplus10.png} \label{fig:PlusCoord7-a}}
+\subfloat[Part 2][Plus 10 vs. plus 15]{\includegraphics[height=0.8in]{QuadPoints/r23-7th-plus5vsplus10.png} \label{fig:PlusCoord7-b}}
+\subfloat[Part 3][Plus 15 vs. plus 20]{\includegraphics[height=0.8in]{QuadPoints/r23-7th-plus5vsplus10.png} \label{fig:PlusCoord7-c}}
+\caption{Comparison of extra points in $7^{th}$ coordinate after hardcoded abscissae}
+\label{fig:PlusCoord7}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\subfloat[Part 1][Plus 5 vs. plus 10]{\includegraphics[height=0.8in]{QuadPoints/r23-8th-plus5vsplus10.png} \label{fig:PlusCoord8-a}}
+\subfloat[Part 2][Plus 10 vs. plus 15]{\includegraphics[height=0.8in]{QuadPoints/r23-8th-plus5vsplus10.png} \label{fig:PlusCoord8-b}}
+\subfloat[Part 3][Plus 15 vs. plus 20]{\includegraphics[height=0.8in]{QuadPoints/r23-8th-plus5vsplus10.png} \label{fig:PlusCoord8-c}}
+\caption{Comparison of extra points in $8^{th}$ coordinate after hardcoded abscissae}
+\label{fig:PlusCoord8}
+\end{figure}
+
+These tests give us an idea of what coordinates need more integration points. The phase shifts, not the matrix elements, are what we are concerned with, so we ran a number of tests for the phase shifts for $\omega = 6$. Table \ref{tab:5thcoordExtraPoints} shows how the phase shift stabilizes when the $5^{th}$ coordinate has an extra 10-15 points. For table \ref{tab:678thcoordExtraPoints}, we have 15 extra points in the $1^{st}$ and $5^{th}$ coordinates, then add points to all of the $6^{th}$, $7^{th}$ and $8^{th}$ coordinates simultaneously. To the required precision (3 significant figures), the phase shift does not change with this last set of changes. From these runs, we finally determined that the $1^{st}$ and $5^{th}$ coordinates needed 15 extra integration points each, and we can save adding extra points to the other coordinates.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{c c}
+\toprule
+Extra points & Phase shift \\
+\midrule
++5 & 0.02273585 \\
++10 & 0.02256803 \\
++15 & 0.02257100 \\
++20 & 0.02258546 \\
++25 & 0.02257720 \\
++30 & 0.02257869 \\
++35 & 0.02257844 \\
+\bottomrule
+\end{tabular}
+\caption{5th Coordinate Comparisons}
+\label{tab:5thcoordExtraPoints}
+\end{table}
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{c c}
+\toprule
+Extra points & Phase shift \\
+\midrule
++5 & 0.02255816 \\
++10 & 0.02255351 \\
++15 & 0.02255181 \\
+\bottomrule
+\end{tabular}
+\caption{Extra points in the $6^{th}$, $7^{th}$ and $8^{th}$ coordinates}
+\label{tab:678thcoordExtraPoints}
+\end{table}
+
+\todoi{Table of final integration points}
+
+
+\biblio
+\end{document}
