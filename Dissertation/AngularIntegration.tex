@@ -80,40 +80,136 @@ As Peter Van Reeth points out in his thesis on page 78, $\varphi_{23}$ is the an
 \section{External Angular Integrations}
 \label{sec:AngularInt}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=4.5in]{CoordinateSystemOriginal}
-	\caption{Original coordinate system}
-	\label{fig:CoordinateSystemOriginal}
-\end{figure}
+As mentioned in \cref{}, we do rotations and then integrations over the 3 
+external angles to reduce our 9-dimensional integrations to 6 dimensions. The
+procedure described here is the same as in Peter Van Reeth's thesis
+\cite{VanReethThesis}.
+
+The integrals needed in
+\cref{eq:BoundHFull,eq:GeneralKohnMatrix,eq:FourBody,eq:ShortIntGen} have
+volume elements of
+\begin{equation}
+\label{eq:dTau1}
+d\tau = d\textbf{r}_1 d\textbf{r}_2 d\textbf{r}_3.
+\end{equation}
+In spherical coordinates, this becomes
+\begin{equation}
+\label{eq:dTau2}
+d\tau = r_1^2 dr_1 \sin\theta_1 d\theta_1 d\varphi_1 r_2^2 dr_2 \sin\theta_2
+  d\theta_2 d\varphi_2 r_3^2 dr_3 \sin\theta_3 d\theta_3 d\varphi_3.
+\end{equation}
+These coordinates are given in an arbitrary coordinate system as in
+\cref{fig:CoordinateSystemOriginal}.
 
 \begin{figure}[H]
 	\centering
+	\includegraphics[width=4.5in]{CoordinateSystemOriginal}
+	\caption{Ps-H original coordinate system}
+	\label{fig:CoordinateSystemOriginal}
+\end{figure}
+
+We can rotate the coordinate system multiple ways in order to integrate over 
+the external angles. First consider rotating the coordinate system so that the
+z-axis is along $\textbf{r}_1$. If we then choose to perform another rotation
+so that $\textbf{r}_2$ is in the x$'$-z$'$ plane, from
+\cref{fig:CoordinateSystemRotated}, the volume element becomes
+\begin{equation}
+\label{eq:dTau3}
+d\tau = r_1^2 dr_1 \sin\theta_1 d\theta_1 d\varphi_1 r_2^2 dr_2 \sin\theta_{12}
+  d\theta_{12} d\phi'_2 r_3^2 dr_3 \sin\theta_{13} d\theta_{13} d\varphi_{23}.
+\end{equation}
+\begin{figure}[H]
+	\centering
 	\includegraphics[width=4.5in]{CoordinateSystemRotated}
-	\caption{Rotated coordinate system}
+	\caption{Ps-H rotated coordinate system}
 	\label{fig:CoordinateSystemRotated}
 \end{figure}
+\noindent The angles $\theta_{12}$, $\theta_{13}$, and $\phi_{23}$ are 
+internal angles. The external angle $\phi'_2$ is measured from the x$'$-axis 
+before the rotation into $\textbf{r}_2$. The angles $\theta_1$ and $\varphi_1$
+are also external angles.
+
+For the PsH bound state and S-wave Ps-H scattering, integrating over the
+external angles gives
+\begin{equation}
+\label{eq:dTauS1}
+d\tau = 8 \uppi^2 r_1^2 dr_1 r_2^2 dr_2 \sin\theta_{12} d\theta_{12} r_3^2 dr_3
+  \sin\theta_{13} d\theta_{13} d\varphi_{23}.
+\end{equation}
+We can transform this into integrations over $r_{12}$ and $r_{13}$ instead of
+$d\theta_{12}$ and $d\theta_{13}$ by differentiating the following expression
+from the law of cosines with respect to $\textbf{r}_{kl}$:
+\begin{equation}
+\label{eq:rkl}
+r_{kl}^2 = r_k^2 + r_l^2 - 2 r_k r_l \cos\theta_{kl}.
+\end{equation}
+When differentiated, this gives
+\begin{equation}
+\label{eq:rklDer}
+dr_{kl} r_{kl} = r_k r_l \sin\theta_{kl} d\theta_{kl}.
+\end{equation}
+Thus, we have
+\begin{subequations}
+\label{eq:rklDer}
+\begin{align}
+dr_{12} r_{12} &= r_1 r_2 \sin\theta_{12} d\theta_{12} \\
+dr_{13} r_{13} &= r_1 r_3 \sin\theta_{13} d\theta_{13}.
+\end{align}
+\end{subequations}
+Substituting these into \cref{eq:dTauS1}, we have
+\begin{equation}
+\label{eq:dTauS23}
+d\tau = 8 \uppi^2 dr_1 r_2 dr_2 r_3 dr_3 r_{12} dr_{12} r_{13} dr_{13}
+   d\varphi_{23}.
+\end{equation}
+This is the final form that we use in the short-range and long-range
+integrations, described in \cref{sec:CompShort,sec:CompLong}.
+
+If we do the rotations so that the z-axis is pointing in the direction of
+$\textbf{r}_2$, then rotate so that $\textbf{r}_1$ is in the x$'$-z$'$ plane,
+the volume element is instead
+\begin{equation}
+\label{eq:dTauS13}
+d\tau = 8 \uppi^2 r_1 dr_1 dr_2 r_3 dr_3 r_{12} dr_{12} r_{23} dr_{23}
+   d\varphi_{13}.
+\end{equation}
+We use this in the long-range integrations when there is an $r_{23}^{-1}$ term,
+as in \cref{sec:LongLongInt,sec:ShortLongInt}.
+
+There are 6 possible orderings to performing these rotations, but we only
+consider 3 and only use 2 in the final code. The last one rotates the z-axis
+into $\textbf{r}_3$, then performs another rotation where the x$'$-z$'$ plane
+contains $\textbf{r}_2$, giving a volume element of
+\begin{equation}
+\label{eq:dTauS12}
+d\tau = 8 \uppi^2 r_1 dr_1 r_2 dr_2 dr_3 r_{13} dr_{13} r_{23} dr_{23}
+   d\varphi_{12}.
+\end{equation}
+
+For the P-wave and higher, we no longer have spherical symmetry, but there is
+azimuthal symmetry for $m = 0$ of the spherical harmonics. For the P-wave,
+\cref{eq:PWaveSpherHarm} gives
+\begin{equation}
+Y_{10}(\theta,\varphi) = \sqrt{\frac{3}{4\pi}} \cos\theta.
+\end{equation}
+
+
+
+
+
 
 \todoi{Describe why these are needed}
 These are derived in a \emph{Mathematica} notebook entitled ``General Angular Integrations.nb''.
 \todoi{Describe how this notebook works, including ExtremeSimplify}
 
 
-\subsection{Volume Elements}
-\label{sec:AngVolume}
-
-
-\todoi{Show these}
-
-\beq
-\label{eq:dtau1}
-d\tau = 8\pi^2 dr_1 r_2 dr_2 r_3 dr_3 r_{12} dr_{12} r_{13} dr_{13} d\phi_{23}.
-\eeq
-
 
 \subsection{Terms with Identical Spherical Harmonics}
 \label{sec:AngSame}
-We are not integrating over all angles, so the orthogonality relations of the spherical harmonics do not hold. However, it can be seen that if we integrate over all external angles, $\tau_{ext}$, any spherical harmonic with itself will give $2\pi$, i.e.
+We are not integrating over all angles, so the orthogonality relations of the
+spherical harmonics do not hold. However, it can be seen that if we integrate
+over all external angles, $d\tau_{ext}$, any spherical harmonic with itself
+will give $2\pi$, i.e.
 \beq
 \label{eq:AngSame}
 \Int{Y_\ell^0(\theta_i, \varphi_i) Y_\ell^0(\theta_i, \varphi_i)}{\tau_{ext}, \tau_{ext}} = 2 \pi,
@@ -123,7 +219,17 @@ where $i$ = $1$, 2, 3, $\rho$ or $\rho^\prime$.
 
 \subsection{Terms with \texorpdfstring{$Y_\ell^0(\theta_i, \varphi_i) Y_\ell^0(\theta_j, \varphi_j)$}{Yi-Yj} }
 \label{sec:AngRiRj}
-These terms are not completely necessary to generalize here, because they only appear in the short--short calculations. My derivations and code for the S-, P-, and D-wave short--short calculations use these. The general code short--short derivations and code \cite{sec:} use a formalism from Drake and Yan \cite{Yan1997} that does not do these external angular integrations. The general code is used for the F-, G-, and H-waves and can be used for arbitrary $\ell$. Derivations for all of these can be seen in the \emph{Mathematica} notebook ``General Angular Integrations.nb''. Note that the result of $2\pi$ in \cref{sec:AngSame} is recovered if $i=j$. The general result is
+
+These terms are not completely necessary to generalize here, because they 
+only appear in the short-short calculations. My derivations and code for the 
+S-, P-, and D-wave short-short calculations use these. The general code
+short-short derivations and code \cite{sec:} use a formalism from Drake and
+Yan \cite{Yan1997} that does not do these external angular integrations. The 
+general code is used for the F-, G-, and H-waves and can be used for 
+arbitrary $\ell$. Derivations for all of these can be seen in the
+\emph{Mathematica} notebook ``General Angular Integrations.nb''. Note that the
+result of $2\pi$ in \cref{sec:AngSame} is recovered if $i=j$. The general 
+result is
 \beq
 \label{eq:AngRiRj}
 \Int{Y_\ell^0(\theta_i, \varphi_i) Y_\ell^0(\theta_j, \varphi_j)}{\tau_{ext}, \tau_{ext}} = 2 \pi \LegendreP{\ell, \cos\theta_{ij}}.

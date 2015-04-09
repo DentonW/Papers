@@ -10,14 +10,25 @@
 
 \section{General Wavefunction}
 
-The applications of the Kohn, inverse Kohn, complex Kohns, generalized Kohn, and generalized complex Kohns to our trial wavefunctions for each of the partial waves through the H-wave are all very similar in form. The trial wavefunctions for the partial waves (\cref{eq:SWaveTrialSimple,eq:PWaveSimple,eq:DWaveSimple}) can be written in a general form as
+The applications of the Kohn, inverse Kohn, complex Kohns, generalized Kohn, and generalized complex Kohns to our trial wavefunctions for each of the partial waves through the H-wave are all very similar in form. The trial wavefunctions for the partial waves (\cref{eq:SWaveTrial,eq:PWaveTrial,eq:DWaveTrial}) can be written in a general form as
 \beq
 \Psi_\ell^{\pm,t} = \widetilde{S}_\ell + L_\ell^{\pm,t} \, \widetilde{C}_\ell + \sum_{i=1}^N c_i \bar{\phi}_i.
 \label{eq:GeneralWaveTrial}
 \eeq
-To avoid confusion with $L_\ell^{\pm,t}$ here and $\mathcal{L}$ in \cref{eq:LDef}, since the orbital angular momentum $\ell$ of the incoming Ps is the same as the total angular momentum L, we use $\ell$ to indicate the partial wave.
 
-The short-range $\bar{\phi}_i$ terms can represent terms of different symmetries, such as the $\bar{\phi}_{1i}$ and $\bar{\phi}_{2j}$ of the P-wave in \cref{eq:PWaveSimple}. The only requirement in this derivation is that these are Hylleraas-type short-range terms. In addition to letting the $\widetilde{S}$ and $\widetilde{C}$ represent the $\bar{S}$ and $\bar{C}$ for the different partial waves, we can define them in such a way as to use multiple Kohn methods (Kohn, inverse Kohn, etc.). We begin by defining a $2\times 2$ matrix $\textbf{u}$ which satisfies
+To avoid confusion with $L_\ell^{\pm,t}$ here and $\mathcal{L}$ in
+\cref{eq:LDef}, since the orbital angular momentum $\ell$ of the incoming Ps is
+the same as the total angular momentum L, we use $\ell$ to indicate the partial 
+wave.
+
+The short-range $\bar{\phi}_i$ terms can represent terms of different 
+symmetries, such as the $\bar{\phi}_{1i}$ and $\bar{\phi}_{2j}$ of the P-wave 
+in \cref{eq:PWaveSimple}. The only requirement in this derivation is that 
+these are Hylleraas-type short-range terms. In addition to letting the
+$\widetilde{S}$ and $\widetilde{C}$ represent the $\bar{S}$ and $\bar{C}$ for 
+the different partial waves, we can define them in such a way as to use 
+multiple Kohn methods (Kohn, inverse Kohn, etc.). We begin by defining a
+$2\times 2$ matrix $\textbf{u}$ which satisfies
 \beq
 \label{eq:GenSCMatrix}
 \begin{bmatrix}
@@ -69,7 +80,8 @@ S_\ell = \,&\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} \Phi_{Ps}\le
 C_\ell = -&\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,n_\ell\!\left(\kappa\rho\right) f_\ell(\rho) \label{eq:GenCDef}.
 \end{align}
 \end{subequations}
-The shielding function, $f_\ell(\rho)$, removes the singularity at the origin due to the Neumann function, $n_\ell$. The form that we have chosen for this is
+The $\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho}$ are the standard spherical harmonics, and  and $\Phi_H\left(r_3\right)$ are the Ps and H ground state wavefunctions given in \cref{eq:PsWave,eq:HWave}.
+The shielding function, $f_\ell(\rho)$, removes the singularity at the origin due to the spherical Neumann function, $n_\ell$. The form that we have chosen for this is
 \begin{equation}
   \label{eq:PartialWaveShielding}
   f_\ell(\rho) = \left[1 - \ee^{-\mu \rho} \left(1+\frac{\mu}{2}\rho\right)
@@ -79,7 +91,14 @@ At a minimum, $m_\ell$ is chosen so that $C_\ell$ behaves like $S_\ell$ as $\rho
 
 \todoi{Put in plots from ``Shielding Function Plots.nb''?}
 
-The Hylleraas-type short-range terms are similar to that used in the bound state in \cref{eq:BoundWavefn}. These are chosen to have two symmetries, one with a prefactor of $r_1^\ell$ and the other with a prefactor of $r_2^\ell$. From Refs.~\cite{Schwartz1961a,VanReethThesis}, the D-wave and higher can have additional symmetries where the angular momentum is shared between the Ps and H. We do not consider these mixed terms in this work (see \cref{sec:MixedTerms}).
+The Hylleraas-type short-range terms are similar to that used in the bound 
+state in \cref{eq:BoundWavefn}. These are chosen to have two symmetries, one 
+with a prefactor of $r_1^\ell$ and the other with a prefactor of $r_2^\ell$. 
+From Refs.~\cite{Schwartz1961a,VanReethThesis}, the D-wave and higher can 
+have additional symmetries where the angular momentum is shared between the 
+Ps and H. From Ref.~\cite{Schwartz1961a}, we see that there are a possible
+$\ell+1$ sets of short-range terms for each partial wave. We do not consider 
+these mixed terms in this work (see \cref{sec:MixedTerms}).
 
 \begin{subequations}
 \label{eq:PhiDef}
@@ -681,72 +700,6 @@ This is a generalized form of the $T$ matrix Kohn, similar to how the generalize
 This is a generalized form of the $S$ matrix Kohn. When $\tau = 0$, this reduces to the $S$ matrix Kohn.
 
 
-\section{Schwartz Singularities}
-\label{eq:SchwartzSing}
-
-A disadvantage of the Kohn variational methods is the presence of spurious singularities in the phase shifts. Looking at \cref{eq:GeneralKohnMatrix}, if $\textbf{\emph{A}}$ becomes near-singular (i.e. $\Det{\textbf{\emph{A}}} \approx 0$), solving this matrix equation will yield incorrect phase shifts. These ``Schwartz singularities'' were described first by Schwartz \cite{Schwartz1961}. These singularities do not make the Kohn variational methods unusable however. These singularities are often easily noticeable, because they do not follow the pattern of other phase shifts.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{schwartz-singularity}
-	\caption[Example of Schwartz singularities for $^1$S]{Example of Schwartz singularities for $^1$S at $\omega = 7$. The generalized Kohn method with $\tau = 1.4$ is shown in (a). The $S$ matrix complex Kohn is shown in (b).}
-	\label{fig:schwartz-singularity}
-\end{figure}
-
-As an example, refer to \cref{fig:schwartz-singularity}(a). This shows an example of Schwartz singularities for the generalized Kohn method with $\tau = 1.4$. A clear Schwartz singularity exists at $\kappa = 0.851$ or $E = \SI{4.927}{eV}$, which can be seen as a point on the graph that is far away from the red fitting curve. There is also a Schwartz singularity at $\kappa = 0.85$ or $E = \SI{4.915}{eV}$, seen as a slight deviation from the fitting curve.
-
-The same calculation as in \cref{fig:schwartz-singularity}(a) is performed using the $S$ matrix complex Kohn in \cref{fig:schwartz-singularity}(b), but no Schwartz singularities are evident. Normally, if one Kohn variational method described in the previous section (\cref{sec:KohnApplied}) has a Schwartz singularity, other Kohn methods will not. This gives us a strategy of simply rejecting Kohn methods that have obvious Schwartz singularities.
-
-Interestingly, adding terms will change which Kohn method has a Schwartz singularity. \Cref{fig:PhaseTau-Omega} shows how increasing $\omega$ (adding terms) will change the $\tau$ in the generalized Kohn where a Schwartz singularity occurs. \Cref{fig:Det-Omega=6,Kappa=01} also shows how for the same set of short-range terms, varying $\kappa$ will change the $\tau$ value where a these singularities occur.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{PhaseTau-Omega}
-	\caption{Phase shifts versus $\tau$ for $\kappa = 0.1$ and varying $\omega$ values}
-	\label{fig:PhaseTau-Omega}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{PhaseTau-Kappa}
-	\caption{Phase shifts versus $\tau$ for $\omega = 7$ and varying $\kappa$ values}
-	\label{fig:PhaseTau-Kappa}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=4in]{Det-Omega=6,Kappa=01}
-	\caption{Determinant of $\textbf{\emph{A}}$ versus $\tau$ for $\omega = 6$ with 875 terms of Todd reordering}
-	\label{fig:Det-Omega=6}
-\end{figure}
-
-Cooper et al. \cite{Cooper2009} showed that if $\Det{\textbf{\emph{A}}}$ is 
-plotted with respect to $\tau$, there are actually two $\tau$ values where
-$\Det{\textbf{\emph{A}}} \approx 0$, but only one of them corresponds to a 
-Schwartz singularity. They refer to the second root as an anomaly-free 
-singularity. \Cref{fig:Det-Omega=6} shows an equivalent plot for our 
-data. The roots of $\Det{\textbf{\emph{A}}}$ are at approximately
-$\tau = 0.125$ and $\tau = 1.144$. The first root corresponds well with the
-singularity in the $\omega = 6$ graph in \cref{fig:PhaseTau-Omega}. The second
-root is referred to as an ``anomaly-free singularity'' in
-Cooper et al.\ \cite{Cooper2009} and does not correspond to a Schwartz
-singularity. The roots are easily found by fitting the data to equation (20)
-and solving equation (21) in Cooper et al.\ \cite{Cooper2009}.
-
-Additionally, the complex Kohn methods in \cref{eq:uCompTKohn,eq:uCompSKohn,eq:uGenTKohn,eq:uGenSKohn} are far less likely to suffer from these singularities. A complex-valued Kohn variational method was first proposed by Miller et al. \cite{Miller1987} and used the same year by McCurdy et al.~\cite{McCurdy1987}. Subsequent work by Lucchese~\cite{Lucchese1989} showed that the complex Kohn methods can indeed have Schwartz singularities, but they are not likely to show up in practice. Cooper et al.~\cite{Cooper2010} also showed that the phase shifts obtained using the complex Kohn variational method can be obtained exactly from the real-valued generalized Kohn method in \cite{eq:uGenKohn}, but we do not use this method.
-
-There is also much less variability in the results of the different complex Kohn variational methods, and even for different values of $\tau$ in \cref{eq:uGenTKohn,eq:uGenSKohn}, the phase shifts generally agree to great precision (greater than the accuracy that we quote for our phase shifts). Due to the stability of the complex Kohn variational methods, the results quoted throughout this paper are for the $S$ matrix complex Kohn unless noted otherwise.
-
-
-
-
-
-
-
-
-%\todoi{I think one of the Humberston group theses has some links/discussion on Schwartz singularities. Definitely mention Cooper, Lucchese, and McCurdy.}
-
-
 \section{Matrix Elements}
 In this section, we examine the matrix elements of \cref{eq:GeneralKohnMatrix}.
 The three types of matrix elements are short-range--short-range (short-short),
@@ -903,13 +856,13 @@ This is finally written as the general form of equation \ref{eq:SLCandCLS}, givi
 \label{eq:GenSLCandCLS}
 \eeq
 
-This relation can let us obtain the $(\widetilde{S}_\ell,\mathcal{L}\widetilde{C}_\ell)$ matrix element from $(\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell)$, but it also gives us a nice numerical check. I calculate these two matrix elements separately in my code and calculate their difference. If it is close to 1, this gives us confidence that the long-range--long-range integrations are accurate.
+This relation can let us obtain the $(\widetilde{S}_\ell,\mathcal{L}\widetilde{C}_\ell)$ matrix element from $(\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell)$, but it also gives us a nice numerical check. I calculate these two matrix elements separately in my code and calculate their difference. If it is close to 1, this gives us confidence that the long-long integrations are accurate.
 \todoi{Make sure that this is mentioned in the computation chapter.}
 
 
 \subsection{Matrix Elements Involving Long-Range Terms}
 \label{sec:MatrixLong}
-The short-range--long-range and long-range--long-range matrix elements have a similar analysis. For all of these, the effect of the $\mathcal{L} = 2(H-E)$ operator on the long-range terms must be considered, and then integrations over the external angles (see \Cref{chp:AngularInt}) are performed. The remaining 6-dimensional integral is then numerically integrated as described in sections \ref{sec:LongLongInt} and \ref{sec:ShortLongInt}.
+The short-long and long-long matrix elements have a similar analysis. For all of these, the effect of the $\mathcal{L} = 2(H-E)$ operator on the long-range terms must be considered, and then integrations over the external angles (see \Cref{chp:AngularInt}) are performed. The remaining 6-dimensional integral is then numerically integrated as described in sections \ref{sec:LongLongInt} and \ref{sec:ShortLongInt}.
 
 \subsubsection{\texorpdfstring{$\mathcal{L}\bar{S}_\ell$}{LS} Terms}
 \label{sec:LSTerms}
@@ -1164,6 +1117,66 @@ integrated using the methods described in \cref{sec:ShortInt}.
 %\label{tab:SphHarmBessel}
 %\end{table}
 %}
+
+
+\section{Schwartz Singularities}
+\label{eq:SchwartzSing}
+
+A disadvantage of the Kohn variational methods is the presence of spurious singularities in the phase shifts. Looking at \cref{eq:GeneralKohnMatrix}, if $\textbf{\emph{A}}$ becomes near-singular (i.e. $\Det{\textbf{\emph{A}}} \approx 0$), solving this matrix equation will yield incorrect phase shifts. These ``Schwartz singularities'' were described first by Schwartz \cite{Schwartz1961}. These singularities do not make the Kohn variational methods unusable however. These singularities are often easily noticeable, because they do not follow the pattern of other phase shifts.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{schwartz-singularity}
+	\caption[Example of Schwartz singularities for $^1$S]{Example of Schwartz singularities for $^1$S at $\omega = 7$. The generalized Kohn method with $\tau = 1.4$ is shown in (a). The $S$ matrix complex Kohn is shown in (b).}
+	\label{fig:schwartz-singularity}
+\end{figure}
+
+As an example, refer to \cref{fig:schwartz-singularity}(a). This shows an example of Schwartz singularities for the generalized Kohn method with $\tau = 1.4$. A clear Schwartz singularity exists at $\kappa = 0.851$ or $E = \SI{4.927}{eV}$, which can be seen as a point on the graph that is far away from the red fitting curve. There is also a Schwartz singularity at $\kappa = 0.85$ or $E = \SI{4.915}{eV}$, seen as a slight deviation from the fitting curve.
+
+The same calculation as in \cref{fig:schwartz-singularity}(a) is performed using the $S$ matrix complex Kohn in \cref{fig:schwartz-singularity}(b), but no Schwartz singularities are evident. Normally, if one Kohn variational method described in the previous section (\cref{sec:KohnApplied}) has a Schwartz singularity, other Kohn methods will not. This gives us a strategy of simply rejecting Kohn methods that have obvious Schwartz singularities.
+
+Interestingly, adding terms will change which Kohn method has a Schwartz singularity. \Cref{fig:PhaseTau-Omega} shows how increasing $\omega$ (adding terms) will change the $\tau$ in the generalized Kohn where a Schwartz singularity occurs. \Cref{fig:Det-Omega=6,Kappa=01} also shows how for the same set of short-range terms, varying $\kappa$ will change the $\tau$ value where a these singularities occur.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{PhaseTau-Omega}
+	\caption{Phase shifts versus $\tau$ for $\kappa = 0.1$ and varying $\omega$ values}
+	\label{fig:PhaseTau-Omega}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{PhaseTau-Kappa}
+	\caption{Phase shifts versus $\tau$ for $\omega = 7$ and varying $\kappa$ values}
+	\label{fig:PhaseTau-Kappa}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=4in]{Det-Omega=6,Kappa=01}
+	\caption{Determinant of $\textbf{\emph{A}}$ versus $\tau$ for $\omega = 6$ with 875 terms of Todd reordering}
+	\label{fig:Det-Omega=6}
+\end{figure}
+
+Cooper et al. \cite{Cooper2009} showed that if $\Det{\textbf{\emph{A}}}$ is 
+plotted with respect to $\tau$, there are actually two $\tau$ values where
+$\Det{\textbf{\emph{A}}} \approx 0$, but only one of them corresponds to a 
+Schwartz singularity. They refer to the second root as an anomaly-free 
+singularity. \Cref{fig:Det-Omega=6} shows an equivalent plot for our 
+data. The roots of $\Det{\textbf{\emph{A}}}$ are at approximately
+$\tau = 0.125$ and $\tau = 1.144$. The first root corresponds well with the
+singularity in the $\omega = 6$ graph in \cref{fig:PhaseTau-Omega}. The second
+root is referred to as an ``anomaly-free singularity'' in
+Cooper et al.\ \cite{Cooper2009} and does not correspond to a Schwartz
+singularity. The roots are easily found by fitting the data to equation (20)
+and solving equation (21) in Cooper et al.\ \cite{Cooper2009}.
+
+Additionally, the complex Kohn methods in \cref{eq:uCompTKohn,eq:uCompSKohn,eq:uGenTKohn,eq:uGenSKohn} are far less likely to suffer from these singularities. A complex-valued Kohn variational method was first proposed by Miller et al. \cite{Miller1987} and used the same year by McCurdy et al.~\cite{McCurdy1987}. Subsequent work by Lucchese~\cite{Lucchese1989} showed that the complex Kohn methods can indeed have Schwartz singularities, but they are not likely to show up in practice. Cooper et al.~\cite{Cooper2010} also showed that the phase shifts obtained using the complex Kohn variational method can be obtained exactly from the real-valued generalized Kohn method in \cite{eq:uGenKohn}, but we do not use this method.
+
+There is also much less variability in the results of the different complex Kohn variational methods, and even for different values of $\tau$ in \cref{eq:uGenTKohn,eq:uGenSKohn}, the phase shifts generally agree to great precision (greater than the accuracy that we quote for our phase shifts). Due to the stability of the complex Kohn variational methods, the results quoted throughout this paper are for the $S$ matrix complex Kohn unless noted otherwise.
+
+
+%\todoi{I think one of the Humberston group theses has some links/discussion on Schwartz singularities. Definitely mention Cooper, Lucchese, and McCurdy.}
 
 
 \section{Resonances}

@@ -6,9 +6,21 @@
 \chapter{S-Wave}
 \label{chp:SWave}
 
-\lettrine{\textcolor{startcolor}{T}}{he} S-wave is the simplest of the partial waves to consider, since it is the lowest angular momentum state, and the spherical harmonics are constant, so there is no angular dependence. As a condensed notation, the S-wave singlet and triplet are referred to as $^1S$ and $^3S$, respectively (as shown in the nomenclature on page \pageref{chp:nomenclature}).
+\lettrine{\textcolor{startcolor}{T}}{he} S-wave is the simplest of the 
+partial waves to consider, since it is the lowest angular momentum state, and 
+the spherical harmonics are constant, so giving no angular dependence. As a 
+condensed notation, the S-wave singlet and triplet are referred to as $^1S$ 
+and $^3S$, respectively (as shown in the nomenclature on page
+\pageref{chp:nomenclature}).
 
-The form of the Kohn matrix elements was derived in \cref{chp:WaveKohn} for general $\ell$, but as mentioned in \cref{}, when we started this project, we derived the S-wave first and wrote code to compute this partial wave only. To keep this chapter in line with the S-wave code, I will show the matrix elements specifically for the S-wave, but the results in \cref{chp:WaveKohn} are directly applicable to the S-wave. The code described in \cref{chp:General} works for any partial wave but can be slower than the S-wave specific code.
+The form of the Kohn matrix elements was derived in \cref{chp:WaveKohn} for 
+general $\ell$, but as mentioned in \cref{}, when we started this project, we 
+derived the S-wave first and wrote code to compute this partial wave only. To 
+keep this chapter in line with the S-wave code, I will show the matrix 
+elements specifically for the S-wave, but the results in \cref{chp:WaveKohn} 
+are directly applicable to the S-wave. The code described in
+\cref{chp:General} works for any partial wave but can be slower than the S-wave
+specific code.
 
 \section{Wavefunction}
 \label{sec:SWaveFn}
@@ -18,8 +30,10 @@ The general wavefunction for any $\ell$ is given in \cref{eq:GeneralWaveTrial}, 
 \Psi_0^{\pm,t} = \widetilde{S}_0 + L_0^{\pm,t} \, \widetilde{C}_0 + \sum_{i=1}^N c_i \bar{\phi}_i.
 \label{eq:SWaveTrial}
 \eeq
-The S-wave has only one set of short-range terms. Higher partial waves have two in this work but can have even more.
-The spherical harmonic, spherical Bessel and spherical Neumann functions have the form of
+The S-wave has only one set of short-range terms. Higher partial waves have two
+in this work but can have even more (refer to the D-wave mixed symmetry terms in
+\cref{sec:MixedTerms}). The spherical harmonic, spherical Bessel,
+and spherical Neumann functions have the form of
 \begin{subequations}
 \label{eq:SWaveSpher}
 \begin{align}

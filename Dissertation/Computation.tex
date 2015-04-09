@@ -242,13 +242,38 @@ not the $W$ function arguments.
 \subsection{Linear Dependence in the Bound State Calculation}
 With infinite precision in calculations, all terms from the basis set could be used. However, due to the limited precision inherent in computer calculations, when using large basis sets, near linear dependences will exist in the matrices. The goal is to identify and eliminate terms that exhibit near linear dependence with other terms. These terms are not exactly linearly dependent, if infinite precision was possible, but they are linearly dependent to computer precision.
 
-To calculate the eigenvalues of the generalized eigenproblem, the LAPACK routine \texttt{dsygv} is used \cite{dsygv}. For the basis set consisting of terms from $\omega$ = 5, LAPACK computes the eigenvalues without errors. Adding in terms corresponding to $\omega = 6$ for some sets of nonlinear parameters causes \texttt{dsygv} to fail with an error set in the last parameter, Info. This error is always an integer greater than the number of terms, indicating from the library documentation that ``the leading minor of order i of B is not positive definite'' \cite{dsygv}. L\"uchow and Kleindienst also encountered a similar problem using NAG and EISPACK \cite{Luchow1993}.
+To calculate the eigenvalues of the generalized eigenproblem, the LAPACK 
+routine \texttt{dsygv} is used \cite{dsygv}. For the basis set consisting of 
+terms from $\omega$ = 5, LAPACK computes the eigenvalues without errors. 
+Adding in terms corresponding to $\omega = 6$ for some sets of nonlinear 
+parameters causes \texttt{dsygv} to fail with an error set in the last 
+parameter, Info. This error is always an integer greater than the number of 
+terms, indicating from the library documentation that ``the leading minor of 
+order i of B is not positive definite'' \cite{dsygv}. L\"uchow and 
+Kleindienst also encountered a similar problem using NAG and EISPACK
+\cite{Luchow1993}.
 
-This error does suggest that one approach to identifying problematic terms is to check for positive definiteness of the overlap matrix $\left\langle \phi_i | \phi_j \right\rangle$. This is one method that Yan et. al use to isolate problematic terms \cite{Yan1999}. They test the eigenvalues of the overlap matrix to see if any are small or negative, though there is no mention in their paper of what value of ``small'' is used. In several papers by Yan and others \cite{Yan1998,Yan1998a,Yan1999,Drake1995,Yan1997a}, terms with $j1 > j2$ are omitted if $l_1 = l_2$ and $\alpha \approx \beta$, along with $j_1 = j_2$ if $j_{23} > j_{31}$. No reasoning is given in these papers as to why these terms should cause near linear dependence or why they were chosen to be omitted. Right now, it is assumed that these terms were determined by trial and error or by noticing patterns in terms that produced near linear dependence.
+This error does suggest that one approach to identifying problematic terms is 
+to check for positive definiteness of the overlap matrix
+$\left\langle \phi_i | \phi_j \right\rangle$. This is one method that
+Yan et. al use to isolate 
+problematic terms \cite{Yan1999}. They test the eigenvalues of the overlap 
+matrix to see if any are small or negative, though there is no mention in 
+their paper of what value of ``small'' is used. We attempted to use this fact 
+to remove problematic terms, but too many terms were removed, leading to an 
+energy that converged too slowly. In several papers by Yan and others
+\cite{Yan1998,Yan1998a,Yan1999,Drake1995,Yan1997a}, terms with $j1 > j2$ are 
+omitted if $l_1 = l_2$ and $\alpha \approx \beta$, along with $j_1 = j_2$ if
+$j_{23} > j_{31}$. These terms were likely determined by trial and error 
+or by noticing patterns in terms that produced near linear dependence.
 
-As mentioned in the previous paragraph, the overlap matrix will no longer be positive-definite if a term is included in the basis set which introduces a near linear dependence. We attempted to use this fact to remove problematic terms, but too many terms were removed, leading to an energy that converged too slowly. This may need to be looked at again.
-
-Another technique Yan et al.\ used was to partition the basis set into five sectors, each with a different set of nonlinear parameters and maximum $\omega$ \cite{Yan1999}. The sectors also have restrictions on the interparticle $r_{ij}$ terms, mainly limiting the power of $r_{23}$ and $r_{31}$, which are the electron-positron coordinates in their paper (corresponding to $r_{12}$ and $r_{13}$ in our work). The techniques used by Yan, Drake and Ho for restricting the set of terms are not used in our work.
+Another technique Yan et al.\ used was to partition the basis set into five 
+sectors, each with a different set of nonlinear parameters and maximum
+$\omega$ \cite{Yan1999}. The sectors also have restrictions on the interparticle
+$r_{ij}$ terms, mainly limiting the power of $r_{23}$ and $r_{31}$, which are the 
+electron-positron coordinates in their paper (corresponding to $r_{12}$ and
+$r_{13}$ in our work). The techniques used by Yan, Drake and Ho for restricting 
+the set of terms are not used in our work.
 
 
 \subsection{Allan Todd's Algorithm}
@@ -301,9 +326,10 @@ discarding it.
 For larger basis sets, this algorithm becomes extremely slow, as determining 
 the eigenvalues is an $O(N^3)$ operation. It can easily be parallelized, 
 since we are computing the eigenvalues for a large number of matrices. Our 
-program has been parallelized using OpenMP for intranode communications and 
-Open MPI for internode communications. Todd's algorithm provides the best 
-converged energy for a set of terms, albeit at a cost of computational speed.
+program has been parallelized using OpenMP \cite{OpenMP} for intranode
+communications and MPI \cite{MPI} for internode communications. Todd's
+algorithm provides the best converged energy for a set of terms, albeit
+at a cost of computational speed.
 
 \begin{figure}[H]
 	\centering
@@ -381,7 +407,7 @@ Energy cutoff & Used terms & Energy\\
 
 Unfortunately, the intuition that a larger block size and smaller energy cutoff will yield a better final energy is not necessarily correct. The best value of the energy was actually obtained for the largest tested energy cutoff of $10^{-8}$. A block size of 500 also gave a worse energy than did a block size of 400. More tests need to be performed to determine the optimal value of both parameters, and these could possibly change for higher values of $\omega$ or for a different system.
 
-We decided to use the Todd algorithm (\ref{sec:ToddBound}) due to the better energy obtained and the larger set of terms returned. The Todd algorithm is also more consistent between runs. The trade-off is the increased time to perform a calculation, especially for large $\omega$.
+We decided to use the Todd algorithm (\cref{sec:ToddBound}) due to the better energy obtained and the larger set of terms returned. The Todd algorithm is also more consistent between runs. The trade-off is the increased time to perform a calculation, especially for large $\omega$.
 
 \begin{figure}[H]
 	\centering
@@ -401,7 +427,7 @@ collectively referred to as long-range integrations
 \subsection{Perimetric Coordinates}
 \label{sec:PerimetricCoords}
 
-Perimetric coordinates are used for the long-long integrations for the S-wave. If perimetric coordinates are used for $r_1$, $r_2$ and $r_{12}$, then these are defined by \cite{Armour1991}
+Perimetric coordinates are used for the long-long integrations in the $S$-wave code. If perimetric coordinates are used for $r_1$, $r_2$ and $r_{12}$, then these are defined by \cite{Armour1991}
 
 \begin{align}
 \label{eq:PerimetricCoords1}
@@ -409,7 +435,6 @@ Perimetric coordinates are used for the long-long integrations for the S-wave. I
 \nonumber y &= r_2 + r_{12} - r_1 \\
 z &= r_{12} + r_1 - r_2.
 \end{align}
-
 These can alternately be written as
 \begin{align}
 \label{eq:PerimetricCoords2}
@@ -463,7 +488,7 @@ Gaussian quadratures are particularly attractive, since they give exact results 
 
 \subsubsection{Gauss-Legendre Quadrature}
 \label{sec:GaussLegendre}
-If the weight function is chosen as $W(x)=1$, and the integration interval is $(-1,1)$, this is known as Gauss-Legendre quadrature (or sometimes known simply as Gaussian quadrature). The orthogonal polynomials used are the Legendre polynomials, $P_n(x)$. Equation \ref{eq:GeneralQuadratures} becomes
+If the weight function is chosen as $W(x)=1$, and the integration interval is $(-1,1)$, this is known as Gauss-Legendre quadrature (or sometimes known simply as Gaussian quadrature). The orthogonal polynomials used are the Legendre polynomials, $P_n(x)$. \Cref{eq:GeneralQuadratures} becomes
 \beq
 \label{eq:GaussLeg}
 \int_{-1}^1 f(x) dx \approx \sum_{i=1}^n w_i f(x_i),
@@ -483,7 +508,7 @@ The limits of integration must be from $-1$ to $1$, but this is generalized by u
 
 \subsubsection{Gauss-Laguerre Quadrature}
 \label{sec:GaussLag}
-The Gauss-Legendre quadrature cannot be used on semi-infinite intervals, so we use the Gauss-Laguerre quadrature in these cases. The orthogonal polynomials in this case are the Laguerre polynomials, $L_n(x)$, and the weight function is $W(x) = e^{-x}$. Equation \ref{eq:GeneralQuadratures} becomes
+The Gauss-Legendre quadrature cannot be used on semi-infinite intervals, so we use the Gauss-Laguerre quadrature in these cases. The orthogonal polynomials in this case are the Laguerre polynomials, $L_n(x)$, and the weight function is $W(x) = e^{-x}$. \Cref{eq:GeneralQuadratures} becomes
 \beq
 \label{eq:GaussLag}
 \int_0^\infty e^{-x} f(x) dx \approx \sum_{i=1}^n w_i f(x_i),
@@ -494,7 +519,7 @@ where the $x_i$ abscissas are the $i^{th}$ zeros of $L_n(x)$, and the weights ar
 w_i = \frac{x_i}{(n+1)^2 [L_{n+1}(x_i)]^2}.
 \eeq
 
-When the integration is over the interval $(a,\infty)$, equation \ref{eq:GaussLag} is easily transformed by
+When the integration is over the interval $(a,\infty)$, \cref{eq:GaussLag} is easily transformed by
 \beq
 \label{eq:GaussLagGen1}
 \int_a^\infty e^{-x} f(x) dx = \int_0^\infty e^{-(x+a)} f(x+a) dx = e^{-a} \int_0^\infty e^{-x} f(x+a) dx \approx e^{-a} \sum_{i=1}^n w_i f(x_i+a).
@@ -505,18 +530,23 @@ When the integration is over the interval $(a,\infty)$, equation \ref{eq:GaussLa
 \label{eq:GaussLagGen2}
 \int_a^\infty e^{-m x} f(x) dx = \frac{1}{m} \int_a^\infty e^{-y} f\left(\frac{y}{m}\right) dy,
 \eeq
-where we have defined $y = m x$.  This allows for equation \ref{eq:GaussLagGen1} to be generalized to
+where we have defined $y = m x$.  This allows for \cref{eq:GaussLagGen1} to be generalized to
 \begin{align}
 \label{eq:GaussLagGen}
 \nonumber \int_a^\infty e^{-m x} f(x) dx &= \frac{1}{m} \int_{ma}^\infty e^{-y} f\left(\frac{y}{m}\right) dy = \frac{1}{m} \int_0^\infty e^{-(y+ma)} f\left(\frac{y}{m}+a\right) dy \\
 & = \frac{e^{-ma}}{m} \int_0^\infty e^{-y} f\left(\frac{y}{m}+a\right) dy \approx \frac{e^{-ma}}{m} \sum_{i=1}^n w_i f\left(\frac{y_i}{m}+a\right).
 \end{align}
-The $y_i$ abscissas and $w_i$ weights are the same as the less general case in equations \ref{eq:GaussLag} and \ref{eq:GaussLagWeights}.  This general form of Gauss-Laguerre quadrature is what we use for our semi-infinite integrations.
+The $y_i$ abscissas and $w_i$ weights are the same as the less general case in
+\cref{eq:GaussLag,eq:GaussLagWeights}. This general form of Gauss-Laguerre
+quadrature is what we use for our semi-infinite integrations.
 
 
 \subsubsection{Chebyshev--Gauss Quadrature}
 \label{sec:ChebyshevGauss1}
-If the weight function is chosen as $W(x)=\frac{1}{\sqrt{1-x^2}}$, and the integration interval is $(-1,1)$, this is known as Chebyshev-Gauss quadrature. The orthogonal polynomials used are the Chebyshev polynomials of the first kind, $T_n(x)$.  Equation \ref{eq:GeneralQuadratures} becomes
+If the weight function is chosen as $W(x)=\frac{1}{\sqrt{1-x^2}}$, and the
+integration interval is $(-1,1)$, this is known as Chebyshev-Gauss quadrature.
+The orthogonal polynomials used are the Chebyshev polynomials of the first
+kind, $T_n(x)$. \Cref{eq:GeneralQuadratures} becomes
 \beq
 \label{eq:GaussCheb}
 \int_{-1}^1 \frac{f(x)}{\sqrt{1-x^2}} dx \approx \sum_{i=1}^n w_i f(x_i),
@@ -526,14 +556,24 @@ where
 \label{eq:GaussChebAbsWeights}
 x_i = \cos\left(\frac{2i-1}{n}\pi\right) \text{ and } w_i = \frac{\pi}{n}.
 \eeq
-This quadrature is used for the internal angular integrations.  A discussion of how to use this for these integrations is found in appendix \ref{sec:ChebyshevGauss}.
+This quadrature is used for the internal angular integrations. A discussion of
+how to use this for these integrations is found in \cref{sec:ChebyshevGauss}.
 
 \subsection{Long-Range -- Long-Range}
 \label{sec:LongLongInt}
 
-The scattering program calculates only the short-long and long-long matrix elements. The volume element in equation \ref{eq:dtau} has an internal angle of $\phi_{23}$ to integrate over.  When a term has a a negative power of $r_{23}$, a large number of integration points must be used for reasonable accuracy. Instead, we split the integration such that one part is missing the the $r_{23}^{-1}$ term and the other contains only the $r_{23}^{-1}$ term.
+The scattering program calculates only the short-long and long-long matrix 
+elements. The volume element in equation \ref{eq:dtau} has an internal angle 
+of $\phi_{23}$ to integrate over.  When a term has a a negative power of
+$r_{23}$, a large number of integration points must be used for reasonable 
+accuracy. Instead, we split the integration such that one part is missing the 
+the $r_{23}^{-1}$ term and the other contains only the $r_{23}^{-1}$ term.
 
-The first integration excluding the $r_{23}^{-1}$ term has negative powers of $r_i$ and $r_{ij}$ cancelled by the corresponding terms in the volume element given by equation \ref{}.  For the integration over the $r_{23}^{-1}$ term, we use an alternative volume element, namely that given by equation \ref{}.  The $r_{23}^{-1}$ is then cancelled by the $r_{23}$ in this volume element.
+The first integration excluding the $r_{23}^{-1}$ term has negative powers of 
+$r_i$ and $r_{ij}$ cancelled by the corresponding terms in the volume element 
+given by equation \ref{}.  For the integration over the $r_{23}^{-1}$ term, 
+we use an alternative volume element, namely that given by equation \ref{}.  
+The $r_{23}^{-1}$ is then cancelled by the $r_{23}$ in this volume element.
 
 \todoi{Add the section about the volume elements in an appendix.}
 \todoi{$\mathcal{L}$ instead of L}
@@ -578,6 +618,8 @@ The other part of the $(\bar{S},\mathcal{L} \bar{S})$ integral contains the $r_{
 (\bar{S},\mathcal{L} \bar{S})_B = \pm 8\pi^2 \int_0^\infty & \int_0^\infty \int_0^\infty \int_{|r_1 - r_3|}^{|r_1 + r_3|} \int_{|r_2 - r_3|}^{|r_2 + r_3|} \int_0^{2\pi}  S^\prime S \frac{2}{r_{23}} r_1 r_2 r_{13} r_{23} \nonumber \\
 & \times d\phi_{12}\, dr_{23}\, dr_{13}\, dr_2\, dr_3\, dr_1.
 \end{align}
+\todoi{Check that we do this over $\phi_{12}$.}
+\todoi{$\varphi$ instead of $\phi$}
 
 The $r_{13}$ and $r_{23}$ integrals have finite limits, so here we use Gauss-Legendre quadrature.  Again, for the internal angular integration, this time over $\phi_{12}$, we use Chebyshev-Gauss quadrature.  The cusp in the $r_3$ integration is at $r_3 = r_1$, and the cusp in the $r_2$ integration is at $r_2 = r_3$.  Similar to before, we split up these integrations by using Gauss-Legendre before the cusp and Gauss-Laguerre after the cusp.
 
@@ -614,9 +656,10 @@ When $q_i = 0$, the overall power of the $r_{23}^{-1}$ term is $-1$, so we canno
 \begin{align}
 \label{eq:PhiLSBarIntNoR23}
 \nonumber (\bar{\phi}_i, L\bar{S}_\ell) =& \,\frac{2}{\sqrt{2}} \int \phi_i \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} \right)S_\ell \pm \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} \right) S_\ell^\prime \right]  d\tau \\
-=&\, \frac{2}{\sqrt{2}} \cdot 8\pi^2  \int_0^\infty \int_0^\infty \int_0^\infty \int_{|r_1 - r_2|}^{|r_1 + r_2|} \int_{|r_1 - r_3|}^{|r_1 + r_3|} \int_0^{2\pi} \phi_i \\
+\nonumber =&\, \frac{2}{\sqrt{2}} \cdot 8\pi^2  \int_0^\infty \int_0^\infty \int_0^\infty \int_{|r_1 - r_2|}^{|r_1 + r_2|} \int_{|r_1 - r_3|}^{|r_1 + r_3|} \int_0^{2\pi} \phi_i \\
 &\times \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} \right)S_\ell \pm \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} \right) S_\ell^\prime \right]  r_2 r_3 r_{12} r_{13}\, d\phi_{23}\, dr_{13}\, dr_{12}\, dr_3\, dr_2\, dr_1
 \end{align}
+\todoi{Volume element changes between this and the next equation}
 
 The integration over the $r_{23}^{-1}$ term is done the same way as the second integration of the long-long matrix elements in section \ref{sec:LongLongInt}.  The $r_{23}$ in the $d\tau^\prime$ volume element cancels the $r_{23}^{-1}$ term.  Refer to section \ref{sec:LongLongR23} for a description of the quadratures used here.
 \begin{align}
@@ -625,6 +668,9 @@ The integration over the $r_{23}^{-1}$ term is done the same way as the second i
 =&\, \frac{2}{\sqrt{2}} \cdot 8\pi^2  \int_0^\infty \int_0^\infty \int_0^\infty \int_{|r_1 - r_3|}^{|r_1 + r_3|} \int_{|r_2 - r_3|}^{|r_2 + r_3|} \int_0^{2\pi} \phi_i \left[ \frac{2}{r_{23}}\left(S_\ell \pm S_\ell^\prime\right) \right]  \nonumber \\
 &\times  r_1 r_2 r_{13} r_{23}\, d\phi_{12}\, dr_{23}\, dr_{13}\, dr_2\, dr_3\, dr_1
 \end{align}
+
+\todoi{Check that we do this over $\phi_{12}$.}
+
 
 
 \subsection{Quadrature Points}
@@ -671,7 +717,11 @@ Integral & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
 \label{tab:OptimalEffectiveCoords}
 \end{table}
 
-Describing the number of points used in integrating the different coordinates in sections \ref{sec:LongLongInt} and \ref{sec:ShortLongInt} can be confusing, so we have taken to grouping the sets of points as in tables \ref{tab:BaseEffectiveCoords} and \ref{tab:OptimalEffectiveCoords}. Each column of this table is referred to as an ``effective coordinate''.
+Describing the number of points used in integrating the different coordinates 
+in sections \ref{sec:LongLongInt} and \ref{sec:ShortLongInt} can be 
+confusing, so we have taken to grouping the sets of points as in
+\cref{tab:BaseEffectiveCoords,tab:OptimalEffectiveCoords}. Each column of 
+this table is referred to as an ``effective coordinate''.
 
 \begin{table}[H]
 \centering
@@ -698,37 +748,84 @@ Integral & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
 \label{sec:Cusps}
 \todoi{Discussion about the existence of the cusps in the integrand, possibly with graphs illustrating them.}
 
-The short-long and long-long matrix element integrals have cusps in the integrands that must be dealt with. As an example, consider $(\bar{\phi}_i, L\bar{C}_0)$ from the S-wave. Using the notation of \cref{sec:LongLongR23}, where we are only computing the $r_{23}^{-1}$ terms (given fully later in \cref{eq:LCBar} on \pageref{eq:LCBar}),
+The short-long and long-long matrix element integrals have cusps in the
+integrands that must be dealt with. As an example, consider
+$(\bar{\phi}_i, L\bar{C}_0)$ from the S-wave. Using the notation of
+\cref{sec:LongLongR23}, where we are only computing the $r_{23}^{-1}$ terms
+(given fully later in \cref{eq:LCBar} on \pageref{eq:LCBar}),
 \begin{align}
 (\bar{\phi}_i, L\bar{C}_0)_B = 8\pi^2 & \int_0^\infty \int_0^\infty \int_0^\infty \int_{|r_1 - r_2|}^{|r_1 + r_2|} \int_{|r_2 - r_3|}^{|r_2 + r_3|} \int_0^{2\pi} \bar{\phi}_i (\mathcal{L} \bar{C})_B  \nonumber \\
 & \times r_1 r_3 r_{13} r_{23}\, d\phi_{13}\, dr_{23}\, dr_{12}\, dr_3\, dr_2\, dr_1.
 \end{align}
-Due to the integration limits of the $r_{13}$ and $r_{23}$ integrations, the $r_2$ integrand has a cusp at $r_2 = r_1$, and the $r_3$ integrand has a cusp at $r_3 = r_2$.
+Due to the integration limits of the $r_{13}$ and $r_{23}$ integrations, the
+$r_2$ integrand has a cusp at $r_2 = r_1$, and the $r_3$ integrand has a cusp
+at $r_3 = r_2$.
 
-\Cref{fig:cusp} shows one such example of this cusp behavior for the $r_2$ integrand. All inner integrations ($\phi_{13}$, $r_{23}$, $r_{12}$, and $r_3$) are performed with a full set of integration points as described in \cref{tab:OptimalEffectiveCoords}.
+\Cref{fig:cusp} shows one such example of this cusp behavior for the $r_2$ 
+integrand. All inner integrations ($\phi_{13}$, $r_{23}$, $r_{12}$, and $r_3$)
+are performed with a full set of integration points as described in
+\cref{tab:OptimalEffectiveCoords}.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=5in]{cusp}
-	\caption[Example of cusp in S-wave short-long integration]{Example of cusp in S-wave short-long integration for $1/r_{23}$ term of $(\bar{\phi}_3, \mathcal{L}\bar{C}_0)$ with \mbox{$r_1 = 18.201$}}
+	\caption[Example of cusp in S-wave short-long integration]{Example of cusp
+in S-wave short-long integration for $1/r_{23}$ term of
+$(\bar{\phi}_3, \mathcal{L}\bar{C}_0)$ with \mbox{$r_1 = 18.201$}}
 	\label{fig:cusp}
 \end{figure}
 
-The $r_2$ integration could be performed using just the Gauss-Laguerre quadrature, since we are integrating over $(0,\infty)$. However, the cusp makes this integration slowly convergent. We instead split the integration interval into two parts and employ different quadratures for each. The integration is split to use Gauss-Legendre (\cref{eq:GaussLegGen}) on the interval $(0,r_1)$ and Gauss-Laguerre (\cref{eq:GaussLagGen}) on the interval $(r_1,\infty)$. Likewise, the $r_3$ integration is split into the intervals $(0,r_2)$ and $(r_2,\infty)$.
+The $r_2$ integration could be performed using just the Gauss-Laguerre 
+quadrature, since we are integrating over $[0,\infty)$. However, the cusp 
+makes this integration slowly convergent. We instead split the integration 
+interval into two parts and employ different quadratures for each. The 
+integration is split to use Gauss-Legendre (\cref{eq:GaussLegGen}) on the 
+interval $[0,r_1]$ and Gauss-Laguerre (\cref{eq:GaussLagGen}) on the interval 
+$[r_1,\infty)$. Likewise, the $r_3$ integration is split into the intervals
+$[0,r_2]$ and $[r_2,\infty)$.
 
-Doing this splitting requires many more function evaluations, so we use an approximation whenever $r_1$ is large enough. Specifically when $r_1$ is greater than a chosen distance, we use Gauss-Laguerre over the entire $(0,\infty)$ range. 
+Doing this splitting requires many more function evaluations, so we use an 
+approximation whenever $r_1$ is large enough. Specifically when $r_1$ is 
+greater than a chosen distance, we use Gauss-Laguerre over the entire
+$[0,\infty)$ range. 
 
 \todoi{Mention ECGs?}
 
 
-In the example given in \cref{fig:cusp}, at $r_2 = 100$, the $r_2$ integrand is approximately $10^{-57}$, while at $r_2 = 25$, the integrand is approximately $10^{-9}$.
+In the example given in \cref{fig:cusp}, at $r_2 = 100$, the $r_2$ integrand 
+is approximately $10^{-57}$, while at $r_2 = 25$, the integrand is 
+approximately $10^{-9}$.
 
 
-For the S-wave, all runs were performed with the cusp parameters set at $r_1 = 100$. When $r_1 > 100$, the $r_2$ and $r_3$ integrations are done using only Gauss-Laguerre, since the cusp is considered unimportant at that distance. When $r_1 \leq 100$, we use Gauss-Legendre before the cusp and Gauss-Laguerre after the cusp, as described in sections \ref{sec:LongLongNoR23} and \ref{sec:LongLongR23}. 
+For the S-wave, all runs were performed with the cusp parameters set at
+$r_1 = 100$. When $r_1 > 100$, the $r_2$ and $r_3$ integrations are done using only 
+Gauss-Laguerre, since the cusp is considered unimportant at that distance. 
+When $r_1 \leq 100$, we use Gauss-Legendre before the cusp and Gauss-Laguerre 
+after the cusp, as described in \cref{sec:LongLongNoR23,sec:LongLongR23}. 
 
-Van Reeth and Humberston used cusp parameters set at $r_1 = 25$, with little apparent loss of precision over using $r_1 = 100$ \cite{}. With $\kappa$ set at $0.1$, several tests were performed with different cusp parameters. With cusp parameters of 100, for $\omega = 6$, we are able to use 910 terms, giving a phase shift of $-0.427$. Doing the same run with cusp parameters of 25 allows us to use the same number of terms and gives a phase shift of $-0.427$ as well. In this particular example, the two sets of cusp parameters (25 and 100) differ in the sixth decimal place. As an example, for the inverse Kohn, $\delta = -0.42707291$ for the cusp parameters of 100, while $\delta = -0.42707370$ for cusp parameters of 25. To the required accuracy, the cusp parameters of 25 are sufficient for this example.
+Van Reeth and Humberston used cusp parameters set at $r_1 = 25$, with little 
+apparent loss of precision over using $r_1 = 100$ \cite{VanReethPrivate}. 
+With $\kappa$ set at $0.1$, several tests were performed with different cusp 
+parameters. With cusp parameters of 100, for $\omega = 6$, we are able to use 
+910 terms, giving a phase shift of $-0.427$. Doing the same run with cusp 
+parameters of 25 allows us to use the same number of terms and gives a phase 
+shift of $-0.427$ as well. In this particular example, the two sets of cusp 
+parameters (25 and 100) differ in the sixth decimal place. As an example, for 
+the inverse Kohn, $\delta = -0.42707291$ for the cusp parameters of 100, 
+while $\delta = -0.42707370$ for cusp parameters of 25. To the required 
+accuracy, the cusp parameters of 25 are sufficient for this example.
 
-Smaller values for these cusp parameters were also tried, and these tests are summarized in table \ref{tab:SWaveCuspParameters}. When the cusp parameters are too small, such as the cases of 5, 10 and 15, the phase shifts do not converge well and start to diverge much earlier. The second column in this table shows the number of terms we can use for each set, but the number of terms to use is not exact due to the lack of good convergence, so the values here are approximate for small cusp parameters. The phase shift given for these three tests are therefore approximate as well. From this table, we conclude that 20 is the minimum value needed, at least for the $\kappa = 0.1$ case tested here for the $S$-wave. To be conservative, runs use cusp parameters of 100. 
+Smaller values for these cusp parameters were also tried, and these tests are 
+summarized in table \ref{tab:SWaveCuspParameters}. When the cusp parameters 
+are too small, such as the cases of 5, 10 and 15, the phase shifts do not 
+converge well and start to diverge much earlier. The second column in this 
+table shows the number of terms we can use for each set, but the number of 
+terms to use is not exact due to the lack of good convergence, so the values 
+here are approximate for small cusp parameters. The phase shift given for 
+these three tests are therefore approximate as well. From this table, we 
+conclude that 20 is the minimum value needed, at least for the $\kappa = 0.1$ 
+case tested here for the $S$-wave. To be conservative, runs use cusp 
+parameters of 100. 
 
 
 
@@ -783,17 +880,105 @@ Cusp parameter & $\delta_2^+$ & Time (hours) \\
 \end{table}
 
 
+\subsection{Extra Exponential}
+To further improve the convergence of the short-long matrix elements in 
+equation \cref{eq:GeneralKohnMatrix}, we investigated the integrands.
+The biggest source of 
+difficulty in converging these results comes through the Gauss-Laguerre 
+quadratures in the $r_1$, $r_2$ and $r_3$ integrations. Specifically, the 
+region near the origin is not adequately represented. The integrands fall off 
+quickly due to the exponential falloffs in $r_1$, $r_2$ and $r_3$, so it is 
+not as important to have abscissae far away from the origin.
+We are using approximately 7 times as many integration points total as the
+earlier Kohn and inverse Kohn work \cite{VanReeth2003,VanReeth2004}
+(see \cref{}), but this brute force approach of adding quadrature points can 
+increase the computational time greatly. We took another approach to 
+further increase the accuracy. For each of the Gauss-Laguerre quadratures, we 
+introduce an extra $e^{-\lambda r_i}$ and remove it with $e^{\lambda r_i}$ 
+after the quadrature, bringing our abscissae closer to the origin without 
+increasing the number of integration points.
+
+The basic form of the Gauss-Laguerre quadrature is given in \cref{eq:GaussLag} as
+\beq
+\label{eq:GaussLag}
+\int_0^\infty e^{-x} f(x) dx \approx \sum_{i=1}^n w_i f(x_i).
+\eeq
+Introducing an extra $e^{-\lambda x}$ and removing it with $e^{\lambda x}$, we can bring the abscissae closer in by
+\beq
+\label{eq:GaussLagLambda}
+\int_0^\infty e^{-x} f(x) dx \approx \sum_{i=1}^n \frac{w_i}{\lambda} f\! \left(\frac{x_i}{\lambda}\right) \ee^{\lambda x_i}.
+\eeq
+
+As an example, the full expression for the $r_2$ Gauss-Laguerre quadrature is given \todo{$y_i$ defined?} by
+\beq
+\int_a^\infty e^{-\beta r_2} f(r_2) dr_2 \approx \frac{e^{-\beta a}}{\beta} \sum_{i=1}^n w_i f\left(\frac{y_i}{\beta}+a\right).
+\eeq
+and with the exponential in $\lambda$, this becomes
+\beq
+\int_a^\infty e^{-\beta r_2} f(r_2) dr_2 \approx \frac{e^{-a (\beta + \lambda)}}{\beta + \lambda} \sum_{i=1}^n w_i f\left(\frac{r_2 + a(\beta + \lambda)}{\beta + \lambda} \right) \ee^{\lambda r_2}.
+\eeq
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=5in]{lambda}
+	\caption{Effect of introducing $\lambda$ in $r_1$ exponential}
+	\label{fig:lambda}
+\end{figure}
+
+\Cref{fig:lambda} shows the effect of introducing this $\lambda$ into the $r_1$
+exponential. We use 50 quadrature points for each curve, meaning that there 
+are points represented past the cutoff of 18 au in the graph. For the black 
+curve with $\lambda = 0$, the curve is very jagged around the peak of 
+approximately 4 au. With $\lambda = 1.0$, the curve is much smoother, and as
+$\lambda$ is increased to 2.0, the peak is represented even better. If $\lambda$
+is too large, the area near the origin may be overrepresented and the area 
+farther out may be underrepresented. We have chosen $\lambda = 1.0$ for all 
+of our runs for the $r_1$, $r_2$ and $r_3$ coordinates, which gives better
+representation near the origin but does not  run the risk of neglecting the
+small contribution of the curve for large $r_i$ values. Our $D$-wave and
+general long-range codes could use different $\lambda$ for each of the
+$r_1$, $r_2$ and $r_3$ integrations, but we set them equal here. The matrix
+elements converge better for $\lambda = 1.0$ than for $\lambda = 0$.
+\todoi{Can we quantify this?}
+
+
 \section{Phase Shifts}
 \label{sec:CompPhase}
 
 \subsection{Phase Shift Convergence and Singularities}
-Schwartz singularities are well-documented \cite{Lucchese1989,Cooper2009} and are non-physical ``resonances''. To avoid these singularities, we use multiple forms of the Kohn method: Kohn, inverse Kohn, generalized Kohn, generalized S-matrix complex Kohn, and generalized T-matrix complex Kohn. There may also be spurious results if the matrix elements are not converged, with one example being the feature at approximately 600 terms in figure \ref{fig:OriginalPhaseShifts-pvr} for the inverse Kohn. With the original ordering of the short-range terms, the phase shifts always break up at around 1100 terms, even when the matrix elements are converged. To alleviate this problem, we have implemented the Todd algorithm.
+Schwartz singularities are well-documented \cite{Lucchese1989,Cooper2009} and 
+are non-physical ``resonances''. To avoid these singularities, we use 
+multiple forms of the Kohn method: Kohn, inverse Kohn, generalized Kohn, 
+generalized S-matrix complex Kohn, and generalized T-matrix complex Kohn. 
+There may also be spurious results if the matrix elements are not converged, 
+with one example being the feature at approximately 600 terms in
+\cref{fig:OriginalPhaseShifts-pvr} for the inverse Kohn. With the original
+ordering of the short-range terms, the phase shifts always break up at around
+1100 terms, even when the matrix elements are converged. To alleviate this 
+problem, we have implemented the Todd algorithm.
 
 \subsection{Todd Algorithm Applied to the Scattering Problem}
 \label{sec:ToddScattering}
-From the bound state calculation using Todd's algorithm mentioned in section \ref{sec:ToddBound}, we know which short-range Hylleraas terms approximate the wavefunction of PsH best. We have observed that the short-range--short-range terms used in the same order as the output of the Todd algorithm will generate well-converged phase shifts. The separate code to determine the phase shifts uses the output from the bound state code. Again, the phase shift is plotted with respect to the number of short-range terms. The result is in figure \ref{fig:ToddPhaseShifts-pvrplus5}. The phase shifts are converged well until term 1216. A magnification of the graph in the small region around this term is provided in the inset graph.
+\todoi{Reword for other than just $S$}
+From the bound state calculation using Todd's algorithm mentioned in
+\cref{sec:ToddBound}, we know which short-range Hylleraas terms approximate 
+the wavefunction of PsH best. We have observed that the short-short
+terms used in the same order as the output of the Todd algorithm will 
+generate well-converged phase shifts. The separate code to determine the 
+phase shifts uses the output from the bound state code. Again, the phase 
+shift is plotted with respect to the number of short-range terms. The result 
+is in \cref{fig:ToddPhaseShifts-pvrplus5}. The phase shifts are 
+converged well until term 1216. A magnification of the graph in the small 
+region around this term is provided in the inset graph.
 
-At term 1216, the Kohn method result starts to diverge from the others. Shortly after term 1280, the five different methods for $\tau = 0.0 - 0.5$ start to diverge slightly. The differences here are very small (on the order of $10^{-5}$), unlike in figure \ref{fig:OriginalPhaseShifts-pvrplus5}. The jump in phase shifts seen in figure \ref{fig:OriginalPhaseShifts-pvrplus5} does not take place until much later and is not as large. Near 1650 terms, the phase shifts are not well converged, but they are also not as nearly ill-behaved as the results in figure \ref{fig:OriginalPhaseShifts-pvrplus5}.
+At term 1216, the Kohn method result starts to diverge from the others. 
+Shortly after term 1280, the five different methods for $\tau = 0.0 - 0.5$ 
+start to diverge slightly. The differences here are very small (on the order 
+of $10^{-5}$), unlike in \cref{fig:OriginalPhaseShifts-pvrplus5}. The 
+jump in phase shifts seen in \cref{fig:OriginalPhaseShifts-pvrplus5} 
+does not take place until much later and is not as large. Near 1650 terms, 
+the phase shifts are not well converged, but they are also not as nearly
+ill-behaved as the results in \cref{fig:OriginalPhaseShifts-pvrplus5}.
 
 \begin{figure}[H]
 	\centering
@@ -850,6 +1035,10 @@ The Kohn methods do not require a recalculation of the entire problem for each K
 	\caption[Phase shifts versus $\tau$ in the generalized Kohn method]{Phase shifts versus $\tau$ in the generalized Kohn method for $^1$S Ps-H scattering $(\omega = 7, \kappa = 0.1)$}
 	\label{fig:PhaseTau}
 \end{figure}
+
+\todoi{Redo \cref{fig:PhaseTau} in IPython}
+
+\todoi{Put in \tt{fig:swave-phase-divergence} from PRA paper (and already in Dissertation.ipynb)}
 
 
 
@@ -958,114 +1147,6 @@ The differences between the different weighting methods gives us one way to dete
 In \cref{fig:schwartz-singularity}(b), where there are no Schwartz singularities, $^2E_R = \SI{5.0278}{eV}$ and $^2\Gamma = \SI{0.06075}{eV}$. This highlights the importance of using multiple Kohn methods and trying to detect Schwartz singularities. After removing obvious Schwartz singularities, the mean value of the different Kohn methods for all weightings is taken for each resonance parameter, and these are the results listed for each of the partial waves in \cref{sec:SWaveResonances,sec:PWaveResonances,sec:DWaveResonance,sec:FWaveResonance}. The errors given in these tables are simply the standard deviation with all Kohn methods and weightings used for each resonance parameter. For this, we do not use the generalized $S$ or $T$ matrices, because using these would decrease the error, as they agree to a significant precision.
 
 \todoi{IPython notebook?}
-
-
-
-
-\section{Resonance Fitting}
-\label{sec:ResonanceFit}
-To fit the data, I first tried the \texttt{Fit} and \texttt{FindFit} functions of Mathematica\textsuperscript{\textregistered} 8.0 \cite{Mathematica}, but these were unable to fit our data to this complicated nonlinear function. I next tried the \texttt{curve\_fit} function of SciPy \cite{SciPy} in Python\textsuperscript{\textregistered} 2.6 \cite{Python}, which was better able to fit the nonresonant (polynomial) part.
-
-I finally wrote a custom MATLAB\textsuperscript{\textregistered} \cite{matlab} script (with the help of Ryan Bosca) that uses the \texttt{nlinfit} routine of MATLAB. \texttt{nlinfit} is specifically designed for fitting to nonlinear functions, and its robust option allows for a variety of weighting functions to be used. Our script does the fitting for all eight of the possible weightings: Bisquare, Andrews, Cauchy, Fair, Huber, Logistic, Talwar and Welsch. This fitting routine is also not as sensitive to the initial conditions as the Mathematica and SciPy routines. The resulting graphs for $\omega = 7$ are in figures \ref{fig:ResOmega=7,pg1} and \ref{fig:ResOmega=7,pg2}.
-
-Some fittings are better than others for this particular type of function. 
-The Fair, Huber and Logistic weightings get the positions and widths of the 
-resonances nearly correct, but the resulting curve clearly does not fit the 
-data points leading to the first resonance, as can be seen in these figures. 
-For a more rigorous examination of the fittings, the residuals were 
-calculated for each point and graphed in figures
-\ref{fig:ResOmega=6,Residuals} and \ref{fig:ResOmega=7,Residuals}.
-I also calculated the residual sum of 
-squares (RSS), which are shown in these figures. The Fair, Huber and Logistic 
-weightings are clearly the worst fits for this function, though they are 
-still respectable, giving parameters that are extremely close. It should be 
-noted that the data will fit poorly to \cref{eq:ResonanceCurve} as 
-the energy is decreased (i.e. far from the resonances), so the fits all have 
-larger residuals for low energies.
-
-
-
-\todoi{Mention how we add or subtract $\pi$}
-
-\todoi{Talk about mlabwrap in Programs appendix}
-
-\todoi{Cite Mathematica, SciPy and MATLAB. Show results of Mathematica and Python fittings. Do I need to write function names differently (e.g. FindFit)?}
-
-\cite{Tennyson1984} \cite{Stibbe1998} \cite{Sochi2013}
-
-
-
-\subsubsection{Resonance Graphs}
-\label{sec:ResonanceGraphs}
-
-
-
-
-
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{swave-resonance-corrected-fits1}
-	\caption{First set of corrected resonance fitting graphs for $^1$S at $\omega = 7$}
-	\label{fig:swave-resonance-corrected-fits1}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{swave-resonance-corrected-fits2}
-	\caption{Second set of corrected resonance fitting graphs for $^1$S at $\omega = 7$}
-	\label{fig:swave-resonance-corrected-fits2}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{swave-resonance-corrected-res}
-	\caption{Residuals for corrected resonance fitting graphs for $^1$S at $\omega = 7$}
-	\label{fig:swave-resonance-corrected-res}
-\end{figure}
-
-
-
-
-\subsubsection{Resonance Values and Errors}
-\label{sec:ResonanceErrors}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=5in]{KohnFitting}
-	\caption{Kohn fitting ($\tau = 0.0$) with different weighting functions for $\omega = 7$}
-	\label{fig:KohnFitting}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=5in]{07Fitting}
-	\caption{Fitting for $\tau = 0.7$ with different weighting functions for $\omega = 7$}
-	\label{fig:07Fitting}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=5in]{pi4Fitting}
-	\caption[Fitting for $\uppi/4$ with different weighting functions for $\omega = 7$]{Fitting for $\frac{\uppi}{4}$ with different weighting functions for $\omega = 7$}
-	\label{fig:pi4Fitting}
-\end{figure}
-
-The results for the resonance parameters normally differ slightly for each of the Kohn methods.  To determine these, we gathered the data for all $\kappa$ values below the Ps(2s)+H(1s) channel threshold for a given Kohn method.  An example of the resultant graph for $\tau = 0.0$ (Kohn) can be seen in figure \ref{fig:KohnFitting}.  As described in section \ref{sec:ResonanceFit}, MATLAB's nonlinear fitting routine, nlinfit, is used with 8 different weighting functions to try various fits.  All 8 weighting functions give at least respectable fits to the data, but some fits are obviously worse than others.  For our data, the Fair, Logistic and Huber do not fit well for the second resonance.  The Cauchy will fit it close but not as close as the Andrews, Bisquare, Talwar and Welsch.  Out of the closest fittings, the Talwar is usually the worst of the four.
-
-The closeness of the fits can be determined somewhat by plotting the residuals or looking at the values of the residual sum of squares, but these can be misleading near the resonances.  The MATLAB script that does the fittings also generates graphs for each fit with the data points superimposed.  The quality of the fitting is easily evaluated visually.  Due to the narrowness of the second resonance, the poor fits will usually overestimate its width and/or give the wrong position, causing the curve to not intersect the data points.
-
-An example of a good set of fits is given in figure \ref{fig:KohnFitting}.  The graphs in this section are plotted with respect to the positronium energy, unlike the graphs in section \ref{sec:ResonanceGraphs}, which are plotted with respect to the momentum, $\kappa$.  All three of the plotted fitting curves follow the data nicely, with the exception of the extreme points near $\delta^+ = 0$.  This is not a failure of the fitting but instead a side effect of using the model given by \ref{eq:ResonanceCurve}.  The range of $\arctan$ is $(-\frac{\pi}{2},\frac{\pi}{2})$, so the $\arctan$ parts of this model cannot bring the phase shift from the background (near 2.0) all the way to 0.0, as it can only add up to $\frac{\pi}{2}$.  Regardless of this, the fits are nearly perfect in this example.
-
-For some values of $\tau$, we have what appear to be Schwartz singularities.  Section \ref{sec:SchwartzSing} has more discussion on how these arise.  Figure \ref{fig:07Fitting} has a series of data points to the right of the second singularity that do not agree with runs for other values of $\tau$.  MATLAB attempts to fit with these, leading to incorrect parameters for the second resonance.  This type of behavior is observed for $\kappa = 0.7$ and $0.8$, so these runs are not included in the final results.  A similar problem is seen in figure \ref{fig:pi4Fitting}.  One data point at 5 eV is obviously shifted from where it ``should'' be.  The different weighting functions assign different importance to this point, so all three weighting functions gives different positions and widths of the second resonance.  This run for $\kappa = \frac{\pi}{4}$ was also discarded. 
-
-The resonance parameters are calculated separately for each Kohn method (Kohn, inverse Kohn, etc.).  The ``good'' fits for all Kohn methods are all compiled in an Excel spreadsheet, where the mean, mode and errors are determined for each of the four resonance parameters.
-
-The error for each parameter could be determined one of three ways.  The errors given in table \ref{tab:SWaveResonances} are simply the standard deviation.  We could have also used the standard error, which is given as $SE = \sigma / \sqrt{n}$.  The standard error is typically too small, since we are using approximately 100 tests.  For instance, using $\omega = 7$, for $^1E_R$, we get a standard error of $0.00001$, which implies a greater precision and agreement than our results have.  Another possible method for determining the error that we have looked at is to find the maximum deviation from the mean.  However, this overemphasizes the importance of outliers.  Using $\omega = 6$, the maximum deviation from the mean is $0.00586$ for $^2E_R$, which is $4.0$ times as large as the standard deviation. 
-
-
-\todoi{Extrapolations here?}
-
 
 
 

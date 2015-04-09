@@ -264,7 +264,6 @@ that we have not yet included in the wavefunction a set of terms for which the u
 Due to this, we looked at a second formalism that includes these short-range terms instead of what we call the first formalism in \cref{sec:PWaveFn}. 
 
 \subsection{Wavefunction}
-\todoi{``Second Formalism P-wave and D-wave.nb'' file for forms for both the P-wave and D-wave}
 The trial wavefunction that we use for the second formalism is similar to the first formalism in \cref{sec:PWaveFn}.
 \begin{equation}
 \Psi_1^{\pm,t} = \bar{S}_1 + L_1^{\pm,t} \, \bar{C}_1 + \sum_{i=1}^{N'(\omega)} c_i \bar{\phi}_{\rho i} + \sum_{j=1}^{N'(\omega)} d_j \bar{\phi}_{3j}
@@ -283,15 +282,22 @@ These place the angular momentum on the Ps and on the electron of H, instead of 
 
 The short-long terms can be directly computed by changing the short-range terms in the code, but the integration routines (see \cref{sec:ShortInt}) for the short-short terms cannot handle the $\rho$ factor of $\bar{\phi}_{\rho 1}$ directly. The following relations must be used:  \todoi{Ref?}
 \begin{subequations}
+\label{eq:P2rhoY10}
 \begin{align}
 \rho Y_{10}(\theta_\rho) &= \frac{1}{2}\left[ r_1 Y_{10}(\theta_1) + r_2 Y_{10}(\theta_2) \right] \\
 \rho^\prime Y_{10}(\theta_{\rho^\prime}) &= \frac{1}{2}\left[ r_1 Y_{10}(\theta_1) + r_3 Y_{10}(\theta_3) \right].
 \end{align}
 \end{subequations}
+The first of these is obtained by substituting
+\begin{equation}
+\label{eq:CosRho}
+\cos\theta_\rho = \frac{r_1 \cos\theta_1 + r_2 \cos\theta_2}{2\rho}
+\end{equation}
+in the definition of \cref{eq:PWaveSpherHarm}. The second is found by using the $P_{23}$ swap.
+\todoi{Does this show up elsewhere?}
 
 
-
-\subsection{Short-Range -- Short-Range Integrals}
+\subsection{Short-Short Integrals}
 \label{sec:PWave2ndShortShort}
 In terms of the first formalism,
 \beq
@@ -314,7 +320,7 @@ The other types of terms cannot be expressed as combinations of the first formal
 \nonumber \left(\bar{\phi}_{\rho i},\mathcal{L} \bar{\phi}_{3j}\right) = 2 \left[ \pm(Y_{10}(\theta_2) r_2 \phi_i, \mathcal{L} Y_{10}(\theta_3) r_3 \phi_j) + (Y_{10}(\theta_2) r_2 \phi_i^\prime, \mathcal{L} Y_{10}(\theta_2) r_2 \phi_j^\prime) \right]
 \eeq
 
-\subsection{Short-Range -- Long-Range Integrals}
+\subsection{Short-Long Integrals}
 \label{sec:PWave2ndShortLong}
 In terms of the first formalism,
 \begin{subequations}
@@ -326,29 +332,44 @@ In terms of the first formalism,
 This is a straightforward adaptation of the code for the first formalism.
 
 
-%\subsection{Phase Shifts}
-%\label{sec:PWave2ndPhase}
-%
-%\begin{table}[H]
-%\centering
-%\begin{tabular}{c c c c c}
-%\toprule
-%$\kappa$ & $1^{st}$ Formalism $\delta_1^+$ & $2^{nd}$ Formalism $\delta_1^+$ & $1^{st}$ Formalism $\delta_1^-$ & $2^{nd}$ Formalism $\delta_1^-$ \\
-%\midrule
-%0.1 & $2.255^{-2}$ & $2.255^{-2}$ & $-1.785^{-3}$ & $-1.923^{-3}$ \\
-%0.2 & $1.909^{-1}$ & $1.908^{-1}$ & $-1.676^{-2}$ & $-1.708^{-2}$ \\
-%0.3 & $6.082^{-1}$ & $6.080^{-1}$ & $-5.536^{-2}$ & $-5.601^{-2}$ \\
-%0.4 & $9.930^{-1}$ & $9.927^{-1}$ & $-1.149^{-1}$ & $-1.161^{-1}$ \\
-%0.5 & $1.140$      & $1.140$      & $-1.840^{-1}$ & $-1.860^{-1}$ \\
-%0.6 & $1.161$      & $1.161$      & $-2.486^{-1}$ & $-2.519^{-3}$ \\
-%0.7 & $1.151$      & $1.150$      & $-2.932^{-1}$ & $-2.993^{-1}$ \\
-%\bottomrule
-%\end{tabular}
-%\caption{Comparison of $^{1,3}$P phase shifts for the first and second formalisms $(\omega = 6)$}
-%\label{tab:PWaveFormalPhase}
-%\end{table}
-%
-%The phase shifts for $^1$P and $^3$P in \cref{tab:PWaveFormalPhase} were not improved by using the second formalism and were even lower in some cases. The energy eigenvalues in \cref{tab:SimplexPWaveSingOpt,tab:SimplexPWaveTripOpt} were also lower for the first formalism, so we did not pursue using the second formalism any further. The second formalism was not tried for the D-wave.
+\subsection{Phase Shifts}
+\label{sec:PWave2ndPhase}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{c c c c c}
+\toprule
+$\kappa$ & $1^{st}$ Formalism $\delta_1^+$ & $2^{nd}$ Formalism $\delta_1^+$ & $1^{st}$ Formalism $\delta_1^-$ & $2^{nd}$ Formalism $\delta_1^-$ \\
+\midrule
+0.1 & $2.26^{-2}$ & $2.27^{-2}$ & $-1.79^{-3}$ & $-1.80^{-3}$ \\
+0.2 & $1.91^{-1}$ & $1.91^{-1}$ & $-1.68^{-2}$ & $-1.67^{-2}$ \\
+0.3 & $6.08^{-1}$ & $6.08^{-1}$ & $-5.54^{-2}$ & $-5.52^{-2}$ \\
+0.4 & $9.93^{-1}$ & $9.93^{-1}$ & $-1.15^{-1}$ & $-1.15^{-1}$ \\
+0.5 & $1.14$      & $1.14$      & $-1.84^{-1}$ & $-1.84^{-1}$ \\
+0.6 & $1.16$      & $1.16$      & $-2.49^{-1}$ & $-2.48^{-3}$ \\
+0.7 & $1.15$      & $1.15$      & $-2.93^{-1}$ & $-2.93^{-1}$ \\
+\bottomrule
+\end{tabular}
+\caption[Comparison of $^{1,3}$P phase shifts for the first and second formalisms]{Comparison of $^{1,3}$P phase shifts for the first and second formalisms $(\omega = 6)$. The $2^{nd}$ formalism for $\delta_1^-$ uses 889 terms, while the others use 924 terms.}
+\label{tab:PWaveFormalPhase}
+\end{table}
+
+The phase shifts for $^1$P and $^3$P in \cref{tab:PWaveFormalPhase} were not 
+improved by using the second formalism and were even lower in some cases. The 
+one exception is $\kappa = 0.3$ for $^3$P, where the second formalism phase shift
+is slightly higher. We note that this is the same results as the $\omega = 7$
+case with 1000 terms as presented in \cref{tab:PWaveComparisons}.
+The difficulty with the second formalism is that linear dependence becomes more
+of an issue, forcing us to only use 889 terms for $\omega = 6$ and unable to
+do an $\omega = 7$ run. I tried an $\omega = 7$ run with the Todd energy
+program, but it could only select 767 terms, leading to worse phase shifts than
+the $\omega = 6$ runs.
+
+The energy eigenvalues in \cref{tab:SimplexPWaveSingOpt,tab:SimplexPWaveTripOpt}
+were also lower for the first formalism, so we did not pursue using the second
+formalism any further. The second formalism was not tried for the D-wave due to
+its difficulty. Refer to \cref{sec:DSecondForm} for a discussion of this for
+the D-wave.
 
 
 \section{Nonlinear Parameter Optimization}
@@ -423,7 +444,7 @@ $\omega$ & 1st formalism / 1 set & 2nd formalism / 1 set & 1st formalism / 2 set
 \bottomrule
 \bottomrule
 \end{tabular}
-\caption{Simplex P-Wave Triplet Short-Range Optimization}
+\caption{Simplex $^3$P Short-Range Optimization}
 \label{tab:SimplexPWaveTripOpt}
 \end{table}
 
@@ -569,7 +590,7 @@ results. Values in the header are $\kappa$ in au. Exponents denote powers of 10.
 	\label{fig:PWaveComparisons}
 \end{figure}
 
-\Cref{fig:PWaveComparisons} gives a detailed comparison to phase shifts from many other groups, similar to the S-wave comparisions in \cref{fig:SWaveComparisons}. The 5-state CC method of Adhikari and Biswas \cite{Adhikari1999} again gives phase shifts that do not agree well with other methods, and Ivanov et al. \cite{Ivanov2002} has a detailed discussion of this. The SVM results of Ivanov et al. \cite{Ivanov2002} follow along well with the current complex Kohn and the CC \cite{Blackwood2002,Walters2004} but are below throughout the energy range. We would not expect the SE \cite{Hara1975,Ray1997} and smaller CC calculations \cite{Sinha1997} to match our phase shifts well.
+\Cref{fig:PWaveComparisons} gives a detailed comparison to phase shifts from many other groups, similar to the S-wave comparisons in \cref{fig:SWaveComparisons}. The 5-state CC method of Adhikari and Biswas \cite{Adhikari1999} again gives phase shifts that do not agree well with other methods, and Ivanov et al. \cite{Ivanov2002} has a detailed discussion of this. The SVM results of Ivanov et al. \cite{Ivanov2002} follow along well with the current complex Kohn and the CC \cite{Blackwood2002,Walters2004} but are below throughout the energy range. We would not expect the SE \cite{Hara1975,Ray1997} and smaller CC calculations \cite{Sinha1997} to match our phase shifts well.
 
 
 \subsection{Resonance Parameters}

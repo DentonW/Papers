@@ -12,12 +12,13 @@
 \label{sec:DWaveFn}
 
 \begin{equation}
-\Psi_t^\pm = \bar{S} + L_2^{\pm,t} \, \bar{C} + \sum_{i=1}^N c_i \bar{\phi}_{1i} + \sum_{j=1}^N d_j \bar{\phi}_{2j} + \sum_{j=1}^N f_k \bar{\phi}_{12k}
-\label{eq:DWaveSimple}
+\Psi_t^\pm = \bar{S}_2 + L_2^{\pm,t} \, \bar{C}_2 + \sum_{i=1}^N c_i \bar{\phi}_{1i} + \sum_{j=1}^N d_j \bar{\phi}_{2j} + \sum_{j=1}^N f_k \bar{\phi}_{12k}
+\label{eq:DWaveTrial}
 \end{equation}
 
 
 \beq
+\label{eq:DWaveSpherHarm}
 \SphericalHarmonicY{2}{0}{\theta_\rho}{\varphi_\rho} = \sqrt{\frac{5}{16\pi}} \left(3 \cos^2\theta_\rho - 1 \right)
 \eeq
 
@@ -245,7 +246,7 @@ Each of the following equations has two forms that can be used.
 & \times \frac{1}{2\rho} \left( \left[ 4 n_2(\kappa\rho) - 2 \kappa\rho \, n_1(\kappa\rho) \right] f_{sh}^\prime(\rho) - \rho \, n_2(\kappa\rho) f_{sh}^{\prime\prime}(\rho) \right) \Bigg\} d\tau_{int}
 \end{align}
 
-\section{Mixed Terms}
+\section{D-Wave Mixed Terms}
 \label{sec:MixedTerms}
 
 According to Schwartz \cite{Schwartz1961a}, to have a complete description, each partial wave needs $\ell+1$ symmetries. As shown in \cref{eq:SWaveTrial,eq:PWaveTrial}, we use the full sets of symmetries for the S-wave and P-wave.
@@ -268,6 +269,8 @@ These can be combined into a single set as
 \end{equation}
 This avoids the issue of dealing with complex terms in the $m = -1$ and $m = 1$ cases. Refer to \cref{sec:MixedDerivation} for this derivation.
 
+\todoi{Add latest mixed term work by Peter}
+
 \textbf{Papers of Humberston et al. that use the mixed symmetry terms}
 \begin{itemize}
 	\item e$^+$-H: \cite{Brown1985a,BrownThesis,WattsThesis,Humberston1997,VanReeth1997}
@@ -279,7 +282,46 @@ This avoids the issue of dealing with complex terms in the $m = -1$ and $m = 1$ 
 	\item e$^+$-He: \cite{VanReeth1997,VanReethThesis}
 \end{itemize}
 
-\section{Results}
+\todoi{Mention Peter's current work on the mixed terms \cite{VanReeth2015}.}
+
+
+\section{D-Wave Second Formalism}
+\label{sec:DSecondForm}
+For the second formalism, the angular momentum needs to be placed on the Ps and H, so we would need
+\begin{subequations}
+\label{eq:DWave2ndPhiBar}
+\begin{align}
+\bar{\phi}_{\rho i} &= \left(1 \pm P_{23}\right) Y_{20}(\theta_\rho) \rho^2 \phi_i \label{eq:DWave2ndPhi1i}\\
+\bar{\phi}_{3j} &= \left(1 \pm P_{23}\right) Y_{20}(\theta_3) r_3^2 \phi_j \label{eq:DWave2ndPhi2j}.
+\end{align}
+\end{subequations}
+It will be shown that these are sufficient to describe this system without 
+having a third set of terms as in \cref{eq:DWaveTrial}.
+
+To use these in the short-range code, we need an expression similar to
+\cref{eq:P2rhoY10}. We cannot use that expression, as we have $\rho^2$. We
+follow the same procedure as that of obtaining \cref{eq:P2rhoY10}, but the
+spherical harmonic is more complicated. Full details of the derivation are
+found in the ``Second Formalism P-wave and D-wave.nb'' notebook.
+Substituting \cref{eq:CosRho} into \cref{eq:DWaveSpherHarm}, multiplying by
+$\rho^2$, and then using \cref{eq:RhoRDef}, we obtain
+\begin{equation}
+\label{eq:rhoident2}
+\rho^2 Y_{20}(\theta_\rho) = \frac{1}{4} \left[r_1^2 Y_{20}(\theta_1) + r_2^2 Y_{20}(\theta_2) \right] + \frac{1}{2} \sqrt{\frac{5}{16 \pi}} 
+   r_1 r_2 \left[3 \cos\theta_1 \cos\theta_2 - \cos\theta_{12} \right].
+\end{equation}
+The first set of brackets is obviously similar to \cref{eq:P2rhoY10} but with
+$1 \to 2$ coming from the P-wave to the D-wave. More interesting though is the
+second set of brackets, which is clearly the mixed terms in
+\cref{eq:DWavePhi12k,eq:MixedAngSimple}.
+
+As mentioned in \cref{sec:MixedTerms}, we do not use the mixed terms in the
+D-wave calculation due to their complexity. Because of this, the second
+formalism has not been implemented for the D-wave and could be a source of
+future work.
+
+
+\section{D-Wave Results}
 \label{sec:DWaveResults}
 
 \subsection{Phase Shifts}
@@ -295,19 +337,19 @@ This avoids the issue of dealing with complex terms in the $m = -1$ and $m = 1$ 
 Method & \multicolumn{1}{c}{\phantom{1}0.1} & \multicolumn{1}{c}{\phantom{1}0.2} & \multicolumn{1}{c}{\phantom{1}0.3} & \multicolumn{1}{c}{\phantom{1}0.4} & \multicolumn{1}{c}{\phantom{1}0.5} & \multicolumn{1}{c}{\phantom{1}0.6} & \multicolumn{1}{c}{\phantom{1}0.7} \\
 \midrule
 This work $(\omega = 6)$ $\delta_2^+$ 				& 1.358^{-4} & 2.987^{-3} & 1.592^{-2} & 4.933^{-2} & 1.113^{-1} & 2.027^{-1} & 3.215^{-1} \\
-CC 14Ps14H+H$^-$ \cite{Walters2004} $\delta_2^+$	& 2.02^{-4}  & 3.49^{-3}  & 1.73^{-2} & 5.22^{-2} & 1.16^{-1} & 2.08^{-1} & 3.24^{-1} \\
-CC 14Ps14H \cite{Blackwood2002} $\delta_2^+$		& 1.46^{-4}  & 3.15^{-3}  & 1.65^{-2} & 4.95^{-2} & 1.08^{-1} & 1.94^{-1} & 3.02^{-1} \\
-3-state CC \cite{Sinha1997} $\delta_2^-$			& 3.22^{-5} & 9.29^{-4} & 5.96^{-3} & 2.01^{-2} & 4.63^{-2} & 8.29^{-2} & 1.23^{-1} \\
-SE \cite{Ray1997} $\delta_2^+$ 						& 3.18^{-5}  & 9.17^{-4}  & 5.87^{-3} & 1.97^{-2} & 4.54^{-2} & 8.09^{-2} & 1.19^{-1} \\
-5-state CC \cite{Adhikari1999} $\delta_2^+$			& 1.8^{-5}   & 5.3^{-4}   & 3.5^{-3} & 1.2^{-2} & 2.9^{-2} & 5.5^{-2} & 8.8^{-2} \\
-SE \cite{Hara1975} $\delta_2^+$						& 0.0        & 0.0009     & 0.0058 & 0.0195 & 0.0453 & 0.0810 & 0.1194 \\
+CC 14Ps14H+H$^-$ \cite{Walters2004} $\delta_2^+$	& 2.02^{-4}  & 3.49^{-3}  & 1.73^{-2}  & 5.22^{-2}  & 1.16^{-1}  & 2.08^{-1}  & 3.24^{-1} \\
+CC 14Ps14H \cite{Blackwood2002} $\delta_2^+$		& 1.46^{-4}  & 3.15^{-3}  & 1.65^{-2}  & 4.95^{-2}  & 1.08^{-1}  & 1.94^{-1}  & 3.02^{-1} \\
+3-state CC \cite{Sinha1997} $\delta_2^-$			& 3.22^{-5}  & 9.29^{-4}  & 5.96^{-3}  & 2.01^{-2}  & 4.63^{-2}  & 8.29^{-2}  & 1.23^{-1} \\
+SE \cite{Ray1997} $\delta_2^+$ 						& 3.18^{-5}  & 9.17^{-4}  & 5.87^{-3}  & 1.97^{-2}  & 4.54^{-2}  & 8.09^{-2}  & 1.19^{-1} \\
+5-state CC \cite{Adhikari1999} $\delta_2^+$			& 1.8^{-5}   & 5.3^{-4}   & 3.5^{-3}   & 1.2^{-2}   & 2.9^{-2}   & 5.5^{-2}   & 8.8^{-2} \\
+SE \cite{Hara1975} $\delta_2^+$						& 0.0        & 0.0009     & 0.0058     & 0.0195     & 0.0453     & 0.0810     & 0.1194 \\
 \midrule
 This work $(\omega = 6)$ $\delta_2^-$ 				& 5.808^{-5}  & 7.120^{-4}  & 1.065^{-3}  & -2.002^{-3} & -1.122^{-2} & -2.647^{-2} & -4.451^{-2} \\
-CC 14Ps14H \cite{Blackwood2002} $\delta_2^-$		& 8.48^{-5}   & 1.15^{-3} & 2.84^{-3} & 2.37^{-3} & -4.66^{-3} & -1.85^{-2} & -3.27^{-2} \\
-3-state CC \cite{Sinha1997} $\delta_2^-$			& -2.74^{-5} & -7.77^{-4} & -4.83^{-3} & -1.55^{-2} & -3.41^{-2} & -5.83^{-2} & -8.25^{-2} \\
-SE \cite{Ray1997} $\delta_2^+$ 						& -3.00^{-5}  & -8.56^{-4} & -5.37^{-3} & -1.76^{-2} & -3.95^{-2} & -7.03^{-2} & -1.06^{-1} \\
-5-state CC \cite{Adhikari1999} $\delta_2^+$			& -1.4^{-5}   & -4.0^{-4} & -2.6^{-3} & -8.6^{-3} & -2.0^{-2} & -3.6^{-2} & -5.5^{-2} \\
-SE \cite{Hara1975} $\delta_2^+$						& 0.0         & -8.0^{-4} & -5.3^{-3} & -1.74^{-2} & -3.95^{-2} & -7.04^{-2} & -1.062^{-1} \\
+CC 14Ps14H \cite{Blackwood2002} $\delta_2^-$		& 8.48^{-5}   & 1.15^{-3}   & 2.84^{-3}   & 2.37^{-3}   & -4.66^{-3}  & -1.85^{-2}  & -3.27^{-2} \\
+3-state CC \cite{Sinha1997} $\delta_2^-$			& -2.74^{-5}  & -7.77^{-4}  & -4.83^{-3}  & -1.55^{-2}  & -3.41^{-2}  & -5.83^{-2}  & -8.25^{-2} \\
+SE \cite{Ray1997} $\delta_2^+$ 						& -3.00^{-5}  & -8.56^{-4}  & -5.37^{-3}  & -1.76^{-2}  & -3.95^{-2}  & -7.03^{-2}  & -1.06^{-1} \\
+5-state CC \cite{Adhikari1999} $\delta_2^+$			& -1.4^{-5}   & -4.0^{-4}   & -2.6^{-3}   & -8.6^{-3}   & -2.0^{-2}   & -3.6^{-2}   & -5.5^{-2} \\
+SE \cite{Hara1975} $\delta_2^+$						& 0.0         & -8.0^{-4}   & -5.3^{-3}   & -1.74^{-2}  & -3.95^{-2}  & -7.04^{-2}  & -1.062^{-1} \\
 \bottomrule
 \end{tabular}
 \caption[$^{1,3}$D comparisons]{$^{1,3}$D comparisons. Values in the header are $\kappa$ in au. Exponents denote powers of 10.}
