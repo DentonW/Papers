@@ -816,6 +816,9 @@ $\mu$ changed drastically.
 to number of short-range terms}
 	\label{fig:swave-phase-divergence}
 \end{figure}
+\noindent For $\ell \geq 3$, we use a restricted set of short-range terms where we
+eliminate terms with $r_3 \geq 2$ if $\omega \geq 3$, improving the convergence
+ratios and giving more stable results \cite{VanReeth2003}.
 
 \subsection{Fittings}
 As with the previous Kohn calculation \cite{VanReeth2004},
@@ -911,6 +914,11 @@ we use Todd's procedure described in \ref{sec:Todd}.
 This table also shows the parameters $\alpha$, $\beta$,
 $\gamma$ in Eq.~(\ref{eq:PhiDef}) and the parameters $\mu$ and $m_\ell$ in 
 Eq.~(\ref{eq:PartialWaveShielding}) used for each partial wave.
+
+For $\ell \geq 2$, we find that the phase shifts are more sensitive to the
+choice of nonlinear parameters than the $S$- and $P$-wave. One set of
+nonlinear parameters gives higher phase shifts for lower $\kappa$ values, and 
+another set gives higher phase shifts for higher $\kappa$ values.
 
 
 \section{Results}
@@ -1026,23 +1034,34 @@ the $^1P$ phase shifts are above the CC results, and our $^3P$ phase
 shifts are slightly below. Figure \ref{fig:spd-wave-phases}(b) shows that the 
 complex Kohn and CC results agree relatively well.
 
+From Table~\ref{tab:DWavePhase}, the $^3D$ phase shifts are positive for
+lower $\kappa$ but become negative for higher $\kappa$. As noted by
+Ref.~\cite{Blackwood2002}, this shows that the interaction is repulsive for 
+low $\kappa$ and attractive for higher $\kappa$. This sign change is also seen
+for $^1F$ in Fig.~\ref{fig:fwave-phases}.
+
 We have difficulty performing extrapolations on the $D$-wave phase shifts. 
+For $^1D$, the $\kappa = 0.1$ extrapolation is not possible due to the very
+small phase shift, though the convergence ratio, $R'(6)$, is less than 1.
 For $\kappa = 0.2 - 0.7$, the percentage difference between the $^1D$ 
-extrapolations and $\omega = 6$ results is less than $6.3\%$. The percentage 
+extrapolations and $\omega = 6$ results is less than $6.3\%$ and often
+less than $2\%$, as seen in Table \ref{tab:DWavePhase}. The $^3D$
+extrapolations and percentage differences are not included in
+Table~\ref{tab:DWavePhase} due to the slow convergence. The percentage  
 differences for $^3D$ for the same range are less than $25\%$, with the 
 exception of $\kappa = 0.4$. This has a larger percentage difference of
 $40\%$, and this is also where the $^3D$ phase shifts go from positive to 
-negative and are therefore very small. The convergence of the $^{1,3}D$
+negative and are therefore very small. The convergence of the $^3D$
 phase shifts could possibly be improved with the explicit inclusion of
-the mixed symmetry terms. We note, however, that the
-$\omega = 5$ and $\omega = 6$ phase shifts differ by no more than 9.5\% for
-$^1D$. For $^3D$, this difference is up to 23.8\% for $\kappa=0.3$
-but much less for other $\kappa$ values, down to $3.5\%$ for $\kappa = 0.7$.
-Both the $^1D$ and $^3D$ phase shifts are below the 
+the mixed symmetry terms and warrants further investigation. We note, however,
+that the $\omega = 5$ and $\omega = 6$ phase shifts differ by no more than
+$9.5\%$ for $^1D$. For $^3D$, this difference is up to $23.8\%$ for
+$\kappa=0.3$ but much less for other $\kappa$ values, down to $3.5\%$ for
+$\kappa = 0.7$. Both the $^1D$ and $^3D$ phase shifts are below the 
 CC, as shown in Fig. \ref{fig:spd-wave-phases}(c). The overall shapes in these
 graphs are similar, but the percentage difference between the CC and
 complex Kohn $^1D$ phase
-shifts is about 39\% at low $\kappa$ and decreases to less than 1\% for
+shifts is about $39\%$ at low $\kappa$ and decreases to less than $1\%$ for
 higher $\kappa$. The larger discrepancy comes with the $^3D$ phase shifts,
 which have a percentage difference of over 30\%, often much larger,
 through the entire range.
@@ -1418,7 +1437,7 @@ cannot be done with the triplet states, as they have no resonances.
 Method & \thead{$^1E_R$ (eV)} & \thead{$^1\Gamma$ (eV)} & \thead{$^2E_R$ (eV)} & \thead{$^2\Gamma$ (eV)} \\
 \colrule
 Current work & $4.0065 \pm 0.0001$ & $0.0955 \pm 0.0001$ & $5.0272 \pm 0.0029$ & $0.0608 \pm 0.0007$ \\
-Current work \emph{S} matrix complex Kohn & $4.0065$ & $0.0955$ & $5.0277$ & $0.0607$ \\
+Current work \emph{S} matrix complex Kohn & $4.0065$ & $0.0955$ & $5.0278$ & $0.0608$ \\
 Complex rotation (Yan and Ho 1999) \cite{Yan1999} & $4.0058 \pm 0.0005$ & $0.0952 \pm 0.0011$ & $4.9479 \pm 0.0014$ & $0.0585 \pm 0.0027$ \\
 Stabilization (Yan and Ho 2003) \cite{Yan2003} & $4.007$ & $0.0969$ & $4.953$ & $0.0574$ \\
 Kohn variational (Van Reeth and Humberston 2004) \cite{VanReeth2004} & $4.0072 \pm 0.0020$ & $0.0956 \pm 0.010$ & $5.0267 \pm 0.0020$ & $0.0597 \pm 0.0010$ \\
@@ -1458,7 +1477,7 @@ Kohn (Van Reeth and Humberston 2004) \cite{VanReeth2004} & $4.29 \pm 0.01$ & $0.
 Method & \thead{$^1E_R$ (eV)} & \thead{$^1\Gamma$ (eV)} \\
 \colrule
 Current work & $4.720 \pm 0.001$ & $0.0908 \pm 0.0010$ \\
-Current work \emph{S} matrix complex Kohn & $4.720$ & $0.0898$ \\
+Current work \emph{S} matrix complex Kohn & $4.720$ & $0.0909$ \\
 Complex rotation (Ho and Yan 1998) \cite{Ho1998} & $4.710 \pm 0.0027$ & $0.0925 \pm 0.0054$  \\
 Stabilization (Yan and Ho 2003) \cite{Yan2003} & $4.714$ & $0.0969$ \\
 CC (Walters et al. 2004 \cite{Walters2004}) & $4.899$ & $0.0872$ \\
@@ -1469,7 +1488,6 @@ CC (Walters et al. 2004 \cite{Walters2004}) & $4.899$ & $0.0872$ \\
 \end{center}
 \end{table}
 
-\todoi{Check S-matrix values for each partial wave}
 
 \begin{table}[H]
 \begin{center}
@@ -1477,8 +1495,8 @@ CC (Walters et al. 2004 \cite{Walters2004}) & $4.899$ & $0.0872$ \\
 \begin{tabular}{l l l}
 Method & $^1E_R \text{ (eV)}$ & $^1\Gamma \text{ (eV)}$ \\
 \colrule
-Current work & $5.1867 \pm 0.0021$ & $0.0125 \pm 0.0003$ \\
-Current work \emph{S} matrix complex Kohn & $5.1863$ & $0.0125$ \\
+Current work & $5.196 \pm 0.017$ & $0.0134 \pm 0.0007$ \\
+Current work \emph{S} matrix complex Kohn & $5.205$ & $0.0130$ \\
 Complex rotation (Ho and Yan 2000) \cite{Ho2000} & $5.1661 \pm 0.0014$ & $0.0174 \pm 0.0027$  \\
 CC (Walters et al. 2004 \cite{Walters2004}) & $5.200$ & $0.0095$ \\
 \end{tabular}
