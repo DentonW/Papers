@@ -798,8 +798,8 @@ The phase shifts are calculated using this set of short-range terms for the
 generalized Kohn variational method for multiple $\tau$ values in
 Eq.~(\ref{eq:GenKohn}). We further truncate this basis set where the phase
 shifts for the different real-valued Kohn methods begin to diverge, as seen in
-Fig.~\ref{fig:swave-phase-divergence}, or when there is a large jump in the
-phase shifts at high $\omega$. This method with an appropriate choice of
+Fig.~\ref{fig:swave-phase-divergence}, or when there is a significant jump in
+the phase shifts at high $\omega$. This method with an appropriate choice of
 nonlinear parameters gives a reliable set of
 short-range terms, which we use in the $S$ matrix complex Kohn to generate
 the results in Sec.~\ref{sec:Results}. For $^1S$ only, we are able to determine
@@ -832,8 +832,8 @@ the $S$-wave and $P$-wave to the resonance formula
 \end{align}
 to extract out the positions ($^1E_R$ and $^2E_R$) and widths ($^1\Gamma$ and 
 $^2\Gamma$) of the two resonances. This formula is comprised of the
-Breit-Wigner resonance terms \cite{Breit1936,Macek1970} for the two resonances
-and allows for a slowly varying polynomial background.
+Breit-Wigner resonance terms \cite{Breit1936,Macek1970,Hazi1979} for the two
+resonances and allows for a slowly varying polynomial background.
 We evaluate the resonance parameters for one resonance each for $^1D$ and $^1F$,
 so these fits are performed without the second $\arctan$ term.
 The data from each variant of the Kohn variational 
@@ -885,18 +885,18 @@ Ref.~\cite{Yan1999}. If $R'(\omega) \geq 1$, there is no convergence pattern.
 \begin{table}[H]
   \centering
 	\begin{ruledtabular}
-    \begin{tabular}{cccccccc}
-    Param. & $^1S$ & $^3S$ & $^1P$ & $^3P$ & $^1D$ & $^3D$ & $^{1,3}$F  \\
+    \begin{tabular}{ccccccccc}
+    Param. & $^1S$ & $^3S$ & $^1P$ & $^3P$ & $^1D$ & $^3D$ & $^1$F & $^3$F \\
     \colrule
-	$\omega$           & 7     & 7     & 7     & 7     & 6     & 6     & 5   \\
-	$N^\prime(\omega)$ & 1505  & 1633  & 1000  & 1000  & 916 $(\kappa < 0.3)$   & 919 $(\kappa < 0.3)$   & 462   \\
+	$\omega$           & 7     & 7     & 7     & 7     & 6     & 6     & 5 & 5  \\
+	$N^\prime(\omega)$ & 1505  & 1633  & 1000  & 1000  & 916 $(\kappa < 0.3)$   & 919 $(\kappa < 0.3)$   & 385 & 385  \\
 	$N^\prime(\omega)$ &   &   &   &   & 913 $(\kappa \geq 0.3)$   & 913 $(\kappa \geq 0.3)$   &  \\
-	$\alpha$           & 0.586 & 0.323 & 0.397 & 0.310 & 0.359 $(\kappa < 0.3)$ & 0.356 $(\kappa < 0.3)$ & 0.5  \\
-	$\alpha$    &  &  &  &  & 0.6 $(\kappa \geq 0.3)$ & 0.6 $(\kappa \geq 0.3)$ &   \\
-	$\beta$            & 0.580 & 0.334 & 0.376 & 0.311 & 0.368 & 0.365 & 0.6   \\
-	$\gamma$           & 1.093 & 0.975 & 0.962 & 0.995 & 0.976 & 0.976 & 1.1  \\
-	$\mu$              & 0.9   & 0.9   & 0.9   & 0.9   & 0.7   & 0.7   & 0.7   \\
-	$m_\ell$           & 1     & 1     & 3     & 3     & 7     & 7     & 7    \\
+	$\alpha$           & 0.586 & 0.323 & 0.397 & 0.310 & 0.359 $(\kappa < 0.3)$ & 0.356 $(\kappa < 0.3)$ & 0.359 $(\kappa < 0.4)$ & 0.356 $(\kappa < 0.4)$  \\
+	$\alpha$    &  &  &  &  & 0.6 $(\kappa \geq 0.3)$ & 0.6 $(\kappa \geq 0.3)$ & 0.6 $(\kappa \geq 0.4)$ & 0.6 $(\kappa \geq 0.4)$  \\
+	$\beta$            & 0.580 & 0.334 & 0.376 & 0.311 & 0.368 & 0.365 & 0.368 & 0.365   \\
+	$\gamma$           & 1.093 & 0.975 & 0.962 & 0.995 & 0.976 & 0.976 & 0.976 & 0.976  \\
+	$\mu$              & 0.9   & 0.9   & 0.9   & 0.9   & 0.7   & 0.7   & 0.7  & 0.7  \\
+	$m_\ell$           & 1     & 1     & 3     & 3     & 7     & 7     & 7    & 7    \\
     \end{tabular}
   \end{ruledtabular}
   \caption{Parameters for each partial wave}
