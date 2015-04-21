@@ -1043,8 +1043,17 @@ The Kohn methods do not require a recalculation of the entire problem for each K
 
 
 
-\section{Extrapolations}
+\section{Convergence and Extrapolations}
 \label{sec:Extrapolations}
+
+We define the convergence ratio as
+\begin{equation}
+\label{eq:ConvRatio}
+\mathcal{R}(\omega) = \frac{\delta_\ell^\pm(\omega)-\delta_\ell^\pm(\omega-1)}
+  {\delta_\ell^\pm(\omega-1)-\delta_\ell^\pm(\omega-2)}.
+\end{equation}
+This is similar to the inverse of ratio for the energy eigenvalues given in
+Ref.~\cite{Yan1999}. If $\mathcal{R}(\omega) \geq 1$, there is no convergence pattern.
 
 \subsection{Extrapolation Description}
 
@@ -1066,7 +1075,7 @@ In Van Reeth and Humberston, the extrapolation is done using $\omega = 3$ throug
 	\label{fig:extrap-phase}
 \end{figure}
 
-As described in section \ref{sec:ToddScattering}, we omit certain terms using Todd's method. The output of this method from the bound state program described in section \ref{sec:ToddBound} is not ordered in terms of increasing $\omega$. This leads to difficulties when attempting to do the extrapolation in equation \ref{eq:PhaseExtrap}. The tangent of the phase shifts cannot be fitted to a straight line in this order. If we reorder the short-range terms back into their original order while still omitting terms, the tangent of the phase shifts can now be fitted to this straight line, as can be seen in figure \ref{}. The reordering does not affect the phase shifts in any case that we tested, since more terms are normally omitted in the scattering problem than just the bound state problem.
+As described in section \ref{sec:ToddScattering}, we omit certain terms using Todd's method. The output of this method from the bound state program described in section \ref{sec:ToddBound} is not ordered in terms of increasing $\omega$. This leads to difficulties when attempting to do the extrapolation in equation \ref{eq:PhaseExtrap}. The tangent of the phase shifts cannot be fitted to a straight line in this order. If we reorder the short-range terms back into their original order while still omitting terms, the tangent of the phase shifts can now be fitted to this straight line, as can be seen in figure \ref{fig:extrap-phase}. The reordering does not affect the phase shifts in any case that we tested, since more terms are normally omitted in the scattering problem than just the bound state problem.
 
 \subsection{Extrapolation Program}
 I wrote a Python \cite{Python} program to extrapolate the phase shifts for a run for all Kohn method variants used, including the 35 values of $\tau$ used in each of the generalized Kohn, generalized S-matrix, and generalized T-matrix. The extrapolation is performed with a least-squares fitting using the \texttt{polyfit} function of the SciPy package \cite{SciPy}. This program can do the extrapolation over any interval of $\omega$ values requested. The extrapolations from the 109 total Kohn variants are compared to see if there is any large discrepancy between them, indicating numerical instability. The phase shift can have a singularity in the generalized Kohn method as seen in figure \ref{fig:PhaseTau}, so care must be taken to ensure extrapolations are not taken around this interval.
