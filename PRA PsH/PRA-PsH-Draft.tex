@@ -941,18 +941,20 @@ be confident with extrapolated phase shifts.
 \begin{table}[H]
   \centering
 	\begin{ruledtabular}
-    \begin{tabular}{ccccc}
-    Param. & $^1$F & $^3$F & $^1$G,$^1$H & $^3$G,$^3$H \\
+    \begin{tabular}{cccccc}
+    Param. & $^1F$ & $^3F$ & $^1G$ & $^3G$,$^3H$ & $^1H$ \\
     \colrule
-	$\omega$           & 5 & 5 & 5 & 5  \\
-	$N^\prime(\omega)$ & $385^\star$ $(\kappa < 0.4)$ & $385^\star$ $(\kappa < 0.4)$  & $385^\star$ $(\kappa < 0.45)$ & $385^\star$ $(\kappa < 0.45)$ \\
-	$N^\prime(\omega)$ & 462 $(\kappa \geq 0.4)$ &  462 $(\kappa \geq 0.4)$  & 462 $(\kappa \geq 0.45)$ &  462 $(\kappa \geq 0.45)$\\
-	$\alpha$           & 0.359 $(\kappa < 0.4)$ & 0.356 $(\kappa < 0.4)$ & 0.359 $(\kappa < 0.45)$ & 0.356 $(\kappa < 0.45)$  \\
-	$\alpha$           & 0.6 $(\kappa \geq 0.4)$ & 0.6 $(\kappa \geq 0.4)$ & 0.6 $(\kappa \geq 0.45)$ & 0.6 $(\kappa \geq 0.45)$  \\
-	$\beta$            & 0.368 & 0.365  & 0.368 & 0.365  \\
-	$\gamma$           & 0.976 & 0.976 & 0.976 & 0.976  \\
-	$\mu$              & 0.7  & 0.7 & 0.7  & 0.7 \\
-	$m_\ell$           & 7    & 7   & $2\ell+1$    & $2\ell+1$  \\
+	$\omega$           & 5 & 5 & 5 & 5 & 5 \\
+	$N^\prime(\omega)$ & $385^\star$ $(\kappa < 0.4)$ & $385^\star$ $(\kappa < 0.4)$  & 462  & 462 & 462 \\
+	$N^\prime(\omega)$ & 462 $(\kappa \geq 0.4)$ &  462 $(\kappa \geq 0.4)$  &  &  & \\
+	$\alpha$           & 0.359 $(\kappa < 0.4)$ & 0.356 $(\kappa < 0.4)$ & 0.359 $(\kappa < 0.45)$ & 0.356 $(\kappa < 0.45)$ & 0.359 $(\kappa < 0.5)$  \\
+	$\alpha$           & 0.5 $(\kappa \geq 0.4)$ & 0.6 $(\kappa \geq 0.4)$ & 0.5 $(\kappa \geq 0.45)$ & 0.6 $(\kappa \geq 0.45)$ & 0.5 $(\kappa \geq 0.5)$ \\
+	$\beta$            & 0.368 $(\kappa < 0.4)$ & 0.365  & 0.368 $(\kappa < 0.45)$ & 0.365 & 0.368 $(\kappa < 0.5)$ \\
+	$\beta$            & 0.6 $(\kappa \geq 0.4)$ &   & 0.6 $(\kappa \geq 0.45)$ &  & 0.6 $(\kappa \geq 0.5)$ \\
+	$\gamma$           & 0.976 $(\kappa < 0.4)$ & 0.976 & 0.976 $(\kappa < 0.45)$ & 0.976  & 0.976 $(\kappa < 0.5)$ \\
+	$\gamma$           & 1.1 $(\kappa \geq 0.4)$ &  & 1.1 $(\kappa \geq 0.45)$ &  & 1.1 $(\kappa \geq 0.5)$ \\
+	$\mu$              & 0.7  & 0.7 & 0.7  & 0.7 & 0.7 \\
+	$m_\ell$           & 7    & 7   & 9    & $2\ell+1$  & 11 \\
     \end{tabular}
   \end{ruledtabular}
   \caption{Parameters for each partial wave. Starred numbers indicate the
@@ -1134,6 +1136,7 @@ $\kappa = 0.4$ is larger at $40\%$. We note that between $\kappa = 0.3$
 and $0.4$, the complex Kohn $^3D$ phase shifts go from a positive value to a
 negative value.
 
+\todoi{Do we really need $\omega = 6$ here? I think it's clear from the table.}
 The $\omega = 6$ $^{1,3}D$ phase shifts are below the corresponding
 CC phase shifts, as can be seen in Table \ref{tab:DWavePhase} and 
 Fig. \ref{fig:spd-wave-phases}(c). However, the extrapolated $^1D$ phase
