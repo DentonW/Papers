@@ -28,6 +28,9 @@
 \usepackage{silence}
 \WarningFilter{revtex4-1}{Repair the float}  % Completely innocuous warning - http://tex.stackexchange.com/questions/180762/revtex4-1-warning-repair-the-float-package
 
+% Remove this - highlighted text
+\newcommand{\hlc}[2][yellow]{ {\sethlcolor{#1} \hl{#2}} }
+
 % Subfolders containing our images
 \graphicspath{{IPython/}{Images/}}
 
@@ -68,8 +71,8 @@ with a Hylleraas-type basis set. Using the complex Kohn variational method, we
 compute phase shifts through the $^{1,3}H$-wave. The $^{1,3}S$- and
 $^{1,3}P$-wave phase shifts can be viewed as benchmark results. The complex
 Kohn variational results compare well to a number of other calculations for 
-this system. Using the Hylleraas-type basis set, we also compute the binding 
-energy of $^1S$ positronium hydride. In addition, we present elastic 
+this system. \sout{Using the Hylleraas-type basis set, we also compute the binding 
+energy of $^1S$ positronium hydride.} In addition, we present elastic 
 differential, elastic integrated, momentum transfer, and ortho-para 
 conversion cross sections, and for the singlet, resonances through the
 $F$-wave. Finally, we give a detailed analysis of the scattering lengths
@@ -125,9 +128,9 @@ consider is to use the procedure by Todd
 dependence. This enables us to compute the phase shifts (and the binding 
 energy of PsH) with more short-range Hylleraas terms than the earlier 
 Kohn calculations. We add the asymptotic expansion of Drake and Yan
-\cite{Drake1995, Yan1997} to improve the accuracy of the short-range
-integrations. We have also significantly increased the number of integration
-points for matrix
+\cite{Drake1995, Yan1997} \hl{to improve the accuracy of matrix elements
+containing only short-range terms}. We have also significantly increased
+the number of integration points for matrix
 elements that involve the long-range terms, along with implementing a method to
 accelerate the convergence of these integrals. We also extend the 
 calculations to the next two partial waves through to the $F$-wave, which
@@ -420,13 +423,13 @@ represented sufficiently well the required spatial configuration so that it
 compensated for the error in the previous inclusion of the mixed symmetry
 terms. The final numerical result used in \cite{VanReeth1997} are
 within 1 to 2\% of the phase shifts \hl{of the preliminary
-calculation} \cite{VanReeth2015} that \hl{presumably correctly
+calculation} \cite{VanReeth2015} that \hl{correctly
 includes} the mixed symmetry terms and for which the virtual Ps terms have
 been found to make no significant contribution. \hl{Preliminary
 investigation into e$^-$-H scattering {\cite{VanReeth2015}} has
 shown that for the $^1D$-wave, the inclusion of the 
 mixed symmetry terms has little effect on the phase shifts at very low
-energies but has a more appreciable effect at higher energy. However,
+energies but has a more appreciable effect at higher energy. Interestingly,
 this investigation found that the mixed symmetry terms change the
 e$^-$-H $^3D$ phaseshifts less than 1\% over the energy range considered.}
 \sout{Interestingly,
@@ -674,13 +677,14 @@ Gao \cite{Gao1998} has developed a quantum defect theory (QDT),
 for an attractive $r^{-6}$ potential, obtaining an equation relating
 the tangent of phase shifts to elements of a $Z$ matrix
 (see Ref.\cite{Gao1998}) and an analytic function of energy $K_\ell^0$
-\cite{Gao1998a}.
+\cite{Gao1998a}
 \begin{equation}
 \label{eq:GaoZEqn}
 \tan\delta_\ell = [Z_{ff} - K_\ell^0 Z_{gf}]^{-1}
-  [K_\ell^0 Z_{gg} - Z_{fg}]
+  [K_\ell^0 Z_{gg} - Z_{fg}].
 \end{equation}
-$K_\ell^0$ can be expanded in powers of the energy \cite{Gao1998a} of the incoming Ps atom.
+$K_\ell^0$ can be expanded in powers of the energy \cite{Gao1998a} of the
+incoming Ps atom
 \begin{equation}
 \label{eq:GaoKTaylor}
 K_\ell^0(E_{\bm \kappa}) = K_\ell^0(0) + {K_\ell^0}^\prime(0) E_{\bm \kappa}
@@ -801,16 +805,16 @@ Fig.~\ref{fig:swave-phase-divergence}, or when there is a significant jump in
 the phase shifts at high $\omega$. This method with an appropriate choice of
 nonlinear parameters gives a reliable set of
 short-range terms, which we use in the $S$ matrix complex Kohn to generate
-the results in Sec.~\ref{sec:Results}. For $^1S$ only, we are able to determine
-the cutoff by performing variations of $\mu$ \cite{WoodsDiss2015}.
+the results in Sec.~\ref{sec:Results}. \hlc[cyan]{For $^1S$ only, we are able to determine
+the cutoff by performing variations of $\mu$} \cite{WoodsDiss2015}.
 \sout{The value of $\mu$ that gives the
 highest phase shifts is normally stable with respect to $N^\prime(\omega)$, but
 adding too many short-range terms introduces linear dependence, this value of
 $\mu$ changed drastically.}
 \hl{For $\ell = 3$ at low $\kappa$}, we use a restricted set of short-range terms
-where we
-eliminate terms with $r_3 \geq 2$ if $\omega \geq 3$, improving the convergence
-ratios and giving more stable results \cite{VanReeth2003}.
+where we eliminate terms \hl{with powers of} $r_3 \geq 2$ if $\omega \geq 3$,
+improving the convergence ratios and giving more stable results
+\cite{VanReeth2003}.
 % For $^1S$ only, we were able to determine
 %the cutoff by performing variations of $\mu$.
 \begin{figure}[H]
@@ -889,7 +893,9 @@ This is similar to the inverse of the ratio for the energy eigenvalues given in
 Ref.~\cite{Yan1999}. We find that if \hl{$R'(\omega) \lesssim 0.5$}, we can typically 
 obtain extrapolated phase shifts with some degree of reliability. In contrast,
 if $R'(\omega) \geq 1$, there is no convergence pattern and thus we would not
-be confident with extrapolated phase shifts.
+be confident with extrapolated phase shifts. \hl{We also find that for very small
+phase shifts ($\delta_\ell^\pm \lesssim 10^{-5}$), our code is not accurate
+enough to give convergence ratios less than 1.}
 
 
 \subsection{Nonlinear Parameters and Terms Used}
@@ -919,7 +925,7 @@ be confident with extrapolated phase shifts.
 
 \begin{table}[H]
   \centering
-	\begin{ruledtabular}
+  \begin{ruledtabular}
     \begin{tabular}{ccccccc}
     Param. & $^1S$ & $^3S$ & $^1P$ & $^3P$ & $^1D$ & $^3D$ \\
     \colrule
@@ -940,7 +946,7 @@ be confident with extrapolated phase shifts.
 
 \begin{table}[H]
   \centering
-	\begin{ruledtabular}
+  \begin{ruledtabular}
     \begin{tabular}{cccccc}
     Param. & $^1F$ & $^3F$ & $^1G$ & $^3G$,$^3H$ & $^1H$ \\
     \colrule
@@ -962,6 +968,41 @@ restriction in the $r_3$ power described in Sec.~\ref{sec:Truncation}.}
   \label{tab:Nonlinear2}
 \end{table}
 
+
+\begin{table}[H]
+  \centering
+  \begin{ruledtabular}
+    \begin{tabular}{cclccccc}
+	Partial wave & $\omega$ & $N^\prime(\omega)$ & $\alpha$ & $\beta$ & $\gamma$ & $\mu$ & $m_\ell$ \\
+	\colrule
+	$^1S$                      & 7 & 1505        & 0.568 & 0.580 & 1.093 & 0.9 & 1 \\
+	$^3S$                      & 7 & 1633        & 0.323 & 0.334 & 0.975 & 0.9 & 1 \\
+	$^1P$                      & 7 & 1000        & 0.397 & 0.376 & 0.962 & 0.9 & 3 \\
+	$^3P$                      & 7 & 1000        & 0.310 & 0.311 & 0.995 & 0.9 & 3 \\
+	$^1D$ $(\kappa < 0.3)$     & 6 & 916         & 0.359 & 0.368 & 0.976 & 0.7 & 7 \\
+	$^1D$ $(\kappa \geq 0.3)$  & 6 & 913         & 0.600 & 0.368 & 0.976 & 0.7 & 7 \\
+	$^3D$ $(\kappa < 0.3)$     & 6 & 919         & 0.356 & 0.365 & 0.976 & 0.7 & 7 \\
+	$^3D$ $(\kappa \geq 0.3)$  & 6 & 913         & 0.600 & 0.365 & 0.976 & 0.7 & 7 \\
+	$^1F$ $(\kappa < 0.4)$     & 5 & $385^\star$ & 0.359 & 0.368 & 0.976 & 0.7 & 7 \\
+	$^1F$ $(\kappa \geq 0.4)$  & 5 & 462         & 0.500 & 0.600 & 1.100 & 0.7 & 7 \\
+	$^3F$ $(\kappa < 0.4)$     & 5 & $385^\star$ & 0.356 & 0.365 & 0.976 & 0.7 & 7 \\
+    $^3F$ $(\kappa \geq 0.4)$  & 5 & 462         & 0.600 & 0.365 & 0.976 & 0.7 & 7 \\
+	$^1G$ $(\kappa < 0.45)$    & 5 & 462         & 0.359 & 0.368 & 0.976 & 0.7 & 9 \\
+    $^1G$ $(\kappa \geq 0.45)$ & 5 & 462         & 0.500 & 0.600 & 1.100 & 0.7 & 9 \\
+	$^3G$ $(\kappa < 0.45)$    & 5 & 462         & 0.356 & 0.365 & 0.976 & 0.7 & 9 \\
+    $^3G$ $(\kappa \geq 0.45)$ & 5 & 462         & 0.600 & 0.365 & 0.976 & 0.7 & 9 \\
+	$^1H$ $(\kappa < 0.5)$     & 5 & 462         & 0.359 & 0.368 & 0.976 & 0.7 & 11 \\
+	$^1H$ $(\kappa \geq 0.5)$  & 5 & 462         & 0.500 & 0.600 & 1.100 & 0.7 & 11 \\
+	$^3H$ $(\kappa < 0.45)$    & 5 & 462         & 0.356 & 0.365 & 0.976 & 0.7 & 11 \\
+    $^3H$ $(\kappa \geq 0.45)$ & 5 & 462         & 0.600 & 0.365 & 0.976 & 0.7 & 11 \\
+	\end{tabular}
+  \end{ruledtabular}
+  \caption{Parameters for each partial wave. Starred numbers indicate the
+restriction in the $r_3$ power described in Sec.~\ref{sec:Truncation}.}
+  \label{tab:Nonlinear3}
+\end{table}	
+
+
 Tables \ref{tab:Nonlinear1} and \ref{tab:Nonlinear2} show
 the number of terms for each short-range 
 symmetry, $N^\prime(\omega)$, used for each partial wave. The wavefunction
@@ -982,9 +1023,9 @@ we find that the phase shifts are more sensitive to the
 choice of nonlinear parameters than the \hl{$^{1,3}S$- and $^{1,3}P$-wave}.
 The optimum choice
 of nonlinear parameters appears to be $\kappa$-dependent. For $\ell \geq 2$, we
-use two different sets of nonlinear parameters. One set gives higher phase
-shifts for the lower $\kappa$ values, and the other set gives higher phase
-shifts for higher $\kappa$ values.
+use two different sets of nonlinear parameters. \hl{One set gives more
+positive phase shifts for the lower $\kappa$ values, and the other set gives
+more positive phase shifts for higher $\kappa$ values.}
 
 
 \section{Results}
@@ -1130,14 +1171,13 @@ $9.5\%$ for $^1D$. For $^3D$, this difference is up to $23.8\%$ for
 $\kappa=0.3$ but much less for other $\kappa$ values, \hl{down to
 about $4\%$ for $\kappa = 0.7$}.
 The \sout{percentage difference for $^3D$ for $\kappa = 0.1$ is very large,
-$\approx 140\%$, but the} percentage difference for the range $0.2 - 0.7$
-is less than $25\%$, except for $\kappa = 0.4$. The percentage difference for
-$\kappa = 0.4$ is larger at $40\%$. We note that between $\kappa = 0.3$
+$\approx 140\%$, but the} \hl{percentage difference for the range $0.2 - 0.7$
+is less than $25\%$, except for $\kappa = 0.4$, where the percentage
+difference is larger at $40\%$.} We note that between $\kappa = 0.3$
 and $0.4$, the complex Kohn $^3D$ phase shifts go from a positive value to a
 negative value.
 
-\todoi{Do we really need $\omega = 6$ here? I think it's clear from the table.}
-The $\omega = 6$ $^{1,3}D$ phase shifts are below the corresponding
+The \sout{$\omega = 6$} $^{1,3}D$ phase shifts are below the corresponding
 CC phase shifts, as can be seen in Table \ref{tab:DWavePhase} and 
 Fig. \ref{fig:spd-wave-phases}(c). However, the extrapolated $^1D$ phase
 shifts are slightly higher than the CC phase shifts at $\kappa = 0.6$ and 0.7.
@@ -1161,7 +1201,10 @@ integrated elastic cross section, respectively. In the full energy range,
 including the resonance region, $^3D$ contributes a maximum of $1.34\%$. 
 We notice no appreciable difference to the integrated elastic cross
 section when the complex Kohn $^{1,3}D$ phase shifts are replaced by the CC
-$^{1,3}D$ phase shifts (less than $0.084\%$).
+$^{1,3}D$ phase shifts (less than $0.084\%$).\hl{The triplet $D$-, $F$-, $G$-,
+and $H$-wave phase shifts are more sensitive to the nonlinear parameters than
+the singlet, but the triplet contribution to the elastic differential and 
+integrated cross sections are less than the corresponding singlet contribution.}
 
 \begin{table*}
 \centering
@@ -1310,13 +1353,17 @@ approximation.}
 	\label{fig:fwave-phases}
 \end{figure}
 
-\todoi{Should we add the $\omega = 4$ to $5$ F-wave percent difference to the text? They are huge for the triplet and decent for the singlet. Refer to the spreadsheet.}
 Figure \ref{fig:fwave-phases} shows the $F$-wave complex Kohn phase shifts 
 compared to the Born approximations. As for the $^3D$, there is a sign change 
 of positive to negative present for the $^3F$ phase shifts, but this change 
 occurs at a higher energy of approximately $3.5$ eV. The $^1F$-wave has a 
 resonance above the Ps(n=2) threshold, but the beginning of the resonance is 
-evident in Fig. \ref{fig:fwave-phases}. The modified Born is approximately 
+evident in Fig. \ref{fig:fwave-phases}. \hl{The difference between the $^1F$ phase
+shifts for $\omega = 4$ and $5$ is less than $10\%$ for $\kappa \geq 0.5$
+and is as low as $2.8\%$ at $\kappa = 0.75$. The corresponding difference
+for the $^3F$ phase shifts is greater than $50\%$.
+
+The modified} Born is approximately 
 equivalent to the Born results, so we show only the Born results in these 
 graphs. The Born approximation is not particularly good, being much lower. 
 This comparison is not shown for the first three partial waves, as there is 
@@ -1329,12 +1376,18 @@ $\ell \geq 5$.
 
 We perform full complex Kohn calculations on all first six partial waves, but 
 we do more extensive calculations for the first three partial waves, \hl{as shown 
-by the short-range terms used} in Sec. \ref{sec:Parameters}. For the
-$F$-wave, the phase shifts and partial elastic cross 
+by the short-range terms used} in Sec. \ref{sec:Parameters}. The $^3D$, $^{1,3}F$,
+$^{1,3}G$, and $^{1,3}H$ partial waves are not fully converged, but for each of
+these, the phase shifts and partial elastic cross 
 sections become very small, so their overall contribution to the integrated 
 elastic cross section becomes negligible for higher partial waves.
-The maximum estimated $G$-wave contribution to the integrated elastic cross
-section is $0.1\%$ and much less at energies before the threshold.
+\hl{For the G- and H-waves, we obtain a convergence ratio $R'(5) > 1$ for
+$\kappa \leq 0.3$ and $\kappa \leq 0.35$, respectively, due to the very small
+phase shifts (on the order of $\lesssim 10^{-5}$). The convergence ratios
+are less than 1 at higher $\kappa$, where there is a more significant
+contribution to the elastic differential cross section.
+The maximum $H$-wave contribution to the integrated elastic cross
+section is $0.009\%$ and much less at energies before the threshold.}
 
 \begin{figure}[H]
 	\centering
@@ -1380,10 +1433,12 @@ partial cross sections, and the maximum is due primarily to $^1P$.
 The differential cross section, calculated using the expression in
 Ref.~\cite{Bransden2003}, is shown in Figs.
 \ref{fig:diff-cross-section-2D-theta}, \ref{fig:diff-cross-section-2D-kappa},
-and \ref{fig:combined-diff-cross-sections}. The estimated change of adding
-the $G$-wave to the differential cross section is a maximum of $12\%$ near
-the $F$-wave resonance but only an average of $0.88\%$ throughout the full
-$E$ and $\theta$ range. As expected, 
+and \ref{fig:combined-diff-cross-sections}. \hl{The percent difference of including
+the $H$-wave in the differential cross section versus only including through
+the $G$-wave is a maximum of $3.8\%$ in
+the resonance region but only an average of $0.26\%$ throughout the full
+$E$ and $\theta$ range, indicating the the differential cross sections
+are relatively well converged.} As expected, 
 Fig.~\ref{fig:diff-cross-section-2D-kappa} shows that the 
 differential cross section is 
 isotropic at zero incident energy and becomes slightly more backward peaked 
@@ -1469,7 +1524,7 @@ They have been computed very accurately by Yan and Ho using the complex
 rotation method \cite{Yan1999} and by Walters' group using the CC 
 approach \cite{Walters2004}. The first $^1P$ Rydberg resonance is associated
 with the $3p$ state, not the $2p$ state \cite{DiRienzi2002b}, while the $^1D$ 
-resonance corresponds with the $3d$ state \cite{DiRienzi2002a}.
+resonance \hl{is associated} with the $3d$ state \cite{DiRienzi2002a}.
 
 We fit the phase shifts in the resonance region to Eq.~(\ref{eq:ResonanceFit})
 for $^1S$ and $^1P$. We perform the $^1D$ and $^1F$ resonance fits without 
@@ -1774,28 +1829,39 @@ The $^{1,3}S$ scattering
 lengths agree well with previous work
 \cite{VanReeth2003,Blackwood2002,Walters2004,Ivanov2002}
 and are likely the most accurate to 
-date. The $^3S$ effective range we calculate is higher than previously 
-reported \cite{VanReeth2003,Blackwood2002,Ivanov2002}
-\hl{by using smaller $\kappa$}.
-%\todoi{Be clear on this. We get the same as others at higher kappa values}
-While the $^1P$ scattering length agrees with the SVM \cite{Ivanov2002}, 
-the complex Kohn $^3P$ scattering length is much smaller.
+date. \hl{When we use a $\kappa$ range of 0.1 to 0.5, we obtain a $^3S$ effective
+range close to those previously reported}
+\cite{VanReeth2003,Blackwood2002,Ivanov2002}, \hl{but when we use smaller $\kappa$
+values, we obtain a $^3S$ effective range noticeably larger.
+While the complex Kohn $^1P$ scattering length agrees with the SVM
+{\cite{Ivanov2002}}, the complex Kohn $^3P$ scattering length is much smaller.}
+
+\hl{In summary, using the complex Kohn for the $S$ matrix for elastic Ps-H scattering,
+we obtain benchmark $^{1,3}S$ and $^{1,3}P$ phase shifts
+and accurate elastic differential, integrated, momentum transfer and ortho-para
+conversion cross sections. We also compute the resonance parameters through
+$^1F$ and investigate the effective ranges and scattering lengths for 
+$^{1,3}S$ and $^{1,3}P$.}
 
 
-\begin{acknowledgments}
-We wish to thank Drs. Y.~K.~Ho, J.~W.~Humberston, K.~Pachucki and Z.~C.~Yan 
-for discussions. We appreciate communications with Drs. Edward Armour,
-James Cooper and Martin Plummer, and files from Allan Todd.
-S.~J.~W. acknowledges support from NSF under grant no.
-PHYS-0968638 and from UNT through the UNT faculty research grant GA9150. 
-Computational resources were provided by UNT's High Performance Computing 
-Services, a project of Academic Computing and User Services division of the 
-University Information Technology with additional support from UNT Office of 
-Research and Economic Development.
+\begin{acknowledgments} We wish to thank Drs. Y.~K.~Ho,
+\hlc[cyan]{J.~W.~Humberston}, K.~Pachucki and \hl{Z.-C.~Yan} for discussions.
+We appreciate communications with Drs. \hlc[cyan]{Edward Armour}, James 
+Cooper and Martin Plummer, and files from Allan Todd. S.~J.~W. acknowledges 
+support from NSF under grant no. PHYS-0968638 and from UNT through the UNT 
+faculty research grant GA9150. Computational resources were provided by UNT's 
+High Performance Computing Services, a project of Academic Computing and User 
+Services division of the University Information Technology with additional 
+support from UNT Office of Research and Economic Development.
 \end{acknowledgments}
 
 
 \bibliography{PRA-PsH-Draft}
+
+
+%\appendix*
+%\section{Nonlinear Parameters}
+%test
 
 
 
