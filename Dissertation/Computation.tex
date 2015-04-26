@@ -405,9 +405,18 @@ Energy cutoff & Used terms & Energy\\
 \end{tabular}
 \end{center}
 
-Unfortunately, the intuition that a larger block size and smaller energy cutoff will yield a better final energy is not necessarily correct. The best value of the energy was actually obtained for the largest tested energy cutoff of $10^{-8}$. A block size of 500 also gave a worse energy than did a block size of 400. More tests need to be performed to determine the optimal value of both parameters, and these could possibly change for higher values of $\omega$ or for a different system.
+Unfortunately, the intuition that a larger block size and smaller energy 
+cutoff will yield a better final energy is not necessarily correct. The best 
+value of the energy was actually obtained for the largest tested energy 
+cutoff of $10^{-8}$. A block size of 500 also gave a worse energy than did a 
+block size of 400. More tests need to be performed to determine the optimal 
+value of both parameters, and these could possibly change for higher values 
+of $\omega$ or for a different system.
 
-We decided to use the Todd algorithm (\cref{sec:ToddBound}) due to the better energy obtained and the larger set of terms returned. The Todd algorithm is also more consistent between runs. The trade-off is the increased time to perform a calculation, especially for large $\omega$.
+We decided to use the Todd algorithm (\cref{sec:ToddBound}) due to the better 
+energy obtained and the larger set of terms returned. The Todd algorithm is 
+also more consistent between runs. The trade-off is the increased time to 
+perform a calculation, especially for large $\omega$.
 
 \begin{figure}[H]
 	\centering
@@ -416,6 +425,19 @@ We decided to use the Todd algorithm (\cref{sec:ToddBound}) due to the better en
 	\label{fig:Luchow}
 \end{figure}
 
+
+\subsection{Restricted Set}
+\label{sec:Restricted}
+Van Reeth and Humberston \cite{VanReeth2003} found that restricting the power 
+of the $r_3$ coordinate could significantly improve their numerics, allowing 
+them to use more short-range terms. Specifically, we restrict the $r_3$ power 
+(see \cref{eq:PhiDef}) so that $n_i \leq 2$ if $\omega \geq 3$, and we refer 
+to this as the restricted set.
+
+We normally use Todd's algorithm, described in \cref{sec:ToddBound}, or we 
+use the full unrestricted set when possible. For the cases of $^1$F and $^3$F 
+for low $\kappa$, described in \cref{sec:FNonlinear}, we use the restricted 
+set.
 
 
 \section{Long-Range Terms}
@@ -1054,6 +1076,8 @@ We define the convergence ratio as
 \end{equation}
 This is similar to the inverse of ratio for the energy eigenvalues given in
 Ref.~\cite{Yan1999}. If $\mathcal{R}(\omega) \geq 1$, there is no convergence pattern.
+
+\todoi{Describe this more}
 
 \subsection{Extrapolation Description}
 
