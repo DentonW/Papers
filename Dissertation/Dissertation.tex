@@ -38,6 +38,7 @@
 \sisetup{per-mode=symbol}
 %\sisetup{range-phrase = \text{--}}
 \usepackage{wasysym}  % Simply for \CIRCLE and \Circle (could use \circ for the latter)
+\usepackage{gensymb}  % Only using for \degree
 \usepackage{pdflscape}  % For landscape page
 \usepackage{dcolumn}
 %\usepackage[arrowdel,notrig]{physics}  % Unfortunately conflicts with other packages
@@ -52,6 +53,7 @@
 %\usepackage{showlabels}
 
 % For dcolumn
+%\newcolumntype{s}{D{.}{.}{2.5}}
 \newcolumntype{d}[1]{D{.}{\cdot}{#1}}
 \newcolumntype{.}{D{.}{.}{-1}}
 

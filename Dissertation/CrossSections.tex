@@ -10,13 +10,14 @@
 \label{chp:CrossSections}
 
 \todoi{Discussion like in PRA paper about how related to scattering length}
+\todoi{integrated elastic vs. elastic integrated}
 
 We get the phase shifts directly from the Kohn variational methods, but a more relevant quantity for experiments is the cross section. Cross sections essentially give the strength of the interaction and are a quantity that can be measured experimentally.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=4.5in]{ScatteringDiagram}
-	\caption[General scattering diagram]{General scattering diagram. Modified from \url{http://commons.wikimedia.org/wiki/File:ScatteringDiagram.svg}}
+	\caption[General scattering diagram]{General scattering diagram. Modified from \url{http://commons.wikimedia.org/wiki/File:ScatteringDiagram.svg}. Permission granted under the Creative Commons Attribution-Share Alike 3.0 Unported license.}
 	\label{fig:ScatteringDiagram}
 \end{figure}
 
@@ -28,36 +29,105 @@ The integrated cross section (also known simply as the cross section) is
 related to the differential cross section by integrating over $d\Omega$:
 \begin{equation}
 \label{eq:TotalDiffCross}
-\sigma = \int_0^{2\uppi} \int_0^{\uppi} \frac{d\sigma}{d\Omega} \sin\theta d\theta d\varphi.
+\sigma = \int \frac{d\sigma}{d\Omega} \, d\Omega
+ = \int_0^{2\uppi} \int_0^{\uppi} \frac{d\sigma}{d\Omega} \sin\theta \, d\theta \, d\varphi.
 \end{equation}
 
 
 \subsection{Integrated Cross Sections}
 \label{sec:totalcross}
 
+The partial wave cross sections can be 
+related to the phase shifts by
+\citep[p.]{Bransden2003}
 \begin{equation}
 \label{eq:PartialCross}
-\sigma_{el,\ell}^\pm = \frac{4}{\kappa^2} (2\ell+1) \sin^2 \delta_\ell^\pm
+\sigma_{el,\ell}^\pm = \frac{4}{\kappa^2} (2\ell+1) \sin^2 \delta_\ell^\pm.
 \end{equation}
-
+\todoi{Page number for Bransden book}
+In addition to the relation of the integrated cross sections to the
+differential cross sections in \cref{eq:TotalDiffCross},
+using the partial wave expansion, the integrated cross sections can also be 
+expressed as \citep[p.]{Bransden2003}
 \begin{equation}
 \label{eq:TotalCross}
-\sigma_{el}^\pm = \frac{4}{\kappa^2} \sum_{\ell=0}^\infty (2\ell+1) \sin^2 \delta_\ell^\pm
+\sigma_{el}^\pm = \sum_{\ell=0}^\infty \sigma_{el,\ell}^\pm = \frac{4}{\kappa^2} \sum_{\ell=0}^\infty (2\ell+1) \sin^2 \delta_\ell^\pm.
 \end{equation}
+For each of the cross sections other than the ortho-para conversion, the 
+singlet contributes $\frac{1}{4}$, and the triplet contributes $\frac{3}{4}$, 
+giving spin-weighted cross sections, i.e. \cite{Ward1987}
+\beq
+\label{eq:SpinWeightCS}
+\sigma = \tfrac{1}{4} \sigma^+ + \tfrac{3}{4} \sigma^-.
+\eeq
 
+\Cref{fig:singlet-cross-sections,fig:triplet-cross-sections} show the partial
+wave cross sections for the singlet and triplet, respectively. The ``Total''
+in each is the sum of each of the singlet or triplet partial waves through the
+H-wave.
+
+The triplet cross section in \cref{fig:triplet-cross-sections} is dominated 
+almost completely by the $^3$S partial wave. The $^3$P partial wave 
+contributes less, and the $^3$D-wave barely registers on the graph. The 
+higher partial waves contribute nearly negligible amounts. The total follows
+closely with $^3$S, but the contribution from $^3$P is evident.
+
+The singlet cross sections in \cref{fig:singlet-cross-sections} are more
+interesting due to their larger partial wave cross sections and the resonances
+from the first four partial waves. The ``Total'' has peaks from each of the
+first three partial waves, giving it a more complicated structure than the
+total from the triplet in \cref{fig:triplet-cross-sections}. As mentioned
+in \cref{sec:Resonances}, each of these resonances goes through a phase shift
+change of $\uppi$. With the $(2\ell+1)$ factor in \cref{eq:TotalCross},
+higher partial wave resonances have a larger contribution to the total
+cross sections, as long as the background does not change significantly.
+In \cref{fig:singlet-cross-sections}, the $^1$D resonance clearly has the
+most significant contribution to the integrated elastic cross section out of
+the resonances for the first three partial waves. The $^1$F resonance barely
+contributes, but this is because the resonance lies past the inelastic 
+threshold.
+
+Also interesting is the minimum in the total singlet cross section at 
+approximately $\SI{0.25}{eV}$ and then the maximum at $\SI{0.74}{eV}$. The dip
+here at low energy is due to the mixing of the $^1$S and $^1$P cross sections.
+The $^1$S-wave cross section is decreasing rapidly while the $^1$P-wave cross
+section is increasing, giving this feature. The maximum is due primarily to the
+$^1$P-wave.
+
+
+
+\todoi{More complete figure captions}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=5.25in]{singlet-cross-sections}
-	\caption{Combined complex Kohn singlet cross sections}
+	\caption{Complex Kohn singlet cross sections}
 	\label{fig:singlet-cross-sections}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=5.25in]{triplet-cross-sections}
-	\caption{Combined complex Kohn triplet cross sections}
+	\caption{Complex Kohn triplet cross sections}
 	\label{fig:triplet-cross-sections}
 \end{figure}
+
+From \cref{eq:TotalCross}, for exact cross sections, we have to do an infinite
+summation. In practice, we add partial waves until the cross section no longer
+changes a significant amount. In \cref{fig:percentage-cross-sections}(a), we
+consider what the percentage contribution to the total cross section for
+the singlet partial waves is at the 7 ``standard'' $\kappa$ values. From this,
+we can see the trend that the $^1$S-wave is by far the greatest contribution at
+small $\kappa$, but the $^1$P-wave becomes the dominant contribution through
+most of the rest of the energy range. When $\kappa \geq 0.5$, the $^1$D-wave is
+no longer a negligible contribution. The $^1$F-wave barely contributes, even
+for $\kappa = 0.7$, and the $^1$G- and $^1$H-wave are not shown due to their
+insignificant contributions.
+
+The corresponding bar chart for the triplet is in
+\cref{fig:percentage-cross-sections}(b). As qualitatively described earlier,
+the contribution to the total elastic integrated cross section for
+the triplet is mainly due to the $^3$S-wave. The $^3$P-wave contributes about
+$20\%$ at $\kappa = 0.7$, and the $^3$D-wave contribution is nearly negligible.
 
 \begin{figure}[H]
 	\centering
@@ -66,12 +136,83 @@ related to the differential cross section by integrating over $d\Omega$:
 	\label{fig:percentage-cross-sections}
 \end{figure}
 
+\Cref{fig:percentage-cross-sections-full} also shows the percent contributions to 
+the total integrated elastic cross sections from each partial wave but shows
+this data for the entire energy range. The triplet graph in
+\cref{fig:percentage-cross-sections-full}(b) again shows that only the $^3$S- and
+$^3$P-waves give very significant contributions. The $^3$D-wave gives a
+non-negligible but small contribution near the inelastic threshold
+
+The corresponding singlet graph in \cref{fig:percentage-cross-sections-full}(a)
+is more difficult to interpret due to the resonances. The $^1$S- and
+$^1$P-wave dominate until about $\SI{3}{eV}$, and the $^1$P-wave is the largest 
+contribution from approximately $\SI{0.5}{eV}$ to slightly over $\SI{4}{eV}$.
+The $^1$D-wave starts being a more dominant contribution past $\SI{4}{eV}$, and
+it has spikes in the percentage when the $^1$S and $^1$P resonances go to their
+minima.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{percentage-cross-sections-full}
 	\caption[Percentage contribution to total cross section]{Percentage contribution to total cross section from each partial wave for the singlet (a) and triplet (b).}
 	\label{fig:percentage-cross-sections-full}
 \end{figure}
+
+For a more quantitative approach, we calculate the percent contributions of the
+different partial waves to the total spin-weighted cross section as presented
+in \cref{tab:PercentToCross}. The second and third columns give the
+contribution from the singlet and triplet combined for each partial wave. From
+this, it is noticeable that the F-wave should be included, though the average
+is less than $0.6\%$. The G-wave and H-wave barely contribute, with the H-wave
+contribution from both the singlet and triplet is less than $0.002\%$ on 
+average.
+
+For the last 4 columns of \cref{tab:PercentToCross}, we also compare each
+partial wave's contribution to the total spin-weighted cross section, but we
+separate out the singlet and triplet. From columns 4 and 5 for the singlet,
+we see that the $^1$F-wave is important, and it gives most of the combined
+$^{1,3}$F-wave contribution to the elastic integrated cross section. The 
+$^3$F-wave contribution is $0.0011\%$ on average, and the $^3$D contribution 
+is less than $0.41\%$ through the entire energy range. We include all partial
+waves through the H-wave in our final results, but these would be relatively
+well converged if we stopped adding partial waves to \cref{eq:TotalCross} at
+the F-wave. For comparison, the CC \cite{Walters2004} cross section shown in
+\cref{fig:combined-cross-sections} uses partial waves through the G-wave, but
+their graph would likely not change if they included the H-wave.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{cllllll}
+\toprule
+$\ell$ & Max. $^{1,3}\ell$ \% & Avg. $^{1,3}\ell$ \% & Max. $^1\ell$ \% & Avg. $^1\ell$ \% & Max. $^3\ell$ \% & Avg. $^3\ell$ \% \\
+\midrule
+S-wave & 100.0\%  & 60.61\%   & 57.80\%  & 20.80\%  & 20.86\%   & 13.27\% \\
+P-wave & 45.97\%  & 30.21\%   & 42.89\%  & 24.36\%  & 4.323\%   & 1.947\%  \\
+D-wave & 42.07\%  & 8.565\%   & 41.61\%  & 8.178\%  & 0.401\%   & 0.129\%  \\
+F-wave & 3.782\%  & 0.596\%   & 3.765\%  & 0.593\%  & 0.00606\% & 0.0011\%  \\
+G-wave & 0.103\%  & 0.022\%   & 0.0994\% & 0.0206\% & 0.00106\% & 0.00046\%  \\
+H-wave & 0.0083\% & 0.0019\%  & 0.0062\% & 0.0013\% & 0.00070\% & 0.00021\% \\ 
+\bottomrule
+\end{tabular}
+\caption{Percent contribution to the elastic integrated cross section from each partial wave for both the maximum and average for the entire energy range}
+\label{tab:PercentToCross}
+\end{table}
+
+Finally, combining the singlet and triplet total integrated elastic cross 
+sections using the spin-weighting in \cref{eq:SpinWeightCS} gives the result
+in \cref{fig:combined-cross-sections}. We include the spin-weighted singlet
+and triplet cross sections for comparison with the combined total cross section.
+The comparison to the CC \cite{Walters2004} and SE \cite{Hara1975} results is
+made possible by using the CurveSnap \cite{CurveSnap} program to extract the
+curves from the respective papers. The SE curve gives a decent approximation to
+the background without any resonances. We would not expect the SE to give
+resonance information, but it is a good first approximation, except at low
+energy, where it overestimates the cross section greatly. There is
+good agreement between the complex Kohn and CC cross sections, but the CC
+results have resonances shifted to higher energy. The complex Kohn resonances
+correspond better than the CC to the resonance positions that are given in the
+complex rotation results of Yan and Ho \cite{Yan1999,Yan1998a,Ho1998,Ho2000}, as
+seen in \cref{tab:SWaveResonancesOther,tab:PWaveResonancesOther,tab:DWaveResonancesOther,tab:FWaveResonanceComparisons}.
 
 \begin{figure}[H]
 	\centering
@@ -80,20 +221,37 @@ related to the differential cross section by integrating over $d\Omega$:
 	\label{fig:combined-cross-sections}
 \end{figure}
 
+For partial wave cross section data available from the CC papers
+\cite{Walters2004,Blackwood2002,Blackwood2002b}, we compare the complex Kohn
+partial wave cross sections to these in
+\cref{fig:spd-singlet-cross-sections,fig:spd-triplet-cross-sections}.
+The CC 9Ps9H + H$^-$ cross sections are more accurate than the CC 22Ps1H + H$^-$,
+as pointed out in those papers. They also have CC data with the 9Ps9H
+approximation \cite{Blackwood2002}, but that gives less accurate results than
+the CC 22Ps1H + H$^-$.
 
-For the total, differential and momentum transfer cross sections, the singlet contributes $\frac{1}{4}$, and the triplet contributes $\frac{3}{4}$, giving spin-weighted cross sections, i.e. \cite{Ward1987}
-\beq
-\label{eq:SpinWeightCS}
-\sigma = \tfrac{1}{4} \sigma^+ + \tfrac{3}{4} \sigma^-.
-\eeq
+Other than the shifted resonance positions, the CC results tend to match well
+with the complex Kohn. However, there are some features that are worth
+noticing. For $^1$P in \cref{fig:spd-singlet-cross-sections}, the CC
+9Ps9H + H$^-$ maximum is lower than the complex Kohn maximum. The CC
+22Ps1H + H$^-$ maximum is even lower, so we would expect that if more
+eigen- and pseudo-states are included, the CC maximum would likely match up 
+with the complex Kohn. Also, the $^3$D CC cross section is much smaller than
+the complex Kohn. This is a reflection of the fact that in
+\cref{fig:DWavePhase,tab:DWaveComparisons}, the CC results are higher than the
+complex Kohn, making them less negative and the corresponding cross sections
+smaller. Noting the magnitude of the $^3$D cross section for both methods, the
+contribution to the full summed elastic integrated cross section is small.
+As a simple test, we tried replacing the complex Kohn $\kappa = 0.1 - 0.7$
+phase shifts with those of the CC, and the change to the cross section is
+less than 0.084\% for this range. Consequently, for the full summed
+cross section, the discrepancy between the complex Kohn and the CC results
+does not change things significantly.
 
-\todoi{Put partial wave cross sections in each chapter/section?}
-
-\label{sec:crosscompare}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{spd-singlet-cross-sections}
-	\caption[Comparisons of $^1$S, $^1$P, and $^1$D cross sections.]{Comparisons of $^1$S, $^1$P, and $^1$D cross sections. CC results are from Ref. \cite{Walters2004}.}
+	\caption[Comparisons of $^1$S, $^1$P, and $^1$D cross sections.]{Comparisons of $^1$S, $^1$P, and $^1$D cross sections. CC 9Ps9H + H$^-$ results are from Ref.~\cite{Walters2004}, and CC 22Ps1H + H$^-$ results are from Ref.~\cite{Blackwood2002b}.}
 	\label{fig:spd-singlet-cross-sections}
 \end{figure}
 
@@ -104,6 +262,20 @@ For the total, differential and momentum transfer cross sections, the singlet co
 	\label{fig:spd-triplet-cross-sections}
 \end{figure}
 
+Despite the disappointing performance of the Born and modified Born 
+approximations for the phase shifts of the higher partial waves in
+\cref{chp:HigherWaves}, we also compare the Born approximation cross sections
+to see if the discrepancy is as large. In \cref{fig:fgh-born-cross-sections},
+we see that the Born approximation does not match up with either the singlet
+or triplet for the F-, G-, or H-waves. Interestingly, we see that the plots
+for the singlet and the Born look approximately the same in (a), (b), and (c)
+but with a different vertical scale. This seems to indicate that the Born and complex
+Kohn results will only be approximately equal at a much higher value of $\ell$
+than $\ell = 5$. The phase shifts become very small for partial waves higher
+than the H-wave, so we would not be able to investigate these much further 
+without improving the accuracy of our long-range code. Similar to what we
+noticed in \cref{sec:SingTripCompare}, we also note that the singlet and
+triplet phase shifts match for higher $\kappa$ as $\ell$ increases.
 
 \begin{figure}[H]
 	\centering
@@ -118,46 +290,96 @@ For the total, differential and momentum transfer cross sections, the singlet co
 
 \todoi{Make sure final graphs have the full 50 $\theta$ terms}
 
+The differential cross section is important through \cref{eq:TotalDiffCross},
+but this also gives information about the angular dependence, $\theta$, of the
+system. The differential cross sections can be calculated from the phase shifts by
 \begin{align}
 \label{eq:DiffCross}
 \nonumber \frac{d\sigma_{el}^\pm}{d\Omega} = \frac{1}{\kappa^2} & \sum_{\ell=0}^\infty \sum_{\ell^\prime=0}^\infty (2\ell+1)(2\ell^\prime+1) \exp\left\{\ii \left[\delta_\ell(\kappa) - \delta_{\ell^\prime}(\kappa) \right] \right\} \\
 & \times \sin\delta_\ell^\pm(\kappa) \sin\delta_{\ell^\prime}^\pm(\kappa) P_\ell(\cos\theta) P_{\ell^\prime}(\cos\theta)\,.
 \end{align}
+This expression has the complex-valued exponential, for which we can use the
+well-known Euler formula of
+\begin{equation}
+\label{eq:ComplexExp}
+\ee^{\ii x} = \cos x + \ii \sin x
+\end{equation}
+to split this into real-valued and imaginary-valued parts. As long as the
+finite truncation of the upper limits of the summations are the same, the
+imaginary part becomes 0 to within numerical accuracy. So we can use the
+approximation of
+\begin{align}
+\label{eq:DiffCross1}
+\nonumber \frac{d\sigma_{el}^\pm}{d\Omega} \approx \frac{1}{\kappa^2} & \sum_{\ell=0}^{\ell_{max}} \sum_{\ell^\prime=0}^{\ell_{max}} (2\ell+1)(2\ell^\prime+1) \cos \left[\delta_\ell(\kappa) - \delta_{\ell^\prime}(\kappa) \right] \\
+& \times \sin\delta_\ell^\pm(\kappa) \sin\delta_{\ell^\prime}^\pm(\kappa) P_\ell(\cos\theta) P_{\ell^\prime}(\cos\theta)\,.
+\end{align}
+
+Graphs of the differential cross sections for the singlet and triplet are found
+in \cref{fig:diff-cross-sections-singlet,fig:diff-cross-sections-triplet},
+respectively. Note that the $\theta$ axis is plotting backwards so that the
+features are visible instead of being obscured by higher differential cross
+sections in the front of the graph.
+The triplet $\frac{d\sigma_{el}^-}{d\Omega}$ is not particularly
+remarkable, being smooth and having a maximum at intermediate energies for the
+forward direction $(\theta = 0)$. The values are all less than 7 $a_0^2/\textrm{sr}$.
+It is also of note that in the backward scattering direction $(\theta = \uppi)$,
+the triplet differential cross section quickly becomes very small.
+
+In contrast, the singlet differential cross section, $\frac{d\sigma_{el}^-}{d\Omega}$,
+shown in \cref{fig:diff-cross-sections-singlet} has a much more complicated
+structure. The resonances are clearly visible in the plot, and the highest peak
+extending to 110.5 $a_0^2/\textrm{sr}$ is due to the D-wave resonance, which is
+also the dominant resonance in the integrated cross section shown in
+\cref{fig:singlet-cross-sections,fig:combined-cross-sections}. The features in
+the integrated cross section graphs can easily be matched up to features in the
+differential cross section, including the rest of the resonances. The maximum
+and dip described in \cref{sec:totalcross} for the integrated cross section can
+also be seen in \cref{fig:diff-cross-sections-singlet}, especially in the
+forward direction.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=5.25in]{diff-cross-sections-singlet}
-	\caption{Singlet differential cross sections}
+	\caption{Singlet differential cross section}
 	\label{fig:diff-cross-sections-singlet}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=5.25in]{diff-cross-sections-triplet}
-	\caption{Triplet differential cross sections}
+	\caption{Triplet differential cross section}
 	\label{fig:diff-cross-sections-triplet}
 \end{figure}
+
+Similar to the integrated cross section, we combine these using the same type
+of spin-weighting given in \cref{eq:SpinWeightCS}. Due to the nearly featureless
+nature of the triplet, the combined differential cross section in 
+\cref{fig:diff-cross-sections-combined} looks very similar to 
+\cref{fig:diff-cross-sections-singlet}, but the 1/4 weighting of the singlet
+brings the vertical scale down. The forward direction is enhanced slightly by
+the maximum in the triplet in \cref{fig:diff-cross-sections-triplet}.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{diff-cross-sections-combined}
-	\caption{Combined differential cross sections}
+	\caption{Combined spin-weighted differential cross section}
 	\label{fig:diff-cross-sections-combined}
 \end{figure}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{percent-diff-cross-sections}
-	\caption[Percent difference of differential cross sections at selected angles]{Percent difference of $\frac{d\sigma_{el}}{d\Omega}$ for upper limit of summations in \ref{eq:DiffCross} as $\ell = 4$ versus $\ell = 5$ for selected angles}
-	\label{fig:percent-diff-cross-sections}
-\end{figure}
+With the data in \cref{fig:diff-cross-sections-combined}, it is illustrative 
+to plot 2-dimensional versions to see trends more clearly. In
+\cref{fig:diff-cross-section-2D-theta}, we restrict $\theta$ and vary
+$E_{\bm \kappa}$ to see the the energy-dependence for several $\theta$ values.
+We are particularly interested in the forward ($\theta = 0\degree$) and backward
+($\theta = 180\degree$) directions but also include $\theta = 90\degree$.
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=5.5in]{percent-diff-cross-sections-full}
-	\caption[Percent difference of differential cross sections at all angles]{Percent difference of $\frac{d\sigma_{el}}{d\Omega}$ for upper limit of summations in \ref{eq:DiffCross} as $\ell = 4$ versus $\ell = 5$ for all angles and energies}
-	\label{fig:percent-diff-cross-sections-full}
-\end{figure}
+From this figure, it is clear that scattering in the forward direction is
+dominant past approximately $\SI{0.5}{eV}$. The maximum for forward scattering
+is due to the $^1$D resonance. Particularly interesting is the contribution
+from backward scattering for low $E_{\bm \kappa}$ and the dip in the forward
+scattering direction, which corresponds to the dip in
+\cref{fig:combined-cross-sections}. All angles give the same value at zero 
+energy, as we would expect. 
 
 \begin{figure}[H]
 	\centering
@@ -166,6 +388,19 @@ For the total, differential and momentum transfer cross sections, the singlet co
 	\label{fig:diff-cross-section-2D-theta}
 \end{figure}
 
+In \cref{fig:diff-cross-section-2D-kappa}, we instead fix values of
+$E_{\bm \kappa}$ and plot with respect to $\theta$. The legend gives the $\kappa$ 
+value instead, so it is clear what specific values we are plotting. At low $
+\kappa$ (0.05 in the plot), the differential cross section is nearly 
+isotropic, with a slight bias toward backward scattering. As the momentum is 
+increased to 0.2, backward scattering is more prominent. Between $\kappa = 0.2$
+and 0.3, there is an abrupt change in the differential cross section, where 
+it becomes much more forward peaked, with a decreasing contribution to the 
+backward direction, and a minimum at approximately $100\degree$. As the 
+momentum is increased further, the differential cross section becomes very 
+strongly forward peaked, with even further decreases at larger angles and a 
+nearly constant value from about $100\degree$.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=5.25in]{diff-cross-section-2D-kappa}
@@ -173,13 +408,139 @@ For the total, differential and momentum transfer cross sections, the singlet co
 	\label{fig:diff-cross-section-2D-kappa}
 \end{figure}
 
+We find that the elastic differential cross section converges slower with 
+respect to $\ell$ than the elastic integrated cross section in
+\cref{sec:totalcross}. The differential cross section is more difficult to 
+quantitatively evaluate the convergence than the integrated cross section, 
+since it has mixing between all of the included partial waves. Due to the
+double summation, there are $\ell_{max}^2$ terms in the differential cross
+section. We calculate $\frac{d\sigma_{el}}{d\Omega}$ for two subsequent
+values of $\ell_{max}$, then find the percent difference between these.
+
+\Cref{fig:percent-diff-cross-sections-full-g,fig:percent-diff-cross-sections-full-h}
+shows this percentage difference for all angles and energies. These two figures
+look similar but have different vertical scales, as we would hope for if
+there was convergence. There are two important trends here. One is that the 
+differential cross section is well converged at low energies, and the other 
+is that it is less converged in the backward scattering direction than in the 
+forward direction. In \cref{fig:percent-diff-cross-sections-full-h}, which
+includes all partial waves through the H-wave, the percentage differences are
+all below 4\%, and most of the $E_{\bm \kappa}^+$ and $\theta$ range is 
+much less than this. This indicates that the differential cross section is
+relatively well converged.
+
+\Cref{fig:percent-diff-cross-sections-g,fig:percent-diff-cross-sections-h}
+show the same data but for selected angles. We see here that
+$\theta = 90\degree$ is the best converged angle out of the three, and
+the backward scattering direction of $\theta = 180\degree$ is the worst
+converged. Again, as seen in \cref{fig:percent-diff-cross-sections-h}, the
+differential cross section is relatively well converged if we include the
+H-wave.
+
+We would expect that as $\ell$ increases, angles near $\theta = 180\degree$ 
+will be the most sensitive to adding terms to the differential cross section. 
+The partial wave expansion \cite{} has a $\LegendreP{\ell,\cos\theta}$ for 
+each term. If we set $\theta = 0\degree$, each of the Legendre polynomials
+equals 1, meaning that each term added is positive. If $\theta = 180\degree$,
+the Legendre polynomial alternates between 1 and -1, i.e. $(-1)^\ell$. This is
+then an alternating series, which we would expect to converge more slowly.
+The minimum for $\theta = 90\degree$ can be explained by every $\ell$ odd term
+equaling 0 from the Legendre polynomial.
+
+\todoi{I should really define a symbol (maybe $\Delta$?) for the percentage difference.}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=5.5in]{percent-diff-cross-sections-full-g}
+	\caption[Percent difference of differential cross sections at all angles]{Percent difference of $\frac{d\sigma_{el}}{d\Omega}$ for upper limit of summations in \ref{eq:DiffCross} as $\ell_{max} = 3$ versus $\ell_{max} = 4$ for all angles and energies}
+	\label{fig:percent-diff-cross-sections-full-g}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=5.5in]{percent-diff-cross-sections-full-h}
+	\caption[Percent difference of differential cross sections at all angles]{Percent difference of $\frac{d\sigma_{el}}{d\Omega}$ for upper limit of summations in \ref{eq:DiffCross} as $\ell_{max} = 4$ versus $\ell_{max} = 5$ for all angles and energies}
+	\label{fig:percent-diff-cross-sections-full-h}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{percent-diff-cross-sections-g}
+	\caption[Percent difference of differential cross sections at selected angles]{Percent difference of $\frac{d\sigma_{el}}{d\Omega}$ for upper limit of summations in \ref{eq:DiffCross} as $\ell_{max} = 3$ versus $\ell_{max} = 4$ for selected angles}
+	\label{fig:percent-diff-cross-sections-g}
+\end{figure}
+
+\todoi{Do a graph with selected energy - one at the threshold?}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{percent-diff-cross-sections-h}
+	\caption[Percent difference of differential cross sections at selected angles]{Percent difference of $\frac{d\sigma_{el}}{d\Omega}$ for upper limit of summations in \ref{eq:DiffCross} as $\ell_{max} = 4$ versus $\ell_{max} = 5$ for selected angles}
+	\label{fig:percent-diff-cross-sections-h}
+\end{figure}
+
+
+
+similar to \cref{tab:PercentToCross}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{c...c}
+\toprule
+$\ell$  &  \multicolumn{1}{c}{Avg. \% Diff.}  &  \multicolumn{1}{c}{Max. \% Diff.} \\
+\midrule
+1& 49.11\% & 140.8\%  \\
+2& 18.54\% & 122.6\%  \\
+3& 4.50\%  & 58.1\%   \\
+4& 0.86\%  & 12.1\%   \\
+5& 0.26\%  & 3.8\%    \\
+\bottomrule
+\end{tabular}
+\caption[Convergence of the full differential cross section]{Percent difference of the elastic differential cross section for each partial wave $\ell$ with respect to $\ell - 1$ for both the maximum and average for the entire $E_{\bm \kappa}$ and $\theta$ range}
+\label{tab:PercentDiffCrossFull}
+\end{table}
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{c....c..c}
+\toprule
+%$\ell$ & \multicolumn{1}{c}{Avg. $\%^+$ Diff.}  & \multicolumn{1}{c}{Avg. $\%^-$ Diff.}  & \multicolumn{1}{c}{Max. $\%^+$ Diff.}  & \multicolumn{1}{c}{Max. $E_{\bm \kappa}^+$} & \multicolumn{1}{c}{Max. $\theta^+$} & \multicolumn{1}{c}{Avg. $\%^-$ Diff.}  & \multicolumn{1}{c}{Max. $E_{\bm \kappa}^-$} & \multicolumn{1}{c}{Max. $\theta^-$} \\
+ & \multicolumn{1}{c}{Avg.}  & \multicolumn{1}{c}{Avg.}  & \multicolumn{1}{c}{Max.}  & \multicolumn{1}{c}{Max.} & Max. & \multicolumn{1}{c}{Avg.}  & \multicolumn{1}{c}{Max.} & Max. \\
+$\ell$ & \multicolumn{1}{c}{$\%^+$ Diff.}  & \multicolumn{1}{c}{$\%^-$ Diff.}  & \multicolumn{1}{c}{$\%^+$ Diff.}  & \multicolumn{1}{c}{$E_{\bm \kappa}^+$} (eV) & $\theta^+$ (rad) & \multicolumn{1}{c}{$\%^-$ Diff.}  & \multicolumn{1}{c}{$E_{\bm \kappa}^-$} (eV) & $\theta^-$ (rad) \\
+\midrule
+1 & 40.34\% & 9.84\% & 162.28\% & 4.686 & 0           & 50.11\% & 4.289 & 0.705   \\
+2 & 17.55\% & 3.31\% & 121.89\% & 4.686 & 0           & 24.72\% & 4.354 & $\uppi$ \\
+3 & 4.47\%  & 0.39\% & 51.89\%  & 5.072 & $\uppi$     & 3.31\%  & 5.102 & $\uppi$ \\
+4 & 0.80\%  & 0.20\% & 9.22\%   & 5.067 & 0           & 1.48\%  & 5.055 & 0       \\
+5 & 0.21\%  & 0.15\% & 3.15\%   & 5.061 & $\uppi$     & 1.64\%  & 4.354 & $\uppi$ \\
+\bottomrule
+\end{tabular}
+\caption[Convergence of the singlet and triplet differential cross sections]{Percent difference of the elastic differential cross section for each partial wave $\ell$ with respect to $\ell - 1$ for both the maximum and average for the entire $E_{\bm \kappa}$ and $\theta$ range. The values of $E_{\bm \kappa}^\pm$ and $\theta^\pm$ given are where $\frac{d\sigma_{el}^\pm}{d\Omega}$ is at its maximum value given in columns 4 and 7.}
+\label{tab:PercentDiffCrossSingTrip}
+\end{table}
+
+
+
 
 \section{Other Cross Sections and Comparisons}
 \label{sec:OtherCross}
 
-\todoi{Reword this paragraph. It's currently copied from the PRA article.}
-\todoi{Also mention \cite{Engbrecht2008} so that it's clear there is experimental interest.}
-The momentum transfer cross sections can be useful in plasma applications \cite{Wang2014, McEachran2014}. These cross sections have been measured for Ps with multiple atomic and molecular molecular targets \cite{Nagashima1998,Saito2003}. The momentum transfer cross sections are given by \cite{Bransden2003}
+\todoi{Reword this paragraph. It's mainly copied from the PRA article. Also mention \cite{Engbrecht2008} so that it's clear there is experimental interest. Good reason for the $1-\cos\theta$? Make sure to mention any groups who do these calculations, even if I don't use them in my figures.}
+
+The momentum transfer cross sections can be useful in plasma applications 
+\cite{Wang2014, McEachran2014}. These cross sections have been measured for 
+Ps with multiple atomic and molecular molecular targets
+\cite{Nagashima1998,Saito2003}. The momentum transfer cross section is
+similar to \cref{eq:TotalDiffCross} but with a weighting factor of
+$(1 - \cos\theta)$ \cite{Walters2004}:
+\begin{equation}
+\label{eq:MomentumCrossInt}
+\sigma_m = \int (1 - \cos\theta) \frac{d\sigma_{el}}{d\Omega} \, d\Omega.
+\end{equation}
+The momentum transfer cross sections can also be written in terms of the
+phase shifts as \citep[p. 589]{Bransden2003}
 \begin{equation}
 \label{eq:MomentumCross}
 \sigma_{m}^\pm = \frac{4}{\kappa^2} \sum_{\ell=0}^\infty (\ell+1) \sin^2 (\delta_\ell^\pm - \delta_{\ell+1}^\pm) .
@@ -189,6 +550,8 @@ The ortho-para conversion cross sections give the conversion of the projectile o
 \label{eq:OrthoParaCross}
 \sigma_{c} = \frac{1}{4 \kappa^2} \sum_{\ell=0}^\infty (2 \ell+1) \sin^2 (\delta_\ell^+ - \delta_\ell^-).
 \end{equation}
+
+\todoi{Note from Blackwood paper \cite{Blackwood2002c} on isotropic at low E (in our paper?)}
 
 \begin{figure}[H]
 	\centering
@@ -203,7 +566,7 @@ The ortho-para conversion cross sections give the conversion of the projectile o
 	\caption{Ortho-para conversion cross sections}
 	\label{fig:orthopara-cross-sections}
 \end{figure}
-\todoi{OP in \cite{Biswas1998}}
+\todoi{OP in \cite{Biswas1998}. The problem is that their y-axis is logarithmic.}
 
 \begin{figure}[H]
 	\centering
