@@ -48,7 +48,7 @@
 
 %\preprint{APS/123-QED}
 
-\title{An Investigation of Low-Energy Positronium-Hydrogen Scattering}
+\title{A Detailed Investigation of Low-Energy Positronium-Hydrogen Scattering}
 
 \author{Denton Woods}
 \email{denton.woods@unt.edu}
@@ -68,8 +68,8 @@ Gower Street, London WC1E 6BT, UK}
 We investigate the four-body Coulomb process of low-energy elastic
 positronium-hydrogen (Ps-H) scattering below the Ps(n=2) excitation threshold
 with a Hylleraas-type basis set. Using the complex Kohn variational method, we 
-compute phase shifts through the $^{1,3}H$-wave. The $^{1,3}S$- and
-$^{1,3}P$-wave phase shifts can be viewed as benchmark results. The complex
+compute phase shifts through the $^{1,3}H$-wave and obtain highly accurate
+$^{1,3}S$- and $^{1,3}P$-wave phase shifts. The complex
 Kohn variational results compare well to a number of other calculations for 
 this system. In addition, we present elastic 
 differential, elastic integrated, momentum transfer, and ortho-para 
@@ -157,8 +157,8 @@ accurate value to date using 5000 ECGs in a variational calculation.
 
 There have been a number of other calculations for Ps-H scattering. A much 
 earlier Kohn variational calculation was performed by Page \cite{Page1976} 
-for the Ps-H scattering lengths. Refs. \cite{Drachman1975,Drachman1976} \hl{use
-a stabilization method with an effective range theory (ERT) expansion.}
+for the Ps-H scattering lengths. Drachman and Houston \cite{Drachman1975,Drachman1976}
+a stabilization method with an effective range theory (ERT) expansion.
 At low energies, diffusion Monte Carlo (DMC)
 \cite{Chiesa2002}, the SVM \cite{Ivanov2001,Ivanov2002}, CC
 \cite{Sinha1997,Campbell1998,Adhikari1999,Sinha2000,Blackwood2002,Blackwood2002b,Walters2004},
@@ -187,9 +187,9 @@ Kohn variational results \cite{VanReeth2003}. They speculated that the
 inclusion of the virtual Ps$^-$ formation channel may be needed to obtain 
 agreement with the Kohn variational results for Ps(1s)-H(1s) scattering 
 \cite{Blackwood2002}. A recent calculation of Ps-H scattering by Zhang and Yan
-\cite{Zhang2012} \hl{uses the
-confined variational method (CVM) to calculate phase shifts for 2 momenta
-for both $^1S$ and $^3S$.} This provides accurate
+\cite{Zhang2012} uses the
+confined variational method (CVM) to calculate phase shifts for two momenta
+for both $^1S$ and $^3S$. \hl{This method} provides accurate
 results but has the drawback of being very computationally expensive.
 
 The Kohn variational method gives rigorous 
@@ -228,10 +228,7 @@ with ground-state
 H, Ps(1s)+H(1s), for incident energies up to the excitation threshold 
 of Ps(n=2)+H(1s), which is at an energy of $\tfrac{3}{16}$ a.u. ($5.102$ eV). 
 Previous work on Ps-H scattering used the Kohn and inverse Kohn variational
-methods \cite{VanReeth2003, VanReeth2004}. \sout{The complex Kohn variational
-methods are more stable and
-suffer less from Schwartz singularities than the Kohn, inverse Kohn and 
-generalized Kohn methods} \cite{Lucchese1989,Cooper2009,Cooper2010}. 
+methods \cite{VanReeth2003, VanReeth2004}. 
 Van Reeth and Humberston \cite{VanReeth1999} used the complex Kohn 
 variational method for e$^+$-He scattering. While the results we present in Sec.
 \ref{sec:Results} use the $S$ matrix complex Kohn variational method,
@@ -368,7 +365,7 @@ powers of $r_i$ and $r_{ij}$ are constructed in such a way that
 \begin{equation}
 k_i + l_i + m_i + n_i + p_i + q_i \leq \omega,
 \end{equation}
-with all $k_i, l_i, m_i, n_i, q_i$ and \hl{$p_i \geq 0$ }\cite{VanReeth2004}.
+with all $k_i, l_i, m_i, n_i, q_i$ and $p_i \geq 0$ \cite{VanReeth2004}.
 The first set of short-range terms in Eq. (\ref{eq:TrialWaveHigher}), which we
 refer to as the first symmetry, has $k=1$ for $i=1$ to $N(\omega)$. The second
 symmetry set of terms exists for $\ell > 0$, with $k=2$ and $i = N(\omega)+1$
@@ -378,10 +375,10 @@ atom ($r_2$, and $r_3$
 with exchange). Following up on Ref. \cite{VanReeth2004} where the slow 
 convergence of the $^3P$ phase shift was discussed, we also consider a 
 wavefunction where the angular momentum was placed on the electron of the H 
-atom ($r_3$) and on the Ps ($\rho$). \hl{Since we find that this did not improve the
+atom ($r_3$) and on the Ps ($\rho$). Since we find that this did not improve the
 accuracy of the results, and in some cases, the phase shifts seem less
 accurate, we do not present results from this alternative
-formalism here.}
+formalism here.
 In Sec.~\ref{sec:Numerical}, we discuss numerical techniques that improve
 convergence of the results.
 
@@ -416,7 +413,7 @@ Refs.~\cite{Brown1985a,BrownThesis,WattsThesis,Humberston1997,VanReeth1997}.
 Van Reeth and Humberston \cite{VanReeth1997} found that these
 mixed symmetry terms contributed less than 1.5\% to the $K$ matrix elements
 for e$^+$-H scattering, but this result now appears to be in error.
-A preliminary investigation \hl{for e$^+$-H} \cite{VanReeth2015} with a corrected
+A preliminary investigation for e$^+$-H \cite{VanReeth2015} with a corrected
 code has shown 
 that these mixed symmetry terms can be important for that 
 system. This investigation \cite{VanReeth2015} found that
@@ -431,10 +428,10 @@ terms. The final numerical results used in \cite{VanReeth1997} are
 within 1 to 2\% of the phase shifts of the preliminary
 calculation \cite{VanReeth2015} that correctly
 includes the mixed symmetry terms and for which the virtual Ps terms have
-been found to make no significant contribution. \hl{The investigation of}
-Ref.~\cite{VanReeth2015} \hl{has been extended to
+been found to make no significant contribution. The investigation of
+Ref.~\cite{VanReeth2015} has been extended to
 e$^-$-H scattering, and it has revealed that
-for the $^1D$-wave,} the inclusion of the 
+for the $^1D$-wave, the inclusion of the 
 mixed symmetry terms has little effect on the phase shifts at very low
 energies but has a more appreciable effect at higher energy. Interestingly,
 this investigation found that the mixed symmetry terms change the
@@ -521,7 +518,7 @@ L^v = L^t - I[\Psi^t] / \det \textbf{u}.
 \label{eq:ComplexKohnVariation}
 \end{equation}
 
-Using the stationary property of the functionals for the \hl{Kohn and variants}, we obtain
+Using the stationary property of the functionals for the Kohn and variants, we obtain
 \begin{equation}
 \frac{\partial L^v}{\partial L^t} = 0  \text{ and }
   \frac{\partial L^v}{\partial c_i} = 0 \text{ where $i = 1,\ldots,N$},
@@ -701,16 +698,16 @@ K_\ell^0(E_{\bm \kappa}) = K_\ell^0(0) + {K_\ell^0}^\prime(0) E_{\bm \kappa}
 \end{equation}
 We retain the first two terms in the expansion and determine the coefficients
 $K_\ell^0(0)$ and ${K_\ell^0}^\prime(0)$ by fitting the phase shifts to
-Eq.~(\ref{eq:GaoKTaylor}). \hl{We compute the $^{1,3}S$- and $^{1,3}P$ scattering
+Eq.~(\ref{eq:GaoKTaylor}). We compute the $^{1,3}S$- and $^{1,3}P$ scattering
 lengths and $^{1,3}S$-wave effective ranges using the expressions
-given by Gao} \cite{Gao1998a}, which relates these quantities to the
+given by Gao \cite{Gao1998a}, which relates these quantities to the
 coefficients.
 
 
 \section{Numerics}
 \label{sec:Numerical}
 
-\hl{We present briefly the numerical techniques below. Details can be found in}
+We present briefly the numerical techniques below. Details can be found in
 Ref.~\cite{WoodsDiss2015}.
 
 \subsection{Short-Short Integrations}
@@ -759,9 +756,9 @@ method, we rotate and then integrate over external angles, reducing these
 integrals down to the form of Eq. (\ref{eq:ShortInt}). We then use the 
 asymptotic expansion method \cite{Drake1995} to evaluate the resulting
 integration. This works through the 
-$D$-wave, as the integrals become too singular for $\ell > 2$. \hl{The second is
-a more general method from Yan and Drake} \cite{Yan1997}, \hl{which works for all
-partial waves.}
+$D$-wave, as the integrals become too singular for $\ell > 2$. The second is
+a more general method from Yan and Drake \cite{Yan1997}, which works for all
+partial waves.
 We find that this second method is more computationally expensive, but we use 
 it for $\ell = 3 - 5$, since it works for arbitrary $\ell$. 
 
@@ -783,11 +780,11 @@ elements, we note that the biggest source of difficulty in converging these
 comes from the Gaussian-Laguerre quadratures in the $r_1$, $r_2$ and $r_3$ 
 integrations -- especially $r_1$. We increase the number of integration 
 points to more than seven times as many in previous work
-\cite{VanReeth2003,VanReeth2004} to better represent the integrands. \hl{We use
+\cite{VanReeth2003,VanReeth2004} to better represent the integrands. We use
 a visual representation of the matrix elements to determine convergence using
-the Developer's Image Library} \cite{DevIL}. \hl{The brute force approach
+the Developer's Image Library \cite{DevIL}. The brute force approach
 of increasing the integration points
-can increase the computational time greatly}, so we take another approach to 
+can increase the computational time greatly, so we take another approach to 
 further increase the accuracy. Specifically, the tails of the integrands are 
 negligible, and the integrand closer to the origin is not represented 
 adequately. To resolve this, for each of the Gauss-Laguerre quadratures, we 
@@ -804,9 +801,7 @@ optimize with a single block. They also use a criteria of $\Delta E$ to
 determine when to discard terms. Instead, we compare the lowest eigenvalues 
 from the separate calculations using the upper and lower triangular matrices 
 in LAPACK's \texttt{dsygv} routine \cite{LAPACK}, discarding terms when they 
-cause the difference to be greater than a predetermined threshold. \sout{We refer 
-here to the reordering introduced by this method as ``Todd ordering'', as 
-compared to the original ordering indicated by increasing $\omega$.}
+cause the difference to be greater than a predetermined threshold.
 
 We observe that using the terms selected by the Todd procedure allows us to
 use more short-range terms, reducing linear dependence.
@@ -818,8 +813,8 @@ Fig.~\ref{fig:swave-phase-divergence}, or when there is a significant jump in
 the phase shifts at high $\omega$. This method with an appropriate choice of
 nonlinear parameters normally gives a reliable set of
 short-range terms, which we use in the $S$ matrix complex Kohn to generate
-the results in Sec.~\ref{sec:Results}. \hl{For $^1S$ only, we determine
-the truncation of the basis set} by performing variations of $\mu$
+the results in Sec.~\ref{sec:Results}. For $^1S$ only, we determine
+the truncation of the basis set by performing variations of $\mu$
 (Eq.~\ref{eq:PartialWaveShielding}) \cite{WoodsDiss2015}.
 For $\ell = 3$ at low $\kappa$, we use a restricted set of short-range terms
 where we eliminate terms with powers of $r_3 \geq 2$ if $\omega \geq 3$,
@@ -841,8 +836,8 @@ The summation limits in Eqs. (\ref{eq:TrialWave}) and
 as shown in Table \ref{tab:Nonlinear}, instead of
 $N(\omega)$ to indicate that this is not the full set described after
 Eq. (\ref{eq:PhiDef}).
-\hl{When we perform convergence checks via extrapolations, we
-arrange the set of $N^\prime(\omega)$ terms in the original ordering.}
+When we perform convergence checks via extrapolations, we
+arrange the set of $N^\prime(\omega)$ terms in the original ordering.
 
 \subsection{Fittings}
 As with the previous Kohn calculation \cite{VanReeth2004},
@@ -861,12 +856,12 @@ Breit-Wigner resonance terms
 resonances and allows for a slowly varying polynomial background.
 We evaluate the resonance parameters for one resonance each for $^1D$ and
 $^1F$, so these fits are performed without the second $\arctan$ term.
-\hl{We fit the data from each variant of the Kohn variational}
+We fit the data from each variant of the Kohn variational
 methods using the MATLAB \cite{MATLAB} nonlinear fitting routine 
-\texttt{nlinfit} with all eight possible weightings. \hl{For each variant of the 
+\texttt{nlinfit} with all eight possible weightings. For each variant of the 
 Kohn variational method we use (Kohn, inverse Kohn, complex $T$ and $S$ matrix,
 and generalized Kohn), we determine and compare the four parameters for each
-of the eight fits.}
+of the eight fits.
 
 The Kohn variational method and variants of the method do not give exact
 bounds to the phase shifts, but they are found to give empirical bounds
@@ -889,8 +884,8 @@ a_\ell^\pm(\omega) = a_\ell^\pm(\omega\to\infty) + \frac{d}{\omega^q}\, .
 \end{equation}
 The percent difference between the scattering length at $\omega = 7$
 and the extrapolated scattering 
-length is considered the error in \hl{Tables} \ref{tab:SWaveScatLenERT} and
-\ref{tab:PWaveScatLen}. \hl{We see no convergence pattern for the effective range.}
+length is considered the error in Tables \ref{tab:SWaveScatLenERT} and
+\ref{tab:PWaveScatLen}. We see no convergence pattern for the effective range.
 
 For $\ell \geq 2$, we experience difficulty in extrapolating phase shifts
 using Eq.~(\ref{eq:Extrap}). To determine whether the phase shifts are
@@ -960,13 +955,13 @@ This table also gives the parameters $\alpha$, $\beta$, and
 $\gamma$ in Eq.~(\ref{eq:PhiDef}) and the parameters $\mu$ and $m_\ell$ in 
 Eq.~(\ref{eq:PartialWaveShielding}) used for each partial wave.
 
-\hl{For $\ell \geq 2$, where we have neglected the mixed symmetry terms,
+For $\ell \geq 2$, where we have neglected the mixed symmetry terms,
 we find that the phase shifts are more sensitive to the
 choice of nonlinear parameters $\alpha$, $\beta$, and $\gamma$
 than the $^{1,3}S$- and $^{1,3}P$-wave. We also find that for $\ell \geq 2$,
 the triplet is more sensitive than the singlet. The optimum choice of these
 of nonlinear parameters appears to be $\kappa$-dependent. For $\ell \geq 2$, we
-use two different sets of these nonlinear parameters.} One set gives higher
+use two different sets of these nonlinear parameters. One set gives higher
 phase shifts for the lower $\kappa$ values, and the other set gives
 higher phase shifts for higher $\kappa$ values.
 
@@ -978,10 +973,11 @@ higher phase shifts for higher $\kappa$ values.
 
 We use the PsH bound state results as a measure of the reliability of the 
 short-range part of the wavefunction to describe Ps-H scattering at small 
-distances. The Rayleigh-Ritz variational method provides a true bound on the 
-total and binding energies, which converge well with respect to $\omega$. To 
-be consistent, we report the results obtained with the same set of nonlinear 
-parameters that we use in the scattering calculation, as given in
+distances. \hl{The Rayleigh-Ritz variational method provides a true bound on the 
+total energy, which converges well with respect to $\omega$. To 
+be consistent, we report the results of the total and binding energy
+we obtain with the same set of nonlinear 
+parameters $\alpha$, $\beta$, and $\gamma$ that we use in the scattering calculation}, as given in
 Table \ref{tab:Nonlinear}.
 We note that we are able to obtain a better value for
 the binding energy with higher $\omega$, but we are unable to use this many
@@ -991,13 +987,13 @@ compares our energies for PsH with that obtained by other groups.
 Our calculation yields a better value for these quantities than the earlier 
 variational calculations of Refs.~\cite{VanReeth2003,VanReeth2004} but not
 as good as the variational calculation of Ref.~\cite{Yan1999}, which also
-used Hylleraas wavefunctions. While we do not obtain the best value of the 
-binding energy (this is not the purpose of our calculation), we obtain 
-results for this quantity which compare favorably with the most elaborate 
+used \hl{Hylleraas-type wavefunctions}. While we do not obtain the best value of the 
+binding energy (this is not the purpose of our calculation), \hl{ the result
+we obtain for this quantity compares} favorably with the most elaborate 
 calculation in the literature, which used 5000 ECGs \cite{Bubin2006}. Our 
 calculation of the binding energy gives us some confidence in the reliability 
 of the short-range part of the scattering wave function to describe the $^1S$ 
-PsH system.
+Ps-H system.
 
 \squeezetable  % Makes the table smaller
 \begin{table*}
@@ -1044,32 +1040,34 @@ estimate that the $^1S$ phase shifts have converged to better than about
 $0.22\%$ for the range $\kappa=0.1$ to $0.7$ and that the $^3S$ phase shifts
 have converged to better than $0.27\%$ for the same range of $\kappa$.
 
-In these tables, we compare our results with the earlier Kohn variational 
+In these tables, we compare the complex Kohn results with the earlier Kohn variational 
 results \cite{VanReeth2003,VanReeth2004} and with the elaborate CC results of 
 Refs. \cite{Blackwood2002,Walters2004}. The current $\omega = 7$ results are 
 in excellent agreement with the earlier Kohn $\omega = 6$ variational 
 results, being either identical or slightly lower, indicating that the 
 earlier $S$-wave calculations were well-converged. The slight difference in 
-phase shifts between the previous and current Kohn methods can be attributed 
-to two factors. Using Todd's procedure (described in Sec. \ref{sec:Truncation}) 
+phase shifts between the previous Kohn/inverse Kohn and the present complex Kohn calculation can be attributed 
+to at least the following factors. Using Todd's procedure (described in Sec. \ref{sec:Truncation}) 
 allows us to use more terms (see Table \ref{tab:Nonlinear}) than the earlier 
-Kohn calculations \cite{VanReeth2003,VanReeth2004}, which used 721 terms. 
-This slightly increases the phase shifts, but we also use more integration 
-points in these calculations, which can also change the phase shifts.
+Kohn calculations \cite{VanReeth2003,VanReeth2004}, which used 721 terms. Using
+the asymptotic expansion also allows us to use more short-range terms.
+The increase in the number of short-range terms
+slightly increases the phase shifts, but we also use more integration 
+points in these calculations, which can also change the phase shifts. 
 
 The complex Kohn results are in good agreement with the CC results of the 
 Walters' group \cite{Blackwood2002,Walters2004}. For the singlet, the complex 
-Kohn phase shifts are slightly larger than the CC results. Because of the 
-empirical bounds on the Kohn variational results and, in practice on the CC
-(except for the Buttle correction), the complex Kohn results could be slightly 
+Kohn phase shifts are slightly larger than the CC results. \hl{Because of the 
+empirical bounds on the complex Kohn results and,
+in practice on the CC} \cite{Blackwood2002}, the complex Kohn results could be slightly 
 more accurate than the CC. The situation is reversed for the triplet. In this
 case, the Kohn results are slightly more negative than the CC results.
 
 The recent CVM $S$-wave results from Zhang and Yan \cite{Zhang2012} agree 
-extremely well with the Kohn results, even for the triplet. In Fig.
+extremely well with the complex Kohn results, even for the triplet. In Fig.
 \ref{fig:swave-comparisons},
-we compare the $^{1,3}S$ phase shifts obtained from 
-the complex Kohn variational method with various other calculations. Figure 
+we compare the $^{1,3}S$ phase shifts we obtain from 
+the complex Kohn variational method with results from various other calculations. Figure 
 \ref{fig:spd-wave-phases}(a) compares the complex Kohn phase shifts over the 
 energy range up to the Ps(n=2) threshold with the CC and CVM results. The 
 inset in this figure shows the small discrepancy with the CC phase shifts, 
@@ -1079,26 +1077,26 @@ Tables \ref{tab:PWavePhase} and \ref{tab:DWavePhase} give the $^{1,3}P$ and
 $^{1,3}D$
  phase shifts that we determine using the complex Kohn variational 
 method. The small percentage differences with the extrapolated values for the 
-$P$-wave indicates that the complex Kohn phase shifts are well converged.
+$^{1,3}P$-wave indicates that the complex Kohn phase shifts are well converged.
 Similar to $^{1,3}S$, the complex Kohn $^1P$ phase shifts are above the CC
 results, whereas the complex Kohn $^3P$ phase shifts are slightly below.
 Figure \ref{fig:spd-wave-phases}(b) shows that the 
 complex Kohn and CC results agree relatively well.
 From Table~\ref{tab:DWavePhase}, the $^3D$ phase shifts are positive for
-lower $\kappa$ but become negative for higher $\kappa$. As noted by
-Ref.~\cite{Blackwood2002}, this shows that the interaction is repulsive for 
-low $\kappa$ and attractive for higher $\kappa$.
+lower $\kappa$ but become negative for higher $\kappa$. 
+Ref.~\cite{Blackwood2002} notes that this shows that the interaction
+is repulsive for low $\kappa$ and attractive for higher $\kappa$.
 
 We have difficulty performing extrapolations on the $^{1,3}D$ phase shifts.
 For $^1D$, the $\kappa = 0.1$ extrapolation is not reliable, and the
 percentage difference is correspondibly large, even though the
-convergence ratio in Eq.~(\ref{eq:ConvRatio}) is less than 1. As seen in Table
+convergence ratio $R'(6)$ in Eq.~(\ref{eq:ConvRatio}) is less than 1. As seen in Table
 \ref{tab:DWavePhase}, for $\kappa = 0.2$, the percentage difference
 between the $^1D$ extrapolated phase shift and the $\omega = 6$ 
 phase shift is about $6\%$,
 whereas in the range $\kappa = 0.3 - 0.7$, the percentage difference is
 less than $2\%$. The percentage difference for $^3D$ is larger than for $^1D$,
-and thus there is less confidence in the extrapolated phase shifts (which we
+and thus there is less confidence in the $^3D$ extrapolated phase shifts (which we
 do not include in Table \ref{tab:DWavePhase}). The larger percentage
 difference for the triplet than the singlet could be a reflection that the
 mixed symmetry terms are more important for the
@@ -1128,7 +1126,7 @@ Fig. \ref{fig:spd-wave-phases}(c) shows that the overall shape of the complex
 Kohn phase shifts is similar to the CC phase shifts. However, the percentage
 difference between the CC and complex Kohn $^1D$ phase shifts is
 about $39\%$ at low $\kappa$ and decreases to less than $1\%$ for
-higher $\kappa$ (not including the resonance region).
+higher $\kappa$ \hl{(not including the resonance region of $\kappa > 0.7$ or $E_{\bm \kappa} > 3.3$ eV)}.
 The larger discrepancy comes with the $^3D$ phase shifts,
 which have a percentage difference between the CC and the complex Kohn
 of over 30\%, often much larger, through the entire energy range. 
@@ -1138,14 +1136,15 @@ convergence and extrapolation difficulties we have for $^3D$.
 
 The $^3D$ phase shifts are small, and their contribution to the elastic
 integrated cross section shown in Fig. \ref{fig:combined-cross-sections} is
-correspondingly small. Before the resonance region ($\kappa \leq 0.7$), the
+correspondingly small. Before the resonance region ($\kappa \leq 0.7$ or $E_{\bm \kappa} < 3.3$ eV),
 $^1D$ and $^3D$ partial waves contribute up to $6.6\%$ and $0.53\%$ to the
 spin-weighted elastic integrated cross section, respectively. In the full
 energy range, including the resonance region, $^3D$ contributes a maximum of
 $1.34\%$. We notice no appreciable difference to the elastic integrated cross
 section  when the complex Kohn $^{1,3}D$ phase shifts are replaced by the CC
 $^{1,3}D$ phase shifts (less than $0.084\%$). The triplet $D$-, $F$-, $G$-, and
-$H$-wave phase shifts are more sensitive to the nonlinear parameters than the 
+$H$-wave phase shifts are more sensitive to the nonlinear parameters
+\hl{$\alpha$, $\beta$, and $\gamma$} than the 
 singlet, but in general, the triplet contribution to the elastic differential 
 and integrated cross sections are less than the corresponding singlet 
 contribution.
@@ -1195,7 +1194,7 @@ current complex Kohn $\omega = 7$ and $\omega \rightarrow \infty$ results.}
 \begin{table*}
 \begin{center}
 \begin{ruledtabular}
-\begin{tabular}{c c c c c c c c c c}
+\begin{tabular}{c | c c c c | c c c c c}
 $\kappa$ (a.u.) & $\delta_1^+ (\omega = 7)$ & $\delta_1^+ (\omega \rightarrow \infty)$ & \% Diff$^+$ & $\delta_1^+$ (CC) \cite{Walters2004} & $\delta_1^- (\omega = 7)$ & $\delta_1^- (\omega \rightarrow \infty)$ & \% Diff$^-$ & $\delta_1^-$ (CC 14Ps14H) \cite{Blackwood2002} \\
 \colrule
 0.1 & $0.226^{-1}$ & $0.227^{-1}$ & $0.465\%$ & $0.221^{-1}$ & $-0.178^{-2}$ & $-0.172^{-2}$ & $3.176\%$ & $-0.953^{-3}$ \\
@@ -1219,7 +1218,7 @@ results. Powers of 10 are denoted by exponents.}
 \begin{table*}
 \begin{center}
 \begin{ruledtabular}
-\begin{tabular}{c c c c c c c}
+\begin{tabular}{c | c c c c | c c}
 $\kappa$ (a.u.) & $\delta_2^+ (\omega = 6)$ & $\delta_2^+ (\omega \rightarrow \infty)$ & \% Diff$^+$ & $\delta_2^+$ (CC 14Ps14H+H$^-$) \cite{Walters2004} & $\delta_2^- (\omega = 6)$ & $\delta_2^-$ (CC 14Ps14H) \cite{Blackwood2002} \\
 \colrule
 $0.1$ & $1.36^{-4}$ & --- & --- & $2.02^{-4}$ & $5.81^{-5}$ & $8.48^{-5}$ \\
@@ -1258,13 +1257,13 @@ according to year of publication. This work -- solid curves;
 \mbox{\textcolor[RGB]{0,127,0}{$\triangledown$} -- 2 channel / static exchange with model exchange \cite{Biswas2001};} 
 \mbox{\textcolor{red}{$\vartriangle$} -- 6-state CC \cite{Sinha2000};} 
 \mbox{$\blacksquare$ -- 5-state CC \cite{Adhikari1999};} 
-\mbox{$\square$ -- Coupled-pseudostate \cite{Campbell1998};} 
+\mbox{$\square$ -- Coupled pseudostate \cite{Campbell1998};} 
 \mbox{$\vartriangle$ -- 3-state CC \cite{Sinha1997};} 
-\mbox{\textcolor[RGB]{0,127,0}{$\bigstar$} -- Static-exchange \cite{Ray1997};} 
+\mbox{\textcolor[RGB]{0,127,0}{$\bigstar$} -- Static exchange \cite{Ray1997};} 
 \mbox{$\triangleright$ -- Stabilization \cite{Drachman1976};} 
 \mbox{\textcolor{red}{$\blacklozenge$} -- Stabilization \cite{Drachman1975};}
-\mbox{\textcolor{blue}{$\lozenge$} -- Static-exchange \cite{Hara1975};}
-\mbox{$\blacktriangledown$ -- Static-exchange \cite{Fraser1961}.}}
+\mbox{\textcolor{blue}{$\lozenge$} -- Static exchange \cite{Hara1975};}
+\mbox{$\blacktriangledown$ -- Static exchange \cite{Fraser1961}.}}
 	\label{fig:swave-comparisons}
 \end{figure}
 
@@ -1292,8 +1291,7 @@ positions \cite{Yan1999,Yan1998a,Ho1998}.}
 	\caption{(Color online) $F$-wave phase shifts for Ps-H scattering.
 Singlet phase shifts are given in blue
 (dark gray), and triplet phase shifts are red (light gray). This compares the
-complex Kohn phase shifts with the phase shifts obtained by the Born
-approximation.}
+complex Kohn phase shifts with the Born approximation phase shifts.}
 	\label{fig:fwave-phases}
 \end{figure}
 
@@ -1307,8 +1305,9 @@ shifts for $\omega = 4$ and $5$ is less than $10\%$ for $\kappa \geq 0.5$
 (1.7 eV). The corresponding difference for the $^3F$ phase shifts is greater
 than $50\%$, however the triplet contributes much less to the total cross sections.
 
-The modified Born is approximately equivalent to the Born results, so we show 
-only the Born results in this graph. The Born approximation phase shifts does 
+\hl{The modified Born phase shifts are approximately equivalent to the Born 
+results, so we show only the Born results in this figure.
+The Born approximation phase shifts do} 
 not agree well with the complex Kohn phase shifts, being much lower. We 
 also find little agreement between the Born approximation and the complex 
 Kohn phase shifts for the $^{1,3}$G-wave and $^{1,3}H$-wave. Thus, in 
@@ -1316,10 +1315,10 @@ computing the elastic integrated cross sections, we would not be comfortable
 matching on the Born approximation results for $\ell \geq 5$.
 
 We perform full complex Kohn calculations on all first six partial waves, but 
-we do more extensive calculations for the first three partial waves, as shown 
+we do more \hl{elaborate} calculations for the first three partial waves, as shown 
 by the short-range terms used in Sec. \ref{sec:Parameters}. The $^3D$, $^{1,3}F$,
 $^{1,3}G$, and $^{1,3}H$ partial waves are not fully converged, but for each of
-these, the phase shifts and partial elastic cross 
+these, the phase shifts and \hl{elastic partial} cross 
 sections become very small, so they do not contribute much to the elastic
 integrated cross section.
 For the $G$- and $H$-waves, we obtain a convergence ratio $R'(5) > 1$ for
@@ -1344,16 +1343,16 @@ The singlet for each of the partial waves contributes $1/4$ to the integrated,
 differential, and momentum transfer cross sections, while the triplet
 contributes $3/4$. We include partial waves with $\ell \leq 5$ for each of the
 cross sections. 
-The integrated cross sections, shown in Fig.~\ref{fig:combined-cross-sections},
+\sout{The integrated cross sections, shown in Fig.~\ref{fig:combined-cross-sections},
 are calculated from the phase shifts using the expression in
-Ref.~\cite{Bransden2003}. For this figure, we extract the CC data of
+Ref.~\cite{Bransden2003}.} For this figure, we extract the CC data of
 Ref.~\cite{Walters2004} using the CurveSnap program \cite{CurveSnap}.
 There is good comparison with the 
 CC cross section \cite{Walters2004} for much of the range, but there is a 
 clear shift in the positions of the resonances, which can also be seen in 
 Tables \ref{tab:SWaveResonances}, \ref{tab:PWaveResonances}, and
-\ref{tab:DWaveResonances}. \hl{There is also some discrepancy at low
-$E_{\bm \kappa}$.}
+\ref{tab:DWaveResonances}. \hl{There is also some noticeable discrepancy at low
+$E_{\bm \kappa}$, for instance near the maximum and minimum.}
 
 \begin{figure}[H]
 	\centering
@@ -1371,7 +1370,7 @@ The source of this minimum can be seen in
 Fig.~\ref{fig:singlet-cross-sections} as a mixing of the $^1S$ and $^1P$
 partial cross sections, and the maximum is due primarily to $^1P$.
 
-The differential cross section, calculated using the expression in
+The elastic differential cross section, calculated using the expression in
 Ref.~\cite{Bransden2003}, is shown in Figs.
 \ref{fig:diff-cross-section-2D-kappa}, \ref{fig:diff-cross-section-2D-theta},
 and \ref{fig:combined-diff-cross-sections}. The percent difference of including
@@ -1447,13 +1446,13 @@ of the projectile ortho-Ps to para-Ps \cite{Hara1975}.
 This cross section, $\sigma_c$, is much lower than the elastic integrated and
 momentum transfer cross sections. As with the elastic integrated cross
 section, the CC $\sigma_c$ curve \cite{Blackwood2002} is approximately the
-same as the complex Kohn, but the resonances are clearly shifted.
+same as the complex Kohn curve, but the resonances are clearly shifted.
 
 \subsection{Resonances}
 \label{sec:Resonances}
 
 The $^1S$ and $^1P$ partial waves have two resonances each before the Ps(n=2) 
-threshold, and $^1D$ has one resonance before. There is a resonance just 
+threshold, and the $^1D$ has one resonance before. There is a resonance just 
 after the threshold for $^1F$, with the onset of the resonance before the 
 threshold. Drachman \cite{Drachman1979} discussed that these Rydberg 
 resonances correspond to the quasibound state of e$^+$ with the H$^-$ ion.
@@ -1476,23 +1475,25 @@ due to all variants of the Kohn variational method after Schwartz singularities
 are removed, and the errors are given by the standard deviation. The second 
 line has the $S$ matrix complex Kohn results.
 
-Excellent agreement between the parameters is achieved between the two sets 
-of Kohn calculations (present and earlier). Good agreement is achieved 
+Excellent agreement between the parameters is achieved between the present
+complex Kohn and the earlier Kohn/inverse Kohn calculations 
+\cite{VanReeth2003,VanReeth2004}. Good agreement is achieved 
 between the resonance positions obtained with the complex rotation 
 calculations of Yan and Ho \cite{Yan1999,Yan1998a,Ho1998,Ho2000} and our 
 work using the $S$ matrix complex Kohn. There is less agreement with the
 resonance parameters for the narrow second resonances in the $^1S$ and $^1P$
-calculation. The CC results, 9HPsPs \cite{Blackwood2002} and
+calculation. The CC results, 9H9Ps \cite{Blackwood2002} and
 9H9Ps+H$^-$ \cite{Walters2004},
-are comparable to the Kohn and complex rotation calculations. This 
+are comparable to the complex Kohn and complex rotation calculations. This 
 comparison confirms the importance of the H$^-$ channel in bringing the 
-position of the first resonance, $^1E_R$, into better agreement with the Kohn 
-and complex rotation calculations. The $^1F$ resonance lies above the
-Ps(n=2) threshold, but we are able to fit the onset of the resonance shortly
+position of the first resonance, $^1E_R$, into better agreement with the 
+complex Kohn  and complex rotation calculations. The $^1F$ resonance lies above
+the Ps(n=2) threshold, but we are able to fit the onset of the resonance shortly
 before the threshold.
 The resonance parameters for $^1D$ and $^1F$ are particularly
-sensitive to the choice of nonlinear parameters, and the estimation of the
-errors of these resonance parameters does not include this sensitivity.
+sensitive to the choice of nonlinear parameters $\alpha$, $\beta$, and $\gamma$,
+and the estimation of the errors of these resonance parameters does not include
+this sensitivity.
 
 We observe no resonances in the triplet for any of these partial waves, which 
 is consistent with the discussion by Campbell et al. \cite{Campbell1998}, 
@@ -1501,9 +1502,9 @@ However, we note that Ray \cite{Ray2006} obtained a triplet resonance in a
 3-state CC approximation.
 
 Van Reeth and Humberston \cite{VanReeth2004} found that for this 
-system, a stabilization plot for $^1S$ predicted the first resonance 
+system, a stabilization plot for $^1S$ predicted the first resonance position
 relatively well, but they could not obtain a resonance position as accurately as 
-performing a full scattering calculation. We use the same method for the $^1S$,
+performing a full scattering calculation. We use the same technique for the $^1S$,
 $^1P$, and $^1D$ partial waves and see similar results to this previous work 
 for $^1S$. For $^1P$ and $^1D$, if only the first symmetry is used, the 
 eigenvalue positions do not line up well with the resonance positions 
@@ -1616,12 +1617,13 @@ ranges can also be found in
 Refs.~\cite{Hara1975,Page1976,Drachman1975,
 Drachman1976,Campbell1998,Adhikari1999,Adhikari2001b}.
 
-Van Reeth and Humberston \cite{VanReeth2003} do the fitting for the
+Van Reeth and Humberston \cite{VanReeth2003} did the fitting for the
 $\kappa = 0-0.5$ range for both the singlet and triplet. In the third line of
 Table~\ref{tab:SWaveScatLenERT}, we use a similar $\kappa$ range and reproduce
 nearly their same results but with our $\omega = 7$ values.
-Figure~\ref{fig:swave-ERT-short} has our updated version of the graph
-presented in Figure 5 of their paper. They note that the singlet forms a
+Figure~\ref{fig:swave-ERT-short} with the current complex Kohn results shows
+similar plots to that of Figure 5 of the previous Kohn paper
+\cite{VanReeth2003}. In that paper, they noted that the singlet forms a
 relatively straight line, but the triplet curves down at low energies. We see
 this same behavior and investigate it further.
 
@@ -1648,9 +1650,7 @@ of Gao \cite{Gao1998}, which gives scattering lengths and effective ranges
 that agree relatively well with the long-range van der Waals expression in
 Eq.~(\ref{eq:EffectiveRangeLongAu}). The scattering 
 lengths obtained with the QDT expansion agree with results using the other 
-ERTs and approximation to the scattering length definition. However, the 
-effective ranges obtained with the QDT expansion do not agree with the 
-results obtained with the other ERTs.
+ERTs and approximation to the scattering length definition.
 
 %The QDT expansion does not agree well for the effective ranges but gets the scattering lengths correct. This uses only the slowly varying first term in Eq. (\ref{eq:GaoKTaylor}). 
 
@@ -1687,7 +1687,7 @@ SVM \cite{Ivanov2002} & --- & 4.34 & 2.39 & 2.22 & 1.29 \\
 \end{center}
 \end{table*}
 
-The $P$-wave does not have effective ranges but does have scattering lengths 
+The $^{1,3}P$-wave does not have effective ranges but does have scattering lengths 
 \cite{Levy1963}. Table \ref{tab:PWaveScatLen} gives the scattering lengths 
 using the QDT expressions and the approximation to the definition in
 Eq.~(\ref{eq:ScatLenApprox}) evaluated at $\kappa = 0.01$. The $^1P$ scattering 
@@ -1739,7 +1739,7 @@ us to obtain more stable phase shifts.
 %the first six partial waves. Even by the $H$-wave, the phase shifts from the Born
 %approximation do not agree well with the complex Kohn results.
 
-The $^{1,3}S$ and $^{1,3}P$ phase shifts can be considered benchmark results. 
+\hl{We determine highly accurate $^{1,3}S$ and $^{1,3}P$ phase shifts.}
 The discrepancy in the $D$-wave phase shifts, especially the $^3D$, between the 
 complex Kohn variational and CC methods needs further investigation, such as 
 explicitly including mixed symmetry terms into the trial wavefunction.
@@ -1776,10 +1776,12 @@ values, we obtain a $^3S$ effective range noticeably larger.
 While the complex Kohn $^1P$ scattering length agrees with the SVM
 \cite{Ivanov2002}, the complex Kohn $^3P$ scattering length is much smaller.
 
-In summary, using the $S$ matrix complex Kohn for elastic Ps-H 
-scattering, we obtain benchmark $^{1,3}S$ and $^{1,3}P$ phase shifts and 
-accurate elastic differential, integrated, momentum transfer and ortho-para 
-conversion cross sections. We also compute the resonance parameters through
+\hl{In summary, using the $S$ matrix complex Kohn for elastic Ps-H 
+scattering, we calculate phase shifts through the $^{1,3}H$-wave and
+obtain highly accurate $^{1,3}S$ and $^{1,3}P$ phase shifts and 
+accurate elastic integrated, momentum transfer and ortho-para 
+conversion cross sections.}
+We also compute the resonance parameters through
 $^1F$ and investigate the effective ranges for $^{1,3}S$ and the scattering 
 lengths for $^{1,3}S$ and $^{1,3}P$.
 
@@ -1787,7 +1789,7 @@ lengths for $^{1,3}S$ and $^{1,3}P$.
 \begin{acknowledgments} We wish to thank Drs. Y.~K.~Ho,
 J.~W.~Humberston, K.~Pachucki and Z.-C.~Yan for discussions.
 We appreciate communications with Drs. Edward Armour, James 
-Cooper and Martin Plummer, and files from Allan Todd. S.~J.~W. acknowledges 
+Cooper and Martin Plummer, and files from Dr. Allan Todd. S.~J.~W. acknowledges 
 support from NSF under grant no. PHYS-0968638 and from UNT through the UNT 
 faculty research grant GA9150. Computational resources were provided by UNT's 
 High Performance Computing Services, a project of Academic Computing and User 
