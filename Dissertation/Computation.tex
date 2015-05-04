@@ -1068,16 +1068,25 @@ The Kohn methods do not require a recalculation of the entire problem for each K
 \section{Convergence and Extrapolations}
 \label{sec:Extrapolations}
 
-We define the convergence ratio as
+For comparing quantities such as the convergence of the matrix elements or 
+the convergence of the differential cross sections, we use the percent
+difference. There is no standard symbol for this, so we define it as
+\begin{equation}
+\label{eq:PercentDiff}
+\rhd(a,b) = \left| \frac{a - b}{(a + b) / 2} \right| \times 100\%.
+\end{equation}
+When we can compare convergence with respect to $\omega$, we define a
+convergence ratio as
 \begin{equation}
 \label{eq:ConvRatio}
 \mathcal{R}(\omega) = \frac{\delta_\ell^\pm(\omega)-\delta_\ell^\pm(\omega-1)}
   {\delta_\ell^\pm(\omega-1)-\delta_\ell^\pm(\omega-2)}.
 \end{equation}
 This is similar to the inverse of ratio for the energy eigenvalues given in
-Ref.~\cite{Yan1999}. If $\mathcal{R}(\omega) \geq 1$, there is no convergence pattern.
-
-\todoi{Describe this more}
+Ref.~\cite{Yan1999}. If $\mathcal{R}(\omega) \geq 1$, there is no convergence
+pattern. A ratio of less than 1 shows convergence but does not guarantee a
+reliable extrapolation. We find that $\mathcal{R}(\omega) \lesssim 0.5$ is
+needed to properly extrapolate phase shifts.
 
 \subsection{Extrapolation Description}
 

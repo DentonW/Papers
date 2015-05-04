@@ -378,8 +378,8 @@ dominant past approximately $\SI{0.5}{eV}$. The maximum for forward scattering
 is due to the $^1$D resonance. Particularly interesting is the contribution
 from backward scattering for low $E_{\bm \kappa}$ and the dip in the forward
 scattering direction, which corresponds to the dip in
-\cref{fig:combined-cross-sections}. All angles give the same value at zero 
-energy, as we would expect. 
+\cref{fig:combined-cross-sections}. All angles give essentially the same value
+at very low energy, as we would expect. 
 
 \begin{figure}[H]
 	\centering
@@ -408,6 +408,13 @@ nearly constant value from about $100\degree$.
 	\label{fig:diff-cross-section-2D-kappa}
 \end{figure}
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{diff-cross-sections-combined-1}
+	\caption{Combined spin-weighted differential cross section}
+	\label{fig:diff-cross-sections-combined-1}
+\end{figure}
+
 We find that the elastic differential cross section converges slower with 
 respect to $\ell$ than the elastic integrated cross section in
 \cref{sec:totalcross}. The differential cross section is more difficult to 
@@ -425,7 +432,7 @@ differential cross section is well converged at low energies, and the other
 is that it is less converged in the backward scattering direction than in the 
 forward direction. In \cref{fig:percent-diff-cross-sections-full-h}, which
 includes all partial waves through the H-wave, the percentage differences are
-all below 4\%, and most of the $E_{\bm \kappa}^+$ and $\theta$ range is 
+all below 4\%, and most of the $E_{\bm \kappa}$ and $\theta$ range is 
 much less than this. This indicates that the differential cross section is
 relatively well converged.
 
@@ -439,7 +446,7 @@ H-wave.
 
 We would expect that as $\ell$ increases, angles near $\theta = 180\degree$ 
 will be the most sensitive to adding terms to the differential cross section. 
-The partial wave expansion \cite{} has a $\LegendreP{\ell,\cos\theta}$ for 
+The partial wave expansion \cite[p.583]{Bransden2003} has a $\LegendreP{\ell,\cos\theta}$ for 
 each term. If we set $\theta = 0\degree$, each of the Legendre polynomials
 equals 1, meaning that each term added is positive. If $\theta = 180\degree$,
 the Legendre polynomial alternates between 1 and -1, i.e. $(-1)^\ell$. This is
@@ -507,14 +514,14 @@ $\ell$  &  \multicolumn{1}{c}{Avg. \% Diff.}  &  \multicolumn{1}{c}{Max. \% Diff
 \begin{tabular}{c....c..c}
 \toprule
 %$\ell$ & \multicolumn{1}{c}{Avg. $\%^+$ Diff.}  & \multicolumn{1}{c}{Avg. $\%^-$ Diff.}  & \multicolumn{1}{c}{Max. $\%^+$ Diff.}  & \multicolumn{1}{c}{Max. $E_{\bm \kappa}^+$} & \multicolumn{1}{c}{Max. $\theta^+$} & \multicolumn{1}{c}{Avg. $\%^-$ Diff.}  & \multicolumn{1}{c}{Max. $E_{\bm \kappa}^-$} & \multicolumn{1}{c}{Max. $\theta^-$} \\
- & \multicolumn{1}{c}{Avg.}  & \multicolumn{1}{c}{Avg.}  & \multicolumn{1}{c}{Max.}  & \multicolumn{1}{c}{Max.} & Max. & \multicolumn{1}{c}{Avg.}  & \multicolumn{1}{c}{Max.} & Max. \\
+ & \multicolumn{1}{c}{Avg.}  & \multicolumn{1}{c}{Avg.}  & \multicolumn{1}{c}{Max.}  & \multicolumn{1}{c}{Max.} & Max. & \multicolumn{1}{c}{Max.}  & \multicolumn{1}{c}{Max.} & Max. \\
 $\ell$ & \multicolumn{1}{c}{$\%^+$ Diff.}  & \multicolumn{1}{c}{$\%^-$ Diff.}  & \multicolumn{1}{c}{$\%^+$ Diff.}  & \multicolumn{1}{c}{$E_{\bm \kappa}^+$} (eV) & $\theta^+$ (rad) & \multicolumn{1}{c}{$\%^-$ Diff.}  & \multicolumn{1}{c}{$E_{\bm \kappa}^-$} (eV) & $\theta^-$ (rad) \\
 \midrule
-1 & 40.34\% & 9.84\% & 162.28\% & 4.686 & 0           & 50.11\% & 4.289 & 0.705   \\
-2 & 17.55\% & 3.31\% & 121.89\% & 4.686 & 0           & 24.72\% & 4.354 & $\uppi$ \\
-3 & 4.47\%  & 0.39\% & 51.89\%  & 5.072 & $\uppi$     & 3.31\%  & 5.102 & $\uppi$ \\
-4 & 0.80\%  & 0.20\% & 9.22\%   & 5.067 & 0           & 1.48\%  & 5.055 & 0       \\
-5 & 0.21\%  & 0.15\% & 3.15\%   & 5.061 & $\uppi$     & 1.64\%  & 4.354 & $\uppi$ \\
+1 & 40.34\% & 9.84\% & 162.28\% & 4.686 & 0       & 50.11\% & 4.289 & 0.705   \\
+2 & 17.55\% & 3.31\% & 121.89\% & 4.686 & 0       & 24.72\% & 4.354 & $\uppi$ \\
+3 & 4.47\%  & 0.39\% & 51.89\%  & 5.072 & $\uppi$ & 3.31\%  & 5.102 & $\uppi$ \\
+4 & 0.80\%  & 0.20\% & 9.22\%   & 5.067 & 0       & 1.48\%  & 5.055 & 0       \\
+5 & 0.21\%  & 0.15\% & 3.15\%   & 5.061 & $\uppi$ & 1.64\%  & 4.354 & $\uppi$ \\
 \bottomrule
 \end{tabular}
 \caption[Convergence of the singlet and triplet differential cross sections]{Percent difference of the elastic differential cross section for each partial wave $\ell$ with respect to $\ell - 1$ for both the maximum and average for the entire $E_{\bm \kappa}$ and $\theta$ range. The values of $E_{\bm \kappa}^\pm$ and $\theta^\pm$ given are where $\frac{d\sigma_{el}^\pm}{d\Omega}$ is at its maximum value given in columns 4 and 7.}
@@ -545,6 +552,24 @@ phase shifts as \citep[p. 589]{Bransden2003}
 \label{eq:MomentumCross}
 \sigma_{m}^\pm = \frac{4}{\kappa^2} \sum_{\ell=0}^\infty (\ell+1) \sin^2 (\delta_\ell^\pm - \delta_{\ell+1}^\pm) .
 \end{equation}
+
+\Cref{fig:momentum-cross-sections} shows the momentum transfer cross section 
+from the complex Kohn and the static exchange \cite{Hara1975}. The static 
+exchange curve is extracted from Figure 1 of their paper using CurveSnap
+\cite{CurveSnap}. The spin-weighting is from \cref{eq:SpinWeightCS}. The static 
+exchange \todo{check } gives a decent approximation but overestimates the 
+momentum transfer cross section through much of the energy range and greatly 
+overestimates for less than $\SI{0.25}{eV}$, going to a maximum of
+$\SI{57.7}{$\pi a_0^2$}$ at zero energy. The SE approximation also does not
+reproduce any of the resonance features from the singlet.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=5.25in]{momentum-cross-sections}
+	\caption{Momentum transfer cross sections. Static exchange data is from Ref.~\cite{Hara1975}.}
+	\label{fig:momentum-cross-sections}
+\end{figure}
+
 The ortho-para conversion cross sections give the conversion of the projectile ortho-Ps to para-Ps by \cite{Hara1975}
 \begin{equation}
 \label{eq:OrthoParaCross}
@@ -553,12 +578,6 @@ The ortho-para conversion cross sections give the conversion of the projectile o
 
 \todoi{Note from Blackwood paper \cite{Blackwood2002c} on isotropic at low E (in our paper?)}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=5.25in]{momentum-cross-sections}
-	\caption{Momentum transfer cross sections}
-	\label{fig:momentum-cross-sections}
-\end{figure}
 
 \begin{figure}[H]
 	\centering
