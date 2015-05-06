@@ -22,7 +22,7 @@ We get the phase shifts directly from the Kohn variational methods, but a more r
 \end{figure}
 
 \Cref{fig:ScatteringDiagram} shows a general scattering diagram. If we have
-azimuthal symmetry, as we do for Ps-H scattering, $\varphi$ is unimportant.
+azimuthal symmetry, as we assume for Ps-H scattering, $\varphi$ is unimportant.
 The quantity that we are most interested in from this is the ratio
 $\frac{d\sigma}{d\Omega}$, which is is the differential cross section.
 The integrated cross section (also known simply as the cross section) is
@@ -34,12 +34,12 @@ related to the differential cross section by integrating over $d\Omega$:
 \end{equation}
 
 
-\subsection{Integrated Cross Sections}
+\section{Integrated Cross Sections}
 \label{sec:totalcross}
 
 The partial wave cross sections can be 
 related to the phase shifts by
-\citep[p.]{Bransden2003}
+\citep[p.584]{Bransden2003}
 \begin{equation}
 \label{eq:PartialCross}
 \sigma_{el,\ell}^\pm = \frac{4}{\kappa^2} (2\ell+1) \sin^2 \delta_\ell^\pm.
@@ -53,9 +53,10 @@ expressed as \citep[p.]{Bransden2003}
 \label{eq:TotalCross}
 \sigma_{el}^\pm = \sum_{\ell=0}^\infty \sigma_{el,\ell}^\pm = \frac{4}{\kappa^2} \sum_{\ell=0}^\infty (2\ell+1) \sin^2 \delta_\ell^\pm.
 \end{equation}
-For each of the cross sections other than the ortho-para conversion, the 
+We consider the target H to be unpolarized, so
+for each of the cross sections other than the ortho-para conversion, the 
 singlet contributes $\frac{1}{4}$, and the triplet contributes $\frac{3}{4}$, 
-giving spin-weighted cross sections, i.e. \cite{Ward1987}
+giving spin-weighted cross sections, i.e. \cite{Ward1987,Blackwood2002}
 \beq
 \label{eq:SpinWeightCS}
 \sigma = \tfrac{1}{4} \sigma^+ + \tfrac{3}{4} \sigma^-.
@@ -164,7 +165,7 @@ in \cref{tab:PercentToCross}. The second and third columns give the
 contribution from the singlet and triplet combined for each partial wave. From
 this, it is noticeable that the F-wave should be included, though the average
 is less than $0.6\%$. The G-wave and H-wave barely contribute, with the H-wave
-contribution from both the singlet and triplet is less than $0.002\%$ on 
+contribution from both the singlet and triplet less than $0.002\%$ on 
 average.
 
 For the last 4 columns of \cref{tab:PercentToCross}, we also compare each
@@ -576,6 +577,7 @@ The ortho-para conversion cross sections give the conversion of the projectile o
 \sigma_{c} = \frac{1}{4 \kappa^2} \sum_{\ell=0}^\infty (2 \ell+1) \sin^2 (\delta_\ell^+ - \delta_\ell^-).
 \end{equation}
 
+\todoi{Ortho-para in \cite{Baltenko1983}}
 \todoi{Note from Blackwood paper \cite{Blackwood2002c} on isotropic at low E (in our paper?)}
 
 
@@ -594,8 +596,36 @@ The ortho-para conversion cross sections give the conversion of the projectile o
 	\label{fig:cross-section-comparisons}
 \end{figure}
 
+As expected, $\sigma_m \approx \sigma_{el}$ at very low energy. Specifically, for
+$E_{\bm \kappa} < 10^{-6}$ eV, $\sigma_m = \sigma_{el} = 32.45$ $\pi a_0^2$. As
+Blackwood et al.\ \cite{Blackwood2002c} note, this is due to the differential
+cross section being essentially isotropic at low energy (and exactly equal at
+zero energy), as seen in
+\cref{fig:diff-cross-sections-combined,fig:diff-cross-section-2D-kappa,fig:diff-cross-sections-combined-1}.
+If $\sigma_m < \sigma_{el}$, the scattering is mainly forward peaked, and if
+$\sigma_m > \sigma_{el}$, the scattering is mainly backward peaked \cite{Thumm1993}.
+Past very low energy, where $\sigma_m = \sigma_{el}$, we see that $\sigma_m > \sigma_{el}$
+until approximately $\SI{0.46}{eV}$ or $\kappa = 0.26$. This is backward peaked
+(concentrated in the $\theta = \pi$ direction), which corresponds to the
+findings from the differential cross section in \cref{sec:diffcross}. Beyond
+$\SI{0.46}{eV}$, $\sigma_m < \sigma_{el}$ for the rest of the energy range,
+indicating that the scattering is primarily forward peaked. The $\sigma_m$ curve,
+as seen in \cref{fig:cross-section-comparisons}, gets close to the $\sigma_{el}$
+curve for the dips in some of the resonances at approximately $\SI{4.3}{eV}$
+and $\SI{5.1}{eV}$, showing that the scattering is concentrated nearly equally
+in the forward and backward directions. This effect can slightly be seen in
+\cref{fig:diff-cross-sections-combined}, but it is most clearly shown in
+\cref{fig:diff-cross-section-2D-theta}.
 
 
+As noticed in the differential cross section, 
+
+
+
+
+\todoi{Other papers describing relationship between elastic and momentum-transfer?}
+
+\todoi{Ortho-para conversion ratio in \cite{Massey1954,Biswas1998,Raya,Rayb}}
 
 
 \biblio
