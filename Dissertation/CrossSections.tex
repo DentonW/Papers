@@ -221,6 +221,7 @@ seen in \cref{tab:SWaveResonancesOther,tab:PWaveResonancesOther,tab:DWaveResonan
 	\caption[Cross sections.]{Cross sections. CC results are from Ref. \cite{Walters2004}, and SE results are from Ref. \cite{Hara1975}.}
 	\label{fig:combined-cross-sections}
 \end{figure}
+\todoi{Just put 'spin-weighted' in caption}
 
 For partial wave cross section data available from the CC papers
 \cite{Walters2004,Blackwood2002,Blackwood2002b}, we compare the complex Kohn
@@ -367,13 +368,19 @@ the maximum in the triplet in \cref{fig:diff-cross-sections-triplet}.
 	\label{fig:diff-cross-sections-combined}
 \end{figure}
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{diff-cross-sections-combined-2}
+	\caption{Combined spin-weighted differential cross section}
+	\label{fig:diff-cross-sections-combined-2}
+\end{figure}
+
 With the data in \cref{fig:diff-cross-sections-combined}, it is illustrative 
 to plot 2-dimensional versions to see trends more clearly. In
 \cref{fig:diff-cross-section-2D-theta}, we restrict $\theta$ and vary
 $E_{\bm \kappa}$ to see the the energy-dependence for several $\theta$ values.
 We are particularly interested in the forward ($\theta = 0\degree$) and backward
 ($\theta = 180\degree$) directions but also include $\theta = 90\degree$.
-
 From this figure, it is clear that scattering in the forward direction is
 dominant past approximately $\SI{0.5}{eV}$. The maximum for forward scattering
 is due to the $^1$D resonance. Particularly interesting is the contribution
@@ -409,12 +416,7 @@ nearly constant value from about $100\degree$.
 	\label{fig:diff-cross-section-2D-kappa}
 \end{figure}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{diff-cross-sections-combined-1}
-	\caption{Combined spin-weighted differential cross section}
-	\label{fig:diff-cross-sections-combined-1}
-\end{figure}
+
 
 We find that the elastic differential cross section converges slower with 
 respect to $\ell$ than the elastic integrated cross section in
@@ -488,9 +490,13 @@ equaling 0 from the Legendre polynomial.
 	\label{fig:percent-diff-cross-sections-h}
 \end{figure}
 
-
-
-similar to \cref{tab:PercentToCross}
+Similar to \cref{tab:PercentToCross}, \cref{tab:PercentDiffCrossFull} gives 
+the average and maximum percent differences for adding partial waves to the
+differential cross section (both the singlet and triplet). The average 
+percent difference for adding the G-wave is less than 1\% but has a fairly
+large maximum percent difference. Adding the H-wave is a much less
+significant contribution, and our differential cross section looks to be
+relatively well converged by the H-wave.
 
 \begin{table}[H]
 \centering
@@ -508,6 +514,21 @@ $\ell$  &  \multicolumn{1}{c}{Avg. \% Diff.}  &  \multicolumn{1}{c}{Max. \% Diff
 \caption[Convergence of the full differential cross section]{Percent difference of the elastic differential cross section for each partial wave $\ell$ with respect to $\ell - 1$ for both the maximum and average for the entire $E_{\bm \kappa}$ and $\theta$ range}
 \label{tab:PercentDiffCrossFull}
 \end{table}
+
+\todoi{Double check that the singlet and triplet aren't considered completely separate}
+\Cref{tab:PercentDiffCrossSingTrip} separates the singlet and triplet
+contributions to the differential cross section. For this table, when the
+singlet contributions are analyzed, the triplet summations have
+$\ell_{max} = 5$. Likewise, when the singlet contributions are analyzed,
+$\ell_{max} = 5$ for the triplet. We see that with respect to $\ell$, the
+triplet differential cross section converges much quicker for both the average
+and maximum. Columns 5 and 6 give the values of $E_{\bm \kappa}$ and $\theta$
+where the maximum percent difference is located for the singlet, and columns
+8 and 9 give the maximum percent difference location for the triplet.
+Unsurprisingly, other than the case of $\ell = 1$, the angles that are the most
+sensitive are 0 and $\pi$ radians. The most sensitive energies are in the
+resonance region, and most of these are near the inelastic threshold of
+$\SI{5.101}{eV}$.
 
 
 \begin{table}[H]
@@ -587,7 +608,6 @@ The ortho-para conversion cross sections give the conversion of the projectile o
 	\caption{Ortho-para conversion cross sections}
 	\label{fig:orthopara-cross-sections}
 \end{figure}
-\todoi{OP in \cite{Biswas1998}. The problem is that their y-axis is logarithmic.}
 
 \begin{figure}[H]
 	\centering
@@ -596,10 +616,11 @@ The ortho-para conversion cross sections give the conversion of the projectile o
 	\label{fig:cross-section-comparisons}
 \end{figure}
 
-As expected, $\sigma_m \approx \sigma_{el}$ at very low energy. Specifically, for
-$E_{\bm \kappa} < 10^{-6}$ eV, $\sigma_m = \sigma_{el} = 32.45$ $\pi a_0^2$. As
-Blackwood et al.\ \cite{Blackwood2002c} note, this is due to the differential
-cross section being essentially isotropic at low energy (and exactly equal at
+As expected, $\sigma_m \approx \sigma_{el}$ at very low energy. 
+At zero energy, $\sigma_m = \sigma_{el}$ should hold, and for Ps-H, we find that
+$E_{\bm \kappa} < 10^{-6}$ eV, $\sigma_m = \sigma_{el} = 32.45$ $\pi a_0^2$. 
+As Blackwood et al.\ \cite{Blackwood2002c} note, this is due to the differential
+cross section being essentially isotropic at low energy (and exactly isotropic at
 zero energy), as seen in
 \cref{fig:diff-cross-sections-combined,fig:diff-cross-section-2D-kappa,fig:diff-cross-sections-combined-1}.
 If $\sigma_m < \sigma_{el}$, the scattering is mainly forward peaked, and if
