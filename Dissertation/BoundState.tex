@@ -415,30 +415,63 @@ Campbell (1998) \cite{Campbell1998} & CC 22Ps1H & --- & -0.773 3 & 0.634$^\star$
 \end{center}
 %\end{landscape}
 
-\todoi{See if I can get the Jiang and Bressanini papers mentioned in \cite{Mitroy2006}.
 
- \url{http://scitation.aip.org/content/aip/journal/jcp/102/20/10.1063/1.469002}
+There have been a large number of calculations of the PsH binding energy over 
+the years, starting with Ore's prediction in 1951 that PsH could exist
+\cite{Ore1951}. As computing power increased, using a Hylleraas basis set with 
+hundreds or even thousands of terms became possible
+\cite{Ho1978,Ho1986,Yan1999,VanReeth2003}. The Hylleraas results were the most
+accurate until very accurate ECG results from Mitroy \cite{Mitroy2006} and Bubin
+and Adamowicz \cite{Bubin2004,Bubin2006}. The ECGs do not satisfy the Kato cusp
+condition, but good optimization of the basis set can give good results
+\cite{Mitroy2013}.
 
- \url{http://dx.doi.org/10.1063/1.1531101}
+The latest by Frolov \cite{Frolov2010} is more of an introduction of a 
+modified basis set to this problem, showing how only 84 terms gives a better 
+energy than a much larger Hylleraas set. Yan and Ho \cite{Yan1999} use a 
+Hylleraas basis set with 5 sectors that each have different nonlinear 
+parameters. Frolov's work essentially uses the same basis set but gives each 
+term its own set of nonlinear parameters, optimizing all of them 
+simultaneously.
 
-  \url{http://scitation.aip.org/content/aip/journal/jcp/108/12/10.1063/1.475887}
+The last six entries of this table give the CC results of the Belfast group. 
+These are grouped together to show how different states and pseudostates in 
+the CC calculations can give better approximations to the binding energy. It 
+is particularly clear that adding the H$^-$ channel vastly improves the 
+accuracy.
 
-  \url{http://scitation.aip.org/content/aip/journal/jcp/109/21/10.1063/1.477604}}
-
-There have been a large number of calculations of the PsH binding energy over the years, starting with Ore's prediction in 1951 that PsH could exist \cite{Ore1951}. As computing power increased, using a Hylleraas basis set with hundreds or even thousands of terms became possible \cite{Ho1978,Ho1986,Yan1999,VanReeth2003}. The Hylleraas results were the most accurate until very accurate ECG results from Mitroy \cite{Mitroy2006} and Bubin and Adamowicz \cite{Bubin2004,Bubin2006}. The ECGs do not satisfy the Kato cusp condition, but good optimization of the basis set can give good results \cite{Mitroy2013}.
-
-The latest by Frolov \cite{Frolov2010} is more of an introduction of a modified basis set to this problem, showing how only 84 terms gives a better energy than a much larger Hylleraas set. Yan and Ho \cite{Yan1999} use a Hylleraas basis set with 5 sectors that each have different nonlinear parameters. Frolov's work essentially uses the same basis set but gives each term its own set of nonlinear parameters, optimizing all of them simultaneously.
-
-The last six entries of this table give the CC results of the Belfast group. These are grouped together to show how different states and pseudostates in the CC calculations can give better approximations to the binding energy. It is particularly clear that adding the H$^-$ channel vastly improves the accuracy.
-
-Our current Hylleraas binding energy in the first line of the table compares well with the accurate energies of Refs.~\cite{Bubin2006, Mitroy2006, Yan1999}, but it is not as accurate of a calculation. The purpose of doing the PsH calculation was not to get the best result but to test how well the short-range terms for Ps-H scattering represent the short-range interactions. Based on \cref{tab:BoundEnergyOther}, the short-range interactions are described well. This also gave experience working with the Hylleraas basis set, and finding the PsH energy is a simpler problem than Ps-H scattering.
+Our current Hylleraas binding energy in the first line of the table compares
+well with the accurate energies of Refs.~\cite{Bubin2006, Mitroy2006, Yan1999},
+but it is not as accurate of a calculation. The purpose of doing the PsH 
+calculation was not to get the best result but to test how well the short-
+range terms for Ps-H scattering represent the short-range interactions. Based 
+on \cref{tab:BoundEnergyOther}, the short-range interactions are described 
+well. This also gave experience working with the Hylleraas basis set, and 
+finding the PsH energy is a simpler problem than Ps-H scattering.
 
 \subsection{Triplet Energy Eigenvalues}
 \label{sec:TripletEigenvalues}
 
-Our code does not predict a true triplet bound state, making the singlet ground state the only possible configuration for PsH. Mitroy and Bromley have published a paper \cite{Mitroy2007} claiming a stable triplet bound state , but our code may not have the appropriate type of wavefunction to see this, since it is for a H($2p$) + Ps($2p$) state. They also use a very large configuration interaction basis, and this bound state is very shallow. Despite not predicting a bound state, we run the bound state code for the triplet so that we can use this for the short-range terms for the scattering program.
+Our code does not predict a true triplet bound state, making the singlet 
+ground state the only possible configuration for PsH. Mitroy and Bromley have 
+published a paper \cite{Mitroy2007} claiming a stable triplet bound state, 
+but our code may not have the appropriate type of wavefunction to see this, 
+since it is for a H($2p$) + Ps($2p$) state. They also use a very large 
+configuration interaction basis, and this bound state is very shallow. 
+Despite not predicting a bound state, we run the bound state code for the 
+triplet so that we can use this for the short-range terms for the scattering 
+program.
 
-This output is also used in the program for Todd's method, which is then fed into the scattering program (see \cref{sec:ToddScattering}). The triplet case was more sensitive to the accuracy of the matrix elements. With the singlet, we were able to use the full $\omega = 6$ set (924 terms) without the asymptotic expansion before linear dependence became an issue. With the triplet, we were only able to use 450 terms out of an $\omega = 7$ run if the asymptotic expansion was not used. Adding the asymptotic expansion in double precision let us use 1327 terms. Finally, changing the code to quadruple precision lets us use the full set of 1716 terms for an $\omega = 7$ run, as shown in \cref{tab:BoundEnergy3}. 
+This output is also used in the program for Todd's method, which is then fed 
+into the scattering program (see \cref{sec:ToddScattering}). The triplet case 
+was more sensitive to the accuracy of the matrix elements. With the singlet, 
+we were able to use the full $\omega = 6$ set (924 terms) without the 
+asymptotic expansion before linear dependence became an issue. With the 
+triplet, we were only able to use 450 terms out of an $\omega = 7$ run if the 
+asymptotic expansion was not used. Adding the asymptotic expansion in double 
+precision let us use 1327 terms. Finally, changing the code to quadruple 
+precision lets us use the full set of 1716 terms for an $\omega = 7$ run, as 
+shown in \cref{tab:BoundEnergy3}. 
 
 \setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
 \setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
@@ -462,7 +495,11 @@ $\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (au) & $\Delta E
 \label{tab:BoundEnergy3}
 \end{table}
 
-As described later in \cref{sec:ToddScattering}, we cannot use the full 1716 terms for the Ps-H scattering problem. \Cref{tab:BoundEnergyTodd1} gives the ground state energies using the restricted set of terms with Todd ordering. The cutoffs in $\omega$ are easily seen using the ViewOmegaCutoffs.py script described in the Wiki \cite{Wiki}.
+As described later in \cref{sec:ToddScattering}, we cannot use the full 1716 
+terms for the Ps-H scattering problem. \Cref{tab:BoundEnergyTodd1} gives the 
+ground state energies using the restricted set of terms with Todd ordering. 
+The cutoffs in $\omega$ are easily seen using the ViewOmegaCutoffs.py script 
+described in the Wiki \cite{Wiki}.
 
 \setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
 \setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
@@ -489,7 +526,16 @@ $\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (au) & $\Delta E
 
 \section{Stabilization}
 
-Hazi and Taylor \cite{Hazi1970} introduced the concept of stabilization plots to PsH bound state calculations. This can allow calculations of scattering parameters from a fully bound state calculation. Specifically, they plotted the four lowest eigenvalues with respect to $N$ and looked for avoided crossings. A resonance only exists if there is an avoided crossing between eigenvalues. The avoided crossing that they found at $\SI{0.428 985}{au}$ (or $\SI{5.8366}{eV}$ as shown in \cref{tab:SWaveResonancesOther}) corresponds roughly with the first $^1$S resonance. Van Reeth and Humberston \cite{VanReeth2004} also did an analysis of stabilized eigenvalues but with the same type of basis set that we use.
+Hazi and Taylor \cite{Hazi1970} introduced the concept of stabilization plots 
+to PsH bound state calculations. This can allow calculations of scattering 
+parameters from a fully bound state calculation. Specifically, they plotted 
+the four lowest eigenvalues with respect to $N$ and looked for avoided 
+crossings. A resonance only exists if there is an avoided crossing between 
+eigenvalues. The avoided crossing that they found at $\SI{0.428 985}{au}$ (or 
+$\SI{5.8366}{eV}$ as shown in \cref{tab:SWaveResonancesOther}) corresponds 
+roughly with the first $^1$S resonance. Van Reeth and Humberston \cite{
+VanReeth2004} also did an analysis of stabilized eigenvalues but with the 
+same type of basis set that we use.
 
 \begin{figure}[H]
 	\centering
@@ -498,9 +544,27 @@ Hazi and Taylor \cite{Hazi1970} introduced the concept of stabilization plots to
 	\label{fig:swavesinglet-eigen}
 \end{figure}
 
-Plotting the first 10 eigenvalues with respect to $N$ for $^1$S gives \cref{fig:swavesinglet-eigen}. As noted, the dashed line represents the Ps(n=2) inelastic threshold at $\SI{5.101}{eV}$. The dotted lines correspond to the first two complex Kohn $^1$S resonance positions given in \cref{tab:SWaveResonancesOther}. Our wavefunction is not optimized for this type of analysis, but there is evidence of avoided crossing given by the red rectangles in \cref{fig:swavesinglet-eigen}. The position of the plateau in between these rectangles corresponds relatively well with the first resonance position, $^1E_R$, we find in \cref{tab:SWaveResonancesOther} from the full scattering calculations in \cref{chp:SWave}. The line for the second resonance lines up with the 5th eigenvalue from roughly 700 to 900 terms and with the 6th eigenvalue starting at about 1250 terms. There is not a clear way to get the resonance positions from this if they are not known previously. The estimates of the two resonances positions is $\SI{3.99}{eV}$ and $\SI{5.03}{eV}$.
+Plotting the first 10 eigenvalues with respect to $N$ for $^1$S gives
+\cref{fig:swavesinglet-eigen}. As noted, the dashed line represents the Ps(n=2) 
+inelastic threshold at $\SI{5.102}{eV}$. The dotted lines correspond to the 
+first two complex Kohn $^1$S resonance positions given in
+\cref{tab:SWaveResonancesOther}. Our wavefunction is not optimized for this type of 
+analysis, but there is evidence of avoided crossing given by the red 
+rectangles in \cref{fig:swavesinglet-eigen}. The position of the plateau in 
+between these rectangles corresponds relatively well with the first resonance 
+position, $^1E_R$, we find in \cref{tab:SWaveResonancesOther} from the full 
+scattering calculations in \cref{chp:SWave}. The line for the second 
+resonance lines up with the 5th eigenvalue from roughly 700 to 900 terms and 
+with the 6th eigenvalue starting at about 1250 terms. There is not a clear 
+way to get the resonance positions from this if they are not known 
+previously. The estimates of the two resonances positions is $\SI{3.99}{eV}$ 
+and $\SI{5.03}{eV}$.
 
-Van Reeth and Humberston \cite{VanReeth2004} had difficulty doing the same type of stabilization with these Hylleraas-type terms. Other wavefunctions or stabilization methods may work better for this system. For instance, Yan and Ho vary a scaling factor and plot the eigenvalue energies with respect to this \cite{Yan2003}.
+Van Reeth and Humberston \cite{VanReeth2004} had difficulty doing the same 
+type of stabilization with these Hylleraas-type terms. Other wavefunctions or 
+stabilization methods may work better for this system. For instance, Yan and 
+Ho vary a scaling factor and plot the eigenvalue energies with respect to 
+this \cite{Yan2003}.
 
 \begin{figure}[H]
 	\centering
@@ -509,7 +573,10 @@ Van Reeth and Humberston \cite{VanReeth2004} had difficulty doing the same type 
 	\label{fig:swavetriplet-eigen}
 \end{figure}
 
-\Cref{fig:swavetriplet-eigen} shows the same type of stabilization plot for $^3$S. It is clear that below the Ps(n=2) threshold, there are no avoided crossings, meaning that there are no resonances in the S-wave triplet for this energy range. 
+\Cref{fig:swavetriplet-eigen} shows the same type of stabilization plot for
+$^3$S. It is clear that below the Ps(n=2) threshold, there are no avoided 
+crossings, meaning that there are no resonances in the S-wave triplet for 
+this energy range. 
 
 \begin{figure}[H]
 	\centering
@@ -525,9 +592,20 @@ Van Reeth and Humberston \cite{VanReeth2004} had difficulty doing the same type 
 	\label{fig:pwavetriplet-eigen-unpaired}
 \end{figure}
 
-\Cref{fig:pwavesinglet-eigen-unpaired,fig:pwavetriplet-eigen-unpaired} show the stabilization plots for the P-wave eigenvalues when only the first symmetry (see \cref{sec:PWaveFn}) is evaluated. Similar to $^3$S, there is no evidence of avoided crossings, or resonances, for $^3$P. In \cref{fig:pwavetriplet-eigen-unpaired}, linear dependence becomes a problem at 957 terms, hence why the eigenvalues have a sudden drop.
+\Cref{fig:pwavesinglet-eigen-unpaired,fig:pwavetriplet-eigen-unpaired} show 
+the stabilization plots for the P-wave eigenvalues when only the first 
+symmetry (see \cref{sec:PWaveFn}) is evaluated. Similar to $^3$S, there is no 
+evidence of avoided crossings, or resonances, for $^3$P. In
+\cref{fig:pwavetriplet-eigen-unpaired}, linear dependence becomes a problem at 957 
+terms, hence why the eigenvalues have a sudden drop.
 
-In \cref{fig:pwavesinglet-eigen-unpaired}, there is evidence of avoided crossings for the first resonance marked by the red rectangles. The second avoided crossing is barely noticeable. Taking the fifth eigenvalue at 800 terms gives $\SI{4.44}{eV}$, which is not very much in line with the accurate calculations shown in \cref{tab:PWaveResonancesOther}, including the complex Kohn. The second resonance is above the Ps(n=2) threshold here, making it physically different from the actual resonance.
+In \cref{fig:pwavesinglet-eigen-unpaired}, there is evidence of avoided 
+crossings for the first resonance marked by the red rectangles. The second 
+avoided crossing is barely noticeable. Taking the fifth eigenvalue at 800 
+terms gives $\SI{4.44}{eV}$, which is not very much in line with the accurate 
+calculations shown in \cref{tab:PWaveResonancesOther}, including the complex 
+Kohn. The second resonance is above the Ps(n=2) threshold here, making it 
+physically different from the actual resonance.
 
 \begin{figure}[H]
 	\centering
@@ -543,9 +621,20 @@ In \cref{fig:pwavesinglet-eigen-unpaired}, there is evidence of avoided crossing
 	\label{fig:pwavetriplet-eigen-paired}
 \end{figure}
 
-\Cref{fig:pwavesinglet-eigen-paired,fig:pwavetriplet-eigen-paired} are also for the P-wave, but they use both the first and second symmetries paired. So each term number given on the x-axis is actually two terms, i.e. $N = 200$ is a total of 400 short-range terms, 200 of the first symmetry and 200 of the second symmetry. It is still clear that $^3$P does not have resonances below the inelastic threshold.
+\Cref{fig:pwavesinglet-eigen-paired,fig:pwavetriplet-eigen-paired} are also 
+for the P-wave, but they use both the first and second symmetries paired. So 
+each term number given on the x-axis is actually two terms, i.e. $N = 200$ is 
+a total of 400 short-range terms, 200 of the first symmetry and 200 of the 
+second symmetry. It is still clear that $^3$P does not have resonances below 
+the inelastic threshold.
 
-In \cref{fig:pwavesinglet-eigen-paired}, the first resonance position lines up relatively well with the full scattering calculations. The second resonance is a narrow resonance, and there is an avoided crossing enclosed in the dashed blue rectangle. The approximate position of the resonances are taken as the fifth and sixth eigenvalues at 1000 terms, which are tabulated in \cref{tab:Stabilization} and can be compared to the full complex Kohn calculation in \cref{tab:PWaveResonancesOther}.
+In \cref{fig:pwavesinglet-eigen-paired}, the first resonance position lines 
+up relatively well with the full scattering calculations. The second 
+resonance is a narrow resonance, and there is an avoided crossing enclosed in 
+the dashed blue rectangle. The approximate position of the resonances are 
+taken as the fifth and sixth eigenvalues at 1000 terms, which are tabulated 
+in \cref{tab:Stabilization} and can be compared to the full complex Kohn 
+calculation in \cref{tab:PWaveResonancesOther}.
 
 \begin{figure}[H]
 	\centering
@@ -575,7 +664,13 @@ In \cref{fig:pwavesinglet-eigen-paired}, the first resonance position lines up r
 	\label{fig:dwavetriplet-eigen-paired}
 \end{figure}
 
-To complete the discussion for resonances below the inelastic threshold, the D-wave stabilization plots for the first symmetry only are in \cref{fig:dwavesinglet-eigen-unpaired,fig:dwavetriplet-eigen-unpaired}. Compared to \cref{fig:dwavesinglet-eigen-paired,fig:dwavetriplet-eigen-paired}, the first symmetry obviously is not enough to adequately describe the system. There is only one resonance before the threshold, and the fifth eigenvalue is taken at 924 paired terms in \cref{tab:Stabilization}.
+To complete the discussion for resonances below the inelastic threshold, the
+D-wave stabilization plots for the first symmetry only are in
+\cref{fig:dwavesinglet-eigen-unpaired,fig:dwavetriplet-eigen-unpaired}. Compared to 
+\cref{fig:dwavesinglet-eigen-paired,fig:dwavetriplet-eigen-paired}, the first 
+symmetry obviously is not enough to adequately describe the system. There is 
+only one resonance before the threshold, and the fifth eigenvalue is taken at 
+924 paired terms in \cref{tab:Stabilization}.
 
 
 \begin{table}[H]
@@ -593,20 +688,51 @@ $^1$D & 4.73 & ---   \\
 \label{tab:Stabilization}
 \end{table}
 
-\Cref{tab:Stabilization} gives the resonance positions found using the stabilization method. Despite the fact that this stabilization method does not give very accurate resonance positions in our case, we can learn some things from these. First, we can determine the number of resonances before the Ps(n=2) threshold and where to look for them in the full complex Kohn calculations. Secondly, the triplet states do not have resonances before this threshold for any of these partial waves. Lastly, for $\ell > 0$, both the first and second symmetries are needed to accurately describe the system. The first symmetry alone cannot adequately describe the P-wave and D-wave.
+\Cref{tab:Stabilization} gives the resonance positions found using the 
+stabilization method. Despite the fact that this stabilization method does 
+not give very accurate resonance positions in our case, we can learn some 
+things from these. First, we can determine the number of resonances before 
+the Ps(n=2) threshold and where to look for them in the full complex Kohn 
+calculations. Secondly, the triplet states do not have resonances before this 
+threshold for any of these partial waves. Lastly, for $\ell > 0$, both the 
+first and second symmetries are needed to accurately describe the system. The 
+first symmetry alone cannot adequately describe the P-wave and D-wave.
 
 
 \section{Structure}
 \label{sec:PsHStructure}
-There has been some discussion in the literature about whether PsH is more like an atomic structure or more like a molecule with Ps and H. We did not attempt this problem, since the PsH system is not the goal of this work. Bressanini and Morosi \cite{Bressanini2003} give a good overview of the lack of consensus on this problem. 
+There has been some discussion in the literature about whether PsH is more 
+like an atomic structure or more like a molecule with Ps and H. We did not 
+attempt this problem, since the PsH system is not the goal of this work. 
+Bressanini and Morosi \cite{Bressanini2003} give a good overview of the lack 
+of consensus on this problem. 
 
-Frolov and Smith \cite{Frolov1997c} note that they expect PsH to be a cluster consisting of a Ps atom and an H atom. Then from their calculations, they conclude that it acts as some kind of sum of H$^-$ with Ps$^-$.
+Frolov and Smith \cite{Frolov1997c} note that they expect PsH to be a cluster 
+consisting of a Ps atom and an H atom. Then from their calculations, they 
+conclude that it acts as some kind of sum of H$^-$ with Ps$^-$.
 
-Saito \cite{Saito2000} attempted to answer this question using Ho's \cite{Ho1986} Hylleraas basis set by plotting e$^+$ and e$^-$ densities. Saito's conclusion was that PsH has an atomic structure but also has a diatomic molecular structure, or Ps with H. Bromley and Mitroy \cite{Bromley2001} also state that PsH has a molecular structure, comparing it ``to a light isotope of the H$_2$ molecule.''
+Saito \cite{Saito2000} attempted to answer this question using Ho's
+\cite{Ho1986} Hylleraas basis set by plotting e$^+$ and e$^-$ densities. Saito's 
+conclusion was that PsH has an atomic structure but also has a diatomic 
+molecular structure, or Ps with H. Bromley and Mitroy \cite{Bromley2001} also 
+state that PsH has a molecular structure, comparing it ``to a light isotope 
+of the H$_2$ molecule.''
 
-Biswas and Darewych \cite{Biswas2002} find that the difference between the S(1) resonance and the binding energy (\cref{sec:BoundSinglet}) for various calculations of differing accuracy is roughly constant. They suggest that this means that PsH is less like e$^+$ orbiting H$^-$ and more like a diatomic molecule.
+Biswas and Darewych \cite{Biswas2002} find that the difference between the
+S(1) resonance and the binding energy (\cref{sec:BoundSinglet}) for various 
+calculations of differing accuracy is roughly constant. They suggest that 
+this means that PsH is less like e$^+$ orbiting H$^-$ and more like a 
+diatomic molecule.
 
-Bressanini and Morosi \cite{Bressanini2003} perform calculations on PsH with a highly optimized one term wavefunction to determine the structure and conclude that PsH cannot be viewed as Ps+H or e$^-$ orbiting around H$^-$. They state, ``Keeping in mind the quantum nature of the leptons and so the impossibility of defining a structure, we suggest to look at PsH as a hydrogen negative ion with the positron that, staying more distant from the nucleus than the electrons, correlates its motion with those of both the electrons. Its attraction on the electrons squeezes them nearer to each other and nearer to the nucleus.''
+Bressanini and Morosi \cite{Bressanini2003} perform calculations on PsH with 
+a highly optimized one term wavefunction to determine the structure and 
+conclude that PsH cannot be viewed as Ps+H or e$^-$ orbiting around H$^-$. 
+They state, ``Keeping in mind the quantum nature of the leptons and so the 
+impossibility of defining a structure, we suggest to look at PsH as a 
+hydrogen negative ion with the positron that, staying more distant from the 
+nucleus than the electrons, correlates its motion with those of both the 
+electrons. Its attraction on the electrons squeezes them nearer to each other 
+and nearer to the nucleus.''
 
 
 \biblio

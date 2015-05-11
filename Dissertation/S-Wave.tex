@@ -155,7 +155,7 @@ Looking at just the last term:
 \end{align}
 This is the form that is used in the S-wave long-range code \cref{}.
 
-\subsection{\texorpdfstring{$(\bar{\phi_i},\mathcal{L}\bar{C})$}{phiLC} Matrix Elements}
+\subsection{\texorpdfstring{$(\bar{\phi_i},\mathcal{L}\bar{C})$}{PhiLC} Matrix Elements}
 As mentioned at the beginning of this chapter, for the S-wave, we chose to absorb both the $\frac{1}{\sqrt{2}}$ and $Y_{0,0}(\theta_\rho,\varphi_\rho) = \frac{1}{\sqrt{4\pi}}$ into the $c_i$ constants of the short-range terms in \cref{eq:PhiDefS}.
 
 From \cref{eq:PermPropFull},
@@ -166,7 +166,7 @@ From \cref{eq:PermPropFull},
 \end{align}
 \end{subequations}
 
-\noindent Using \cref{eq:LC,eq:LCBar}) in the above gives our final results for $(\bar{\phi}_i, \mathcal{L}\bar{C}_0)$.
+\noindent Using \cref{eq:LC,eq:LCBar} in the above gives our final results for $(\bar{\phi}_i, \mathcal{L}\bar{C}_0)$.
 \begin{subequations}
 \begin{align}
 (\bar{\phi}_i, \mathcal{L}\bar{C}_0) = &\sqrt{\frac{\kappa}{\pi}} \left( (\phi_i \pm \phi_i') \Phi_{Ps}(r_{12}) \Phi_H(r_3) \left\{ \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}}\right) \frac{\cos(\kr)}{\kr} \right.\right. \nonumber\\
@@ -177,18 +177,27 @@ From \cref{eq:PermPropFull},
 &+ \left.\left.\frac{e^{-\mr}\mu^3\rhop}{4} \frac{\cos(\krp)}{\krp} + \frac{e^{-\mrp}}{2} \kappa\mu (1+\mrp) \frac{\sin(\krp)}{\krp}  \right\}\right)
 \end{align}
 \end{subequations}
-Either of these can be used, depending on which is easier to implement in the code.
-\todoi{Which used in ours? I think the second one.}
+Either of these can be used, depending on which is easier to implement in the
+code. We use the second form, since this only has $\phi_i$, not $\phi_i$
+and $\phi_i'$.
 
 
 \section{Results}
-The primary quantity computed with the Kohn variational method is the phase shifts. From this, other quantities can be calculated, such as resonance parameters (\cref{sec:SWaveResonances}), scattering lengths (\cref{chp:ERT}), effective ranges (\cref{chp:ERT}), and cross sections (\cref{chp:CrossSections}). \todo{Elsewhere?} 
+The primary quantity computed with the Kohn variational method is the phase 
+shift. From this, other quantities can be calculated, such as resonance 
+parameters (\cref{sec:SWaveResonances}), scattering lengths (\cref{chp:ERT}), 
+effective ranges (\cref{chp:ERT}), and cross sections (\cref{chp:CrossSections}).
+\todo{Elsewhere?} 
 
 \subsection{Phase Shifts}
-All runs here were performed using the set of integration points described in \cref{sec:QuadraturePoints}. The phase shifts are calculated with the program described in \cite{}. \Cref{tab:SWavePhase} shows the $^{1,3}$S phase shifts calculated using the complex Kohn at regular intervals of $\kappa$, which we can compare to the results from other groups in \cref{tab:SWaveComparisons}. The extrapolations in the fourth and fifth columns are performed using the technique described in \cref{sec:Extrapolation}. The last two columns show the percent difference given by
-\beq
-\% \text{ Diff}(a,b) = \left|\frac{a - b}{\left(\frac{a+b}{2}\right)}\right| \times 100\%
-\eeq
+All runs here were performed using the set of integration points described in 
+\cref{sec:QuadraturePoints}. The phase shifts are calculated with the programs 
+described in \cref{chp:Programs}. \Cref{tab:SWavePhase} shows the $^{1,3}$S phase shifts 
+calculated using the complex Kohn at regular intervals of $\kappa$, which we 
+can compare to the results from other groups in \cref{tab:SWaveComparisons}. 
+The extrapolations in the fourth and fifth columns are performed using the 
+technique described in \cref{sec:Extrapolation}. The last two columns show 
+the percent difference given by \cref{eq:PercentDiff}.
 
 \begin{table}[H]
 \centering
@@ -210,8 +219,19 @@ $\kappa$ & $\delta^+ (\omega = 7)$ & $\delta^- (\omega = 7)$ & $\delta^+ (\omega
 \label{tab:SWavePhase}
 \end{table}
 
-\Cref{tab:SWaveComparisons} gives comparisons between our complex Kohn phase shifts and phase shifts calculated elsewhere in the literature. Our $\omega = 7$ phase shifts from this table are exactly the same as Van Reeth and Humberston's results for $\omega = 6$ \cite{VanReeth2003}, with some exceptions in the last digit. This indicates that the prior Kohn variational method S-wave phase shifts were well converged. 
-\Cref{fig:SWavePhase} has the more complete set of phase shifts plotted with respect to the incoming Ps energy, $E_{\bm \kappa}$. This compares the complex Kohn phase shifts to that of the $^1$S CC \cite{Walters2004} and the $^3$S CC \cite{Blackwood2002}, along with the $^{1,3}$S CVM \cite{Zhang2012}. \todoi{More on this table?}
+\Cref{tab:SWaveComparisons} gives comparisons between our complex Kohn phase 
+shifts and phase shifts calculated elsewhere in the literature. Our $\omega = 
+7$ phase shifts from this table are the same as Van Reeth and 
+Humberston's results for $\omega = 6$ \cite{VanReeth2003}, with some 
+exceptions in the last digit. This indicates that the prior Kohn variational 
+method S-wave phase shifts were well converged. 
+We use a larger basis set here, which brings the phase shifts up slightly,
+but the larger set of integration points for the long-range terms (see
+\cref{sec:SelQuadPoints1}) tended to bring the phase shifts down slightly.
+\Cref{fig:SWavePhase} has the more complete set of phase shifts plotted with 
+respect to the incoming Ps energy, $E_{\bm \kappa}$. This compares the 
+complex Kohn phase shifts to that of the $^1$S CC \cite{Walters2004} and the $
+^3$S CC \cite{Blackwood2002}, along with the $^{1,3}$S CVM \cite{Zhang2012}. 
 
 \begin{figure}[H]
 	\centering
@@ -226,82 +246,19 @@ positions \cite{Yan1999,Yan1998a,Ho1998}.}
 	\label{fig:SWavePhase}
 \end{figure}
 
-Our complex Kohn $^1$S and $^3$S phase shifts can be considered benchmark results. As seen in \cref{tab:SWavePhase,fig:SWavePhase}, the $^1$S CC phase shifts are slightly below the complex Kohn phase shifts, with a larger difference at higher $\kappa$. The complex Kohn $^3$S results are almost exactly the same as the prior Kohn \cite{VanReeth2003}, and Van Reeth and Humberston noted then that the CC $^3$S phase shifts were higher. For scattering problems, there is no exact bound, but higher phase shifts typically mean that the results are more accurate. In the inset in \cref{fig:SWavePhase} however, we see that the recent CVM results line up well with the complex Kohn for both $^1$S and $^3$S, potentially indicating that complex Kohn phase shifts are more accurate. Further investigation with the CC could hopefully reveal the source of this discrepancy.
+As seen in \cref{tab:SWavePhase,fig:SWavePhase}, the $^1$S CC phase 
+shifts are slightly below the complex Kohn phase shifts, with a larger 
+difference at higher $\kappa$. The complex Kohn $^3$S results are almost 
+exactly the same as the prior Kohn \cite{VanReeth2003}, and Van Reeth and 
+Humberston noted then that the CC $^3$S phase shifts were higher. For 
+scattering problems, there is no exact bound, but higher phase shifts 
+typically mean that the results are more accurate. In the inset in \cref{
+fig:SWavePhase} however, we see that the recent CVM results line up well with 
+the complex Kohn for both $^1$S and $^3$S, potentially indicating that 
+complex Kohn phase shifts are more accurate. Further investigation with the 
+CC could hopefully reveal the source of this discrepancy.
 
 
-%\begin{table}[H]
-%\centering
-%\footnotesize
-%\begin{tabular}{l c c c c c c c}
-%\toprule
-%Method & 0.1 & 0.2 & 0.3 & 0.4 & 0.5 & 0.6 & 0.7 \\
-%\midrule
-%This work $\delta_0^+$												& $-0.427$ & $-0.820$ & $-1.161$ & $-1.446$ & $-1.678$ & $-1.858$ & $-1.964$ \\
-%Kohn $\omega = 6$ \cite{VanReeth2003} $\delta_0^+$					& $-0.427$ & $-0.820$ & $-1.161$ & $-1.446$ & $-1.677$ & $-1.857$ & $-1.964$ \\
-%Kohn $\omega \rightarrow \infty$ \cite{VanReeth2003} $\delta_0^+$	& $-0.425$ & $-0.817$ & $-1.158$ & $-1.443$ & $-1.674$ & $-1.852$ & $-1.959$ \\
-%CVM \cite{Zhang2012} $\delta_0^+$									& $-0.21464$ & $-0.43159$ &    ---     &    ---     &    ---     &    ---     &    ---    \\
-%CC 14Ps14H+H$^-$ \cite{Walters2004} $\delta_0^+$					& $-0.434$ & $-0.834$ & $-1.178$ & $-1.467$ & $-1.704$ & $-1.890$ & $-2.018$ \\
-%CC 14Ps14H \cite{Blackwood2002} $\delta_0^+$						& $-0.428$ & $-0.825$ & $-1.167$ & $-1.453$ & $-1.685$ & $-1.867$ & $-1.992$ \\
-%T-matrix \cite{Biswas2002a} $\delta_0^+$							& $-0.38269$ & $-0.73419$ & $-1.03799$ & $-1.2924$ & $-1.5014$ & $-1.6667$ \\
-%2 channel ME \cite{Biswas2001} $\delta_0^+$							& $-0.532$ & $-0.966$ & $-1.294$ & $-1.546$ & $-1.746$ & $-1.910$ & $-2.048$ \\
-%SE \cite{Ray1997} $\delta_0^+$										& $-0.692$ & $-1.212$ & $-1.592$ & $-1.902$ & $-2.142$ & $-2.362$ & $-2.512$ \\
-%5-state CC \cite{Adhikari1999} $\delta_0^+$							& $-0.362$ & $-0.702$ & $-1.002$ & $-1.252$ & $-1.462$ & $-1.622$ & $-1.712$ \\
-%SE \cite{Hara1975} $\delta_0^+$										& $-0.68649$ & $-1.2147$ & $-1.6029$ & $-1.9026$ & $-2.144$ & $-2.344$ & $-2.511$ \\
-%\midrule
-%This work $\delta_0^-$												& $-0.215$ & $-0.431$ & $-0.645$ & $-0.850$ & $-1.041$ & $-1.217$ & $-1.375$ \\
-%Kohn $\omega = 6$ \cite{VanReeth2003} $\delta_0^-$ 					& $-0.215$ & $-0.432$ & $-0.645$ & $-0.850$ & $-1.040$ & $-1.215$ & $-1.373$ \\
-%Kohn $\omega \rightarrow \infty$ \cite{VanReeth2003} $\delta_0^-$	& $-0.214$ & $-0.431$ & $-0.645$ & $-0.849$ & $-1.038$ & $-1.211$ & $-1.366$ \\
-%CVM \cite{Zhang2012} $\delta_0^-$ 									& $-0.21464$ & $-0.43159$ & --- & --- &  --- &  --- &  --- \\
-%CC 14Ps14H \cite{Blackwood2002} $\delta_0^-$ 						& $-0.206$ & $-0.414$ & $-0.624$ & $-0.838$ & $-1.037$ & $-1.213$ & $-1.367$ \\
-%SE ME \cite{Biswas2001} $\delta_0^-$ 								& $-0.145$ & $-0.283$ & $-0.410$ & $-0.521$ & $-0.613$ & $-0.683$ & $-0.731$ \\
-%SE \cite{Ray1997} $\delta_0^-$ 										& $-0.252$ & $-0.502$ & $-0.722$ & $-0.942$ & $-1.142$ & $-1.332$ & $-1.502$ \\
-%5-state CC \cite{Adhikari1999} $\delta_0^-$ 						& $-0.167$ & $-0.327$ & $-0.474$ & $-0.602$ & $-0.706$ & $-0.784$ & $-0.833$ \\
-%\bottomrule
-%\end{tabular}
-%\caption{$^{1,3}$S comparisons. Values in the header are $\kappa$ in au.}
-%\label{tab:SWaveComparisons}
-%\end{table}
-
-
-\begin{table}[H]
-\centering
-\setlength{\tabcolsep}{-2pt}
-\footnotesize
-\begin{tabular}{@{\hskip 0.1cm}l . . . . . . .}
-\toprule
-Method & \multicolumn{1}{c}{\phantom{1}0.1} & \multicolumn{1}{c}{\phantom{1}0.2} & \multicolumn{1}{c}{\phantom{1}0.3} & \multicolumn{1}{c}{\phantom{1}0.4} & \multicolumn{1}{c}{\phantom{1}0.5} & \multicolumn{1}{c}{\phantom{1}0.6} & \multicolumn{1}{c}{\phantom{1}0.7} \\
-\midrule
-This work $\delta_0^+$												& -0.427 & -0.820 & -1.161 & -1.446 & -1.678 & -1.858 & -1.964 \\
-Kohn $\omega = 6$ \cite{VanReeth2003} $\delta_0^+$					& -0.427 & -0.820 & -1.161 & -1.446 & -1.677 & -1.857 & -1.964 \\
-Kohn $\omega \rightarrow \infty$ \cite{VanReeth2003} $\delta_0^+$	& -0.425 & -0.817 & -1.158 & -1.443 & -1.674 & -1.852 & -1.959 \\
-CVM \cite{Zhang2012} $\delta_0^+$									& -0.21464 & -0.43159 & $---$ & $---$ & $---$ & $---$ & $---$ \\
-CC 14Ps14H+H$^-$ \cite{Walters2004} $\delta_0^+$					& -0.434 & -0.834 & -1.178 & -1.467 & -1.704 & -1.890 & -2.018 \\
-CC 14Ps14H \cite{Blackwood2002} $\delta_0^+$						& -0.428 & -0.825 & -1.167 & -1.453 & -1.685 & -1.867 & -1.992 \\
-T-matrix \cite{Biswas2002a} $\delta_0^+$							& -0.38269 & -0.73419 & -1.03799 & -1.2924 & -1.5014 & -1.6667 \\
-2 channel ME \cite{Biswas2001} $\delta_0^+$							& -0.532 & -0.966 & -1.294 & -1.546 & -1.746 & -1.910 & -2.048 \\
-3-state CC \cite{Sinha1997} $\delta_0^+$							& -0.68 & -1.20 & -1.59 & -1.89 & -2.13 & -2.32 & -2.48 \\
-SE \cite{Ray1997} $\delta_0^+$										& -0.692 & -1.212 & -1.592 & -1.902 & -2.142 & -2.362 & -2.512 \\
-5-state CC \cite{Adhikari1999} $\delta_0^+$							& -0.362 & -0.702 & -1.002 & -1.252 & -1.462 & -1.622 & -1.712 \\
-SE \cite{Hara1975} $\delta_0^+$										& -0.68649 & -1.2147 & -1.6029 & -1.9026 & -2.144 & -2.344 & -2.511 \\
-\midrule                                                            
-This work $\delta_0^-$												& -0.215 & -0.431 & -0.645 & -0.850 & -1.041 & -1.217 & -1.375 \\
-Kohn $\omega = 6$ \cite{VanReeth2003} $\delta_0^-$ 					& -0.215 & -0.432 & -0.645 & -0.850 & -1.040 & -1.215 & -1.373 \\
-Kohn $\omega \rightarrow \infty$ \cite{VanReeth2003} $\delta_0^-$	& -0.214 & -0.431 & -0.645 & -0.849 & -1.038 & -1.211 & -1.366 \\
-CVM \cite{Zhang2012} $\delta_0^-$ 									& -0.21464 & -0.43159 & $---$ & $---$ & $---$ & $---$ & $---$ \\
-CC 14Ps14H \cite{Blackwood2002} $\delta_0^-$ 						& -0.206 & -0.414 & -0.624 & -0.838 & -1.037 & -1.213 & -1.367 \\
-SE ME \cite{Biswas2001} $\delta_0^-$ 								& -0.145 & -0.283 & -0.410 & -0.521 & -0.613 & -0.683 & -0.731 \\
-3-state CC \cite{Sinha1997} $\delta_0^+$							& -0.24 & -0.44 & -0.69 & -0.89 & -1.08 & -1.23 & -1.362 \\
-SE \cite{Ray1997} $\delta_0^-$ 										& -0.252 & -0.502 & -0.722 & -0.942 & -1.142 & -1.332 & -1.502 \\
-5-state CC \cite{Adhikari1999} $\delta_0^-$ 						& -0.167 & -0.327 & -0.474 & -0.602 & -0.706 & -0.784 & -0.833 \\
-SE \cite{Hara1975} $\delta_0^-$										& -0.2469 & -0.4888 & -0.7211 & -0.9402 & -1.1435 & -1.3300 & -1.4996 \\
-\bottomrule
-\end{tabular}
-\caption{$^{1,3}$S comparisons. Values in the header are $\kappa$ in au.}
-\label{tab:SWaveComparisons}
-\end{table}
-
-
-\todoi{Put extrapolations in here}
 
 \begin{figure}[H]
 	\centering
@@ -329,14 +286,82 @@ publication. This work -- solid curves;
 	\label{fig:SWaveComparisons}
 \end{figure}
 
-Figure \ref{fig:SWaveComparisons} shows comparisons of the complex Kohn phase shifts to that of other groups for calculations of $^1$S and $^3$S. Our results are extremely close to Van Reeth's \cite{VanReeth2003}, so they follow along the solid line as well. Several groups have results that cluster very closely to his and ours, namely Blackwood \cite{Blackwood2002}, Walters \cite{Walters2004}, Chiesa \cite{Chiesa2002} and Ivanov \cite{Ivanov2002}. The higher phase shifts of Adhikari and Biswas \cite{Adhikari1999} are likely to be in error, as discussed by Ivanov et al. \cite{Ivanov2002}. Likewise, the further $^1$S calculations by Biswas et al. \cite{Biswas2002a} are near that of Ref.~\cite{Adhikari1999}. The Biswas \cite{Biswas2001} phase shifts agree relatively well with the current complex Kohn and that of the accurate Refs.~\cite{Blackwood2002,VanReeth2003,Walters2004} for $^1$S but seem to overestimate the $^3$S phase shifts, like that of Adhikari and Biswas \cite{Adhikari1999}.
+\Cref{fig:SWaveComparisons} shows comparisons of the complex Kohn phase 
+shifts to that of other groups for calculations of $^1$S and $^3$S. Our 
+results are extremely close to Van Reeth and Humberston's \cite{VanReeth2003}, so they 
+follow along the solid line as well. Several groups have results that cluster 
+very closely to theirs and ours, namely Blackwood \cite{Blackwood2002}, Walters 
+\cite{Walters2004}, Chiesa \cite{Chiesa2002} and Ivanov \cite{Ivanov2002}. 
+The higher phase shifts of Adhikari and Biswas \cite{Adhikari1999} are likely 
+to be in error, as discussed by Ivanov et al. \cite{Ivanov2002}. Likewise, 
+the further $^1$S calculations by Biswas et al. \cite{Biswas2002a} are near 
+that of Ref.~\cite{Adhikari1999}. The Biswas \cite{Biswas2001} phase shifts 
+agree relatively well with the current complex Kohn and that of the accurate 
+Refs.~\cite{Blackwood2002,VanReeth2003,Walters2004} for $^1$S but seem to 
+overestimate the $^3$S phase shifts, like that of Adhikari and Biswas
+\cite{Adhikari1999}.
+
+
+\begin{table}[H]
+\centering
+\setlength{\tabcolsep}{-2pt}
+\footnotesize
+\begin{tabular}{@{\hskip 0.1cm}l . . . . . . .}
+\toprule
+Method & \multicolumn{1}{c}{\phantom{1}0.1} & \multicolumn{1}{c}{\phantom{1}0.2} & \multicolumn{1}{c}{\phantom{1}0.3} & \multicolumn{1}{c}{\phantom{1}0.4} & \multicolumn{1}{c}{\phantom{1}0.5} & \multicolumn{1}{c}{\phantom{1}0.6} & \multicolumn{1}{c}{\phantom{1}0.7} \\
+\midrule
+This work $\omega = 7$ $\delta_0^+$									& -0.427   & -0.820   & -1.161   & -1.446  & -1.678  & -1.858  & -1.964 \\
+This work $\omega \to \infty$ $\delta_0^+$							& -0.426   & -0.819   & -1.161   & -1.446  & -1.677  & -1.857  & -1.963 \\
+Kohn $\omega = 6$ \cite{VanReeth2003} $\delta_0^+$					& -0.427   & -0.820   & -1.161   & -1.446  & -1.677  & -1.857  & -1.964 \\
+Kohn $\omega \rightarrow \infty$ \cite{VanReeth2003} $\delta_0^+$	& -0.425   & -0.817   & -1.158   & -1.443  & -1.674  & -1.852  & -1.959 \\
+CVM \cite{Zhang2012} $\delta_0^+$									& -0.42636 & -0.81973 & $---$    & $---$   & $---$   & $---$   & $---$  \\
+CC 14Ps14H+H$^-$ \cite{Walters2004} $\delta_0^+$					& -0.434   & -0.834   & -1.178   & -1.467  & -1.704  & -1.890  & -2.018 \\
+CC 14Ps14H \cite{Blackwood2002} $\delta_0^+$						& -0.428   & -0.825   & -1.167   & -1.453  & -1.685  & -1.867  & -1.992 \\
+T-matrix \cite{Biswas2002a} $\delta_0^+$							& -0.38269 & -0.73419 & -1.03799 & -1.2924 & -1.5014 & -1.6667 & $---$  \\
+2 channel ME \cite{Biswas2001} $\delta_0^+$							& -0.532   & -0.966   & -1.294   & -1.546  & -1.746  & -1.910  & -2.048 \\
+3-state CC \cite{Sinha1997} $\delta_0^+$							& -0.68    & -1.20    & -1.59    & -1.89   & -2.13   & -2.32   & -2.48  \\
+SE \cite{Ray1997} $\delta_0^+$										& -0.692   & -1.212   & -1.592   & -1.902  & -2.142  & -2.362  & -2.512 \\
+5-state CC \cite{Adhikari1999} $\delta_0^+$							& -0.362   & -0.702   & -1.002   & -1.252  & -1.462  & -1.622  & -1.712 \\
+SE \cite{Hara1975} $\delta_0^+$										& -0.68649 & -1.2147  & -1.6029  & -1.9026 & -2.144  & -2.344  & -2.511 \\
+\midrule                                                            
+This work $\omega = 7$ $\delta_0^-$									& -0.215   & -0.431   & -0.645   & -0.850  & -1.041  & -1.217  & -1.375  \\
+This work $\omega \to \infty$ $\delta_0^-$							& -0.214   & -0.431   & -0.645   & -0.849  & -1.040  & -1.214  & -1.372  \\
+Kohn $\omega = 6$ \cite{VanReeth2003} $\delta_0^-$ 					& -0.215   & -0.432   & -0.645   & -0.850  & -1.040  & -1.215  & -1.373  \\
+Kohn $\omega \rightarrow \infty$ \cite{VanReeth2003} $\delta_0^-$	& -0.214   & -0.431   & -0.645   & -0.849  & -1.038  & -1.211  & -1.366  \\
+CVM \cite{Zhang2012} $\delta_0^-$ 									& -0.21464 & -0.43159 & $---$    & $---$   & $---$   & $---$   & $---$   \\
+CC 14Ps14H \cite{Blackwood2002} $\delta_0^-$ 						& -0.206   & -0.414   & -0.624   & -0.838  & -1.037  & -1.213  & -1.367  \\
+SE ME \cite{Biswas2001} $\delta_0^-$ 								& -0.145   & -0.283   & -0.410   & -0.521  & -0.613  & -0.683  & -0.731  \\
+3-state CC \cite{Sinha1997} $\delta_0^+$							& -0.24    & -0.44    & -0.69    & -0.89   & -1.08   & -1.23   & -1.362  \\
+SE \cite{Ray1997} $\delta_0^-$ 										& -0.252   & -0.502   & -0.722   & -0.942  & -1.142  & -1.332  & -1.502  \\
+5-state CC \cite{Adhikari1999} $\delta_0^-$ 						& -0.167   & -0.327   & -0.474   & -0.602  & -0.706  & -0.784  & -0.833  \\
+SE \cite{Hara1975} $\delta_0^-$										& -0.2469  & -0.4888  & -0.7211  & -0.9402 & -1.1435 & -1.3300 & -1.4996 \\
+\bottomrule
+\end{tabular}
+\caption{$^{1,3}$S comparisons. Values in the header are $\kappa$ in au.}
+\label{tab:SWaveComparisons}
+\end{table}
+
+An extensive comparison of the S-wave phase shifts with calculations from other
+groups is also in \cref{tab:SWaveComparisons}. Fewer groups have attempted this
+problem than the PsH bound state problem in \cref{tab:BoundEnergyOther}. We see
+that the accuratecomplex Kohn results are very similar to the prior Kohn
+\cite{VanReeth2003} and agree extremely well with the CVM results
+\cite{Zhang2012}. The CC phase shifts \cite{Walters2004,Blackwood2002} also
+agree relatively well, with closer agreement for $^1$S than $^3$S.
 
 
 
 \subsection{Resonances}
 \label{sec:SWaveResonances}
 
-As Blackwood et al. \cite{Blackwood2002} mention, there are an infinite number of Rydberg resonances in each partial wave converging on the $e^+$+H$^-$ threshold at \SI{6.05}{eV}. Before the Ps(n=2) threshold at \SI{5.102}{eV}, there are two very clear resonances for $^1$S scattering, which can be seen in figure \ref{fig:SWavePhase}. The first resonance is associated with the $2s$ state \cite{DiRienzi2002b}. The $1s$ state is associated with the PsH bound state in \cref{chp:PsHBound}. The trial wavefunction we use cannot be extended past this threshold without modifications to take into account the Ps(n=2) channel. We use the numerical methods described in \cref{sec:ResonanceFit} to accurately determine the resonance parameters.
+Before the Ps(n=2) threshold at \SI{5.102}{eV}, 
+there are two very clear resonances for $^1$S scattering, which can be seen 
+in figure \ref{fig:SWavePhase}. The first resonance is associated with the
+$2s$ state \cite{DiRienzi2002b}. The $1s$ state is associated with the PsH bound 
+state in \cref{chp:PsHBound}. The trial wavefunction we use cannot be 
+extended past this threshold without modifications to take into account the
+Ps(n=2) channel. We use the numerical methods described in
+\cref{sec:ResonanceFit} to accurately determine the resonance parameters.
 
 \setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
 \setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
@@ -355,7 +380,7 @@ CC (22Ps1H + H$^-$) \cite{Blackwood2002b} & $4.141$ & $0.071$ & $4.963$ & $0.033
 CC (9Ps9H) \cite{Blackwood2002} & $4.37$ & $0.10$ & --- & --- \\
 Optical potential \cite{DiRienzi2002b} & $4.021$ & $0.0259$ & --- & --- \\
 T-matrix \cite{Biswas2002a} & $4.06$ & --- & --- & --- \\
-CC \cite{Biswas2002} $4.04$ & --- & --- & --- \\
+CC \cite{Biswas2002} & $4.04$ & --- & --- & --- \\
 Five-state CC \cite{Adhikari2001e} & $4.01$ & $0.15$ & --- & --- \\
 Complex rotation \cite{Yan1999} & $4.0058 \pm 0.0005$ & $0.0952 \pm 0.0011$ & $4.9479 \pm 0.0014$ & $0.0585 \pm 0.0027$ \\
 Coupled-pseudostate \cite{Campbell1998} & $4.55$ & $0.084$ & --- & --- \\

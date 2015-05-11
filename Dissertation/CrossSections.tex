@@ -44,7 +44,6 @@ related to the phase shifts by
 \label{eq:PartialCross}
 \sigma_{el,\ell}^\pm = \frac{4}{\kappa^2} (2\ell+1) \sin^2 \delta_\ell^\pm.
 \end{equation}
-\todoi{Page number for Bransden book}
 In addition to the relation of the integrated cross sections to the
 differential cross sections in \cref{eq:TotalDiffCross},
 using the partial wave expansion, the integrated cross sections can also be 
@@ -53,7 +52,7 @@ expressed as \citep[p.]{Bransden2003}
 \label{eq:TotalCross}
 \sigma_{el}^\pm = \sum_{\ell=0}^\infty \sigma_{el,\ell}^\pm = \frac{4}{\kappa^2} \sum_{\ell=0}^\infty (2\ell+1) \sin^2 \delta_\ell^\pm.
 \end{equation}
-We consider the target H to be unpolarized, so
+We consider the Ps and H to be unpolarized, so
 for each of the cross sections other than the ortho-para conversion, the 
 singlet contributes $\frac{1}{4}$, and the triplet contributes $\frac{3}{4}$, 
 giving spin-weighted cross sections, i.e. \cite{Ward1987,Blackwood2002}
@@ -95,9 +94,6 @@ The $^1$S-wave cross section is decreasing rapidly while the $^1$P-wave cross
 section is increasing, giving this feature. The maximum is due primarily to the
 $^1$P-wave.
 
-
-
-\todoi{More complete figure captions}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=5.25in]{singlet-cross-sections}
@@ -327,7 +323,7 @@ forward direction $(\theta = 0)$. The values are all less than 7 $a_0^2/\textrm{
 It is also of note that in the backward scattering direction $(\theta = \uppi)$,
 the triplet differential cross section quickly becomes very small.
 
-In contrast, the singlet differential cross section, $\frac{d\sigma_{el}^-}{d\Omega}$,
+In contrast, the singlet differential cross section, $\frac{d\sigma_{el}^+}{d\Omega}$,
 shown in \cref{fig:diff-cross-sections-singlet} has a much more complicated
 structure. The resonances are clearly visible in the plot, and the highest peak
 extending to 110.5 $a_0^2/\textrm{sr}$ is due to the D-wave resonance, which is
@@ -355,24 +351,20 @@ forward direction.
 
 Similar to the integrated cross section, we combine these using the same type
 of spin-weighting given in \cref{eq:SpinWeightCS}. Due to the nearly featureless
-nature of the triplet, the combined differential cross section in 
+nature of the triplet in \cref{fig:diff-cross-sections-triplet},
+the combined differential cross section in 
 \cref{fig:diff-cross-sections-combined} looks very similar to 
 \cref{fig:diff-cross-sections-singlet}, but the 1/4 weighting of the singlet
 brings the vertical scale down. The forward direction is enhanced slightly by
 the maximum in the triplet in \cref{fig:diff-cross-sections-triplet}.
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{diff-cross-sections-combined}
-	\caption{Combined spin-weighted differential cross section}
-	\label{fig:diff-cross-sections-combined}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{diff-cross-sections-combined-2}
-	\caption{Combined spin-weighted differential cross section}
-	\label{fig:diff-cross-sections-combined-2}
+\begin{figure}[H]%
+    \centering
+    \subfloat{{\includegraphics[width=6in]{diff-cross-sections-combined} }} \\%
+    %\qquad
+    \subfloat{{\includegraphics[width=6in]{diff-cross-sections-combined-2} }}%
+    \caption{(Color online) The combined spin-weighted elastic differential cross section for Ps-H scattering at two different viewing angles}%
+    \label{fig:combined-diff-cross-sections}%
 \end{figure}
 
 With the data in \cref{fig:diff-cross-sections-combined}, it is illustrative 
@@ -382,12 +374,13 @@ $E_{\bm \kappa}$ to see the the energy-dependence for several $\theta$ values.
 We are particularly interested in the forward ($\theta = 0\degree$) and backward
 ($\theta = 180\degree$) directions but also include $\theta = 90\degree$.
 From this figure, it is clear that scattering in the forward direction is
-dominant past approximately $\SI{0.5}{eV}$. The maximum for forward scattering
+dominant past approximately $\SI{0.46}{eV}$. The maximum for forward scattering
 is due to the $^1$D resonance. Particularly interesting is the contribution
 from backward scattering for low $E_{\bm \kappa}$ and the dip in the forward
 scattering direction, which corresponds to the dip in
 \cref{fig:combined-cross-sections}. All angles give essentially the same value
-at very low energy, as we would expect. 
+at very low energy, as we would expect.
+
 
 \begin{figure}[H]
 	\centering
@@ -407,7 +400,9 @@ it becomes much more forward peaked, with a decreasing contribution to the
 backward direction, and a minimum at approximately $100\degree$. As the 
 momentum is increased further, the differential cross section becomes very 
 strongly forward peaked, with even further decreases at larger angles and a 
-nearly constant value from about $100\degree$.
+nearly constant value from about $100\degree$.  We see from
+\cref{fig:combined-diff-cross-sections} that the majority of the scattering
+takes place between 0 and 1 radians.
 
 \begin{figure}[H]
 	\centering
@@ -528,7 +523,7 @@ where the maximum percent difference is located for the singlet, and columns
 Unsurprisingly, other than the case of $\ell = 1$, the angles that are the most
 sensitive are 0 and $\pi$ radians. The most sensitive energies are in the
 resonance region, and most of these are near the inelastic threshold of
-$\SI{5.101}{eV}$.
+$\SI{5.102}{eV}$.
 
 
 \begin{table}[H]
@@ -574,6 +569,7 @@ phase shifts as \citep[p. 589]{Bransden2003}
 \label{eq:MomentumCross}
 \sigma_{m}^\pm = \frac{4}{\kappa^2} \sum_{\ell=0}^\infty (\ell+1) \sin^2 (\delta_\ell^\pm - \delta_{\ell+1}^\pm) .
 \end{equation}
+This is the expression used in this work.
 
 \Cref{fig:momentum-cross-sections} shows the momentum transfer cross section 
 from the complex Kohn and the static exchange \cite{Hara1975}. The static 
@@ -599,8 +595,6 @@ The ortho-para conversion cross sections give the conversion of the projectile o
 \end{equation}
 
 \todoi{Ortho-para in \cite{Baltenko1983}}
-\todoi{Note from Blackwood paper \cite{Blackwood2002c} on isotropic at low E (in our paper?)}
-
 
 \begin{figure}[H]
 	\centering
@@ -634,12 +628,10 @@ indicating that the scattering is primarily forward peaked. The $\sigma_m$ curve
 as seen in \cref{fig:cross-section-comparisons}, gets close to the $\sigma_{el}$
 curve for the dips in some of the resonances at approximately $\SI{4.3}{eV}$
 and $\SI{5.1}{eV}$, showing that the scattering is concentrated nearly equally
-in the forward and backward directions. This effect can slightly be seen in
-\cref{fig:diff-cross-sections-combined}, but it is most clearly shown in
-\cref{fig:diff-cross-section-2D-theta}.
+in the forward and backward directions at these energy values.
+This effect can slightly be seen in \cref{fig:combined-diff-cross-sections},
+but it is most clearly shown in \cref{fig:diff-cross-section-2D-theta}.
 
-
-As noticed in the differential cross section, 
 
 
 
@@ -647,6 +639,10 @@ As noticed in the differential cross section,
 \todoi{Other papers describing relationship between elastic and momentum-transfer?}
 
 \todoi{Ortho-para conversion ratio in \cite{Massey1954,Biswas1998,Raya,Rayb}}
+
+\todoi{Revisit ortho-para conversion cross section. Does this really show the ortho-Ps
+converting to para-Ps? Because we are not considering the spin of Ps but rather the
+spins of the electrons. We removed this from the paper.}
 
 
 \biblio

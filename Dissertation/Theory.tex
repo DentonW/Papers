@@ -10,11 +10,19 @@
 
 \section{General Wavefunction}
 
-The applications of the Kohn, inverse Kohn, complex Kohns, generalized Kohn, and generalized complex Kohns to our trial wavefunctions for each of the partial waves through the H-wave are all very similar in form. The trial wavefunctions for the partial waves (\cref{eq:SWaveTrial,eq:PWaveTrial,eq:DWaveTrial}) can be written in a general form as
+The applications of the Kohn, inverse Kohn, complex Kohns, generalized Kohn, 
+and generalized complex Kohns to our trial wavefunctions for each of the 
+partial waves through the H-wave are all very similar in form. The trial 
+wavefunctions for the partial waves
+(\cref{eq:SWaveTrial,eq:PWaveTrial,eq:DWaveTrial}) can be written in a general
+form as
 \beq
 \Psi_\ell^{\pm,t} = \widetilde{S}_\ell + L_\ell^{\pm,t} \, \widetilde{C}_\ell + \sum_{i=1}^N c_i \bar{\phi}_i.
 \label{eq:GeneralWaveTrial}
 \eeq
+We only consider the Ps(1s)+H(1s) system for energies up to the excitation
+threshold of Ps(n=2)+H(1s), which is at an energy of $\tfrac{3}{16}$ a.u.
+($5.102$ eV) \cite{WoodsPRA2015}.
 
 To avoid confusion with $L_\ell^{\pm,t}$ here and $\mathcal{L}$ in
 \cref{eq:LDef}, since the orbital angular momentum $\ell$ of the incoming Ps is
@@ -23,9 +31,10 @@ wave.
 
 The short-range $\bar{\phi}_i$ terms can represent terms of different 
 symmetries, such as the $\bar{\phi}_{1i}$ and $\bar{\phi}_{2j}$ of the P-wave 
-in \cref{eq:PWaveSimple}. The only requirement in this derivation is that 
+in \cref{eq:PWaveTrial}. The only requirement in this derivation is that 
 these are Hylleraas-type short-range terms. In addition to letting the
-$\widetilde{S}$ and $\widetilde{C}$ represent the $\bar{S}$ and $\bar{C}$ for 
+$\widetilde{S}_\ell$ and $\widetilde{C}_\ell$ represent
+the $\bar{S}_\ell$ and $\bar{C}_\ell$ for 
 the different partial waves, we can define them in such a way as to use 
 multiple Kohn methods (Kohn, inverse Kohn, etc.). We begin by defining a
 $2\times 2$ matrix $\textbf{u}$ which satisfies
@@ -80,14 +89,27 @@ S_\ell = \,&\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} \Phi_{Ps}\le
 C_\ell = -&\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,n_\ell\!\left(\kappa\rho\right) f_\ell(\rho) \label{eq:GenCDef}.
 \end{align}
 \end{subequations}
-The $\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho}$ are the standard spherical harmonics, and  and $\Phi_H\left(r_3\right)$ are the Ps and H ground state wavefunctions given in \cref{eq:PsWave,eq:HWave}.
-The shielding function, $f_\ell(\rho)$, removes the singularity at the origin due to the spherical Neumann function, $n_\ell$. The form that we have chosen for this is
+The $\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho}$ are the 
+standard spherical harmonics, and  and $\Phi_H\left(r_3\right)$ are the Ps 
+and H ground state wavefunctions given in \cref{eq:PsWave,eq:HWave}.
+
+The shielding function, $f_\ell(\rho)$, removes the singularity at the origin 
+due to the spherical Neumann function, $n_\ell$. The form that we have chosen 
+for this is
 \begin{equation}
   \label{eq:PartialWaveShielding}
   f_\ell(\rho) = \left[1 - \ee^{-\mu \rho} \left(1+\frac{\mu}{2}\rho\right)
   \right]^{m_\ell}.
 \end{equation}
-At a minimum, $m_\ell$ is chosen so that $C_\ell$ behaves like $S_\ell$ as $\rho \to 0$. For more discussion of this, see \Cref{sec:ShieldingFunc}. The values used for the different partial waves are given in \cref{tab:Shielding}.
+At a minimum, $m_\ell$ is chosen so that $C_\ell$ behaves like $S_\ell$ as
+$\rho \to 0$. For more discussion of this, see \Cref{sec:ShieldingFunc}. The
+values used for the different partial waves are given in \cref{tab:Shielding}.
+Prior work \cite{VanReeth2003} used a slightly simpler shielding function 
+for the S-wave of
+\begin{equation}
+\label{eq:OldShielding}
+f(\rho) = (1 - \ee^{\lambda \rho})^3.
+\end{equation}
 
 \todoi{Put in plots from ``Shielding Function Plots.nb''?}
 
@@ -148,6 +170,21 @@ clearer to ignore them here. Likewise, we only consider the direct terms
 here, unless otherwise specified. The final result of this section applies 
 equally well to both the direct and exchanged terms.
 
+The wavenumber is defined as
+\beq
+\label{eq:Wavenumber}
+\kappa = \frac{\sqrt{2 m E_{\bm \kappa}}}{\hbar}.
+\eeq
+In atomic units, this gives the kinetic energy for Ps as
+\beq
+E_{\bm \kappa} = \frac{\hbar^2 \kappa^2}{2 m} = \frac{\kappa^2}{2 m} = \frac{1}{4} \kappa^2,
+\label{eq:Wavenumber}
+\eeq
+and including this in the total energy with the ground-state energies of H and Ps gives
+\beq
+E = E_H + E_{Ps} + E_{\bm \kappa} = -\frac{1}{2} - \frac{1}{4} + \frac{1}{4} \kappa^2 = -\frac{3}{4} + \frac{1}{4} \kappa^2.
+\eeq
+
 The functional $I_\ell$ is defined as \cite{Adhikari1998}
 \begin{equation}
 I[\Psi_\ell^t]\equiv \left<{\Psi_\ell^t}^\star | \mathcal{L} | \Psi_\ell^t \right> = \left(\Psi_\ell^t, \mathcal{L} \Psi_\ell^t \right) = \int \Psi_\ell^t \mathcal{L}
@@ -159,23 +196,13 @@ where the operator $\mathcal{L}$ is given by
 \label{eq:LDef}
 \mathcal{L} = 2(H-E).
 \eeq
-In atomic units, the wave vector definition gives the kinetic energy for Ps as
-\beq
-E_{\bm \kappa} = \frac{\hbar^2 \kappa^2}{2 m} = \frac{\kappa^2}{2 m} = \frac{1}{4} \kappa^2.
-\label{eq:Wavenumber}
-\eeq
-The total energy, $E$, is then given by
-\begin{equation}
-\label{eq:TotalEnergy}
-E = E_H + E_{Ps} + \frac{1}{4}\kappa^2 = E_H + E_{Ps} + E_{\bm \kappa},
-\end{equation}
-where $E_H$ and $E_{Ps}$ are the ionization energies of ground state H and Ps, respectively.
 Note that the exact wavefunction $\Psi_\ell$ solves the Schr\"{o}dinger equation, giving
 \beq
 \label{eq:Il0}
 I[\Psi_\ell] = 0.
 \eeq
-\label{BraNote} Normally, the bra in bra-ket notation is conjugated, but as noted by Cooper et al. \cite{Cooper2010}, the bra is not conjugated for the Kohn variational methods.
+\label{BraNote}Normally, the bra in bra-ket notation is conjugated, but as noted by Cooper et al. \cite{Cooper2010}
+and Lucchese \cite{Lucchese1989}, the bra is not conjugated for the Kohn variational methods.
 
 The trial wavefunction is related to the exact solution by
 \beq
@@ -202,24 +229,8 @@ Since $\mathcal{L}\Psi_\ell = 0$,
 \eeq
 which combined with the definition of $\mathcal{L}$ from \cref{eq:LDef}, allows us to write the above equation as
 \beq
-\delta I_\ell^\prime = 2 \Braket{\Psi_\ell^\star | H\!-\!E | \delta\Psi_\ell} - 2 \Braket{\delta\Psi_\ell^\star | H\!-\!E | \Psi_\ell }.
+\delta I_\ell^\prime = 2 (\Psi_\ell^\star | H\!-\!E | \delta\Psi_\ell) - 2 (\delta\Psi_\ell^\star | H\!-\!E | \Psi_\ell).
 \label{eq:IlPsiVariation2}
-\eeq
-
-The wavenumber is defined as
-\beq
-\label{eq:Wavenumber}
-\kappa = \frac{\sqrt{2 m E}}{\hbar}.
-\eeq
-From \cref{eq:Wavenumber}, since Ps has twice the mass of a positron, $m \to 2m$, the kinetic energy of the positronium atom is $T = \frac{1}{4} \kappa^2$, where $\kappa$ is the wavenumber of Ps. Including the dissociation energy of H and Ps to get the total energy gives
-\beq
-E = E_H + E_{Ps} + \frac{1}{4} \kappa^2.
-\eeq
-\todoi{Put in the $E_{\bm \kappa}$ from PRA paper}
-For the ground states of H and Ps,
-\beq
-E = -\frac{1}{2} - \frac{1}{4} + \frac{1}{4} \kappa^2 = -\frac{3}{4} + \frac{1}{4} \kappa^2 \:\: \text{(in a.u.)}.
-\label{eq:EnergyTotal}
 \eeq
 
 The Hamiltonian for the fundamental Coulombic system is
@@ -228,7 +239,7 @@ The Hamiltonian for the fundamental Coulombic system is
 H = -\frac{1}{2} \Laplacian_{r_1} - \frac{1}{2} \Laplacian_{r_2} - \frac{1}{2} \Laplacian_{r_3} + \frac{1}{r_1} - \frac{1}{r_2} - \frac{1}{r_3} - \frac{1}{r_{12}} -\frac {1}{r_{13}} + \frac{1}{r_{23}}.
 \end{align}
 
-\noindent The Hamiltonian can also be expressed in terms of other variables as
+\noindent The Hamiltonian can also be expressed in terms of other variables in Jacobi coordinates as
 \begin{align}
 H = -\frac{1}{4} \Laplacian_\rho - \frac{1}{2} \Laplacian_{r_3} - \Laplacian_{r_{12}} + \frac{1}{r_1} - \frac{1}{r_2} - \frac{1}{r_3} - \frac{1}{r_{12}} - \frac{1}{r_{13}} + \frac{1}{r_{23}}
 \label{eq:Hamiltonian2}
@@ -1246,6 +1257,23 @@ are metastable states with lifetimes of
 \eeq
 Ray also points out that this is longer than a typical collision time.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=5.25in]{WaltersEventLine}
+	\caption[Event line for singlet Ps-H scattering]{Event line for singlet Ps-H scattering.
+Used with permission from Ref.~\cite{Walters2004}.}
+	\label{fig:WaltersEventLine}
+\end{figure}
+
+As Blackwood et al.\ \cite{Blackwood2002} mention, there are an infinite 
+number of Rydberg resonances in each partial wave converging on the $e^+$+H$^-$
+threshold at \SI{6.05}{eV}. Walters et al.\ \cite{Walters2004} gives this as a
+a more accurate value of \SI{6.0477}{eV}, as shown in \cref{fig:WaltersEventLine}
+from their paper. They also note that the Ps(n=3)
+threshold is at \SI{6.0470}{eV}, making these two thresholds nearly the same
+energy. This work only considers the single channel problem up to the Ps(n=2)
+threshold at \SI{5.102}{eV}.
+
 For Ps-H scattering, Drachman predicted that these resonances correspond to 
 the metastable state of e$^+$ with the H$^-$ ion \cite{Drachman1979}. A set 
 of close coupling papers \cite{Blackwood2002,Blackwood2002b,Walters2004} 
@@ -1253,12 +1281,12 @@ confirms that the H$^-$ channel is important for the resonances, indicating
 that Drachman's prediction was correct. Biswas \cite{Biswas2001} also showed 
 that H$^-$ formation is important for describing this system.
 
-The first resonance is associated with the $2s$ state \cite{DiRienzi2002b} 
+The first $^1$S resonance is associated with the $2s$ state \cite{DiRienzi2002b} 
 and was first calculated by Hazi and Taylor using a stabilization method
-\cite{Hazi1970}. The first $^1P$ Rydberg resonance is associated with the $3p$ 
-state, not the $2p$ state \cite{DiRienzi2002b}, while the $^1D$ resonance 
+\cite{Hazi1970}. The first $^1$P Rydberg resonance is associated with the $3p$ 
+state, not the $2p$ state \cite{DiRienzi2002b}, while the $^1$D resonance 
 corresponds with the $3d$ state \cite{DiRienzi2002a}. No such analysis exists
-for higher partial waves or resonances for the $S$-, $P$- and $D$-waves other
+for higher partial waves or resonances for the S-, P- and D-waves other
 than the first resonance of each.
 
 
