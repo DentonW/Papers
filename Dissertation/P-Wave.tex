@@ -147,12 +147,27 @@ Since the P-wave trial wavefunction has two sets of short-range terms, the matri
 	\end{bmatrix}.
 \end{equation}
 }
-The rest of the analysis in \cref{sec:KohnApplied} applies directly to the P-wave.
-
+The analysis in \cref{sec:KohnApplied} applies directly to the P-wave.
 
 
 \subsection{P-Wave Short-Range -- Short-Range Integrals}
 \label{sec:PWaveShortShort}
+
+Due to the non-constant spherical harmonics, the P-wave short-short integrals
+are more complicated than the S-wave. Using the results in \cref{sec:AngularInt},
+these integrals with both symmetries can be written as shown in
+\cref{eq:PWavePhi1Phi1,eq:PWavePhi2Phi2,eq:PWavePhi1Phi2,eq:PWavePhi2Phi1}.
+Each of these equations has re-expressed the Laplacian as the gradient-gradient,
+allowing us to use \cref{eq:GradGradShort}.
+
+Full derivations are available from the Research Wiki \cite{Wiki}.
+Tables showing the coefficients and powers of $r_i$ and $r_{ij}$ for each of 
+these equations is shown in \cref{sec:RPowersCoeffsP}. These tables allow a 
+direct correspondence between the derivations and the code described in
+\cref{chp:Programs}. I wrote a \emph{Mathematica} notebook
+(see \cref{chp:RPowersCoeffs}) that transforms
+these equations into a form more suitable for direct use in the C++ code.
+
 
 \begin{align}
 \label{eq:PWavePhi1Phi1}
