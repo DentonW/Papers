@@ -24,12 +24,8 @@
 \usepackage{wasysym}  % Simply for \CIRCLE and \Circle (could use \circ for the latter)
 \usepackage{subfig}
 
-
 \usepackage{silence}
 \WarningFilter{revtex4-1}{Repair the float}  % Completely innocuous warning - http://tex.stackexchange.com/questions/180762/revtex4-1-warning-repair-the-float-package
-
-% Remove this - highlighted text
-\newcommand{\hlc}[2][yellow]{ {\sethlcolor{#1} \hl{#2}} }
 
 % Subfolders containing our images
 \graphicspath{{IPython/}{Images/}}
@@ -115,7 +111,7 @@ up to the excitation threshold of Ps(n=2) at $\tfrac{3}{16}$ a.u.
 Ps-H scattering is a fundamental four-body Coulomb process. The Kohn and 
 inverse Kohn variational methods have previously been applied to Ps-H 
 collisions by Van Reeth and Humberston \cite{VanReeth2003,VanReeth2004}, who 
-computed $^{1,3}S$ and $^{1,3}P$ elastic phase shifts. We 
+computed $^{1,3}S$ and $^{1,3}P$ phase shifts. We 
 extend their $^{1,3}S$ and $^{1,3}P$  variational calculations in 
 multiple ways. In addition to
 the Kohn and inverse Kohn variational methods, we implement the 
@@ -147,7 +143,7 @@ We present results in this paper obtained generally using the $S$-matrix
 complex Kohn 
 variational principle for Ps-H scattering. We confirm the previously calculated 
 resonances for the first four partial waves and compare the resonance parameters
-to those of the earlier Kohn \cite{VanReeth2003,VanReeth2004}, close 
+to those of the earlier Kohn \cite{VanReeth2004}, close 
 coupling (CC) \cite{Walters2004} and complex rotation calculations
 \cite{Yan1999,Yan1998a,Ho1998,Ho2000}. In addition, we compute the scattering
 lengths and effective ranges using multiple effective range theories.
@@ -183,7 +179,8 @@ for Ps scattering from H, which took into account excitation and ionization
 of both the projectile and target. They considered two different coupling 
 schemes. The first one, which they refer to as 9Ps9H, included 9 eigen- and 
 pseudo-states of Ps and also of H. The second scheme, which they refer to as 
-14Ps14H, was used for singlet scattering only and included 14 eigen- and pseudo-states of 
+14Ps14H, was used for $S$-wave singlet scattering only and included
+14 eigen- and pseudo-states of 
 Ps and also of H. Good agreement was obtained between the CC
 \cite{Blackwood2002} and the SVM \cite{Ivanov2002} for the $^{1,3}S$-wave scattering
 lengths and phase shifts. In another paper, Blackwood et
@@ -342,8 +339,8 @@ $\tau = \frac{\pi}{2}$ in Eq. (\ref{eq:GenKohn})
 gives the inverse Kohn. 
 For comparison with Cooper et al.\ \cite{Cooper2010}, the generalized
 Kohn \textbf{u} matrix is identical to their corresponding matrix,
-while the \textbf{u} matrix for the generalized complex Kohn
-$T$ matrix is similar to their corresponding matrix.
+while the \textbf{u} matrix for the generalized $T$-matrix complex Kohn
+is similar to their corresponding matrix.
 We use the definition of the $T$ and $S$ matrices
 given by Bransden \cite{Bransden1970}.
 The \textbf{u} matrix for the Kohn in Eq.~(\ref{eq:KohnU}) is identical
@@ -381,25 +378,6 @@ formalism here.
 In Sec.~\ref{sec:Numerical}, we discuss numerical techniques that improve
 convergence of the results.
 
-%For partial waves with $\ell>1$, the orbital angular momentum could also be 
-%shared between both particles in the Ps atom \cite{Schwartz1961a}. 
-%Investigation of e$^+$-H scattering \cite{VanReeth2015} has shown 
-%that these mixed symmetry terms can be important for that 
-%system. At very low energies, the mixed symmetry terms are negligible, contributing 
-%less than 1\% to the phase shifts at $\kappa = 0.1$, and near
-%the Ps formation threshold, contribute up to 10\%
-%of the final value of the phase shifts. Likewise, investigation into
-%e$^-$-H scattering \cite{VanReeth2015} indicates that the mixed symmetry terms
-%are negligible at very low energies, contributing less than 0.1\% at
-%$\kappa = 0.1$, but contribute to the $^1D$ phase
-%shifts by up to 25\% at $\kappa = 0.8$. These contribute less than 1\%
-%to the $^3D$ phase shifts for e$^-$-H scattering.
-%The analytical evaluation of the various matrix elements are more
-%complicated for Ps-H scattering than these two other systems, particularly
-%evaluating the mixed symmetry terms with the other short-range terms and
-%with themselves. Due to this complexity, we have not included the terms
-%where angular momentum is shared.
-
 For partial waves with $\ell>1$, the orbital angular momentum could also be 
 shared between both particles in the Ps atom, giving a total of
 $\ell + 1$ sets of short-range terms \cite{Schwartz1961a}. For the
@@ -435,7 +413,8 @@ for the $^1D$-wave, the inclusion of the
 mixed symmetry terms has little effect on the phase shifts at very low
 energies but has a more appreciable effect at higher energy. Interestingly,
 this investigation found that the mixed symmetry terms change the
-e$^-$-H $^3D$ phase shifts less than 1\% over the energy range considered.
+$^3D$-wave e$^-$-H phase shifts less than 1\% over the energy
+range considered.
 
 As discussed in Sec.~\ref{sec:Results} for Ps-H scattering, the $D$-wave
 contributes only a small amount to the elastic integrated cross sections away 
@@ -595,46 +574,6 @@ Born approximation (B1) to $\tan\delta_\ell$ of \cite{Bransden2003}
 We also consider a modified Born approximation to $\tan\delta_\ell$ that uses both long-range terms
 from Eqs. (\ref{eq:TrialWave}) and (\ref{eq:TrialWaveHigher}) in Eqs.
 (\ref{eq:Lv}) and (\ref{eq:GenKohnL}).
-
-%\subsection{Cross Sections}
-%We calculate the integrated and differential elastic cross sections using
-%\cite{Bransden2003}, respectively,
-%\begin{equation}
-%\label{eq:TotalCross}
-%\sigma_{el}^\pm = \frac{4}{\kappa^2} \sum_{\ell=0}^\infty (2\ell+1) \sin^2
-%   \delta_\ell^\pm
-%\end{equation}
-%and
-%\begin{align}
-%\label{eq:DiffCross}
-%\nonumber \frac{d\sigma_{el}^\pm}{d\Omega} = \frac{1}{\kappa^2} & \sum_{\ell=0}
-%  ^\infty \sum_{\ell^\prime=0}^\infty (2\ell+1)(2\ell^\prime+1) \exp
-%  \left\{\ii \left[\delta_\ell(\kappa) - \delta_{\ell^\prime}(\kappa) \right]
-%  \right\} \\
-%& \times \sin\delta_\ell^\pm(\kappa) \sin\delta_{\ell^\prime}^\pm(\kappa) P_\ell
-%  (\cos\theta) P_{\ell^\prime}(\cos\theta)\,.
-%\end{align}
-%The momentum transfer cross section can be useful in plasma applications
-%\cite{Wang2014, McEachran2014}. These cross sections have been measured for Ps
-%with multiple atomic and molecular targets \cite{Nagashima1998,Saito2003}. The
-%momentum transfer cross section is given by \cite{Bransden2003}
-%\begin{equation}
-%\label{eq:MomentumCross}
-%\sigma_{m}^\pm = \frac{4}{\kappa^2} \sum_{\ell=0}^\infty (\ell+1) \sin^2
-%  (\delta_\ell^\pm - \delta_{\ell+1}^\pm) .
-%\end{equation}
-%The singlet for each of the partial waves contributes $1/4$ to the integrated,
-%differential, and momentum transfer cross sections, while the triplet
-%contributes $3/4$. The ortho-para conversion cross section gives the conversion
-%of the projectile ortho-Ps to para-Ps by \cite{Hara1975}
-%\begin{equation}
-%\label{eq:OrthoParaCross}
-%\sigma_{c} = \frac{1}{4 \kappa^2} \sum_{\ell=0}^\infty (2 \ell+1) \sin^2
-%  (\delta_\ell^+ - \delta_\ell^-).
-%\end{equation}
-%Equations (\ref{eq:TotalCross}), (\ref{eq:MomentumCross}), and
-%(\ref{eq:OrthoParaCross}) are in units of $\pi a_0^2$, and
-%Eq. (\ref{eq:DiffCross}) is in units of $a_0^2 / \rm{sr}$. 
 
 
 \subsection{Effective Range Theories}
@@ -861,12 +800,10 @@ We evaluate the resonance parameters for one resonance each for $^1D$ and
 $^1F$, so we perform these fits without the second $\arctan$ term.
 We fit the data from the Kohn variational method and its variants
 (inverse Kohn, generalized Kohn, complex Kohn for the $T$ 
-matrix and complex Kohn for the $S$ matrix)
+matrix and complex Kohn for the $S$ matrix) to determine the resonance
+parameters
 using the MATLAB \cite{MATLAB} nonlinear fitting routine 
-\texttt{nlinfit} with all eight possible weightings. For the Kohn and
-each variant we use,
-we determine and compare the four parameters for each
-of the eight fits.
+\texttt{nlinfit} with all eight possible weightings.
 
 The Kohn variational method and variants of the method do not give 
 rigorous lower bounds to the phase shifts, but they are found to give 
@@ -880,8 +817,10 @@ empirical formula \cite{Armour1991,VanReeth2003}
 \tan\delta_\ell^\pm(\omega) = \tan\delta_\ell^\pm(\omega\to\infty) +
   \frac{c}{\omega^p}\, .
 \end{equation}
-We use these extrapolated values to estimate the convergence of the phase 
-shifts and the error in the final results. We use a similar method to
+For the $^{1,3}S$, $^{1,3}P$ and $^1D$ phase shifts,
+we use these extrapolated values to estimate the convergence of the phase 
+shifts and the error in the final results, which we report in
+Sec.~\ref{sec:PhaseCross}. We use a similar method to
 extrapolate the $^{1,3}S$- and $^{1,3}P$-wave scattering lengths by
 fitting to the empirical formula \cite{VanReeth2003}
 \begin{equation}
@@ -982,8 +921,8 @@ distances. The Rayleigh-Ritz variational method provides a true upper
 bound on the 
 total energy, which converges well with respect to $\omega$. To 
 be consistent, we report the results of the total and binding energies
-we obtain with the same set of nonlinear 
-parameters $\alpha$, $\beta$, and $\gamma$ that we use in the scattering calculation, as given in
+we obtain with the same set of nonlinear parameters $\alpha$, $\beta$,
+and $\gamma$ that we use in the scattering calculation, as given in
 Table \ref{tab:Nonlinear}. Table \ref{tab:BoundEnergy} 
 compares our energies for PsH with that obtained by other groups.
 
@@ -1038,7 +977,7 @@ results from the Kohn variational method and its variants
 described in Sec.~\ref{sec:Kohn} (Kohn, inverse Kohn, generalized Kohn,
 complex Kohn $T$ matrix, and complex Kohn $S$ matrix) agree
 to the accuracy given.
-We use Eq.~(\ref{eq:Extrap}) and the phase shifts for $omega = 4$ to 7 to
+We use Eq.~(\ref{eq:Extrap}) and the phase shifts for $\omega = 4$ to 7 to
 compute extrapolated phase shifts for $\omega \rightarrow \infty$.
 By computing the percentage difference between the
 extrapolated phase shifts and the computed phase shifts at $\omega=7$, we
@@ -1053,7 +992,8 @@ Refs. \cite{Blackwood2002,Walters2004}. The current $\omega = 7$ results are
 in excellent agreement with the earlier Kohn and inverse Kohn $\omega = 6$ variational 
 results, being either identical or slightly lower, indicating that the 
 earlier $S$-wave results were well-converged. The slight difference in 
-phase shifts between the previous Kohn/inverse Kohn and the present complex Kohn calculation can be attributed 
+phase shifts between the previous Kohn/inverse Kohn and the
+present complex Kohn calculation can be attributed 
 to at least the following factors. Using Todd's procedure (described in Sec. \ref{sec:Truncation}) 
 allows us to use more terms (see Table \ref{tab:Nonlinear}) than the earlier 
 Kohn and inverse Kohn calculations \cite{VanReeth2003,VanReeth2004}, which used 721 terms. Using
@@ -1085,7 +1025,7 @@ Tables \ref{tab:PWavePhase} and \ref{tab:DWavePhase} give the $^{1,3}P$ and
 $^{1,3}D$
 phase shifts that we determine using the $S$-matrix complex Kohn variational 
 method. The small percentage differences with the extrapolated values for the 
-$^{1,3}P$-wave indicate that the complex Kohn phase shifts are well converged.
+$^{1,3}P$-waves indicate that the complex Kohn phase shifts are well converged.
 The complex Kohn $^1P$ phase shifts are above the CC
 results, whereas the complex Kohn $^3P$ phase shifts are generally slightly below.
 Figure \ref{fig:spd-wave-phases}(b) shows that the 
@@ -1129,7 +1069,7 @@ to negative.
 The complex Kohn $^{1,3}D$ phase shifts are generally below the corresponding 
 CC phase shifts, as can be seen in Table \ref{tab:DWavePhase} and
 Fig.~\ref{fig:spd-wave-phases}(c). However, the extrapolated $^1D$ phase shifts
-are slightly higher than the CC phase shifts at both $\kappa = 0.6$ and 0.7.
+are slightly larger than the CC phase shifts at both $\kappa = 0.6$ and 0.7.
 Fig.~\ref{fig:spd-wave-phases}(c) shows that the overall shape of the complex Kohn 
 phase shift curves is similar to the CC. However, the percentage difference 
 between the CC and complex Kohn $^1D$ phase shifts is about $39\%$ at low
@@ -1167,13 +1107,13 @@ contribution.
 \begin{tabular}{c c c c c c c}
 $\kappa$ (a.u.) & $\delta_0^+ (\omega = 7)$ & $\delta_0^+ (\omega \rightarrow \infty)$ & \% Diff$^+$ & $\delta_0^+$ (Kohn) \cite{VanReeth2003} & $\delta_0^+$ (CC 14Ps14H+H$^-$) \cite{Walters2004} & $\delta_0^+$ (CVM) \cite{Zhang2012} \\
 \colrule
-0.1 & $-0.427$ & $-0.426$ & $0.223\%$ & $-0.427$ & $-0.432$ & $-0.42636$ \\
-0.2 & $-0.820$ & $-0.819$ & $0.010\%$ & $-0.820$ & $-0.833$ & $-0.81973$ \\
-0.3 & $-1.161$ & $-1.161$ & $0.040\%$ & $-1.161$ & $-1.179$ & --- \\
-0.4 & $-1.446$ & $-1.446$ & $0.022\%$ & $-1.446$ & $-1.466$ & --- \\
-0.5 & $-1.678$ & $-1.677$ & $0.031\%$ & $-1.677$ & $-1.699$ & --- \\
-0.6 & $-1.858$ & $-1.857$ & $0.040\%$ & $-1.857$ & $-1.884$ & --- \\
-0.7 & $-1.964$ & $-1.963$ & $0.045\%$ & $-1.964$ & $-2.012$ & --- \\
+0.1 & $-0.427$ & $-0.426$ & $0.223\%$ & $-0.427$ & $-0.428$ & $-0.42629$ \\
+0.2 & $-0.820$ & $-0.819$ & $0.010\%$ & $-0.820$ & $-0.825$ & $-0.81973$ \\
+0.3 & $-1.161$ & $-1.161$ & $0.040\%$ & $-1.161$ & $-1.167$ & --- \\
+0.4 & $-1.446$ & $-1.446$ & $0.022\%$ & $-1.446$ & $-1.453$ & --- \\
+0.5 & $-1.678$ & $-1.677$ & $0.031\%$ & $-1.677$ & $-1.685$ & --- \\
+0.6 & $-1.858$ & $-1.857$ & $0.040\%$ & $-1.857$ & $-1.867$ & --- \\
+0.7 & $-1.964$ & $-1.963$ & $0.045\%$ & $-1.964$ & $-1.992$ & --- \\
 \end{tabular}
 \end{ruledtabular}
 \caption{$^1S$ phase shifts for Ps-H scattering. $\delta_0^+$ are the current
@@ -1186,10 +1126,10 @@ between the complex Kohn $\omega = 7$ and $\omega \rightarrow \infty$ results.}
 \centering
 \begin{ruledtabular}
 \begin{tabular}{c c c c c c c}
-$\kappa$ (a.u.) & $\delta_0^- (\omega = 7)$ & $\delta_0^- (\omega \rightarrow \infty)$ & \% Diff$^-$ & $\delta_0^-$ (Kohn) \cite{VanReeth2003} & $\delta_0^-$ (CC 14Ps14H) \cite{Blackwood2002} & $\delta_0^-$ (CVM) \cite{Zhang2012} \\
+$\kappa$ (a.u.) & $\delta_0^- (\omega = 7)$ & $\delta_0^- (\omega \rightarrow \infty)$ & \% Diff$^-$ & $\delta_0^-$ (Kohn) \cite{VanReeth2003} & $\delta_0^-$ (CC 9Ps9H) \cite{Blackwood2002} & $\delta_0^-$ (CVM) \cite{Zhang2012} \\
 \colrule
-0.1 & $-0.215$ & $-0.214$ & $0.120\%$ & $-0.214$ & $-0.206$ & $-0.21464$ \\
-0.2 & $-0.431$ & $-0.431$ & $0.063\%$ & $-0.432$ & $-0.414$ & $-0.43159$ \\
+0.1 & $-0.215$ & $-0.214$ & $0.120\%$ & $-0.215$ & $-0.206$ & $-0.21461$ \\
+0.2 & $-0.431$ & $-0.431$ & $0.063\%$ & $-0.432$ & $-0.414$ & $-0.43145$ \\
 0.3 & $-0.645$ & $-0.645$ & $0.094\%$ & $-0.645$ & $-0.624$ & --- \\
 0.4 & $-0.850$ & $-0.849$ & $0.130\%$ & $-0.850$ & $-0.838$ & --- \\
 0.5 & $-1.041$ & $-1.040$ & $0.166\%$ & $-1.040$ & $-1.037$ & --- \\
@@ -1207,7 +1147,7 @@ current complex Kohn $\omega = 7$ and $\omega \rightarrow \infty$ results.}
 \begin{center}
 \begin{ruledtabular}
 \begin{tabular}{c | c c c c | c c c c c}
-$\kappa$ (a.u.) & $\delta_1^+ (\omega = 7)$ & $\delta_1^+ (\omega \rightarrow \infty)$ & \% Diff$^+$ & $\delta_1^+$ (CC) \cite{Walters2004} & $\delta_1^- (\omega = 7)$ & $\delta_1^- (\omega \rightarrow \infty)$ & \% Diff$^-$ & $\delta_1^-$ (CC 14Ps14H) \cite{Blackwood2002} \\
+$\kappa$ (a.u.) & $\delta_1^+ (\omega = 7)$ & $\delta_1^+ (\omega \rightarrow \infty)$ & \% Diff$^+$ & $\delta_1^+$ (CC 9Ps9H+H$^-$) \cite{Walters2004} & $\delta_1^- (\omega = 7)$ & $\delta_1^- (\omega \rightarrow \infty)$ & \% Diff$^-$ & $\delta_1^-$ (CC 9Ps9H) \cite{Blackwood2002} \\
 \colrule
 0.1 & $0.226^{-1}$ & $0.227^{-1}$ & $0.465\%$ & $0.221^{-1}$ & $-0.178^{-2}$ & $-0.172^{-2}$ & $3.176\%$ & $-0.953^{-3}$ \\
 0.2 & $0.191$      & $0.192$      & $0.306\%$ & $0.183$      & $-0.167^{-1}$ & $-0.165^{-1}$ & $0.993\%$ & $-0.122^{-1}$ \\
@@ -1231,7 +1171,7 @@ results. Powers of 10 are denoted by exponents.}
 \begin{center}
 \begin{ruledtabular}
 \begin{tabular}{c | c c c c | c c}
-$\kappa$ (a.u.) & $\delta_2^+ (\omega = 6)$ & $\delta_2^+ (\omega \rightarrow \infty)$ & \% Diff$^+$ & $\delta_2^+$ (CC 14Ps14H+H$^-$) \cite{Walters2004} & $\delta_2^- (\omega = 6)$ & $\delta_2^-$ (CC 14Ps14H) \cite{Blackwood2002} \\
+$\kappa$ (a.u.) & $\delta_2^+ (\omega = 6)$ & $\delta_2^+ (\omega \rightarrow \infty)$ & \% Diff$^+$ & $\delta_2^+$ (CC 9Ps9H+H$^-$) \cite{Walters2004} & $\delta_2^- (\omega = 6)$ & $\delta_2^-$ (CC 9Ps9H) \cite{Blackwood2002} \\
 \colrule
 $0.1$ & $1.36^{-4}$ & --- & --- & $2.02^{-4}$ & $5.81^{-5}$ & $8.48^{-5}$ \\
 $0.2$ & $2.99^{-3}$ & $3.18^{-3}$ & $6.27\%$ & $3.49^{-3}$ & $7.12^{-4}$ & $1.15^{-3}$ \\
@@ -1243,7 +1183,7 @@ $0.7$ & $3.28^{-1}$ & $3.33^{-1}$ & $1.67\%$ & $3.24^{-1}$ & $-4.28^{-2}$ & $-3.
 \end{tabular}
 \end{ruledtabular}
 \caption{$^{1,3}D$ phase shifts for Ps-H scattering. $\delta_2^\pm$ are the current
-$S$-matrix complex Kohn phase shifts and \% Diff$^+$ is the percent difference
+$S$-matrix complex Kohn phase shifts, and \% Diff$^+$ is the percent difference
 between the current complex Kohn $\omega = 6$ and $\omega \rightarrow \infty$
 results. Powers of 10 are denoted by exponents.}
 \label{tab:DWavePhase}
@@ -1259,13 +1199,15 @@ results. Powers of 10 are denoted by exponents.}
 	\includegraphics[width=3.3in]{swave-comparisons}
 	\caption{(Color online) Comparison of $^1S$ (a) and $^3S$ (b) $S$-matrix
 complex Kohn phase shifts with results from other groups. Results are ordered
-according to year of publication. This work -- solid curves;
+according to year of publication. References marked with an asterisk have values
+extracted from figures in their work. 
+This work -- solid curves;
 \mbox{\textcolor{blue}{$\times$} -- CC \cite{Walters2004};}
 \mbox{$\CIRCLE$ -- Kohn \cite{VanReeth2003};}
 \mbox{\textcolor{red}{\textbf{+}} -- CC \cite{Blackwood2002};}
-\mbox{$\blacktriangle$ -- DMC \cite{Chiesa2002};} 
-\mbox{$\triangledown$ -- SVM 2002 \cite{Ivanov2002};} 
-\mbox{$\Circle$ -- SVM 2001 \cite{Ivanov2001};} 
+\mbox{$\blacktriangle$ -- DMC$^*$ \cite{Chiesa2002};} 
+\mbox{$\triangledown$ -- SVM 2002$^*$ \cite{Ivanov2002};} 
+\mbox{$\Circle$ -- SVM 2001$^*$ \cite{Ivanov2001};} 
 \mbox{\textcolor[RGB]{0,127,0}{$\triangledown$} -- 2 channel / static exchange with model exchange \cite{Biswas2001};} 
 \mbox{\textcolor{red}{$\vartriangle$} -- 6-state CC \cite{Sinha2000};} 
 \mbox{$\blacksquare$ -- 5-state CC \cite{Adhikari1999};} 
@@ -1279,7 +1221,6 @@ according to year of publication. This work -- solid curves;
 	\label{fig:swave-comparisons}
 \end{figure}
 
-
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=3.3in]{spd-wave-phases}
@@ -1290,7 +1231,7 @@ phase shifts are the solid blue (dark gray)
 and solid red (light gray), respectively. The singlet CC phase shifts
 \cite{Walters2004} are given by \mbox{\textcolor{blue}{$\times$}}, and the
 triplet CC phase shifts \cite{Blackwood2002} are given by
-\mbox{\textcolor{red}{\textbf{+}}}. The CVM $^1S$ and $^3S$ phase shifts
+\mbox{\textcolor{red}{\textbf{+}}}. The CVM $^1S$- and $^3S$-wave phase shifts
 \cite{Zhang2012} are blue (dark gray) and red (light gray) circles,
 respectively. Vertical dashed lines denote the complex rotation resonance
 positions \cite{Yan1999,Yan1998a,Ho1998}.}
@@ -1330,9 +1271,9 @@ matching on to the Born approximation results for $\ell \geq 5$.
 
 We perform complex Kohn calculations on all first six partial waves, but 
 we do more elaborate calculations for the first three partial waves, as shown 
-by the short-range terms used in Sec. \ref{sec:Parameters}. The $^3D$, $^{1,3}F$,
-$^{1,3}G$, and $^{1,3}H$ partial waves are not converged, but for each of
-these, the phase shifts and elastic partial cross 
+by the short-range terms used in Sec. \ref{sec:Parameters}.
+The $^3D$, $^{1,3}F$, $^{1,3}G$, and $^{1,3}H$ partial waves are not fully
+converged, but for each of these, the phase shifts and elastic partial cross 
 sections become very small, so they do not contribute much to the elastic
 integrated cross section.
 For the $G$- and $H$-waves, we obtain a convergence ratio $R'(5) > 1$ for
@@ -1350,7 +1291,9 @@ threshold.
 	\includegraphics[width=3.3in]{combined-cross-sections}
 	\caption{(Color online) Elastic integrated cross sections. The singlet and
 triplet cross sections are weighted by $1/4$ and $3/4$,
-respectively. CC data is from Ref. \cite{Walters2004}.}
+respectively. CC data is from Ref. \cite{Walters2004}.
+We extract the CC data using the
+CurveSnap program \cite{CurveSnap}.}
 	\label{fig:combined-cross-sections}
 \end{figure}
 
@@ -1364,8 +1307,6 @@ In Fig.~\ref{fig:combined-cross-sections}, we show the complex Kohn
 spin-weighted singlet, spin-weighted triplet and the spin-weighted integrated 
 cross sections for elastic scattering and which we compare with the
 corresponding CC results.
-For this figure, we extract the CC data of
-Ref.~\cite{Walters2004} using the CurveSnap program \cite{CurveSnap}.
 There is good agreement with the 
 CC cross section for much of the range, but there is a 
 clear shift in the positions of the resonances, which can also be seen in 
@@ -1431,30 +1372,6 @@ scattering vs. energy of the incident Ps at selected angles}
 	\label{fig:diff-cross-section-2D-theta}
 \end{figure}
 
-%\begin{figure}[H]
-	%\centering
-	%\includegraphics[width=3.3in]{combined-diff-cross-sections}
-	%\caption{(Color online) The elastic differential cross section for Ps-H scattering}
-	%\label{fig:combined-diff-cross-sections}
-%\end{figure}
-%
-%\begin{figure}[H]
-	%\centering
-	%\includegraphics[width=3.3in]{combined-diff-cross-sections-2}
-	%\caption{(Color online) \hl{The elastic differential cross section for Ps-H scattering showing the change
-%from backward peaked to forward peaked as $E_{\bm \kappa}$ increases}}
-	%\label{fig:combined-diff-cross-sections-2}
-%\end{figure}
-%
-%%\begin{figure}[H]%
-    %%\centering
-    %%\subfloat[label 1]{{\includegraphics[width=3.3in]{combined-diff-cross-sections-2} }}%
-    %%%\qquad
-    %%\subfloat[label 2]{{\includegraphics[width=3.3in]{combined-diff-cross-sections} }}%
-    %%\caption{2 Figures side by side}%
-    %%\label{fig:example}%
-%%\end{figure}
-
 \begin{figure}[H]%
     \centering
     \subfloat[ ]{{\includegraphics[width=3.3in]{combined-diff-cross-sections-2} }}%
@@ -1469,29 +1386,38 @@ scattering vs. energy of the incident Ps at selected angles}
 	\includegraphics[width=3.3in]{cross-section-comparisons}
 	\caption{(Color online) Comparison of cross sections. The complex Kohn integrated
 elastic cross section, $\sigma_{el}$, is given by the black curve. The complex
-Kohn momentum transfer cross section, $\sigma_m$, is given by the light blue (light gray) curve.
-Static exchange $\sigma_m$ data in light blue (light gray) dash-dot
-is from Ref.~\cite{Hara1975}.}
+Kohn momentum transfer cross section, $\sigma_m$, is given by the
+light blue (light gray) curve. Static exchange $\sigma_m$ data in the light blue
+(light gray) dash-dot curve is extracted with the CurveSnap program \cite{CurveSnap}
+from Ref.~\cite{Hara1975}.}
 	\label{fig:cross-section-comparisons}
 \end{figure}
 
-The momentum transfer cross section can be useful in plasma applications
+The momentum transfer cross section, $\sigma_m$, can be useful in plasma applications
 \cite{Wang2014, McEachran2014}. These cross sections have been measured for Ps
-with multiple atomic and molecular targets \cite{Nagashima1998,Saito2003}. 
-Equations for the momentum transfer cross section are given
+scattering with multiple atomic and molecular targets
+\cite{Nagashima1998,Saito2003,Skalsey1998} and calculated
+for Ps scattering by inert gases \cite{Blackwood2002c}. 
+Equations for $\sigma_m$ are given
 in Refs.~\cite{Bransden2003,Massey1969}.
-For energies close to zero
+We show the results of the $S$-matrix complex Kohn $\sigma_m$ and $\sigma_{el}$ in
+Fig.~\ref{fig:cross-section-comparisons} and compare the $\sigma_m$
+we compute to the
+static exchange $\sigma_m$ of Ref.~\cite{Hara1975}.
+For energies close to zero,
 $\sigma_m \approx \sigma_{el} \approx 32.45$ $\pi a_0^2$.
-The momentum transfer cross section differs from the elastic integrated cross
-section after zero energy, and as 
-noted in Ref. \cite{Blackwood2002c}, this is due to the elastic differential
-cross section only being essentially isotropic at very low energy
-(see Fig.~\ref{fig:diff-cross-section-2D-kappa}).
-After zero energy up to approximately 0.46 eV, $\sigma_m > \sigma_{el}$,
-indicating scattering primarily in the backward direction, as also seen in
-Fig.~\ref{fig:diff-cross-section-2D-theta}. Above 0.5 eV, the scattering
+The elastic differential cross section is only essentially isotropic at
+very low energy (see Ref.~\cite{Blackwood2002c} and
+Figs.~\ref{fig:diff-cross-section-2D-kappa} and \ref{fig:combined-diff-cross-sections}).
+After zero energy, the momentum transfer cross section differs from the
+elastic integrated cross section. For the energy range
+$0 < E_{\bm \kappa} \lesssim 0.46$ eV, $\sigma_m > \sigma_{el}$,
+which indicates that the scattering is larger in the backward 
+direction, as seen in Fig.~\ref{fig:diff-cross-section-2D-theta}.
+Above approximately 0.46 eV, the scattering
 becomes forward peaked, and $\sigma_m < \sigma_{el}$. The static
-exchange $\sigma_m$ curve \cite{Hara1975} does not agree well with the
+exchange $\sigma_m$ result \cite{Hara1975} in Fig.~\ref{fig:cross-section-comparisons}
+does not agree well with the
 complex Kohn result, but the static exchange is an earlier calculation 
 that did not give resonances.
 
@@ -1526,15 +1452,16 @@ Kohn for the
 $S$ matrix) after we remove the Schwartz singularities. We determine the 
 standard deviation and use that for the errors.
 
-Good agreement between the parameters is achieved between the present
-complex Kohn and the earlier Kohn/inverse Kohn calculations 
-\cite{VanReeth2003,VanReeth2004}. Also, good agreement is achieved 
-between the resonance positions obtained with the complex rotation 
-calculations of Yan and Ho \cite{Yan1999,Yan1998a,Ho1998,Ho2000} and our 
-work using the $S$-matrix complex Kohn. There is less good agreement with the
-resonance parameters for the narrow second resonances in the $^1S$ and $^1P$
-calculation. The CC results \cite{Walters2004}
-are comparable to the complex Kohn and complex rotation calculations.
+The resonance parameters of the present $S$-matrix complex Kohn calculations
+agree well with those of the earlier Kohn/inverse Kohn calculations
+\cite{VanReeth2004}. Also, the resonance parameters we obtain using the
+$S$-matrix complex Kohn phase shifts generally agree well with those obtained
+in the complex rotation calculations \cite{Yan1999,Yan1998a,Ho1998,Ho2000}.
+We see that there is more discrepancy between the complex Kohn and complex
+rotation calculations \cite{Yan1999,Yan1998a} of the second
+$^1S$- and $^1P$-wave resonances than of the first. The resonance parameters
+we obtain using the $S$-matrix complex Kohn variational method
+are generally comparable to the CC results \cite{Walters2004}.
 The $^1F$ resonance lies above the Ps(n=2) threshold, but we are able to
 fit the onset of the resonance shortly before the threshold.
 The resonance parameters for $^1D$ and $^1F$ are particularly
@@ -1564,7 +1491,7 @@ angular momentum will probably not contribute much for $^1D$. This analysis
 cannot be done with the triplet states, as they have no resonances.
 
 \squeezetable
-\begin{table*}
+\begin{table}[H]
 \begin{center}
 \begin{ruledtabular}
 \begin{tabular}{l l l l l}
@@ -1581,10 +1508,10 @@ CC (Walters et al. 2004) \cite{Walters2004} & $4.149$ & $0.103$ & $4.877$ & $0.0
 \caption{$^1S$ resonance parameters for Ps-H scattering}
 \label{tab:SWaveResonances}
 \end{center}
-\end{table*}
+\end{table}
 
 \squeezetable
-\begin{table*}
+\begin{table}[H]
 \begin{center}
 \begin{ruledtabular}
 \begin{tabular}{l l l l l}
@@ -1592,16 +1519,16 @@ Method & \thead{$^1E_R$ (eV)} & \thead{$^1\Gamma$ (eV)} & \thead{$^2E_R$ (eV)} &
 \colrule
 Current work: Average $\pm$ standard deviation & $4.2856 \pm 0.0001$ & $0.0445 \pm 0.0001$ & $5.0577 \pm 0.0004$ & $0.0459 \pm 0.0005$ \\
 Current work: $S$-matrix complex Kohn & $4.2856$ & $0.0445$ & $5.0579$ & $0.0459$ \\
-Complex rotation (Yan and Ho 1998) \cite{Yan1998a} & $4.2850 \pm 0.0014$ & $0.0435 \pm 0.0027$ & $5.0540 \pm 0.0027$ & $0.0925 \pm 0.0054$ \\
+Complex rotation (Yan and Ho 1998) \cite{Yan1998a} & $4.2850 \pm 0.0014$ & $0.0435 \pm 0.0027$ & $5.0540 \pm 0.0027$ & $0.0585 \pm 0.0054$ \\
 Stabilization (Yan and Ho 2003) \cite{Yan2003} & $4.287$ & $0.0446$ & $5.062$ & $0.0563$ \\
-CC (Walters et al. 2004) \cite{Walters2004} & $4.475$ & $0.0827$ & $4.905$ & $0.0043$ \\
 Kohn (Van Reeth and Humberston 2004) \cite{VanReeth2004} & $4.29 \pm 0.01$ & $0.042 \pm 0.005$ & --- & --- \\
+CC (Walters et al. 2004) \cite{Walters2004} & $4.475$ & $0.0827$ & $4.905$ & $0.0043$ \\
 \end{tabular}
 \end{ruledtabular}
 \caption{$^1P$ resonance parameters for Ps-H scattering}
 \label{tab:PWaveResonances}
 \end{center}
-\end{table*}
+\end{table}
 
 
 \begin{table}[H]
@@ -1643,7 +1570,7 @@ CC (Walters et al. 2004 \cite{Walters2004}) & $5.200$ & $0.0095$ \\
 
 \subsection{Effective Range Theories}
 
-Prior work in the literature for Ps-H scattering
+Prior work in the literature for $^1S$ Ps-H scattering
 \cite{Blackwood2002,Ivanov2002,VanReeth2003}
 uses the ERT expansion for short-range interactions as
 given in Eq.~(\ref{eq:EffectiveRangeShort}) as well as the
@@ -1651,11 +1578,11 @@ approximation to the scattering length given in Eq.~(\ref{eq:ScatLenApprox}).
 Table \ref{tab:SWaveScatLenERT} shows the $^{1,3}S$-wave
 scattering lengths and effective ranges given by
 Refs.~\cite{Blackwood2002,Ivanov2002,VanReeth2003,Walters2004}.
-Some other calculations of the scattering lengths and
+Some other calculations of the $^{1,3}S$ scattering lengths and
 effective ranges can be found in
 Refs.~\cite{Sinha2000,Ivanov2001,Chiesa2002,Ivanov2002}.
 These all agree reasonably well with each other. Additional calculations
-of S-wave scattering lengths and effective ranges can also be found in
+of $^{1,3}S$-wave scattering lengths and effective ranges can also be found in
 Refs.~\cite{Hara1975,Page1976,Drachman1975,
 Drachman1976,Campbell1998,Adhikari1999,Adhikari2001b}.
 
@@ -1666,7 +1593,7 @@ in Table \ref{tab:SWaveScatLenERT}. Van Reeth and Humberston
 interactions, Eq.~(\ref{eq:EffectiveRangeShort}), for a range in $\kappa$
 up to 0.5. They gave in their paper a plot of $\kappa \cot \delta_0^\pm$
 versus $\kappa^2$. We perform a similar plot, which is given in
-Fig.~\ref{fig:swave-ERT-short}, but uses the complex Kohn phase shifts
+Fig.~\ref{fig:swave-ERT-short}, but use the complex Kohn phase shifts
 that we compute. As obtained in Ref.~\cite{VanReeth2003}, the singlet
 result $\kappa \cot \delta_0^+$ lies on a relatively straight line, but
 the triplet result $\kappa \cot \delta_0^-$ curves down at low energies.
@@ -1686,7 +1613,7 @@ ERT for short-range interactions because of the van der Waals interaction.
 They found that for the $^1S$, adding this term made no significant change in the
 quality of the fit. However, for the $^3S$, they found that the addition of
 the $\kappa^3$ term improved the fit but that the effective range was very sensitive
-to the energy range over which the fit is made.
+to the energy range over which the fit was made.
 
 In addition to the fits we perform using the ERT for short-range interactions,
 Eq.~(\ref{eq:EffectiveRangeShort}), we use the ERT of Eq.~(\ref{eq:EffectiveRangeLongAu})
@@ -1703,78 +1630,11 @@ $\kappa = 0.002$ and $0.003$ for the fit of Eq.~(\ref{eq:GaoKTaylor}) and
 give the results in Table \ref{tab:SWaveScatLenERT}. The $^{1,3}S$
 scattering lengths we obtain using this QDT are
 identical to the results we obtain from the approximation to the definition
-and to the results we obtain using the ERT for short-range 
+and of that we obtain using the ERT for short-range 
 interactions and the ERT for the van der Waals interaction, both for the
 range $\kappa = 0.001 - 0.009$. The $^{1,3}S$ effective ranges we obtain using
-the QDT and the two ERT fits, Eq.~(\ref{eq:EffectiveRangeShort}) and
-Eq.~(\ref{eq:EffectiveRangeLongAu}), for the range $\kappa = 0.001 - 0.009$ are
-close.
-
-
-%
-%
-%Similar to the work by Van Reeth and Humberston \cite{VanReeth2003}, we use 
-%Eq.~(\ref{eq:ScatLenApprox}) to determine
-%the $^{1,3}S$ scattering lengths from the phase shifts of very
-%small $\kappa$, given in Table \ref{tab:SWaveScatLenERT}. %The $^{1,3}S$
-%%scattering lengths converge well with respect to $\kappa$.
-%
-%Prior work in the literature for Ps-H scattering
-%\cite{Blackwood2002,Ivanov2002,Walters2004,VanReeth2003}
-%uses the ERT expansion for short-range 
-%interactions as given in Eq. (\ref{eq:EffectiveRangeShort})
-%as well as Eq. (\ref{eq:ScatLenApprox}) \cite{VanReeth2003}.
-%Table~\ref{tab:SWaveScatLenERT}
-%shows the $S$-wave scattering lengths and effective ranges from these
-%previous calculations. Some other recent elaborate
-%calculations of the scattering lengths and effective ranges can be found in
-%Refs.~\cite{Sinha2000,Ivanov2001,Chiesa2002,Ivanov2002}.
-%These all agree relatively well with each 
-%other. Additional calculations of $S$-wave scattering lengths and effective 
-%ranges can also be found in
-%Refs.~\cite{Hara1975,Page1976,Drachman1975,
-%Drachman1976,Campbell1998,Adhikari1999,Adhikari2001b}.
-%
-%Van Reeth and Humberston \cite{VanReeth2003} did the fitting for the
-%$\kappa = 0-0.5$ range for both singlet and triplet scattering. In the third line of
-%Table~\ref{tab:SWaveScatLenERT}, we use a similar $\kappa$ range and reproduce
-%nearly their same results but with our $\omega = 7$ values.
-%Figure~\ref{fig:swave-ERT-short} with the current complex Kohn results shows
-%similar results to that of Fig. 5 of the previous Kohn paper
-%\cite{VanReeth2003}. In that paper, they noted that the singlet result lies on a
-%relatively straight line, but the triplet result curves down at low energies. We see
-%this same behavior and investigate it further.
-%
-%When we perform the fitting only at very small momenta
-%($\kappa = 0.001 - 0.009$ in
-%Table \ref{tab:SWaveScatLenERT}) and compare to the higher momenta
-%($\kappa = 0.1 - 0.5$), we see that the singlet results stay nearly the same. 
-%However, for the triplet, the effective range changes significantly. This 
-%corresponds with the triplet curving downward in
-%Fig. \ref{fig:swave-ERT-short}.
-%
-%The previous Kohn calculations \cite{VanReeth2003} were performed using
-%Eq.~(\ref{eq:EffectiveRangeShort}), which works well for short-range
-%interactions. Equation (\ref{eq:EffectiveRangeLongAu}) includes terms due
-%to the van der Waals interaction. Van Reeth and Humberston \cite{VanReeth2003}
-%added a $\kappa^3$ term to Eq.~(\ref{eq:EffectiveRangeShort}) but noticed
-%no signficant difference in the quality of the fit from using
-%Eq. (\ref{eq:EffectiveRangeShort}) for the $^1S$.
-%However, for the $^3S$, they found that the addition of this term improved the fit,
-%but they found that the effective range was very sensitive to energy
-%range over which the fit is made.
-%In Table \ref{tab:SWaveScatLenERT}, we see that adding the extra van der
-%Waals terms does not change the scattering length and only changes the
-%effective range slightly.
-%
-%We also apply using the QDT for the 
-%van der Waals interaction
-%of Gao \cite{Gao1998} at $\kappa$ = 0.002 and 0.003.
-%In Table \ref{tab:SWaveScatLenERT}, we can see that the scattering lengths 
-%we obtain with the QDT expansion agree with results using the other 
-%ERTs and approximation to the scattering length definition.
-
-%The QDT expansion does not agree well for the effective ranges but gets the scattering lengths correct. This uses only the slowly varying first term in Eq. (\ref{eq:GaoKTaylor}). 
+the QDT agrees well with the results of the two ERT fits, Eq.~(\ref{eq:EffectiveRangeShort}) and
+Eq.~(\ref{eq:EffectiveRangeLongAu}), for this smaller range in $\kappa$.
 
 \begin{figure}[H]
 	\centering
@@ -1811,20 +1671,23 @@ SVM \cite{Ivanov2002} & --- & 4.34 & 2.39 & 2.22 & 1.29 \\
 \end{table*}
 
 Due to the van der Waals interaction,
-the $^{1}P$ and $^3P$-waves do not have effective ranges but do have scattering lengths 
+the $^{1}P$- and $^3P$-waves do not have effective ranges but do have scattering lengths 
 \cite{Levy1963}. Table \ref{tab:PWaveScatLen} gives the scattering lengths 
 using the approximation to the definition of
 Eq.~(\ref{eq:ScatLenApprox}) and the QDT expressions we evaluate using the complex Kohn 
 phase shifts at $\kappa = 0.01$.
 The scattering lengths obtained in these two different ways
-agree well for both $^1P$ and $^3P$. The $^1P$ scattering length
-obtained from the SVM \cite{Ivanov2002} is comparable to the scattering
-lengths from the complex Kohn. However, the $^3P$ scattering lengths
-from the complex Kohn differs significantly from the result obtained
-by the SVM \cite{Ivanov2002}. This appears
-mainly due to SVM $^3P$ phase shifts 
-being much lower than the complex Kohn (and the CC of
-Ref.~\cite{Blackwood2002}).
+agree well for both the $^1P$- and $^3P$-waves.
+The $^{1,3}P$ scattering lengths have previously been computed by Ivanov et al.
+using their SVM phase shifts \cite{Ivanov2002}. The results we obtain for the $^1P$
+scattering length using the $S$-matrix complex Kohn phase shifts
+are comparable to the
+$^1P$ scattering length obtained with the SVM phase shifts.
+In contrast, the $^3P$ scattering lengths we determine differ significantly
+from the prior SVM results \cite{Ivanov2002}. It seems that this difference
+can partly be attributed to the $S$-matrix complex Kohn phase shifts being
+larger than the SVM phase shifts.
+
 
 \begin{table}[H]
 \begin{center}
@@ -1849,24 +1712,6 @@ We have extended the earlier Kohn
 and inverse Kohn variational calculations \cite{VanReeth2003,VanReeth2004}
 and have presented complex Kohn variational results for Ps(1s) scattering from H(1s)
 below the Ps(n=2) threshold.
-%We have extended the earlier Kohn variational 
-%calculations \cite{VanReeth2003,VanReeth2004} with a larger basis set, which 
-%is made possible by Todd's procedure, the asymptotic expansion method,
-%an increase in the number of integration points and, for
-%$^{1,3}D$, the introduction and subsequent removal of the $e^{-\lambda r_i}$
-%term to the Gauss-Laguerre quadratures. With these improved numerics, we have
-%been able to obtain better converged phase shifts.
-%We have also used the $S$ matrix complex Kohn variational method, which also allows
-%us to obtain more stable phase shifts.
-%The $^{1,3}S$ and $^{1,3}P$ phase shifts can be considered benchmark results. The 
-%discrepancy in the $^{1,3}D$ phase shifts between the complex Kohn variational 
-%and CC methods needs further investigation, especially for $^3D$. The partial 
-%waves with $\ell > 2$ have very small phase shifts and do not contribute 
-%greatly to the overall cross sections. We present the elastic differential, elastic 
-%integrated, momentum transfer and ortho-para conversion cross sections using 
-%the complex Kohn variational phase shifts for
-%the first six partial waves. Even by the $H$-wave, the phase shifts from the Born
-%approximation do not agree well with the complex Kohn results.
 We have determined highly accurate $^{1,3}S$ and $^{1,3}P$ phase shifts.
 The discrepancy in the $D$-wave phase shifts, especially the $^3D$, between the 
 complex Kohn variational and CC methods needs further investigation, such as 
@@ -1905,15 +1750,6 @@ range close to those previously reported
 values, we obtain a noticeably larger result.
 While the complex Kohn $^1P$ scattering length agrees with the SVM
 \cite{Ivanov2002}, the complex Kohn $^3P$ scattering length is much smaller.
-
-%In summary, using the $S$ matrix complex Kohn for elastic Ps-H 
-%scattering, we calculate phase shifts through the $^{1,3}H$-wave and
-%obtain highly accurate $^{1,3}S$ and $^{1,3}P$ phase shifts and 
-%accurate elastic integrated, momentum transfer and ortho-para 
-%conversion cross sections.
-%We also compute the resonance parameters through
-%$^1F$ and investigate the effective ranges for $^{1,3}S$ and the scattering 
-%lengths for $^{1,3}S$ and $^{1,3}P$.
 
 
 \begin{acknowledgments}
