@@ -238,7 +238,25 @@
 %\maketitle
 %\newpage
 
+\pagenumbering{roman}
+
 \input{TitlePage}
+
+% Copyright notice page required by UNT
+\newpage
+%\addcontentsline{toc}{chapter}{Copyright}
+\vspace*{\fill}
+\begingroup
+\centering
+Copyright 2015
+
+by
+
+Denton Woods
+
+\endgroup
+\vspace*{\fill}
+\newpage
 
 \input{Abstract}
 
@@ -251,7 +269,8 @@
 \end{center}
 
 Many people helped me through this project. Special thanks goes to Ryan 
-Bosca, who helped me at times and let me bounce ideas off of him. Keri Ward
+Bosca, who helped me at times and let me bounce ideas off of him. Keri Ward,
+Cassie Whitmire, Robert Whitmire, 
 and Lauren Murphy have been part of a great support network that helped me
 survive this process.
 
@@ -281,16 +300,12 @@ Research and Economic Development.
 %\pdfpagewidth 8.5in
 %\pdfpageheight 11in
 
-\pagenumbering{roman}
 \tableofcontents
 \newpage
 \listoffigures
 \listoftables
-\newpage
-\pagenumbering{arabic}
 
 
-\clearpage
 \chapter*{Nomenclature}
 \label{chp:nomenclature}
 \addcontentsline{toc}{chapter}{Nomenclature}
@@ -310,6 +325,10 @@ Ps & positronium \\
 PsH & positronium hydride \\
 	\end{tabular}
 \end{table*}
+
+\newpage
+\clearpage
+\pagenumbering{arabic}
 
 \subfile{Introduction.tex}
 \subfile{BoundState.tex}

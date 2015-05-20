@@ -87,6 +87,16 @@ the resonances for the first three partial waves. The $^1$F resonance barely
 contributes, but this is because the resonance lies past the inelastic 
 threshold.
 
+The cross section at very low energy (less than \SI{0.5}{eV}) is dominated
+by the S-wave, as we would expect. At near zero energy, the S-wave is the
+only partial wave that has a non-zero cross section (for both $^1$S and $^3$S).
+Bransden and Joachain \cite{Bransden2003} point out that for $\ell \geq 1$,
+the partial cross sections vanish as $\kappa^{4\ell}$ as $\kappa \to 0$, so
+$\sigma_{el}$ = $\sigma_0$ at this limit, and the scattering is isotropic.
+As can be seen in \cref{fig:singlet-cross-sections,fig:triplet-cross-sections},
+the D-wave falls off quicker than the P-wave as $\kappa \to 0$, and the F-wave
+falls off even faster.
+
 Also interesting is the minimum in the total singlet cross section at 
 approximately $\SI{0.25}{eV}$ and then the maximum at $\SI{0.74}{eV}$. The dip
 here at low energy is due to the mixing of the $^1$S and $^1$P cross sections.
@@ -191,7 +201,7 @@ G-wave & 0.103\%  & 0.022\%   & 0.0994\% & 0.0206\% & 0.00106\% & 0.00046\%  \\
 H-wave & 0.0083\% & 0.0019\%  & 0.0062\% & 0.0013\% & 0.00070\% & 0.00021\% \\ 
 \bottomrule
 \end{tabular}
-\caption{Percent contribution to the elastic integrated cross section from each partial wave for both the maximum and average for the entire energy range}
+\caption[Cross section contribution from each partial wave]{Percent contribution to the elastic integrated cross section from each partial wave for both the maximum and average for the entire energy range}
 \label{tab:PercentToCross}
 \end{table}
 
@@ -379,7 +389,14 @@ is due to the $^1$D resonance. Particularly interesting is the contribution
 from backward scattering for low $E_{\bm \kappa}$ and the dip in the forward
 scattering direction, which corresponds to the dip in
 \cref{fig:combined-cross-sections}. All angles give essentially the same value
-at very low energy, as we would expect.
+at very low energy, as we would expect. For nearly 0 energy at
+$\kappa = 0.0001$ (\SI{6.8e-8}{eV}), $\frac{d\sigma_{el}^\pm}{d\Omega}$ at
+$0\degree$, $90\degree$, and $180\degree$ is 8.112, 8.113, and 8.108
+$a_0^2/\textrm{sr}$, showing that the differential cross section is
+essentially isotropic. \label{pg:diffcross0}
+At exactly \SI{0}{eV}, it will be exactly isotropic. This is due to the S-wave
+having the only non-zero cross section at zero energy, as noted in
+\cref{sec:totalcross}.
 
 
 \begin{figure}[H]
@@ -553,11 +570,11 @@ $\ell$ & \multicolumn{1}{c}{$\%^+$ Diff.}  & \multicolumn{1}{c}{$\%^-$ Diff.}  &
 
 \todoi{Reword this paragraph. It's mainly copied from the PRA article. Also mention \cite{Engbrecht2008} so that it's clear there is experimental interest. Good reason for the $1-\cos\theta$? Make sure to mention any groups who do these calculations, even if I don't use them in my figures.}
 
-The momentum transfer cross sections can be useful in plasma applications 
-\cite{Wang2014, McEachran2014}. These cross sections have been measured for 
-Ps with multiple atomic and molecular molecular targets
-\cite{Nagashima1998,Saito2003,Skalsey1998}.
-\todoi{Mention \cite{Blackwood2002c} for theoretical from PRA paper}
+The momentum transfer cross section, $\sigma_m$, can be useful in plasma applications
+\cite{Wang2014, McEachran2014}. These cross sections have been measured for Ps
+scattering with multiple atomic and molecular targets
+\cite{Nagashima1998,Saito2003,Skalsey1998} and calculated
+for Ps scattering by inert gases \cite{Blackwood2002c}. 
 The momentum transfer cross section is
 similar to \cref{eq:TotalDiffCross} but with a weighting factor of
 $(1 - \cos\theta)$ \cite{Walters2004}:
@@ -640,7 +657,7 @@ but it is most clearly shown in \cref{fig:diff-cross-section-2D-theta}.
 
 \todoi{Other papers describing relationship between elastic and momentum-transfer?}
 
-\todoi{Ortho-para conversion ratio in \cite{Massey1954,Biswas1998,Raya,Rayb}}
+\todoi{Ortho-para conversion ratio in \cite{Massey1954,Biswas1998,Raya,Rayb}. Data from \cite{Biswas1998} pulled form plot using WebPlotDigitizer \cite{WebPlotDigitizer}}
 
 \todoi{Revisit ortho-para conversion cross section. Does this really show the ortho-Ps
 converting to para-Ps? Because we are not considering the spin of Ps but rather the

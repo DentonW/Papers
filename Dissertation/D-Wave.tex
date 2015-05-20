@@ -249,45 +249,75 @@ Each of the following equations has two forms that can be used.
 \section{D-Wave Mixed Terms}
 \label{sec:MixedTerms}
 
-According to Schwartz \cite{Schwartz1961a}, to have a complete description, each partial wave needs $\ell+1$ symmetries. As shown in \cref{eq:SWaveTrial,eq:PWaveTrial}, we use the full sets of symmetries for the S-wave and P-wave.
-
+According to Schwartz \cite{Schwartz1961a}, to have a complete description, 
+each partial wave needs $\ell+1$ symmetries. As shown in
+\cref{eq:SWaveTrial,eq:PWaveTrial}, we use the full sets of symmetries for the
+S-wave and P-wave. There is a third symmetry for the D-wave, which we refer to
+as the mixed symmetry terms, or mixed terms, given by
 \begin{align}
 \label{eq:MixedAng}
 \psi(\ell_1,\ell_2,L,M) &= \psi_{(1,1,2,0)} = \sum_{m=-1}^{+1} Y_{1,m}(\theta_1,\varphi_1) Y_{1,m}(\theta_2,\varphi_2) \left< 1,m; 1,-m,0 | 2,0 \right> \nonumber \\
 	&= Y_{1,-1}(\theta_1,\varphi_1) Y_{1,+1}(\theta_2,\varphi_2)
     \left< 1,-1,1,+1 | 2,0 \right> \nonumber \\
-& \  + Y_{1,0}(\theta_1,\varphi_1) Y_{1,0}(\theta_2,\varphi_2)
+& \hspace{0.5cm}  + Y_{1,0}(\theta_1,\varphi_1) Y_{1,0}(\theta_2,\varphi_2)
     \left< 1,0,1,0 | 2,0 \right> \nonumber \\
-& \ + Y_{1,+1}(\theta_1,\varphi_1) Y_{1,-1}(\theta_2,\varphi_2)
+& \hspace{0.5cm} + Y_{1,+1}(\theta_1,\varphi_1) Y_{1,-1}(\theta_2,\varphi_2)
    \left< 1,+1,1,-1 | 2,0 \right>,
 \end{align}
-where $\ell_1$ and $\ell_2$ are the angular momenta on the particles in Ps, and $L$ and $M$ give the angular momentum of the Ps.
-These can be combined into a single set as
+where $\ell_1$ and $\ell_2$ are the angular momenta on the particles in Ps,
+and $L$ and $M$ give the angular momentum of the Ps.
+These three terms can be combined into a single set as
 \begin{equation}
 \label{eq:MixedAngSimple}
 \psi_{(1,1,2,0)}(\theta_1,\theta_2) = \frac{3}{4\uppi} \frac{1}{\sqrt{6}} \left(3 \cos\theta_1 \cos\theta_2 - \cos\theta_{12} \right).
 \end{equation}
-This avoids the issue of dealing with complex terms in the $m = -1$ and $m = 1$ cases. Refer to \cref{sec:MixedDerivation} for this derivation.
+This avoids the issue of dealing with complex terms in the $m = -1$ and $m = 1$ cases.
+Refer to \cref{sec:MixedDerivation} for the derivation of \cref{eq:MixedAngSimple}
+from \cref{eq:MixedAng}.
 
-\todoi{Add latest mixed term work by Peter}
+The short-long matrix elements that include the mixed terms are not
+much more difficult to deal with than the first and second symmetry terms.
+The evaluation of the short-short matrix elements involving the mixed terms is
+much more difficult than those with just the first and second symmetry terms. 
+I spent some time trying to derive the expressions for the short-short
+matrix elements but ran into difficulty doing so. There has been some
+preliminary progress on this front, as described in \cref{chp:Unfinished}.
 
-\textbf{Papers of Humberston et al. that use the mixed symmetry terms}
-\begin{itemize}
-	\item e$^+$-H: \cite{Brown1985a,BrownThesis,WattsThesis,Humberston1997,VanReeth1997}
-	\item e$^+$-He (treated with single electron and model potential): \cite{Dunn2000,DunnThesis}
-\end{itemize}
+For three-body problems, the mixed terms are substantially easier to deal
+with. For e$^+$-H, Refs.~\cite{Brown1985a,BrownThesis,WattsThesis,Humberston1997,VanReeth1997}
+used the mixed terms. Dunn et al. \cite{Dunn2000,DunnThesis} also treated
+e$^+$-He as a three-body problem, using one-electron models of He and
+including the mixed terms.
 
-\textbf{Papers of Humberston et al. that do not use the mixed symmetry terms}
-\begin{itemize}
-	\item e$^+$-He: \cite{VanReeth1997,VanReethThesis}
-\end{itemize}
+Prior work \cite{VanReeth1997,VanReethThesis} on e$^+$-He scattering (also a
+four-body problem) neglected the mixed terms. The justification they used was
+that for e$^+$-H scattering, adding the third symmetry changed the $K$-matrix
+elements less than $1.5\%$. The e$^+$-H scattering problem also has mixed
+terms, but these are much easier to deal with analytically, since it is a
+three-body problem. However, this conclusion is now believed to be in error, as
+described in Ref.~\cite{Woods2015}. A corrected code in a preliminary
+investigation by Van Reeth and Humberston \cite{VanReeth2015} for e$^+$-H
+scattering found that these mixed terms can change the $K$-matrix elements by
+about $10\%$ near the Ps formation threshold. Since they believed that the
+mixed terms did not contribute much, they were neglected for e$^+$-He scattering
+and virtual Ps terms were added in to improve the convergence, getting the final
+results to within 1 to 2\% of the corrected code from this preliminary
+investigation. It is clear that these virtual Ps terms are no longer needed if
+the mixed terms are included.
 
-\todoi{Mention Peter's current work on the mixed terms \cite{VanReeth2015}.}
+The same preliminary investigation \cite{VanReeth2015} also looked at e$^-$-H
+scattering. This investigation found that the mixed terms change the $^1$D and
+$^3$D phase shifts less than 1\%, but the $^1$D phase shifts are affected more
+by the inclusion of the mixed terms. Both the $^1$D and $^3$D phase shifts are
+affected less at low $\kappa$ and more at higher $\kappa$, though the
+contributions are still small.
+% \todoi{Peter's email on February 8, 2015 - check values}
 
 
 \section{D-Wave Second Formalism}
 \label{sec:DSecondForm}
-For the second formalism, the angular momentum needs to be placed on the Ps and H, so we would need
+For the second formalism, the angular momentum needs to be placed on the Ps and
+H, so we would need
 \begin{subequations}
 \label{eq:DWave2ndPhiBar}
 \begin{align}
@@ -377,6 +407,8 @@ this, we have kept the nonlinear parameter $\alpha$ at 0.359, which seems to be
 a reasonable compromise between higher phase shifts and better convergence
 ratios. This is likely an indication of the amount of numerical instability
 we have with small phase shifts.
+
+\todoi{Move $\mathcal{R}(4)$ to the left or move y-axis numbers to the right. Also narrow these figures to fit within the margins.}
 
 \begin{figure}[H]
 	\centering
@@ -565,7 +597,7 @@ $\kappa$ & \multicolumn{1} {c}{$\delta_2^-$ full $\beta = 0.368$} & \multicolumn
 0.7  & -4.281^{-2} & -4.314^{-2} & -4.085^{-2} & -4.191^{-2}  \\
 \bottomrule
 \end{tabular}
-\caption{$^3$D phase shifts for sets of nonlinear parameters with $\alpha = 0.6$ and $\gamma = 0.976$. The full set for $\beta = 0.365$ has 913 terms, and the full set for $\beta = 0.5$ has 854 terms. The restricted sets have 720 terms.}
+\caption[$^3$D phase shifts for varying $\beta$]{$^3$D phase shifts for sets of nonlinear parameters with $\alpha = 0.6$ and $\gamma = 0.976$. The full set for $\beta = 0.365$ has 913 terms, and the full set for $\beta = 0.5$ has 854 terms. The restricted sets have 720 terms.}
 \label{tab:D3WaveBetaVar}
 \end{table}
 
@@ -647,6 +679,9 @@ SE \cite{Hara1975} $\delta_2^+$						& 0.0         & -8.0^{-4}   & -5.3^{-3}   &
 \end{table}
 
 \todoi{Maybe use dcolumn}
+
+\Cref{tab:DWaveComparisons} shows 
+
 \todoi{Comparisons and discussion similar to what's in PRA paper}
 \todoi{Note how repulsive and attractive for $^3$D}
 
@@ -687,7 +722,7 @@ $\kappa$ & $\delta^+ (\omega \rightarrow \infty) (4-6)$ & \% Diff$^+$ & $\delta^
 0.7 & $3.330^{-1}$ & $1.668\%$  & $-4.023^{-2}$ & $6.228\%$ \\
 \bottomrule
 \end{tabular}
-\caption{D-Wave extrapolation results. \% Diff$^\pm$ is the percent difference
+\caption[D-wave extrapolation results]{D-wave extrapolation results. \% Diff$^\pm$ is the percent difference
 between the current complex Kohn $\omega = 6$ and extrapolated values.
 Powers of 10 are denoted by exponents.}
 \label{tab:DWaveExtrap}
@@ -718,7 +753,7 @@ Optical potential \cite{DiRienzi2002a} & $4.729$ & $0.327$ \\
 Complex rotation \cite{Ho1998} & $4.710 \pm 0.0027$ & $0.0925 \pm 0.0054$  \\
 \bottomrule
 \end{tabular}
-\caption{D-Wave Resonance Parameters}
+\caption{D-wave resonance parameters}
 \label{tab:DWaveResonancesOther}
 \end{table}
 

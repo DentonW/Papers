@@ -90,7 +90,7 @@ C_\ell = -&\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} \Phi_{Ps}\lef
 \end{align}
 \end{subequations}
 The $\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho}$ are the 
-standard spherical harmonics, and  and $\Phi_H\left(r_3\right)$ are the Ps 
+standard spherical harmonics, and $\Phi_H\left(r_3\right)$ are the Ps 
 and H ground state wavefunctions given in \cref{eq:PsWave,eq:HWave}.
 
 The shielding function, $f_\ell(\rho)$, removes the singularity at the origin 
@@ -115,13 +115,10 @@ f(\rho) = (1 - \ee^{\lambda \rho})^3.
 
 The Hylleraas-type short-range terms are similar to that used in the bound 
 state in \cref{eq:BoundWavefn}. These are chosen to have two symmetries, one 
-with a prefactor of $r_1^\ell$ and the other with a prefactor of $r_2^\ell$. 
-From Refs.~\cite{Schwartz1961a,VanReethThesis}, the D-wave and higher can 
-have additional symmetries where the angular momentum is shared between the 
-Ps and H. From Ref.~\cite{Schwartz1961a}, we see that there are a possible
-$\ell+1$ sets of short-range terms for each partial wave. We do not consider 
-these mixed terms in this work (see \cref{sec:MixedTerms}).
-
+with a prefactor of $r_1^\ell$ and the other with a prefactor of $r_2^\ell$.
+The prefactors are included so that the correct asymptotic form of
+$\Psi_\ell^{\pm,t} \sim r_k^\ell$ at the origin follows \cite[p.87]{BrownThesis}.
+The first and second symmetries are given respectively by
 \begin{subequations}
 \label{eq:PhiDef}
 \begin{align}
@@ -130,22 +127,29 @@ these mixed terms in this work (see \cref{sec:MixedTerms}).
   r_1^{\ell} r_1^{k_i} r_2^{l_i} r_{12}^{m_i} r_3^{n_i} r_{13}^{p_i} r_{23}^{q_i} \label{eq:PhiDef1} \\
   \bar{\phi}_{2j} &= \left(1 \pm P_{23}\right) \SphericalHarmonicY{\ell}{0}{\theta_2}{\varphi_2}
   e^{-(\alpha r_1 + \beta r_2 + \gamma r_3)}
-  r_2^{\ell} r_1^{k_j} r_2^{l_j} r_{12}^{m_j} r_3^{n_j} r_{13}^{p_j} r_{23}^{q_j} \label{eq:PhiDef2}
+  r_2^{\ell} r_1^{k_j} r_2^{l_j} r_{12}^{m_j} r_3^{n_j} r_{13}^{p_j} r_{23}^{q_j}. \label{eq:PhiDef2}
 \end{align}
 \end{subequations}
 
-The S-wave only has a single symmetry, so $\bar{\phi}_i$ is a single set of terms.
-Similar to \cref{sec:BoundWavefn}, the $\frac{1}{\sqrt{2}}$ is absorbed into $c_i$. The full S-wave trial wavefunction can be written as
+From Refs.~\cite{Schwartz1961a,VanReethThesis}, the D-wave and higher can 
+have additional symmetries where the angular momentum is shared between the 
+Ps and H. From Ref.~\cite{Schwartz1961a}, we see that there are a possible
+$\ell+1$ sets of short-range terms for each partial wave. We do not consider 
+these mixed terms in this work (see \cref{sec:MixedTerms}). 
+
+The S-wave has only a single symmetry, so $\bar{\phi}_i$ is a single set of
+terms. Similar to \cref{sec:BoundWavefn}, the $\frac{1}{\sqrt{2}}$ is absorbed
+into $c_{i0}$. The full S-wave trial wavefunction can be written as
 \begin{equation}
   \label{eq:TrialWave}
-  \Psi_0^{\pm,t} = \widetilde{S}_0 + L_0^{\pm,t} \, \widetilde{C}_0 + \sum_{i=1}^{N(\omega)} c_{i,0} \bar{\phi}_{i1}.
+  \Psi_0^{\pm,t} = \widetilde{S}_0 + L_0^{\pm,t} \, \widetilde{C}_0 + \sum_{i=1}^{N(\omega)} c_{i0} \bar{\phi}_{i1}.
 \end{equation}
 For the P-wave and higher ($\ell > 0$), 
 \begin{equation}
   \label{eq:TrialWaveHigher}
   \Psi_\ell^{\pm,t} = \widetilde{S}_\ell + L^{\pm,t}_\ell \, \widetilde{C}_\ell
-  + \sum_{i=1}^{N(\omega)} c_{i,\ell} \bar{\phi}_{i1}
-  + \!\!\!\sum_{i=N(\omega)+1}^{2N(\omega)} \!\! d_{i,\ell} \bar{\phi}_{i2}.
+  + \sum_{i=1}^{N(\omega)} c_{i \ell} \bar{\phi}_{i1}
+  + \!\!\!\sum_{i=N(\omega)+1}^{2N(\omega)} \!\! d_{i \ell} \bar{\phi}_{i2}.
 \end{equation}
 
 The symbols $\rho$ and $\rho'$ are defined as (refer to \cref{fig:PsHCoords} and \Cref{chp:RhoDef})
@@ -1260,8 +1264,8 @@ Ray also points out that this is longer than a typical collision time.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=5.25in]{WaltersEventLine}
-	\caption[Event line for singlet Ps-H scattering]{Event line for singlet Ps-H scattering.
-Used with permission from Ref.~\cite{Walters2004}.}
+	\caption[Event line for singlet Ps-H scattering]{Event line for singlet Ps-H scattering
+from Ref.~\cite{Walters2004}. Reprinted with permission from Elsevier Limited.}
 	\label{fig:WaltersEventLine}
 \end{figure}
 

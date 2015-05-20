@@ -195,8 +195,6 @@ with $s_{ij} = q_{ij} + 2 k_{ij}$.
 Note that there are similarities with \cref{eq:FourBodyExpansion}.
 
 
-\todoi{Mention \cite{Luscombe1998,Wei1998,Rasch2003,Johansson2015} for possible speedups in this code.}
-
 
 \subsection{Spherical Harmonic Terms}
 \label{sec:GenSphHarm}
@@ -294,9 +292,31 @@ with
 \end{align}
 
 
-\section{Program}
+\section{Programs}
 \label{sec:GenShortProg}
-The 
+The general short-short code implementing the equations described in \cref{sec:GeneralShort}
+is at least an order of magnitude slower than the corresponding S-, P-, and D-wave
+short-short code developed separately for each of the first three partial waves.
+On the Talon 2 \cite{} cluster, an $\omega = 5$ run of the general short-short code
+takes approximately a full day running on a single node with eight cores.
+
+A rough analysis of the code shows that the bulk of the processing time is 
+spent calculating the angular parts, i.e. the 3-j and 6-j symbols. Due to the 
+symmetries inherent in the 3-j and 6-j symbols, different inputs can generate 
+the same output. Also, many input values to these do not satisfy the 
+selection rules \cite[p.1054-1064]{Messiah1999} \cite{Edmonds1996},
+giving a result of 0.
+
+Multiple papers \cite{Luscombe1998,Wei1998,Rasch2003,Johansson2015} have
+detailed strategies to exploit the symmetries to speed up calculations of the
+3-j and 6-j symbols. Storing a full lookup table with the full parameter
+space of the 6 input variables would be prohibitively memory-intensive.
+The most recent of these by Johansson and Forss{\'{e}}n \cite{Johansson2015}
+provides a very promising algorithm with full code that could be used to speed
+up this general short-short code.
+
+
+\todoi{Use these}
 
 \cref{eq:FourBodyExpansion}
 
