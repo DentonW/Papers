@@ -9,19 +9,32 @@
 \chapter{General Ps-H Formalism}
 \label{chp:General}
 
-\todoi{Combine with Chapter 3?} 
+%\todoi{Combine with Chapter 3?} 
 
 \lettrine{\textcolor{startcolor}{F}}{or} the first two partial waves of the Ps-H system, I was able to compare my code and results, including individual matrix elements, with code previously written by Peter Van Reeth. As there was no available code to compare against for the D-wave, we took steps to write a general code to compare against. The long-range code, covered in section \ref{sec:GeneralLong}, is a straightforward generalization from the previous codes. The short-range code, discussed in section \ref{sec:GeneralShort}, uses a different formalism, enabling us to compare two different methods.
 
 \section{General Long-Range}
 \label{sec:GeneralLong}
 
-If the ``mixed terms'' in \cref{sec:MixedTerms} are not included for the D-wave, the P-wave and D-wave long-range codebases are very similar. The S-wave is not much different as well, but it only has a single symmetry.
+If the ``mixed terms'' in \cref{sec:MixedTerms} are not included for the
+D-wave, the P-wave and D-wave long-range codebases are very similar. The S-wave 
+is not much different as well, but it only has a single symmetry. We also
+only treat the first two symmetries for $\ell \geq 2$.
 
 \subsection{Long-Long}
 \label{sec:GeneralLongLong}
-\todoi{$\widetilde{S}$ and $\widetilde{C}$}
-One major difference for similar matrix elements is the angular integrations. As shown in Appendix \ref{chp:AngularInt}, the external angular integrations for each partial wave have different results, due to the different spherical harmonics. $\bar{S}$ and $\bar{C}$ are also of a similar form between the partial waves, as seen in equations \ref{eq:PWaveSandCBar}, \ref{eq:PWaveSandC}, \ref{eq:DWaveSandCBar} and \ref{eq:DWaveSandC}. Other than the spherical harmonics, the spherical Bessel functions are different, as is the shielding function for $\bar{C}$. The spherical Bessel functions are easily called through the GNU Scientific Library \cite{GSL} for any $\ell$-value. The power of the shielding function varies as $m_\ell \geq (2\ell + 1)$. All of this allows us to easily generalize the long-long integrations.
+
+One major difference for similar matrix elements is the angular integrations. 
+As shown in Appendix \ref{chp:AngularInt}, the external angular integrations 
+for each partial wave have different results, due to the different spherical 
+harmonics. $\widetilde{S}_\ell$ and $\widetilde{C}_\ell$ are also of a similar form between the 
+partial waves, as seen in \cref{eq:PWaveSandCBar,eq:PWaveSandC,eq:DWaveSandCBar,eq:DWaveSandC}.
+Other than the spherical harmonics, the spherical Bessel functions are 
+different, as is the shielding function for $\widetilde{C}_\ell$. The spherical Bessel 
+functions are easily called through the GNU Scientific Library \cite{GSL} for 
+any $\ell$-value. The power of the shielding function varies as
+$m_\ell \geq (2\ell + 1)$. All of this allows us to easily generalize the long-long 
+integrations.
 
 %From \cref{eq:PartialWaveShielding}, the general shielding function for $\widetilde{C}$ to keep it regular at the origin is given by
 %\begin{equation}
@@ -43,21 +56,26 @@ One major difference for similar matrix elements is the angular integrations. As
 
 \subsection{Short-Long}
 \label{sec:GeneralShortLong}
-The short-range functions are also easily generalizable. For the P-wave and D-wave, these are seen in equations \ref{eq:PWavePhiBar} and \ref{eq:DWavePhiBar}. The $\phi_i$ and $\phi_j$ parts for each are the same. This fact can only be easily used for the short-long calculations and not the short-short calculations, due to the action of the $L$-operator on these terms. The formalism we have used for the short-long terms at every stage only operates $\mathcal{L}$ on the long-range parts. Section \ref{sec:GeneralShort} covers the calculations of the short-short terms using a general formalism.
+The short-range functions are also easily generalizable. For the P-wave and
+D-wave, these are seen in \cref{eq:PWavePhiBar,eq:DWavePhiBar}. The $\phi_i$
+and $\phi_j$ parts for each are the same. This fact can only 
+be easily used for the short-long calculations and not the short-short 
+calculations, due to the action of the $\mathcal{L}$-operator on these terms. The 
+formalism we have used for the short-long terms at every stage only operates
+$\mathcal{L}$ on the long-range parts. Section \ref{sec:GeneralShort} covers 
+the calculations of the short-short terms using a general formalism.
 
-\subsection{Implementation}
-\label{sec:GeneralLongImp}
+%\subsection{Implementation}
+%\label{sec:GeneralLongImp}
+%\todoi{Do we need to worry about implementation discussion? Maybe in an appendix if needed.}
 
 
-
-\section{General Short-Range}
+\section{General Short-Range--Short-Range}
 \label{sec:GeneralShort}
 
-\todoi{Look at Harris paper \cite{Harris2009}. \cite{Harris2005a}}
-
-The short-range--short-range integrals are complicated more due to the 
+The short-short integrals are more complicated due to the 
 gradient-gradient formalism we have used (see equation \ref{eq:BoundGradient}).
-As an example of the nature of these, refer to\cref{sec:DWaveShortShort}.
+As an example of the nature of these, refer to \cref{sec:DWaveShortShort}.
 The derivations were previously performed by rotating 
 the coordinate system and integrating over external angles first, as 
 described in Appendix \ref{chp:AngularInt}. This approach works, but it 
@@ -65,10 +83,12 @@ cannot be extended to higher partial waves without completing a full
 derivation for each partial wave. This also introduces terms that may be too 
 singular for higher partial waves. Drake and Yan \cite{Yan1997} expand upon 
 their previous work for the three-electron Hylleraas integrals to include the 
-spherical harmonics. It is this approach that we take here. All equations 
-used from their paper have been rederived in my notes.
+spherical harmonics using the Laplacian formalism instead.
+It is this approach that we take here. All equations 
+used from their paper have been rederived in my notes \cite{Wiki}.
+The work of Harris \cite{Harris2005a} may also be directly
+applicable to this problem, but this has not yet been explored.
 
-\todoi{Point out that very slow compared to previous codes}
 
 \subsection{Hamiltonian}
 \label{sec:GenShortHam}
@@ -79,12 +99,13 @@ as in \cref{eq:BoundHamiltonian} by
 H = \sum_{i=1}^3 \left(-\frac{1}{2} \nabla_i^2 - \frac{1}{r_i} \right) + \sum_{i>j}^3 \frac{1}{r_{ij}}.
 \eeq
 
-\noindent As worked out in my notes and shown in their paper, when the Laplacians are expanded, this is given by the form
+\noindent As worked out in my notes and shown in their paper, when the
+Laplacians are expanded, this is given by the form
 \begin{align}
 \label{eq:GenHam2}
 \nonumber H = -\frac{1}{2} & \left[ \sum_{i=1}^3 \left( \frac{\partial^2}{\partial r_i^2} + \frac{2}{r_i} \frac{\partial}{\partial r_i} - \frac{\ell(\ell+1)}{r_i^2} \right) + \sum_{i>j}^3 \left( 2 \frac{\partial^2}{\partial r_i^2} + \frac{4}{r_{ij}} \frac{\partial}{\partial r_i} \right) + \sum_{i \neq j}^3 \left(\frac{r_i^2 - r_j^2 + r_{12}^2}{r_i r_j} \right) \right. \\
 \nonumber &  \left. + \frac{r_{12}^2 + r_{13}^2 - r_{23}^2}{r_{12} r_{13}} \frac{\partial^2}{\partial r_{12} \partial r_{13}} + \frac{r_{12}^2 + r_{23}^2 - r_{13}^2}{r_{12} r_{23}} \frac{\partial^2}{\partial r_{12} \partial r_{23}} + \frac{r_{13}^2 + r_{23}^2 - r_{12}^2}{r_{13} r_{23}} \frac{\partial^2}{\partial r_{13} \partial r_{23}} \right. \\
-& \left. + \sum_{i>j}^3 \frac{1}{r_{ij}} \frac{r_i}{r_j} \frac{\partial}{\partial r_{ij}} \left( \hat{\boldsymbol{r}_i} \cdot \hat{\nabla}_j^Y \right) + \sum_{i>j}^3 \frac{1}{r_{ji}} \frac{r_j}{r_i} \frac{\partial}{\partial r_{ji}} \left( \hat{\boldsymbol{r}_j} \cdot \hat{\nabla}_i^Y \right) \right]
+& \left. + \sum_{i>j}^3 \frac{1}{r_{ij}} \frac{r_i}{r_j} \frac{\partial}{\partial r_{ij}} \left( \hat{\boldsymbol{r}_i} \cdot \hat{\nabla}_j^Y \right) + \sum_{i>j}^3 \frac{1}{r_{ji}} \frac{r_j}{r_i} \frac{\partial}{\partial r_{ji}} \left( \hat{\boldsymbol{r}_j} \cdot \hat{\nabla}_i^Y \right) \right].
 \end{align}
 % & \left. + \sum_{i>j}^3 \frac{1}{r_{ij}} \frac{r_i}{r_j} \frac{\partial}{\partial r_{ij}} \left( r_i^\hat \cdot \nabla_j^Y \right) \right]
 
@@ -137,6 +158,11 @@ r_{23}^{j_{23}} r_{31}^{j_{31}}
 e^{-(\alpha r_1 + \beta r_2 + \gamma r_3)}  \nonumber \\
 & \times Y_{\ell_1^\prime m_1^\prime}^* (\textit{\textbf{r}}_1) Y_{\ell_2^\prime m_2^\prime}^* (\textit{\textbf{r}}_2) Y_{\ell_3^\prime m_3^\prime}^* (\textit{\textbf{r}}_3) Y_{\ell_1 m_1} (\textit{\textbf{r}}_1) Y_{\ell_2 m_2} (\textit{\textbf{r}}_2) Y_{\ell_3 m_3} (\textit{\textbf{r}}_3)\, .
 \end{align}
+As noted on page~\pageref{BraNote} for the Kohn variational methods, these
+should not be conjugated, but for this work with $m = 0$ (so excluding the mixed
+symmetry terms described in \cref{sec:MixedTerms}), the real-valued short-range
+terms will be the same with and without the conjugate.
+The method described here is an extension of that in \cref{sec:ShortInt}.
 Note that $\alpha$, $\beta$, and $\gamma$ are not necessarily the same as those
 in \cref{eq:PhiDef}. These will be $2\alpha$, $2\beta$, and $2\gamma$ for the
 direct-direct terms and $2\alpha$, $\beta+\gamma$, $\gamma+\beta$ for the
@@ -316,13 +342,12 @@ provides a very promising algorithm with full code that could be used to speed
 up this general short-short code.
 
 
-\todoi{Use these}
 
-\cref{eq:FourBodyExpansion}
-
-\cref{eq:ShortIntGen2}
-
-\cref{eq:GenYij}
+%\cref{eq:FourBodyExpansion}
+%
+%\cref{eq:ShortIntGen2}
+%
+%\cref{eq:GenYij}
 
 
 

@@ -278,6 +278,7 @@ the set of terms are not used in our work.
 
 \subsection{Allan Todd's Algorithm}
 \label{sec:ToddBound}
+\todoi{Mention \cite{Armour2008} that uses this}
 In trying to determine the energy eigenvalues, we noticed that the ordering 
 of the terms could determine whether there was linear dependence in the 
 matrices. Allan Todd's algorithm was attractive, because it reorders the 
@@ -1082,11 +1083,13 @@ convergence ratio as
 \mathcal{R}(\omega) = \frac{\delta_\ell^\pm(\omega)-\delta_\ell^\pm(\omega-1)}
   {\delta_\ell^\pm(\omega-1)-\delta_\ell^\pm(\omega-2)}.
 \end{equation}
-This is similar to the inverse of ratio for the energy eigenvalues given in
+This is similar to the inverse of the ratio for the energy eigenvalues given in
 Ref.~\cite{Yan1999}. If $\mathcal{R}(\omega) \geq 1$, there is no convergence
 pattern. A ratio of less than 1 shows convergence but does not guarantee a
 reliable extrapolation. We find that $\mathcal{R}(\omega) \lesssim 0.5$ is
-needed to properly extrapolate phase shifts.
+needed to properly extrapolate phase shifts. We also find that when
+$\delta_\ell \lesssim 10^{-4}$, the convergence often becomes poor
+(see \cref{sec:DWavePhase}).
 
 \subsection{Extrapolation Description}
 

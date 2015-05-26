@@ -8,7 +8,10 @@
 \lettrine{\textcolor{startcolor}{A}}{s} mentioned in the introduction, the Kohn variational method has been used for many types of systems. This chapter discusses the trial wavefunction used, derives the Kohn variational methods, and applies them to this system.
 %\todoi{Description of partial waves?}
 
+\todoi{Make sure to use $S_\ell$ and $C_\ell$ with the subscripts}
+
 \section{General Wavefunction}
+\label{sec:GeneralWave}
 
 The applications of the Kohn, inverse Kohn, complex Kohns, generalized Kohn, 
 and generalized complex Kohns to our trial wavefunctions for each of the 
@@ -90,7 +93,7 @@ C_\ell = -&\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} \Phi_{Ps}\lef
 \end{align}
 \end{subequations}
 The $\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho}$ are the 
-standard spherical harmonics, and $\Phi_H\left(r_3\right)$ are the Ps 
+standard spherical harmonics, and $\Phi_H\,\left(r_3\right)$ are the Ps 
 and H ground state wavefunctions given in \cref{eq:PsWave,eq:HWave}.
 
 The shielding function, $f_\ell(\rho)$, removes the singularity at the origin 
@@ -205,7 +208,8 @@ Note that the exact wavefunction $\Psi_\ell$ solves the Schr\"{o}dinger equation
 \label{eq:Il0}
 I[\Psi_\ell] = 0.
 \eeq
-\label{BraNote}Normally, the bra in bra-ket notation is conjugated, but as noted by Cooper et al. \cite{Cooper2010}
+\label{BraNote}Normally, the bra in bra-ket notation is conjugated,
+but as noted by Cooper et al. \cite{Cooper2010}
 and Lucchese \cite{Lucchese1989}, the bra is not conjugated for the Kohn variational methods.
 
 The trial wavefunction is related to the exact solution by
@@ -660,12 +664,15 @@ When we create the matrix in \cref{eq:GeneralKohnMatrix}, we only calculate the 
 \eeq
 
 \beq
-\mathcal{L}_l = T
+\mathcal{L}_\ell = T_\ell
 \label{eq:LCompTKohn}
 \eeq
-
-\noindent Lucchese denotes this as $\mathcal{L}_l = -\pi T$ \cite{Lucchese1989}, but to be consistent with our definition of the $T$-matrix, we must use equation \cref{eq:LCompTKohn}.
-
+Lucchese \cite{Lucchese1989} denotes this as $\mathcal{L}_\ell = -\pi T$,
+but we use the definition of the $T$-matrix from Bransden \cite{Bransden1970}:
+\begin{equation}
+\label{eq:TMatrix}
+K_\ell = \frac{T_\ell}{1 + \ii T_\ell}
+\end{equation}
 
 \subsubsection*{Complex Kohn $S$-matrix}
 \label{sec:ComplexSKohn}
@@ -678,19 +685,25 @@ When we create the matrix in \cref{eq:GeneralKohnMatrix}, we only calculate the 
 \label{eq:uCompSKohn}
 \eeq
 
+\todoi{Mention $\det \textbf{u}$}
+
 \beq
-\mathcal{L}_l = 2 \ii S_\ell
+%\mathcal{L}_\ell = 2 \ii S_\ell
+\mathcal{L}_\ell = -S_\ell
 \label{eq:LCompSKohn}
 \eeq
-\todoi{Double check form}
 
-The Lucchese version of $\textbf{u}$ differs from ours, since he uses a different definition for the $S$-matrix  \cite{Lucchese1989}. The form of the $S$-matrix we are using with our wavefunction is related to the $K$-matrix by
-\beq
+The Lucchese \cite{Lucchese1989} version of $\textbf{u}$ differs from ours, 
+since he uses a different definition for the $S$-matrix. The form of the
+$S$-matrix we are using with our wavefunction is related to the $K$-matrix by
+\cite{Bransden2003}
+\begin{equation}
+\label{eq:SMatrix}
 K_\ell = \frac{\ii(1-S_\ell)}{1+S_\ell},
-\eeq
+\end{equation}
 which is satisfied by the above $\textbf{u}$-matrix.
 
-\subsubsection*{Generalized $T$ matrix Kohn}
+\subsubsection*{Generalized $T$-matrix complex Kohn}
 \label{sec:GenComplexTKohn}
 \beq
 \textbf{u} =
@@ -700,20 +713,22 @@ which is satisfied by the above $\textbf{u}$-matrix.
 \end{bmatrix}
 \label{eq:uGenTKohn}
 \eeq
-This is a generalized form of the $T$ matrix Kohn, similar to how the generalized Kohn works. When $\tau = 0$, this reduces to the $T$ matrix Kohn.
+This is a generalized form of the $T$-matrix complex Kohn, similar to how the 
+generalized Kohn works. When $\tau = 0$, this reduces to the $T$-matrix Kohn.
 
 
-\subsubsection*{Generalized $S$ matrix Kohn}
+\subsubsection*{Generalized $S$-matrix complex Kohn}
 \label{sec:GenComplexSKohn}
 \beq
 \textbf{u} =
 \begin{bmatrix}
-\ii \cos\tau - \sin\tau & -\ii \sin\tau + \cos\tau \\
+-\ii \cos\tau - \sin\tau & -\ii \sin\tau + \cos\tau \\
 \ii \cos\tau - \sin\tau & \ii \sin\tau + \cos\tau
 \end{bmatrix}
 \label{eq:uGenSKohn}
 \eeq
-This is a generalized form of the $S$ matrix Kohn. When $\tau = 0$, this reduces to the $S$ matrix Kohn.
+This is a generalized form of the $S$-matrix complex Kohn. When $\tau = 0$, 
+this reduces to the $S$-matrix Kohn.
 
 
 \section{Matrix Elements}
@@ -1138,20 +1153,45 @@ integrated using the methods described in \cref{sec:ShortInt}.
 \section{Schwartz Singularities}
 \label{eq:SchwartzSing}
 
-A disadvantage of the Kohn variational methods is the presence of spurious singularities in the phase shifts. Looking at \cref{eq:GeneralKohnMatrix}, if $\textbf{\emph{A}}$ becomes near-singular (i.e. $\Det{\textbf{\emph{A}}} \approx 0$), solving this matrix equation will yield incorrect phase shifts. These ``Schwartz singularities'' were described first by Schwartz \cite{Schwartz1961}. These singularities do not make the Kohn variational methods unusable however. These singularities are often easily noticeable, because they do not follow the pattern of other phase shifts.
+A disadvantage of the Kohn variational methods is the presence of spurious 
+singularities in the phase shifts. Looking at \cref{eq:GeneralKohnMatrix}, if 
+$\textbf{\emph{A}}$ becomes near-singular
+(i.e. $\Det{\textbf{\emph{A}}} \approx 0$), solving this matrix equation
+will yield incorrect phase shifts. 
+These ``Schwartz singularities'' were described first by Schwartz
+\cite{Schwartz1961} and analyzed by others \cite{Nesbet1968,Nesbet1969}.
+These singularities do not make the Kohn variational methods 
+unusable however. These singularities are often easily noticeable, because 
+they do not follow the pattern of other phase shifts.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{schwartz-singularity}
-	\caption[Example of Schwartz singularities for $^1$S]{Example of Schwartz singularities for $^1$S at $\omega = 7$. The generalized Kohn method with $\tau = 1.4$ is shown in (a). The $S$ matrix complex Kohn is shown in (b).}
+	\caption[Example of Schwartz singularities for $^1$S]{Example of Schwartz singularities for $^1$S at $\omega = 7$.
+The generalized Kohn method with $\tau = 1.4$ is shown in (a). The $S$-matrix complex Kohn is shown in (b).}
 	\label{fig:schwartz-singularity}
 \end{figure}
 
-As an example, refer to \cref{fig:schwartz-singularity}(a). This shows an example of Schwartz singularities for the generalized Kohn method with $\tau = 1.4$. A clear Schwartz singularity exists at $\kappa = 0.851$ or $E = \SI{4.927}{eV}$, which can be seen as a point on the graph that is far away from the red fitting curve. There is also a Schwartz singularity at $\kappa = 0.85$ or $E = \SI{4.915}{eV}$, seen as a slight deviation from the fitting curve.
+As an example, refer to \cref{fig:schwartz-singularity}(a). This shows an 
+example of Schwartz singularities for the generalized Kohn method with
+$\tau = 1.4$. A clear Schwartz singularity exists at $\kappa = 0.851$ or $E = \SI{4.927}{eV}$,
+which can be seen as a point on the graph that is far away from 
+the red fitting curve. There is also a Schwartz singularity at $\kappa = 0.85$
+or $E = \SI{4.915}{eV}$, seen as a slight deviation from the fitting curve.
 
-The same calculation as in \cref{fig:schwartz-singularity}(a) is performed using the $S$ matrix complex Kohn in \cref{fig:schwartz-singularity}(b), but no Schwartz singularities are evident. Normally, if one Kohn variational method described in the previous section (\cref{sec:KohnApplied}) has a Schwartz singularity, other Kohn methods will not. This gives us a strategy of simply rejecting Kohn methods that have obvious Schwartz singularities.
+The same calculation as in \cref{fig:schwartz-singularity}(a) is performed 
+using the $S$-matrix complex Kohn in \cref{fig:schwartz-singularity}(b), but 
+no Schwartz singularities are evident. Normally, if one Kohn variational 
+method described in the previous section (\cref{sec:KohnApplied}) has a 
+Schwartz singularity, other Kohn methods will not. This gives us a strategy 
+of simply rejecting Kohn methods that have obvious Schwartz singularities.
 
-Interestingly, adding terms will change which Kohn method has a Schwartz singularity. \Cref{fig:PhaseTau-Omega} shows how increasing $\omega$ (adding terms) will change the $\tau$ in the generalized Kohn where a Schwartz singularity occurs. \Cref{fig:Det-Omega=6,Kappa=01} also shows how for the same set of short-range terms, varying $\kappa$ will change the $\tau$ value where a these singularities occur.
+Interestingly, adding terms will change which Kohn method has a Schwartz 
+singularity. \Cref{fig:PhaseTau-Omega} shows how increasing $\omega$ (adding 
+terms) will change the $\tau$ in the generalized Kohn where a Schwartz 
+singularity occurs. \Cref{fig:Det-Omega=6,Kappa=01} also shows how for the 
+same set of short-range terms, varying $\kappa$ will change the $\tau$ value 
+where a these singularities occur.
 
 \begin{figure}[H]
 	\centering
@@ -1170,7 +1210,7 @@ Interestingly, adding terms will change which Kohn method has a Schwartz singula
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=4in]{Det-Omega=6,Kappa=01}
-	\caption{Determinant of $\textbf{\emph{A}}$ versus $\tau$ for $\omega = 6$ with 875 terms of Todd reordering}
+	\caption[Determinant of $\textbf{\emph{A}}$ versus $\tau$]{Determinant of $\textbf{\emph{A}}$ versus $\tau$ for $\omega = 6$ with 875 terms of Todd reordering}
 	\label{fig:Det-Omega=6}
 \end{figure}
 
@@ -1187,9 +1227,24 @@ Cooper et al.\ \cite{Cooper2009} and does not correspond to a Schwartz
 singularity. The roots are easily found by fitting the data to equation (20)
 and solving equation (21) in Cooper et al.\ \cite{Cooper2009}.
 
-Additionally, the complex Kohn methods in \cref{eq:uCompTKohn,eq:uCompSKohn,eq:uGenTKohn,eq:uGenSKohn} are far less likely to suffer from these singularities. A complex-valued Kohn variational method was first proposed by Miller et al. \cite{Miller1987} and used the same year by McCurdy et al.~\cite{McCurdy1987}. Subsequent work by Lucchese~\cite{Lucchese1989} showed that the complex Kohn methods can indeed have Schwartz singularities, but they are not likely to show up in practice. Cooper et al.~\cite{Cooper2010} also showed that the phase shifts obtained using the complex Kohn variational method can be obtained exactly from the real-valued generalized Kohn method in \cite{eq:uGenKohn}, but we do not use this method.
+Additionally, the complex Kohn methods in
+\cref{eq:uCompTKohn,eq:uCompSKohn,eq:uGenTKohn,eq:uGenSKohn} are far less likely to 
+suffer from these singularities. A complex-valued Kohn variational method was 
+first proposed by Miller et al. \cite{Miller1987} and used the same year by 
+McCurdy et al.~\cite{McCurdy1987}. Subsequent work by
+Lucchese~\cite{Lucchese1989} showed that the complex Kohn methods can indeed have
+Schwartz singularities, but they are not likely to show up in practice.
+Cooper et al.~\cite{Cooper2010} also showed that the phase shifts obtained using the 
+complex Kohn variational method can be obtained exactly from the real-valued 
+generalized Kohn method in \cite{eq:uGenKohn}, but we do not use this method.
 
-There is also much less variability in the results of the different complex Kohn variational methods, and even for different values of $\tau$ in \cref{eq:uGenTKohn,eq:uGenSKohn}, the phase shifts generally agree to great precision (greater than the accuracy that we quote for our phase shifts). Due to the stability of the complex Kohn variational methods, the results quoted throughout this paper are for the $S$ matrix complex Kohn unless noted otherwise.
+There is also much less variability in the results of the different complex 
+Kohn variational methods, and even for different values of $\tau$ in
+\cref{eq:uGenTKohn,eq:uGenSKohn}, the phase shifts generally agree to great 
+precision (greater than the accuracy that we quote for our phase shifts). Due 
+to the stability of the complex Kohn variational methods, the results quoted 
+throughout this paper are for the $S$-matrix complex Kohn unless noted 
+otherwise.
 
 
 %\todoi{I think one of the Humberston group theses has some links/discussion on Schwartz singularities. Definitely mention Cooper, Lucchese, and McCurdy.}
@@ -1293,6 +1348,7 @@ corresponds with the $3d$ state \cite{DiRienzi2002a}. No such analysis exists
 for higher partial waves or resonances for the S-, P- and D-waves other
 than the first resonance of each.
 
+\todoi{Should mention how we calculate the resonance parameters for each of the Kohn methods and report the $S$-matrix separately}
 
 \biblio
 \end{document}

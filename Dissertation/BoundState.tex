@@ -7,6 +7,8 @@
 
 \lettrine{\textcolor{startcolor}{A}}{s} discussed in \cref{sec:PsH}, PsH consists of one atom of positronium and one of hydrogen. We model it the standard way here as an exotic atom, instead of a molecule. \Cref{fig:PsHCoords} shows the PsH coordinate system. There are 6 interparticle coordinates, given by $r_1$, $r_2$, $r_3$, $r_{12}$, $r_{13}$, and $r_{23}$. The proton is considered infinitely heavy in this treatment.
 
+\todoi{Mention positronium antihydride and e$^+$PsH \cite{Armour2005}}
+
 \begin{figure}[!h]
 	\centering
 	\includegraphics[height=3in]{PsHCoordinates}
@@ -21,7 +23,7 @@
 
 \todoi{Mention Kato cusp \cite{Kato1957}}
 
-Our wavefunction for the bound state is a Hylleraas-style \cite{} set of terms, given by
+Our wavefunction for the bound state is a Hylleraas-style \cite{Yan1999,VanReeth2003} set of terms, given by
 \begin{subequations}
 \label{eq:BoundWavefn}
 \begin{align}
@@ -107,6 +109,8 @@ The Laplacians in \cref{eq:BoundHamiltonian} are complicated when applied to the
 \nonumber  &+ \frac{r_3^2 + r_{23}^2 - r_2^2}{2 r_3^2 r_{23}^2} \left[-\gamma r_3(q_i+q_j) + (n_i q_j + n_j q_i)\right] \\
 		   &+ \frac{r_{13}^2 + r_{23}^2 - r_{12}^2}{2 r_{13}^2 r_{23}^2} \left[p_i q_j + p_j q_i\right] \Bigg\}.
 \end{align}
+
+\todoi{Do we want to mention the Laplacian formalism here? It is in the code now.}
 
 The full expression for $H_{ij}$ from \cref{eq:HijSij} for real-valued $\phi$ after using \cref{eq:BoundHamiltonian,eq:BoundGradient} is then
 \beq

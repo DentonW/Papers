@@ -10,11 +10,6 @@
 \label{chp:HigherWaves}
 
 
-\todoi{May want to look at approximation in Eq. 2 of \cite{Mitroy2003a}}
-\todoi{Mention $\alpha$, $\beta$, and $\gamma$ used and any other parameters}
-\todoi{Talk about how angular integrations done}
-
-\Cref{tab:SphHarm,tab:SphBess,tab:SphNeum} show the spherical harmonics, spherical Bessel and spherical Neumann functions needed in \cref{eq:GeneralWaveTrial} to use the higher partial waves.
 
 \todoi{Split up tables into each respective section}
 {
@@ -71,18 +66,19 @@ H-Wave & $\frac{\left(-z^4+105 z^2-945\right) \sin (z)}{z^5}-\frac{15 \left(z^4-
 \end{table}
 }
 
-There is nothing preventing us from extending this to even higher partial 
-waves than the H-wave now that we have determined general expressions for the 
-external angular integrations in \cref{sec:AngularInt}. However, phase shifts 
-for partial waves past the P-wave are not expected to be fully converged due 
-to the lack of inclusion of mixed terms (see \cref{sec:MixedTerms}), and this 
-effect likely becomes worse as $\ell$ increases.
-
 We necessarily have to truncate the expressions for the cross
 sections to use a finite number of partial waves (\cref{chp:CrossSections}).
 By the D-wave, the various cross sections have not
 fully converged (see \cref{tab:PercentToCross,tab:PercentDiffCrossFull}), so 
 we looked at the contributions from higher partial waves.
+
+There is nothing preventing us from extending this to even higher partial 
+waves than the H-wave now that we have determined general expressions for the 
+external angular integrations in \cref{sec:AngularInt}. However, phase shifts 
+for partial waves past the P-wave are not expected to be fully converged due 
+to the lack of inclusion of mixed terms (see \cref{sec:MixedTerms}), and this 
+effect likely becomes worse as $\ell$ increases until the Born approximation
+matches the phase shifts well.
 
 
 \section{Born Approximation}
@@ -119,7 +115,7 @@ approximation.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=5in]{dwave-phase-born}
-	\caption[$^{1,3}$D complex Kohn and Born comparison]{$^{1,3}$D phase shift comparison between S-matrix complex Kohn and Born approximation}
+	\caption[$^{1,3}$D complex Kohn and Born comparison]{$^{1,3}$D phase shift comparison between S-matrix complex Kohn and several approximations}
 	\label{fig:DWavePhaseBorn}
 \end{figure}
 
@@ -158,11 +154,11 @@ for the I-wave ($\ell = 6$), indicating that the cross sections will not match
 up well for the Born until a much higher value of $\ell$. Bransden and
 Jochain \cite[p.590]{Bransden2003} note that if $\ell \gg \kappa a$, where $a$ is
 the range of the potential, the Born approximation will match the phase shifts
-relatively well, indicating that the range of this potential is
+relatively well, indicating that the range of the Coulomb potentials is
 indeed large.
 
 
-\todoi{Cross sections with Born}
+%\todoi{Cross sections with Born}
 
 
 \section{Ganas Approximation}
@@ -171,7 +167,7 @@ indeed large.
 Ganas \cite{Ganas1972} gives an expression to estimate phase shifts for
 $\ell \geq 2$ using a van der Waals ERT (see \cref{sec:vanderWaalsERT}),
 which is given in a more convenient form by
-Refs.~\cite{Fabrikant2014a,Swann2015} as
+Refs.~\cite{Fabrikant2014a,Mitroy2003a,Swann2015} as
 \begin{equation}
 \label{eq:vdWPhase}
 \delta_\ell(\kappa) \simeq \frac{6 \uppi m C_6 \kappa^4}{(2\ell+5)(2\ell+3)(2\ell+1)(2\ell-1)(2\ell-3)}.
@@ -191,23 +187,81 @@ gives a better approximation to the phase shifts than the Born. For the H-wave,
 it matches relatively well but overestimates the phase shifts.
 
 
+\section{Gao Approximation}
+\label{sec:GaoPhase}
+
+Gao \cite{Gao1998a} provides a QDT expansion for the van der Waals interaction,
+somewhat similar to those attempted for the S-wave and P-wave in
+\cref{sec:GaoModel}. For $\ell \geq 2$, the $K_\ell^0$ and its derivatives
+do not come into play though. This expression is given in terms of $\tan\delta_\ell$:
+\begin{equation}
+\label{eq:GaoPhase}
+\tan\delta_{\ell \geq 2} = (3 \uppi / 32) \{(\ell+1/2) [(\ell+1/2)^2 - 4][(\ell+1/2)^2 - 1]\}^{-1} (\kappa \beta_6)^4,
+\end{equation}
+where $\beta_6$ is given in \cref{eq:beta6}.
+
+This approximation matches even better to the $^1$D phase shifts than the Ganas
+approximation and matches the same as the Ganas approximation for $\ell \geq 3$.
+The behavior of all three of these approximations is shown in
+\cref{fig:DWavePhaseBorn,fig:FWavePhase,fig:GWavePhase,fig:HWavePhase}.
+
+
 \section{F-Wave}
 \label{sec:FWave}
 
 Similar to the D-wave (see \cref{sec:DWaveNonlinear}), we investigated the
-nonlinear parameters for the F-wave. After multiple variations of $\alpha$ and
+dependence of the F-wave phase shifts on the nonlinear parameters.
+After multiple variations of $\alpha$ and
 $\beta$ with a fixed $\gamma$, we settled on using the same set of nonlinear
-parameters that we used for the D-wave, as seen in \cref{tab:Nonlinear}.
+parameters that we used for the D-wave, as seen in \cref{tab:Nonlinear}, but
+with the switchover between the two sets at $\kappa = 0.4$.
+We found that to keep $\mathcal{R}(5) < 1$ for $^{1,3}$F, we had to use the 
+restricted set described in \cref{sec:Restricted} for $\kappa < 0.4$.
 We have calculated the F-wave phase shifts for $\omega = 5$ with these nonlinear
 parameters for the first two short-range symmetries using the general codes
-described in \cref{sec:GeneralLong,sec:GeneralShort}. 
+described in \cref{sec:GeneralLong,sec:GeneralShort}.
 
 \label{sec:FNonlinear}
 
 \subsection{Phase Shifts}
 \label{sec:FWavePhase}
 
-\todoi{Note how goes negative for triplet like $^3$D}
+\Cref{fig:FWavePhase} shows the phase shifts for the F-wave.
+Similar to the D-wave (page \pageref{DWaveSwitch}), the triplet F-wave starts
+positive and becomes negative, though at a higher $\kappa$ of about 0.7
+(\SI{3.3}{eV}).
+
+We can see that the phase shifts for the (modified) Born approximation do not 
+agree very well with the full Kohn calculation, though they follow roughly 
+the same shape. The triplet Born is fully negative, while the Kohn only goes 
+negative past about $\kappa = 0.7$. The problem with the triplet gets even 
+worse for the G-wave (\cref{sec:GWave}) and H-Wave (\cref{sec:HWave}).
+The Ganas approximation \cref{sec:GanasPhase}, which does not distinguish
+between singlet and triplet states, matches better with the singlet than the
+Born approximation but still disagrees near the resonance.
+
+%\todoi{Add Ganas to table?}
+%
+%\setlength{\abovecaptionskip}{6pt}
+%\setlength{\belowcaptionskip}{6pt}
+%\begin{table}[H]
+%\centering
+%\begin{tabular}{c | c c | c c}
+%\toprule
+%$\kappa$ & Kohn $\delta_3^+$ & Born $\delta_3^+$ & Kohn $\delta_3^-$ & Born $\delta_3^-$ \\
+%\midrule
+%0.1 &	$1.183^{-6}$ & $1.237^{-7}$ & $1.023^{-6}$ & $-1.232^{-7}$ \\
+%0.2 &	$1.046^{-4}$ & $2.003^{-6}$ & $8.282^{-5}$ & $-1.387^{-5}$ \\
+%0.3 &	$1.048^{-3}$ & $6.051^{-5}$ & $6.824^{-4}$ & $-1.926^{-4}$ \\
+%0.4 &	$4.375^{-3}$ & $5.009^{-4}$ & $1.963^{-3}$ & $-1.092^{-3}$ \\
+%0.5 &	$1.186^{-2}$ & $3.768^{-3}$ & $2.941^{-3}$ & $-3.706^{-3}$ \\
+%0.6 &	$2.610^{-2}$ & $2.143^{-3}$ & $2.516^{-3}$ & $-8.995^{-3}$ \\
+%0.7 &	$4.880^{-2}$ & $1.312^{-2}$ & $4.236^{-4}$ & $-1.725^{-2}$ \\
+%\bottomrule
+%\end{tabular}
+%\caption{F-Wave Phase Shifts}
+%\label{tab:FWavePhase}
+%\end{table}
 
 \begin{figure}[H]
 	\centering
@@ -216,34 +270,9 @@ described in \cref{sec:GeneralLong,sec:GeneralShort}.
 	\label{fig:FWavePhase}
 \end{figure}
 
-\Cref{fig:FWavePhase} and \cref{tab:FWavePhase} show the phase shifts for the F-wave.
 
-\setlength{\abovecaptionskip}{6pt}
-\setlength{\belowcaptionskip}{6pt}
-\begin{table}[H]
-\centering
-\begin{tabular}{c | c c | c c}
-\toprule
-$\kappa$ & Kohn $\delta_3^+$ & Born $\delta_3^+$ & Kohn $\delta_3^-$ & Born $\delta_3^-$ \\
-\midrule
-0.1 &	$1.183^{-6}$ & $1.237^{-7}$ & $1.023^{-6}$ & $-1.232^{-7}$ \\
-0.2 &	$1.046^{-4}$ & $2.003^{-6}$ & $8.282^{-5}$ & $-1.387^{-5}$ \\
-0.3 &	$1.048^{-3}$ & $6.051^{-5}$ & $6.824^{-4}$ & $-1.926^{-4}$ \\
-0.4 &	$4.375^{-3}$ & $5.009^{-4}$ & $1.963^{-3}$ & $-1.092^{-3}$ \\
-0.5 & $1.186^{-2}$ & $3.768^{-3}$ & $2.941^{-3}$ & $-3.706^{-3}$ \\
-0.6 &	$2.610^{-2}$ & $2.143^{-3}$ & $2.516^{-3}$ & $-8.995^{-3}$ \\
-0.7 &	$4.880^{-2}$ & $1.312^{-2}$ & $4.236^{-4}$ & $-1.725^{-2}$ \\
-\bottomrule
-\end{tabular}
-\caption{F-Wave Phase Shifts}
-\label{tab:FWavePhase}
-\end{table}
-
-We can see that the phase shifts for the (modified) Born approximation do not 
-agree very well with the full Kohn calculation, though they follow roughly 
-the same shape. The triplet Born is fully negative, while the Kohn only goes 
-negative past about $\kappa = 0.7$ (\SI{3.3}{eV}). The problem with the triplet gets even 
-worse for the G-wave (\cref{sec:GWave}) and H-Wave (\cref{sec:HWave}).
+\subsection{Resonance}
+\label{sec:FWaveResonance}
 
 \begin{figure}[H]
 	\centering
@@ -252,74 +281,27 @@ worse for the G-wave (\cref{sec:GWave}) and H-Wave (\cref{sec:HWave}).
 	\label{fig:FWavePhaseFull}
 \end{figure}
 
-\subsection{Resonance}
-\label{sec:FWaveResonance}
-
 There is the start of a resonance shortly before the threshold cutoff in 
 \cref{fig:FWavePhase}. \Cref{fig:FWavePhaseFull} gives the rough 
 plotting past this resonance. As our code does not contain the open channels 
-required to extend into the region that contains the rest of the resonance, 
-we likely cannot measure the resonance parameters as accurately.
-\Cref{tab:FWaveResonanceBefore,tab:FWaveResonanceFull} give the resonance 
+required to extend into the region that contains the full resonance, 
+we likely cannot determine the resonance parameters as accurately.
+\Cref{tab:FWaveResonanceComparisons} give the resonance 
 parameter fittings using our MATLAB script (\cref{sec:ResonanceFit}).
-
-\Cref{tab:FWaveResonanceBefore} shows the calculated resonance 
-parameters using only data before the Ps(n=2) threshold. This is the data 
-that is plotted in \cref{fig:FWavePhase}. \Cref{tab:FWaveResonanceFull} has
-the calculated values when we consider data through the resonance,
-in the range of $\kappa = 0.74 - 0.88$. This data is plotted in
-\cref{fig:FWavePhaseFull}. This calculated position of \SI{5.182}{eV} is
-close to the \SI{5.166}{eV} that Ho and Yan compute using the complex rotation
-method \cite{Ho2000}. As with the other partial waves, our width of
-\SI{0.0107}{eV} is close to their value of \SI{0.0174}{eV} but does not 
-compare exactly.
-
-
-\setlength{\abovecaptionskip}{6pt}
-\setlength{\belowcaptionskip}{6pt}
-\begin{table}[H]
-\centering
-\begin{tabular}{l c c c c c c}
-\toprule
-Fitting & a & b & c & $E_R$ (eV) & $\Gamma$ (eV) \\
-\midrule
-Bisquare	& 0.033382 & -0.017062 & 0.0062664 & 5.1913 & 0.013232 \\
-Andrews		& 0.033390 & -0.017066 & 0.0062668 & 5.1913 & 0.013232 \\
-Cauchy		& 0.037941 & -0.019297 & 0.0065459 & 5.1899 & 0.012976 \\
-Fair		& 0.038145 & -0.019401 & 0.0065597 & 5.1898 & 0.012956 \\
-Welsch		& 0.038211 & -0.019432 & 0.0065632 & 5.1898 & 0.012964 \\
-Huber		& 0.038173 & -0.019410 & 0.0065601 & 5.1898 & 0.012962 \\
-Logistic	& 0.037609 & -0.019191 & 0.0065409 & 5.1895 & 0.012921 \\
-Talwar		& 0.033688 & -0.017208 & 0.0062841 & 5.1913 & 0.013220 \\
-\bottomrule
-\end{tabular}
-\caption{Resonance Parameters Before Threshold}
-\label{tab:FWaveResonanceBefore}
-\end{table}
-
-
-\setlength{\abovecaptionskip}{6pt}
-\setlength{\belowcaptionskip}{6pt}
-\begin{table}[H]
-\centering
-\begin{tabular}{l c c c c c c}
-\toprule
-Resonance & a & b & c & $E_R$ (eV) & $\Gamma$ (eV) \\
-\midrule
-Bisquare	& 0.15449 & -0.075289 & 0.013296 & 5.1822 & 0.010698 \\
-Andrews		& 0.15449 & -0.075290 & 0.013296 & 5.1822 & 0.010698 \\
-Cauchy		& 0.15494 & -0.075481 & 0.013317 & 5.1822 & 0.010694 \\
-Fair			& 0.14021 & -0.068646 & 0.012532 & 5.1821 & 0.010672 \\ 
-Welsch		& 0.14470 & -0.070811 & 0.012789 & 5.1822 & 0.010681 \\
-Huber			& 0.14556 & -0.071145 & 0.012820 & 5.1822 & 0.010680 \\
-Logistic	& 0.15389 & -0.075046 & 0.013271 & 5.1822 & 0.010702 \\ 
-Talwar		& 0.15466 & -0.075358 & 0.013303 & 5.1822 & 0.010697 \\
-\bottomrule
-\end{tabular}
-\caption{Resonance Parameters}
-\label{tab:FWaveResonanceFull}
-\end{table}
-
+The first two lines only use data before the Ps(n=2) threshold. The next
+two lines has the calculated values when we consider data on both sides of the
+resonance, in the range of $\kappa = 0.74 - 0.88$. The two sets of $^a$ and
+$^b$ agree well and would likely agree better if we considered the multichannel
+problem above the Ps(n=2) threshold.
+As with the other partial
+waves, these resonance parameters compare reasonably well with the complex
+rotation \cite{Ho2000}, though there is more discrepancy with this partial
+wave, presumably because the resonance is past the inelastic threshold.
+The CC results of Ref.~\cite{Walters2004} agree relatively well, but their
+resonance position is higher than both the CC and complex Kohn results.
+Interestingly, their less accurate 22Ps1H + H$^-$ calculation
+\cite{Blackwood2002b} has a resonance position closer to the complex rotation
+result.
 
 \setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
 \setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
@@ -329,13 +311,17 @@ Talwar		& 0.15466 & -0.075358 & 0.013303 & 5.1822 & 0.010697 \\
 \toprule
 Method & $^1E_R \text{ (eV)}$ & $^1\Gamma \text{ (eV)}$ \\
 \midrule
-This work & $5.1867 \pm 0.0021$ & $0.0125 \pm 0.0003$ \\
+Current work$^a$: Average $\pm$ standard deviation & $5.1867 \pm 0.0021$ & $0.0125 \pm 0.0003$ \\
+Current work$^a$: $S$-matrix complex Kohn & $5.1863$ & $0.0125$ \\
+Current work$^b$: Average $\pm$ standard deviation & $5.1838 \pm 0.0031$ & $0.0114 \pm 0.0015$ \\
+Current work$^b$: $S$-matrix complex Kohn & $5.1857$ & $0.0145$ \\
 CC (9Ps9H + H$^-$) \cite{Walters2004} & $5.200$ & $0.0095$ \\
 CC (22Ps1H + H$^-$) \cite{Blackwood2002b} & $5.151$ & $0.010$ \\
 Complex rotation \cite{Ho2000} & $5.1661 \pm 0.0014$ & $0.0174 \pm 0.0027$  \\
 \bottomrule
 \end{tabular}
-\caption{F-Wave Resonance Parameters}
+\caption{F-wave resonance parameters. $^a$ denotes that the data is only taken before the Ps(n=2) threshold.
+$^b$ indicates that data is used from both before and after the threshold, as described in the text.}
 \label{tab:FWaveResonanceComparisons}
 \end{table}
 
@@ -353,7 +339,10 @@ equation. Interestingly, the $\omega = 5$ phase shifts were very stable with
 the variation of $\mu$ from 0.5 to 0.8 (with a constant $m_\ell$), agreeing to
 five significant figures. Keeping $\mu$ constant and increasing $m_\ell$ from
 9 to 13 yielded the same phase shifts, again agreeing to five significant
-figures. 
+figures. The convergence ratios are greater than 1 for $^{1,3}$G when
+$\kappa < 0.3$, but the phase shifts are very small in this range
+($\lesssim 10^{-5}$). As for the F-wave, we also use the D-wave nonlinear
+parameters, but the switchover is at $\kappa = 0.45$.
 
 
 \begin{figure}[H]
@@ -363,25 +352,25 @@ figures.
 	\label{fig:GWavePhase}
 \end{figure}
 
-\setlength{\abovecaptionskip}{6pt}
-\setlength{\belowcaptionskip}{6pt}
-\begin{table}[H]
-\centering
-\begin{tabular}{c | c c | c c}
-\toprule
-$\kappa$ & Kohn $\delta_3^+$ & Born $\delta_3^+$ & Kohn $\delta_3^-$ & Born $\delta_3^-$ \\
-\midrule
-0.2 &	$6.422^{-5}$ & $1.886^{-7}$ & $6.708^{-6}$ & $-1.886^{-7}$ \\
-0.3 &	$1.167^{-4}$ & $5.736^{-6}$ & $1.180^{-4}$ & $-5.736^{-6}$ \\
-0.4 &	$6.297^{-4}$ & $5.579^{-5}$ & $5.792^{-4}$ & $-5.578^{-5}$ \\
-0.5 &	$1.893^{-3}$ & $2.834^{-4}$ & $1.404^{-3}$ & $-2.833^{-4}$ \\
-0.6 &	$4.357^{-3}$ & $9.416^{-4}$ & $2.262^{-3}$ & $-9.405^{-4}$ \\
-0.7 &	$8.757^{-3}$ & $9.416^{-4}$ & $2.855^{-3}$ & $-2.313^{-3}$ \\
-\bottomrule
-\end{tabular}
-\caption{G-Wave Phase Shifts}
-\label{tab:GWavePhase}
-\end{table}
+%\setlength{\abovecaptionskip}{6pt}
+%\setlength{\belowcaptionskip}{6pt}
+%\begin{table}[H]
+%\centering
+%\begin{tabular}{c | c c | c c}
+%\toprule
+%$\kappa$ & Kohn $\delta_3^+$ & Born $\delta_3^+$ & Kohn $\delta_3^-$ & Born $\delta_3^-$ \\
+%\midrule
+%0.2 &	$6.422^{-5}$ & $1.886^{-7}$ & $6.708^{-6}$ & $-1.886^{-7}$ \\
+%0.3 &	$1.167^{-4}$ & $5.736^{-6}$ & $1.180^{-4}$ & $-5.736^{-6}$ \\
+%0.4 &	$6.297^{-4}$ & $5.579^{-5}$ & $5.792^{-4}$ & $-5.578^{-5}$ \\
+%0.5 &	$1.893^{-3}$ & $2.834^{-4}$ & $1.404^{-3}$ & $-2.833^{-4}$ \\
+%0.6 &	$4.357^{-3}$ & $9.416^{-4}$ & $2.262^{-3}$ & $-9.405^{-4}$ \\
+%0.7 &	$8.757^{-3}$ & $9.416^{-4}$ & $2.855^{-3}$ & $-2.313^{-3}$ \\
+%\bottomrule
+%\end{tabular}
+%\caption{G-Wave Phase Shifts}
+%\label{tab:GWavePhase}
+%\end{table}
 
 Similar to the F-wave (section \ref{sec:FWave}), the Born approximation 
 does not work well for this partial wave. In fact, the G-wave triplet Kohn 
@@ -392,49 +381,79 @@ This gets the physics wrong, as indicated by Bransden and Joachain
 ($\delta_4^- > 0$).
 
 
-
-
-
 \section{H-Wave}
 \label{sec:HWave}
+
+As for the F-wave and G-wave, we also use the D-wave nonlinear
+parameters, but the switchover is at a higher $\kappa$ of $0.45$.
+The convergence ratios are greater than 1 for $^{1,3}$H when
+$\kappa < 0.4$, but the phase shifts are very small in this range
+($\lesssim 10^{-5}$). 
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{hwave-phases}
-	\caption{H-Wave Phase Shifts}
+	\caption{H-wave phase shifts}
 	\label{fig:HWavePhase}
 \end{figure}
 
-\setlength{\abovecaptionskip}{6pt}
-\setlength{\belowcaptionskip}{6pt}
-\begin{table}[H]
-\centering
-\begin{tabular}{c | c c | c c}
-\toprule
-$\kappa$ & Kohn $\delta_3^+$ & Born $\delta_3^+$ & Kohn $\delta_3^-$ & Born $\delta_3^-$ \\
-\midrule
-0.2 &	$4.522^{-7}$ & $1.863^{-9}$ & $4.703^{-7}$ & $-2.328^{-9}$ \\
-0.3 &	$1.627^{-5}$ & $1.518^{-7}$ & $1.728^{-5}$ & $-1.518^{-7}$ \\
-0.4 &	$1.256^{-4}$ & $2.523^{-6}$ & $1.328^{-4}$ & $-2.523^{-6}$ \\
-0.5 &	$4.280^{-4}$ & $1.906^{-5}$ & $4.332^{-4}$ & $-1.906^{-5}$ \\
-0.6 &	$9.902^{-4}$ & $8.596^{-5}$ & $8.769^{-4}$ & $-8.596^{-5}$ \\
-0.7 &	$1.963^{-3}$ & $2.693^{-4}$ & $1.372^{-3}$ & $-2.693^{-4}$ \\
-\bottomrule
-\end{tabular}
-\caption{H-Wave Phase Shifts}
-\label{tab:HWavePhase}
-\end{table}
+%\setlength{\abovecaptionskip}{6pt}
+%\setlength{\belowcaptionskip}{6pt}
+%\begin{table}[H]
+%\centering
+%\begin{tabular}{c | c c | c c}
+%\toprule
+%$\kappa$ & Kohn $\delta_3^+$ & Born $\delta_3^+$ & Kohn $\delta_3^-$ & Born $\delta_3^-$ \\
+%\midrule
+%0.2 &	$4.522^{-7}$ & $1.863^{-9}$ & $4.703^{-7}$ & $-2.328^{-9}$ \\
+%0.3 &	$1.627^{-5}$ & $1.518^{-7}$ & $1.728^{-5}$ & $-1.518^{-7}$ \\
+%0.4 &	$1.256^{-4}$ & $2.523^{-6}$ & $1.328^{-4}$ & $-2.523^{-6}$ \\
+%0.5 &	$4.280^{-4}$ & $1.906^{-5}$ & $4.332^{-4}$ & $-1.906^{-5}$ \\
+%0.6 &	$9.902^{-4}$ & $8.596^{-5}$ & $8.769^{-4}$ & $-8.596^{-5}$ \\
+%0.7 &	$1.963^{-3}$ & $2.693^{-4}$ & $1.372^{-3}$ & $-2.693^{-4}$ \\
+%\bottomrule
+%\end{tabular}
+%\caption{H-Wave Phase Shifts}
+%\label{tab:HWavePhase}
+%\end{table}
 
-The Born approximation is also not sufficient for describing the H-wave. Like the F-wave (section \ref{sec:FWave}) and the G-wave (section \ref{sec:HWave}), the triplet is particularly bad, giving the wrong type of potential. The phase shifts are small for this partial wave, so its contribution to the total cross section is minimal.
-
-\todoi{Include cross section graphs?}
+\Cref{fig:HWavePhase} shows the $^{1,3}$H phase shifts.
+The Born approximation is also not sufficient for describing the H-wave. Like 
+the F-wave (section \ref{sec:FWave}) and the G-wave (section \ref{sec:HWave}),
+the triplet is particularly bad, giving the wrong type of potential.
+The Ganas approximation agrees relatively well with the $^1$H curve. The 
+phase shifts are small for this partial wave, so its contribution to the 
+integrated cross section is essentially negligible, and its contribution
+to the differential cross section is small (see \cref{chp:CrossSections}).
 
 
 \section{Singlet/Triplet Comparisons}
 \label{sec:SingTripCompare}
-\todoi{Peter's email on 04-24-2015} % (\url{https://mail.google.com/mail/u/0/#inbox/14ceaf6c764393d8})}
-comparison of e$^+$-H scattering
-\cite{Chen1997} \cite{Shertzer1994}
+
+Interestingly, there appears to be a pattern concerning the difference between
+the singlet and triplet phase shifts for Ps-H scattering as $\ell$ increases.
+From \cref{fig:FWavePhase,fig:GWavePhase,fig:HWavePhase}, we see that at low
+energies, the singlet and triplet phase shifts are nearly the same. The energy
+at which the triplet curve diverges from the singlet becomes higher as $\ell$
+increases. To this end, I calculated the percent difference between the singlet
+and triplet phase shifts for these three partial waves in
+\cref{fig:singlet-triplet-compare}. The sharp features at low energy are likely
+due to the linear interpolation used and switching between sets of nonlinear 
+parameters.
+
+By \SI{0.5}{eV}, the $^1$F and $^3$F phase shifts differ by more than 50\%. The
+$^1$G and $^3$G differ by more than 50\% at around \SI{1.75}{eV}, and the $^1$H
+and $^3$H phase shifts diverge to this degree at over \SI{3}{eV}. In fact, the
+$^1$H and $^3$H phase shifts are approximately the same up to about \SI{1.5}{eV}.
+This suggests that at a high enough value of $\ell$ and above, the singlet and
+triplet phase shifts are the same in the full energy range below the Ps(n=2)
+threshold.
+
+It should be noted that for each of these, the singlet and triplet
+Born phase shifts are the opposite sign of each other, but the cross sections
+determined from the Born (\cref{sec:Born}) will be the same due to the
+$\sin^2 \! \delta_\ell^\pm$ contribution. The Ganas approximation also does
+not differentiate between the singlet and triplet.
 
 \begin{figure}[H]
 	\centering
@@ -443,6 +462,14 @@ comparison of e$^+$-H scattering
 	\label{fig:singlet-triplet-compare}
 \end{figure}
 
+This result is also not without precedent. An analysis of two papers on
+$e^+$-H scattering \cite{Shertzer1994,Chen1997} shows that the S-wave and
+P-wave singlet and triplet phase shifts do not agree, but the D-wave and
+F-wave singlet and triplet phase shifts agree well. It is also interesting
+that this occurs as low as $\ell = 2$, while for Ps-H scattering, these do
+not agree fully for even $\ell = 5$.
+
+\todoi{Did Peter find this for his work? What about e$^-$-H?}
 
 \biblio
 \end{document}
