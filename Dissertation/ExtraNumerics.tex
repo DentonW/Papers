@@ -43,13 +43,13 @@ restriction in the $r_3$ power described in \cref{sec:Restricted}.}
 
 
 \section{Selection of Quadrature Points}
-\label{sec:SelQuadPoints1}
+\label{sec:SelQuadPoints}
 
 \todoi{Show how compare to Peter's set - including information from the Mathematica notebook}
 
 The number of quadrature points for each coordinate in the 6-dimensional integrations is critical to have fully converged results. In our testing, the $r_1$ coordinate (the coordinate of $e^+$) was the most important, requiring more integration points than any other. The $r_2$ and $r_3$ coordinates were the second most important, and the interparticle terms ($r_{12}$, $r_{13}$ and $r_{23}$) were the least important. These results only apply to the long-range--long-range and long-range--short-range terms, as the short-range--short-range terms are integrated using the same asymptotic expansion method as the bound state problem (see section \ref{sec:MatrixShort}).
 
-To determine this, we held the number of integration points fixed, except for one coordinate, which we increased in steps. The difference in the output between steps was used to analyze how important each coordinate was. Also, some terms are more sensitive to the number of integration points than other. For instance, the $(\bar{S},\mathcal{L} \bar{S})$ term converges relatively quickly, while the $(\bar{C},\mathcal{L} \bar{C})$ term requires more integration points.
+To determine this, we held the number of integration points fixed, except for one coordinate, which we increased in steps. The difference in the output between steps was used to analyze how important each coordinate was. Also, some terms are more sensitive to the number of integration points than other. For instance, the $(\bar{S},\mathcal{L}_\ell \bar{S})$ term converges relatively quickly, while the $(\bar{C},\mathcal{L}_\ell \bar{C})$ term requires more integration points.
 
 We also used a sample input file from Van Reeth for the number of quadrature points he used in his code. In figure \ref{fig:OriginalPhaseShifts-pvr}, this set of points was used. After approximately 525 short-range terms, it is immediately apparent that the phase shifts diverge, with a particularly large deviation in the inverse Kohn output. The Kohn and complex Kohn methods converge again shortly before 600 terms and stay converged up to 1000 terms.
 

@@ -6,29 +6,43 @@
 \chapter{Introduction}
 \label{sec:Introduction}
 
-\todoi{LOOK AT BISHOP THESIS}
-\todoi{Switch to BibLaTeX}
-\todoi{Lithium?, e- H, e+ He, e- He, McCurdy and Rescigno -> KVM mentioned how used for many systems, established method used by many groups}
-\todoi{Mention UCL and Australia groups}
-$\LaTeXe$
 
-\section{Positrons and Positronium}
-Positrons (denoted by $e^+$) are the antiparticle equivalent to electrons.  The mass and spin are same as that of electrons, but the charge is $+1e$, compared to the charge of $-1e$ on an electron. Paul Dirac first theorized the positron (antielectron) in 1931 \cite{Dirac1931}, and it was discovered shortly thereafter by Carl D. Anderson in 1932 \cite{Anderson1933}.
+\section{Positronium}
+\label{sec:Positronium}
 
-Stjepan Mohorovi\u{c}i\'{c} theorized the existence of positronium (Ps) in 
-1934 \cite{Mohorovicic1934}, but it was not created until 1951 by Martin 
-Deutsch \cite{Deutsch1951}. Ps is an exotic atom consisting of a positron and 
-an electron.  This atom is similar in some ways to hydrogen but also differs 
+Positronium (Ps) is an exotic atom formed from the bound state of a positron
+(antielectron, e$^+$) and an electron (e$^-$). \todo{onium?} Stjepan Mohorovi\u{c}i\'{c} 
+theorized the existence of Ps in 1934 \cite{Mohorovicic1934}, 
+but it was not created until 1951 by Martin Deutsch \cite{Deutsch1951}.
+This atom is similar in some ways to hydrogen (H) but also differs 
 in some key aspects. Namely that Ps annihilates, emitting two or three $\gamma$
 rays, depending on the spin \cite{Charlton2001}. In the singlet state, also 
 known as parapositronium (p-Ps), the lifetime is $\SI{125}{\ps}$ \cite{Czarnecki1999}.
-The triplet, or orthopositronium (o-Ps), lasts approximately 1000 times longer 
-with a lifetime of $\SI{142}{\ns}$ \cite{Vallery2003}. Due to the the short 
-lifetime of p-Ps, the majority of experimental data of Ps-atom and 
-Ps-molecule scattering comes from o-Ps.
+The triplet state, or orthopositronium (o-Ps), lasts approximately 1000 times
+longer with a lifetime of $\SI{142}{\ns}$ \cite{Vallery2003}. Due to the short 
+lifetime of p-Ps, the majority of experimental data of Ps-atom and
+Ps-molecule scattering comes from o-Ps. A brief overview of the state of the art
+in antimatter atomic physics is Ref.~\cite{Walters2010}, and a more in-depth
+review of Ps collisions is Ref.~\cite{Laricchia2012}.
+
+\todoi{Why Ps is interesting}
+
+With the increased interest in antihydrogen ($\bar{\rm{H}}$) production at CERN
+\cite{ALPHACollaboration2011}, there have been investigations by groups
+exploring alternate mechanisms other than dumping antiprotons ($\bar{\rm{p}}$)
+into a cloud of e$^+$ and relying on the reaction of
+$\bar{\rm{p}} + \rm{e}^+ + \rm{e}^+ \to \bar{\rm{H}} + \rm{e}^+$.
+Refs.~\cite{Kadyrov2013,Elkilany2014} explore the inelastic low-energy
+reaction of $\bar{\rm{p}} + \rm{Ps} \to \bar{\rm{H}} + \rm{e}^-$, where the Ps
+is in its ground state. A very recent paper \cite{Kadyrov2015} (also mentioned
+in the popular science press \cite{Kadyrov2015b}) claims that if the target Ps
+is in an excited state ($1 < n \leq 3$), the $\bar{\rm{H}}$ production rate is
+improved by several orders of magnitude.
+
+
 
 \subsection{Positronium and Hydrogen Wavefunctions}
-The reduced mass for hydrogen is
+The reduced mass for H is
 \begin{equation}
 \mu_{\rm{H}} = \frac{m_p m_e}{m_p + m_e}.
 \end{equation}
@@ -39,7 +53,9 @@ In the limit where the proton has infinite mass, the reduced mass becomes
 \lim_{m_p \to \infty} \frac{m_p m_e}{m_p + m_e} = m_e \approx \mu_{\rm{H}}.
 \end{equation}
 
-The positronium system is similar to the hydrogen atom with the proton replaced by a positron, meaning we can no longer use the infinite mass approximation, as $m_{e^+} = m_e$.
+The Ps exotic atom is similar to the H atom with the proton replaced 
+e$^+$, meaning we can no longer use the infinite mass approximation, 
+as $m_{e^+} = m_{e^-} = m_e$.
 \begin{equation}
 \mu_{\rm{Ps}} = \frac{m_e^2}{2 m_e} = \frac{m_e}{2}.
 \end{equation}
@@ -102,140 +118,253 @@ of positronium and hydrogen.
 For a detailed analysis of H and Ps theoretical and experimental research,
 refer to Ref.~\cite{Karshenboim2005}.
 
-\section{Positronium Hydride}
-\label{sec:PsH}
-Positronium hydride (PsH) is a molecule \todo{Not exactly true} comprised of 
-a hydrogen atom and a positronium atom. After Wheeler \cite{Wheeler1946} 
-showed that positrons could be part of what he called a polyelectronic 
-compound, Ore shortly thereafter predicted PsH in 1951 \cite{Ore1951}. PsH 
-was not experimentally verified until 1992 by Schrader \cite{Schrader1992}. 
-
-\todoi{Use \cite{Bressanini2003}}
-\todoi{Use \cite{Heyrovska2011}}
 
 
 
-\section{Introduction from PRA Paper}
-Positronium (Ps) scattering from atoms and molecules is an area of current 
-experimental and theoretical interest. The development of energy-tunable
-ortho-Ps beams
-\cite{Brown1985,Laricchia1987,Zafar1996,Garner1996,Laricchia2008} 
-has enabled measurements to be made of Ps scattering from the inert gases He,
-Ne, Ar, Kr, and Xe
+\section{Motivation}
+\label{sec:Motivation}
+
+The original impetus for this research was a proposed experiment to measure 
+low-energy Ps scattering from alkali atoms by Jason Engbrecht of the Positron 
+Research Group at St. Olaf College. There has not been much theoretical work
+on these systems so far. Unfortunately, it appears that this project
+is put on hold indefinitely, and the group's website \cite{Engbrecht2013} no 
+longer exists.
+
+However, there is still interesting ongoing experimental work on Ps scattering,
+though with different targets. The University College London (UCL) Positron
+Group \cite{UCL2015} has developed energy-tunable o-Ps beams
+\cite{Brown1985,Laricchia1987,Zafar1996,Garner1996,Laricchia2008} over the
+course of many years. This group has been able to study Ps scattering from
+He, Ne, Ar, Kr, and Xe
 \cite{Garner1996,Garner2000,Armitage2002,Laricchia2004,Armitage2006,Laricchia2008,Engbrecht2008,Brawley2010a}
-and the molecules H$_2$, N$_2$, O$_2$, CO$_2$, H$_2$O, and SF$_6$
+and the H$_2$, N$_2$, O$_2$, CO$_2$, H$_2$O, and SF$_6$ molecules
 \cite{Garner1996,Garner1998,Garner2000,Laricchia2004,Armitage2006,Beale2006,Brawley2010a}.
-Cross sections for Ps scattering from H have not been measured due to the
-difficulty of an atomic hydrogen beam, although the binding energy of positronium
-hydride (PsH) has been measured in the reaction of a positron with methane,
-e$^+$ + CH$_4$ $\to$ CH$_3^+$ + PsH \cite{Schrader1992}. The low-energy region
-is of particular interest, because in this energy range, positron and electron 
-correlations are dominant. We present
-\cite{Conferences1,Conferences2,Conferences3,WoodsDiss2015} 
-our work of the application of the complex Kohn variational 
-method to elastic Ps(1s)-H(1s) scattering in the energies up to the 
-excitation threshold of Ps(n=2) at $\SI{5.102}{eV}$.
 
-Ps-H scattering is a fundamental four-body Coulomb process. The Kohn (and 
-inverse Kohn) variational method has previously been applied to Ps-H 
-collisions by Van Reeth and Humberston \cite{VanReeth2003,VanReeth2004}, who 
-computed $^{1,3}S$ and $^{1,3}P$ elastic phase shifts. We 
-have extended their $^{1,3}S$ and $^{1,3}P$ Kohn variational calculations in 
-multiple ways. First, and foremost, in addition to implementing
-the Kohn and inverse Kohn variational methods, we have implemented the 
-generalized Kohn, the complex Kohn for the $S$ and $T$ matrices, and the
-generalized complex Kohn for the $S$ and $T$
-matrices. The complex Kohn variational methods are known to suffer
-from far fewer anomalous singularities than the Kohn, inverse Kohn and 
-generalized Kohn variational methods
-\cite{Lucchese1989, Cooper2009, Cooper2010}. The second extension that we
-consider is to use the procedure by Todd 
-\cite{Todd2007} to systematically remove short-range terms that cause linear 
-dependence. This enables us to compute the phase shifts (and the binding 
-energy of PsH) with more short-range Hylleraas terms than the earlier 
-Kohn calculations. We add the asymptotic expansion of Drake and Yan
-\cite{Drake1995, Yan1997} to improve the accuracy of the short-range
-integrations. We have also significantly increased the number of integration
-points for matrix
-elements that involve the long-range terms, along with implementing a method to
-accelerate the convergence of these integrals. We also extend the 
-calculations to the next two partial waves through to the $F$-wave, which
-enables us to calculate the differential elastic, integrated elastic, momentum
-transfer, and ortho-para conversion cross sections.
+A recent development in the field is the surprising discovery that Ps 
+scattering is electron-like \cite{Brawley2010a}, which was also reported in the
+popular science literature \cite{NewScientist2015}. If the cross sections are 
+plotted with respect to the velocity of the incoming projectile, not momentum 
+like typical, e$^-$ and Ps scattering look similar when the target is the same.
+This is despite the Ps projectile having twice the mass of e$^-$ and being 
+electrically neutral versus negatively charged. When these are compared to
+e$^+$ scattering, it can be seen in \cref{fig:ScienceBrawley} that e$^+$
+scattering looks different from these two. Fabrikant and Gribakin
+\cite{Fabrikant2014,Fabrikant2014a} compare low-energy e$^-$ and Ps scattering
+from Kr and Ar targets, also finding that the cross sections are similar for
+e$^-$ and Ps projectiles. The e$^+$ seems to contribute much less to these
+interactions than e$^-$. This shows that there is still
+plenty of work to do to understand Ps scattering more fully, but it
+does suggest that for certain cases, a decent first approximation to Ps
+scattering can be made by using e$^-$ scattering data.
 
-We present results in this paper obtained using the $S$ matrix complex Kohn 
-variational principle for Ps-H scattering. We confirm the previously observed 
-resonances for the first four partial waves and compare the positions and 
-widths to that of the earlier Kohn \cite{VanReeth2003,VanReeth2004}, close 
-coupling (CC) \cite{Walters2004} and complex rotation calculations
-\cite{Yan1999,Yan1998a,Ho1998,Ho2000}. In addition, we compute the scattering
-lengths and effective ranges using multiple effective range theories.
+\begin{figure}[H]
+	\centering
+	\resizebox{1.0\textwidth}{!}{\includegraphics{ScienceBrawley}}
+	\caption[Comparisons of e$^-$, e$^+$, and Ps scattering]{Comparisons of
+e$^-$, e$^+$, and Ps scattering from different atomic and molecular targets 
+from Ref.~\cite{Brawley2010a}. Reprinted with permission from AAAS.}
+	\label{fig:ScienceBrawley}
+\end{figure}
 
-We also use the short-range part of the full scattering wavefunction to 
-compute the binding energy of PsH. Comparing the binding energy with the most 
-elaborate variational results gives an indication of the reliability of 
-describing the Ps-H system at short distances. The binding energy of PsH,
-$E_b$, has been calculated using various methods. Ho \cite{Ho1986} performed a 
-variational calculation with a Hylleraas basis set, and Yan and Ho
-\cite{Yan1999} later did a more extensive calculation. Mitroy \cite{Mitroy2006}
-used the stochastic variational method (SVM) with 1800 explicitly correlated 
-Gaussians (ECGs), and Bubin and Adamowicz \cite{Bubin2006} found the most 
-accurate value using 5000 ECGs in a variational calculation.
 
-There have been a number of other calculations for Ps-H scattering. A much 
+
+\section{Partial Waves and Kohn Variational Methods}
+\label{sec:KohnIntro}
+
+The most common way of approaching scattering problems is to use the complete
+set of Legendre polynomials to expand the scattering wavefunction. For a
+central potential, this can be written as \cite{Bransden2003}
+\beq
+\label{eq:PartialWave}
+\Psi(k,r,\theta) = \sum_{\ell=0}^\infty R_\ell(k,r) P_\ell(\cos\theta).
+\eeq
+The method of partial waves evaluates each term in this summation separately,
+with each referred to as a partial wave, and each has a different angular 
+momentum. The typical naming of each partial wave starting from $\ell = 0$
+is the S-, P-, D-, F-, G-, H-wave, etc., which is similar to the usual 
+spectroscopic notation. For low energies, usually only a few terms in this
+expansion are required, and for very low energies, the S-wave ($\ell = 0$) is 
+typically the only significant contribution.
+
+The Kohn variational method \cite{Kohn1948} and its variants, derived and 
+described in \cref{chp:WaveKohn}, have been used successfully in many 
+scattering problems, such as e$^-$-H \cite{Schwartz1961}, e$^-$-methane
+\cite{McCurdy1989}, H-$\bar{\rm{H}}$ \cite{Armour2002}, e$^+$-H$_2$
+\cite{Cooper2008a}, e$^-$-Ps \cite{Ward1987}, and e$^+$-He \cite{VanReeth1997}.
+The Kohn variational method and its variants suffer from well-known spurious
+singularities (see \cref{eq:SchwartzSing}), so they are often used in conjunction
+with each other to identify these. To avoid cumbersome wording in this document,
+the Kohn variational method and variants of the method are simply referred to as
+``Kohn methods''. Complex Kohn methods that use spherical Hankel functions 
+instead of the spherical Bessel and Neumann functions are often used due to a 
+smaller, but nonzero, chance of the Schwartz singularities
+\cite{McCurdy1989,Lucchese1989,Cooper2010}. This work uses the Kohn,
+inverse Kohn, generalized Kohn \cite{Armour1991}, $S$-matrix complex Kohn,
+and $T$-matrix complex Kohn variational methods.
+
+
+\section{Ps-H Scattering}
+\label{sec:ScatIntro}
+
+For this work \cite{Woods2015,Conferences1,Conferences2,Conferences3}, we
+have computed phase shifts for the first six partial waves of Ps-H scattering
+and resonance parameters for $^1$S through $^1$F
+(\cref{chp:SWave,chp:PWave,chp:DWave,chp:HigherWaves}).
+We also calculate scattering lengths and effective ranges for $^{1,3}$S
+(\cref{sec:ScatteringLength}), scattering lengths for $^{1,3}$P
+(\cref{sec:PWaveScatLen}), and multiple cross sections
+(\cref{chp:CrossSections}). Each of these is compared to previously published
+research where possible.
+
+This work is an extension of the earlier work on Ps-H collisions using the 
+Kohn and inverse Kohn variational methods by Van Reeth and Humberston
+\cite{VanReeth2003,VanReeth2004}. In these papers, they calculated $^{1,3}$S
+and $^{1,3}$P phase shifts and obtained resonance parameters, scattering lengths
+and effective ranges from these. The most important difference from this earlier 
+work is that we have increased the number of partial waves examined from two 
+to six, requiring developing a general formalism and code that works for 
+arbitrary partial waves. This allows us to calculate elastic integrated, elastic
+differential, and momentum transfer cross sections (\cref{chp:CrossSections}),
+which would not be possible with only the
+$^{1,3}$S- and $^{1,3}$P-waves. We also develop a very general form
+(\cref{chp:WaveKohn}) of the scattering wavefunction and codes that allows us to
+calculate phase shifts with not only the Kohn and inverse Kohn variational methods
+but also with the generalized Kohn, $S$-matrix complex Kohn, $T$-matrix complex
+Kohn, generalized $S$-matrix complex Kohn, and generalized $T$-matrix complex
+Kohn variational methods. Over the previous work, we also perform a thorough
+analysis of the van der Waals contribution to the $^{1,3}$S scattering lengths
+and effective ranges and investigate the $^{1,3}$P scattering lengths
+(\cref{sec:ScatteringLength}).
+
+We have increased the number of short-range terms (\cref{eq:PhiDef}) used 
+over prior work \cite{VanReeth2003,VanReeth2004}. This is enabled by several
+changes. The largest improvement has been the introduction of the Todd method
+(\cref{sec:ToddBound}), which selects the ``best'' set of short-range terms
+from the full set determined by $\omega$ in \cref{eq:GeneralWaveTrial}. Some
+short-range terms contribute more to linear dependence than others, and this
+method removes those in a systematic manner. This is often an improvement 
+over the restriction in powers that Van Reeth and Humberston
+\cite{VanReeth2003} did, though we still use that restricted basis set for
+the $^{1,3}$F-wave (\cref{sec:FWave}). We also implement the asymptotic
+expansion \cite{Drake1995,Yan1997} for the short-range--short-range integrals
+instead of only doing a direction summation (\cref{sec:AsymptoticExpansion}).
+This gives much more accurate short-range--short-range integrals, allowing us
+to use more short-range terms and solve larger matrices in
+\cref{eq:GeneralKohnMatrix}. We specifically noted a threefold increase in the
+number of terms we could use for the $^3$S state when the asymptotic expansion
+was included. We use approximately seven times as many
+integration points as this previous work (\cref{sec:SelQuadPoints}).
+For $\ell \geq 1$ especially, an increase in the number of
+integration points for the long-range--long-range and long-range--short-range
+integrals \cref{sec:CompLong} lead to more stable results and the ability to
+use more short-range terms. For $\ell \geq 2$ (not investigated by the prior
+work), we also introduced extra exponentials in several coordinates to the
+Gauss-Laguerre quadratures (\cref{sec:ExtraExp}) that are subsequently removed,
+increasing the convergence rate of the long-range--short-range integrals.
+
+The Ps-H collision problem has been treated by multiple groups with different
+methods over the years, each with associated strengths and weaknesses.
+\footnote{The following three paragraphs are adapted from Ref.~\cite{Woods2015}.}A much 
 earlier Kohn variational calculation was performed by Page \cite{Page1976} 
-for the Ps-H scattering lengths. Drachman and Houston used a stabilization 
-method with an effective range theory (ERT) expansion
-\cite{Drachman1975,Drachman1976}. At low energies, diffusion Monte Carlo (DMC)
+for the Ps-H scattering lengths. Drachman and Houston
+\cite{Drachman1975,Drachman1976} used
+a stabilization method with an effective range theory (ERT) expansion.
+At low energies, diffusion Monte Carlo (DMC)
 \cite{Chiesa2002}, the SVM \cite{Ivanov2001,Ivanov2002}, CC
 \cite{Sinha1997,Campbell1998,Adhikari1999,Sinha2000,Blackwood2002,Blackwood2002b,Walters2004},
-static exchange \cite{Hara1975,Ray1997}, and Kohn variational
-\cite{Page1976,VanReeth2003,VanReeth2004} methods have been applied. The SVM
+static exchange \cite{Hara1975,Ray1997,*Ray1996}, Kohn variational
+\cite{Page1976,VanReeth2003,VanReeth2004}, and inverse Kohn
+variational \cite{VanReeth2003,VanReeth2004} methods have been applied. The SVM
 with stabilization 
 techniques was used to compute low-energy phase shifts and 
 scattering lengths for Ps-H collisions \cite{Ivanov2001,Ivanov2002}.
 
+The first Born approximation has been used by Massey and Mohr \cite{Massey1954}
+and later by McAlinden et al.~\cite{McAlinden1996}.
 Blackwood et al.~\cite{Blackwood2002} performed an elaborate CC calculation 
 for Ps scattering from H, which took into account excitation and ionization 
 of both the projectile and target. They considered two different coupling 
 schemes. The first one, which they refer to as 9Ps9H, included 9 eigen- and 
 pseudo-states of Ps and also of H. The second scheme, which they refer to as 
-14Ps14H, is for the singlet only and includes 14 eigen- and pseudo-states of 
-Ps and also of H. Good agreement is obtained between the CC
-\cite{Blackwood2002} and the SVM \cite{Ivanov2002} for the $S$-wave scattering
+14Ps14H, was used for $S$-wave singlet scattering only and included
+14 eigen- and pseudo-states of 
+Ps and also of H. Good agreement was obtained between the CC
+\cite{Blackwood2002} and the SVM \cite{Ivanov2002} for the $^{1,3}S$-wave scattering
 lengths and phase shifts. In another paper, Blackwood et
 al.~\cite{Blackwood2002b} considered the importance of including the H$^-$
-channel in a 22Ps1H coupling scheme, comparing to the previous 22Ps1H
+channel in a 22Ps1H coupling scheme, comparing with the previous 22Ps1H
 calculations of Campbell et al. \cite{Campbell1998}. Walters et
 al.~\cite{Walters2004} extended the earlier CC calculations
 \cite{Blackwood2002} to include the e$^+$-H$^-$ channel
 \cite{Blackwood2002b} and compared their results for the $S$-wave with the
-accurate Kohn variational results \cite{VanReeth2003}. They speculated that the
-inclusion of the virtual Ps$^-$ formation channel may be needed to obtain 
-agreement with the Kohn variational results for Ps(1s)-H(1s) scattering 
-\cite{Blackwood2002}. A recent calculation of Ps-H scattering uses the
-confined variational method (CVM) \cite{Zhang2012}. This provides accurate
-results but has the drawback of being very computationally expensive. In
-Ref.~\cite{Zhang2012}, Zhang and Yan calculate phase shifts for 2 momenta for
-both $^1S$ and $^3S$.
+Kohn variational results \cite{VanReeth2003}.
+A recent calculation of Ps-H scattering by Zhang and Yan
+\cite{Zhang2012} used the
+confined variational method (CVM) to calculate phase shifts for two momenta
+for both $^1S$ and $^3S$. This method provides accurate
+results but has the drawback of being very computationally expensive.
 
-Unlike the SVM and DMC methods, the Kohn variational method gives rigorous 
-bounds on the scattering lengths and, except for Schwartz singularities, 
-gives empirical bounds on the elastic phase shifts. This means that the wave 
-function can be systematically improved to the converged results. The Kohn 
-variational method is known to yield accurate results and has provided 
-benchmark results \cite{VanReeth2003,VanReeth2004} to which results from 
-other calculations can be compared. %\sout{Unlike the SVM, the Kohn variational
-%method can treat inelastic as well as elastic scattering and thus can be 
-%extended to higher energies.}
-
-Phase shifts are expressed in radians. Atomic units are used throughout 
-unless otherwise stated. For conversions to electron-volts (eV), we use the 
-conversion factor 1 a.u. = {27.21138505(60) eV}
-\cite{Mohr2012,*NISTConversions}.
+The Kohn variational method gives rigorous upper bounds on the scattering 
+lengths and, except for Schwartz singularities, empirical lower bounds on the 
+phase shifts. This means that the wave function can be systematically 
+improved to the converged results. The Kohn and inverse Kohn variational 
+methods are known to yield accurate results and have provided benchmark 
+results \cite{VanReeth2003,VanReeth2004} with which results from other 
+calculations can be compared. The Kohn methods can generate very accurate 
+phase shifts, but the choice of trial wavefunction can make computation very 
+difficult. Then there are the spurious Schwartz singularities, but these can 
+often be mitigated by using complex Kohn methods.
 
 
-\todoi{ECGs do not match the physical shape of the wavefunction and require large basis sets \cite{Mitroy2002a}}
+\section{Positronium Hydride}
+\label{sec:PsH}
+Positronium hydride (PsH) is a bound state comprised of 
+a hydrogen atom and a positronium atom. After Wheeler \cite{Wheeler1946} 
+showed that positrons could be part of what he called a polyelectronic 
+compound, Ore shortly thereafter predicted PsH in 1951 \cite{Ore1951}. PsH 
+was not experimentally verified until 1992 by Schrader \cite{Schrader1992}
+using the reaction e$^+$ + CH$_4$ $\to$ CH$_3^+$ + PsH.
+
+We first investigated the bound state of PsH instead of Ps-H scattering, as 
+it is a simpler problem and has been studied extensively in the literature
+(see \cref{tab:BoundEnergyOther} on page \pageref{tab:BoundEnergyOther}).
+The purpose of first studying PsH was not to try to contribute more accurate
+results but to develop the experience with the short-range Hylleraas-type 
+correlation terms that we used in both the $^1$S PsH and $^1$S Ps-H
+scattering problems. 
+The full discussion of our work on PsH is found in \cref{chp:PsHBound}.
+There are dozens of calculations of the ground state
+or binding energy of PsH given in \cref{tab:BoundEnergyOther}.
+Our binding energy of \SI{1.066 406}{eV} compares well with the most accurate
+value from Ref.~\cite{Bubin2006} of \SI{1.066 598}{eV}, which gives confidence
+in the short-range part of our scattering wavefunction in
+\cref{sec:GeneralWave}.
+
+
+\section{A Note on Units}
+\label{sec:Units}
+
+%\begin{verbatim}
+%http://en.wikipedia.org/wiki/Natural_units
+%http://www.phys.ksu.edu/personal/cdlin/class/class11a-amo2/atomic_units.pdf
+%http://ilan.schnell-web.net/physics/rydberg.pdf
+%http://exciting-code.org/ref:input
+%http://physics.nist.gov/cuu/Constants/energy.html
+%\end{verbatim}
+
+Unless otherwise stated, values throughout are given in atomic units, i.e.
+$\hbar = m_e = e = 4\pi\epsilon_0 = 1$ \cite{Hartree1928}. Energies are given
+in hartrees, with $\SI{1}{\hartree} = \SI{27.211 385 05(60)}{\electronvolt}$ 
+\cite{Mohr2012,NISTConversions}. Momentum is given as units of $a_0^{-1}$,
+where $a_0$ is the Bohr radius. Cross sections are given in units of
+$\pi a_0^2$, and differential cross sections are given in units of
+$a_0^2 / \rm{sr}$, unless otherwise noted.
+
+
+
+
+
 
 
 \section{From proposal}
@@ -269,32 +398,14 @@ conversion factor 1 a.u. = {27.21138505(60) eV}
 	\end{itemize}
 \end{itemize}
 
-\section{Motivation}
-Positron Research Group at St. Olaf College in Northfield, MN.
-
-Jason Engbrecht
-
-planned to measure low-energy Ps scattering off alkali atoms
+\todoi{ECGs do not match the physical shape of the wavefunction and require large basis sets \cite{Mitroy2002a}}
 
 
 \section{Ideas for Introduction}
 
-\begin{figure}[H]
-	\centering
-	\resizebox{1.0\textwidth}{!}{\includegraphics{ScienceBrawley}}
-	\caption[Comparisons of e$^-$, e$^+$, and Ps scattering]{Comparisons of e$^-$, e$^+$, and Ps scattering from different atomic
-and molecular targets from Ref.~\cite{Brawley2010a}. Reprinted with permission from AAAS.}
-	\label{fig:ScienceBrawley}
-\end{figure}
 
-also mentioned in the popular science literature in New Scientist \cite{NewScientist2015}
-
-\begin{itemize}
-	\item Bound State Versus Scattering Problems
-	\item Comparison with Other Scattering Methods
-	\item Partial waves
-	\item Types of possible targets
-\end{itemize}
+%\todoi{LOOK AT BISHOP THESIS}
+%\todoi{Switch to BibLaTeX}
 
 \todoi{\cite{Biswas2002} mentions motivations, such as \cite{Weber1988,Moxom1998,Tang1993} and \url{http://www.amazon.com/Positron-Positronium-Chemistry-Physical-Theoretical/dp/0444430091}}
 
@@ -308,32 +419,23 @@ also mentioned in the popular science literature in New Scientist \cite{NewScien
 \todoi{Nomenclature with \url{http://www.howtotex.com/packages/create-a-simple-nomenclature-with-the-longtable-package/} or the nomencl package}
 \todoi{Discussion of methods in \cite{Ivanov2002}}
 \todoi{Bold volume numbers: \url{http://tex.stackexchange.com/questions/82499/make-volume-bold-in-custom-bibliography-style-bst}}
-\todoi{Possible recreation of figures 2-4 in \cite{Adhikari1999}?}
+%\todoi{Possible recreation of figures 2-4 in \cite{Adhikari1999}?}
 \todoi{Better WebCite citations: \url{http://www.volkerschatz.com/tex/advbib.html}}
 \todoi{Might be nice to do something like this for Hartree atomic units: \url{http://ilan.schnell-web.net/physics/rydberg.pdf}}
 \todoi{Short-range term animations: \url{http://youtu.be/uVxK9iGZGm0}}
 \todoi{Plotly plots: \url{https://plot.ly/~Denton}}
 \todoi{Cite Hylleraas paper on He: \cite{Hylleraas1929}}
-\todoi{Consistent H and Ps abbreviations}
+%\todoi{Consistent H and Ps abbreviations}
 \todoi{Mention that S-matrix results throughout unless otherwise specified}
 \todoi{Cusp condition mentioned in \cite{Saito1995a}. \url{http://onlinelibrary.wiley.com/doi/10.1002/cpa.3160100201/abstract}}
-\todoi{May need to mention conference abstracts: \cite{Conferences1,Conferences2,Conferences3}}
-\todoi{Mention \cite{Kadyrov2015} and \cite{Kadyrov2015b} for antihydrogen production with excited Ps, and \cite{Kadyrov2013} and \cite{Elkilany2014} for ground state Ps}
-\todoi{H-$\bar{\rm{H}}$ in \cite{Armour2002}}
+\todoi{\cite{Shantarovich2003} for applications of Ps scattering}
+\todoi{Add \cite{Messiah1999} for several things in scattering theory chapter}
+\todoi{Can we get the Schraeder referenced as [4] in \cite{Heyrovska2011}?}
 
-\section{A Note on Units}
-\label{sec:Units}
 
-\begin{verbatim}
-http://en.wikipedia.org/wiki/Natural_units
-http://www.phys.ksu.edu/personal/cdlin/class/class11a-amo2/atomic_units.pdf
-http://ilan.schnell-web.net/physics/rydberg.pdf
-http://exciting-code.org/ref:input
-http://physics.nist.gov/cuu/Constants/energy.html
-\end{verbatim}
 
-Unless otherwise stated, values throughout are given in atomic units, i.e. $\hbar = m_e = e = 4\pi\epsilon_0 = 1$ \cite{Hartree1928}. Energies are given in hartrees, with $\SI{1}{\hartree} = \SI{27.211 385 05(60)}{\electronvolt}$ \cite{Mohr2012,NISTConversions}. Momentum is given as units of $a_0^{-1}$. Cross sections are given in units of $\pi a_0^2$, and differential cross sections are given in units of $a_0^2 / \rm{sr}$, unless otherwise noted.
-
+%\section{Positrons and Positronium}
+%Positrons (denoted by $e^+$) are the antiparticle equivalent to electrons.  The mass and spin are same as that of electrons, but the charge is $+1e$, compared to the charge of $-1e$ on an electron. Paul Dirac first theorized the positron (antielectron) in 1931 \cite{Dirac1931}, and it was discovered shortly thereafter by Carl D. Anderson in 1932 \cite{Anderson1933}.
 
 
 \biblio
