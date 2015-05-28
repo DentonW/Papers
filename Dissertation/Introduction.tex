@@ -21,27 +21,11 @@ known as parapositronium (p-Ps), the lifetime is $\SI{125}{\ps}$ \cite{Czarnecki
 The triplet state, or orthopositronium (o-Ps), lasts approximately 1000 times
 longer with a lifetime of $\SI{142}{\ns}$ \cite{Vallery2003}. Due to the short 
 lifetime of p-Ps, the majority of experimental data of Ps-atom and
-Ps-molecule scattering comes from o-Ps. A brief overview of the state of the art
-in antimatter atomic physics is Ref.~\cite{Walters2010}, and a more in-depth
-review of Ps collisions is Ref.~\cite{Laricchia2012}.
-
-\todoi{Why Ps is interesting}
-
-With the increased interest in antihydrogen ($\bar{\rm{H}}$) production at CERN
-\cite{ALPHACollaboration2011}, there have been investigations by groups
-exploring alternate mechanisms other than dumping antiprotons ($\bar{\rm{p}}$)
-into a cloud of e$^+$ and relying on the reaction of
-$\bar{\rm{p}} + \rm{e}^+ + \rm{e}^+ \to \bar{\rm{H}} + \rm{e}^+$.
-Refs.~\cite{Kadyrov2013,Elkilany2014} explore the inelastic low-energy
-reaction of $\bar{\rm{p}} + \rm{Ps} \to \bar{\rm{H}} + \rm{e}^-$, where the Ps
-is in its ground state. A very recent paper \cite{Kadyrov2015} (also mentioned
-in the popular science press \cite{Kadyrov2015b}) claims that if the target Ps
-is in an excited state ($1 < n \leq 3$), the $\bar{\rm{H}}$ production rate is
-improved by several orders of magnitude.
-
+Ps-molecule scattering comes from o-Ps.
 
 
 \subsection{Positronium and Hydrogen Wavefunctions}
+\todoi{p and e instead of $p$ and $e$}
 The reduced mass for H is
 \begin{equation}
 \mu_{\rm{H}} = \frac{m_p m_e}{m_p + m_e}.
@@ -124,7 +108,30 @@ refer to Ref.~\cite{Karshenboim2005}.
 \section{Motivation}
 \label{sec:Motivation}
 
-The original impetus for this research was a proposed experiment to measure 
+Ps formation is important in the galactic core \cite{Kinzer1996}, and Ps-atom 
+scattering is of interest in the study of solar processes \cite{Crannell1976}.
+As well as the basic interest of Ps-atom scattering in atomic physics, Ps 
+is also important in material science. As Ps is neutral, it penetrates deeper 
+into material than a charged particle, such as a positron. Ps scattering also 
+has applications in other areas of physics such as biophysics and 
+astrophysics \cite{Laricchia2012}. A brief overview of the state of the art
+in antimatter atomic physics is Ref.~\cite{Walters2010}, and a more in-depth
+review of Ps collisions is Ref.~\cite{Laricchia2012}.
+
+With the increased interest in antihydrogen ($\bar{\rm{H}}$) production at CERN
+\cite{ALPHACollaboration2011}, there have been investigations by groups
+exploring alternate mechanisms other than dumping antiprotons ($\bar{\rm{p}}$)
+into a cloud of e$^+$ and relying on the reaction of
+$\bar{\rm{p}} + \rm{e}^+ + \rm{e}^+ \to \bar{\rm{H}} + \rm{e}^+$.
+Refs.~\cite{Kadyrov2013,Elkilany2014} explore the inelastic low-energy
+reaction of $\bar{\rm{p}} + \rm{Ps} \to \bar{\rm{H}} + \rm{e}^-$, where the Ps
+is in its ground state. A very recent paper \cite{Kadyrov2015} (also mentioned
+in the popular science press \cite{Kadyrov2015b}) claims that if the target Ps
+is in an excited state ($1 < n \leq 3$), the $\bar{\rm{H}}$ production rate is
+improved by several orders of magnitude.
+
+The original %impetus
+motivation for this research was a proposed experiment to measure 
 low-energy Ps scattering from alkali atoms by Jason Engbrecht of the Positron 
 Research Group at St. Olaf College. There has not been much theoretical work
 on these systems so far. Unfortunately, it appears that this project
@@ -142,7 +149,7 @@ and the H$_2$, N$_2$, O$_2$, CO$_2$, H$_2$O, and SF$_6$ molecules
 \cite{Garner1996,Garner1998,Garner2000,Laricchia2004,Armitage2006,Beale2006,Brawley2010a}.
 
 A recent development in the field is the surprising discovery that Ps 
-scattering is electron-like \cite{Brawley2010a}, which was also reported in the
+scattering is electron-like \cite{Brawley2010,Brawley2010a}, which was also reported in the
 popular science literature \cite{NewScientist2015}. If the cross sections are 
 plotted with respect to the velocity of the incoming projectile, not momentum 
 like typical, e$^-$ and Ps scattering look similar when the target is the same.
@@ -152,8 +159,9 @@ e$^+$ scattering, it can be seen in \cref{fig:ScienceBrawley} that e$^+$
 scattering looks different from these two. Fabrikant and Gribakin
 \cite{Fabrikant2014,Fabrikant2014a} compare low-energy e$^-$ and Ps scattering
 from Kr and Ar targets, also finding that the cross sections are similar for
-e$^-$ and Ps projectiles. The e$^+$ seems to contribute much less to these
-interactions than e$^-$. This shows that there is still
+e$^-$ and Ps projectiles. The tentative conclusion is that the
+e$^+$ plays a much smaller role in the scattering process than the e$^-$
+in Ps-atom and Ps-molecule scattering. This shows that there is still
 plenty of work to do to understand Ps scattering more fully, but it
 does suggest that for certain cases, a decent first approximation to Ps
 scattering can be made by using e$^-$ scattering data.
@@ -166,7 +174,6 @@ e$^-$, e$^+$, and Ps scattering from different atomic and molecular targets
 from Ref.~\cite{Brawley2010a}. Reprinted with permission from AAAS.}
 	\label{fig:ScienceBrawley}
 \end{figure}
-
 
 
 \section{Partial Waves and Kohn Variational Methods}
@@ -367,38 +374,36 @@ $a_0^2 / \rm{sr}$, unless otherwise noted.
 
 
 
-\section{From proposal}
-
-\begin{itemize}
-	\item At low energies, multiple methods for scattering calculations can be used
-	\begin{itemize}
-		\item Diffusion Monte Carlo (DMC)
-		\item Stochastic variational (SVM)
-		\item Close-coupling (CC)
-		\item Kohn variational
-	\end{itemize}
-
-	\item Diffusion Monte Carlo does not give bounds on scattering parameters 13
-
-	\item Stochastic variational (Mitroy et al. (2001), Ivanov et al. (2001, 2002)) 8-10
-	\begin{itemize}
-		\item Uses explicitly correlated Gaussians
-		\item ECGs do not match the physical shape of the wavefunction 8
-		\item Large basis sets required 8
-		\item Phase shifts are determined at energies which are not known in advance 10
-		\item Does not give bounds on scattering parameters 13
-	\end{itemize}
-
-	\item Close-coupling (Blackwood et al. (2002), Walters et al. (2004)) 11, 12
-	\begin{itemize}
-		\item Two possible coupling schemes
-		\item 9Ps9H – has 9 eigen- and pseudo-states of Ps and H
-		\item 14Ps14H – has 14 eigen- and pseudo-states of Ps and H
-		\item Only singlet performed for 14Ps14H 11
-	\end{itemize}
-\end{itemize}
-
-\todoi{ECGs do not match the physical shape of the wavefunction and require large basis sets \cite{Mitroy2002a}}
+%\section{From proposal}
+%
+%\begin{itemize}
+	%\item At low energies, multiple methods for scattering calculations can be used
+	%\begin{itemize}
+		%\item Diffusion Monte Carlo (DMC)
+		%\item Stochastic variational (SVM)
+		%\item Close-coupling (CC)
+		%\item Kohn variational
+	%\end{itemize}
+%
+	%\item Diffusion Monte Carlo does not give bounds on scattering parameters 13
+%
+	%\item Stochastic variational (Mitroy et al. (2001), Ivanov et al. (2001, 2002)) 8-10
+	%\begin{itemize}
+		%\item Uses explicitly correlated Gaussians
+		%\item ECGs do not match the physical shape of the wavefunction 8
+		%\item Large basis sets required 8
+		%\item Phase shifts are determined at energies which are not known in advance 10
+		%\item Does not give bounds on scattering parameters 13
+	%\end{itemize}
+%
+	%\item Close-coupling (Blackwood et al. (2002), Walters et al. (2004)) 11, 12
+	%\begin{itemize}
+		%\item Two possible coupling schemes
+		%\item 9Ps9H – has 9 eigen- and pseudo-states of Ps and H
+		%\item 14Ps14H – has 14 eigen- and pseudo-states of Ps and H
+		%\item Only singlet performed for 14Ps14H 11
+	%\end{itemize}
+%\end{itemize}
 
 
 \section{Ideas for Introduction}
@@ -410,10 +415,8 @@ $a_0^2 / \rm{sr}$, unless otherwise noted.
 \todoi{\cite{Biswas2002} mentions motivations, such as \cite{Weber1988,Moxom1998,Tang1993} and \url{http://www.amazon.com/Positron-Positronium-Chemistry-Physical-Theoretical/dp/0444430091}}
 
 \nicebox{Title}{This is the content of my box}
-\todoi{Fabrikant and Gribakin paper compared e-, e+ and Ps \cite{Fabrikant2014}}
+\todoi{ECGs do not match the physical shape of the wavefunction and require large basis sets \cite{Mitroy2002a}}
 \todoi{Other groups using Kohn: \cite{McCurdy1987,McCurdy1989,Houston1971,Armour1987,Schwartz1961,Watts1992,DiRienzi2004,Armour2014,Ward1987,Todd2007,Armour2010c}}
-\todoi{Mention how \cite{Laricchia2012} gives a good overview of the field of Ps collisions}
-\todoi{Walters article in \emph{Science} \cite{Walters2010} shows how there is continued interest in Ps scattering}
 \todoi{Look at quotchap (chapter quotes) and thumbs (chapter thumbs) packages}
 \todoi{Go through tips in \url{https://www.cs.purdue.edu/homes/dec/essay.dissertation.html}}
 \todoi{Nomenclature with \url{http://www.howtotex.com/packages/create-a-simple-nomenclature-with-the-longtable-package/} or the nomencl package}
