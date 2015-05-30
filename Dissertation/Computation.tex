@@ -14,10 +14,17 @@
 \section{Short-Range Terms}
 \label{sec:CompShort}
 
-Matrix elements in \cref{eq:GeneralKohnMatrix} involving only short-range terms are handled differently than those that involve long-range terms (short-long and long-long). \cref{eq:BoundHFull} and 
+Matrix elements in \cref{eq:GeneralKohnMatrix} involving only short-range 
+terms are handled differently than those that involve long-range terms
+(short-long and long-long). The integrals resulting from using
+\Cref{eq:BoundHFull,eq:GradGradShort} in \cref{eq:GeneralKohnMatrix} are 
+handled in this section.
 
-\todoi{More lead in}
-The bound state problem is a generalized eigenvalue problem (see \cref{eq:BoundGenEig}), but to simplify the following discussion, I will refer to the set of matrices \textbf{H} and \textbf{S} as a single matrix. The diagrams in this section show a single matrix, but it is in actuality a pair of matrices forming the generalized eigenvalue problem.
+The bound state problem is a generalized eigenvalue problem (see
+\cref{eq:BoundGenEig}), but to simplify the following discussion, I will refer
+to the set of matrices \textbf{H} and \textbf{S} as a single matrix. The 
+diagrams in this section show a single matrix, but it is in actuality a pair 
+of matrices forming the generalized eigenvalue problem.
 
 
 \subsection{Short-Range -- Short-Range Integrations}
@@ -290,7 +297,7 @@ algorithm as implemented by us follows.
 The total number of terms to look at is $N = N(\omega)$ (see \cref{eq:NumberTermsOmega}).
  N matrices of size 1x1 are created for each term. This 
 is done for the overlap and the
- $\left\langle \phi \left| \,H \right| \phi \right\rangle$
+ $\left\langle \phi_i \left| \,H \right| \phi_j \right\rangle$
  matrices together. The LAPACK \texttt{dsygv} routine is used to 
 determine the lowest eigenvalue for each of these N sets. These energy 
 eigenvalues are compared against one another, and the term with the lowest 
@@ -599,7 +606,7 @@ we use an alternative volume element, namely that given by equation \ref{}.
 The $r_{23}^{-1}$ is then cancelled by the $r_{23}$ in this volume element.
 
 \todoi{Add the section about the volume elements in an appendix.}
-\todoi{$\mathcal{L}$ instead of L}
+\todoi{$\mathcal{L}$ instead of L. $\ell$ subscripts}
 
 \subsubsection{Integration without the \texorpdfstring{$r_{23}^{-1}$} {1/r23} term}
 \label{sec:LongLongNoR23}
@@ -634,7 +641,7 @@ The other part of the $(\bar{S},\mathcal{L} \bar{S})$ integral contains the $r_{
 (\bar{S},\mathcal{L} \bar{S})_B = \pm \left(S^\prime, \left[ \frac{2}{r_{23}}\right] S\right)
 \eeq
 
-\todoi{Why exactly do we use perimetric coordinates?}
+%\todoi{Why exactly do we use perimetric coordinates?}
 
 \noindent The volume element for this integral is $d\tau^\prime$ from equation \ref{}.  The integration also does not need to be converted to perimetric coordinates, so its form is
 \begin{align}
@@ -763,6 +770,7 @@ Integral & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
 \bottomrule
 \end{tabular}
 \caption{Optimal set of effective coordinates for integrations}
+\todoi{Order of these tables and caption on last one. Describe tables more.}
 \label{tab:EffectiveCoords}
 \end{table}
 

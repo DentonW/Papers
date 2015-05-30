@@ -9,8 +9,6 @@
 \chapter{Angular Integrations}
 \label{chp:AngularInt}
 
-\todoi{Change to cref references. Put eq: on labels. More discussion from Peter's thesis?}
-
 \section{Chebyshev-Gaussian Quadrature}
 \label{sec:ChebyshevGauss}
 
@@ -27,14 +25,14 @@ The form that we will need is
 \Int{ D(\cos \varphi_{23}) }{\varphi_{23},0,\pi} \approx \frac{\pi}{n}\sum_{i=1}^n D\left[\cos\left(\frac{2i-1}{2n}\pi\right)\right].
 \label{eq:PVRAngNew}
 \end{equation}
-
-Both of these equations are variations on Gaussian quadratures. The Chebyshev-Gauss quadrature is given by \cite{Abramowitz1965,MathworldChebyshevGauss}
+Both of these equations are variations on Gaussian quadratures. The
+Chebyshev-Gauss quadrature is given by
+\cite{Abramowitz1965,MathworldChebyshevGauss}
 \todoi{Mathworld has a specific citation at end of page}
 \begin{equation}
 \Int{ \frac{f\left( x \right)}{\sqrt{1 - x^2}} }{x,-1,1} \approx \sum_{i = 1}^n {w_i}f\left( {{x_i}} \right),
 \label{eq:ChebyshevGauss}
 \end{equation}
-
 with $w_i = \frac{\pi}{n}$ and $x_i = \cos\left(\frac{2i-1}{2n}\pi\right)$.
 
 Starting from the left side of \cref{eq:PVRAngNew}, we have
@@ -44,13 +42,13 @@ Starting from the left side of \cref{eq:PVRAngNew}, we have
 \label{eq:PVRAngNew2}
 \end{align}
 
-Using the substitution $x = \cos \varphi$ and $dx = -\sin \varphi \:d\varphi$ changes the limits to $x_{min} \!\!=\! \cos 0 \! =\! 1$ and $x_{max} = \cos \pi = -1$. \Cref{eq:PVRAngNew2} becomes
-
+Using the substitution $x = \cos \varphi$ and $dx = -\sin \varphi \:d\varphi$
+changes the limits to $x_{min} \!\!=\! \cos 0 \! =\! 1$ and
+$x_{max} = \cos \pi = -1$. \Cref{eq:PVRAngNew2} becomes
 \begin{equation}
 \int_0^\pi  D\left( {\cos \varphi } \right){\textrm{d}}\varphi = - \int_1^{ - 1} \frac{1}{{\sqrt {1 - {x^2}} }}D\left( x \right){\textrm{d}}x = \int_{ - 1}^1 \frac{1}{{\sqrt {1 - {x^2}} }}D\left( x \right){\textrm{d}}x.
 \label{eq:PVRAngNew3}
 \end{equation}
-
 This is the exact form needed for Gauss-Chebyshev quadrature (with f = D):
 \begin{equation}
 \int_0^\pi  D\left( {\cos \varphi } \right){\textrm{d}}\varphi \approx \frac{\pi }{n} \sum_{i = 1}^n D\!\left[ {\cos \left( {\frac{{2i - 1}}{{2n}}\pi } \right)} \right]
@@ -71,10 +69,6 @@ If we also define $z = \cos \varphi = \cos(y+\pi)$ and $dz = \sin y \,dy$, we ge
 \int_0^\pi D\left(\cos\varphi\right) dy = \int_0^\pi \frac{1}{\sqrt{1-z^2}} D(z)\, sin\varphi\, dy = \int_{-1}^1 \frac{1}{\sqrt{1-z^2}} D(z) dz
 \end{equation}
 Since this is the same as \cref{eq:PVRAngNew3}, we just combine this with \cref{eq:AngSplit,eq:AngQuadrature} to get \cref{eq:PVRAng}, proving the first form.
-
-
-\section{Limits on Integration}
-As Peter Van Reeth points out in his thesis on page 78, $\varphi_{23}$ is the angle between the planes of the triangles $(r_1,r_2,r_{12})$ and $(r_1,r_3,r_{13})$. This angle can range between $\varphi_{23} = 0$ and $\varphi_{23} = 2 \pi$.
 
 
 \section{External Angular Integrations}
@@ -128,6 +122,10 @@ d\tau = r_1^2 dr_1 \sin\theta_1 d\theta_1 d\varphi_1 r_2^2 dr_2 \sin\theta_{12}
 internal angles. The external angle $\phi'_2$ is measured from the x$'$-axis 
 before the rotation into $\textbf{r}_2$. The angles $\theta_1$ and $\varphi_1$
 are also external angles.
+As Peter Van Reeth points out in his thesis \cite{VanReethThesis} on page 78, 
+$\varphi_{23}$ is the angle between the planes of the triangles
+$(r_1,r_2,r_{12})$ and $(r_1,r_3,r_{13})$. This angle can range between
+$\varphi_{23} = 0$ and $\varphi_{23} = 2 \pi$.
 
 For the PsH bound state and S-wave Ps-H scattering, integrating over the
 external angles gives

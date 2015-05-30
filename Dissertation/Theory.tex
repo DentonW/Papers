@@ -8,8 +8,6 @@
 \lettrine{\textcolor{startcolor}{A}}{s} mentioned in the introduction, the Kohn variational method has been used for many types of systems. This chapter discusses the trial wavefunction used, derives the Kohn variational methods, and applies them to this system.
 %\todoi{Description of partial waves?}
 
-\todoi{Make sure to use $S_\ell$ and $C_\ell$ with the subscripts}
-
 \section{General Wavefunction}
 \label{sec:GeneralWave}
 
@@ -25,7 +23,7 @@ form as
 \eeq
 We only consider the Ps(1s)+H(1s) system for energies up to the excitation
 threshold of Ps(n=2)+H(1s), which is at an energy of $\tfrac{3}{16}$ a.u.
-($5.102$ eV) \cite{WoodsPRA2015}.
+($5.102$ eV) \cite{Woods2015}.
 
 To avoid confusion with $L_\ell^{\pm,t}$ here and $\mathcal{L}$ in
 \cref{eq:LDef}, since the orbital angular momentum $\ell$ of the incoming Ps is
@@ -73,7 +71,6 @@ u_{10} & u_{11}
 \end{align}
 \end{subequations}
 
-\todoi{Switch to $\varphi$}
 Generally,
 \beq
 \label{eq:SCBarDef}
@@ -305,8 +302,8 @@ Since we are only considering the direct terms in \cref{eq:GeneralWaveTrial} so 
 \begin{subequations}
 \label{eq:TildeSCDefDir}
 \begin{align}
-\widetilde{S}_d &= u_{00} S + u_{01} C \\
-\widetilde{C}_d &= u_{10} S + u_{11} C.
+\widetilde{S}_d &= u_{00} S_\ell + u_{01} C_\ell \\
+\widetilde{C}_d &= u_{10} S_\ell + u_{11} C_\ell.
 \end{align}
 \end{subequations}
 
@@ -325,30 +322,33 @@ From \cref{eq:SphBesDerRel,eq:GenSandC}, to first order, the gradient acting on 
 \begin{subequations}
 \label{eq:GradSC}
 \begin{align}
-\grad_\rho \widetilde{S}_d &= \kappa \left[u_{00} C - u_{01} S \right] \hat{\bm\rho} \\
-\grad_\rho \widetilde{C}_d &= \kappa \left[u_{10} C - u_{11} S \right] \hat{\bm\rho} \,.
+\grad_\rho \widetilde{S}_d &= \kappa \left[u_{00} C_\ell - u_{01} S_\ell \right] \hat{\bm\rho} \\
+\grad_\rho \widetilde{C}_d &= \kappa \left[u_{10} C_\ell - u_{11} S_\ell \right] \hat{\bm\rho} \,.
 \end{align}
 \end{subequations}
 Substituting this into \cref{eq:IlPsiVariation5} and dropping the dot product, since the surface elements are in the same direction as $\hat{\bm\rho}$, this becomes
 \begin{align}
 \label{eq:IlPsiVariation6a}
-\delta I_\ell^\prime = -\frac{1}{2} (L_\ell^t - L_\ell) & \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{S_\rho}  \left\{(\widetilde{S}_d + L_\ell \, \widetilde{C}_d) \kappa (u_{10} C - u_{11} S) \right. \nonumber \\
- &- \left. \widetilde{C}_d \kappa \left[(u_{00} C - u_{01} S) + L_\ell (u_{10} C - u_{11} S) \right] \right\} d\sigma_\rho d\tau_{12} d\tau_3.
+\delta I_\ell^\prime = -\frac{1}{2} (L_\ell^t - L_\ell) & \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{S_\rho}  \left\{(\widetilde{S}_d + L_\ell \, \widetilde{C}_d) \kappa (u_{10} C_\ell - u_{11} S_\ell) \right. \nonumber \\
+ &- \left. \widetilde{C}_d \kappa \left[(u_{00} C_\ell - u_{01} S_\ell) + L_\ell (u_{10} C_\ell - u_{11} S_\ell) \right] \right\} d\sigma_\rho d\tau_{12} d\tau_3.
 \end{align}
 Omitting terms quadratic in $L_\ell$ or $L_\ell^t$, including $L_\ell^t L_\ell$,
 \begin{align}
 \label{eq:IlPsiVariation6b}
-\delta I_\ell^\prime = -\frac{1}{2} \kappa (L_\ell^t - L_\ell) & \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{S_\rho} \left[\widetilde{S}_d (u_{10} C - u_{11} S) - \widetilde{C}_d (u_{00} C - u_{01} S) \right] d\sigma_\rho d\tau_{12} d\tau_3 \nonumber \\
-= -\frac{1}{2} \kappa (L_\ell^t - L_\ell) & \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{S_\rho} \left[\widetilde{S}_d u_{10} C - \widetilde{S}_d u_{11} S - \widetilde{C}_d u_{00} C + \widetilde{C}_d u_{01} S \right] d\sigma_\rho d\tau_{12} d\tau_3 \nonumber \\
-= -\frac{1}{2} \kappa (L_\ell^t - L_\ell) & \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{S_\rho} \left[u_{00} u_{10} S C + u_{01} u_{10} C^2 - u_{00} u_{11} S^2 - u_{01} u_{11} C S\right. \nonumber \\
-& \left. - u_{10} u_{00} S C - u_{11} u_{00} C^2 + u_{10} u_{01} S^2 + u_{11} u_{01} C S   \right] d\sigma_\rho d\tau_{12} d\tau_3 \nonumber \\
-= -\frac{1}{2} \kappa (L_\ell^t - L_\ell) & \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{S_\rho} (u_{10} u_{01} - u_{00} u_{11}) \left( S^2 + C^2 \right) d\sigma_\rho d\tau_{12} d\tau_3 \nonumber \\
-= \frac{1}{2} \kappa (L_\ell^t - L_\ell) & \Det{\textbf{u}} \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{S_\rho} \left( S^2 + C^2 \right) d\sigma_\rho d\tau_{12} d\tau_3.
+\delta I_\ell^\prime = -\frac{1}{2} \kappa (L_\ell^t - L_\ell) & \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{S_\rho} \left[\widetilde{S}_d (u_{10} C_\ell - u_{11} S_\ell) - \widetilde{C}_d (u_{00} C_\ell - u_{01} S_\ell) \right] d\sigma_\rho d\tau_{12} d\tau_3 \nonumber \\
+= -\frac{1}{2} \kappa (L_\ell^t - L_\ell) & \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{S_\rho} \left[\widetilde{S}_d u_{10} C_\ell - \widetilde{S}_d u_{11} S_\ell - \widetilde{C}_d u_{00} C_\ell + \widetilde{C}_d u_{01} S_\ell \right] d\sigma_\rho d\tau_{12} d\tau_3 \nonumber \\
+= -\frac{1}{2} \kappa (L_\ell^t - L_\ell) & \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{S_\rho} \left[u_{00} u_{10} S_\ell C_\ell + u_{01} u_{10} C_\ell^2 - u_{00} u_{11} S_\ell^2 - u_{01} u_{11} C_\ell S_\ell\right. \nonumber \\
+& \left. - u_{10} u_{00} S_\ell C_\ell - u_{11} u_{00} C_\ell^2 + u_{10} u_{01} S_\ell^2 + u_{11} u_{01} C_\ell S_\ell \right] d\sigma_\rho d\tau_{12} d\tau_3 \nonumber \\
+= -\frac{1}{2} \kappa (L_\ell^t - L_\ell) & \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{S_\rho} (u_{10} u_{01} - u_{00} u_{11}) \left( S_\ell^2 + C_\ell^2 \right) d\sigma_\rho d\tau_{12} d\tau_3 \nonumber \\
+= \frac{1}{2} \kappa (L_\ell^t - L_\ell) & \Det{\textbf{u}} \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{S_\rho} \left( S_\ell^2 + C_\ell^2 \right) d\sigma_\rho d\tau_{12} d\tau_3.
 \end{align}
 
-The rest of this derivation considers only the direct terms. The final result applies as well when the exchanged terms are included. Since we are considering the surface as $\rho \rightarrow \infty$, $f_\ell(\rho)$ in \cref{eq:GenCDef} becomes 1. Then from \cref{eq:GenSandC},
+The rest of this derivation considers only the direct terms. The final result
+applies as well when the exchanged terms are included. Since we are considering
+the surface as $\rho \rightarrow \infty$, $f_\ell(\rho)$ in \cref{eq:GenCDef}
+becomes 1. Then from \cref{eq:GenSandC},
 \beq
-S^2 + C^2 = \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho}^2 \Phi_{Ps}\left(r_{12}\right)^2 \Phi_H\left(r_3\right)^2 (2 \kappa) \left[j_\ell\!\left(\kappa\rho\right)^2 + n_\ell\!\left(\kappa\rho\right)^2\right].
+S_\ell^2 + C_\ell^2 = \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho}^2 \Phi_{Ps}\left(r_{12}\right)^2 \Phi_H\left(r_3\right)^2 (2 \kappa) \left[j_\ell\!\left(\kappa\rho\right)^2 + n_\ell\!\left(\kappa\rho\right)^2\right].
 \eeq
 The asymptotic forms of $j_\ell$ and $n_\ell$ are given by \cite[p.729]{Arfken2005}
 \begin{subequations}
@@ -360,10 +360,11 @@ The asymptotic forms of $j_\ell$ and $n_\ell$ are given by \cite[p.729]{Arfken20
 \end{subequations}
 As $\rho \to \infty$,
 \beq
-S^2 + C^2 = \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho}^2 \Phi_{Ps}\left(r_{12}\right)^2 \Phi_H\left(r_3\right)^2 (2 \kappa) \frac{1}{\kappa^2 \rho^2}.
+S_\ell^2 + C_\ell^2 = \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho}^2 \Phi_{Ps}\left(r_{12}\right)^2 \Phi_H\left(r_3\right)^2 (2 \kappa) \frac{1}{\kappa^2 \rho^2}.
 \eeq
 
-Substituting this in \cref{eq:IlPsiVariation6b} and expanding the $d\sigma_\rho$ differential,
+Substituting this in \cref{eq:IlPsiVariation6b} and expanding the
+$d\sigma_\rho$ differential,
 \begin{align}
 \label{eq:IlPsiVariation7}
 \delta I_\ell^\prime =& \kappa (L_\ell^t - L_\ell) \Det{\textbf{u}} \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{S_\rho} \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho}^2 \Phi_{Ps}\left(r_{12}\right)^2 \Phi_H\left(r_3\right)^2 \frac{1}{\kappa \rho^2} \rho^2 \sin\theta_\rho d\theta_\rho d\varphi_\rho d\tau_{12} d\tau_3 \nonumber \\
@@ -595,10 +596,15 @@ Finally, to obtain the phase shifts, we use the relation given by Ref.~\cite{Luc
 K_\ell = \tan \delta_\ell = (u_{01} + u_{11} L_\ell)(u_{00} + u_{10} L_\ell)^{-1}.
 \end{equation}
 
-The $\textbf{u}$ and $\mathcal{L}_l$ for the various Kohn methods are described now. Note that for each of these, $\Det{\textbf{u}} = 1$.
-When we create the matrix in \cref{eq:GeneralKohnMatrix}, we only calculate the matrix elements for the Kohn, along with $(\bar{S},\mathcal{L}\bar{S})$ and $(\bar{S},\mathcal{L}\bar{C})$. Then from the definitions in \cref{eq:TildeSCDef}, this matrix can be changed to any of the other Kohn methods without recomputing any of the integrals. This is described further in \cref{sec:PhaseProgram}.
+The $\textbf{u}$ and $\mathcal{L}_l$ for the various Kohn methods are 
+described now. Note that for each of these, $\Det{\textbf{u}} = 1$. When we 
+create the matrix in \cref{eq:GeneralKohnMatrix}, we only calculate the 
+matrix elements for the Kohn, along with $(\bar{S}_\ell,\mathcal{L}\bar{S}_\ell)$
+and $(\bar{S},\mathcal{L}\bar{C})$. Then from the definitions in
+\cref{eq:TildeSCDef}, this matrix can be changed to any of the other Kohn 
+methods without recomputing any of the integrals. This is described further 
+in \cref{sec:PhaseProgram}.
 
-\todoi{Subequations for each of these?}
 \subsubsection*{Kohn}
 \label{sec:Kohn}
 \beq
@@ -644,10 +650,10 @@ When we create the matrix in \cref{eq:GeneralKohnMatrix}, we only calculate the 
 \label{eq:uGenKohn}
 \eeq
 
-\beq
-\mathcal{L}_l = a_t
-\label{eq:LGenKohn}
-\eeq
+%\beq
+%\mathcal{L}_l = a_t
+%\label{eq:LGenKohn}
+%\eeq
 
 \noindent The generalized Kohn method is described by Cooper et al.\ \cite{Cooper2009, Cooper2010}.  When $\tau = 0$ is substituted in \cref{eq:uGenKohn}, the $\textbf{u}$-matrix for the Kohn method is generated (\cref{eq:uKohn}). Similarly, when $\tau = \frac{\pi}{2}$, the $\textbf{u}$-matrix for the inverse Kohn method is generated (\cref{eq:uInvKohn}). As to be expected, the Kohn and inverse Kohn methods are special cases of the generalized Kohn method.
 
@@ -685,8 +691,6 @@ K_\ell = \frac{T_\ell}{1 + \ii T_\ell}
 \label{eq:uCompSKohn}
 \eeq
 
-\todoi{Mention $\det \textbf{u}$}
-
 \beq
 %\mathcal{L}_\ell = 2 \ii S_\ell
 \mathcal{L}_\ell = -S_\ell
@@ -701,7 +705,8 @@ $S$-matrix we are using with our wavefunction is related to the $K$-matrix by
 \label{eq:SMatrix}
 K_\ell = \frac{\ii(1-S_\ell)}{1+S_\ell},
 \end{equation}
-which is satisfied by the above $\textbf{u}$-matrix.
+which is satisfied by the above $\textbf{u}$-matrix. Also of note is that
+$\det \textbf{u} = -2\ii$ instead of 1 like some of the other Kohn methods.
 
 \subsubsection*{Generalized $T$-matrix complex Kohn}
 \label{sec:GenComplexTKohn}
@@ -974,10 +979,10 @@ Partial & \\[-1.3cm]
 Wave & $\frac{1}{2} \left(\Laplacian_\rho + \kappa^2\right) \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} n_\ell(\kappa\rho) f_\ell(\rho)$ \\
 \midrule
 S-Wave & {$\!\begin{aligned} % http://tex.stackexchange.com/q/98482/16595 
-               \frac{2 \kappa  f^\prime(\rho ) \sin (\kappa  \rho )-f^{\prime\prime}(\rho ) \cos (\kappa  \rho )}{2 \kappa  \rho } \\    % http://tex.stackexchange.com/q/78788/16595
+               \frac{2 \kappa  f^\prime(\rho ) \sin (\kappa  \rho )-f^{\prime\prime}(\rho) \cos (\kappa \rho )}{2 \kappa  \rho } \\    % http://tex.stackexchange.com/q/78788/16595
            \end{aligned}$} \\
 P-Wave & {$\!\begin{aligned}
-				-\frac{\rho  f^{\prime\prime}(\rho ) \left[\kappa  \rho  \sin (\kappa  \rho )+\cos (\kappa  \rho )\right]+2 f^\prime(\rho ) \left[\left(\kappa ^2 \rho ^2-1\right) \cos (\kappa  \rho )-\kappa  \rho  \sin (\kappa \rho )\right]}{2 \kappa ^2 \rho ^3}
+				-\frac{\rho  f^{\prime\prime}(\rho ) \left[\kappa  \rho  \sin (\kappa \rho)+\cos (\kappa \rho )\right]+2 f^\prime(\rho ) \left[\left(\kappa ^2 \rho ^2-1\right) \cos (\kappa  \rho )-\kappa  \rho  \sin (\kappa \rho )\right]}{2 \kappa ^2 \rho ^3}
 			\end{aligned}$} \\
 D-Wave & {$\!\begin{aligned}
 		-\frac{1}{2 \kappa ^3 \rho ^4} &\left\{\rho  f^{\prime\prime}(\rho ) \left[\left(3-\kappa ^2 \rho ^2\right) \cos (\kappa  \rho )+3 \kappa  \rho  \sin (\kappa  \rho )\right] \right. \\
