@@ -11,8 +11,9 @@
 \section{General Wavefunction}
 \label{sec:GeneralWave}
 
-The applications of the Kohn, inverse Kohn, complex Kohns, generalized Kohn, 
-and generalized complex Kohns to our trial wavefunctions for each of the 
+The applications of the Kohn, inverse Kohn, complex Kohn for the
+$S$-matrix and $T$-matrix, generalized Kohn, and generalized complex Kohn
+for the $S$-matrix and $T$-matrix to our trial wavefunctions for each of the 
 partial waves through the H-wave are all very similar in form. The trial 
 wavefunctions for the partial waves
 (\cref{eq:SWaveTrial,eq:PWaveTrial,eq:DWaveTrial}) can be written in a general
@@ -27,7 +28,7 @@ threshold of Ps(n=2)+H(1s), which is at an energy of $\tfrac{3}{16}$ a.u.
 
 To avoid confusion with $L_\ell^{\pm,t}$ here and $\mathcal{L}$ in
 \cref{eq:LDef}, since the orbital angular momentum $\ell$ of the incoming Ps is
-the same as the total angular momentum L, we use $\ell$ to indicate the partial 
+the same as the total angular momentum $L$, we use $\ell$ to indicate the partial 
 wave.
 
 The short-range $\bar{\phi}_i$ terms can represent terms of different 
@@ -38,7 +39,7 @@ $\widetilde{S}_\ell$ and $\widetilde{C}_\ell$ represent
 the $\bar{S}_\ell$ and $\bar{C}_\ell$ for 
 the different partial waves, we can define them in such a way as to use 
 multiple Kohn methods (Kohn, inverse Kohn, etc.). We begin by defining a
-$2\times 2$ matrix $\textbf{u}$ which satisfies
+matrix $\textbf{u}$ which satisfies
 \beq
 \label{eq:GenSCMatrix}
 \begin{bmatrix}
@@ -62,7 +63,8 @@ u_{10} & u_{11}
 \end{bmatrix}.
 \eeq
 
-\noindent This notation is similar to that of Lucchese \cite{Lucchese1989} and Cooper, Plummer, and Armour \cite{Cooper2010}. From this, it can easily be seen that
+\noindent This notation is similar to that of Lucchese \cite{Lucchese1989}
+and Cooper et al.~\cite{Cooper2010}. From this, it can easily be seen that
 \begin{subequations}
 \label{eq:TildeSCDef}
 \begin{align}
@@ -71,7 +73,7 @@ u_{10} & u_{11}
 \end{align}
 \end{subequations}
 
-Generally,
+We define
 \beq
 \label{eq:SCBarDef}
 \bar{S}_\ell = \frac{1}{\sqrt{2}}(S_\ell \pm S_\ell^\prime) \text{ and } \bar{C}_\ell = \frac{1}{\sqrt{2}}(C_\ell \pm C_\ell^\prime),
@@ -103,18 +105,19 @@ for this is
 \end{equation}
 At a minimum, $m_\ell$ is chosen so that $C_\ell$ behaves like $S_\ell$ as
 $\rho \to 0$. For more discussion of this, see \Cref{sec:ShieldingFunc}. The
-values used for the different partial waves are given in \cref{tab:Shielding}.
+values used for the different partial waves are given in \cref{tab:Nonlinear}.
 Prior work \cite{VanReeth2003} used a slightly simpler shielding function 
 for the S-wave of
 \begin{equation}
 \label{eq:OldShielding}
-f(\rho) = (1 - \ee^{\lambda \rho})^3.
+f(\rho) = (1 - \ee^{-\lambda \rho})^3.
 \end{equation}
+Note that their paper is missing the negative sign in the exponential.
 
 \todoi{Put in plots from ``Shielding Function Plots.nb''?}
 
-The Hylleraas-type short-range terms are similar to that used in the bound 
-state in \cref{eq:BoundWavefn}. These are chosen to have two symmetries, one 
+The Hylleraas-type short-range terms are similar to that used
+in \cref{eq:BoundWavefn}. These are chosen to have two symmetries, one 
 with a prefactor of $r_1^\ell$ and the other with a prefactor of $r_2^\ell$.
 The prefactors are included so that the correct asymptotic form of
 $\Psi_\ell^{\pm,t} \sim r_k^\ell$ at the origin follows \cite[p.87]{BrownThesis}.
@@ -152,7 +155,7 @@ For the P-wave and higher ($\ell > 0$),
   + \!\!\!\sum_{i=N(\omega)+1}^{2N(\omega)} \!\! d_{i \ell} \bar{\phi}_{i2}.
 \end{equation}
 
-The symbols $\rho$ and $\rho'$ are defined as (refer to \cref{fig:PsHCoords} and \Cref{chp:RhoDef})
+The symbols $\rho$ and $\rho'$ are defined as (refer to \cref{fig:PsHCoords,sec:RhoDef})
 \begin{subequations}
 \begin{align}
 \vec{\rho} &= \frac{1}{2}\left(\vec{r_1} + \vec{r_2}\right) \label{eq:RhoDef}\\
@@ -174,17 +177,13 @@ clearer to ignore them here. Likewise, we only consider the direct terms
 here, unless otherwise specified. The final result of this section applies 
 equally well to both the direct and exchanged terms.
 
-The wavenumber is defined as
-\beq
-\label{eq:Wavenumber}
-\kappa = \frac{\sqrt{2 m E_{\bm \kappa}}}{\hbar}.
-\eeq
-In atomic units, this gives the kinetic energy for Ps as
+The kinetic energy for Ps is
 \beq
 E_{\bm \kappa} = \frac{\hbar^2 \kappa^2}{2 m} = \frac{\kappa^2}{2 m} = \frac{1}{4} \kappa^2,
 \label{eq:Wavenumber}
 \eeq
-and including this in the total energy with the ground-state energies of H and Ps gives
+where $\kappa$ is the momentum of the Ps atom.
+Including this in the total energy with the ground-state energies of H and Ps, $E_H$ and $E_{Ps}$, gives
 \beq
 E = E_H + E_{Ps} + E_{\bm \kappa} = -\frac{1}{2} - \frac{1}{4} + \frac{1}{4} \kappa^2 = -\frac{3}{4} + \frac{1}{4} \kappa^2.
 \eeq
@@ -206,8 +205,8 @@ Note that the exact wavefunction $\Psi_\ell$ solves the Schr\"{o}dinger equation
 I[\Psi_\ell] = 0.
 \eeq
 \label{BraNote}Normally, the bra in bra-ket notation is conjugated,
-but as noted by Cooper et al. \cite{Cooper2010}
-and Lucchese \cite{Lucchese1989}, the bra is not conjugated for the Kohn variational methods.
+but as noted by Refs.~\cite{Cooper2010,Lucchese1989,Zhang1988},
+the bra is not conjugated for the Kohn variational methods.
 
 The trial wavefunction is related to the exact solution by
 \beq
@@ -264,7 +263,9 @@ H = -\frac{1}{4} \Laplacian_{\rho^\prime} - \frac{1}{2} \Laplacian_{r_2} - \Lapl
   &- \left. \frac{1}{r_{12}} - \frac{1}{r_{13}} + \frac{1}{r_{23}} - E_H - E_{Ps} - \frac{1}{4}\kappa^2 \right] \Psi_\ell \,d\tau_\rho d\tau_{r_3} d\tau_{r_{12}}.
 \end{align}
 
-Some important cancellations are made in the matrix element equations in \cref{sec:??} by using the H and Ps ground state wave equations. Separately, the H and Ps equations are respectively (for large values of $\rho$)
+%Some important cancellations are made in the matrix element equations in \cref{sec:??} by using the H and Ps ground state wave equations.
+%Separately,
+The H and Ps equations are respectively (for large values of $\rho$)
 \begin{subequations}
 \label{eq:HPsEqn}
 \begin{align}
@@ -277,7 +278,7 @@ Realizing then that the Hamiltonians for H and Ps are given by
 \label{eq:HPsHamil}
 \begin{align}
 H_H =& -\frac{1}{2} \Laplacian_{r_3} - \frac{1}{r_3} \label{eq:HHamil} \\
-H_{Ps} =& -\Laplacian_{r_{12}} - \frac{1}{r_{12}} \label{eq:PsHamil}
+H_{Ps} =& -\Laplacian_{r_{12}} - \frac{1}{r_{12}}, \label{eq:PsHamil}
 \end{align}
 \end{subequations}
 and rearranging terms, \cref{eq:IlPsiVariation3} becomes
@@ -322,20 +323,20 @@ From \cref{eq:SphBesDerRel,eq:GenSandC}, to first order, the gradient acting on 
 \begin{subequations}
 \label{eq:GradSC}
 \begin{align}
-\grad_\rho \widetilde{S}_d &= \kappa \left[u_{00} C_\ell - u_{01} S_\ell \right] \hat{\bm\rho} \\
-\grad_\rho \widetilde{C}_d &= \kappa \left[u_{10} C_\ell - u_{11} S_\ell \right] \hat{\bm\rho} \,.
+\grad_\rho \widetilde{S}_d &\sim \kappa \left[u_{00} C_\ell - u_{01} S_\ell \right] \hat{\bm\rho} \\
+\grad_\rho \widetilde{C}_d &\sim \kappa \left[u_{10} C_\ell - u_{11} S_\ell \right] \hat{\bm\rho} \,.
 \end{align}
 \end{subequations}
 Substituting this into \cref{eq:IlPsiVariation5} and dropping the dot product, since the surface elements are in the same direction as $\hat{\bm\rho}$, this becomes
 \begin{align}
 \label{eq:IlPsiVariation6a}
-\delta I_\ell^\prime = -\frac{1}{2} (L_\ell^t - L_\ell) & \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{S_\rho}  \left\{(\widetilde{S}_d + L_\ell \, \widetilde{C}_d) \kappa (u_{10} C_\ell - u_{11} S_\ell) \right. \nonumber \\
+\delta I_\ell^\prime \sim -\frac{1}{2} (L_\ell^t - L_\ell) & \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{S_\rho}  \left\{(\widetilde{S}_d + L_\ell \, \widetilde{C}_d) \kappa (u_{10} C_\ell - u_{11} S_\ell) \right. \nonumber \\
  &- \left. \widetilde{C}_d \kappa \left[(u_{00} C_\ell - u_{01} S_\ell) + L_\ell (u_{10} C_\ell - u_{11} S_\ell) \right] \right\} d\sigma_\rho d\tau_{12} d\tau_3.
 \end{align}
 Omitting terms quadratic in $L_\ell$ or $L_\ell^t$, including $L_\ell^t L_\ell$,
 \begin{align}
 \label{eq:IlPsiVariation6b}
-\delta I_\ell^\prime = -\frac{1}{2} \kappa (L_\ell^t - L_\ell) & \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{S_\rho} \left[\widetilde{S}_d (u_{10} C_\ell - u_{11} S_\ell) - \widetilde{C}_d (u_{00} C_\ell - u_{01} S_\ell) \right] d\sigma_\rho d\tau_{12} d\tau_3 \nonumber \\
+\delta I_\ell^\prime \sim -\frac{1}{2} \kappa (L_\ell^t - L_\ell) & \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{S_\rho} \left[\widetilde{S}_d (u_{10} C_\ell - u_{11} S_\ell) - \widetilde{C}_d (u_{00} C_\ell - u_{01} S_\ell) \right] d\sigma_\rho d\tau_{12} d\tau_3 \nonumber \\
 = -\frac{1}{2} \kappa (L_\ell^t - L_\ell) & \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{S_\rho} \left[\widetilde{S}_d u_{10} C_\ell - \widetilde{S}_d u_{11} S_\ell - \widetilde{C}_d u_{00} C_\ell + \widetilde{C}_d u_{01} S_\ell \right] d\sigma_\rho d\tau_{12} d\tau_3 \nonumber \\
 = -\frac{1}{2} \kappa (L_\ell^t - L_\ell) & \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{S_\rho} \left[u_{00} u_{10} S_\ell C_\ell + u_{01} u_{10} C_\ell^2 - u_{00} u_{11} S_\ell^2 - u_{01} u_{11} C_\ell S_\ell\right. \nonumber \\
 & \left. - u_{10} u_{00} S_\ell C_\ell - u_{11} u_{00} C_\ell^2 + u_{10} u_{01} S_\ell^2 + u_{11} u_{01} C_\ell S_\ell \right] d\sigma_\rho d\tau_{12} d\tau_3 \nonumber \\
@@ -350,29 +351,29 @@ becomes 1. Then from \cref{eq:GenSandC},
 \beq
 S_\ell^2 + C_\ell^2 = \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho}^2 \Phi_{Ps}\left(r_{12}\right)^2 \Phi_H\left(r_3\right)^2 (2 \kappa) \left[j_\ell\!\left(\kappa\rho\right)^2 + n_\ell\!\left(\kappa\rho\right)^2\right].
 \eeq
-The asymptotic forms of $j_\ell$ and $n_\ell$ are given by \cite[p.729]{Arfken2005}
+The asymptotic forms of $j_\ell$ and $n_\ell$ as $\rho \to \infty$ are given by \cite[p.729]{Arfken2005}
 \begin{subequations}
 \label{eq:AsymSphBes}
 \begin{align}
-\lim_{\rho \to \infty} j_\ell\!\left(\kappa\rho\right) &= \frac{1}{\kappa\rho} \sin\left(\kappa\rho - \frac{n \pi}{2}\right) \label{eq:AsymJl} \\
-\lim_{\rho \to \infty} n_\ell\!\left(\kappa\rho\right) &= \frac{1}{\kappa\rho} \cos\left(\kappa\rho - \frac{n \pi}{2}\right). \label{eq:AsymNl}
+j_\ell\!\left(\kappa\rho\right) &\sim \frac{1}{\kappa\rho} \sin\left(\kappa\rho - \frac{n \pi}{2}\right) \label{eq:AsymJl} \\
+n_\ell\!\left(\kappa\rho\right) &\sim \frac{1}{\kappa\rho} \cos\left(\kappa\rho - \frac{n \pi}{2}\right). \label{eq:AsymNl}
 \end{align}
 \end{subequations}
 As $\rho \to \infty$,
 \beq
-S_\ell^2 + C_\ell^2 = \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho}^2 \Phi_{Ps}\left(r_{12}\right)^2 \Phi_H\left(r_3\right)^2 (2 \kappa) \frac{1}{\kappa^2 \rho^2}.
+S_\ell^2 + C_\ell^2 \sim \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho}^2 \Phi_{Ps}\left(r_{12}\right)^2 \Phi_H\left(r_3\right)^2 (2 \kappa) \frac{1}{\kappa^2 \rho^2}.
 \eeq
 
 Substituting this in \cref{eq:IlPsiVariation6b} and expanding the
 $d\sigma_\rho$ differential,
 \begin{align}
 \label{eq:IlPsiVariation7}
-\delta I_\ell^\prime =& \kappa (L_\ell^t - L_\ell) \Det{\textbf{u}} \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{S_\rho} \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho}^2 \Phi_{Ps}\left(r_{12}\right)^2 \Phi_H\left(r_3\right)^2 \frac{1}{\kappa \rho^2} \rho^2 \sin\theta_\rho d\theta_\rho d\varphi_\rho d\tau_{12} d\tau_3 \nonumber \\
+\delta I_\ell^\prime \sim& \; \kappa (L_\ell^t - L_\ell) \Det{\textbf{u}} \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{S_\rho} \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho}^2 \Phi_{Ps}\left(r_{12}\right)^2 \Phi_H\left(r_3\right)^2 \frac{1}{\kappa \rho^2} \rho^2 \sin\theta_\rho d\theta_\rho d\varphi_\rho d\tau_{12} d\tau_3 \nonumber \\
 =& (L_\ell^t - L_\ell) \Det{\textbf{u}} \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{S_\rho} \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho}^2 \Phi_{Ps}\left(r_{12}\right)^2 \Phi_H\left(r_3\right)^2 \sin\theta_\rho d\theta_\rho d\varphi_\rho d\tau_{12} d\tau_3.
 \end{align}
 Since the Ps and H eigenfunctions are normalized, i.e.
 \beq
-\int\limits_{V_3}\! \Phi_H(r_3) d\tau_3 = 1 \text{ and } \int\limits_{V_{12}}\! \Phi_{Ps}(r_{12}) d\tau_{12} = 1,
+\int\limits_{V_3}\! \left| \Phi_H(r_3) \right|^2 d\tau_3 = 1 \text{ and } \int\limits_{V_{12}}\! \left|\Phi_{Ps}(r_{12})\right|^2 d\tau_{12} = 1,
 \label{eq:PsHNormalization}
 \eeq
 we now have
@@ -383,7 +384,7 @@ we now have
 The spherical harmonics are normalized so that \cite[p.788]{Arfken2005}
 \beq
 \label{eq:SphHarmNorm}
-\int\limits_{S_\rho} \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho}^2 d\Omega = 1.
+\int\limits_{S_\rho} \left| \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} \right|^2 d\Omega = 1.
 \eeq
 This gives that
 \beq
@@ -398,35 +399,44 @@ From \cref{eq:IlPrimeDef,eq:IlPsiVariation9},
 \eeq
 This is the Kato identity \cite{Kato1951a}. For the Kohn variational methods, the last term is neglected, since it is quadratic in $\delta\Psi_\ell$. Using $\delta I_\ell^\prime \approx \delta I_\ell$, we have
 \beq
-\delta I_\ell = I_\ell[\Psi_\ell^t] - I_\ell[\Psi_\ell] = (L_\ell^t - L_\ell) \Det{\textbf{u}}.
+\delta I_\ell = I_\ell[\Psi_\ell^t] - I_\ell[\Psi_\ell] \sim (L_\ell^t - L_\ell) \Det{\textbf{u}}.
 \eeq
-Replacing the exact $L_\ell$ by the variational $L_\ell^v$ and rearranging, we finally get the general Kohn variational method of
+Replacing the exact $L_\ell$ by the variational $L_\ell^v$ and rearranging,
+we finally get the general Kohn variational method of
 \beq
 \label{eq:GenKohn}
-L_\ell^v = L_\ell^t - I_\ell[\Psi_\ell^t] / \! \Det{\textbf{u}}.
+L_\ell^v = L_\ell^t - I_\ell[\Psi_\ell^t] / \! \Det{\textbf{u}},
 \eeq
-This was only derived using the direct terms, but the exchange terms follow the same steps with $\rho^\prime$ instead of $\rho$. This was also only shown for the long-range terms, but it applies equally as well to the short-range terms.
+which is correct to second-order.
+This was only derived using the direct terms, but the exchange terms follow 
+the same steps with $\rho^\prime$ instead of $\rho$. This was also only shown 
+for the long-range terms, but it applies equally as well to the full
+wavefunction with the short-range terms.
 
 
 \section{Application of the Kohn Methods}
 \label{sec:KohnApplied}
 
-We use the general Kohn variational method (\cref{eq:GenKohn}) with our full trial wavefunction to get
+We use the general Kohn variational method (\cref{eq:GenKohn}) with the full
+trial wavefunction to get
 \beq
 \label{eq:GenKohnApplied}
 L_\ell^v = L_\ell^t - \tfrac{1}{\Det{\textbf{u}}} \Big((\widetilde{S}_\ell + L_\ell^t \, \widetilde{C}_\ell + \sum_i c_i \bar{\phi}_i^t), \mathcal{L} (\widetilde{S}_\ell + L_\ell^t \, \widetilde{C}_\ell + \sum_j c_j \bar{\phi}_j^t )\Big).
 \eeq
-The property of the Kohn functional that it is stationary with respect to variations in the linear parameters \cite{Joachain1979} can be written in our case as
+The property of the Kohn functional that it is stationary with respect to
+variations in the linear parameters \cite{Joachain1979} can be written in
+this case as
 \beq
 \frac{\partial L_\ell^v}{\partial L_\ell^t} = 0  \text{ and } \frac{\partial L_\ell^v}{\partial c_i} = 0 \text{, where $i = 1,\ldots,N$}.
 \label{eq:KohnStationary}
 \eeq
 
 Performing the first variation gives
-\beq
-0 = \pderiv{L_\ell^v}{L_\ell^t} = 1 - \left[(\widetilde{S}_\ell,\mathcal{L}\widetilde{C}_\ell) + (\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell) + \frac{\partial}{\partial L_\ell^t}(L_\ell^t \widetilde{C}_\ell,\mathcal{L} L_\ell^t \widetilde{C}_\ell) + (\widetilde{C}_\ell, \mathcal{L} \sum_i c_i \bar{\phi}_i) + (\sum_i c_i \bar{\phi}_i, \mathcal{L} \widetilde{C}_\ell) \right].
+\begin{align}
+\nonumber 0 &= \pderiv{L_\ell^v}{L_\ell^t} \\
+&= 1 - \left[(\widetilde{S}_\ell,\mathcal{L}\widetilde{C}_\ell) + (\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell) + \frac{\partial}{\partial L_\ell^t}(L_\ell^t \widetilde{C}_\ell,\mathcal{L} L_\ell^t \widetilde{C}_\ell) + (\widetilde{C}_\ell, \mathcal{L} \sum_i c_i \bar{\phi}_i) + (\sum_i c_i \bar{\phi}_i, \mathcal{L} \widetilde{C}_\ell) \right].
 \label{eq:PdLambda1}
-\eeq
+\end{align}
 
 \noindent The third term in brackets becomes
 \beq
@@ -449,28 +459,25 @@ Now we perform the variation with respect to a general $c_k$ as in \cref{eq:Kohn
 0 = \frac{\partial \mathcal{L}_v}{\partial c_k} = -\left[ (\widetilde{S}_\ell,\mathcal{L} \bar{\phi}_k) + L_\ell^t (\widetilde{C}_\ell,\mathcal{L} \bar{\phi}_k) + (\bar{\phi}_k,\mathcal{L} \widetilde{S}_\ell) + L_\ell^t (\bar{\phi}_k,\mathcal{L} \widetilde{C}_\ell) + \frac{\partial}{\partial c_k} (\sum_i c_i \bar{\phi}_i, \mathcal{L} \sum_j c_j \bar{\phi}_j) \right]
 \label{eq:PdCk1}
 \eeq
-
-If $c_i \ne c_j$,
-\begin{subequations}
-\begin{align}
-\frac{\partial}{\partial c_i} (c_i \bar{\phi}_i, \mathcal{L} \sum_{j \ne i} c_j \bar{\phi}_j) &= \sum_{j \ne i} c_j (\bar{\phi}_i, \mathcal{L} \bar{\phi}_j) \text{ and} \\
-\frac{\partial}{\partial c_j} (\sum_{i \ne j} c_i \bar{\phi}_i, \mathcal{L} c_j \bar{\phi}_j) &= \sum_{i \ne j} c_i (\bar{\phi}_i, \mathcal{L} \bar{\phi}_j).
-\end{align}
-\end{subequations}
-These two equations are equivalent, since
-$\left( \bar{\phi}_i, \mathcal{L} \bar{\phi}_j \right) = \left( \bar{\phi}_j, \mathcal{L} \bar{\phi}_i \right)$
-by \cref{eq:ShortElemSymm}.
-
-If $c_i = c_j$,
-\beq
-\frac{\partial}{\partial c_i} \left( c_i \bar{\phi}_i, \mathcal{L} c_j \bar{\phi}_j \right) = \frac{\partial}{\partial c_i} \left( c_i \bar{\phi}_i, \mathcal{L} c_i \bar{\phi}_i \right) = \frac{\partial}{\partial c_i} c_i^2 \left( \bar{\phi}_i, \mathcal{L} \bar{\phi}_j \right) = 2 \, c_i \left( \bar{\phi}_i, \mathcal{L} \bar{\phi}_j \right).
-\eeq
-We can also use \cref{eq:ShortElemSymm} to reduce \cref{eq:PdCk1} to
-\beq
-0 = -\Big[ 2 (\bar{\phi}_k, \mathcal{L} \widetilde{S}_\ell) + 2 L_\ell^t (\bar{\phi}_k, \mathcal{L} \widetilde{C}_\ell) + 2 \sum_i (\bar{\phi}_k, \mathcal{L} c_i \bar{\phi}_i) \Big].
-\eeq
-
-\noindent
+%If $c_i \ne c_j$,
+%\begin{subequations}
+%\begin{align}
+%\frac{\partial}{\partial c_i} (c_i \bar{\phi}_i, \mathcal{L} \sum_{j \ne i} c_j \bar{\phi}_j) &= \sum_{j \ne i} c_j (\bar{\phi}_i, \mathcal{L} \bar{\phi}_j) \text{ and} \\
+%\frac{\partial}{\partial c_j} (\sum_{i \ne j} c_i \bar{\phi}_i, \mathcal{L} c_j \bar{\phi}_j) &= \sum_{i \ne j} c_i (\bar{\phi}_i, \mathcal{L} \bar{\phi}_j).
+%\end{align}
+%\end{subequations}
+%These two equations are equivalent, since
+%$\left( \bar{\phi}_i, \mathcal{L} \bar{\phi}_j \right) = \left( \bar{\phi}_j, \mathcal{L} \bar{\phi}_i \right)$
+%by \cref{eq:ShortElemSymm}.
+%
+%If $c_i = c_j$,
+%\beq
+%\frac{\partial}{\partial c_i} \left( c_i \bar{\phi}_i, \mathcal{L} c_j \bar{\phi}_j \right) = \frac{\partial}{\partial c_i} \left( c_i \bar{\phi}_i, \mathcal{L} c_i \bar{\phi}_i \right) = \frac{\partial}{\partial c_i} c_i^2 \left( \bar{\phi}_i, \mathcal{L} \bar{\phi}_j \right) = 2 \, c_i \left( \bar{\phi}_i, \mathcal{L} \bar{\phi}_j \right).
+%\eeq
+%We can also use \cref{eq:ShortElemSymm} to reduce \cref{eq:PdCk1} to
+%\beq
+%0 = -\Big[ 2 (\bar{\phi}_k, \mathcal{L} \widetilde{S}_\ell) + 2 L_\ell^t (\bar{\phi}_k, \mathcal{L} \widetilde{C}_\ell) + 2 \sum_i (\bar{\phi}_k, \mathcal{L} c_i \bar{\phi}_i) \Big].
+%\eeq
 Rearranging gives
 \beq
 -\left( \bar{\phi}_k, \mathcal{L} \widetilde{S}_\ell \right) = L_\ell^t \left( \bar{\phi}_k, \mathcal{L} \widetilde{C}_\ell \right) + \sum_i \left( \bar{\phi}_k, \mathcal{L} c_i \bar{\phi}_i \right).
@@ -515,10 +522,10 @@ c_i\\
 \textbf{\emph{X}} = -\textbf{\emph{A}}^{-1}\textbf{\emph{B}}.
 \eeq
 
-To obtain $\mathcal{L}_v$ from this matrix equation, we must next expand \cref{eq:GenKohnApplied}.
+To obtain $L_\ell^v$ from this matrix equation, we must next expand \cref{eq:GenKohnApplied}.
 
 \begin{align}
-\nonumber \mathcal{L}_v = L_\ell^t - &\left[ (\widetilde{S}_\ell,\mathcal{L}\widetilde{S}_\ell) + L_\ell^t (\widetilde{S}_\ell,\mathcal{L}\widetilde{C}_\ell) + \sum_i c_i (\widetilde{S}_\ell,\mathcal{L} \bar{\phi}_i) + L_\ell^t (\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell) + {L_\ell^t}^2 (\widetilde{C}_\ell,\mathcal{L}\widetilde{C}_\ell)  \right. \\
+\nonumber L_\ell^v = L_\ell^t - &\left[ (\widetilde{S}_\ell,\mathcal{L}\widetilde{S}_\ell) + L_\ell^t (\widetilde{S}_\ell,\mathcal{L}\widetilde{C}_\ell) + \sum_i c_i (\widetilde{S}_\ell,\mathcal{L} \bar{\phi}_i) + L_\ell^t (\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell) + {L_\ell^t}^2 (\widetilde{C}_\ell,\mathcal{L}\widetilde{C}_\ell)  \right. \\
 & + \left. L_\ell^t \sum_i c_i (\widetilde{C}_\ell,\mathcal{L} \bar{\phi}_i) + \sum_i c_i (\bar{\phi}_i, \mathcal{L} \widetilde{S}_\ell) + L_\ell^t \sum_i c_i (\bar{\phi}_i, \mathcal{L} \widetilde{C}_\ell) + \sum_i \sum_j c_i c_j (\bar{\phi}_i, \mathcal{L} \bar{\phi}_j) \right]
 \end{align}
 
@@ -526,7 +533,7 @@ To obtain $\mathcal{L}_v$ from this matrix equation, we must next expand \cref{e
 
 \begin{align}
 \label{eq:GenKohnApplied2}
-\mathcal{L}_v = - & \left[ (\widetilde{S}_\ell,\mathcal{L}\widetilde{S}_\ell) + L_\ell^t (\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell) + \sum_i c_i (\widetilde{S}_\ell, \mathcal{L} \bar{\phi}_i) + L_\ell^t (\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell) + {L_\ell^t}^2 (\widetilde{C}_\ell,\mathcal{L}\widetilde{C}_\ell) \right.  \nonumber \\
+L_\ell^v = - & \left[ (\widetilde{S}_\ell,\mathcal{L}\widetilde{S}_\ell) + L_\ell^t (\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell) + \sum_i c_i (\widetilde{S}_\ell, \mathcal{L} \bar{\phi}_i) + L_\ell^t (\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell) + {L_\ell^t}^2 (\widetilde{C}_\ell,\mathcal{L}\widetilde{C}_\ell) \right.  \nonumber \\
 & + \left. L_\ell^t \sum_i c_i (\widetilde{C}_\ell,\mathcal{L} \bar{\phi}_i)
 + \sum_i c_i (\bar{\phi}_i, \mathcal{L} \widetilde{S}_\ell) + L_\ell^t \sum_i c_i (\bar{\phi}_i, \mathcal{L} \widetilde{C}_\ell) + \sum_i \sum_j c_i c_j (\bar{\phi}_i, \mathcal{L} \bar{\phi}_j) \right].
 \end{align}
@@ -597,7 +604,9 @@ K_\ell = \tan \delta_\ell = (u_{01} + u_{11} L_\ell)(u_{00} + u_{10} L_\ell)^{-1
 \end{equation}
 
 The $\textbf{u}$ and $\mathcal{L}_l$ for the various Kohn methods are 
-described now. Note that for each of these, $\Det{\textbf{u}} = 1$. When we 
+described now. Note that for each of these, $\Det{\textbf{u}} = 1$, except
+for the ones describing the $S$-matrix complex Kohn and generalized
+$S$-matrix complex Kohn. When we 
 create the matrix in \cref{eq:GeneralKohnMatrix}, we only calculate the 
 matrix elements for the Kohn, along with $(\bar{S}_\ell,\mathcal{L}\bar{S}_\ell)$
 and $(\bar{S},\mathcal{L}\bar{C})$. Then from the definitions in
@@ -649,13 +658,15 @@ in \cref{sec:PhaseProgram}.
 \end{bmatrix}
 \label{eq:uGenKohn}
 \eeq
-
 %\beq
 %\mathcal{L}_l = a_t
 %\label{eq:LGenKohn}
 %\eeq
-
-\noindent The generalized Kohn method is described by Cooper et al.\ \cite{Cooper2009, Cooper2010}.  When $\tau = 0$ is substituted in \cref{eq:uGenKohn}, the $\textbf{u}$-matrix for the Kohn method is generated (\cref{eq:uKohn}). Similarly, when $\tau = \frac{\pi}{2}$, the $\textbf{u}$-matrix for the inverse Kohn method is generated (\cref{eq:uInvKohn}). As to be expected, the Kohn and inverse Kohn methods are special cases of the generalized Kohn method.
+The generalized Kohn method is described by Cooper et al.\ \cite{
+Cooper2009, Cooper2010}.  When $\tau = 0$ is substituted in \cref{eq:uGenKohn}
+, the $\textbf{u}$-matrix for the Kohn method is generated (\cref{eq:uKohn}). 
+Similarly, when $\tau = \frac{\pi}{2}$, the $\textbf{u}$-matrix for the 
+inverse Kohn method is generated (\cref{eq:uInvKohn}).
 
 
 \subsubsection*{Complex Kohn $T$-matrix}
@@ -706,9 +717,11 @@ $S$-matrix we are using with our wavefunction is related to the $K$-matrix by
 K_\ell = \frac{\ii(1-S_\ell)}{1+S_\ell},
 \end{equation}
 which is satisfied by the above $\textbf{u}$-matrix. Also of note is that
-$\det \textbf{u} = -2\ii$ instead of 1 like some of the other Kohn methods.
+$\det \textbf{u} = -2\ii$ instead of 1 like most of the other Kohn methods
+presented here. Cooper et al.~\cite{Cooper2010} use the $T$-matrix but also
+provide a relation between the two.
 
-\subsubsection*{Generalized $T$-matrix complex Kohn}
+\subsubsection*{Generalized $T$-matrix Complex Kohn}
 \label{sec:GenComplexTKohn}
 \beq
 \textbf{u} =
@@ -719,10 +732,11 @@ $\det \textbf{u} = -2\ii$ instead of 1 like some of the other Kohn methods.
 \label{eq:uGenTKohn}
 \eeq
 This is a generalized form of the $T$-matrix complex Kohn, similar to how the 
-generalized Kohn works. When $\tau = 0$, this reduces to the $T$-matrix Kohn.
+generalized Kohn works. When $\tau = 0$, this reduces to the $T$-matrix complex
+Kohn. This is also a slightly different from than that of Cooper
+et al.~\cite{Cooper2010}.
 
-
-\subsubsection*{Generalized $S$-matrix complex Kohn}
+\subsubsection*{Generalized $S$-matrix Complex Kohn}
 \label{sec:GenComplexSKohn}
 \beq
 \textbf{u} =
@@ -733,7 +747,7 @@ generalized Kohn works. When $\tau = 0$, this reduces to the $T$-matrix Kohn.
 \label{eq:uGenSKohn}
 \eeq
 This is a generalized form of the $S$-matrix complex Kohn. When $\tau = 0$, 
-this reduces to the $S$-matrix Kohn.
+this reduces to the $S$-matrix complex Kohn.
 
 
 \section{Matrix Elements}
@@ -754,7 +768,9 @@ for a general $f$ and $g$,
 \label{eq:PermProp}
 (f,\mathcal{L}g) = (f^\prime,\mathcal{L}g^\prime) \text{ and } (f,\mathcal{L}g^\prime) = (f^\prime,\mathcal{L}g).
 \eeq
-This allows us to reduce the number of integrations needed by half by doing
+The functions $f$ and $g$ are any of $\widetilde{S}_\ell$, $\widetilde{C}_\ell$
+and $\bar{\phi}_i$. This relation allows us to reduce the number of integrations
+needed by half by doing \cite{VanReethThesis}
 \beq
 \label{eq:PermPropFull}
 (\bar{f},\mathcal{L}\bar{g}) = (f,\mathcal{L}g) \pm (f,\mathcal{L}g^\prime) \pm (f^\prime,\mathcal{L}g) + (f^\prime,\mathcal{L}g^\prime) = 2\left[(f,\mathcal{L}g) \pm (f,\mathcal{L}g^\prime)\right].
@@ -764,7 +780,14 @@ This allows us to reduce the number of integrations needed by half by doing
 \subsection{Matrix Element Symmetries}
 \label{sec:Symmetries}
 
-Not all matrix elements in \cref{eq:GeneralKohnMatrix} have to be calculated as presented. Some matrix elements are identical to other matrix elements, such as $(\widetilde{C}_\ell,\mathcal{L}\bar{\phi}_i) = (\bar{\phi}_i,\mathcal{L}\widetilde{C}_\ell)$. In this particular case, it is much easier to calculate $(\bar{\phi}_i,\mathcal{L}\widetilde{C}_\ell)$ instead of $(\widetilde{C}_\ell,\mathcal{L}\bar{\phi}_i)$, due to the complexity of operating $\mathcal{L}$ on $\bar{\phi}_i$ (see \cref{eq:GradGradShort,tab:LCList}). We prove these claims in this section.
+Not all matrix elements in \cref{eq:GeneralKohnMatrix} have to be calculated 
+as presented. Some matrix elements are identical to other matrix elements, 
+such as $(\widetilde{C}_\ell,\mathcal{L}\bar{\phi}_i) = (\bar{\phi}_i,\mathcal{L}\widetilde{C}_\ell)$.
+In this particular case, it is much easier to 
+calculate $(\bar{\phi}_i,\mathcal{L}\widetilde{C}_\ell)$ instead of
+$(\widetilde{C}_\ell,\mathcal{L}\bar{\phi}_i)$, due to the complexity of 
+operating $\mathcal{L}$ on $\bar{\phi}_i$ (see \cref{eq:GradGradShort,tab:LCList}).
+We prove these claims in this section.
 
 These arguments follow that of Appendix A of Peter Van Reeth's thesis \cite{VanReethThesis}.
 We start with the functional
@@ -772,7 +795,7 @@ We start with the functional
 	\label{eq:Fsymm}
 	F \equiv \left(g,\mathcal{L}f \right)-\left(f,\mathcal{L}g \right) \; ,
 \end{align}
-with $\mathcal{L}$ given by \cref{eq:LDef}. The functions $f$ and $g$ are any of $\widetilde{S}_\ell$, $\widetilde{C}_\ell$ and $\bar{\phi}_i$.
+with $\mathcal{L}$ given by \cref{eq:LDef}.
 Using the Hamiltonian given by \cref{eq:Hamiltonian1}, only the first
 three terms of the above functional have to be evaluated, as the other terms go to 0 with the subtraction.
 \begin{align}
@@ -814,7 +837,12 @@ F &= \left(\frac{1}{\sqrt{2}} \left[S_\ell \pm S_\ell^\prime \right], \mathcal{L
 & = \frac{1}{2}\left[(S_\ell,\mathcal{L}C_\ell) \pm (S_\ell,\mathcal{L}C_\ell^\prime) \pm (S_\ell^\prime,\mathcal{L}C_\ell) + (S_\ell^\prime,\mathcal{L}C_\ell^\prime) \right. \nonumber\\
 & \left. \phantom{move} - (C_\ell,\mathcal{L}S_\ell) \mp (C_\ell,\mathcal{L}S_\ell^\prime) \mp (C_\ell^\prime,\mathcal{L}S_\ell) - (C_\ell^\prime,\mathcal{L}S_\ell^\prime)\right]
 \end{align}
-From the property of the permutation operators, $(S_\ell,\mathcal{L}C_\ell) = (S_\ell^\prime,\mathcal{L}C_\ell^\prime)$, $(S_\ell^\prime,\mathcal{L}C_\ell) = (S_\ell,\mathcal{L}C_\ell^\prime)$, $(C_\ell,\mathcal{L}S_\ell) = (S_\ell^\prime,\mathcal{L}C_\ell^\prime)$ and $(C_\ell^\prime,\mathcal{L}S_\ell) = (C_\ell,\mathcal{L}S_\ell^\prime)$, causing the above to reduce to
+From the property of the permutation operators, $(S_\ell,\mathcal{L}C_\ell) = 
+(S_\ell^\prime,\mathcal{L}C_\ell^\prime)$, $(S_\ell^\prime,\mathcal{L}C_\ell) 
+= (S_\ell,\mathcal{L}C_\ell^\prime)$, $(C_\ell,\mathcal{L}S_\ell) = (S_\ell^
+\prime,\mathcal{L}C_\ell^\prime)$ and
+$(C_\ell^\prime,\mathcal{L}S_\ell) = (C_\ell,\mathcal{L}S_\ell^\prime)$,
+causing the above to reduce to
 \begin{align}
 F = &\left[ (S_\ell,\mathcal{L}C_\ell) - (C_\ell,\mathcal{L}S_\ell)\right] \pm \left[ (S_\ell,\mathcal{L}C_\ell^\prime) - (C_\ell^\prime,\mathcal{L}S_\ell)\right] \nonumber \\
 &\equiv G \pm G^\prime.
@@ -827,15 +855,19 @@ G &= \frac{1}{2} \int\limits_{V_3} \int\limits_{V_{12}} \int\limits_{S_\rho} \le
   &+ 2 \int\limits_{V_\rho} \int\limits_{V_{13}}\int\limits_{S_{12}} \left[ S_\ell \grad_{r_{12}} C_\ell - C_\ell \grad_{r_{12}} S_\ell \right] \cdot d\bm{\sigma}_{12} d\tau_{13} d\tau_\rho
   \label{eq:GDef}
 \end{align}
-As before, the Ps and H functions have an exponential dependence on $r_3$ and $r_{12}$,
-respectively, so the second and third terms go to 0. The surface elements under consideration at $\rho \rightarrow \infty$
- are normal to $\hat{\rho}$, so we can ignore the angular dependence in $\grad_\rho$. Then \cref{eq:GDef} becomes
+As before, the Ps and H functions have an exponential dependence on $r_3$ and 
+$r_{12}$, respectively, so the second and third terms go to 0. The surface 
+elements under consideration at $\rho \to \infty$ are normal to $\hat{\rho}$, 
+so we can ignore the angular dependence in $\grad_\rho$. Then \cref{eq:GDef} 
+becomes
 \beq
 G = \frac{1}{2} \int\limits_{V_3} \int\limits_{V_{12}} \left[\int\limits_{S_\rho} \left(S_\ell \frac{\partial C_\ell}{\partial \rho} - C_\ell \frac{\partial S}{\partial \rho} \right) \rho^2 \sin \theta_\rho d\theta_\rho d\varphi_\rho \right] d\tau_{12} d\tau_3.
 \label{eq:GDef2}
 \eeq
 
-Using \cref{eq:GenSandC} and realizing that $f_\ell \rightarrow 1$ as $\rho \rightarrow \infty$, from the \emph{Mathematica} notebook ``SLC - CLS Proof.nb'', we have
+Using \cref{eq:GenSandC} and realizing that $f_\ell \rightarrow 1$ as
+$\rho \to \infty$, from the \emph{Mathematica} notebook ``SLC - CLS Proof.nb''
+\cite{Wiki}, we have
 \begin{equation}
 \label{eq:CSderdiff}
 \left(S_\ell \frac{\partial C_\ell}{\partial \rho} - C_\ell \frac{\partial S_\ell}{\partial \rho} \right) = \frac{2}{\rho^2} \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho}^2 \Phi_{Ps}\left(r_{12}\right)^2 \Phi_H\left(r_3\right)^2 .
@@ -847,8 +879,9 @@ G &= \cancel{\frac{1}{2}} \int\limits_{V_3} \int\limits_{V_{12}} \left[\int\limi
 &= \int\limits_{V_3} \int\limits_{V_{12}} \Phi_{Ps}(r_{12})^2 \Phi_{H}(r_{3})^2 d\tau_{12} d\tau_3 = 1,
 \label{eq:GDef2}
 \end{align}
-which follows from the orthonormality of the spherical harmonics and the normalization of the Ps and H wavefunctions.
-These, when combined in \cref{GBarDef}, give that
+which follows from the orthonormality of the spherical harmonics and the
+normalization of the Ps and H wavefunctions. These, when combined in
+\cref{GBarDef}, give that
 \beq
 (S_\ell,\mathcal{L}C_\ell) = (C_\ell,\mathcal{L}S_\ell) + 1.
 \label{eq:SLCandCLSdirect}
@@ -882,27 +915,37 @@ Likewise,
 \nonumber = \,\, & \Det{\textbf{u}} [(\bar{S}_\ell,\mathcal{L}\bar{C}_\ell) - (\bar{C}_\ell,\mathcal{L}\bar{S}_\ell)]
 \end{align}
 
-\noindent Each of our $\textbf{u}$ matrices satisfies $\Det{\textbf{u}} = 1$, making this
-\beq
-(\widetilde{S}_\ell,\mathcal{L}\widetilde{C}_\ell) - (\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell) = (\bar{S}_\ell,\mathcal{L}\bar{C}_\ell) - (\bar{C}_\ell,\mathcal{L}\bar{S}_\ell).
-\eeq
+%\noindent Each of our $\textbf{u}$ matrices satisfies $\Det{\textbf{u}} = 1$, making this
+%\beq
+%(\widetilde{S}_\ell,\mathcal{L}\widetilde{C}_\ell) - (\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell) = (\bar{S}_\ell,\mathcal{L}\bar{C}_\ell) - (\bar{C}_\ell,\mathcal{L}\bar{S}_\ell).
+%\eeq
 This is finally written as the general form of equation \ref{eq:SLCandCLS}, giving
 \beq
-(\widetilde{S}_\ell,\mathcal{L}\widetilde{C}_\ell) = (\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell) + 1.
+(\widetilde{S}_\ell,\mathcal{L}\widetilde{C}_\ell) = (\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell) + \Det{\textbf{u}}.
 \label{eq:GenSLCandCLS}
 \eeq
 
-This relation can let us obtain the $(\widetilde{S}_\ell,\mathcal{L}\widetilde{C}_\ell)$ matrix element from $(\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell)$, but it also gives us a nice numerical check. I calculate these two matrix elements separately in my code and calculate their difference. If it is close to 1, this gives us confidence that the long-long integrations are accurate.
+This relation can let us obtain the
+$(\widetilde{S}_\ell,\mathcal{L}\widetilde{C}_\ell)$ matrix element from
+$(\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell)$, but it also gives us a 
+nice numerical check. I calculate these two matrix elements separately in my 
+code and calculate their difference for the Kohn. If it is close to 1, this
+gives us confidence that the long-long integrations are accurate.
 \todoi{Make sure that this is mentioned in the computation chapter.}
 
 
 \subsection{Matrix Elements Involving Long-Range Terms}
 \label{sec:MatrixLong}
-The short-long and long-long matrix elements have a similar analysis. For all of these, the effect of the $\mathcal{L} = 2(H-E)$ operator on the long-range terms must be considered, and then integrations over the external angles (see \Cref{chp:AngularInt}) are performed. The remaining 6-dimensional integral is then numerically integrated as described in sections \ref{sec:LongLongInt} and \ref{sec:ShortLongInt}.
+The short-long and long-long matrix elements have a similar analysis. For all 
+of these, the effect of the $\mathcal{L} = 2(H-E)$ operator on the long-range 
+terms must be considered, and then integrations over the external angles (see 
+\cref{chp:AngularInt}) are performed. The remaining 6-dimensional integral is 
+then numerically integrated as described in \cref{sec:LongLongInt,sec:ShortLongInt}.
 
 \subsubsection{\texorpdfstring{$\mathcal{L}\bar{S}_\ell$}{LS} Terms}
 \label{sec:LSTerms}
-The matrix elements in \cref{eq:GeneralKohnMatrix} require us to first determine $\mathcal{L}\bar{S}_\ell$. We start with examining $\mathcal{L}S_\ell$ first.
+The matrix elements in \cref{eq:GeneralKohnMatrix} require us to first determine
+$\mathcal{L}\bar{S}_\ell$. We start with examining $\mathcal{L}S_\ell$ first.
 
 Using \cref{eq:GenSDef,eq:LDef}, 
 \begin{align}
@@ -955,7 +998,7 @@ Similar to \cref{eq:LS2}, using \cref{eq:HPsEqn,eq:HPsHamil} reduces this to
 Unlike with $\mathcal{L}S_\ell$ in \cref{sec:LSTerms}, there is not a cancellation 
 with the $\Laplacian_\rho$ and $\kappa^2$ terms. The combination of these 
 terms was calculated in the ``First Partial Waves LC.nb'' \emph{Mathematica} 
-notebook using the code given in \cref{fig:LCMath}. This is for the F-wave, 
+notebook \cite{Wiki} using the code given in \cref{fig:LCMath}. This is for the F-wave, 
 and replacing the $\ell$-value of 3 in \texttt{SphericalBesselY} allows this 
 to be used for any partial wave. The results of these derivations is given in 
 \cref{tab:LCList}. The
@@ -979,28 +1022,28 @@ Partial & \\[-1.3cm]
 Wave & $\frac{1}{2} \left(\Laplacian_\rho + \kappa^2\right) \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} n_\ell(\kappa\rho) f_\ell(\rho)$ \\
 \midrule
 S-Wave & {$\!\begin{aligned} % http://tex.stackexchange.com/q/98482/16595 
-               \frac{2 \kappa  f^\prime(\rho ) \sin (\kappa  \rho )-f^{\prime\prime}(\rho) \cos (\kappa \rho )}{2 \kappa  \rho } \\    % http://tex.stackexchange.com/q/78788/16595
+               \frac{2 \kappa  f_\ell^\prime(\rho ) \sin (\kappa  \rho )-f_\ell^{\prime\prime}(\rho) \cos (\kappa \rho )}{2 \kappa  \rho } \\    % http://tex.stackexchange.com/q/78788/16595
            \end{aligned}$} \\
 P-Wave & {$\!\begin{aligned}
-				-\frac{\rho  f^{\prime\prime}(\rho ) \left[\kappa  \rho  \sin (\kappa \rho)+\cos (\kappa \rho )\right]+2 f^\prime(\rho ) \left[\left(\kappa ^2 \rho ^2-1\right) \cos (\kappa  \rho )-\kappa  \rho  \sin (\kappa \rho )\right]}{2 \kappa ^2 \rho ^3}
+				-\frac{\rho  f_\ell^{\prime\prime}(\rho ) \left[\kappa  \rho  \sin (\kappa \rho)+\cos (\kappa \rho )\right]+2 f_\ell^\prime(\rho ) \left[\left(\kappa ^2 \rho ^2-1\right) \cos (\kappa  \rho )-\kappa  \rho  \sin (\kappa \rho )\right]}{2 \kappa ^2 \rho ^3}
 			\end{aligned}$} \\
 D-Wave & {$\!\begin{aligned}
-		-\frac{1}{2 \kappa ^3 \rho ^4} &\left\{\rho  f^{\prime\prime}(\rho ) \left[\left(3-\kappa ^2 \rho ^2\right) \cos (\kappa  \rho )+3 \kappa  \rho  \sin (\kappa  \rho )\right] \right. \\
-		& \left.+2 f^\prime(\rho ) \left[\kappa  \rho  \left(\kappa ^2 \rho ^2-6\right) \sin (\kappa  \rho )+3 \left(\kappa ^2 \rho ^2-2\right) \cos (\kappa  \rho )\right] \right\}
+		-\frac{1}{2 \kappa ^3 \rho ^4} &\left\{\rho  f_\ell^{\prime\prime}(\rho ) \left[\left(3-\kappa ^2 \rho ^2\right) \cos (\kappa  \rho )+3 \kappa  \rho  \sin (\kappa  \rho )\right] \right. \\
+		& \left.+2 f_\ell^\prime(\rho ) \left[\kappa  \rho  \left(\kappa ^2 \rho ^2-6\right) \sin (\kappa  \rho )+3 \left(\kappa ^2 \rho ^2-2\right) \cos (\kappa  \rho )\right] \right\}
 		\end{aligned}$} \\[0.6cm]
 F-Wave & {$\!\begin{aligned}
-	\frac{1}{2 \kappa ^4 \rho ^5} &\left\{\rho  f^{\prime\prime}(\rho ) \left[\kappa  \rho  \left(\kappa ^2 \rho ^2-15\right) \sin (\kappa  \rho )+3 \left(2 \kappa ^2 \rho ^2-5\right) \cos (\kappa  \rho )\right] \right. \\
-	& \left. +2 f^\prime(\rho ) \left[3 \kappa  \rho  \left(15-2 \kappa ^2 \rho ^2\right) \sin (\kappa  \rho )+\left(\kappa ^4 \rho ^4-21 \kappa ^2 \rho ^2+45\right) \cos (\kappa  \rho )\right]\right\}
+	\frac{1}{2 \kappa ^4 \rho ^5} &\left\{\rho  f_\ell^{\prime\prime}(\rho ) \left[\kappa  \rho  \left(\kappa ^2 \rho ^2-15\right) \sin (\kappa  \rho )+3 \left(2 \kappa ^2 \rho ^2-5\right) \cos (\kappa  \rho )\right] \right. \\
+	& \left. +2 f_\ell^\prime(\rho ) \left[3 \kappa  \rho  \left(15-2 \kappa ^2 \rho ^2\right) \sin (\kappa  \rho )+\left(\kappa ^4 \rho ^4-21 \kappa ^2 \rho ^2+45\right) \cos (\kappa  \rho )\right]\right\}
 	\end{aligned}$} \\[1cm] 
 G-Wave & {$\!\begin{aligned}
-	\frac{1}{2 \kappa ^5 \rho ^6} & \left\{2 f^\prime(\rho ) \left[\kappa  \rho  \left(\kappa ^4 \rho ^4-55 \kappa ^2 \rho ^2+420\right) \sin (\kappa  \rho ) \right. \right. \\
-	& \left. +5 \left(2 \kappa ^4 \rho ^4-39 \kappa ^2 \rho ^2+84\right) \cos (\kappa  \rho )\right]-\rho  f^{\prime\prime}(\rho ) \left[5 \kappa  \rho  \left(21-2 \kappa ^2 \rho ^2\right) \sin (\kappa  \rho ) \right. \\
+	\frac{1}{2 \kappa ^5 \rho ^6} & \left\{2 f_\ell^\prime(\rho ) \left[\kappa  \rho  \left(\kappa ^4 \rho ^4-55 \kappa ^2 \rho ^2+420\right) \sin (\kappa  \rho ) \right. \right. \\
+	& \left. +5 \left(2 \kappa ^4 \rho ^4-39 \kappa ^2 \rho ^2+84\right) \cos (\kappa  \rho )\right]-\rho  f_\ell^{\prime\prime}(\rho ) \left[5 \kappa  \rho  \left(21-2 \kappa ^2 \rho ^2\right) \sin (\kappa  \rho ) \right. \\
 	& \left. \left. +\left(\kappa ^4 \rho ^4-45 \kappa ^2 \rho ^2+105\right) \cos (\kappa  \rho )\right] \right\}
 	\end{aligned}$} \\[1.5cm]
 H-Wave & {$\!\begin{aligned}
-	-\frac{1}{2 \kappa ^6 \rho ^7} & \left\{\rho  f^{\prime\prime}(\rho ) \left[\kappa  \rho  \left(\kappa ^4 \rho ^4-105 \kappa ^2 \rho ^2+945\right) \sin (\kappa  \rho ) \right. \right. \\
+	-\frac{1}{2 \kappa ^6 \rho ^7} & \left\{\rho  f_\ell^{\prime\prime}(\rho ) \left[\kappa  \rho  \left(\kappa ^4 \rho ^4-105 \kappa ^2 \rho ^2+945\right) \sin (\kappa  \rho ) \right. \right. \\
 	& \left. +15 \left(\kappa ^4 \rho ^4-28 \kappa ^2 \rho ^2+63\right) \cos (\kappa  \rho )\right] \\
-	& + 2 f^\prime(\rho ) \left[\left(\kappa ^6 \rho ^6-120 \kappa ^4 \rho ^4+2205 \kappa ^2 \rho ^2-4725\right) \cos (\kappa  \rho ) \right. \\
+	& + 2 f_\ell^\prime(\rho ) \left[\left(\kappa ^6 \rho ^6-120 \kappa ^4 \rho ^4+2205 \kappa ^2 \rho ^2-4725\right) \cos (\kappa  \rho ) \right. \\
 	& \left. \left. -15 \kappa  \rho  \left(\kappa ^4 \rho ^4-42 \kappa ^2 \rho ^2+315\right) \sin (\kappa  \rho )\right]\right\}
 	\end{aligned}$} \\
 \bottomrule
@@ -1019,7 +1062,7 @@ From \cref{eq:PartialWaveShielding}, the general shielding function for $\wideti
   f_\ell(\rho) = \left[1 - \ee^{-\mu \rho} \left(1+\frac{\mu}{2}\rho\right)
   \right]^{m_\ell}.
 \end{equation}
-From \cref{tab:LCList}, the derivatives $f_\ell^\prime(\rho)$ and $f_\ell^{\prime\prime}(\rho)$ are needed. In the \emph{Mathematica} notebook ``General Shielding Function.nb'', I found out that the derivatives can be written generally as
+From \cref{tab:LCList}, the derivatives $f_\ell^\prime(\rho)$ and $f_\ell^{\prime\prime}(\rho)$ are needed. In the \emph{Mathematica} notebook ``General Shielding Function.nb'' \cite{Wiki}, I found out that the derivatives can be written generally as
 \beq
 \label{eq:Shielding1Der}
 f_\ell^\prime(\rho) = -\frac{\mu m_\ell (\mu  \rho +1) \left[1-\frac{1}{2} e^{-\mu  \rho } (\mu  \rho +2)\right]^{m_\ell}}{\mu  \rho -2 e^{\mu  \rho }+2}
@@ -1034,7 +1077,13 @@ f_\ell^{\prime\prime}(\rho) = \frac{\mu^2 m_\ell \left[-2 \mu  \rho  e^{\mu  \rh
 \subsubsection{\texorpdfstring{$(\bar{S}_\ell,\mathcal{L}\bar{S}_\ell)$}{SLS} and \texorpdfstring{$(\bar{C}_\ell,\mathcal{L}\bar{S}_\ell)$}{CLS} Matrix Elements}
 \label{sec:SLSandCLS}
 
-From \cref{eq:TildeSCDef}, we see that, in general, any matrix element in \cref{eq:GeneralKohnMatrix} containing only long-range terms will contain both $(\bar{S}_\ell,\mathcal{L}\bar{S}_\ell)$ and $(\bar{C}_\ell,\mathcal{L}\bar{S}_\ell)$, along with the other two combinations given in \cref{sec:}. When $(\bar{S}_\ell,\mathcal{L}\bar{S}_\ell)$ is expanded,
+From \cref{eq:TildeSCDef}, we see that, in general, any matrix element in 
+\cref{eq:GeneralKohnMatrix} containing only long-range terms will contain 
+both $(\bar{S}_\ell,\mathcal{L}\bar{S}_\ell)$ and
+$(\bar{C}_\ell,\mathcal{L}\bar{S}_\ell)$, along with the other two combinations
+given in \cref{sec:LCTerms}.
+When $(\bar{S}_\ell,\mathcal{L}\bar{S}_\ell)$ is expanded,
+
 \beq
 (\bar{S}_\ell,\mathcal{L}\bar{S}_\ell) = \frac{1}{2} \left[ (S_\ell,\mathcal{L}S_\ell) \pm (S_\ell^\prime,\mathcal{L}S_\ell) \pm (S_\ell,\mathcal{L}S_\ell^\prime) \pm (S_\ell^\prime,\mathcal{L}S_\ell^\prime) \right].
 \eeq
@@ -1194,7 +1243,7 @@ of simply rejecting Kohn methods that have obvious Schwartz singularities.
 Interestingly, adding terms will change which Kohn method has a Schwartz 
 singularity. \Cref{fig:PhaseTau-Omega} shows how increasing $\omega$ (adding 
 terms) will change the $\tau$ in the generalized Kohn where a Schwartz 
-singularity occurs. \Cref{fig:Det-Omega=6,Kappa=01} also shows how for the 
+singularity occurs. \Cref{fig:PhaseTau-Kappa} also shows how for the 
 same set of short-range terms, varying $\kappa$ will change the $\tau$ value 
 where a these singularities occur.
 
@@ -1262,40 +1311,9 @@ there are resonances in each singlet partial wave for Ps-H scattering. Some
 papers refer to these resonances as Breit-Wigner resonances
 \cite{Tennyson1984,Stibbe1998}, but according to Bransden and Joachain
 \cite[p.596]{Bransden2003}, Breit-Wigner resonances are a special case of Fano
-resonances with $q = \pm\infty$. This corresponds to a resonance with a flat cross section 
-background, which we do not have, as seen later in \cref{fig:singlet-cross-sections}.
-Fano's equation for the cross section is \cite[p.596]{Bransden2003}
-\beq
-\label{eq:FanoRes}
-\sigma_\ell = \frac{4\pi}{\kappa^2} (2\ell+1) \sin^2 \xi_\ell \frac{(q+
-\epsilon)^2}{1+\epsilon^2},
-\eeq
-with reduced energy given by
-\beq
-\epsilon = \frac{E - E_r}{\Gamma/2}
-\eeq
-and resonance shape parameter
-\beq
-q = -\cot \xi_\ell.
-\eeq
-The effect of this $q$ parameter is seen in \cref{fig:FanoCross}. This allows 
-the cross section to have an asymmetric shape near a resonance. Notice that 
-the special case of a Breit-Wigner resonance is given as $q = \pm\infty$. The 
-dotted line is the curve $4 \pi (2\ell+1) / \kappa^2$, which gives an 
-envelope to this function. An interactive demonstration of Fano resonances
-(but restricted to $q \geq 0$ is available from the Wolfram Demonstrations
-Project \cite{FanoDemo}.
+resonances with $q = \pm\infty$.
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=5.25in]{fano-cross}
-	\caption[Cross sections of Fano resonances]{Cross sections of Fano 
-resonances with differing values of $q$, shown for S-wave scattering}
-	\label{fig:FanoCross}
-\end{figure}
-
-To find the resonance parameters, we use the phase shifts instead of the 
-cross sections. The resonance positions and widths can be calculated to high 
+The resonance positions and widths can be calculated to high 
 accuracy by fitting the phase shift data to the following curve:
 \beq
 \label{eq:ResonanceCurve}
@@ -1314,12 +1332,12 @@ consider only a single resonance. See
 \cref{sec:SWaveResonances,sec:PWaveResonances,sec:DWaveResonance,sec:FWaveResonance}
 for further discussion of the resonances for each partial wave.
 
-From Refs.~\cite{Ray2006,Ray2007} and Ref.~\cite[p.599]{Bransden2003}, resonances
-are metastable states with lifetimes of
-\beq
-\tau \approx \hbar / \Gamma.
-\eeq
-Ray also points out that this is longer than a typical collision time.
+%From Refs.~\cite{Ray2006,Ray2007} and Ref.~\cite[p.599]{Bransden2003}, resonances
+%are metastable states with lifetimes of
+%\beq
+%\tau \approx \hbar / \Gamma.
+%\eeq
+%Ray also points out that this is longer than a typical collision time.
 
 \begin{figure}[H]
 	\centering

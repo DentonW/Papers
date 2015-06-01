@@ -5,6 +5,228 @@
 \chapter{Extra Numerics}
 \label{chp:ExtraNumerics}
 
+
+\section{Short-Range Code Nonlinear Parameter Optimization}
+\label{sec:BoundOptimization}
+
+A powerful property of the Rayleigh-Ritz variational method is the 
+ability to systematically improve the wavefunction to lower the upper bound 
+on the energy. By either adding terms to the expansion in
+\ref{eq:BoundWavefn_psi} or changing the nonlinear parameters $\alpha$,
+$\beta$ and $\gamma$, the energy can be reduced and a possible minimum
+found. This is a three-dimensional optimization problem, and we tried 
+multiple methods for the nonlinear parameter optimization.
+
+\subsection{Newton's Method}
+\label{sec:Newton}
+From Ref. \cite{Yan1999} (and easily derived), if the wavefunction $\Psi$
+is properly normalized, the energy can be minimized by setting the
+derivative with respect to each of the nonlinear parameters equal to 0 by
+\beq
+\frac{\partial E}{\partial \alpha} = 2 \left< \Psi \Big| H \Big| \frac{\partial\Psi}{\partial \alpha} \right> - 2 \left< \Psi \Big| \frac{\partial\Psi}{\partial \alpha} \right>.
+\label{eq:EnergyDerivativeNorm}
+\eeq
+With this, the wavefunction is minimized using the 1-D Newton's method for 
+each parameter separately \cite{Sauer2006}. Newton's method was unstable for 
+anything other than a small basis set ($\omega \leq 4$), so I evaluated other 
+methods. Newton's method for n-dimensions can be used as well, though it 
+requires computation of the Jacobian.
+
+\subsection{Broyden's Method}
+\label{sec:Broyden}
+
+The next method I tried was Broyden's method \cite{Sauer2006}, which can 
+solve for all three nonlinear parameters simultaneously. This was more stable 
+than than 1-D Newton method. The second Broyden's method, sometimes referred 
+to as the ``bad Broyden's method'' was used here. As Kvaalen points out, this 
+method is perfectly usable and can be faster than the first Broyden's method 
+\cite{Kvaalen1991}. \Cref{table:NonlinearOptimized3SBroyden,BroydenPWaveSingOpt}
+show the nonlinear parameters used for $^3$S and $^1$P. All other partial waves
+used the simplex method described in \cref{sec:Simplex}. This is because I
+already had a number of results for $^3$S and $^1$P, so running everything
+again for simplex-optimized nonlinear parameters was unnecessary. For $^3$S,
+I was able to use even more terms than I could use for $^1$S \cref{tab:Nonlinear},
+and I was able to use the same number of terms for $^1$P and $^3$P.
+
+\setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
+\setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
+\begin{table}[H]
+\centering
+\begin{tabular}{c c c c}
+\toprule
+$\omega$ & $\alpha$ & $\beta$ & $\gamma$ \\ [0.5ex]
+\midrule
+1 & 0.264440 & 0.831645 & 0.498871 \\
+2 & 0.356175 & 0.452426 & 0.829591 \\
+3 & 0.347611 & 0.467298 & 0.814971 \\
+4 & 0.323300 & 0.333783 & 0.974653 \\
+\bottomrule
+\end{tabular}
+\caption{Broyden optimized $^3S$ nonlinear parameters}
+\label{table:NonlinearOptimized3SBroyden}
+\end{table}
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{c c c c}
+\toprule
+$\omega$ & $\alpha$ & $\beta$ & $\gamma$ \\ [0.5ex]
+\midrule
+1 & 0.47767 & 0.50273 & 0.97498 \\
+2 & 0.48253 & 0.49342 & 0.96874 \\
+3 & 0.42803 & 0.43099 & 0.98993 \\
+4 & 0.39740 & 0.37617 & 0.96205 \\
+\bottomrule
+\end{tabular}
+\caption{Broyden optimized $^1$P nonlinear parameters}
+\label{tab:BroydenPWaveSingOpt}
+\end{table}
+
+
+
+\subsection{Simplex Method}
+\label{sec:Simplex}
+
+%\setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
+%\setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
+\begin{table}[H]
+\centering
+\begin{tabular}{c c c c}
+\toprule
+$\omega$ & $\alpha$ & $\beta$ & $\gamma$ \\ [0.5ex]
+\midrule
+0 & 0.30226 & 0.45479 & 1.07962 \\
+1 & 0.53592 & 0.59453 & 1.02206 \\
+2 & 0.57450 & 0.65222 & 0.98020 \\
+3 & 0.58966 & 0.63150 & 0.97397 \\
+4 & 0.58493 & 0.60995 & 0.98610 \\
+5 & 0.58691 & 0.58045 & 1.03321 \\
+\bottomrule
+\end{tabular}
+\caption{Simplex optimized $^1S$ nonlinear parameters}
+\label{tab:NonlinearOptimized1SSimplex}
+\end{table}
+
+Broyden's method was more stable than Newton's method for this work, but I 
+also tried the \texttt{gsl\_multimin\_fminimizer\_nmsimplex} routine from the 
+GNU Scientific Library, which is an implementation of the simplex method
+\cite{GSL,GSLsimplex}. This was the most stable of the three methods tried to 
+optimize $\alpha$, $\beta$, and $\gamma$ simultaneously. I normally stopped 
+at $\omega = 5$ for the optimization, and the S-wave singlet runs are shown 
+in \cref{tab:NonlinearOptimized1SSimplex}. \Cref{tab:NonlinearOptimizedPD} 
+has the optimized nonlinear parameters used for the P-wave and D-wave. Due to 
+the slowness of the general short-range code (see \cref{sec:GeneralShort}), 
+the F-wave through G-wave just use the parameters $\alpha = 0.5$, $\beta = 0.6$,
+and $\gamma = 1.1$.
+
+\begin{table}[H]
+\small
+\centering
+\begin{tabular}{c c c c}
+\toprule
+Partial Wave & $\alpha$ & $\beta$ & $\gamma$ \\
+\midrule
+$^3$P & 0.310 & 0.311 & 0.995 \\
+$^1$D & 0.359 & 0.368 & 0.976 \\
+$^3$D & 0.356 & 0.365 & 0.976 \\
+\bottomrule
+\end{tabular}
+\caption{Simplex optimized nonlinear parameters for the P-wave and D-wave}
+\label{tab:NonlinearOptimizedPD}
+\end{table}
+
+With the work on the second formalism for the P-wave \cref{sec:PWaveOpt}, it 
+was also possible to use the simplex method to optimize all 6 nonlinear 
+parameters simultaneously instead of having to optimize each symmetry 
+separately. %If the sector-based method of Drake and Yan \cite{Yan1995} is 
+%ever implemented for this problem, it would be possible to optimize all 15 
+%parameters simultaneously, but it may be much more computationally feasible 
+%to optimize each sector separately.
+
+
+\section{P-Wave Nonlinear Parameter Optimization}
+\label{sec:PWaveOpt}
+
+Using the simplex method described in \cref{sec:Simplex}, we optimized the nonlinear parameters for both the first and second formalisms. \Cref{tab:SimplexPWaveSingOpt,tab:SimplexPWaveTripOpt} show the results of these optimizations in the second and third columns. We also let each symmetry have its own set of nonlinear parameters for each symmetry in the fourth and fifth columns. This was inspired by the work of Yan and Ho \cite{Yan1999}, where they used 5 different sets of nonlinear parameters to calculate the PsH ground state energy.
+
+\begin{table}[H]
+\footnotesize
+\centering
+\begin{tabular}{c c c c c}
+\toprule
+\toprule
+$\omega$ & 1st formalism / 1 set & 2nd formalism / 1 set & 1st formalism / 2 sets & 2nd formalism / 2 sets \\
+\midrule
+\midrule
+ &  &  & 0.5341, 0.4536, 1.0139 & 0.5668, 0.4686, 0.9787 \\
+1 & 0.4776, 0.5027, 0.9749 & 0.4571, 0.5700, 0.9266 & 0.3792, 0.5455, 0.9816 & 0.6777, 0.8587, 0.4813 \\
+ & $\textbf{-0.666819968640}$ & $\textbf{-0.663226610680}$ & $\textbf{-0.670015702237}$ & $\textbf{-0.665355147531}$ \\
+\midrule
+ &  &  & 0.5270, 0.4394, 1.0036 & 0.4497, 0.5039, 0.9459 \\
+2 & 0.4825, 0.4934, 0.9687 & 0.4734, 0.5162, 0.9584 & 0.4087, 0.5213, 0.9704 & 0.3963, 1.0233, 0.4327 \\
+ & $\textbf{-0.700681070987}$ & $\textbf{-0.699190666285}$ & $\textbf{-0.701936448530}$ & $\textbf{-0.700245066225}$ \\
+\midrule
+ &  &  & 0.4632, 0.3918, 1.001 & 0.4653, 0.4512, 0.9905 \\
+3 & 0.4297, 0.4337, 0.9808 & 0.4317, 0.4564, 0.9621 & 0.3844, 0.4620, 0.9740 & 0.8745, 0.9796, 0.4957 \\
+ & $\textbf{-0.718093418924}$ & $\textbf{-0.717282613790}$ & $\textbf{-0.718548496648}$ & $\textbf{-0.717931026880}$ \\
+\midrule
+ &  &  & 0.3954, 0.3505, 0.9997 & 0.3744, 0.3746, 0.9537 \\
+4 & 0.3740, 0.3744, 0.9898 & 0.3803, 0.3951, 0.9648 & 0.3478, 0.39493, 0.9798 & 0.4078, 0.9010, 0.3351 \\
+ & $\textbf{-0.727918723553}$ & $\textbf{-0.727281885394}$ & $\textbf{-0.728067443345}$ & $\textbf{-0.727981667586}$ \\
+\midrule
+ &  &  & 0.3401, 0.3181, 0.9983 & 0.3373, 0.3390, 0.9635 \\
+5 & 0.3293, 0.3289, 0.9939 & 0.3371, 0.3468, 0.9680 & 0.3174, 0.3397, 0.9880 & 0.4299, 0.9452, 0.3023 \\
+ & $\textbf{-0.734233160953}$ & $\textbf{-0.733680013812}$ & $\textbf{-0.734264232997}$ & $\textbf{-0.734219573964}$ \\
+\bottomrule
+\bottomrule
+\end{tabular}
+\caption{Simplex P-Wave Singlet Short-Range Optimization}
+\label{tab:SimplexPWaveSingOpt}
+\end{table}
+
+
+\begin{table}[H]
+\footnotesize
+\centering
+\begin{tabular}{c c c c c}
+\toprule
+\toprule
+$\omega$ & 1st formalism / 1 set & 2nd formalism / 1 set & 1st formalism / 2 sets & 2nd formalism / 2 sets \\
+\midrule
+\midrule
+ &  &  & 0.3832, 0.2911, 0.9894 & 0.3367, 0.3436, 0.9517 \\
+1 & 0.3316, 0.3535, 0.9956 & 0.3302, 0.3540, 0.9909 & 0.2854, 0.3959, 1.0112 & 0.7606, 0.6593, 0.2304 \\
+ & $\textbf{-0.624190839847}$ & $\textbf{-0.622936676609}$ & $\textbf{-0.629448013148}$ & $\textbf{-0.626442778437}$ \\
+\midrule
+ &  &  & 0.4056, 0.3294, 0.9799 & 0.3623, 0.3952, 0.9716 \\
+2 & 0.3664, 0.3750, 0.9900 & 0.3679, 0.3896, 0.9753 & 0.3226, 0.4097, 1.0078 & 0.1961, 0.7724, 0.7692 \\
+ & $\textbf{-0.674819577647}$ & $\textbf{-0.672880514312}$ & $\textbf{-0.676837948726}$ & $\textbf{-0.673438894110}$ \\
+\midrule
+ &  &  & 0.3874, 0.3314, 0.9823 & 0.3557, 0.3794, 0.9593 \\
+3 & 0.3585, 0.3613, 0.9911 & 0.3639, 0.3810, 0.9690 & 0.3257, 0.3881, 1.0036 & 0.2080, 0.5994, 0.7711 \\
+ & $\textbf{-0.704764841366}$ & $\textbf{-0.703191879865}$ & $\textbf{-0.705411707053}$ & $\textbf{-0.703452729525}$ \\
+\midrule
+ &  &  & 0.3539, 0.3192, 0.9879 & 0.3392, 0.3502, 0.9789 \\
+4 & 0.3357, 0.3366, 0.9936 & 0.3427, 0.3554, 0.9680 & 0.3162, 0.3539, 0.9989 & 0.1624, 0.6564, 0.9512 \\
+ & $\textbf{-0.721696022987}$ & $\textbf{-0.720513417195}$ & $\textbf{-0.721859567659}$ & $\textbf{-0.720596381145}$ \\
+\midrule
+ &  &  & 0.3184, 0.3038, 0.9935 & 0.3177, 0.3271, 0.9769 \\
+5 & 0.3106, 0.3109, 0.9953 & 0.3182, 0.3275, 0.9682 & 0.3025, 0.3186, 0.9966 & 0.1142, 0.4274, 1.1088 \\
+ & $\textbf{-0.731463030326}$ & $\textbf{-0.730592482596}$ & $\textbf{-0.731486455300}$ & $\textbf{-0.730615490923}$ \\
+\bottomrule
+\bottomrule
+\end{tabular}
+\caption{Simplex $^3$P Short-Range Optimization}
+\label{tab:SimplexPWaveTripOpt}
+\end{table}
+
+From \cref{tab:SimplexPWaveSingOpt,tab:SimplexPWaveTripOpt}, we see that lower energy eigenvalues are always obtained with the first formalism with 1 set versus the second formalism with 1 set. Likewise, the first formalism has lower energy eigenvalues than the second formalism when both have 2 sets. For $\omega \geq 2$, the first formalism with 1 set even has lower energy eigenvalues than the second symmetry with 2 sets. We had trouble obtaining phase shifts with two different sets of nonlinear parameters, but for higher $\omega$, we also see that the energy does not change much. Using more than one set of nonlinear parameters could be explored further in future work, and we have done preliminary investigation into this for the S-wave.
+
+
+
+
+
 \section{Nonlinear Parameters and Terms Used}
 \label{sec:NonlinParam}
 
@@ -39,7 +261,96 @@
   \caption[Parameters for each partial wave]{Parameters for each partial wave. Numbers marked with a star indicate the
 restriction in the $r_3$ power described in \cref{sec:Restricted}.}
   \label{tab:Nonlinear}
-\end{table}	
+\end{table}
+
+
+
+\section{L\"uchow and Kleindienst Algorithm} \label{sec:LuchowBound}
+The algorithm that L\"uchow and Kleindienst propose \cite{Luchow1992} is 
+similar to Todd's algorithm. They use all terms through $\omega = 5$, since 
+none of these have linear dependence within this set. This fact could be 
+applied to Allan Todd's algorithm to speed up the calculation. The rest of 
+the terms are partitioned up into blocks of 300-400 terms, except the last 
+block, which will have modulus(N - 462, block size) terms. A key difference 
+from Allan Todd's algorithm is that the terms should be ordered in terms of 
+increasing $\omega$. In Allan Todd's algorithm, the initial ordering does not 
+matter. The terms in the first block are added to the basis set for
+$\omega = 5$, which has 462 terms. If we use a block with 300 terms, then 300 matrices 
+of size $463 \times 463$ are created, and their eigenvalues are determined. Whichever 
+term gives the lowest energy when added to this set is saved to the basis 
+set. This continues with ever-increasing matrix sizes, until all terms in the 
+block are used, or a linear dependence is noticed. L\"uchow and Kleindienst 
+propose that linear dependences can be prevented by omitting terms that do 
+not contribute significantly to the energy. The energy from the previous step 
+is saved, and the energy from the current step is compared to this. If the 
+difference in energies is small, e.g. $\Delta E < 10^{-10} E_h$ in their 
+paper, then that term is omitted. Since the lowest energy is chosen at each 
+step, when this $\Delta E$ is too small, the rest of the block can be omitted.
+
+Two parameters that are adjustable in this algorithm are the block size and 
+cutoff value for the energy. To determine the best values for each, we
+set $\omega = 7$, and one of the parameters was held constant. To 
+determine the optimal block size, an energy cutoff of $5\e{-9}$ was used.
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Block size & Used terms & Energy & Time (min)\\
+\hline
+200 & 1041 & -0.789 181 890 & 470 \\
+250 & 1024 & -0.789 184 500 & 572 \\
+300 & 960 &  -0.789 180 520 & 749 \\
+350 & 999 &  -0.789 181 942 & unknown \\
+400 & 1012 & -0.789 185 588 & 852 \\
+500 & 985 &  -0.789 184 116 & 764 \\
+\hline
+\end{tabular}
+\end{center}
+
+For most trials, increasing the block size also increased the time it took to 
+complete the computation. It can be seen that a block size of N-462 gives a 
+modified version of Todd's algorithm, since we are testing all terms at each 
+step. A block size of 1 would correspond to no reordering of terms, leading 
+to including problematic terms. The cutoff value for $\Delta E$,
+$E_{\text{cutoff}}$, is $10^{-10} E_h$ in L\"uchow and Kleindienst's paper
+\cite{Luchow1992}, but a value of $10^{-10}$ in our calculations led to LAPACK 
+errors due to linear dependences. The block size was set to 400, and it was
+determined that an energy cutoff of $10^{-9}$ was the largest value that caused linear 
+dependences.
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Energy cutoff & Used terms & Energy\\
+\hline
+2\e{-9} & 1116 & -0.789 185 858 \\
+3\e{-9} & 1053 & -0.789 186 346 \\
+4\e{-9} & 1043 & -0.789 185 173 \\
+5\e{-9} & 1012 & -0.789 185 588 \\
+1\e{-8} & 963 &  -0.789 188 024 \\
+\hline
+\end{tabular}
+\end{center}
+
+Unfortunately, the intuition that a larger block size and smaller energy 
+cutoff will yield a better final energy is not necessarily correct. The best 
+value of the energy was actually obtained for the largest tested energy 
+cutoff of $10^{-8}$. A block size of 500 also gave a worse energy than did a 
+block size of 400. More tests need to be performed to determine the optimal 
+value of both parameters, and these could possibly change for higher values 
+of $\omega$ or for a different system.
+
+We decided to use the Todd algorithm (\cref{sec:ToddBound}) due to the better 
+energy obtained and the larger set of terms returned. The Todd algorithm is 
+also more consistent between runs. The trade-off is the increased time to 
+perform a calculation, especially for large $\omega$.
+
+\begin{figure}[H]
+	\centering
+	{\includegraphics[height=2in]{Luchow}}
+	\caption{Diagram of L\"uchow and Kleindienst procedure}
+	\label{fig:Luchow}
+\end{figure}
+
 
 
 \section{Selection of Quadrature Points}
@@ -47,17 +358,55 @@ restriction in the $r_3$ power described in \cref{sec:Restricted}.}
 
 \todoi{Show how compare to Peter's set - including information from the Mathematica notebook}
 
-The number of quadrature points for each coordinate in the 6-dimensional integrations is critical to have fully converged results. In our testing, the $r_1$ coordinate (the coordinate of $e^+$) was the most important, requiring more integration points than any other. The $r_2$ and $r_3$ coordinates were the second most important, and the interparticle terms ($r_{12}$, $r_{13}$ and $r_{23}$) were the least important. These results only apply to the long-range--long-range and long-range--short-range terms, as the short-range--short-range terms are integrated using the same asymptotic expansion method as the bound state problem (see section \ref{sec:MatrixShort}).
+The number of quadrature points for each coordinate in the 6-dimensional 
+integrations is critical to have fully converged results. In our testing, the 
+$r_1$ coordinate (the coordinate of $e^+$) was the most important, requiring 
+more integration points than any other. The $r_2$ and $r_3$ coordinates were 
+the second most important, and the interparticle terms ($r_{12}$, $r_{13}$ 
+and $r_{23}$) were the least important. These results only apply to the
+long-long and long-short terms, as the short-short terms are integrated using 
+the same asymptotic expansion method as the bound state problem
+(see \cref{sec:MatrixShort}).
 
-To determine this, we held the number of integration points fixed, except for one coordinate, which we increased in steps. The difference in the output between steps was used to analyze how important each coordinate was. Also, some terms are more sensitive to the number of integration points than other. For instance, the $(\bar{S},\mathcal{L}_\ell \bar{S})$ term converges relatively quickly, while the $(\bar{C},\mathcal{L}_\ell \bar{C})$ term requires more integration points.
+To determine this, we held the number of integration points fixed, except for 
+one coordinate, which we increased in steps. The difference in the output 
+between steps was used to analyze how important each coordinate was. Also, 
+some terms are more sensitive to the number of integration points than other. 
+For instance, the $(\bar{S}_\ell,\mathcal{L} \bar{S}_\ell)$ term converges 
+relatively quickly, while the $(\bar{C}_\ell,\mathcal{L}_\ell \bar{C}_\ell)$ 
+term requires more integration points.
 
-We also used a sample input file from Van Reeth for the number of quadrature points he used in his code. In figure \ref{fig:OriginalPhaseShifts-pvr}, this set of points was used. After approximately 525 short-range terms, it is immediately apparent that the phase shifts diverge, with a particularly large deviation in the inverse Kohn output. The Kohn and complex Kohn methods converge again shortly before 600 terms and stay converged up to 1000 terms.
+We also used a sample input file from Van Reeth for the number of quadrature 
+points he used in his code. In figure \ref{fig:OriginalPhaseShifts-pvr}, this 
+set of points was used. After approximately 525 short-range terms, it is 
+immediately apparent that the phase shifts diverge, with a particularly large 
+deviation in the inverse Kohn output. The Kohn and complex Kohn methods 
+converge again shortly before 600 terms and stay converged up to 1000 terms.
 
-Adding 5 points to all integrations yields a much more well-behaved graph in figure \ref{fig:OriginalPhaseShifts-pvrplus5}. There are slight variations, one of which can be seen in the inset graph at about 540 terms, but the results are overall converged up to 1100 terms.
+Adding 5 points to all integrations yields a much more well-behaved graph in 
+figure \ref{fig:OriginalPhaseShifts-pvrplus5}. There are slight variations, 
+one of which can be seen in the inset graph at about 540 terms, but the 
+results are overall converged up to 1100 terms.
 
-Increasing the number of points can have a huge impact on performance. Adding 5 points to an $\omega = 0$ calculation takes 3.5 hours, while adding 10 points makes it take 6.1 hours, or approximately twice the time. So we have to make a trade-off between accuracy and performance.
+Increasing the number of points can have a huge impact on performance. Adding 
+5 points to an $\omega = 0$ calculation takes 3.5 hours, while adding 10 
+points makes it take 6.1 hours, or approximately twice the time. So we have 
+to make a trade-off between accuracy and performance.
 
-To determine an optimal set of points, 10 points were added to Van Reeth's set in all coordinates, and a run was done with this set. Then 5 points were subtracted from one coordinate from this set for each run, once for each coordinate. The difference in the matrix elements and phase shifts was small for the 2nd, 3rd and 4th coordinates. A final run using 5 points extra from Van Reeth's set for the 2nd, 3rd and 4th coordinates, along with 10 points extra in all other coordinates, showed small differences from the first set that had 10 points extra in all coordinates. Reducing the points of any of the other coordinates resulted in larger differences from the set with 10 extra points in all coordinates. This final set, referred to as the ``optimal set'', is used in all of our current runs. Increasing the number of integration points further than could potentially lead to better accuracy, though numerical instabilities start appearing with 15 extra points over the base set.
+To determine an optimal set of points, 10 points were added to Van Reeth's 
+set in all coordinates, and a run was done with this set. Then 5 points were 
+subtracted from one coordinate from this set for each run, once for each 
+coordinate. The difference in the matrix elements and phase shifts was small 
+for the 2nd, 3rd and 4th coordinates. A final run using 5 points extra from 
+Van Reeth's set for the 2nd, 3rd and 4th coordinates, along with 10 points 
+extra in all other coordinates, showed small differences from the first set 
+that had 10 points extra in all coordinates. Reducing the points of any of 
+the other coordinates resulted in larger differences from the set with 10 
+extra points in all coordinates. This final set, referred to as the ``optimal 
+set'', is used in all of our current runs. Increasing the number of 
+integration points further than could potentially lead to better accuracy, 
+though numerical instabilities start appearing with 15 extra points over the 
+base set.
 
 
 \begin{figure}[H]

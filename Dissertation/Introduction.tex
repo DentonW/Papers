@@ -51,12 +51,12 @@ replace $m_e \rightarrow \frac{m_e}{2}$. The ground state wavefunction for H is
 \text{where } a_0 = \frac{\hbar^2}{m_e \,e^2} \;.
 \end{equation}
 The $100$ represents the $n \ell m$ quantum numbers, and we are only
-considering ground state H and Ps. If we denote $a_0 \rightarrow a_0'$, where
+considering ground state H and Ps. If we denote $a_0 \to a_\mu$, where
 we replace $m_e$ by $m_e/2$, the positronium ground state
 wavefunction can be written easily as
 \begin{equation}
-\Phi_{100,\rm{Ps}} = \left(\frac{1}{\pi {a_0'}^3}\right)^{\frac{1}{2}} \!\! \ee^{-\frac{r}{a_0'}},
-\text{where } a_0' = \frac{2\hbar^2}{m_e \,e^2} \;.
+\Phi_{100,\rm{Ps}} = \left(\frac{1}{\pi {a_\mu}^3}\right)^{\frac{1}{2}} \!\! \ee^{-\frac{r}{a_\mu}},
+\text{where } a_\mu = \frac{2\hbar^2}{m_e \,e^2} \;.
 \end{equation}
 Working in atomic units (see \cref{sec:Units}), $a_0 = 1$ (i.e. $\hbar = m_e = e = 1$), giving
 \begin{equation}
@@ -199,7 +199,8 @@ The Kohn variational method \cite{Kohn1948} and its variants, derived and
 described in \cref{chp:WaveKohn}, have been used successfully in many 
 scattering problems, such as e$^-$-H \cite{Schwartz1961}, e$^-$-methane
 \cite{McCurdy1989}, H-$\bar{\rm{H}}$ \cite{Armour2002}, e$^+$-H$_2$
-\cite{Cooper2008}, e$^-$-Ps \cite{Ward1987}, and e$^+$-He \cite{VanReeth1997}.
+\cite{Cooper2008}, e$^-$-Ps \cite{Ward1987}, e$^+$-He \cite{VanReeth1997},
+and nucleon-nucleon scattering \cite{Tomio1995,Kievsky1997}.
 The Kohn variational method and its variants suffer from well-known spurious
 singularities (see \cref{eq:SchwartzSing}), so they are often used in conjunction
 with each other to identify these. To avoid cumbersome wording in this document,
@@ -350,7 +351,48 @@ in the short-range part of our scattering wavefunction in
 \cref{sec:GeneralWave}.
 
 
-\section{A Note on Units}
+
+\section{Positronium Hydride Structure}
+\label{sec:PsHStructure}
+There has been some discussion in the literature about whether PsH is more 
+like an atomic structure or more like a molecule with Ps and H. We did not 
+attempt an analysis of this problem, since the PsH system is not the goal of 
+this work. Bressanini and Morosi \cite{Bressanini2003} give a good overview 
+of the lack of consensus on this problem. 
+
+Frolov and Smith \cite{Frolov1997c} note that they expect PsH to be a cluster 
+consisting of a Ps atom and an H atom. Then from their calculations, they 
+conclude that it acts as some kind of sum of H$^-$ with Ps$^-$.
+
+Saito \cite{Saito2000} attempted to answer this question using Ho's
+\cite{Ho1986} Hylleraas basis set by plotting e$^+$ and e$^-$ densities. Saito's 
+conclusion was that PsH has an atomic structure but also has a diatomic 
+molecular structure, or Ps with H. Bromley and Mitroy \cite{Bromley2001} also 
+state that PsH has a molecular structure, comparing it ``to a light isotope 
+of the H$_2$ molecule.''
+
+Biswas and Darewych \cite{Biswas2002} find that the difference between the
+S(1) resonance and the binding energy (\cref{sec:BoundSinglet}) for various 
+calculations of differing accuracy is roughly constant. They suggest that 
+this means that PsH is less like e$^+$ orbiting H$^-$ and more like a 
+diatomic molecule.
+
+Bressanini and Morosi \cite{Bressanini2003} perform calculations on PsH with 
+a highly optimized one term wavefunction to determine the structure and 
+conclude that PsH cannot be viewed as Ps+H or e$^-$ orbiting around H$^-$. 
+They state, ``Keeping in mind the quantum nature of the leptons and so the 
+impossibility of defining a structure, we suggest to look at PsH as a 
+hydrogen negative ion with the positron that, staying more distant from the 
+nucleus than the electrons, correlates its motion with those of both the 
+electrons. Its attraction on the electrons squeezes them nearer to each other 
+and nearer to the nucleus.''
+
+Heyrovska \cite{Heyrovska2011} treats PsH as a molecule and calculates bond
+lengths to try to gain a better understanding of its structure. However, this
+preprint does not settle the debate.
+
+
+\section{Final Notes}
 \label{sec:Units}
 
 %\begin{verbatim}
@@ -369,6 +411,8 @@ where $a_0$ is the Bohr radius. Cross sections are given in units of
 $\pi a_0^2$, and differential cross sections are given in units of
 $a_0^2 / \rm{sr}$, unless otherwise noted.
 
+Many of the figures in this document are adapted from our paper submitted to
+Physical Review A \cite{Woods2015}.
 
 
 

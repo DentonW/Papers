@@ -241,6 +241,43 @@ we obtain \cref{eq:MixedAngSimple}:
 \end{align}
 
 
+\section{Fano Resonances}
+\label{sec:FanoResonances}
+As mentioned in \cref{sec:Resonances}, the resonances we encounter in Ps-H
+scattering are Fano resonances. Breit-Wigner resonances are a special case of Fano
+resonances with $q = \pm\infty$.
+Fano resonances correspond to a resonance with a flat cross section 
+background, which we do not have, as seen later in \cref{fig:singlet-cross-sections}.
+Fano's equation for the cross section is \cite[p.596]{Bransden2003}
+\beq
+\label{eq:FanoRes}
+\sigma_\ell = \frac{4\pi}{\kappa^2} (2\ell+1) \sin^2 \xi_\ell \frac{(q+
+\epsilon)^2}{1+\epsilon^2},
+\eeq
+with reduced energy given by
+\beq
+\epsilon = \frac{E - E_r}{\Gamma/2}
+\eeq
+and resonance shape parameter
+\beq
+q = -\cot \xi_\ell.
+\eeq
+The effect of this $q$ parameter is seen in \cref{fig:FanoCross}. This allows 
+the cross section to have an asymmetric shape near a resonance. Notice that 
+the special case of a Breit-Wigner resonance is given as $q = \pm\infty$. The 
+dotted line is the curve $4 \pi (2\ell+1) / \kappa^2$, which gives an 
+envelope to this function. An interactive demonstration of Fano resonances
+(but restricted to $q \geq 0$ is available from the Wolfram Demonstrations
+Project \cite{FanoDemo}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=5.25in]{fano-cross}
+	\caption[Cross sections of Fano resonances]{Cross sections of Fano 
+resonances with differing values of $q$, shown for S-wave scattering}
+	\label{fig:FanoCross}
+\end{figure}
+
 
 
 \biblio

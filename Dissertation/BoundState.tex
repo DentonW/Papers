@@ -2,11 +2,11 @@
 \documentclass[Dissertation.tex]{subfiles} 
 \begin{document}
 
-\chapter{The Bound State: Positronium Hydride}
+\chapter{Positronium Hydride and Short-Range Terms}
 \label{chp:PsHBound}
 
 \lettrine{\textcolor{startcolor}{A}}{s} discussed in \cref{sec:PsH}, PsH 
-consists of one atom of positronium and one of hydrogen. We model it the 
+consists of one atom of both Ps and of H. We model it the 
 standard way here as an exotic atom, instead of a molecule.
 \Cref{fig:PsHCoords} shows the PsH coordinate system. There are 6 interparticle 
 coordinates, given by $r_1$, $r_2$, $r_3$, $r_{12}$, $r_{13}$, and $r_{23}$. 
@@ -27,9 +27,9 @@ which is stable and can be thought of as e$^+$ orbiting around PsH \cite{Armour2
 \section{Positronium Hydride (PsH) Wavefunction}
 \label{sec:BoundWavefn}
 
-\todoi{Mention Kato cusp \cite{Kato1957}}
 
-Our wavefunction for the bound state is a Hylleraas-style \cite{Yan1999,VanReeth2003} set of terms, given by
+The wavefunction we use for the bound state has a Hylleraas-style
+\cite{Yan1999,VanReeth2003} set of terms, given by
 \begin{subequations}
 \label{eq:BoundWavefn}
 \begin{align}
@@ -45,15 +45,16 @@ indistinguishable. The $\frac{1}{\sqrt{2}}$ needed to normalize $\Psi^\pm$
 (to cancel out the 2 in \cref{eq:RRfinal}) is absorbed into the $c_i$ constant 
 in equation \ref{eq:BoundWavefn_psi}. The constant
 $\SphericalHarmY{0}{0}{\theta}{\phi} = \frac{1}{\sqrt{4\pi}}$ is also absorbed
-into $c_i$.
+into $c_i$. The Hylleraas-type basis set satisfies the Kato cusp condition
+\cite{Kato1957} well \cite{Armour1991}.
 % For clarity in some equations, the definition $d_i = \frac{1}{\sqrt{4\pi}} c_i$ is used.
 
 The variable $\omega$ is an integer $\geq 0$ that determines the number of 
 terms in the basis set. For a chosen value of $\omega$, the integer powers of 
-$r_i$ and $r_{ij}$ are constructed in such a way that
+$r_i$ and $r_{ij}$ are constructed in such a way that \cite{VanReeth2003}
 \beq
 \label{eq:OmegaDef}
-k_i + l_i + m_i + n_i + p_i + q_i \leq \omega
+k_i + l_i + m_i + n_i + p_i + q_i \leq \omega,
 \eeq
 with all $k_i$, $l_i$, $m_i$, $n_i$, $q_i$ and $p_i$ $\geq 0$. 
 Using combination with repetition, an explicit formula for $N(\omega)$ is 
@@ -130,6 +131,7 @@ Wiki \cite{Wiki}):
 \nonumber  &+ \frac{r_3^2 + r_{23}^2 - r_2^2}{2 r_3^2 r_{23}^2} \left[-\gamma r_3(q_i+q_j) + (n_i q_j + n_j q_i)\right] \\
 		   &+ \frac{r_{13}^2 + r_{23}^2 - r_{12}^2}{2 r_{13}^2 r_{23}^2} \left[p_i q_j + p_j q_i\right] \Bigg\}.
 \end{align}
+This is similar to the forms given in Refs.~\cite{Armour1991,VanReethThesis}.
 The S-wave code also has an alternate formalism using the Laplacian, as given in
 Ref.~\cite{Yan1997}.
 
@@ -137,7 +139,7 @@ The full expression for $H_{ij}$ from \cref{eq:HijSij} for real-valued $\phi$
 after using \cref{eq:BoundHamiltonian,eq:BoundGradient} is then
 \beq
 \label{eq:BoundHFull}
-\left< \bar{\phi}_i \left| H \right| \bar{\phi}_j \right> = \Int{ \left[ \frac{1}{2}\sum_{l=1}^3 \grad_{\!\mathbf{r}_l} \bar{\phi}_i \boldsymbol{\cdot} \grad_{\!\mathbf{r}_l} \bar{\phi}_j + \left( \frac {1}{r_1}-\frac {1}{r_2}-\frac {1}{r_3}-\frac {1}{r_{12}}-\frac {1}{r_{13}}+\frac {1}{r_{23}} \right) \bar{\phi}_i \bar{\phi}_j \right]}{\tau}.
+\left< \bar{\phi}_i \left| H \right| \bar{\phi}_j \right> = \bigintsss{ \left[ \frac{1}{2}\sum_{l=1}^3 \grad_{\!\mathbf{r}_l} \bar{\phi}_i \boldsymbol{\cdot} \grad_{\!\mathbf{r}_l} \bar{\phi}_j + \left( \frac {1}{r_1}-\frac {1}{r_2}-\frac {1}{r_3}-\frac {1}{r_{12}}-\frac {1}{r_{13}}+\frac {1}{r_{23}} \right) \bar{\phi}_i \bar{\phi}_j \right]}{d\tau}.
 \eeq
 To reduce the number of integrations needed by half, we use a property of the
 permutation operator. Since 
@@ -160,127 +162,6 @@ expression \ref{eq:BoundHFull} becomes
 \end{subequations}
 
 
-\section{Parameter Optimization}
-\label{sec:BoundOptimization}
-
-The most powerful property of the Rayleigh-Ritz variational method is the 
-ability to systematically improve the wavefunction to lower the upper bound 
-on the energy. By either adding terms to the expansion in
-\ref{eq:BoundWavefn_psi} or changing the nonlinear parameters $\alpha$,
-$\beta$ and $\gamma$, the energy can be reduced and a possible minimum
-found. This is a three-dimensional optimization problem, and we tried 
-multiple methods for the nonlinear parameter optimization.
-
-\subsection{Newton's Method}
-\label{sec:Newton}
-From Ref. \cite{Yan1999} (and easily derived), if the wavefunction $\Psi$
-is properly normalized, the energy can be minimized by setting the
-derivative with respect to each of the nonlinear parameters equal to 0 by
-\beq
-\frac{\partial E}{\partial \alpha} = 2 \left< \Psi \Big| H \Big| \frac{\partial\Psi}{\partial \alpha} \right> - 2 \left< \Psi \Big| \frac{\partial\Psi}{\partial \alpha} \right>.
-\label{eq:EnergyDerivativeNorm}
-\eeq
-With this, the wavefunction is minimized using the 1-D Newton's method for 
-each parameter separately \cite{Sauer2006}. Newton's method was unstable for 
-anything other than a small basis set ($\omega \leq 4$), so I evaluated other 
-methods. Newton's method for n-dimensions can be used as well, though it 
-requires computation of the Jacobian.
-
-\subsection{Broyden's Method}
-\label{sec:Broyden}
-
-The next method I tried was Broyden's method \cite{Sauer2006}, which can 
-solve for all three nonlinear parameters simultaneously. This was more stable 
-than than 1-D Newton method. The second Broyden's method, sometimes referred 
-to as the ``bad Broyden's method'' was used here. As Kvaalen points out, this 
-method is perfectly usable and can be faster than the first Broyden's method 
-\cite{Kvaalen1991}. \Cref{table:NonlinearOptimized3SBroyden,BroydenPWaveSingOpt}
-show the nonlinear parameters used for $^3$S and $^1$P. All other partial waves
-used the simplex method described in \cref{sec:Simplex}. This is because I
-already had a number of results for $^3$S and $^1$P, so running everything
-again for simplex-optimized nonlinear parameters was unnecessary. For $^3$S,
-I was able to use even more terms than I could use for $^1$S \cref{tab:Nonlinear},
-and I was able to use the same number of terms for $^1$P and $^3$P.
-
-\setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
-\setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
-\begin{table}[H]
-\centering
-\begin{tabular}{c c c c}
-\toprule
-$\omega$ & $\alpha$ & $\beta$ & $\gamma$ \\ [0.5ex]
-\midrule
-1 & 0.264440 & 0.831645 & 0.498871 \\
-2 & 0.356175 & 0.452426 & 0.829591 \\
-3 & 0.347611 & 0.467298 & 0.814971 \\
-4 & 0.323300 & 0.333783 & 0.974653 \\
-\bottomrule
-\end{tabular}
-\caption{Broyden optimized $^3S$ nonlinear parameters}
-\label{table:NonlinearOptimized3SBroyden}
-\end{table}
-
-
-\begin{table}[H]
-\centering
-\begin{tabular}{c c c c}
-\toprule
-$\omega$ & $\alpha$ & $\beta$ & $\gamma$ \\ [0.5ex]
-\midrule
-1 & 0.47767 & 0.50273 & 0.97498 \\
-2 & 0.48253 & 0.49342 & 0.96874 \\
-3 & 0.42803 & 0.43099 & 0.98993 \\
-4 & 0.39740 & 0.37617 & 0.96205 \\
-\bottomrule
-\end{tabular}
-\caption{Broyden optimized $^1$P nonlinear parameters}
-\label{tab:BroydenPWaveSingOpt}
-\end{table}
-
-
-
-\subsection{Simplex Method}
-\label{sec:Simplex}
-
-%\setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
-%\setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
-\begin{table}[H]
-\centering
-\begin{tabular}{c c c c}
-\toprule
-$\omega$ & $\alpha$ & $\beta$ & $\gamma$ \\ [0.5ex]
-\midrule
-0 & 0.30226 & 0.45479 & 1.07962 \\
-1 & 0.53592 & 0.59453 & 1.02206 \\
-2 & 0.57450 & 0.65222 & 0.98020 \\
-3 & 0.58966 & 0.63150 & 0.97397 \\
-4 & 0.58493 & 0.60995 & 0.98610 \\
-5 & 0.58691 & 0.58045 & 1.03321 \\
-\bottomrule
-\end{tabular}
-\caption{Simplex optimized $^1S$ nonlinear parameters}
-\label{tab:NonlinearOptimized1SSimplex}
-\end{table}
-
-Broyden's method was more stable than Newton's method for this work, but I also tried the \texttt{gsl\_multimin\_fminimizer\_nmsimplex} routine from the GNU Scientific Library, which is an implementation of the simplex method \cite{GSL,GSLsimplex}. This was the most stable of the three methods tried to optimize $\alpha$, $\beta$, and $\gamma$ simultaneously. I normally stopped at $\omega = 5$ for the optimization, and the S-wave singlet runs are shown in \cref{tab:NonlinearOptimized1SSimplex}. \Cref{tab:NonlinearOptimizedPD} has the optimized nonlinear parameters used for the P-wave and D-wave. Due to the slowness of the general short-range code (see \cref{sec:GeneralShort}), the F-wave through G-wave just use the parameters $\alpha = 0.5$, $\beta = 0.6$, and $\gamma = 1.1$.
-
-\begin{table}[H]
-\small
-\centering
-\begin{tabular}{c c c c}
-\toprule
-Partial Wave & $\alpha$ & $\beta$ & $\gamma$ \\
-\midrule
-$^3$P & 0.310 & 0.311 & 0.995 \\
-$^1$D & 0.359 & 0.368 & 0.976 \\
-$^3$D & 0.356 & 0.365 & 0.976 \\
-\bottomrule
-\end{tabular}
-\caption{Simplex optimized nonlinear parameters for the P-wave and D-wave}
-\label{tab:NonlinearOptimizedPD}
-\end{table}
-
-With the work on the second formalism for the P-wave \cref{sec:PWaveOpt}, it was also possible to use the simplex method to optimize all 6 nonlinear parameters simultaneously instead of having to optimize each symmetry separately. If the sector-based method of Drake and Yan \cite{Yan1995} is ever implemented for this problem, it would be possible to optimize all 15 parameters simultaneously, but it may be much more computationally feasible to optimize each sector separately.
 
 
 \section{Results}
@@ -289,11 +170,15 @@ With the work on the second formalism for the P-wave \cref{sec:PWaveOpt}, it was
 The binding energy (also known as the dissociation energy) is given by Ref.~\cite{Page1974} as
 \beq
 \label{eq:DissociationE}
-E_d = -E_1 - \frac{3}{4} \text{ au}.
+E_d = -E_1 - \frac{3}{4} \text{ a.u.}
 \eeq
-The $-\frac{3}{4}$ comes from adding the ground state (or ionization) energies of Ps and H. If the PsH system has a lower energy than $-\frac{3}{4}$, the system is bound. 
-Alternatively, if the binding energy is greater than 0, the system is bound.
-Using the accurate Bubin and Adamowicz energy in \cref{tab:BoundEnergyOther}, this gives that $^1$S PsH is stable against dissociation into Ps and H by $\SI{0.039 196 765 251}{au}$ or $\SI{1.066 598 271 959}{eV}$. 
+
+The $-\frac{3}{4}$ comes from adding the ground state energies of Ps and H. 
+If the PsH system has a lower energy than $-\frac{3}{4}$, the system is bound. 
+%Alternatively, if the binding energy is greater than 0, the system is bound.
+Using the accurate Bubin and Adamowicz energy in \cref{tab:BoundEnergyOther}, 
+this gives that $^1$S PsH is stable against dissociation into Ps and H by
+$\SI{0.039 196 765 251}{au}$ or $\SI{1.066 598 271 959}{eV}$. 
 
 \subsection{Bound State: Singlet}
 \label{sec:BoundSinglet}
@@ -470,15 +355,15 @@ Campbell (1998) \cite{Campbell1998} & CC 22Ps1H & --- & -0.773 3 & 0.634$^\star$
 
 There have been a large number of calculations of the PsH binding energy over 
 the years, starting with Ore's prediction in 1951 that PsH could exist
-\cite{Ore1951}. As computing power increased, using a Hylleraas basis set with 
-hundreds or even thousands of terms became possible
-\cite{Ho1978,Ho1986,Yan1999,VanReeth2003}. The Hylleraas results were the most
-accurate until very accurate ECG results from Mitroy \cite{Mitroy2006} and Bubin
-and Adamowicz \cite{Bubin2004,Bubin2006}. The ECGs do not satisfy the Kato cusp
-condition, but good optimization of the basis set can give good results
-\cite{Mitroy2013}.
+\cite{Ore1951}. As computing power increased, using a Hylleraas-type basis 
+set with hundreds or even thousands of terms became possible
+\cite{Ho1978,Ho1986,Yan1999,VanReeth2003}. The Hylleraas-type results were 
+the most accurate until very accurate ECG results from Mitroy
+\cite{Mitroy2006} and Bubin and Adamowicz \cite{Bubin2004,Bubin2006}. The 
+ECGs do not satisfy the Kato cusp condition \cite{Kato1957}, but good
+optimization of the basis set can give good results \cite{Mitroy2013}.
 
-The latest by Frolov \cite{Frolov2010} is more of an introduction of a 
+Another paper by Frolov \cite{Frolov2010} is more of an introduction of a 
 modified basis set to this problem, showing how only 84 terms gives a better 
 energy than a much larger Hylleraas set. Yan and Ho \cite{Yan1999} use a 
 Hylleraas basis set with 5 sectors that each have different nonlinear 
@@ -504,26 +389,29 @@ finding the PsH energy is a simpler problem than Ps-H scattering.
 \subsection{Triplet Energy Eigenvalues}
 \label{sec:TripletEigenvalues}
 
-Our code does not predict a true triplet bound state, making the singlet 
-ground state the only possible configuration for PsH. Mitroy and Bromley have 
+Our code does not predict a true triplet bound state. Mitroy and Bromley have 
 published a paper \cite{Mitroy2007} claiming a stable triplet bound state, 
-but our code may not have the appropriate type of wavefunction to see this, 
+but our code does not have the appropriate type of wavefunction to see this, 
 since it is for a H($2p$) + Ps($2p$) state. They also use a very large 
 configuration interaction basis, and this bound state is very shallow. 
-Despite not predicting a bound state, we run the bound state code for the 
+
+Despite not predicting a bound state, we run the energy eigenvalue code for the 
 triplet so that we can use this for the short-range terms for the scattering 
 program.
-
 This output is also used in the program for Todd's method, which is then fed 
 into the scattering program (see \cref{sec:ToddScattering}). The triplet case 
-was more sensitive to the accuracy of the matrix elements. With the singlet, 
-we were able to use the full $\omega = 6$ set (924 terms) without the 
-asymptotic expansion before linear dependence became an issue. With the 
-triplet, we were only able to use 450 terms out of an $\omega = 7$ run if the 
-asymptotic expansion was not used. Adding the asymptotic expansion in double 
-precision let us use 1327 terms. Finally, changing the code to quadruple 
-precision lets us use the full set of 1716 terms for an $\omega = 7$ run, as 
-shown in \cref{tab:BoundEnergy3}. 
+was more sensitive to the accuracy of the matrix elements.
+Changing the energy eigenvalue code to quadruple precision let us use more
+short-range terms in our calculations.
+
+ %With the singlet, 
+%we were able to use the full $\omega = 6$ set (924 terms) without the 
+%asymptotic expansion before linear dependence became an issue. With the 
+%triplet, we were only able to use 450 terms out of an $\omega = 7$ run if the 
+%asymptotic expansion was not used. Adding the asymptotic expansion in double 
+%precision let us use 1327 terms. Finally, changing the code to quadruple 
+%precision lets us use the full set of 1716 terms for an $\omega = 7$ run, as 
+%shown in \cref{tab:BoundEnergy3}. 
 
 \setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
 \setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
@@ -531,7 +419,7 @@ shown in \cref{tab:BoundEnergy3}.
 \centering
 \begin{tabular}{c c c c c c c}
 \toprule
-$\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (au) & $\Delta E$ (au) \\ [0.5ex]
+$\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (a.u.) & $\Delta E$ (a.u.) \\ [0.5ex]
 \midrule
 0 & 1    & 0.323 & 0.334 & 0.975 & -0.500 031 146 247 & --- \\
 1 & 7    & 0.323 & 0.334 & 0.975 & -0.623 725 636 031 & 0.123 694 489 784 \\
@@ -559,7 +447,7 @@ described in the Wiki \cite{Wiki}.
 \centering
 \begin{tabular}{c c c c c c c}
 \toprule
-$\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (au) & $\Delta E$ (au) \\ [0.5ex]
+$\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (a.u.) & $\Delta E$ (a.u.) \\ [0.5ex]
 \midrule
 0 & 1    & 0.323 & 0.334 & 0.975 & -0.563 395 012 511 & --- \\
 1 & 7    & 0.323 & 0.334 & 0.975 & -0.686 271 418 056 & 0.122 876 405 545 \\
@@ -579,8 +467,10 @@ $\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (au) & $\Delta E
 \section{Stabilization}
 
 Hazi and Taylor \cite{Hazi1970} introduced the concept of stabilization plots 
-to PsH bound state calculations. This can allow calculations of scattering 
-parameters from a fully bound state calculation. Specifically, they plotted 
+to PsH bound state calculations.
+%This can allow calculations of scattering 
+%parameters from a fully bound state calculation.
+Specifically, they plotted 
 the four lowest eigenvalues with respect to $N$ and looked for avoided 
 crossings. A resonance only exists if there is an avoided crossing between 
 eigenvalues. The avoided crossing that they found at $\SI{0.428 985}{au}$ (or 
@@ -607,16 +497,17 @@ between these rectangles corresponds relatively well with the first resonance
 position, $^1E_R$, we find in \cref{tab:SWaveResonancesOther} from the full 
 scattering calculations in \cref{chp:SWave}. The line for the second 
 resonance lines up with the 5th eigenvalue from roughly 700 to 900 terms and 
-with the 6th eigenvalue starting at about 1250 terms. There is not a clear 
-way to get the resonance positions from this if they are not known 
-previously. The estimates of the two resonances positions is $\SI{3.99}{eV}$ 
+with the 6th eigenvalue starting at about 1250 terms. %There is not a clear 
+%way to get the resonance positions from this if they are not known 
+%previously.
+The estimates of the two resonances positions is $\SI{3.99}{eV}$ 
 and $\SI{5.03}{eV}$.
 
 Van Reeth and Humberston \cite{VanReeth2004} had difficulty doing the same 
 type of stabilization with these Hylleraas-type terms. Other wavefunctions or 
 stabilization methods may work better for this system. For instance, Yan and 
-Ho vary a scaling factor and plot the eigenvalue energies with respect to 
-this \cite{Yan2003}.
+Ho \cite{Yan2003} vary a scaling factor and plot the eigenvalue energies
+with respect to this.
 
 \begin{figure}[H]
 	\centering
@@ -646,10 +537,10 @@ this energy range.
 
 \Cref{fig:pwavesinglet-eigen-unpaired,fig:pwavetriplet-eigen-unpaired} show 
 the stabilization plots for the P-wave eigenvalues when only the first 
-symmetry (see \cref{sec:PWaveFn}) is evaluated. Similar to $^3$S, there is no 
-evidence of avoided crossings, or resonances, for $^3$P. In
-\cref{fig:pwavetriplet-eigen-unpaired}, linear dependence becomes a problem at 957 
-terms, hence why the eigenvalues have a sudden drop.
+symmetry (see \cref{sec:PWaveFn}) is evaluated. %Similar to $^3$S, there is no 
+%evidence of avoided crossings, or resonances, for $^3$P.
+In \cref{fig:pwavetriplet-eigen-unpaired}, linear dependence becomes a 
+problem at 957 terms, hence why the eigenvalues have a sudden drop.
 
 In \cref{fig:pwavesinglet-eigen-unpaired}, there is evidence of avoided 
 crossings for the first resonance marked by the red rectangles. The second 
@@ -677,8 +568,8 @@ physically different from the actual resonance.
 for the P-wave, but they use both the first and second symmetries paired. So 
 each term number given on the x-axis is actually two terms, i.e. $N = 200$ is 
 a total of 400 short-range terms, 200 of the first symmetry and 200 of the 
-second symmetry. It is still clear that $^3$P does not have resonances below 
-the inelastic threshold.
+second symmetry. %It is still clear that $^3$P does not have resonances below 
+%the inelastic threshold.
 
 In \cref{fig:pwavesinglet-eigen-paired}, the first resonance position lines 
 up relatively well with the full scattering calculations. The second 
@@ -750,45 +641,6 @@ threshold for any of these partial waves. Lastly, for $\ell > 0$, both the
 first and second symmetries are needed to accurately describe the system. The 
 first symmetry alone cannot adequately describe the P-wave and D-wave.
 
-
-\section{Structure}
-\label{sec:PsHStructure}
-There has been some discussion in the literature about whether PsH is more 
-like an atomic structure or more like a molecule with Ps and H. We did not 
-attempt an analysis of this problem, since the PsH system is not the goal of 
-this work. Bressanini and Morosi \cite{Bressanini2003} give a good overview 
-of the lack of consensus on this problem. 
-
-Frolov and Smith \cite{Frolov1997c} note that they expect PsH to be a cluster 
-consisting of a Ps atom and an H atom. Then from their calculations, they 
-conclude that it acts as some kind of sum of H$^-$ with Ps$^-$.
-
-Saito \cite{Saito2000} attempted to answer this question using Ho's
-\cite{Ho1986} Hylleraas basis set by plotting e$^+$ and e$^-$ densities. Saito's 
-conclusion was that PsH has an atomic structure but also has a diatomic 
-molecular structure, or Ps with H. Bromley and Mitroy \cite{Bromley2001} also 
-state that PsH has a molecular structure, comparing it ``to a light isotope 
-of the H$_2$ molecule.''
-
-Biswas and Darewych \cite{Biswas2002} find that the difference between the
-S(1) resonance and the binding energy (\cref{sec:BoundSinglet}) for various 
-calculations of differing accuracy is roughly constant. They suggest that 
-this means that PsH is less like e$^+$ orbiting H$^-$ and more like a 
-diatomic molecule.
-
-Bressanini and Morosi \cite{Bressanini2003} perform calculations on PsH with 
-a highly optimized one term wavefunction to determine the structure and 
-conclude that PsH cannot be viewed as Ps+H or e$^-$ orbiting around H$^-$. 
-They state, ``Keeping in mind the quantum nature of the leptons and so the 
-impossibility of defining a structure, we suggest to look at PsH as a 
-hydrogen negative ion with the positron that, staying more distant from the 
-nucleus than the electrons, correlates its motion with those of both the 
-electrons. Its attraction on the electrons squeezes them nearer to each other 
-and nearer to the nucleus.''
-
-Heyrovska \cite{Heyrovska2011} treats PsH as a molecule and calculates bond
-lengths to try to gain a better understanding of its structure. However, this
-preprint does not settle the debate.
 
 
 \biblio
