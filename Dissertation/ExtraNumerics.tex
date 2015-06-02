@@ -50,7 +50,7 @@ and I was able to use the same number of terms for $^1$P and $^3$P.
 
 \setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
 \setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
-\begin{table}[H]
+\begin{table}
 \centering
 \begin{tabular}{c c c c}
 \toprule
@@ -67,7 +67,7 @@ $\omega$ & $\alpha$ & $\beta$ & $\gamma$ \\ [0.5ex]
 \end{table}
 
 
-\begin{table}[H]
+\begin{table}
 \centering
 \begin{tabular}{c c c c}
 \toprule
@@ -90,7 +90,7 @@ $\omega$ & $\alpha$ & $\beta$ & $\gamma$ \\ [0.5ex]
 
 %\setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
 %\setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
-\begin{table}[H]
+\begin{table}
 \centering
 \begin{tabular}{c c c c}
 \toprule
@@ -120,7 +120,7 @@ the slowness of the general short-range code (see \cref{sec:GeneralShort}),
 the F-wave through G-wave just use the parameters $\alpha = 0.5$, $\beta = 0.6$,
 and $\gamma = 1.1$.
 
-\begin{table}[H]
+\begin{table}
 \small
 \centering
 \begin{tabular}{c c c c}
@@ -150,7 +150,7 @@ separately. %If the sector-based method of Drake and Yan \cite{Yan1995} is
 
 Using the simplex method described in \cref{sec:Simplex}, we optimized the nonlinear parameters for both the first and second formalisms. \Cref{tab:SimplexPWaveSingOpt,tab:SimplexPWaveTripOpt} show the results of these optimizations in the second and third columns. We also let each symmetry have its own set of nonlinear parameters for each symmetry in the fourth and fifth columns. This was inspired by the work of Yan and Ho \cite{Yan1999}, where they used 5 different sets of nonlinear parameters to calculate the PsH ground state energy.
 
-\begin{table}[H]
+\begin{table}
 \footnotesize
 \centering
 \begin{tabular}{c c c c c}
@@ -186,7 +186,7 @@ $\omega$ & 1st formalism / 1 set & 2nd formalism / 1 set & 1st formalism / 2 set
 \end{table}
 
 
-\begin{table}[H]
+\begin{table}
 \footnotesize
 \centering
 \begin{tabular}{c c c c c}
@@ -230,7 +230,7 @@ From \cref{tab:SimplexPWaveSingOpt,tab:SimplexPWaveTripOpt}, we see that lower e
 \section{Nonlinear Parameters and Terms Used}
 \label{sec:NonlinParam}
 
-\begin{table}[H]
+\begin{table}
   \centering
   \begin{tabular}{cclccccc}
 	\toprule
@@ -345,7 +345,7 @@ energy obtained and the larger set of terms returned. The Todd algorithm is
 also more consistent between runs. The trade-off is the increased time to 
 perform a calculation, especially for large $\omega$.
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	{\includegraphics[height=2in]{Luchow}}
 	\caption{Diagram of L\"uchow and Kleindienst procedure}
@@ -501,14 +501,14 @@ though numerical instabilities start appearing with 15 extra points over the
 base set.
 
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{OriginalPhaseShifts-pvr}
 	\caption{Phase shifts with original ordering $(\omega = 7)$}
 	\label{fig:OriginalPhaseShifts-pvr}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{OriginalPhaseShifts-pvrplus5}
 	\caption{Phase shifts with original ordering and 5 extra points $(\omega = 7)$}
@@ -520,7 +520,7 @@ base set.
 \section{Selection of Quadrature Points}
 \label{sec:SelQuadPoints2}
 
-\begin{figure}[H]
+\begin{figure}
 	\resizebox{1.0\textwidth}{!}{\includegraphics{QuadPoints/ColorKey.pdf}}
 	\caption{Color key for differences}
 	\label{fig:ColorKey}
@@ -541,7 +541,7 @@ Since the values of matrix elements can range over many orders of magnitude, the
 However, this is a poor measure of the differences, and the relative differences give much more useful information for our purposes.
 
 The \emph{Comparison} program calculates these relative differences for each matrix element between the two input files and creates an image using the colors in \cref{fig:ColorKey}. So if a column of pixels in the output image is yellow, then the relative difference for that matrix element is on the order of $10^{-6}$. This is an example image from running this program:
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\resizebox{0.8\textwidth}{!}{\includegraphics{QuadPoints/Example.png}}
 	\caption{Example matrix element comparison image}
@@ -554,7 +554,7 @@ This only looks at the output from the long-range programs, and this is the firs
 Using the comparison program, we found that the $1/r_{23}$ term in the potential needed more integration points when $q_i = 0$. The integrations for the other three potential terms already produced reasonably converged results. All runs in this section are performed with $\kappa = 0.1$.
 
 If we took the set of integration points that we used in the S-wave problem as our base set, then compared this with the same set but an extra 5 points in the $1^{st}$ coordinate, the resulting difference image for the $A$ matrix looks like this:
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\resizebox{1.0\textwidth}{!}{\includegraphics{QuadPoints/BasevsBaseplus5.png}}
 	\caption{Base set versus base set plus 5 in $r_1$}
@@ -563,7 +563,7 @@ If we took the set of integration points that we used in the S-wave problem as o
 \noindent Notice that there is little blue and plenty of yellows, oranges and reds. The goal is to get as much black and blue as possible, though it is impossible to get entirely black and blue with our limited precision. It is evident that the matrix elements are not well-converged when we compare the phase shifts from these two runs. For the first run with the base set, the phase shift is 0.02346176. The corresponding phase shift for the second run is 0.02294583. We desire three significant figures in our phase shifts, so this is certainly not good enough.
 
 Doing a similar run with the base set and another with the base set plus 10 in $r_1$, the difference image is given by figure \ref{fig:BasevsBaseplus10}.
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\resizebox{1.0\textwidth}{!}{\includegraphics{QuadPoints/BasevsBaseplus10.png}}
 	\caption{Base set versus base set plus 10 in $r_1$}
@@ -574,7 +574,7 @@ Doing a similar run with the base set and another with the base set plus 10 in $
 We tried adding up to 25 extra points to the $1^{st}$ coordinate of the base set, but the matrix elements (and consequently, the phase shifts) still did not converge well enough. To perform the Gauss-Laguerre and Gauss-Legendre quadratures described in section \ref{sec:GaussQuad}, we have to compute the abscissae and weights for the Laguerre and Legendre polynomials. The weights depend on the abscissae, and the abscissae depend only on $n$, the number of quadrature points to use. This allows us to hardcode values for the abscissae and weights to speed up computations marginally. Previously, the long-range code used hardcoded values for some multiples of 5 but not all that were used. This code also did not have values hardcoded when the value of $n$ was not a multiple of 5. The integration points were then changed to use values that were multiples of 5, and all were hardcoded. The hardcoded values were also done in extended precision by using \emph{Mathematica}.
 
 Figure \ref{fig:Base5vsBase5hardcoderound} shows the changes going from a previous ``plus 5'' run to a ``plus 5'' run with all hardcoded abscissae and weights. There is a relatively large difference in the matrix elements by making this change.
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\resizebox{1.0\textwidth}{!}{\includegraphics{QuadPoints/Base5vsBase5hardcoderound.png}}
 	\caption{Changes going to hardcoded abscissae and weights}
@@ -582,7 +582,7 @@ Figure \ref{fig:Base5vsBase5hardcoderound} shows the changes going from a previo
 \end{figure}
 
 The results were much better for the base set versus the ``plus 5'' set when hardcoded values for the abscissae and weight were used. Figure \ref{fig:BasehardcodevsBase5hardcode} shows this comparison, which has the large sections of black. All black and dark blue values are for terms where $q_i > 0$. This integration is done separately, as discussed in section \ref{sec:Swaveqigt0} for the S-wave.
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\resizebox{1.0\textwidth}{!}{\includegraphics{QuadPoints/BasehardcodevsBase5hardcode.png}}
 	\caption[Base set with hardcoded values vs. base set plus 5 with hardcoded values]{Base set with hardcoded values versus base set plus 5 with hardcoded values}
@@ -591,7 +591,7 @@ The results were much better for the base set versus the ``plus 5'' set when har
 
 We then completed a series of runs where we increased the number of integration points for each coordinate for $\omega = 2$. Figure \ref{fig:PlusCoord1-d} shows that the $1/r_{23}$ integration needs an extra 15 points in the first coordinate. The runs for the other coordinates were all performed with an extra 15 points in the first coordinate as well. From figures \ref{fig:PlusCoord2} through \ref{fig:PlusCoord8}, we see that the $5^{th}$ through $8^{th}$ coordinates possibly need more integration points.
 
-\begin{figure}[H]
+\begin{figure}
 \centering
 \subfloat[Part 1][Base vs. plus 5]{\includegraphics[height=1.2in]{QuadPoints/R23-BasevsBaseplus5-1st.png} \label{fig:PlusCoord1-a}}
 \subfloat[Part 2][Plus 5 vs. plus 10]{\includegraphics[height=1.2in]{QuadPoints/R23-Baseplus5vsBaseplus10-1st.png} \label{fig:PlusCoord1-b}}
@@ -601,7 +601,7 @@ We then completed a series of runs where we increased the number of integration 
 \label{fig:PlusCoord1}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}
 \centering
 \subfloat[Part 1][Plus 5 vs. plus 10]{\includegraphics[height=0.8in]{QuadPoints/r23-2nd-plus5vsplus10.png} \label{fig:PlusCoord2-a}}
 \subfloat[Part 2][Plus 10 vs. plus 15]{\includegraphics[height=0.8in]{QuadPoints/r23-2nd-plus5vsplus10.png} \label{fig:PlusCoord2-b}}
@@ -610,7 +610,7 @@ We then completed a series of runs where we increased the number of integration 
 \label{fig:PlusCoord2}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}
 \centering
 \subfloat[Part 1][Plus 5 vs. plus 10]{\includegraphics[height=0.8in]{QuadPoints/r23-3rd-plus5vsplus10.png} \label{fig:PlusCoord3-a}}
 \subfloat[Part 2][Plus 10 vs. plus 15]{\includegraphics[height=0.8in]{QuadPoints/r23-3rd-plus5vsplus10.png} \label{fig:PlusCoord3-b}}
@@ -619,14 +619,14 @@ We then completed a series of runs where we increased the number of integration 
 \label{fig:PlusCoord3}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}
 \centering
 \subfloat[Part 1][Plus 5 vs. plus 10]{\includegraphics[height=0.8in]{QuadPoints/r23-4th-plus5vsplus10.png} \label{fig:PlusCoord4-a}}
 \caption{Comparison of extra points in $4^{th}$ coordinate after hardcoded abscissae}
 \label{fig:PlusCoord4}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}
 \centering
 \subfloat[Part 1][Plus 5 vs. plus 10]{\includegraphics[height=0.8in]{QuadPoints/r23-5th-plus5vsplus10.png} \label{fig:PlusCoord5-a}}
 \subfloat[Part 2][Plus 10 vs. plus 15]{\includegraphics[height=0.8in]{QuadPoints/r23-5th-plus5vsplus10.png} \label{fig:PlusCoord5-b}}
@@ -635,7 +635,7 @@ We then completed a series of runs where we increased the number of integration 
 \label{fig:PlusCoord5}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}
 \centering
 \subfloat[Part 1][Plus 5 vs. plus 10]{\includegraphics[height=0.8in]{QuadPoints/r23-6th-plus5vsplus10.png} \label{fig:PlusCoord6-a}}
 \subfloat[Part 2][Plus 10 vs. plus 15]{\includegraphics[height=0.8in]{QuadPoints/r23-6th-plus5vsplus10.png} \label{fig:PlusCoord6-b}}
@@ -644,7 +644,7 @@ We then completed a series of runs where we increased the number of integration 
 \label{fig:PlusCoord6}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}
 \centering
 \subfloat[Part 1][Plus 5 vs. plus 10]{\includegraphics[height=0.8in]{QuadPoints/r23-7th-plus5vsplus10.png} \label{fig:PlusCoord7-a}}
 \subfloat[Part 2][Plus 10 vs. plus 15]{\includegraphics[height=0.8in]{QuadPoints/r23-7th-plus5vsplus10.png} \label{fig:PlusCoord7-b}}
@@ -653,7 +653,7 @@ We then completed a series of runs where we increased the number of integration 
 \label{fig:PlusCoord7}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}
 \centering
 \subfloat[Part 1][Plus 5 vs. plus 10]{\includegraphics[height=0.8in]{QuadPoints/r23-8th-plus5vsplus10.png} \label{fig:PlusCoord8-a}}
 \subfloat[Part 2][Plus 10 vs. plus 15]{\includegraphics[height=0.8in]{QuadPoints/r23-8th-plus5vsplus10.png} \label{fig:PlusCoord8-b}}
@@ -664,7 +664,7 @@ We then completed a series of runs where we increased the number of integration 
 
 These tests give us an idea of what coordinates need more integration points. The phase shifts, not the matrix elements, are what we are concerned with, so we ran a number of tests for the phase shifts for $\omega = 6$. Table \ref{tab:5thcoordExtraPoints} shows how the phase shift stabilizes when the $5^{th}$ coordinate has an extra 10-15 points. For table \ref{tab:678thcoordExtraPoints}, we have 15 extra points in the $1^{st}$ and $5^{th}$ coordinates, then add points to all of the $6^{th}$, $7^{th}$ and $8^{th}$ coordinates simultaneously. To the required precision (3 significant figures), the phase shift does not change with this last set of changes. From these runs, we finally determined that the $1^{st}$ and $5^{th}$ coordinates needed 15 extra integration points each, and we can save adding extra points to the other coordinates.
 
-\begin{table}[H]
+\begin{table}
 \centering
 \begin{tabular}{c c}
 \toprule
@@ -684,7 +684,7 @@ Extra points & Phase shift \\
 \end{table}
 
 
-\begin{table}[H]
+\begin{table}
 \centering
 \begin{tabular}{c c}
 \toprule
@@ -707,7 +707,7 @@ Extra points & Phase shift \\
 
 \todoi{Put in information from ``Integration Point Numbers.nb''}
 
-\begin{table}[H]
+\begin{table}
 \centering
 \footnotesize
 \begin{tabular}{c c c c c c c c c}
@@ -727,7 +727,7 @@ Integral & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
 \label{tab:BaseEffectiveCoords}
 \end{table}
 
-\begin{table}[H]
+\begin{table}
 \centering
 \footnotesize
 \begin{tabular}{c c c c c c c c c}
@@ -753,7 +753,7 @@ confusing, so we have taken to grouping the sets of points as in
 \cref{tab:BaseEffectiveCoords,tab:OptimalEffectiveCoords}. Each column of 
 this table is referred to as an ``effective coordinate''.
 
-\begin{table}[H]
+\begin{table}
 \centering
 \footnotesize
 \begin{tabular}{c c c c c c c c c}
@@ -785,21 +785,21 @@ singularity occurs. \Cref{fig:PhaseTau-Kappa} also shows how for the
 same set of short-range terms, varying $\kappa$ will change the $\tau$ value 
 where a these singularities occur.
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{PhaseTau-Omega}
 	\caption{Phase shifts versus $\tau$ for $\kappa = 0.1$ and varying $\omega$ values}
 	\label{fig:PhaseTau-Omega}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{PhaseTau-Kappa}
 	\caption{Phase shifts versus $\tau$ for $\omega = 7$ and varying $\kappa$ values}
 	\label{fig:PhaseTau-Kappa}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=4in]{Det-Omega=6,Kappa=01}
 	\caption[Determinant of $\textbf{\emph{A}}$ versus $\tau$]{Determinant of $\textbf{\emph{A}}$ versus $\tau$ for $\omega = 6$ with 875 terms of Todd reordering}

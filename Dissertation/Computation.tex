@@ -28,7 +28,7 @@ of matrices forming the generalized eigenvalue problem.
 
 \subsection{Short-Range -- Short-Range Integrations}
 \label{sec:ShortInt}
-The short-range -- short-range (short-short) integrals make up the bulk of
+The short-range--short-range (short-short) integrals make up the bulk of
 the $\textbf{\emph{A}}$ matrix
 (\cref{eq:GenKohnMatrixAXB}). The PsH bound state problem in 
 \cref{chp:PsHBound} consists of only these types of matrix elements
@@ -117,7 +117,7 @@ As an example in Drake and Yan's paper \cite{Drake1995}, direct calculation of t
 
 I use this asymptotic expansion method in all calculations of the short--short integrals through the H-wave, and it performed very well. In fact, my quadruple precision code often calculates matrix elements to better than $1$ part in $10^{20}$ for the S-wave. \Cref{tab:AsympExpan} gives an example of the convergence of a single integral by only calculating the direct sum of \cref{eq:FourBodyExpansion} in the $S_d(N)$ column and with the asymptotic expansion in the $S_a(N)$ column. These four-body integrals are relatively quick to calculate, and most of the runs to compute them complete in a matter of hours.
 
-\begin{table}[H]
+\begin{table}
 \centering
 \begin{tabular}{c c c c}
 \toprule
@@ -201,7 +201,7 @@ shows that only $10.6\%$ of the $W$ matrix elements are actually needed for the
 S-wave at a relatively high value of $\omega$. Similarly for the D-wave,
 \cref{tab:WFuncUnusedD} shows that only $10.5\%$ are needed.
 
-\begin{table}[H]
+\begin{table}
 \centering
 \begin{tabular}{c c c c}
 \toprule
@@ -220,7 +220,7 @@ $\omega$ & Used Terms & Total Terms & Percentage Used \\
 \label{tab:WFuncUnusedS}
 \end{table}
 
-\begin{table}[H]
+\begin{table}
 \centering
 \begin{tabular}{c c c c}
 \toprule
@@ -340,7 +340,7 @@ communications and MPI \cite{MPI} for internode communications. Todd's
 algorithm provides the best converged energy for a set of terms, albeit
 at a cost of computational speed.
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	{\includegraphics[height=1.5in]{Todd}}
 	\caption{Diagram of Todd's procedure}
@@ -357,10 +357,12 @@ them to use more short-range terms. Specifically, we restrict the $r_3$ power
 (see \cref{eq:PhiDef}) so that $n_i \leq 2$ if $\omega \geq 3$, and we refer 
 to this as the restricted set.
 
-We normally use Todd's algorithm, described in \cref{sec:ToddBound}, or we 
+We normally use Todd's method applied to the scattering problem,
+described in \cref{sec:CompPhase}, or we 
 use the full unrestricted set when possible. For the cases of $^1$F and $^3$F 
 for low $\kappa$, described in \cref{sec:FNonlinear}, we use the restricted 
-set.
+set. This allowed us to keep the convergence ratios less than 1 for these
+cases.
 
 
 \section{Long-Range Terms}
@@ -376,10 +378,10 @@ are described fully in \cref{sec:GaussQuad}.
 \label{sec:LongLongInt}
 
 The scattering program calculates only the short-long and long-long matrix 
-elements. The volume element in equation \ref{eq:dtau} has an internal angle 
+elements. The volume element in \cref{eq:dTauS23} has an internal angle 
 of $\varphi_{23}$ to integrate over.  When a term has a a negative power of
 $r_{23}$, a large number of integration points must be used for reasonable 
-accuracy. Instead, we split the integration such that one part is missing the 
+accuracy. Instead, we split the integration such that one part is missing 
 the $r_{23}^{-1}$ term and the other contains only the $r_{23}^{-1}$ term.
 
 The first integration excluding the $r_{23}^{-1}$ term has negative powers of 
@@ -392,12 +394,15 @@ The $r_{23}^{-1}$ is then canceled by the $r_{23}$ in this volume element.
 
 \subsubsection{Integration without the \texorpdfstring{$r_{23}^{-1}$} {1/r23} term}
 \label{sec:LongLongNoR23}
-The simplest long-long matrix element to evaluate is $(\bar{S}_\ell,\mathcal{L} \bar{S}_\ell)$.  From \cref{eq:SbarLSbar}, not including its $r_{23}^{-1}$ term, this is
+The simplest long-long matrix element to evaluate is
+$(\bar{S}_\ell,\mathcal{L} \bar{S}_\ell)$. From \cref{eq:SbarLSbar}, not
+including its $r_{23}^{-1}$ term, this is
 \beq
 (\bar{S}_\ell,\mathcal{L} \bar{S}_\ell)_A = \pm \left(S_\ell^\prime,\mathcal{L} S_\ell\right)_A = \pm \left(S_\ell^\prime, \left[ \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}}\right] S_\ell\right).
 \eeq
 
-For this type of integration, we use perimetric coordinates as described in section \ref{sec:PerimetricCoords}.
+For this type of integration, we use perimetric coordinates as described in
+\cref{sec:PerimetricCoords}.
 \begin{align}
 \label{eq:SBarSBarInt}
 (\bar{S}_\ell,\mathcal{L} \bar{S}_\ell)_A = \pm &2\pi^2 \int_0^\infty \int_0^\infty \int_0^\infty \int_0^\infty \int_{|r_1 - r_3|}^{|r_1 + r_3|} \int_0^{2\pi}  S_\ell^\prime S_\ell \left[ \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}}\right] \\
@@ -453,7 +458,14 @@ $(\bar{S}_\ell,\mathcal{L} \bar{S}_\ell)$ integral just described.
 
 \subsection{Short-Range -- Long-Range}
 \label{sec:ShortLongInt}
-We will consider only the $(\bar{\phi}_i,\mathcal{L} \bar{S}_\ell)$ integrations here, as the $(\bar{\phi}_i,\mathcal{L} \bar{C}_\ell)$ integrals are evaluated in the same manner. As in the case of long-range -- long-range integrations in section \ref{sec:LongLongInt}, we split up the integration into two parts -- one containing the $r_{23}^{-1}$ term and another containing the rest of the terms. The short-range terms have the added benefit of the possibility of the polynomial $r_{23}^{\,q_i}$ being present, which cancels the $r_{23}^{-1}$ term or gives it an overall positive power.
+We will consider only the $(\bar{\phi}_i,\mathcal{L} \bar{S}_\ell)$ 
+integrations here, as the $(\bar{\phi}_i,\mathcal{L} \bar{C}_\ell)$ integrals 
+are evaluated in the same manner. As in the case of long-range -- long-range 
+integrations in \cref{sec:LongLongInt}, we split up the integration 
+into two parts -- one containing the $r_{23}^{-1}$ term and another 
+containing the rest of the terms. The short-range terms have the added 
+benefit of the possibility of the polynomial $r_{23}^{\,q_i}$ being present, 
+which cancels the $r_{23}^{-1}$ term or gives it an overall positive power.
 
 
 From \cref{eq:PhiBarLSBar2b,eq:LSFinal,eq:LSPrimeFinal},
@@ -465,7 +477,9 @@ From \cref{eq:PhiBarLSBar2b,eq:LSFinal,eq:LSPrimeFinal},
 
 \subsubsection{Case I: \texorpdfstring{$q_i > 0$}{qi > 0}}
 \label{sec:Swaveqigt0}
-When $q_i > 0$ in $\phi_i$ (equation \ref{eq:PhiDef}), the power of $r_{23}$ is equal to or greater than 0.  Gaussian quadratures can safely integrate this type of term, so we integrate the full expression in equation \ref{eq:PhiLSBarInt}.
+When $q_i > 0$ in $\phi_i$ (equation \ref{eq:PhiDef}), the power of $r_{23}$ is
+equal to or greater than 0. Gaussian quadratures can safely integrate this type
+of term, so we integrate the full expression in equation \ref{eq:PhiLSBarInt}.
 \begin{align}
 \label{eq:PhiLSBarIntFull}
 \nonumber (\bar{\phi}_i, \mathcal{L} \bar{S}_\ell) =& \, \frac{2}{\sqrt{2}} \cdot 8\pi^2  \int_0^\infty \int_0^\infty \int_0^\infty \int_{|r_1 - r_2|}^{|r_1 + r_2|} \int_{|r_1 - r_3|}^{|r_1 + r_3|} \int_0^{2\pi} \phi_i \\
@@ -537,7 +551,7 @@ integrand. All inner integrations ($\varphi_{13}$, $r_{23}$, $r_{12}$, and $r_3$
 are performed with a full set of integration points as described in
 \cref{tab:OptimalEffectiveCoords}.
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=5in]{cusp}
 	\caption[Example of cusp in S-wave short-long integration]{Example of cusp
@@ -600,7 +614,7 @@ parameters of 100.
 
 
 
-\begin{table}[H]
+\begin{table}
 \centering
 \begin{tabular}{c c c}
 \toprule
@@ -618,7 +632,7 @@ Cusp parameter & Terms possible & $\delta_0^+$ \\
 \label{tab:SWaveCuspParameters}
 \end{table}
 
-\begin{table}[H]
+\begin{table}
 \centering
 \begin{tabular}{c c}
 \toprule
@@ -634,7 +648,7 @@ Cusp parameter & $\delta_1^+$ \\
 \end{table}
 
 
-\begin{table}[H]
+\begin{table}
 \centering
 \begin{tabular}{c c c}
 \toprule
@@ -689,7 +703,7 @@ and with the exponential in $\lambda$, this becomes
 \int_a^\infty e^{-\beta r_2} f(r_2) dr_2 \approx \frac{e^{-a (\beta + \lambda)}}{\beta + \lambda} \sum_{i=1}^n w_i f\left(\frac{r_2 + a(\beta + \lambda)}{\beta + \lambda} \right) \ee^{\lambda r_2}.
 \eeq
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=5in]{lambda}
 	\caption{Effect of introducing $\lambda$ in $r_1$ exponential}
@@ -716,12 +730,20 @@ elements converge better for $\lambda = 1.0$ than for $\lambda = 0$.
 \section{Phase Shifts}
 \label{sec:CompPhase}
 
-Using the short-range terms chosen by the Todd method (\cref{sec:ToddBound})
-normally allows us to increase the number of terms used over using the terms
-specified 
+We solve for the phase shifts by solving \cref{eq:GeneralKohnMatrix} for
+$\boldsymbol{X}$ and then using \cref{eq:GenDFDT2,eq:GenKohnL}. The different
+Kohn variational methods typically agree well when linear dependence in the
+matrix equation does not occur. We use this fact to determine how many
+short-range terms we are able to use in our final calculations. If we plot the
+phase shifts with respect to the number of terms, as in \cref{fig:swave-phase-divergence},
+it is clear that around 1530 terms, the phase shifts from the different
+generalized Kohn methods begin to diverge. In this particular example, we
+chose the cutoff as a more conservative 1505 terms--before the ``jump'' that 
+precedes the clear divergence. No Schwartz singularities (\cref{eq:SchwartzSing})
+are evident here, but if any are present, we discard the Kohn methods that
+contain spurious singularities.
 
-
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=5in]{swave-phase-divergence}
 	\caption{Breakdown in convergence of the $^1S$ phase
@@ -729,6 +751,32 @@ shifts with respect to number of short-range terms for different $\tau$
 values for the generalized Kohn variational method}
 	\label{fig:swave-phase-divergence}
 \end{figure}
+
+Using the short-range terms chosen by the Todd method (\cref{sec:ToddBound})
+normally allows us to increase the number of terms used over using the terms
+chosen just by \cref{eq:OmegaDef} for the Ps-H scattering problem.
+Since the Todd method chooses an ordering with the most ``important'' terms 
+at the beginning, we obtain well-converged phase shifts using this method with
+the above-mentioned cutoffs for the first two partial waves (which do not 
+have omitted symmetries). So we perform one truncation of the basis set by
+using the Todd method for just the short-range terms and then an additional 
+truncation by using plots as in \cref{fig:swave-phase-divergence} to reduce
+linear dependence.
+
+The number of terms used for each partial wave are given in \cref{sec:NonlinParam},
+denoted as $N'(\omega)$. For $\ell \geq 3$, we either use the full set of
+terms described by \cref{eq:OmegaDef} or the restricted set described in
+\cref{sec:Restricted}.
+
+The phase shifts presented in this work are the $S$-matrix complex Kohn, unless
+otherwise indicated. We normally only use the Kohn, inverse Kohn, and
+generalized Kohn variational method results to determine the number of
+short-range terms to use as described in this section. Then the phase shifts
+for this set of terms with the $S$-matrix complex Kohn method are determined.
+
+%\todoi{Mention $\mu$ variation for S-wave}
+
+
 
 %%\subsection{Phase Shift Convergence and Singularities}
 %%Schwartz singularities are well-documented \cite{Lucchese1989,Cooper2009} and 
@@ -765,7 +813,7 @@ values for the generalized Kohn variational method}
 %%the phase shifts are not well converged, but they are also not as nearly
 %%ill-behaved as the results in \cref{fig:OriginalPhaseShifts-pvrplus5}.
 %%
-%%\begin{figure}[H]
+%%\begin{figure}
 	%%\centering
 	%%\includegraphics[width=\textwidth]{ToddPhaseShifts-pvrplus5}
 	%%\caption{Phase shifts with Todd terms and 5 extra points}
@@ -776,7 +824,7 @@ values for the generalized Kohn variational method}
 %%\subsection{Todd Algorithm with Optimized Quadrature}
 %%
 %%
-%%\begin{figure}[H]
+%%\begin{figure}
 	%%\centering
 	%%\includegraphics[width=\textwidth]{ToddOrderKohnPhaseShiftsOpt7}
 	%%\caption{Phase shifts with Todd ordering and optimal set of points}
@@ -784,7 +832,7 @@ values for the generalized Kohn variational method}
 %%\end{figure}
 %%
 %%
-%%\begin{figure}[H]
+%%\begin{figure}
 	%%\centering
 	%%\includegraphics[width=\textwidth]{ToddPhaseShifts-pvrbest}
 	%%\caption{Phase shifts with resorted Todd terms and optimal set of points}
@@ -825,7 +873,7 @@ values for the generalized Kohn variational method}
 %%
 %%\setlength{\abovecaptionskip}{0pt}   % 0.5cm as an example
 %%
-%%\begin{figure}[H]
+%%\begin{figure}
 	%%\centering
 	%%\includegraphics[width=\textwidth]{PhaseTau}
 	%%\caption[Phase shifts versus $\tau$ in the generalized Kohn method]{Phase shifts versus $\tau$ in the generalized Kohn method for $^1$S Ps-H scattering $(\omega = 7, \kappa = 0.1)$}
@@ -872,7 +920,7 @@ The $c$ and $p$ in this equation are fitting parameters. When plotted with respe
 
 In Van Reeth and Humberston, the extrapolation is done using $\omega = 3$ through $\omega = 6$ \cite{VanReeth2003}. Our results go to $\omega = 7$, so we have completed the extrapolation using the sets $\omega = 3-6$, $\omega = 3-7$ and $\omega = 4-7$. The smallest residuals are normally found with the set $\omega = 4-7$. The values of the extrapolated phase shifts using this method are in table \ref{tab:SWavePhase}.
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{extrap-phase}
 	\caption[Extrapolation for $^1$S at $\kappa = 0.01$]{Extrapolation for $^1$S at $\kappa = 0.01$. The extrapolation without resorting the short-range terms into increasing $\omega$ is given in (a), and the resorted version is in (b).}
@@ -951,21 +999,21 @@ sum of squares (RSS) calculated. The RSS gives an easy way to compare the
 performance of the weightings with each other. The Fair has a notably larger 
 RSS than all of the other fittings.
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{swave-resonance-uncorrected-fits1}
 	\caption{First set of uncorrected resonance fitting graphs for $^1$S at $\omega = 7$}
 	\label{fig:swave-resonance-uncorrected-fits1}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{swave-resonance-uncorrected-fits2}
 	\caption{Second set of uncorrected resonance fitting graphs for $^1$S at $\omega = 7$}
 	\label{fig:swave-resonance-uncorrected-fits2}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{swave-resonance-uncorrected-res}
 	\caption{Residuals for uncorrected resonance fitting graphs for $^1$S at $\omega = 7$}
@@ -990,7 +1038,7 @@ phase shifts directly but are rather calculating $\tan \delta_\ell$. The
 phase shifts found this way sometimes have to have $\pi$ added or subtracted 
 to get them in the proper range.
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=5in]{swave-phases-reson-pi}
 	\caption[$^1$S resonance data showing correction]{$^1$S resonance data showing raw data from complex Kohn and the corrected version. The solid gray line shows the polynomial background, and the vertical dashed lines give the calculated resonance positions.}
@@ -1009,21 +1057,21 @@ background polynomial has to be determined with \cref{eq:ResonanceCurve}
 before we can do this correction. Then the phase shifts are fitted again 
 after performing the correction.
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{swave-resonance-corrected-fits1}
 	\caption{First set of corrected resonance fitting graphs for $^1$S at $\omega = 7$}
 	\label{fig:swave-resonance-corrected-fits1}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{swave-resonance-corrected-fits2}
 	\caption{Second set of corrected resonance fitting graphs for $^1$S at $\omega = 7$}
 	\label{fig:swave-resonance-corrected-fits2}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{swave-resonance-corrected-res}
 	\caption{Residuals for corrected resonance fitting graphs for $^1$S at $\omega = 7$}

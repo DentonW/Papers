@@ -15,7 +15,7 @@ Armour et al.~\cite{Armour2005} point out that positronium antihydride is an
 equivalent system, assuming CPT symmetry. Another related system is e$^+$PsH,
 which is stable and can be thought of as e$^+$ orbiting around PsH \cite{Armour2005}.
 
-\begin{figure}[!h]
+\begin{figure}
 	\centering
 	\includegraphics[height=3in]{PsHCoordinates}
 	\caption{Positronium hydride coordinate system}
@@ -65,7 +65,7 @@ N(\omega) = \Binomial{\omega+6}{6} \, ,
 \eeq
 where the 6 comes from the 6 coordinates of $r_i$ and $r_{ij}$. A plot of
 $N(\omega)$ versus $\omega$ is given in \cref{fig:num-omega}.
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	%\scalebox{1}{\includegraphics{NOmega}}
 	\includegraphics[width=4in]{num-omega}
@@ -185,7 +185,7 @@ $\SI{0.039 196 765 251}{au}$ or $\SI{1.066 598 271 959}{eV}$.
 
 \setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
 \setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
-\begin{table}[H]
+\begin{table}
 \small
 \centering
 \begin{tabular}{c c c c c c c d{1.12}}
@@ -214,7 +214,7 @@ The original double precision PsH code was run for a simple choice of the nonlin
 
 \setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
 \setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
-\begin{table}[H]
+\begin{table}
 \small
 \centering
 \begin{tabular}{c c c c c c c c}
@@ -239,7 +239,7 @@ The next and current version of the code uses quadruple precision and is able to
 
 \setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
 \setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
-\begin{table}[H]
+\begin{table}
 \small
 \centering
 \begin{tabular}{c c c c c c c c}
@@ -415,7 +415,7 @@ short-range terms in our calculations.
 
 \setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
 \setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
-\begin{table}[H]
+\begin{table}
 \centering
 \begin{tabular}{c c c c c c c}
 \toprule
@@ -443,7 +443,7 @@ described in the Wiki \cite{Wiki}.
 
 \setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
 \setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
-\begin{table}[H]
+\begin{table}
 \centering
 \begin{tabular}{c c c c c c c}
 \toprule
@@ -479,7 +479,7 @@ roughly with the first $^1$S resonance. Van Reeth and Humberston \cite{
 VanReeth2004} also did an analysis of stabilized eigenvalues but with the 
 same type of basis set that we use.
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=4.5in]{swavesinglet-eigen}
 	\caption[$^1$S eigenvalues]{$^1$S eigenvalues. The dashed line represents the Ps(n=2) threshold. Dotted lines represent complex Kohn $^1$S resonance positions. The red rectangles are potential avoided crossings.}
@@ -509,7 +509,7 @@ stabilization methods may work better for this system. For instance, Yan and
 Ho \cite{Yan2003} vary a scaling factor and plot the eigenvalue energies
 with respect to this.
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=4.5in]{swavetriplet-eigen}
 	\caption[$^3$S eigenvalues]{$^3$S eigenvalues. The dashed line represents the Ps(n=2) threshold.}
@@ -521,14 +521,14 @@ $^3$S. It is clear that below the Ps(n=2) threshold, there are no avoided
 crossings, meaning that there are no resonances in the S-wave triplet for 
 this energy range. 
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=4.5in]{pwavesinglet-eigen-unpaired}
 	\caption[$^1$P eigenvalues for first symmetry only]{$^1$P eigenvalues for first symmetry only. The dashed line represents the Ps(n=2) threshold. Dotted lines represent complex Kohn $^1$P resonance positions.}
 	\label{fig:pwavesinglet-eigen-unpaired}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=4.5in]{pwavetriplet-eigen-unpaired}
 	\caption[$^3$P eigenvalues for first symmetry only]{$^3$P eigenvalues for first symmetry only. The dashed line represents the Ps(n=2) threshold.}
@@ -550,14 +550,14 @@ calculations shown in \cref{tab:PWaveResonancesOther}, including the complex
 Kohn. The second resonance is above the Ps(n=2) threshold here, making it 
 physically different from the actual resonance.
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=4.5in]{pwavesinglet-eigen-paired}
 	\caption[$^1$P eigenvalues for both symmetries]{$^1$P eigenvalues for both symmetries. The dashed line represents the Ps(n=2) threshold. Dotted horizontal lines represent complex Kohn $^1$P resonance positions. The approximate avoided crossings are denoted by rectangles.}
 	\label{fig:pwavesinglet-eigen-paired}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=4.5in]{pwavetriplet-eigen-paired}
 	\caption[$^3$P eigenvalues for both symmetries]{$^3$P eigenvalues for both symmetries. The dashed line represents the Ps(n=2) threshold.}
@@ -579,28 +579,28 @@ taken as the fifth and sixth eigenvalues at 1000 terms, which are tabulated
 in \cref{tab:Stabilization} and can be compared to the full complex Kohn 
 calculation in \cref{tab:PWaveResonancesOther}.
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=4.5in]{dwavesinglet-eigen-unpaired}
 	\caption[$^1$D eigenvalues for first symmetry only]{$^1$D eigenvalues for first symmetry only. The dashed line represents the Ps(n=2) threshold. The dotted line represents the complex Kohn $^1$D resonance position.}
 	\label{fig:dwavesinglet-eigen-unpaired}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=4.5in]{dwavetriplet-eigen-unpaired}
 	\caption[$^3$D eigenvalues for first symmetry only]{$^3$D eigenvalues for first symmetry only. The dashed line represents the Ps(n=2) threshold.}
 	\label{fig:dwavetriplet-eigen-unpaired}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=4.5in]{dwavesinglet-eigen-paired}
 	\caption[$^1$D eigenvalues for both symmetries]{$^1$D eigenvalues for both symmetries. The dashed line represents the Ps(n=2) threshold. The dotted line represents the complex Kohn $^1$D resonance position.}
 	\label{fig:dwavesinglet-eigen-paired}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=4.5in]{dwavetriplet-eigen-paired}
 	\caption[$^3$D eigenvalues for both symmetries]{$^3$D eigenvalues for both symmetries. The dashed line represents the Ps(n=2) threshold.}
@@ -616,7 +616,7 @@ only one resonance before the threshold, and the fifth eigenvalue is taken at
 924 paired terms in \cref{tab:Stabilization}.
 
 
-\begin{table}[H]
+\begin{table}
 \centering
 \begin{tabular}{c c c}
 \toprule
