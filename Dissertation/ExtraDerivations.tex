@@ -58,6 +58,59 @@ Similarly,
 \end{equation}
 
 
+\section{Perimetric Coordinates}
+\label{sec:PerimetricCoords}
+
+Perimetric coordinates are used for the long-long integrations in the $S$-wave
+code. If perimetric coordinates are used for $r_1$, $r_2$ and $r_{12}$, then
+these are defined by \cite{Armour1991}
+
+\begin{align}
+\label{eq:PerimetricCoords1}
+\nonumber x &= r_1 + r_2 - r_{12} \\
+\nonumber y &= r_2 + r_{12} - r_1 \\
+z &= r_{12} + r_1 - r_2.
+\end{align}
+These can alternately be written as
+\begin{align}
+\label{eq:PerimetricCoords2}
+\nonumber r_1 &= \frac{x+z}{2} \\
+\nonumber r_2 &= \frac{x+y}{2} \\
+r_{12} &= \frac{y+z}{2}.
+\end{align}
+
+From \cref{eq:dTauS23}, the volume element after integration over the external angles is
+\beq
+d\tau = 8\pi^2 dr_1 r_2 dr_2 r_3 dr_3 r_{12} dr_{12} r_{13} dr_{13} d\varphi_{23}.
+\eeq
+We need to perform a change of variables to use perimetric coordinates for $r_1$, $r_2$ and $r_{12}$. The Jacobian is
+\beq
+\label{eq:PerimetricJacobian}
+J(x,y,z) = 
+\left| {\begin{array}{ccc}
+ \frac{\partial r_1}{\partial x} & \frac{\partial r_1}{\partial y} & \frac{\partial r_1}{\partial z}  \\
+ \frac{\partial r_2}{\partial x} & \frac{\partial r_2}{\partial y} & \frac{\partial r_2}{\partial z}  \\
+ \frac{\partial r_{12}}{\partial x} & \frac{\partial r_{12}}{\partial y} & \frac{\partial r_{12}}{\partial z}  \\
+ \end{array} } \right|
+=
+\left| {\begin{array}{ccc}
+ \frac{1}{2} & 0 & \frac{1}{2} \\
+ \frac{1}{2} & \frac{1}{2} & 0 \\
+ 0 & \frac{1}{2} & \frac{1}{2}
+ \end{array} } \right|
+=
+\frac{1}{4}.
+\eeq
+
+\noindent This gives a transformed volume element of
+\beq
+\label{eq:PerimetricVolEl}
+d\tau = 2\pi^2 r_2 r_3 r_{12} r_{13} dx\, dy\, dz\, dr_3\, dr_{13}\, d\varphi_{23}.
+\eeq
+
+\noindent The limits for each of the perimetric coordinates are 0 to $\infty$.
+
+
 \section{Spherical Bessel Derivatives}
 \label{sec:SphBess}
 
@@ -268,7 +321,9 @@ the special case of a Breit-Wigner resonance is given as $q = \pm\infty$. The
 dotted line is the curve $4 \pi (2\ell+1) / \kappa^2$, which gives an 
 envelope to this function. An interactive demonstration of Fano resonances
 (but restricted to $q \geq 0$ is available from the Wolfram Demonstrations
-Project \cite{FanoDemo}.
+Project \cite{FanoDemo}. The fitting in \cref{eq:ResonanceCurve} is preferred
+over \cref{eq:FanoRes}, since it is simple to add more resonance terms,
+and there is no additional $q$ parameter to determine.
 
 \begin{figure}[H]
 	\centering

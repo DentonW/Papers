@@ -6,32 +6,59 @@
 \label{chp:WLimits}
 \todoi{Write this all in terms of $j_i$, $k_i$, $l_i$, etc. instead of $k_1$, $k_2$, $k_{12}$, etc.}
 \todoi{Get rid of all old equation environments.}
-\todoi{$\omega$, not $\Omega$}
+\todoi{$\omega$, not $\omega$}
 
-\lettrine{\textcolor{startcolor}{P}}{recalculating} the results of the W function yields significant improvements to the speed of this program.  The number of terms in the trial function increases greatly with increasing $\omega$.  The number of elements of the matrices Phi2HPhi and PhiPhi is $N(\omega)^2$.  Only half of each of these matrices is calculated, since the upper triangular portion mirrors the bottom triangle.  The W function is called repeatedly for each element, but the parameters are not unique between elements of the matrices.
+\lettrine{\textcolor{startcolor}{P}}{recalculating} the results of the W 
+function yields significant improvements to the speed of this program.  The 
+number of terms in the trial function increases greatly with increasing
+$\omega$. The number of elements of the matrices Phi2HPhi and PhiPhi is
+$N(\omega)^2$. Only half of each of these matrices need to be calculated, 
+since the upper triangular portion mirrors the bottom triangle. However, we 
+use the difference between the two triangles to check whether the short-short 
+integrations are converged. The W function is called repeatedly for each 
+element, but the parameters are not unique between elements of the matrices.
 
-A four-dimensional matrix is constructed with ranges of all possible inputs to the W function, and the output of the W function is stored as the elements.  The range of the parameters to the W function needs to be determined so that no extra computation takes place for impossible inputs and that values are not read outside of the matrix.
+A four-dimensional matrix is constructed with ranges of all possible inputs 
+to the W function, and the output of the W function is stored as the 
+elements.  The range of the parameters to the W function needs to be 
+determined so that no extra computation takes place for impossible inputs and 
+that values are not read outside of the matrix.
 
 \section{\texorpdfstring{$\alpha$, $\beta$ and $\gamma$} {alpha, beta and gamma} Definitions}
 
-The last three parameters of the W function are $\alpha$, $\beta$ and $\gamma$. There are exactly six permutations of these parameters. All six of these occur in the T function for a set of l, m and n parameters. Since there are only six possibilities from equation (6) of Drake and Yan \cite{Drake1995}, the last dimension of the WMatrix is 6. If this fact was not used, a six-dimensional matrix would have to be used.
+The last three parameters of the W function are $\alpha$, $\beta$ and $\gamma$.
+There are exactly six permutations of these parameters. All six of these 
+occur in the T function for a set of l, m and n parameters. Since there are 
+only six possibilities from equation (6) of Drake and Yan \cite{Drake1995}, 
+the last dimension of the WMatrix is 6. If this fact was not used, a six-
+dimensional matrix would have to be used.
 
 \section{Limits of convergence on W}
 
-The first three parameters of the W function are called $l$, $m$ and $n$ (in order). From \cite{}, there are three conditions for the first three parameters that determine whether W converges.
+The first three parameters of the W function are called $l$, $m$ and $n$
+(in order). From \cite{Drake1995}, there are three conditions for the first
+three parameters that determine whether W converges.
 \[l \geq 0, ~~~~ l+m+1 \geq 0, ~~~~ l+m+n+2 \geq 0\]
-The other limits that must be taken into account are that $j_{\mu \nu} \geq -1$ and $j_{\mu} \geq -2$.  However, for this program, none of $j_{\mu \nu}$ or $j_{\mu}$ are more singular than -1.  Also, the lower limits of $\Omega$ and $q$ are 0.
+The other limits that must be taken into account are that $j_{\mu \nu} \geq -1$
+and $j_{\mu} \geq -2$. However, for this program, none of $j_{\mu \nu}$ or
+$j_{\mu}$ are more singular than -1.  Also, the lower limits of $\omega$ and
+$q$ are 0.
 
-Note that since we are calculating the inner products of $\phi_i$ and $\phi_j$, the upper limit on any of $j_{\mu \nu}$ and $j_{\mu}$ is $2\Omega$, not $\Omega$.
+Note that since we are calculating the inner products of $\phi_i$ and $\phi_j$,
+the upper limit on any of $j_{\mu \nu}$ and $j_{\mu}$ is $2\omega$, not
+$\omega$.
 
 \section{\emph{l} Parameter}
 The first parameter, \emph{l}, is
 \begin{equation}
 	\label{l_Param}j_1 + 2 + 2q + 2 k_{12} + 2 k_{31}.
 \end{equation}
-\underline{Min}: Let $j_{12} = -1$, $j_{23} = j_{31} = 0$.  From this, we have the upper limits of the summations of equation () of \cite{Drake1995} as $k_{12} = \tfrac{1}{2} (j_{12} + 1) = 0$, $k_{23} = 0$ and $k_{31} = 0$. With $j_1$ as its minimum of -1 and the above conditions, this becomes 1.
+\underline{Min}: Let $j_{12} = -1$, $j_{23} = j_{31} = 0$.  From this, we 
+have the upper limits of the summations of equation () of \cite{Drake1995} as 
+$k_{12} = \tfrac{1}{2} (j_{12} + 1) = 0$, $k_{23} = 0$ and $k_{31} = 0$. With 
+$j_1$ as its minimum of -1 and the above conditions, this becomes 1.
 
-\noindent\underline{Max}: Choosing $j_1 = 2 \Omega$ and $j_{12} = j_{13} = -1$, \cref{l_Param} becomes $2 \Omega + 2q + 4$.  This is the upper limit of $l$.
+\noindent\underline{Max}: Choosing $j_1 = 2 \omega$ and $j_{12} = j_{13} = -1$, \cref{l_Param} becomes $2 \omega + 2q + 4$.  This is the upper limit of $l$.
 
 \section{\emph{m} Parameter}
 The \emph{m} parameter is
@@ -40,25 +67,32 @@ The \emph{m} parameter is
 	j_2 + 2 + j_{23} - 2 k_{23} + 2 k_{12}.
 \end{equation}
 \underline{Min}: 
-We have to look at three conditions for this, which yield all the same result.  This is because the upper limits of the summations change if one of the $j_{\mu \nu}$ or $j_{\mu}$ is even.  This can be seen from Ref. \cite{Perkins1969}.
+We have to look at three conditions for this, which yield all the same result.
+This is because the upper limits of the summations change if one of the
+$j_{\mu \nu}$ or $j_{\mu}$ is even. This can be seen from Ref.~\cite{Perkins1969}.
 \begin{itemize}
-	\item $j_2$, $j_{23}$ and $j_{12}$ all odd.  In this case, \cref{m_Param} becomes $j_2 + 2 + j_{12}.$ \\ If $j_2 = j_{12} = -1$, this equation becomes 0.
-	\item $j_{23}$ is even.  Then the upper limit of the summation becomes $\frac{j_{23}}{2}-q$ by \cite{Perkins1969}.  If $j_{23} = 2 \Omega$, then $\frac{j_{23}}{2}-q = \Omega - q$.  Minimizing this by $\Omega = 0$ and $q = 0$ gives
+	\item $j_2$, $j_{23}$ and $j_{12}$ all odd. In this case, \cref{m_Param} becomes $j_2 + 2 + j_{12}.$ \\ If $j_2 = j_{12} = -1$, this equation becomes 0.
+	\item $j_{23}$ is even. Then the upper limit of the summation becomes $\frac{j_{23}}{2}-q$ by \cite{Perkins1969}. If $j_{23} = 2 \omega$, then $\frac{j_{23}}{2}-q = \omega - q$.  Minimizing this by $\omega = 0$ and $q = 0$ gives
 \begin{equation}
 	j_2 + 2 + 2 k_{12} = j_2 + 2 + j_{12} + 1.
 \end{equation}
 	With $j_2 = j_{12} = -1$, this equation reduces to 1, giving a lower limit higher than the all odd case.
-	\item $j_{12}$ is even. Then the summation upper limit is $\frac{j_{12}}{2}-q$ by \cite{Perkins1969}.  \Cref{m_Param} becomes $j_2 + 2 + j_{23} - (j_{23}+1)$ if $q = j_{12} = 0$.  Setting $j_2$ as its minimum of -1 gives a lower limit of 0.
+	\item $j_{12}$ is even. Then the summation upper limit is $\frac{j_{12}}{2}-q$ by \cite{Perkins1969}. \Cref{m_Param} becomes $j_2 + 2 + j_{23} - (j_{23}+1)$ if $q = j_{12} = 0$.  Setting $j_2$ as its minimum of -1 gives a lower limit of 0.
 \end{itemize}
-\underline{Max}: We have to examine the case of all $j_{\mu \nu}$ and $j_{\mu}$ being odd and the case of at least one being even.
+\underline{Max}: We have to examine the case of all $j_{\mu \nu}$ and
+   $j_{\mu}$ being odd and the case of at least one being even.
 \begin{itemize}
   \item If $j_{23}$ and $j_{31}$ are odd, \cref{m_Param} becomes
-\[j_3 + 2 + j_{23} - 2 k_{23} + 2 k_{31} = j_3 + 2 + j_{23} - 2\cdot\tfrac{1}{2} (j_{23} + 1) + 2\cdot\tfrac{1}{2} (j_{31} + 1) = j_{3} + 2 + j_{31}.\]
-If $j_3 = 2\Omega - 1$ and $j_{31} = 1$, then this equation becomes $2\Omega + 2$.  This is not the largest this parameter can be, which is given for the next case.
+  \begin{equation}
+    j_3 + 2 + j_{23} - 2 k_{23} + 2 k_{31} = j_3 + 2 + j_{23} - 2\cdot\tfrac{1}{2} (j_{23} + 1) + 2\cdot\tfrac{1}{2} (j_{31} + 1) = j_{3} + 2 + j_{31}.
+  \end{equation}
+If $j_3 = 2\omega - 1$ and $j_{31} = 1$, then this equation becomes $2\omega + 2$.  This is not the largest this parameter can be, which is given for the next case.
   \item If $j_{23} = 0$, \cref{m_Param} becomes
-  \[j_3 + 2 + j_{23} + 2\cdot\tfrac{1}{2}(j_{31}+1) = j_3 + 2 + j_{23} + j{31} + 1 = j_3 + j_{23} + j_{31} + 3.\]  Note that this has no q-dependence, and the q summation is finite.  If one of $j_3$, $j_{23}$ or $j_{31}$ is $2\Omega$, and the others are 0, then this becomes $2\Omega + 3$.
+	\begin{equation}
+	j_3 + 2 + j_{23} + 2\cdot\tfrac{1}{2}(j_{31}+1) = j_3 + 2 + j_{23} + j{31} + 1 = j_3 + j_{23} + j_{31} + 3.
+	\end{equation}
+  Note that this has no q-dependence, and the q summation is finite.  If one of $j_3$, $j_{23}$ or $j_{31}$ is $2\omega$, and the others are 0, then this becomes $2\omega + 3$.
 \end{itemize}
-\todoi{$\omega$ instead of $\Omega$}
 
 \section{\emph{n} Parameter}
 The \emph{n} parameter is
@@ -66,8 +100,13 @@ The \emph{n} parameter is
 	\label{n_Param}j_1 + 2 + j_{12} - 2 q - 2 k_{12} + j_{31} - 2 k_{23}.
 \end{equation}
 \underline{Min}: If $j_{12}$ and $j_{31}$ are odd, then \cref{n_Param} becomes
-	\[j_1 + 2 + j_{12} - 2q - 2\cdot\tfrac{1}{2}(j_{12}+1) + j_{31} - 2\cdot\tfrac{1}{2}(j_{31}+1) = j_1 - 2q.\]
-\underline{Max}: When $j_{12} = 0$, $k_{12} = 0$, \cref{n_Param} becomes $j_2 + 2 + j_{12} + 2k_{23}$.  Then if $j_2 = 2\Omega$ or $j_{12} = 2\Omega$, this becomes $2\Omega + 2$.  With the minimum of $j_1$ as -1, the lower limit of the $n$ parameter is $-1 - 2q$.
+	\begin{equation}
+	j_1 + 2 + j_{12} - 2q - 2\cdot\tfrac{1}{2}(j_{12}+1) + j_{31} - 2\cdot\tfrac{1}{2}(j_{31}+1) = j_1 - 2q.
+	\end{equation}
+\underline{Max}: When $j_{12} = 0$, $k_{12} = 0$, \cref{n_Param} becomes
+$j_2 + 2 + j_{12} + 2k_{23}$. Then if $j_2 = 2\omega$ or $j_{12} = 2\omega$,
+this becomes $2\omega + 2$.  With the minimum of $j_1$ as -1, the lower limit
+of the $n$ parameter is $-1 - 2q$.
 
 \section{Summary}
 \Cref{tab:WLimits} summarizes these results.

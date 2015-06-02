@@ -62,5 +62,30 @@ Normal forms:
 \url{http://plot.ly/~Denton}
 
 
+%\section{}
+%\label{sec:}
+
+Hylleraas Three-Electron Integral Recursion Relations at \url{http://dx.doi.org/10.6084/m9.figshare.1419455}
+
+\url{http://www.labarchives.com/}
+
+
+
+
+
+\section{Extrapolation Program}
+I wrote a Python \cite{Python} program to extrapolate the phase shifts for a 
+run for all Kohn method variants used, including the 35 values of $\tau$ used 
+in each of the generalized Kohn, generalized $S$-matrix Kohn, and generalized
+$T$-matrix Kohn. The extrapolation is performed with a least-squares fitting 
+using the \texttt{polyfit} function of the SciPy package \cite{SciPy} to the 
+form of \cref{eq:PhaseExtrap}. This program can do the extrapolation over any 
+interval of $\omega$ values requested. The extrapolations from the 109 total 
+Kohn variants are compared to see if there is any large discrepancy between 
+them, indicating numerical instability. The phase shift can have a 
+singularity in the generalized Kohn method as seen in \cref{fig:PhaseTau}, so 
+care must be taken to ensure extrapolations are not taken around this interval.
+
+
 \biblio
 \end{document}

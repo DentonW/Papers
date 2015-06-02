@@ -7,7 +7,6 @@
 \label{chp:Computation}
 
 \todoi{Should mention the Mathematica notebooks to generate Fortran lists for short-range matrix elements and possibly other programs}
-\todoi{Put in information from ``Integration Point Numbers.nb''}
 \todoi{Be clear that in the long-range code, we only calculate the Kohn elements, and then we rearrange them to create the others in the phase shift code. (Mentioned in \cref{sec:Kohn})}
 
 
@@ -29,7 +28,8 @@ of matrices forming the generalized eigenvalue problem.
 
 \subsection{Short-Range -- Short-Range Integrations}
 \label{sec:ShortInt}
-The short-range -- short-range integrals make up the bulk of the $\textbf{\emph{A}}$ matrix
+The short-range -- short-range (short-short) integrals make up the bulk of
+the $\textbf{\emph{A}}$ matrix
 (\cref{eq:GenKohnMatrixAXB}). The PsH bound state problem in 
 \cref{chp:PsHBound} consists of only these types of matrix elements
 (see \cref{eq:BoundWavefn}). The form of these short-range integrals is
@@ -285,20 +285,21 @@ the set of terms are not used in our work.
 
 \subsection{Todd's Method}
 \label{sec:ToddBound}
-\todoi{Mention \cite{Armour2008} that uses this}
+
 In trying to determine the energy eigenvalues, we noticed that the ordering 
 of the terms could determine whether there was linear dependence in the 
-matrices. Allan Todd's algorithm was attractive, because it reorders the 
-matrices to obtain the best possible energy, and it is a purely computational 
-approach \cite{Todd2007}. So far, we have not seen any physical reason why 
-certain terms should introduce a near linear dependence. A description of his 
-algorithm as implemented by us follows.
+matrices. Todd's algorithm \cite{Todd2007,Armour2008} was attractive,
+because it reorders the matrices to obtain the best possible energy, and it 
+is a purely computational approach. This is very similar to the algorithm
+in \cref{sec:LuchowBound} that we also considered. So far, we have not seen 
+any physical reason why certain terms should introduce a near linear 
+dependence. A description of his algorithm as implemented by us follows.
 
 The total number of terms to look at is $N = N(\omega)$ (see \cref{eq:NumberTermsOmega}).
- N matrices of size 1x1 are created for each term. This 
+N matrices of size 1x1 are created for each term. This 
 is done for the overlap and the
- $\left\langle \phi_i \left| \,H \right| \phi_j \right\rangle$
- matrices together. The LAPACK \texttt{dsygv} routine is used to 
+$\left\langle \phi_i \left| \,H \right| \phi_j \right\rangle$
+matrices together. The LAPACK \texttt{dsygv} routine is used to 
 determine the lowest eigenvalue for each of these N sets. These energy 
 eigenvalues are compared against one another, and the term with the lowest 
 energy is chosen. In the next step, the first basis function from the 
@@ -310,14 +311,14 @@ each of the N-2 remaining terms combined with the basis functions chosen in
 the first two steps. This procedure is repeated until all terms have been 
 used or the remaining terms are problematic.
 
-In his original algorithm, Allan Todd looked at the eigenvalues computed from 
+In his original algorithm, Todd looked at the eigenvalues computed from 
 the upper and lower triangular matrices. Normally, the overlap and H matrices 
 are symmetric, but this is not true to machine precision due to truncation 
 and rounding. If the energy eigenvalues from the upper and lower triangles 
-differ by more than $10^{-7}$ (in atomic units), the last added term is 
+differ by more than $10^{-6}$ (in atomic units), the last added term is 
 considered problematic and discarded.
 
-In our testing for $\omega = 6$, no terms were omitted due to the reordering. 
+In our testing for $\omega = 6$ for the S-wave, no terms were omitted due to the reordering. 
 As noted earlier, before implementing this algorithm, LAPACK would fail when 
 trying to calculate the eigenvalues, so the ordering is important for getting 
 the best possible energy. For $\omega$ = 7, 116 terms were omitted, out of a 
@@ -365,178 +366,50 @@ set.
 \section{Long-Range Terms}
 \label{sec:CompLong}
 
-collectively referred to as long-range integrations
+To minimize verbosity, the long-long and long-short integrations are 
+collectively referred to as the long-range integrations. Each of the
+long-range integrations are performed using Gaussian quadratures, which
+are described fully in \cref{sec:GaussQuad}. 
 
-
-\subsection{Perimetric Coordinates}
-\label{sec:PerimetricCoords}
-
-Perimetric coordinates are used for the long-long integrations in the $S$-wave code. If perimetric coordinates are used for $r_1$, $r_2$ and $r_{12}$, then these are defined by \cite{Armour1991}
-
-\begin{align}
-\label{eq:PerimetricCoords1}
-\nonumber x &= r_1 + r_2 - r_{12} \\
-\nonumber y &= r_2 + r_{12} - r_1 \\
-z &= r_{12} + r_1 - r_2.
-\end{align}
-These can alternately be written as
-\begin{align}
-\label{eq:PerimetricCoords2}
-\nonumber r_1 &= \frac{x+z}{2} \\
-\nonumber r_2 &= \frac{x+y}{2} \\
-\nonumber r_{12} &= \frac{y+z}{2}.
-\end{align}
-
-From \cref{eq:dtau1}, the volume element after integration over the external angles is
-\beq
-d\tau = 8\pi^2 dr_1 r_2 dr_2 r_3 dr_3 r_{12} dr_{12} r_{13} dr_{13} d\phi_{23}.
-\eeq
-We need to perform a change of variables to use perimetric coordinates for $r_1$, $r_2$ and $r_{12}$. The Jacobian is
-\beq
-\label{eq:PerimetricJacobian}
-J(x,y,z) = 
-\left| {\begin{array}{ccc}
- \frac{\partial r_1}{\partial x} & \frac{\partial r_1}{\partial y} & \frac{\partial r_1}{\partial z}  \\
- \frac{\partial r_2}{\partial x} & \frac{\partial r_2}{\partial y} & \frac{\partial r_2}{\partial z}  \\
- \frac{\partial r_{12}}{\partial x} & \frac{\partial r_{12}}{\partial y} & \frac{\partial r_{12}}{\partial z}  \\
- \end{array} } \right|
-=
-\left| {\begin{array}{ccc}
- \frac{1}{2} & 0 & \frac{1}{2} \\
- \frac{1}{2} & \frac{1}{2} & 0 \\
- 0 & \frac{1}{2} & \frac{1}{2}
- \end{array} } \right|
-=
-\frac{1}{4}.
-\eeq
-
-\noindent This gives a transformed volume element of
-\beq
-\label{eq:PerimetricVolEl}
-d\tau = 2\pi^2 r_2 r_3 r_{12} r_{13} dx\, dy\, dz\, dr_3\, dr_{13}\, d\phi_{23}.
-\eeq
-
-\noindent The limits for each of the perimetric coordinates are 0 to $\infty$.
-
-
-\subsection{Gaussian Quadratures}
-\label{sec:GaussQuad}
-\todoi{Mention looking into \cite{Bailey2004,Ma1996,Mori2001,Odrzywolek2011,Fukuda2005}}
-Gaussian quadratures are used to integrate many classes of integrals. In their most general form, these quadratures are given by \cite[p.887]{Abramowitz1965}
-\beq
-\label{eq:GeneralQuadratures}
-\int_a^b W(x) f(x) dx \approx \sum_{i=1}^n w_i f(x_i).
-\eeq
-Gaussian quadratures are particularly attractive, since they give exact results for polynomials up to degree $2n-1$. The weight function $W(x)$ can be chosen for certain classes of integrals. Three main types of weight functions are used in this work.
-
-
-\subsubsection{Gauss-Legendre Quadrature}
-\label{sec:GaussLegendre}
-If the weight function is chosen as $W(x)=1$, and the integration interval is $(-1,1)$, this is known as Gauss-Legendre quadrature (or sometimes known simply as Gaussian quadrature). The orthogonal polynomials used are the Legendre polynomials, $P_n(x)$. \Cref{eq:GeneralQuadratures} becomes
-\beq
-\label{eq:GaussLeg}
-\int_{-1}^1 f(x) dx \approx \sum_{i=1}^n w_i f(x_i),
-\eeq
-where the $x_i$ abscissas are the $i^{th}$ zeros of $L_n(x)$, and the weights are given by
-\beq
-\label{eq:GaussLegWeights}
-w_i = \frac{2}{(1-x_i^2)[P^\prime_n(x_i)]^2}.
-\eeq
-The limits of integration must be from $-1$ to $1$, but this is generalized by using the transformation \cite{Abramowitz1965}
-\begin{align}
-\label{eq:GaussLegGen}
-\int_a^b f(x) dx &= \frac{b-a}{2} \int_{-1}^1 f \left(\frac{b-a}{2} x + \frac{a+b}{2}\right) dx \\
-&\approx \frac{b-a}{2} \sum_{i=1}^n w_i f \left(\frac{b-a}{2} x_i + \frac{a+b}{2}\right).
-\end{align}
-
-
-\subsubsection{Gauss-Laguerre Quadrature}
-\label{sec:GaussLag}
-The Gauss-Legendre quadrature cannot be used on semi-infinite intervals, so we use the Gauss-Laguerre quadrature in these cases. The orthogonal polynomials in this case are the Laguerre polynomials, $L_n(x)$, and the weight function is $W(x) = e^{-x}$. \Cref{eq:GeneralQuadratures} becomes
-\beq
-\label{eq:GaussLag}
-\int_0^\infty e^{-x} f(x) dx \approx \sum_{i=1}^n w_i f(x_i),
-\eeq
-where the $x_i$ abscissas are the $i^{th}$ zeros of $L_n(x)$, and the weights are given by
-\beq
-\label{eq:GaussLagWeights}
-w_i = \frac{x_i}{(n+1)^2 [L_{n+1}(x_i)]^2}.
-\eeq
-
-When the integration is over the interval $(a,\infty)$, \cref{eq:GaussLag} is easily transformed by
-\beq
-\label{eq:GaussLagGen1}
-\int_a^\infty e^{-x} f(x) dx = \int_0^\infty e^{-(x+a)} f(x+a) dx = e^{-a} \int_0^\infty e^{-x} f(x+a) dx \approx e^{-a} \sum_{i=1}^n w_i f(x_i+a).
-\eeq
-
-\noindent A more general form of this is obtained by using a coefficient in the exponential, i.e.
-\beq
-\label{eq:GaussLagGen2}
-\int_a^\infty e^{-m x} f(x) dx = \frac{1}{m} \int_a^\infty e^{-y} f\left(\frac{y}{m}\right) dy,
-\eeq
-where we have defined $y = m x$.  This allows for \cref{eq:GaussLagGen1} to be generalized to
-\begin{align}
-\label{eq:GaussLagGen}
-\nonumber \int_a^\infty e^{-m x} f(x) dx &= \frac{1}{m} \int_{ma}^\infty e^{-y} f\left(\frac{y}{m}\right) dy = \frac{1}{m} \int_0^\infty e^{-(y+ma)} f\left(\frac{y}{m}+a\right) dy \\
-& = \frac{e^{-ma}}{m} \int_0^\infty e^{-y} f\left(\frac{y}{m}+a\right) dy \approx \frac{e^{-ma}}{m} \sum_{i=1}^n w_i f\left(\frac{y_i}{m}+a\right).
-\end{align}
-The $y_i$ abscissas and $w_i$ weights are the same as the less general case in
-\cref{eq:GaussLag,eq:GaussLagWeights}. This general form of Gauss-Laguerre
-quadrature is what we use for our semi-infinite integrations.
-
-
-\subsubsection{Chebyshev--Gauss Quadrature}
-\label{sec:ChebyshevGauss1}
-If the weight function is chosen as $W(x)=\frac{1}{\sqrt{1-x^2}}$, and the
-integration interval is $(-1,1)$, this is known as Chebyshev-Gauss quadrature.
-The orthogonal polynomials used are the Chebyshev polynomials of the first
-kind, $T_n(x)$. \Cref{eq:GeneralQuadratures} becomes
-\beq
-\label{eq:GaussCheb}
-\int_{-1}^1 \frac{f(x)}{\sqrt{1-x^2}} dx \approx \sum_{i=1}^n w_i f(x_i),
-\eeq
-where
-\beq
-\label{eq:GaussChebAbsWeights}
-x_i = \cos\left(\frac{2i-1}{n}\pi\right) \text{ and } w_i = \frac{\pi}{n}.
-\eeq
-This quadrature is used for the internal angular integrations. A discussion of
-how to use this for these integrations is found in \cref{sec:ChebyshevGauss}.
 
 \subsection{Long-Range -- Long-Range}
 \label{sec:LongLongInt}
 
 The scattering program calculates only the short-long and long-long matrix 
 elements. The volume element in equation \ref{eq:dtau} has an internal angle 
-of $\phi_{23}$ to integrate over.  When a term has a a negative power of
+of $\varphi_{23}$ to integrate over.  When a term has a a negative power of
 $r_{23}$, a large number of integration points must be used for reasonable 
 accuracy. Instead, we split the integration such that one part is missing the 
 the $r_{23}^{-1}$ term and the other contains only the $r_{23}^{-1}$ term.
 
 The first integration excluding the $r_{23}^{-1}$ term has negative powers of 
-$r_i$ and $r_{ij}$ cancelled by the corresponding terms in the volume element 
-given by equation \ref{}.  For the integration over the $r_{23}^{-1}$ term, 
-we use an alternative volume element, namely that given by equation \ref{}.  
-The $r_{23}^{-1}$ is then cancelled by the $r_{23}$ in this volume element.
+$r_i$ and $r_{ij}$ canceled by the corresponding terms in the volume element 
+given by \cref{eq:dTauS23}. For the integration over the $r_{23}^{-1}$ term, 
+we use an alternative volume element, namely that given by equation
+\cref{eq:dTauS12}.
+The $r_{23}^{-1}$ is then canceled by the $r_{23}$ in this volume element.
 
-\todoi{Add the section about the volume elements in an appendix.}
-\todoi{$\mathcal{L}$ instead of L. $\ell$ subscripts}
 
 \subsubsection{Integration without the \texorpdfstring{$r_{23}^{-1}$} {1/r23} term}
 \label{sec:LongLongNoR23}
-The simplest long-long matrix element to evaluate is $(\bar{S},\mathcal{L} \bar{S})$.  From \cref{eq:SbarLSbar}, not including its $r_{23}^{-1}$ term, this is
+The simplest long-long matrix element to evaluate is $(\bar{S}_\ell,\mathcal{L} \bar{S}_\ell)$.  From \cref{eq:SbarLSbar}, not including its $r_{23}^{-1}$ term, this is
 \beq
-(\bar{S},\mathcal{L} \bar{S})_A = \pm \left(S^\prime,\mathcal{L} S\right)_A = \pm \left(S^\prime, \left[ \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}}\right] S\right).
+(\bar{S}_\ell,\mathcal{L} \bar{S}_\ell)_A = \pm \left(S_\ell^\prime,\mathcal{L} S_\ell\right)_A = \pm \left(S_\ell^\prime, \left[ \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}}\right] S_\ell\right).
 \eeq
 
 For this type of integration, we use perimetric coordinates as described in section \ref{sec:PerimetricCoords}.
 \begin{align}
 \label{eq:SBarSBarInt}
-(\bar{S},\mathcal{L} \bar{S})_A = \pm &2\pi^2 \int_0^\infty \int_0^\infty \int_0^\infty \int_0^\infty \int_{|r_1 - r_3|}^{|r_1 + r_3|} \int_0^{2\pi}  S^\prime S \left[ \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}}\right] \\
-&\times r_2 r_3 r_{12} r_{13}\, d\phi_{23}\, dr_{13}\, dr_3\, dz\, dy\, dx
+(\bar{S}_\ell,\mathcal{L} \bar{S}_\ell)_A = \pm &2\pi^2 \int_0^\infty \int_0^\infty \int_0^\infty \int_0^\infty \int_{|r_1 - r_3|}^{|r_1 + r_3|} \int_0^{2\pi}  S_\ell^\prime S_\ell \left[ \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}}\right] \\
+&\times r_2 r_3 r_{12} r_{13}\, d\varphi_{23}\, dr_{13}\, dr_3\, dz\, dy\, dx
 \end{align}
 
-The $\phi_{23}$ integration is done analytically. Since $S$ and $S^\prime$ have no $r_{23}$ dependence and there is no $r_{23}$ term in the brackets, the integration over $\phi_{23}$ is simply $2\pi$.  The $r_{13}$ integration uses the Gauss-Laguerre quadrature from section \ref{sec:GaussLegendre}. The $x$, $y$ and $z$ integrations use Gauss-Laguerre quadrature (section \ref{sec:GaussLag}), since they are semi-infinite.
+The $\varphi_{23}$ integration is done analytically. Since $S_\ell$ and
+$S_\ell^\prime$ have no $r_{23}$ dependence and there is no $r_{23}$ term in
+the brackets, the integration over $\varphi_{23}$ is simply $2\pi$. The
+$r_{13}$ integration uses the Gauss-Laguerre quadrature from
+\cref{sec:GaussLegendre}. The $x$, $y$ and $z$ integrations use Gauss-Laguerre 
+quadrature, since they are semi-infinite.
 
 The $r_3$ integration could also be performed using just the Gauss-Laguerre 
 quadrature. However, the integrand for the $r_3$ integration has a 
@@ -549,25 +422,33 @@ Gauss-Laguerre on the interval $(r_1,\infty)$.
 \subsubsection{Integration over the \texorpdfstring{$r_{23}^{-1}$} {1/r23} term}
 %\subsection[Integration over the 1/r23 term]{Integration over the $r_{23}^{-1}$ term}
 \label{sec:LongLongR23}
-The other part of the $(\bar{S},\mathcal{L} \bar{S})$ integral contains the $r_{23}^{-1}$ term.
+The other part of the $(\bar{S}_\ell,\mathcal{L} \bar{S}_\ell)$ integral
+contains the $r_{23}^{-1}$ term.
 
 \beq
-(\bar{S},\mathcal{L} \bar{S})_B = \pm \left(S^\prime, \left[ \frac{2}{r_{23}}\right] S\right)
+(\bar{S}_\ell,\mathcal{L} \bar{S}_\ell)_B = \pm \left(S_\ell^\prime, \left[ \frac{2}{r_{23}}\right] S_\ell\right)
 \eeq
-
 %\todoi{Why exactly do we use perimetric coordinates?}
-
-\noindent The volume element for this integral is $d\tau^\prime$ from equation \ref{}.  The integration also does not need to be converted to perimetric coordinates, so its form is
+The volume element for this integral is $d\tau$ from \cref{eq:dTauS12}.
+The integration also does not need to be converted to perimetric coordinates,
+so its form is
 \begin{align}
-(\bar{S},\mathcal{L} \bar{S})_B = \pm 8\pi^2 \int_0^\infty & \int_0^\infty \int_0^\infty \int_{|r_1 - r_3|}^{|r_1 + r_3|} \int_{|r_2 - r_3|}^{|r_2 + r_3|} \int_0^{2\pi}  S^\prime S \frac{2}{r_{23}} r_1 r_2 r_{13} r_{23} \nonumber \\
-& \times d\phi_{12}\, dr_{23}\, dr_{13}\, dr_2\, dr_3\, dr_1.
+(\bar{S}_\ell,\mathcal{L} \bar{S}_\ell)_B = \pm 8\pi^2 \int_0^\infty & \int_0^\infty \int_0^\infty \int_{|r_1 - r_3|}^{|r_1 + r_3|} \int_{|r_2 - r_3|}^{|r_2 + r_3|} \int_0^{2\pi}  S_\ell^\prime S_\ell \frac{2}{r_{23}} r_1 r_2 r_{13} r_{23} \nonumber \\
+& \times d\varphi_{12}\, dr_{23}\, dr_{13}\, dr_2\, dr_3\, dr_1.
 \end{align}
-\todoi{Check that we do this over $\phi_{12}$.}
-\todoi{$\varphi$ instead of $\phi$}
+\todoi{Check that we do this over $\varphi_{12}$.}
 
-The $r_{13}$ and $r_{23}$ integrals have finite limits, so here we use Gauss-Legendre quadrature.  Again, for the internal angular integration, this time over $\phi_{12}$, we use Chebyshev-Gauss quadrature.  The cusp in the $r_3$ integration is at $r_3 = r_1$, and the cusp in the $r_2$ integration is at $r_2 = r_3$.  Similar to before, we split up these integrations by using Gauss-Legendre before the cusp and Gauss-Laguerre after the cusp.
+The $r_{13}$ and $r_{23}$ integrals have finite limits, so here we use Gauss-
+Legendre quadrature. Again, for the internal angular integration, this time 
+over $\varphi_{12}$, we use Chebyshev-Gauss quadrature. The cusp in the $r_3$ 
+integration is at $r_3 = r_1$, and the cusp in the $r_2$ integration is at
+$r_2 = r_3$. Similar to before, we split up these integrations by using Gauss-
+Legendre before the cusp and Gauss-Laguerre after the cusp.
 
-The $(\bar{C},\mathcal{L} \bar{S})$ and $(\bar{C},\mathcal{L} \bar{C})$ terms are integrated in the same manner as the $(\bar{S},\mathcal{L} \bar{S})$ integral just described.
+The $(\bar{C}_\ell,\mathcal{L} \bar{S}_\ell)$ and
+$(\bar{C}_\ell,\mathcal{L} \bar{C}_\ell)$ terms
+are integrated in the same manner as the
+$(\bar{S}_\ell,\mathcal{L} \bar{S}_\ell)$ integral just described.
 
 
 \subsection{Short-Range -- Long-Range}
@@ -575,11 +456,10 @@ The $(\bar{C},\mathcal{L} \bar{S})$ and $(\bar{C},\mathcal{L} \bar{C})$ terms ar
 We will consider only the $(\bar{\phi}_i,\mathcal{L} \bar{S}_\ell)$ integrations here, as the $(\bar{\phi}_i,\mathcal{L} \bar{C}_\ell)$ integrals are evaluated in the same manner. As in the case of long-range -- long-range integrations in section \ref{sec:LongLongInt}, we split up the integration into two parts -- one containing the $r_{23}^{-1}$ term and another containing the rest of the terms. The short-range terms have the added benefit of the possibility of the polynomial $r_{23}^{\,q_i}$ being present, which cancels the $r_{23}^{-1}$ term or gives it an overall positive power.
 
 
-From \ref{eq:PhiBarLSBar2b}, \ref{eq:LS2} and \ref{eq:LSP2}, 
-
+From \cref{eq:PhiBarLSBar2b,eq:LSFinal,eq:LSPrimeFinal},
 \begin{align}
 \label{eq:PhiLSBarInt}
-\nonumber (\bar{\phi}_i, L\bar{S}_\ell) &= \frac{2}{\sqrt{2}} \left(\phi_i,\mathcal{L} \bar{S}_\ell\right) \\
+\nonumber (\bar{\phi}_i, \mathcal{L} \bar{S}_\ell) &= \frac{2}{\sqrt{2}} \left(\phi_i,\mathcal{L} \bar{S}_\ell\right) \\
  &= \frac{2}{\sqrt{2}} \int \phi_i \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right)S_\ell \pm \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) S_\ell^\prime \right]  d\tau.
 \end{align}
 
@@ -588,110 +468,56 @@ From \ref{eq:PhiBarLSBar2b}, \ref{eq:LS2} and \ref{eq:LSP2},
 When $q_i > 0$ in $\phi_i$ (equation \ref{eq:PhiDef}), the power of $r_{23}$ is equal to or greater than 0.  Gaussian quadratures can safely integrate this type of term, so we integrate the full expression in equation \ref{eq:PhiLSBarInt}.
 \begin{align}
 \label{eq:PhiLSBarIntFull}
-\nonumber (\bar{\phi}_i, L\bar{S}_\ell) =& \, \frac{2}{\sqrt{2}} \cdot 8\pi^2  \int_0^\infty \int_0^\infty \int_0^\infty \int_{|r_1 - r_2|}^{|r_1 + r_2|} \int_{|r_1 - r_3|}^{|r_1 + r_3|} \int_0^{2\pi} \phi_i \\
+\nonumber (\bar{\phi}_i, \mathcal{L} \bar{S}_\ell) =& \, \frac{2}{\sqrt{2}} \cdot 8\pi^2  \int_0^\infty \int_0^\infty \int_0^\infty \int_{|r_1 - r_2|}^{|r_1 + r_2|} \int_{|r_1 - r_3|}^{|r_1 + r_3|} \int_0^{2\pi} \phi_i \\
 &\times \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right)S_\ell \pm \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) S_\ell^\prime \right] \\
-&\times r_2 r_3 r_{12} r_{13}\, d\phi_{23}\, dr_{13}\, dr_{12}\, dr_3\, dr_2\, dr_1
+&\times r_2 r_3 r_{12} r_{13}\, d\varphi_{23}\, dr_{13}\, dr_{12}\, dr_3\, dr_2\, dr_1
 \end{align}
 
-Similar to the long-long integrations from section \ref{sec:LongLongInt}, the $r_1$ integration is performed using the Gauss-Laguerre quadrature.  The $r_2$ integral is broken into two parts at the cusp of $r_2 = r_1$, with the Gauss-Legendre quadrature before the cusp and the Gauss-Laguerre quadrature after the cusp.  In the $r_3$ coordinate, there is a cusp at $r_3 = r_2$, so the integration is also split up into Gauss-Legendre before the cusp and Gauss-Laguerre after the cusp.  The finite intervals for $r_{12}$ and $r_{13}$ ensure that we can use Gauss-Legendre quadratures for these coordinates.  The $\phi_{23}$ integration uses the Chebyshev-Gauss quadrature.
+Similar to the long-long integrations from section \ref{sec:LongLongInt}, the 
+$r_1$ integration is performed using the Gauss-Laguerre quadrature. The $r_2$
+integral is broken into two parts at the cusp of $r_2 = r_1$, with the
+Gauss-Legendre quadrature before the cusp and the Gauss-Laguerre quadrature 
+after the cusp. In the $r_3$ coordinate, there is a cusp at $r_3 = r_2$, so 
+the integration is also split up into Gauss-Legendre before the cusp and
+Gauss-Laguerre after the cusp. The finite intervals for $r_{12}$ and $r_{13}$ 
+ensure that we can use Gauss-Legendre quadratures for these coordinates. The 
+$\varphi_{23}$ integration uses the Chebyshev-Gauss quadrature.
 
 \subsubsection{Case II: \texorpdfstring{$q_i = 0$}{qi = 0}}
-When $q_i = 0$, the overall power of the $r_{23}^{-1}$ term is $-1$, so we cannot use the Gaussian quadratures in the form of \ref{eq:PhiLSBarIntFull}.  Similar to the long-long integrations, the $r_{23}^{-1}$ term is integrated separately, using the same type of integrations as equation \ref{eq:PhiLSBarIntFull}.  Refer to the previous section for the description of the quadratures used.
+When $q_i = 0$, the overall power of the $r_{23}$ term is $-1$, so we 
+cannot use the Gaussian quadratures in the form of \ref{eq:PhiLSBarIntFull}.  
+Similar to the long-long integrations, the $r_{23}^{-1}$ term is integrated 
+separately, using the same type of integrations as \cref{eq:PhiLSBarIntFull}.
+Refer to the previous section for the description of the quadratures used.
 \begin{align}
 \label{eq:PhiLSBarIntNoR23}
-\nonumber (\bar{\phi}_i, L\bar{S}_\ell) =& \,\frac{2}{\sqrt{2}} \int \phi_i \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} \right)S_\ell \pm \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} \right) S_\ell^\prime \right]  d\tau \\
+\nonumber (\bar{\phi}_i, \mathcal{L} \bar{S}_\ell) =& \,\frac{2}{\sqrt{2}} \bigintsss \phi_i \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} \right)S_\ell \pm \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} \right) S_\ell^\prime \right]  d\tau \\
 \nonumber =&\, \frac{2}{\sqrt{2}} \cdot 8\pi^2  \int_0^\infty \int_0^\infty \int_0^\infty \int_{|r_1 - r_2|}^{|r_1 + r_2|} \int_{|r_1 - r_3|}^{|r_1 + r_3|} \int_0^{2\pi} \phi_i \\
-&\times \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} \right)S_\ell \pm \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} \right) S_\ell^\prime \right]  r_2 r_3 r_{12} r_{13}\, d\phi_{23}\, dr_{13}\, dr_{12}\, dr_3\, dr_2\, dr_1
+&\times \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} \right)S_\ell \pm \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} \right) S_\ell^\prime \right]  r_2 r_3 r_{12} r_{13}\, d\varphi_{23}\, dr_{13}\, dr_{12}\, dr_3\, dr_2\, dr_1
 \end{align}
 \todoi{Volume element changes between this and the next equation}
 
-The integration over the $r_{23}^{-1}$ term is done the same way as the second integration of the long-long matrix elements in section \ref{sec:LongLongInt}.  The $r_{23}$ in the $d\tau^\prime$ volume element cancels the $r_{23}^{-1}$ term.  Refer to section \ref{sec:LongLongR23} for a description of the quadratures used here.
+The integration over the $r_{23}^{-1}$ term is done the same way as the 
+second integration of the long-long matrix elements in \cref{sec:LongLongInt}.
+The $r_{23}$ in the $d\tau$ volume element cancels the $r_{23}^{-1}$ 
+term. Refer to \cref{sec:LongLongR23} for a description of 
+the quadratures used here.
 \begin{align}
 \label{eq:PhiLSBarIntR23}
-(\bar{\phi}_i, L\bar{S}_\ell) =& \,\frac{2}{\sqrt{2}} \int \phi_i \left[ \frac{2}{r_{23}}\left(S_\ell \pm S_\ell^\prime\right) \right] d\tau^\prime  \nonumber \\
+(\bar{\phi}_i, \mathcal{L} \bar{S}_\ell) =& \,\frac{2}{\sqrt{2}} \bigintsss \phi_i \left[ \frac{2}{r_{23}}\left(S_\ell \pm S_\ell^\prime\right) \right] d\tau^\prime  \nonumber \\
 =&\, \frac{2}{\sqrt{2}} \cdot 8\pi^2  \int_0^\infty \int_0^\infty \int_0^\infty \int_{|r_1 - r_3|}^{|r_1 + r_3|} \int_{|r_2 - r_3|}^{|r_2 + r_3|} \int_0^{2\pi} \phi_i \left[ \frac{2}{r_{23}}\left(S_\ell \pm S_\ell^\prime\right) \right]  \nonumber \\
-&\times  r_1 r_2 r_{13} r_{23}\, d\phi_{12}\, dr_{23}\, dr_{13}\, dr_2\, dr_3\, dr_1
+&\times  r_1 r_2 r_{13} r_{23}\, d\varphi_{12}\, dr_{23}\, dr_{13}\, dr_2\, dr_3\, dr_1
 \end{align}
 
-\todoi{Check that we do this over $\phi_{12}$.}
+\todoi{Check that we do this over $\varphi_{12}$.}
+
+For a discussion on the final quadrature points used, refer to \cref{sec:QuadraturePoints}.
 
 
-
-\subsection{Quadrature Points}
-\label{sec:QuadraturePoints}
-
-
-\begin{table}[H]
-\centering
-\footnotesize
-\begin{tabular}{c c c c c c c c c}
-\toprule
- & Coord & Coord & Coord & Coord & Coord & Coord & Coord & Coord\\
-Integral & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
-\midrule
- Long-long, no $r_{23}^{-1}$ & 45 & 35 & 35 & 35 & 28 & 15 & & \\
- Long-long, $r_{23}^{-1}$ & 65 & 35 & 28 & 35 & 28 & 12 & 15 & 15 \\
-\midrule
- Long-short $q_i = 0$, no $r_{23}^{-1}$ & 90 & 57 & 34 & 57 & 34 & 30 & 30 & \\
- Long-short $q_i = 0$, $r_{23}^{-1}$ & 90 & 58 & 30 & 55 & 35 & 33 & 33 & 33 \\
- Long-short $q_i > 0$ & 90 & 57 & 34 & 57 & 34 & 30 & 30 & 30 \\
-\bottomrule
-\end{tabular}
-\caption{Base set of effective coordinates for integrations}
-\label{tab:BaseEffectiveCoords}
-\end{table}
-
-\begin{table}[H]
-\centering
-\footnotesize
-\begin{tabular}{c c c c c c c c c}
-\toprule
- & Coord & Coord & Coord & Coord & Coord & Coord & Coord & Coord\\
-Integral & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
-\midrule
- Long-long, no $r_{23}^{-1}$			&  75 & 40 & 40 & 40 & 40 & 25 & & \\
- Long-long, $r_{23}^{-1}$				&  75 & 40 & 40 & 40 & 40 & 25 & 25 & 25 \\
-\midrule
- Long-short $q_i = 0$, no $r_{23}^{-1}$	& 100 & 65 & 45 & 65 & 45 & 45 & 45 & \\
- Long-short $q_i = 0$, $r_{23}^{-1}$	& 115 & 65 & 45 & 65 & 45 & 45 & 45 & 45 \\
- Long-short $q_i > 0$					& 100 & 65 & 45 & 65 & 45 & 45 & 45 & 45 \\
-\bottomrule
-\end{tabular}
-\caption{Optimal set of effective coordinates for integrations}
-\label{tab:OptimalEffectiveCoords}
-\end{table}
-
-Describing the number of points used in integrating the different coordinates 
-in sections \ref{sec:LongLongInt} and \ref{sec:ShortLongInt} can be 
-confusing, so we have taken to grouping the sets of points as in
-\cref{tab:BaseEffectiveCoords,tab:OptimalEffectiveCoords}. Each column of 
-this table is referred to as an ``effective coordinate''.
-
-\begin{table}[H]
-\centering
-\footnotesize
-\begin{tabular}{c c c c c c c c c}
-\toprule
- & Coord & Coord & Coord & Coord & Coord & Coord & Coord & Coord \\
-Integral & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
-\midrule
- Long-long, no $r_{23}^{-1}$ & $x$ Lag & $y$ Lag & $z$ Lag & $r_3$ Leg & $r_3$ Leg & $r_{13}$ Leg & & \\
- Long-long, $r_{23}^{-1}$ & $r_1$ Lag & $r_2$ Leg & $r_2$ Lag & $r_3$ Leg & $r_3$ Lag & $\phi_{12}$ Che & $r_{13}$ Leg & $r_{23}$ Leg \\
-\midrule
- Long-short $q_i = 0$, no $r_{23}^{-1}$ & $r_1$ Lag & $r_2$ Leg & $r_2$ Lag & $r_3$ Leg & $r_3$ Lag & $r_{12}$ Leg & $r_{13}$ Leg & \\
- Long-short $q_i = 0$, $r_{23}^{-1}$ & $r_1$ Lag & $r_2$ Leg & $r_2$ Lag & $r_3$ Leg & $r_3$ Lag & $r_{12}$ Leg & $\phi_{13}$ Che & $r_{23}$ Leg \\
- Long-short $q_i > 0$ & $r_1$ Lag & $r_2$ Leg & $r_2$ Lag & $r_3$ Leg & $r_3$ Lag & $r_{12}$ Leg & $r_{13}$ Leg & $\phi_{23}$ Che \\
-\bottomrule
-\end{tabular}
-\caption{Optimal set of effective coordinates for integrations}
-\todoi{Order of these tables and caption on last one. Describe tables more.}
-\label{tab:EffectiveCoords}
-\end{table}
 
 
 \subsection{Cusp Behavior}
 \label{sec:Cusps}
-\todoi{Discussion about the existence of the cusps in the integrand, possibly with graphs illustrating them.}
 
 The short-long and long-long matrix element integrals have cusps in the
 integrands that must be dealt with. As an example, consider
@@ -700,14 +526,14 @@ $(\bar{\phi}_i, L\bar{C}_0)$ from the S-wave. Using the notation of
 (given fully later in \cref{eq:LCBar} on \pageref{eq:LCBar}),
 \begin{align}
 (\bar{\phi}_i, L\bar{C}_0)_B = 8\pi^2 & \int_0^\infty \int_0^\infty \int_0^\infty \int_{|r_1 - r_2|}^{|r_1 + r_2|} \int_{|r_2 - r_3|}^{|r_2 + r_3|} \int_0^{2\pi} \bar{\phi}_i (\mathcal{L} \bar{C})_B  \nonumber \\
-& \times r_1 r_3 r_{13} r_{23}\, d\phi_{13}\, dr_{23}\, dr_{12}\, dr_3\, dr_2\, dr_1.
+& \times r_1 r_3 r_{13} r_{23}\, d\varphi_{13}\, dr_{23}\, dr_{12}\, dr_3\, dr_2\, dr_1.
 \end{align}
 Due to the integration limits of the $r_{13}$ and $r_{23}$ integrations, the
 $r_2$ integrand has a cusp at $r_2 = r_1$, and the $r_3$ integrand has a cusp
 at $r_3 = r_2$.
 
 \Cref{fig:cusp} shows one such example of this cusp behavior for the $r_2$ 
-integrand. All inner integrations ($\phi_{13}$, $r_{23}$, $r_{12}$, and $r_3$)
+integrand. All inner integrations ($\varphi_{13}$, $r_{23}$, $r_{12}$, and $r_3$)
 are performed with a full set of integration points as described in
 \cref{tab:OptimalEffectiveCoords}.
 
@@ -846,7 +672,6 @@ increasing the number of integration points.
 
 The basic form of the Gauss-Laguerre quadrature is given in \cref{eq:GaussLag} as
 \beq
-\label{eq:GaussLag}
 \int_0^\infty e^{-x} f(x) dx \approx \sum_{i=1}^n w_i f(x_i).
 \eeq
 Introducing an extra $e^{-\lambda x}$ and removing it with $e^{\lambda x}$, we can bring the abscissae closer in by
@@ -885,106 +710,130 @@ small contribution of the curve for large $r_i$ values. Our $D$-wave and
 general long-range codes could use different $\lambda$ for each of the
 $r_1$, $r_2$ and $r_3$ integrations, but we set them equal here. The matrix
 elements converge better for $\lambda = 1.0$ than for $\lambda = 0$.
-\todoi{Can we quantify this?}
+%\todoi{Can we quantify this?}
 
 
 \section{Phase Shifts}
 \label{sec:CompPhase}
 
-\subsection{Phase Shift Convergence and Singularities}
-Schwartz singularities are well-documented \cite{Lucchese1989,Cooper2009} and 
-are non-physical ``resonances''. To avoid these singularities, we use 
-multiple forms of the Kohn method: Kohn, inverse Kohn, generalized Kohn, 
-generalized S-matrix complex Kohn, and generalized T-matrix complex Kohn. 
-There may also be spurious results if the matrix elements are not converged, 
-with one example being the feature at approximately 600 terms in
-\cref{fig:OriginalPhaseShifts-pvr} for the inverse Kohn. With the original
-ordering of the short-range terms, the phase shifts always break up at around
-1100 terms, even when the matrix elements are converged. To alleviate this 
-problem, we have implemented the Todd algorithm.
-
-\subsection{Todd Algorithm Applied to the Scattering Problem}
-\label{sec:ToddScattering}
-\todoi{Reword for other than just $S$}
-From the bound state calculation using Todd's algorithm mentioned in
-\cref{sec:ToddBound}, we know which short-range Hylleraas terms approximate 
-the wavefunction of PsH best. We have observed that the short-short
-terms used in the same order as the output of the Todd algorithm will 
-generate well-converged phase shifts. The separate code to determine the 
-phase shifts uses the output from the bound state code. Again, the phase 
-shift is plotted with respect to the number of short-range terms. The result 
-is in \cref{fig:ToddPhaseShifts-pvrplus5}. The phase shifts are 
-converged well until term 1216. A magnification of the graph in the small 
-region around this term is provided in the inset graph.
-
-At term 1216, the Kohn method result starts to diverge from the others. 
-Shortly after term 1280, the five different methods for $\tau = 0.0 - 0.5$ 
-start to diverge slightly. The differences here are very small (on the order 
-of $10^{-5}$), unlike in \cref{fig:OriginalPhaseShifts-pvrplus5}. The 
-jump in phase shifts seen in \cref{fig:OriginalPhaseShifts-pvrplus5} 
-does not take place until much later and is not as large. Near 1650 terms, 
-the phase shifts are not well converged, but they are also not as nearly
-ill-behaved as the results in \cref{fig:OriginalPhaseShifts-pvrplus5}.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{ToddPhaseShifts-pvrplus5}
-	\caption{Phase shifts with Todd terms and 5 extra points}
-	\label{fig:ToddPhaseShifts-pvrplus5}
-\end{figure}
-
-
-\subsection{Todd Algorithm with Optimized Quadrature}
+Using the short-range terms chosen by the Todd method (\cref{sec:ToddBound})
+normally allows us to increase the number of terms used over using the terms
+specified 
 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{ToddOrderKohnPhaseShiftsOpt7}
-	\caption{Phase shifts with Todd ordering and optimal set of points}
-	\label{fig:ToddOrderKohnPhaseShiftsOpt7}
+	\includegraphics[width=5in]{swave-phase-divergence}
+	\caption{Breakdown in convergence of the $^1S$ phase
+shifts with respect to number of short-range terms for different $\tau$
+values for the generalized Kohn variational method}
+	\label{fig:swave-phase-divergence}
 \end{figure}
 
+%%\subsection{Phase Shift Convergence and Singularities}
+%%Schwartz singularities are well-documented \cite{Lucchese1989,Cooper2009} and 
+%%are non-physical ``resonances''. To avoid these singularities, we use 
+%%multiple forms of the Kohn method: Kohn, inverse Kohn, generalized Kohn, 
+%%generalized S-matrix complex Kohn, and generalized T-matrix complex Kohn. 
+%%There may also be spurious results if the matrix elements are not converged, 
+%%with one example being the feature at approximately 600 terms in
+%%\cref{fig:OriginalPhaseShifts-pvr} for the inverse Kohn. With the original
+%%ordering of the short-range terms, the phase shifts always break up at around
+%%1100 terms, even when the matrix elements are converged. To alleviate this 
+%%problem, we have implemented the Todd algorithm.
+%%
+%%\subsection{Todd Algorithm Applied to the Scattering Problem}
+%%\label{sec:ToddScattering}
+%%\todoi{Reword for other than just $S$}
+%%From the bound state calculation using Todd's algorithm mentioned in
+%%\cref{sec:ToddBound}, we know which short-range Hylleraas terms approximate 
+%%the wavefunction of PsH best. We have observed that the short-short
+%%terms used in the same order as the output of the Todd algorithm will 
+%%generate well-converged phase shifts. The separate code to determine the 
+%%phase shifts uses the output from the bound state code. Again, the phase 
+%%shift is plotted with respect to the number of short-range terms. The result 
+%%is in \cref{fig:ToddPhaseShifts-pvrplus5}. The phase shifts are 
+%%converged well until term 1216. A magnification of the graph in the small 
+%%region around this term is provided in the inset graph.
+%%
+%%At term 1216, the Kohn method result starts to diverge from the others. 
+%%Shortly after term 1280, the five different methods for $\tau = 0.0 - 0.5$ 
+%%start to diverge slightly. The differences here are very small (on the order 
+%%of $10^{-5}$), unlike in \cref{fig:OriginalPhaseShifts-pvrplus5}. The 
+%%jump in phase shifts seen in \cref{fig:OriginalPhaseShifts-pvrplus5} 
+%%does not take place until much later and is not as large. Near 1650 terms, 
+%%the phase shifts are not well converged, but they are also not as nearly
+%%ill-behaved as the results in \cref{fig:OriginalPhaseShifts-pvrplus5}.
+%%
+%%\begin{figure}[H]
+	%%\centering
+	%%\includegraphics[width=\textwidth]{ToddPhaseShifts-pvrplus5}
+	%%\caption{Phase shifts with Todd terms and 5 extra points}
+	%%\label{fig:ToddPhaseShifts-pvrplus5}
+%%\end{figure}
+%%
+%%
+%%\subsection{Todd Algorithm with Optimized Quadrature}
+%%
+%%
+%%\begin{figure}[H]
+	%%\centering
+	%%\includegraphics[width=\textwidth]{ToddOrderKohnPhaseShiftsOpt7}
+	%%\caption{Phase shifts with Todd ordering and optimal set of points}
+	%%\label{fig:ToddOrderKohnPhaseShiftsOpt7}
+%%\end{figure}
+%%
+%%
+%%\begin{figure}[H]
+	%%\centering
+	%%\includegraphics[width=\textwidth]{ToddPhaseShifts-pvrbest}
+	%%\caption{Phase shifts with resorted Todd terms and optimal set of points}
+	%%\label{fig:ToddPhaseShifts-pvroptimized}
+%%\end{figure}
+%%
+%%Section \ref{sec:QuadraturePoints} has a discussion on the ``optimal set'' of quadrature points. When this optimal set is used with Todd's method, a very stable set of phase shifts is created. The graph in figure \ref{fig:ToddOrderKohnPhaseShiftsOpt7} shows how the phase shifts are well converged up to 1450 terms. At approximately term 1450, the phase shifts for the various Kohn methods begin to diverge. The Kohn results begin to diverge earlier than the other three variants in figure \ref{fig:ToddOrderKohnPhaseShiftsOpt7}. Notice that a similar behavior occurs in figure \ref{fig:ToddPhaseShifts-pvrplus5} at 1216 terms.
+%%
+%%We have not developed an automated method of determining where this divergence occurs, so a visual inspection of the graph is needed. Graphs like the above are created in gnuplot, but we have developed a MATLAB script that makes this much easier. This script loads and plots data from all variations on the Kohn method, including the 35 values of $\tau$ for the generalized Kohn. MATLAB allows zooming of figures, so it is simple to find the term where the phase shifts begin to diverge.
+%%
+%%For the extrapolation method discussed in section \ref{sec:Extrapolation}, it is useful to reorder the terms in the original ordering with increasing $\omega$. The first 1450 terms of figure \ref{fig:ToddOrderKohnPhaseShiftsOpt7} are used and then reordered, leading to the graph in figure \ref{fig:ToddPhaseShifts-pvroptimized}. There is a very small difference between the Kohn methods, but they do not diverge as in figure \ref{fig:ToddPhaseShifts-pvroptimized} after 1450 terms.
+%%
+%%
+%%\todoi{Table of number of terms chosen from paper}
+%%
+%%
+%%\subsection{Generalized Kohn}
+%%\label{sec:CompGenKohn}
+%%
+%%\todoi{Move this}
+%%
+%%As mentioned in \cref{sec:GenKohn}, the generalized Kohn method described by 
+%%Cooper et al.\ allows for an adjustable parameter $\tau$ to be used. For our 
+%%calculations of the Kohn and inverse Kohn, we set $\tau = 0$ and
+%%$\tau = \frac{\pi}{2}$, respectively. Before we started using the generalized 
+%%Kohn method, it was difficult to tell if the difference between the Kohn and 
+%%inverse Kohn phase shifts was due to a Schwartz singularity or a problem with 
+%%linear dependence. With the generalized Kohn, we have a large number of 
+%%individual Kohn methods to compare the results with.
+%%
+%%The phase shift program steps through $\tau = 0$ to $\tau = 3.0$ in 
+%%increments of $0.1$ for each N. The code can also be easily modified to use 
+%%any value of $\tau$, which was used in \cref{fig:PhaseTau}.
+%%
+%%The Kohn methods do not require a recalculation of the entire problem for each Kohn method. Once the original matrix equation (\cref{eq:GeneralKohnMatrix}) is calculated with the $\textbf{u}$ in \cref{eq:uKohn}, along with the $(\bar{S},\mathcal{L} \bar{S})$ term, the elements are reused to perform the other Kohn method calculations in \cref{sec:KohnApplied}.
+%%
+%%
+%%
+%%\setlength{\abovecaptionskip}{0pt}   % 0.5cm as an example
+%%
+%%\begin{figure}[H]
+	%%\centering
+	%%\includegraphics[width=\textwidth]{PhaseTau}
+	%%\caption[Phase shifts versus $\tau$ in the generalized Kohn method]{Phase shifts versus $\tau$ in the generalized Kohn method for $^1$S Ps-H scattering $(\omega = 7, \kappa = 0.1)$}
+	%%\label{fig:PhaseTau}
+%%\end{figure}
+%%
+%%\todoi{Redo \cref{fig:PhaseTau} in IPython}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{ToddPhaseShifts-pvrbest}
-	\caption{Phase shifts with resorted Todd terms and optimal set of points}
-	\label{fig:ToddPhaseShifts-pvroptimized}
-\end{figure}
-
-Section \ref{sec:QuadraturePoints} has a discussion on the ``optimal set'' of quadrature points. When this optimal set is used with Todd's method, a very stable set of phase shifts is created. The graph in figure \ref{fig:ToddOrderKohnPhaseShiftsOpt7} shows how the phase shifts are well converged up to 1450 terms. At approximately term 1450, the phase shifts for the various Kohn methods begin to diverge. The Kohn results begin to diverge earlier than the other three variants in figure \ref{fig:ToddOrderKohnPhaseShiftsOpt7}. Notice that a similar behavior occurs in figure \ref{fig:ToddPhaseShifts-pvrplus5} at 1216 terms.
-
-We have not developed an automated method of determining where this divergence occurs, so a visual inspection of the graph is needed. Graphs like the above are created in gnuplot, but we have developed a MATLAB script that makes this much easier. This script loads and plots data from all variations on the Kohn method, including the 35 values of $\tau$ for the generalized Kohn. MATLAB allows zooming of figures, so it is simple to find the term where the phase shifts begin to diverge.
-
-For the extrapolation method discussed in section \ref{sec:Extrapolation}, it is useful to reorder the terms in the original ordering with increasing $\omega$. The first 1450 terms of figure \ref{fig:ToddOrderKohnPhaseShiftsOpt7} are used and then reordered, leading to the graph in figure \ref{fig:ToddPhaseShifts-pvroptimized}. There is a very small difference between the Kohn methods, but they do not diverge as in figure \ref{fig:ToddPhaseShifts-pvroptimized} after 1450 terms.
-
-
-\todoi{Table of number of terms chosen from paper}
-
-
-\subsection{Generalized Kohn}
-\label{sec:CompGenKohn}
-As mentioned in section \ref{sec:GenKohn}, the generalized Kohn method described by Cooper et al.\ allows for an adjustable parameter $\tau$ to be used. For our calculations of the Kohn and inverse Kohn, we set $\tau = 0$ and $\tau = \frac{\pi}{2}$, respectively. Before we started using the generalized Kohn method, it was difficult to tell if the difference between the Kohn and inverse Kohn phase shifts was due to a Schwartz singularity or a problem with linear dependence. With the generalized Kohn, we have a large number of individual Kohn methods to compare the results with.
-
-\todo{Update}
-The phase shift program steps through $\tau = 0$ to $\tau = 3.0$ in increments of $0.1$ for each N. There is also an additional modified phase shift program that steps through $\tau = 0.05$ to $\tau = 3.05$, also in increments of $0.1$, to get points in between the first set. The code can also be easily modified to use any value of $\tau$, which was used in figure \ref{fig:PhaseTau}.
-
-The Kohn methods do not require a recalculation of the entire problem for each Kohn method. Once the original matrix equation (\cref{eq:GeneralKohnMatrix}) is calculated with the $\textbf{u}$ in \cref{eq:uKohn}, along with the $(\bar{S},\mathcal{L} \bar{S})$ term, the elements are reused to perform the other Kohn method calculations in \cref{sec:KohnApplied}.
-
-
-
-\setlength{\abovecaptionskip}{0pt}   % 0.5cm as an example
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{PhaseTau}
-	\caption[Phase shifts versus $\tau$ in the generalized Kohn method]{Phase shifts versus $\tau$ in the generalized Kohn method for $^1$S Ps-H scattering $(\omega = 7, \kappa = 0.1)$}
-	\label{fig:PhaseTau}
-\end{figure}
-
-\todoi{Redo \cref{fig:PhaseTau} in IPython}
-
-\todoi{Put in \tt{fig:swave-phase-divergence} from PRA paper (and already in Dissertation.ipynb)}
 
 
 
@@ -1014,10 +863,6 @@ needed to properly extrapolate phase shifts. We also find that when
 $\delta_\ell \lesssim 10^{-4}$, the convergence often becomes poor
 (see \cref{sec:DWavePhase}).
 
-\subsection{Extrapolation Description}
-
-\todoi{Also extrapolate scattering lengths}
-
 The tangent of the phase shifts is fitted to the function
 \beq
 \label{eq:PhaseExtrap}
@@ -1034,10 +879,21 @@ In Van Reeth and Humberston, the extrapolation is done using $\omega = 3$ throug
 	\label{fig:extrap-phase}
 \end{figure}
 
-As described in section \ref{sec:ToddScattering}, we omit certain terms using Todd's method. The output of this method from the bound state program described in section \ref{sec:ToddBound} is not ordered in terms of increasing $\omega$. This leads to difficulties when attempting to do the extrapolation in equation \ref{eq:PhaseExtrap}. The tangent of the phase shifts cannot be fitted to a straight line in this order. If we reorder the short-range terms back into their original order while still omitting terms, the tangent of the phase shifts can now be fitted to this straight line, as can be seen in figure \ref{fig:extrap-phase}. The reordering does not affect the phase shifts in any case that we tested, since more terms are normally omitted in the scattering problem than just the bound state problem.
+As described in \cref{sec:ToddScattering}, we omit certain terms using 
+Todd's method. The output of this method from the bound state program 
+described in \cref{sec:ToddBound} is not ordered in terms of 
+increasing $\omega$. This leads to difficulties when attempting to do the 
+extrapolation in \cref{eq:PhaseExtrap}. The tangent of the phase 
+shifts cannot be fitted to a straight line in this order. If we reorder the 
+short-range terms back into their original order while still omitting terms, 
+the tangent of the phase shifts can now be fitted to this straight line, as 
+can be seen in \cref{fig:extrap-phase}. The reordering does not affect 
+the phase shifts in any case that we tested, since more terms are normally 
+omitted in the scattering problem than just the bound state problem.
 
-\subsection{Extrapolation Program}
-I wrote a Python \cite{Python} program to extrapolate the phase shifts for a run for all Kohn method variants used, including the 35 values of $\tau$ used in each of the generalized Kohn, generalized S-matrix, and generalized T-matrix. The extrapolation is performed with a least-squares fitting using the \texttt{polyfit} function of the SciPy package \cite{SciPy}. This program can do the extrapolation over any interval of $\omega$ values requested. The extrapolations from the 109 total Kohn variants are compared to see if there is any large discrepancy between them, indicating numerical instability. The phase shift can have a singularity in the generalized Kohn method as seen in figure \ref{fig:PhaseTau}, so care must be taken to ensure extrapolations are not taken around this interval.
+We also extrapolate scattering lengths as shown in \cref{eq:ScatLenExtrap}.
+There is no clear convergence pattern for the effective ranges, which are
+described in \cref{sec:ScatteringLength}.
 
 
 

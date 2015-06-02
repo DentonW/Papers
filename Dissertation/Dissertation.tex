@@ -28,7 +28,7 @@
 \usepackage{tikz}
 %\PassOptionsToPackage{table}{xcolor}
 \usepackage{braket}
-\usepackage[pagebackref=true, plainpages=false, bookmarks, bookmarksnumbered, colorlinks, linktocpage=true, linkcolor=blue, citecolor=blue, filecolor=black,urlcolor=blue, %
+\usepackage[pagebackref=true, plainpages=false, bookmarks, bookmarksnumbered, colorlinks, linktocpage=true, linkcolor=blue, citecolor=black, filecolor=black,urlcolor=black, %
 			pdflang={en}, pdftitle={Variational Calculations of Positronium Scattering with Hydrogen}, pdfauthor={Denton Woods}, %
 			pdfsubject={Denton Woods's Dissertation at the University of North Texas}, pdfkeywords={positronium, hydrogen, scattering, positronium hydride, Denton Woods}]{hyperref}
 %\usepackage{doi}
@@ -57,6 +57,7 @@
 \crefname{figure}{Figure}{Figures}
 \crefname{chapter}{Chapter}{Chapters}
 \crefname{section}{Section}{Sections}
+\crefname{appendix}{Appendix}{Appendices}
 %\usepackage{showlabels}
 
 % For dcolumn
@@ -102,6 +103,15 @@
 %  \normalfont
 %  \normalsize
 %}
+
+% For vertical bar on right to test whether text in margin
+%  http://www.latex-community.org/forum/viewtopic.php?f=5&t=9072
+\usepackage{background}
+\SetBgScale{1}
+\SetBgAngle{0}
+\SetBgColor{black}
+\SetBgContents{\rule{.4pt}{\paperheight}}
+\SetBgHshift{8.3cm}
 
 \providecommand{\e}[1]{\ensuremath{\times 10^{#1}}}
 \newcommand{\ee} {\,\text{e}}
@@ -299,6 +309,7 @@ $\LaTeXe$
     linkcolor=black,
     urlcolor=black
 }
+\hypersetup{breaklinks=true}
 %\pagestyle{fancy}
 %\headheight 35pt
 %\pdfpagewidth 8.5in
@@ -364,6 +375,7 @@ vdW & van der Waals \\
 
 %\addcontentsline{toc}{chapter}{References}
 \newpage
+\Urlmuskip=0mu plus 1mu\relax
 %\bibliographystyle{h-physrev3}
 %\bibliographystyle{h-physrev}
 %\bibliographystyle{h-elsevier}

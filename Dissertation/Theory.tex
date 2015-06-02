@@ -603,16 +603,16 @@ Finally, to obtain the phase shifts, we use the relation given by Ref.~\cite{Luc
 K_\ell = \tan \delta_\ell = (u_{01} + u_{11} L_\ell)(u_{00} + u_{10} L_\ell)^{-1}.
 \end{equation}
 
-The $\textbf{u}$ and $\mathcal{L}_l$ for the various Kohn methods are 
+The $\textbf{u}$ and $L^{\pm,t}_\ell$ for the various Kohn methods are 
 described now. Note that for each of these, $\Det{\textbf{u}} = 1$, except
 for the ones describing the $S$-matrix complex Kohn and generalized
 $S$-matrix complex Kohn. When we 
 create the matrix in \cref{eq:GeneralKohnMatrix}, we only calculate the 
 matrix elements for the Kohn, along with $(\bar{S}_\ell,\mathcal{L}\bar{S}_\ell)$
-and $(\bar{S},\mathcal{L}\bar{C})$. Then from the definitions in
+and $(\bar{S}_\ell,\mathcal{L}\bar{C}_\ell)$. Then from the definitions in
 \cref{eq:TildeSCDef}, this matrix can be changed to any of the other Kohn 
-methods without recomputing any of the integrals. This is described further 
-in \cref{sec:PhaseProgram}.
+methods without recomputing any of the integrals. %This is described further 
+%in \cref{sec:PhaseProgram}.
 
 \subsubsection*{Kohn}
 \label{sec:Kohn}
@@ -626,7 +626,7 @@ in \cref{sec:PhaseProgram}.
 \eeq
 
 \beq
-\mathcal{L}_l = \lambda_t = K_t
+L^{\pm,t}_\ell = \lambda_t = K_t
 \label{eq:LKohn}
 \eeq
 
@@ -643,7 +643,7 @@ in \cref{sec:PhaseProgram}.
 \eeq
 
 \beq
-\mathcal{L}_l = -\mu_t = -K^{-1}_t = -\bar{K}_t
+L^{\pm,t}_\ell = -\mu_t = -K^{-1}_t = -\bar{K}_t
 \label{eq:LInvKohn}
 \eeq
 
@@ -681,7 +681,7 @@ inverse Kohn method is generated (\cref{eq:uInvKohn}).
 \eeq
 
 \beq
-\mathcal{L}_\ell = T_\ell
+L^{\pm,t}_\ell = T_\ell
 \label{eq:LCompTKohn}
 \eeq
 Lucchese \cite{Lucchese1989} denotes this as $\mathcal{L}_\ell = -\pi T$,
@@ -704,7 +704,7 @@ K_\ell = \frac{T_\ell}{1 + \ii T_\ell}
 
 \beq
 %\mathcal{L}_\ell = 2 \ii S_\ell
-\mathcal{L}_\ell = -S_\ell
+L^{\pm,t}_\ell = -S_\ell
 \label{eq:LCompSKohn}
 \eeq
 
@@ -1240,46 +1240,7 @@ method described in the previous section (\cref{sec:KohnApplied}) has a
 Schwartz singularity, other Kohn methods will not. This gives us a strategy 
 of simply rejecting Kohn methods that have obvious Schwartz singularities.
 
-Interestingly, adding terms will change which Kohn method has a Schwartz 
-singularity. \Cref{fig:PhaseTau-Omega} shows how increasing $\omega$ (adding 
-terms) will change the $\tau$ in the generalized Kohn where a Schwartz 
-singularity occurs. \Cref{fig:PhaseTau-Kappa} also shows how for the 
-same set of short-range terms, varying $\kappa$ will change the $\tau$ value 
-where a these singularities occur.
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{PhaseTau-Omega}
-	\caption{Phase shifts versus $\tau$ for $\kappa = 0.1$ and varying $\omega$ values}
-	\label{fig:PhaseTau-Omega}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{PhaseTau-Kappa}
-	\caption{Phase shifts versus $\tau$ for $\omega = 7$ and varying $\kappa$ values}
-	\label{fig:PhaseTau-Kappa}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=4in]{Det-Omega=6,Kappa=01}
-	\caption[Determinant of $\textbf{\emph{A}}$ versus $\tau$]{Determinant of $\textbf{\emph{A}}$ versus $\tau$ for $\omega = 6$ with 875 terms of Todd reordering}
-	\label{fig:Det-Omega=6}
-\end{figure}
-
-Cooper et al. \cite{Cooper2009} showed that if $\Det{\textbf{\emph{A}}}$ is 
-plotted with respect to $\tau$, there are actually two $\tau$ values where
-$\Det{\textbf{\emph{A}}} \approx 0$, but only one of them corresponds to a 
-Schwartz singularity. They refer to the second root as an anomaly-free 
-singularity. \Cref{fig:Det-Omega=6} shows an equivalent plot for our 
-data. The roots of $\Det{\textbf{\emph{A}}}$ are at approximately
-$\tau = 0.125$ and $\tau = 1.144$. The first root corresponds well with the
-singularity in the $\omega = 6$ graph in \cref{fig:PhaseTau-Omega}. The second
-root is referred to as an ``anomaly-free singularity'' in
-Cooper et al.\ \cite{Cooper2009} and does not correspond to a Schwartz
-singularity. The roots are easily found by fitting the data to equation (20)
-and solving equation (21) in Cooper et al.\ \cite{Cooper2009}.
 
 Additionally, the complex Kohn methods in
 \cref{eq:uCompTKohn,eq:uCompSKohn,eq:uGenTKohn,eq:uGenSKohn} are far less likely to 
@@ -1314,7 +1275,7 @@ papers refer to these resonances as Breit-Wigner resonances
 resonances with $q = \pm\infty$.
 
 The resonance positions and widths can be calculated to high 
-accuracy by fitting the phase shift data to the following curve:
+accuracy by fitting the phase shift data to the following curve \cite{VanReeth2004}:
 \beq
 \label{eq:ResonanceCurve}
 \delta(E) = A + BE + CE^2 + \arctan\left[ \frac{^1\Gamma}{2\left(^1E_R-E\right)} \right]
@@ -1324,9 +1285,7 @@ The polynomial part of the above equation corresponds to hard sphere
 scattering. The arctangent parts correspond to the first and second Fano 
 resonances \cite{Fano1961,Macek1970,Hazi1979}, with $^1E_R$ and $^2E_R$ as 
 the positions of the resonances and $^1\Gamma$ and $^2\Gamma$ as the widths 
-of the respective resonances. This fitting is preferred over \cref{eq:FanoRes},
-since it is simple to add more resonance terms, and there is no additional
-$q$ parameter to determine. The $^1$S and $^1$P partial waves use this 
+of the respective resonances. The $^1$S and $^1$P partial waves use this 
 fitting, and the $^1$D and $^1$F partial waves omit the second term, since we 
 consider only a single resonance. See
 \cref{sec:SWaveResonances,sec:PWaveResonances,sec:DWaveResonance,sec:FWaveResonance}
@@ -1348,7 +1307,7 @@ from Ref.~\cite{Walters2004}. Reprinted with permission from Elsevier Limited.}
 \end{figure}
 
 As Blackwood et al.\ \cite{Blackwood2002} mention, there are an infinite 
-number of Rydberg resonances in each partial wave converging on the $e^+$+H$^-$
+number of Rydberg resonances in each partial wave converging on the e$^+$+H$^-$
 threshold at \SI{6.05}{eV}. Walters et al.\ \cite{Walters2004} gives this as a
 a more accurate value of \SI{6.0477}{eV}, as shown in \cref{fig:WaltersEventLine}
 from their paper. They also note that the Ps(n=3)
@@ -1368,10 +1327,10 @@ and was first calculated by Hazi and Taylor using a stabilization method
 \cite{Hazi1970}. The first $^1$P Rydberg resonance is associated with the $3p$ 
 state, not the $2p$ state \cite{DiRienzi2002b}, while the $^1$D resonance 
 corresponds with the $3d$ state \cite{DiRienzi2002a}. No such analysis exists
-for higher partial waves or resonances for the S-, P- and D-waves other
-than the first resonance of each.
+in the current literature for higher partial waves or resonances for the
+S-, P- and D-waves other than the first resonance of each.
 
-\todoi{Should mention how we calculate the resonance parameters for each of the Kohn methods and report the $S$-matrix separately}
+%\todoi{Should mention how we calculate the resonance parameters for each of the Kohn methods and report the $S$-matrix separately}
 
 \biblio
 \end{document}

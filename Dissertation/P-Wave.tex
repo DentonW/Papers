@@ -20,19 +20,19 @@ The part of $\mathcal{L}C_1$ calculated by the \emph{Mathematica} code in \cref{
 
 \todoi{How it relates to the following}
 
-\section{P-Wave Wavefunction}
+\section{Wavefunction}
 \label{sec:PWaveFn}
 We include two short-range symmetries for the P-wave, so that \cref{eq:GeneralWaveTrial} becomes
 \beq
 \label{eq:PWaveTrial}
-\Psi_1^{\pm,t} = \widetilde{S}_1 + L_1^{\pm,t} \, \widetilde{C}_1 + \sum_{i=1}^{N(\omega)} c_i \bar{\phi}_{1i} + \sum_{j=1}^{N(\omega)} d_j \bar{\phi}_{2j}.
+\Psi_1^{\pm,t} = \widetilde{S}_1 + L_1^{\pm,t} \, \widetilde{C}_1 + \sum_{i=1}^{N'(\omega)} c_i \bar{\phi}_{1i} + \sum_{j=1}^{N'(\omega)} d_j \bar{\phi}_{2j}.
 \eeq
 Like for the S-wave and as mentioned in \cref{sec:KohnApplied}, we compute only matrix elements with the barred versions of $S_1$ and $C_1$, 
 
 \todoi{Describe $N'(\omega)$}
 \todoi{Pairing terms - how really 2x}
 
-\noindent To simplify the notation, $\widetilde{S}_1$ and $\widetilde{C}_1$
+\noindent To simplify the notation, $\bar{S}_1$ and $\bar{C}_1$
 can be written as
 \begin{subequations}
 \label{eq:PWaveSandCBar}
@@ -110,7 +110,7 @@ Y_{10}(\theta) = Y_{10}(\theta,\varphi) = \sqrt{\frac{3}{4\pi}} \cos\theta.
 \section{First Formalism}
 
 
-\subsection{P-Wave Matrix Equation}
+\subsection{Matrix Equation}
 \label{sec:PWaveMatrix}
 
 Since the P-wave trial wavefunction has two sets of short-range terms, the matrix equation can be seen from \cref{eq:GeneralKohnMatrix} to be
@@ -150,7 +150,7 @@ Since the P-wave trial wavefunction has two sets of short-range terms, the matri
 The analysis in \cref{sec:KohnApplied} applies directly to the P-wave.
 
 
-\subsection{P-Wave Short-Range -- Short-Range Integrals}
+\subsection{Short-Range -- Short-Range Integrals}
 \label{sec:PWaveShortShort}
 
 Due to the non-constant spherical harmonics, the P-wave short-short integrals
@@ -208,7 +208,7 @@ these equations into a form more suitable for direct use in the C++ code.
 \end{align}
 
 
-\subsection{P-Wave Short-Range -- Long-Range Integrals}
+\subsection{Short-Range -- Long-Range Integrals}
 \label{sec:PWaveShortLong}
 
 Like the S-wave in \cref{sec:LCElements}, we derived these and wrote code using these results before we developed a general formalism described in \cref{chp:WaveKohn}. They are equivalent, but it is easier to compare these to the P-wave long-range code.
@@ -249,24 +249,24 @@ Like the S-wave in \cref{sec:LCElements}, we derived these and wrote code using 
 \end{align}
 
 
-\subsection{P-Wave Long-Range -- Long-Range Integrals}
+\subsection{Long-Range -- Long-Range Integrals}
 \label{sec:PWaveLongLong}
 
 \begin{align}
 \label{eq:PWaveSBarSBar}
-\left(\bar{S}_1,L\bar{S}_1\right) = \pm \frac{\uppi}{2} \int \frac{1}{\rho\rho^\prime} & \left[S_{22} S_{23} \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) \right.  \nonumber \\
+\left(\bar{S}_1,\mathcal{L}\bar{S}_1\right) = \pm \frac{\uppi}{2} \int \frac{1}{\rho\rho^\prime} & \left[S_{22} S_{23} \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) \right.  \nonumber \\
 & \left. \times \left(r_1^2 + r_1 r_2 \cos\theta_{12} + r_1 r_3 \cos\theta_{13} + r_2 r_3 \cos\theta_{23} \right) \right] d\tau_{int}
 \end{align}
 
 \begin{align}
 \label{eq:PWaveCBarSBar}
-\left(\bar{C}_1,L\bar{S}_1\right) = \pm \frac{\uppi}{2} \int \frac{1}{\rho\rho^\prime} & \left[C_{23} S_{22} \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) \right.  \nonumber \\
+\left(\bar{C}_1,\mathcal{L}\bar{S}_1\right) = \pm \frac{\uppi}{2} \int \frac{1}{\rho\rho^\prime} & \left[C_{23} S_{22} \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) \right.  \nonumber \\
 & \left. \times \left(r_1^2 + r_1 r_2 \cos\theta_{12} + r_1 r_3 \cos\theta_{13} + r_2 r_3 \cos\theta_{23} \right) \right] d\tau_{int}
 \end{align}
 
 \begin{align}
 \label{eq:PWaveCBarCBar}
-\nonumber \left(\bar{C}_1,L\bar{C}_1\right) = 2 \uppi \kappa & \int \Phi_{Ps}(r_{12}) \Phi_H(r_3) \Bigg\{ 2 \Phi_{Ps}(r_{12}) \Phi_H(r_3) n_1(\kappa\rho) f_1(\rho) \\
+\nonumber \left(\bar{C}_1,\mathcal{L}\bar{C}_1\right) = 2 \uppi \kappa & \int \Phi_{Ps}(r_{12}) \Phi_H(r_3) \Bigg\{ 2 \Phi_{Ps}(r_{12}) \Phi_H(r_3) n_1(\kappa\rho) f_1(\rho) \\
 \nonumber & \times \left(\frac{1}{\rho} f_1^\prime(\rho) \left(n_1(\kappa\rho) + \cos(\kappa\rho)\right) - \frac{1}{2} f_1^{\prime\prime}(\rho) n_1(\kappa\rho)\right) \\
 \nonumber \pm & \frac{1}{2\rho\rho^\prime} (r_1^2 + r_1 r_2 \cos\theta_{12} + r_1 r_3 \cos\theta_{13} + r_2 r_3 \cos\theta_{23}) \\
 \nonumber & \times \Phi_{Ps}(r_{13}) \Phi_H(r_2) n_1(\kappa\rho^\prime) f_1(\rho^\prime) \\
@@ -275,19 +275,25 @@ Like the S-wave in \cref{sec:LCElements}, we derived these and wrote code using 
 \end{align}
 
 
-\section{P-Wave Second Formalism}
+\section{Second Formalism}
 \label{sec:PWave2Formalism}
 
-Van Reeth and Humberston had difficulty with convergence of the $^3$P phase shifts \cite{VanReeth2004}. They specifically state:
+Van Reeth and Humberston \cite{VanReeth2004} had difficulty with convergence 
+of the $^3$P phase shifts. They specifically state:
 \begin{quote}
-The present triplet p-wave phase shifts are not yet fully converged; at very low energies we
-estimate them to be $\approx 20\%$ below the fully converged values and $\approx 3\%$ in the higher energy range. This relatively poor convergence is due to the fact
-that we have not yet included in the wavefunction a set of terms for which the unit of angular momentum is on the electron in the H atom.
+The present triplet p-wave phase shifts are not yet fully converged; at very 
+low energies we estimate them to be $\approx 20\%$ below the fully converged 
+values and $\approx 3\%$ in the higher energy range. This relatively poor 
+convergence is due to the fact that we have not yet included in the 
+wavefunction a set of terms for which the unit of angular momentum is on the 
+electron in the H atom.
 \end{quote}
-Due to this, we looked at a second formalism that includes these short-range terms instead of what we call the first formalism in \cref{sec:PWaveFn}. 
+Due to this, we looked at a second formalism that includes these short-range 
+terms instead of what we call the first formalism in \cref{sec:PWaveFn}. 
 
 \subsection{Wavefunction}
-The trial wavefunction that we use for the second formalism is similar to the first formalism in \cref{sec:PWaveFn}.
+The trial wavefunction that we use for the second formalism is similar to the
+first formalism in \cref{sec:PWaveFn}.
 \begin{equation}
 \Psi_1^{\pm,t} = \widetilde{S}_1 + L_1^{\pm,t} \, \widetilde{C}_1 + \sum_{i=1}^{N'(\omega)} c_i \bar{\phi}_{\rho i} + \sum_{j=1}^{N'(\omega)} d_j \bar{\phi}_{3j}
 \label{eq:PWave2ndWavefn}
@@ -301,9 +307,15 @@ The trial wavefunction that we use for the second formalism is similar to the fi
 \bar{\phi}_{3j} &= \left(1 \pm P_{23}\right) Y_{10}(\theta_3) r_3 \phi_j \label{eq:PWave2ndPhi2j}.
 \end{align}
 \end{subequations}
-These place the angular momentum on the Ps and on the electron of H, instead of on the positron and the electron in the Ps. In the first formalism, some amount of the angular momentum is placed on the second electron through the $P_{23}$ permutation operator.
+These place the angular momentum on the Ps and on the electron of H, instead of
+on the positron and the electron in the Ps. In the first formalism, some amount
+of the angular momentum is placed on the second electron through the $P_{23}$
+permutation operator.
 
-The short-long terms can be directly computed by changing the short-range terms in the code, but the integration routines (see \cref{sec:ShortInt}) for the short-short terms cannot handle the $\rho$ factor of $\bar{\phi}_{\rho 1}$ directly. The following relations must be used:
+The short-long terms can be directly computed by changing the short-range terms
+in the code, but the integration routines (see \cref{sec:ShortInt}) for the
+short-short terms cannot handle the $\rho$ factor of $\bar{\phi}_{\rho 1}$
+directly. The following relations must be used:
 \begin{subequations}
 \label{eq:P2rhoY10}
 \begin{align}
@@ -327,7 +339,8 @@ In terms of the first formalism,
 \left(\bar{\phi}_{\rho i},\mathcal{L} \bar{\phi}_{\rho j}\right) = \frac{1}{4} \left[ \left(\bar{\phi}_{1i},\mathcal{L} \bar{\phi}_{1j}\right)_{1st} + \left(\bar{\phi}_{1i},\mathcal{L} \bar{\phi}_{2j}\right)_{1st} + \left(\bar{\phi}_{2i},\mathcal{L} \bar{\phi}_{1j}\right)_{1st} + \left(\bar{\phi}_{2i},\mathcal{L} \bar{\phi}_{2j}\right)_{1st} \right].
 \eeq
 
-The other types of terms cannot be expressed as combinations of the first formalism results, but these calculations are similar to the first formalism.
+The other types of terms cannot be expressed as combinations of the first
+formalism results, but these calculations are similar to the first formalism.
 
 \begin{align}
 \nonumber \left(\bar{\phi}_{\rho i},\mathcal{L} \bar{\phi}_{3j}\right) = &(Y_{10}(\theta_1) r_1 \phi_i, \mathcal{L} Y_{10}(\theta_3) r_3 \phi_j) + (Y_{10}(\theta_2) r_2 \phi_i, \mathcal{L} Y_{10}(\theta_3) r_3 \phi_j) \\
@@ -400,7 +413,14 @@ the D-wave.
 
 \subsection{Phase Shifts}
 
-\Cref{tab:PWaveComparisons} compares the current complex Kohn results for the first P-wave formalism with that of other groups. We use $\omega = 4 - 7$ phase shifts to do the extrapolations for $\omega \rightarrow \infty$. The \% Diff entries give an estimate of the error for our results. The singlet results are converged very well. The triplet results are also converged well, but there is more possible error at $\kappa = 0.1$ and $\kappa = 0.7$. Even with these slightly larger percentages, our $^3$P phase shifts appear to be well converged.
+\Cref{tab:PWaveComparisons} compares the current complex Kohn results for the 
+first P-wave formalism with that of other groups. We use $\omega = 4 - 7$ 
+phase shifts to do the extrapolations for $\omega \rightarrow \infty$. The
+\% Diff entries give an estimate of the error for our results. The singlet 
+results are converged very well. The triplet results are also converged well, 
+but there is more possible error at $\kappa = 0.1$ and $\kappa = 0.7$. Even 
+with these slightly larger percentages, our $^3$P phase shifts appear to be 
+well converged.
 
 \begin{table}[H]
 \centering
@@ -439,7 +459,15 @@ results. Values in the header are $\kappa$ in au. Exponents denote powers of 10.
 \label{tab:PWaveComparisons}
 \end{table}
 
-\Cref{tab:PWaveComparisons,fig:PWavePhase} give good comparisons with the CC results of the Belfast group \cite{Blackwood2002,Walters2004}. The complex Kohn phase shifts are higher for $^1$P, but they are slightly lower for much of the range for $^3$P. We note that this was also the case for the S-wave (see \cref{tab:SWaveComparisons} on \pageref{tab:SWaveComparisons}), but the CVM results seem to confirm the complex Kohn $^3$S phase shifts. Both the complex Kohn and the CC phase shifts of the Belfast group appear to give the most accurate sets of phase shifts, and the current complex Kohn can potentially be viewed as benchmark results.
+\Cref{tab:PWaveComparisons,fig:PWavePhase} give good comparisons with the CC 
+results of the Belfast group \cite{Blackwood2002,Walters2004}. The complex 
+Kohn phase shifts are higher for $^1$P, but they are slightly lower for much 
+of the range for $^3$P. We note that this was also the case for the S-wave
+(see \cref{tab:SWaveComparisons} on \pageref{tab:SWaveComparisons}), but the 
+CVM results seem to confirm the complex Kohn $^3$S phase shifts. Both the 
+complex Kohn and the CC phase shifts of the Belfast group appear to give the 
+most accurate sets of phase shifts, and the current complex Kohn can 
+potentially be viewed as benchmark results.
 
 
 %\begin{table}[H]

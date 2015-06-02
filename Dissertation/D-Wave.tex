@@ -8,7 +8,7 @@
 
 %\todoi{Variation of $\mu$ to get 0.7. Latest variation of other nonlinear parameters} 
 
-\section{D-Wave Wavefunction}
+\section{Wavefunction}
 \label{sec:DWaveFn}
 
 Similar to the discussions for the S-wave (\cref{chp:SWave}) and the P-wave
@@ -104,7 +104,7 @@ To calculate $\mathcal{L} C_2$, we again use the code in \cref{fig:LCMath} to ge
 
 
 
-\section{D-Wave Short-Range -- Short-Range Integrals}
+\section{Short-Range -- Short-Range Integrals}
 \label{sec:DWaveShortShort}
 
 The D-wave short-short integrals are generally more complicated than those 
@@ -116,14 +116,14 @@ given in separate notes available on the Wiki \cite{Wiki}.
 
 \begin{align}
 \label{eq:DWavePhi1Phi1}
-\left(\bar{\phi}_{1i},L \bar{\phi}_{1j}\right) = &2 \cdot 2\pi \int{ \Bigg\{ \sum_{k=1}^3 \left[ \boldsymbol{\nabla}_{\!\mathbf{r}_k} \nonumber \phi_{1i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1j} \pm \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1j}^\prime \right] } \\
+\left(\bar{\phi}_{1i},\mathcal{L} \bar{\phi}_{1j}\right) = &2 \cdot 2\pi \int{ \Bigg\{ \sum_{k=1}^3 \left[ \boldsymbol{\nabla}_{\!\mathbf{r}_k} \nonumber \phi_{1i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1j} \pm \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1j}^\prime \right] } \\
 \nonumber  &+ \left. \left[\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2}\kappa^2 + \frac{6}{r_1^2} \right] \right. \\
  &\;\;\;\;\; \times \left(\phi_{1i} \phi_{1j} \pm \phi_{1i} \phi_{1j}^\prime \right) \Bigg\} d\tau_{int}
 \end{align}
 
 \begin{align}
 \label{eq:DWavePhi2Phi2}
-\left(\bar{\phi}_{2i},L \bar{\phi}_{2j}\right) = 2 & \cdot 2\pi \int \Bigg\{ \sum_{k=1}^3 \left[ \boldsymbol{\nabla}_{\!\mathbf{r}_k} \nonumber \phi_{2i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2j} \pm \left(1-\tfrac{3}{2}\sin^2\theta_{23}\right) \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2j}^\prime \right]  + \frac{6}{r_2^2}\phi_{2i}\phi_{2j} \\
+\left(\bar{\phi}_{2i},\mathcal{L} \bar{\phi}_{2j}\right) = 2 & \cdot 2\pi \int \Bigg\{ \sum_{k=1}^3 \left[ \boldsymbol{\nabla}_{\!\mathbf{r}_k} \nonumber \phi_{2i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2j} \pm \left(1-\tfrac{3}{2}\sin^2\theta_{23}\right) \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2j}^\prime \right]  + \frac{6}{r_2^2}\phi_{2i}\phi_{2j} \\
  \nonumber &\mp 3 \phi_{2i} \phi_{2j}^\prime \cos\theta_{23} \left[p_i \frac{r_1}{r_3 r_{13}^2} (\cos\theta_{12} - \cos\theta_{23} \cos\theta_{13}) + m_j^\prime \frac{r_1}{r_2 r_{12}^2}(\cos\theta_{13} - \cos\theta_{23} \cos\theta_{12})\right.\\
  \nonumber & \left. \;\;\;\;\;  + \sin^2\theta_{23} \left(q_i \frac{r_2}{r_3 r_{23}^2} + q_j^\prime \frac{r_3}{r_2 r_{23}^2} \right) \right] \\
  \nonumber &+ \left. \left[\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2}\kappa^2 \right] \right. \\
@@ -132,7 +132,7 @@ given in separate notes available on the Wiki \cite{Wiki}.
 
 \begin{align}
 \label{eq:DWavePhi1Phi2}
-\left(\bar{\phi}_{1i},L \bar{\phi}_{2j}\right) = 2 & \cdot 2\pi \int \Bigg\{ \sum_{k=1}^3 \left[ \left(1-\tfrac{3}{2}\sin^2\theta_{12}\right) \boldsymbol{\nabla}_{\!\mathbf{r}_k} \nonumber \phi_{1i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2j} \pm \left(1-\tfrac{3}{2}\sin^2\theta_{13}\right) \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2j}^\prime \right] \\
+\left(\bar{\phi}_{1i},\mathcal{L} \bar{\phi}_{2j}\right) = 2 & \cdot 2\pi \int \Bigg\{ \sum_{k=1}^3 \left[ \left(1-\tfrac{3}{2}\sin^2\theta_{12}\right) \boldsymbol{\nabla}_{\!\mathbf{r}_k} \nonumber \phi_{1i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2j} \pm \left(1-\tfrac{3}{2}\sin^2\theta_{13}\right) \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2j}^\prime \right] \\
  \nonumber &\mp 3 \phi_{1i} \phi_{2j} \cos\theta_{12} \left[q_i \frac{r_3}{r_2 r_{23}^2} (\cos\theta_{13} - \cos\theta_{12} \cos\theta_{23}) + p_j \frac{r_3}{r_1 r_{13}^2}(\cos\theta_{23} - \cos\theta_{12} \cos\theta_{13})\right.\\
  \nonumber & \left. \;\;\;\;\;  + \sin^2\theta_{12} \left(m_i \frac{r_1}{r_2 r_{12}^2} + m_j \frac{r_2}{r_1 r_{12}^2} \right) \right] \\
  \nonumber &\mp 3 \phi_{1i} \phi_{2j}^\prime \cos\theta_{13} \left[q_i \frac{r_2}{r_3 r_{23}^2} (\cos\theta_{12} - \cos\theta_{13} \cos\theta_{23}) + m_j^\prime \frac{r_2}{r_1 r_{12}^2}(\cos\theta_{23} - \cos\theta_{12} \cos\theta_{13})\right.\\
@@ -143,7 +143,7 @@ given in separate notes available on the Wiki \cite{Wiki}.
 
 \begin{align}
 \label{eq:DWavePhi2Phi1}
-\left(\bar{\phi}_{2i},L \bar{\phi}_{1j}\right) = 2 & \cdot 2\pi \int \Bigg\{ \sum_{k=1}^3 \left(1-\tfrac{3}{2}\sin^2\theta_{12}\right) \left[ \boldsymbol{\nabla}_{\!\mathbf{r}_k} \nonumber \phi_{2i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1j} \pm \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1j}^\prime \right] \\
+\left(\bar{\phi}_{2i},\mathcal{L} \bar{\phi}_{1j}\right) = 2 & \cdot 2\pi \int \Bigg\{ \sum_{k=1}^3 \left(1-\tfrac{3}{2}\sin^2\theta_{12}\right) \left[ \boldsymbol{\nabla}_{\!\mathbf{r}_k} \nonumber \phi_{2i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1j} \pm \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1j}^\prime \right] \\
  \nonumber &\mp 3 \phi_{2i} \phi_{1j} \cos\theta_{12} \left[p_i \frac{r_3}{r_1 {r_{13}}^2} (\cos\theta_{23} - \cos\theta_{12} \cos\theta_{13}) + q_j \frac{r_3}{r_2 {r_{23}}^2}(\cos\theta_{13} - \cos\theta_{12} \cos\theta_{23})\right.\\
  \nonumber & \left. \;\;\;\;\;  + \sin^2\theta_{12} \left(m_i \frac{r_2}{r_1 {r_{12}}^2} + m_j \frac{r_1}{r_2 {r_{12}}^2} \right) \right] \\
  \nonumber &\mp 3 \phi_{2i} \phi_{1j}^\prime \cos\theta_{12} \left[p_i \frac{r_3}{r_1 r_{13}^2} (\cos\theta_{23} - \cos\theta_{12} \cos\theta_{13}) + q_j^\prime \frac{r_3}{r_2 {r_{23}}^2}(\cos\theta_{13} - \cos\theta_{12} \cos\theta_{23})\right.\\
@@ -155,7 +155,7 @@ given in separate notes available on the Wiki \cite{Wiki}.
 
 
 
-\section{D-Wave Short-Range -- Long-Range Integrals}
+\section{Short-Range -- Long-Range Integrals}
 \label{sec:DWaveShortLong}
 
 To simplify these equations, define
@@ -232,7 +232,7 @@ integrations in \cref{sec:AngularInt} to the matrix elements of
 \end{align}
 
 
-\section{D-Wave Long-Range -- Long-Range Integrals}
+\section{Long-Range -- Long-Range Integrals}
 \label{sec:DWaveLongLong}
 
 Similar to the short-short terms, the derivations for the long-long terms are 
@@ -262,7 +262,7 @@ available on the Wiki \cite{Wiki}.
 & \times \frac{1}{2\rho} \left( \left[ 4 n_2(\kappa\rho) - 2 \kappa\rho \, n_1(\kappa\rho) \right] f_2^\prime(\rho) - \rho \, n_2(\kappa\rho) f_2^{\prime\prime}(\rho) \right) \Bigg\} d\tau_{int}
 \end{align}
 
-\section{D-Wave Mixed Terms}
+\section{Mixed Terms}
 \label{sec:MixedTerms}
 
 According to Schwartz \cite{Schwartz1961a}, to have a complete description, 
@@ -338,7 +338,7 @@ of the D-wave phase shifts. As we discovered in \cref{sec:DWaveResults}, this
 turns out to be an acceptable approximation.
 
 
-\section{D-Wave Second Formalism}
+\section{Second Formalism}
 \label{sec:DSecondForm}
 For the second formalism, the angular momentum needs to be placed on the Ps and
 H, so we would need
@@ -436,7 +436,7 @@ we have with small phase shifts.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=7in]{dwave-singlet-alpha-k01-variation}
+	\includegraphics[width=\textwidth]{dwave-singlet-alpha-k01-variation}
 	\caption[Variation of the nonlinear parameter $\alpha$ for $^{1}$D at $\kappa = 0.1$]{Phase shifts (a) and convergence ratios (b) for variation of the nonlinear parameter $\alpha$ for $^{1}$D at $\kappa = 0.1$}
 	\label{fig:dwave-singlet-alpha-k01-variation}
 \end{figure}
@@ -450,7 +450,7 @@ the original 0.359.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=7in]{dwave-singlet-alpha-k06-variation}
+	\includegraphics[width=\textwidth]{dwave-singlet-alpha-k06-variation}
 	\caption[Variation of the nonlinear parameter $\alpha$ for $^{1}$D at $\kappa = 0.6$]{Phase shifts (a) and convergence ratios (b) for variation of the nonlinear parameter $\alpha$ for $^{1}$D at $\kappa = 0.6$}
 	\label{fig:dwave-singlet-alpha-k06-variation}
 \end{figure}
@@ -468,7 +468,7 @@ $\alpha$ variation, we kept the original $\beta = 0.368$ value.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=7in]{dwave-singlet-beta-k01-variation}
+	\includegraphics[width=\textwidth]{dwave-singlet-beta-k01-variation}
 	\caption[Variation of the nonlinear parameter $\beta$ for $^{1}$D at $\kappa = 0.1$]{Phase shifts (a) and convergence ratios (b) for variation of the nonlinear parameter $\beta$ for $^{1}$D at $\kappa = 0.1$}
 	\label{fig:dwave-singlet-beta-k01-variation}
 \end{figure}
@@ -480,7 +480,7 @@ appears to be more stable than the $\beta$ variation from these runs.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=7in]{dwave-singlet-beta-k06-variation}
+	\includegraphics[width=\textwidth]{dwave-singlet-beta-k06-variation}
 	\caption[Variation of the nonlinear parameter $\beta$ for $^{1}$D at $\kappa = 0.6$]{Phase shifts (a) and convergence ratios (b) for variation of the nonlinear parameter $\beta$ for $^{1}$D at $\kappa = 0.6$}
 	\label{fig:dwave-singlet-beta-k06-variation}
 \end{figure}
@@ -492,7 +492,7 @@ $\alpha = 0.3$. Again, we kept the original $\alpha$ of 0.356.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=7in]{dwave-triplet-alpha-k01-variation}
+	\includegraphics[width=\textwidth]{dwave-triplet-alpha-k01-variation}
 	\caption[Variation of the nonlinear parameter $\alpha$ for $^{3}$D at $\kappa = 0.1$]{Phase shifts (a) and convergence ratios (b) for variation of the nonlinear parameter $\alpha$ for $^{3}$D at $\kappa = 0.1$}
 	\label{fig:dwave-triplet-alpha-k01-variation}
 \end{figure}
@@ -501,7 +501,7 @@ $\alpha = 0.3$. Again, we kept the original $\alpha$ of 0.356.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=7in]{dwave-triplet-alpha-k06-variation}
+	\includegraphics[width=\textwidth]{dwave-triplet-alpha-k06-variation}
 	\caption[Variation of the nonlinear parameter $\alpha$ for $^{3}$D at $\kappa = 0.6$]{Phase shifts (a) and convergence ratios (b) for variation of the nonlinear parameter $\alpha$ for $^{3}$D at $\kappa = 0.6$}
 	\label{fig:dwave-triplet-alpha-k06-variation}
 \end{figure}
@@ -517,14 +517,14 @@ For this, the phase shifts break down even earlier, starting after $\beta = 0.5$
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=7in]{dwave-singlet-alphabeta-k06-variation}
+	\includegraphics[width=\textwidth]{dwave-singlet-alphabeta-k06-variation}
 	\caption[Variation of the nonlinear parameter $\beta$ for $^{1}$D at $\kappa = 0.1$ and $\alpha = 0.6$]{Phase shifts (a) and convergence ratios (b) for variation of the nonlinear parameter $\beta$ for $^{1}$D at $\kappa = 0.1$ and $\alpha = 0.6$}
 	\label{fig:dwave-singlet-alphabeta-k06-variation}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=7in]{dwave-triplet-alphabeta-k06-variation}
+	\includegraphics[width=\textwidth]{dwave-triplet-alphabeta-k06-variation}
 	\caption[Variation of the nonlinear parameter $\beta$ for $^{3}$D at $\kappa = 0.1$ and $\alpha = 0.6$]{Phase shifts (a) and convergence ratios (b) for variation of the nonlinear parameter $\beta$ for $^{3}$D at $\kappa = 0.1$ and $\alpha = 0.6$}
 	\label{fig:dwave-triplet-alphabeta-k06-variation}
 \end{figure}
@@ -668,7 +668,7 @@ $\kappa$ & $\mathcal{R}(2)$ & $\mathcal{R}(3)$ & $\mathcal{R}(4)$ & $\mathcal{R}
 
 
 
-\section{D-Wave Results}
+\section{Results}
 \label{sec:DWaveResults}
 
 \subsection{Phase Shifts}
@@ -779,7 +779,7 @@ phase shifts are well converged.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=7in]{dwave-phases}
+	\includegraphics[width=\textwidth]{dwave-phases}
 	\caption[$^{1,3}$D phase shifts]{$^{1,3}$D complex Kohn phase shifts. The $^1S$ CC phase shifts
 \cite{Walters2004} are given by \mbox{\textcolor{blue}{$\times$}}, and the
 $^3S$ CC phase shifts \cite{Blackwood2002} are given by

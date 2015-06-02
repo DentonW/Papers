@@ -265,7 +265,8 @@ restriction in the $r_3$ power described in \cref{sec:Restricted}.}
 
 
 
-\section{L\"uchow and Kleindienst Algorithm} \label{sec:LuchowBound}
+\section{L\"uchow and Kleindienst Algorithm}
+\label{sec:LuchowBound}
 The algorithm that L\"uchow and Kleindienst propose \cite{Luchow1992} is 
 similar to Todd's algorithm. They use all terms through $\omega = 5$, since 
 none of these have linear dependence within this set. This fact could be 
@@ -350,6 +351,97 @@ perform a calculation, especially for large $\omega$.
 	\caption{Diagram of L\"uchow and Kleindienst procedure}
 	\label{fig:Luchow}
 \end{figure}
+
+
+
+\section{Gaussian Quadratures}
+\label{sec:GaussQuad}
+\todoi{Mention looking into \cite{Bailey2004,Ma1996,Mori2001,Odrzywolek2011,Fukuda2005}}
+Gaussian quadratures are used to integrate many classes of integrals. In their
+most general form, these quadratures are given by \cite[p.887]{Abramowitz1965}
+\beq
+\label{eq:GeneralQuadratures}
+\int_a^b W(x) f(x) dx \approx \sum_{i=1}^n w_i f(x_i).
+\eeq
+Gaussian quadratures are particularly attractive, since they give exact 
+results for polynomials up to degree $2n-1$. The weight function $W(x)$ can 
+be chosen for certain classes of integrals. Three main types of weight 
+functions are used in this work. For a discussion on the number of quadrature 
+points used, refer to \cref{sec:QuadraturePoints}.
+
+
+\subsection{Gauss-Legendre Quadrature}
+\label{sec:GaussLegendre}
+If the weight function is chosen as $W(x)=1$, and the integration interval is $(-1,1)$, this is known as Gauss-Legendre quadrature (or sometimes known simply as Gaussian quadrature). The orthogonal polynomials used are the Legendre polynomials, $P_n(x)$. \Cref{eq:GeneralQuadratures} becomes
+\beq
+\label{eq:GaussLeg}
+\int_{-1}^1 f(x) dx \approx \sum_{i=1}^n w_i f(x_i),
+\eeq
+where the $x_i$ abscissas are the $i^{th}$ zeros of $L_n(x)$, and the weights are given by
+\beq
+\label{eq:GaussLegWeights}
+w_i = \frac{2}{(1-x_i^2)[P^\prime_n(x_i)]^2}.
+\eeq
+The limits of integration must be from $-1$ to $1$, but this is generalized by using the transformation \cite{Abramowitz1965}
+\begin{align}
+\label{eq:GaussLegGen}
+\int_a^b f(x) dx &= \frac{b-a}{2} \int_{-1}^1 f \left(\frac{b-a}{2} x + \frac{a+b}{2}\right) dx \\
+&\approx \frac{b-a}{2} \sum_{i=1}^n w_i f \left(\frac{b-a}{2} x_i + \frac{a+b}{2}\right).
+\end{align}
+
+
+\subsection{Gauss-Laguerre Quadrature}
+\label{sec:GaussLag}
+The Gauss-Legendre quadrature cannot be used on semi-infinite intervals, so we use the Gauss-Laguerre quadrature in these cases. The orthogonal polynomials in this case are the Laguerre polynomials, $L_n(x)$, and the weight function is $W(x) = e^{-x}$. \Cref{eq:GeneralQuadratures} becomes
+\beq
+\label{eq:GaussLag}
+\int_0^\infty e^{-x} f(x) dx \approx \sum_{i=1}^n w_i f(x_i),
+\eeq
+where the $x_i$ abscissas are the $i^{th}$ zeros of $L_n(x)$, and the weights are given by
+\beq
+\label{eq:GaussLagWeights}
+w_i = \frac{x_i}{(n+1)^2 [L_{n+1}(x_i)]^2}.
+\eeq
+
+When the integration is over the interval $(a,\infty)$, \cref{eq:GaussLag} is easily transformed by
+\beq
+\label{eq:GaussLagGen1}
+\int_a^\infty e^{-x} f(x) dx = \int_0^\infty e^{-(x+a)} f(x+a) dx = e^{-a} \int_0^\infty e^{-x} f(x+a) dx \approx e^{-a} \sum_{i=1}^n w_i f(x_i+a).
+\eeq
+
+\noindent A more general form of this is obtained by using a coefficient in the exponential, i.e.
+\beq
+\label{eq:GaussLagGen2}
+\int_a^\infty e^{-m x} f(x) dx = \frac{1}{m} \int_a^\infty e^{-y} f\left(\frac{y}{m}\right) dy,
+\eeq
+where we have defined $y = m x$.  This allows for \cref{eq:GaussLagGen1} to be generalized to
+\begin{align}
+\label{eq:GaussLagGen}
+\nonumber \int_a^\infty e^{-m x} f(x) dx &= \frac{1}{m} \int_{ma}^\infty e^{-y} f\left(\frac{y}{m}\right) dy = \frac{1}{m} \int_0^\infty e^{-(y+ma)} f\left(\frac{y}{m}+a\right) dy \\
+& = \frac{e^{-ma}}{m} \int_0^\infty e^{-y} f\left(\frac{y}{m}+a\right) dy \approx \frac{e^{-ma}}{m} \sum_{i=1}^n w_i f\left(\frac{y_i}{m}+a\right).
+\end{align}
+The $y_i$ abscissas and $w_i$ weights are the same as the less general case in
+\cref{eq:GaussLag,eq:GaussLagWeights}. This general form of Gauss-Laguerre
+quadrature is what we use for our semi-infinite integrations.
+
+
+\subsection{Chebyshev--Gauss Quadrature}
+\label{sec:ChebyshevGauss1}
+If the weight function is chosen as $W(x)=\frac{1}{\sqrt{1-x^2}}$, and the
+integration interval is $(-1,1)$, this is known as Chebyshev-Gauss quadrature.
+The orthogonal polynomials used are the Chebyshev polynomials of the first
+kind, $T_n(x)$. \Cref{eq:GeneralQuadratures} becomes
+\beq
+\label{eq:GaussCheb}
+\int_{-1}^1 \frac{f(x)}{\sqrt{1-x^2}} dx \approx \sum_{i=1}^n w_i f(x_i),
+\eeq
+where
+\beq
+\label{eq:GaussChebAbsWeights}
+x_i = \cos\left(\frac{2i-1}{n}\pi\right) \text{ and } w_i = \frac{\pi}{n}.
+\eeq
+This quadrature is used for the internal angular integrations. A discussion of
+how to use this for these integrations is found in \cref{sec:ChebyshevGauss}.
 
 
 
@@ -608,6 +700,124 @@ Extra points & Phase shift \\
 \end{table}
 
 \todoi{Table of final integration points}
+
+
+\subsection{Quadrature Points}
+\label{sec:QuadraturePoints}
+
+\todoi{Put in information from ``Integration Point Numbers.nb''}
+
+\begin{table}[H]
+\centering
+\footnotesize
+\begin{tabular}{c c c c c c c c c}
+\toprule
+ & Coord & Coord & Coord & Coord & Coord & Coord & Coord & Coord\\
+Integral & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
+\midrule
+ Long-long, no $r_{23}^{-1}$ & 45 & 35 & 35 & 35 & 28 & 15 & & \\
+ Long-long, $r_{23}^{-1}$ & 65 & 35 & 28 & 35 & 28 & 12 & 15 & 15 \\
+\midrule
+ Long-short $q_i = 0$, no $r_{23}^{-1}$ & 90 & 57 & 34 & 57 & 34 & 30 & 30 & \\
+ Long-short $q_i = 0$, $r_{23}^{-1}$ & 90 & 58 & 30 & 55 & 35 & 33 & 33 & 33 \\
+ Long-short $q_i > 0$ & 90 & 57 & 34 & 57 & 34 & 30 & 30 & 30 \\
+\bottomrule
+\end{tabular}
+\caption{Base set of effective coordinates for integrations}
+\label{tab:BaseEffectiveCoords}
+\end{table}
+
+\begin{table}[H]
+\centering
+\footnotesize
+\begin{tabular}{c c c c c c c c c}
+\toprule
+ & Coord & Coord & Coord & Coord & Coord & Coord & Coord & Coord\\
+Integral & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
+\midrule
+ Long-long, no $r_{23}^{-1}$			&  75 & 40 & 40 & 40 & 40 & 25 & & \\
+ Long-long, $r_{23}^{-1}$				&  75 & 40 & 40 & 40 & 40 & 25 & 25 & 25 \\
+\midrule
+ Long-short $q_i = 0$, no $r_{23}^{-1}$	& 100 & 65 & 45 & 65 & 45 & 45 & 45 & \\
+ Long-short $q_i = 0$, $r_{23}^{-1}$	& 115 & 65 & 45 & 65 & 45 & 45 & 45 & 45 \\
+ Long-short $q_i > 0$					& 100 & 65 & 45 & 65 & 45 & 45 & 45 & 45 \\
+\bottomrule
+\end{tabular}
+\caption{Optimal set of effective coordinates for integrations}
+\label{tab:OptimalEffectiveCoords}
+\end{table}
+
+Describing the number of points used in integrating the different coordinates 
+in sections \ref{sec:LongLongInt} and \ref{sec:ShortLongInt} can be 
+confusing, so we have taken to grouping the sets of points as in
+\cref{tab:BaseEffectiveCoords,tab:OptimalEffectiveCoords}. Each column of 
+this table is referred to as an ``effective coordinate''.
+
+\begin{table}[H]
+\centering
+\footnotesize
+\begin{tabular}{c c c c c c c c c}
+\toprule
+ & Coord & Coord & Coord & Coord & Coord & Coord & Coord & Coord \\
+Integral & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
+\midrule
+ Long-long, no $r_{23}^{-1}$ & $x$ Lag & $y$ Lag & $z$ Lag & $r_3$ Leg & $r_3$ Leg & $r_{13}$ Leg & & \\
+ Long-long, $r_{23}^{-1}$ & $r_1$ Lag & $r_2$ Leg & $r_2$ Lag & $r_3$ Leg & $r_3$ Lag & $\varphi_{12}$ Che & $r_{13}$ Leg & $r_{23}$ Leg \\
+\midrule
+ Long-short $q_i = 0$, no $r_{23}^{-1}$ & $r_1$ Lag & $r_2$ Leg & $r_2$ Lag & $r_3$ Leg & $r_3$ Lag & $r_{12}$ Leg & $r_{13}$ Leg & \\
+ Long-short $q_i = 0$, $r_{23}^{-1}$ & $r_1$ Lag & $r_2$ Leg & $r_2$ Lag & $r_3$ Leg & $r_3$ Lag & $r_{12}$ Leg & $\varphi_{13}$ Che & $r_{23}$ Leg \\
+ Long-short $q_i > 0$ & $r_1$ Lag & $r_2$ Leg & $r_2$ Lag & $r_3$ Leg & $r_3$ Lag & $r_{12}$ Leg & $r_{13}$ Leg & $\varphi_{23}$ Che \\
+\bottomrule
+\end{tabular}
+\caption{Optimal set of effective coordinates for integrations}
+\todoi{Order of these tables and caption on last one. Describe tables more.}
+\label{tab:EffectiveCoords}
+\end{table}
+
+
+\section{Extra Schwartz Singularity Discussion}
+\label{sec:ExtraSchwartz}
+
+Interestingly, adding terms will change which Kohn method has a Schwartz 
+singularity. \Cref{fig:PhaseTau-Omega} shows how increasing $\omega$ (adding 
+terms) will change the $\tau$ in the generalized Kohn where a Schwartz 
+singularity occurs. \Cref{fig:PhaseTau-Kappa} also shows how for the 
+same set of short-range terms, varying $\kappa$ will change the $\tau$ value 
+where a these singularities occur.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{PhaseTau-Omega}
+	\caption{Phase shifts versus $\tau$ for $\kappa = 0.1$ and varying $\omega$ values}
+	\label{fig:PhaseTau-Omega}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{PhaseTau-Kappa}
+	\caption{Phase shifts versus $\tau$ for $\omega = 7$ and varying $\kappa$ values}
+	\label{fig:PhaseTau-Kappa}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=4in]{Det-Omega=6,Kappa=01}
+	\caption[Determinant of $\textbf{\emph{A}}$ versus $\tau$]{Determinant of $\textbf{\emph{A}}$ versus $\tau$ for $\omega = 6$ with 875 terms of Todd reordering}
+	\label{fig:Det-Omega=6}
+\end{figure}
+
+Cooper et al. \cite{Cooper2009} showed that if $\Det{\textbf{\emph{A}}}$ is 
+plotted with respect to $\tau$, there are actually two $\tau$ values where
+$\Det{\textbf{\emph{A}}} \approx 0$, but only one of them corresponds to a 
+Schwartz singularity. They refer to the second root as an anomaly-free 
+singularity. \Cref{fig:Det-Omega=6} shows an equivalent plot for our 
+data. The roots of $\Det{\textbf{\emph{A}}}$ are at approximately
+$\tau = 0.125$ and $\tau = 1.144$. The first root corresponds well with the
+singularity in the $\omega = 6$ graph in \cref{fig:PhaseTau-Omega}. The second
+root is referred to as an ``anomaly-free singularity'' in
+Cooper et al.\ \cite{Cooper2009} and does not correspond to a Schwartz
+singularity. The roots are easily found by fitting the data to equation (20)
+and solving equation (21) in Cooper et al.\ \cite{Cooper2009}.
 
 
 \biblio
