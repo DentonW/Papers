@@ -224,10 +224,10 @@ seen in \cref{tab:SWaveResonancesOther,tab:PWaveResonancesOther,tab:DWaveResonan
 \begin{figure}
 	\centering
 	\includegraphics[width=6in]{combined-cross-sections}
-	\caption[Cross sections.]{Cross sections. CC results are from Ref. \cite{Walters2004}, and SE results are from Ref. \cite{Hara1975}.}
+	\caption[Cross sections]{Elastic cross sections. CC results are from Ref.~\cite{Walters2004}, and SE results are from Ref. \cite{Hara1975}.}
 	\label{fig:combined-cross-sections}
 \end{figure}
-\todoi{Just put 'spin-weighted' in caption}
+%\todoi{Just put 'spin-weighted' in caption?}
 
 For partial wave cross section data available from the CC papers
 \cite{Walters2004,Blackwood2002,Blackwood2002b}, we compare the complex Kohn
@@ -543,6 +543,7 @@ $\SI{5.102}{eV}$.
 
 \begin{table}
 \centering
+\centerline{
 \begin{tabular}{c....c..c}
 \toprule
 %$\ell$ & \multicolumn{1}{c}{Avg. $\%^+$ Diff.}  & \multicolumn{1}{c}{Avg. $\%^-$ Diff.}  & \multicolumn{1}{c}{Max. $\%^+$ Diff.}  & \multicolumn{1}{c}{Max. $E_{\bm \kappa}^+$} & \multicolumn{1}{c}{Max. $\theta^+$} & \multicolumn{1}{c}{Avg. $\%^-$ Diff.}  & \multicolumn{1}{c}{Max. $E_{\bm \kappa}^-$} & \multicolumn{1}{c}{Max. $\theta^-$} \\
@@ -556,6 +557,7 @@ $\ell$ & \multicolumn{1}{c}{$\%^+$ Diff.}  & \multicolumn{1}{c}{$\%^-$ Diff.}  &
 5 & 0.21\%  & 0.15\% & 3.15\%   & 5.061 & $\uppi$ & 1.64\%  & 4.354 & $\uppi$ \\
 \bottomrule
 \end{tabular}
+}
 \caption[Convergence of the singlet and triplet differential cross sections]{Percent difference of the elastic differential cross section for each partial wave $\ell$ with respect to $\ell - 1$ for both the maximum and average for the entire $E_{\bm \kappa}$ and $\theta$ range. The values of $E_{\bm \kappa}^\pm$ and $\theta^\pm$ given are where $\frac{d\sigma_{el}^\pm}{d\Omega}$ is at its maximum value given in columns 4 and 7.}
 \label{tab:PercentDiffCrossSingTrip}
 \end{table}
@@ -589,20 +591,25 @@ phase shifts as \citep[p. 589]{Bransden2003}
 \end{equation}
 This is the expression used in this work.
 
+%The static 
+%exchange curve is extracted from Figure 1 of their paper using CurveSnap
+%\cite{CurveSnap}. The spin-weighting is from \cref{eq:SpinWeightCS}. The static 
+%exchange \todo{check } gives a decent approximation but overestimates the 
+%momentum transfer cross section through much of the energy range and greatly 
+%overestimates for less than $\SI{0.25}{eV}$, going to a maximum of
+%$\SI{57.7}{$\pi a_0^2$}$ at zero energy. The SE approximation also does not
+%reproduce any of the resonance features from the singlet.
+
 \Cref{fig:momentum-cross-sections} shows the momentum transfer cross section 
-from the complex Kohn and the static exchange \cite{Hara1975}. The static 
-exchange curve is extracted from Figure 1 of their paper using CurveSnap
-\cite{CurveSnap}. The spin-weighting is from \cref{eq:SpinWeightCS}. The static 
-exchange \todo{check } gives a decent approximation but overestimates the 
-momentum transfer cross section through much of the energy range and greatly 
-overestimates for less than $\SI{0.25}{eV}$, going to a maximum of
-$\SI{57.7}{$\pi a_0^2$}$ at zero energy. The SE approximation also does not
-reproduce any of the resonance features from the singlet.
+from the complex Kohn. The spin-weighting is from \cref{eq:SpinWeightCS}.
+Similar to the elastic integrated cross sections (\cref{fig:combined-cross-sections}),
+the triplet is a nearly featureless curve that gives a nearly constant
+contribution to the spin-weighted momentum transfer cross section.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=5.25in]{momentum-cross-sections}
-	\caption[Momentum transfer cross sections]{Momentum transfer cross sections. Static exchange data is from Ref.~\cite{Hara1975}.}
+	\caption[Momentum transfer cross sections]{Complex Kohn momentum transfer cross sections}
 	\label{fig:momentum-cross-sections}
 \end{figure}
 
@@ -624,18 +631,19 @@ reproduce any of the resonance features from the singlet.
 \begin{figure}
 	\centering
 	\includegraphics[width=5.25in]{cross-section-comparisons}
-	\caption{Comparison of cross sections}
+	\caption{Comparison of cross sections. CC data is from Ref.~\cite{Walters2004}.}
 	\label{fig:cross-section-comparisons}
 \end{figure}
-\todoi{Remove ortho-para. Do similar to that in PRA paper.}
 
+\Cref{fig:cross-section-comparisons} shows the elastic integrated and momentum
+transfer cross sections.
 As expected, $\sigma_m \approx \sigma_{el}$ at very low energy. 
 At zero energy, $\sigma_m = \sigma_{el}$ should hold, and for Ps-H, we find that
 $E_{\bm \kappa} < 10^{-6}$ eV, $\sigma_m = \sigma_{el} = 32.45$ $\pi a_0^2$. 
 As Blackwood et al.\ \cite{Blackwood2002c} note, this is due to the differential
 cross section being essentially isotropic at low energy (and exactly isotropic at
 zero energy), as seen in
-\cref{fig:diff-cross-sections-combined,fig:diff-cross-section-2D-kappa,fig:diff-cross-sections-combined-1}.
+\cref{fig:diff-cross-section-2D-kappa,fig:combined-diff-cross-sections}.
 If $\sigma_m < \sigma_{el}$, the scattering is mainly forward peaked, and if
 $\sigma_m > \sigma_{el}$, the scattering is mainly backward peaked \cite{Thumm1993}.
 Past very low energy, where $\sigma_m = \sigma_{el}$, we see that $\sigma_m > \sigma_{el}$

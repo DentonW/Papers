@@ -6,9 +6,6 @@
 \chapter{Computation}
 \label{chp:Computation}
 
-\todoi{Should mention the Mathematica notebooks to generate Fortran lists for short-range matrix elements and possibly other programs}
-\todoi{Be clear that in the long-range code, we only calculate the Kohn elements, and then we rearrange them to create the others in the phase shift code. (Mentioned in \cref{sec:Kohn})}
-
 
 \section{Short-Range Terms}
 \label{sec:CompShort}
@@ -731,7 +728,10 @@ elements converge better for $\lambda = 1.0$ than for $\lambda = 0$.
 \label{sec:CompPhase}
 
 We solve for the phase shifts by solving \cref{eq:GeneralKohnMatrix} for
-$\boldsymbol{X}$ and then using \cref{eq:GenDFDT2,eq:GenKohnL}. The different
+$\boldsymbol{X}$ and then using \cref{eq:GenDFDT2,eq:GenKohnL}. Note that
+as mentioned in \cref{sec:Kohn}, we only have to calculate one set of integrals
+for the Kohn variational method, and the other Kohn methods are
+used by rearrangement of these integrals in the matrix equation. The different
 Kohn variational methods typically agree well when linear dependence in the
 matrix equation does not occur. We use this fact to determine how many
 short-range terms we are able to use in our final calculations. If we plot the
@@ -768,11 +768,12 @@ denoted as $N'(\omega)$. For $\ell \geq 3$, we either use the full set of
 terms described by \cref{eq:OmegaDef} or the restricted set described in
 \cref{sec:Restricted}.
 
-The phase shifts presented in this work are the $S$-matrix complex Kohn, unless
-otherwise indicated. We normally only use the Kohn, inverse Kohn, and
-generalized Kohn variational method results to determine the number of
-short-range terms to use as described in this section. Then the phase shifts
-for this set of terms with the $S$-matrix complex Kohn method are determined.
+The phase shifts presented in this work are found using the $S$-matrix 
+complex Kohn, unless otherwise indicated. We normally only use the Kohn, 
+inverse Kohn, and generalized Kohn variational method results to determine 
+the number of short-range terms to use as described in this section. Then the 
+phase shifts for this set of terms with the $S$-matrix complex Kohn method 
+are determined.
 
 %\todoi{Mention $\mu$ variation for S-wave}
 
