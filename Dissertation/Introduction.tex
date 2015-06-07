@@ -6,12 +6,11 @@
 \chapter{Introduction}
 \label{sec:Introduction}
 
-
 \section{Positronium}
 \label{sec:Positronium}
 
-Positronium (Ps) is an exotic atom formed from the bound state of a positron
-(antielectron, e$^+$) and an electron (e$^-$). \todo{onium?} Stjepan Mohorovi\u{c}i\'{c} 
+Positronium (Ps) is an exotic atom formed from the bound state of a positron %\todo{onium?} 
+(antielectron, e$^+$) and an electron (e$^-$). Stjepan Mohorovi\u{c}i\'{c} 
 theorized the existence of Ps in 1934 \cite{Mohorovicic1934}, 
 but it was not created until 1951 by Martin Deutsch \cite{Deutsch1951}.
 This atom is similar in some ways to hydrogen (H) but also differs 
@@ -25,40 +24,39 @@ Ps-molecule scattering comes from o-Ps.
 
 
 \subsection{Positronium and Hydrogen Wavefunctions}
-\todoi{p and e instead of $p$ and $e$}
 The reduced mass for H is
 \begin{equation}
-\mu_{\rm{H}} = \frac{m_p m_e}{m_p + m_e}.
+\mu_{\rm{H}} = \frac{m_{\rm{p}} m_{\rm{e}}}{m_{\rm{p}} + m_{\rm{e}}}.
 \end{equation}
 
 In the limit where the proton has infinite mass, the reduced mass becomes
 \begin{equation}
 %\lim_{m_p \to \infty} \frac{m_p + m_e}{m_p m_e} = \frac{1}{m_e} = \mu_H^{-1}
-\lim_{m_p \to \infty} \frac{m_p m_e}{m_p + m_e} = m_e \approx \mu_{\rm{H}}.
+\lim_{m_{\rm{p}} \to \infty} \frac{m_{\rm{p}} m_{\rm{e}}}{m_{\rm{p}} + m_{\rm{e}}} = m_{\rm{e}} \approx \mu_{\rm{H}}.
 \end{equation}
 
 The Ps exotic atom is similar to the H atom with the proton replaced 
 e$^+$, meaning we can no longer use the infinite mass approximation, 
-as $m_{e^+} = m_{e^-} = m_e$.
+as $m_{{\rm{e}}^+} = m_{{\rm{e}}^-} = m_{\rm{e}}$.
 \begin{equation}
-\mu_{\rm{Ps}} = \frac{m_e^2}{2 m_e} = \frac{m_e}{2}.
+\mu_{\rm{Ps}} = \frac{m_{\rm{e}}^2}{2 m_{\rm{e}}} = \frac{m_{\rm{e}}}{2}.
 \end{equation}
 
 To obtain the Ps wavefunction, we can start with the wavefunction for H and
-replace $m_e \rightarrow \frac{m_e}{2}$. The ground state wavefunction for H is
+replace $m_{\rm{e}} \rightarrow \frac{m_{\rm{e}}}{2}$. The ground state wavefunction for H is
 \begin{equation}
 \Phi_{100,\rm{H}} = \left(\frac{1}{\pi a_0^3}\right)^{\frac{1}{2}} \!\! \ee^{-\frac{r}{a_0}},
-\text{where } a_0 = \frac{\hbar^2}{m_e \,e^2} \;.
+\text{where } a_0 = \frac{\hbar^2}{m_{\rm{e}} \,e^2} \;.
 \end{equation}
 The $100$ represents the $n \ell m$ quantum numbers, and we are only
 considering ground state H and Ps. If we denote $a_0 \to a_\mu$, where
-we replace $m_e$ by $m_e/2$, the positronium ground state
+we replace $m_{\rm{e}}$ by $m_{\rm{e}}/2$, the positronium ground state
 wavefunction can be written easily as
 \begin{equation}
 \Phi_{100,\rm{Ps}} = \left(\frac{1}{\pi {a_\mu}^3}\right)^{\frac{1}{2}} \!\! \ee^{-\frac{r}{a_\mu}},
-\text{where } a_\mu = \frac{2\hbar^2}{m_e \,e^2} \;.
+\text{where } a_\mu = \frac{2\hbar^2}{m_{\rm{e}} \,e^2} \;.
 \end{equation}
-Working in atomic units (see \cref{sec:Units}), $a_0 = 1$ (i.e. $\hbar = m_e = e = 1$), giving
+Working in atomic units (see \cref{sec:Units}), $a_0 = 1$ (i.e. $\hbar = m_{\rm{e}} = e = 1$), giving
 \begin{equation}
 \Phi_{\rm{H}}\left(r_3\right) \equiv \Phi_{100,\rm{H}}\left(r_3\right) = \frac{1}{\sqrt{\pi}} \ee^{-r_3}
 \label{eq:HWave}
@@ -177,7 +175,7 @@ from Ref.~\cite{Brawley2010a}. Reprinted with permission from AAAS.}
 \end{figure}
 
 
-\section{Partial Waves and Kohn Variational Methods}
+\section{Partial Waves and Kohn-Type Variational Methods}
 \label{sec:KohnIntro}
 
 The most common way of approaching scattering problems is to use the complete
@@ -274,6 +272,7 @@ increasing the convergence rate of the long-range--short-range integrals.
 
 The Ps-H collision problem has been treated by multiple groups with different
 methods over the years, each with associated strengths and weaknesses.
+% http://journals.aps.org/copyrightFAQ.html#thesis
 \footnote{The following three paragraphs are used from Ref.~\cite{Woods2015}.}A much 
 earlier Kohn variational calculation was performed by Page \cite{Page1976} 
 for the Ps-H scattering lengths. Drachman and Houston
@@ -404,16 +403,18 @@ preprint does not settle the debate.
 %\end{verbatim}
 
 Unless otherwise stated, values throughout are given in atomic units, i.e.
-$\hbar = m_e = e = 4\pi\epsilon_0 = 1$ \cite{Hartree1928}. Energies are given
+$\hbar = m_{\rm{e}} = e = 4\pi\epsilon_0 = 1$ \cite{Hartree1928}. Energies are given
 in hartrees, with $\SI{1}{\hartree} = \SI{27.211 385 05(60)}{\electronvolt}$ 
 \cite{Mohr2012,NISTConversions}. Momentum is given as units of $a_0^{-1}$,
 where $a_0$ is the Bohr radius. Cross sections are given in units of
 $\pi a_0^2$, and differential cross sections are given in units of
 $a_0^2 / \rm{sr}$, unless otherwise noted.
 
-Many of the figures in this document are adapted from our paper submitted to
-Physical Review A \cite{Woods2015}.
-
+Some of the figures in this document are adapted from our paper submitted to
+Physical Review A \cite{Woods2015}. Additional notes for derivations are
+available at \url{http://figshare.com/authors/Denton_Woods/581638}, and
+codes discussed are available at \url{https://github.com/DentonW/Ps-H-Scattering}.
+These notes and codes are also linked at \url{http://www.dentonwoods.com}.
 
 
 

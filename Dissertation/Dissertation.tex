@@ -15,7 +15,8 @@
 \usepackage[table]{xcolor}  % For table coloring - can have option clash if loaded after other packages
 \usepackage{color, colortbl, rotate, listings, rotating}
 \usepackage{caption, booktabs, tocvsec2, longtable}
-\usepackage[numbers]{natbib}
+%\usepackage[numbers,sort&compress]{natbib}
+\usepackage[numbers,sort]{natbib}
 %\usepackage[nottoc]{tocbibind}
 \usepackage{tocbibind}
 \usepackage{subfig}
@@ -45,6 +46,15 @@
 \usepackage{tocstyle}  % For spacing out table of contents numbers from ellipses
 \usepackage{bigints}
 %\usepackage{adjustbox}  % Centering tables too wide for text width
+\usepackage{doi}
+
+% From http://tex.stackexchange.com/questions/15971/bibliography-with-page-numbers for backref
+\renewcommand*{\backref}[1]{}
+\renewcommand*{\backrefalt}[4]{%
+    \ifcase #1 (Not cited)%
+    \or        (Cited on page~#2)%
+    \else      (Cited on pages~#2)%
+    \fi}
 
 % Comment out to allow floating figures and tables
 \floatplacement{figure}{H}
@@ -203,8 +213,7 @@
 
 % From http://www.latex-community.org/forum/viewtopic.php?f=50&t=10320,
 %  to get references working properly in citations.
-\def\biblio{\bibliographystyle{UNTamsplain}\bibliography{Dissertation}}
-
+\def\biblio{\bibliographystyle{UNTamsplain-modded}\bibliography{Dissertation}}
 
 % From http://latex-alive.tumblr.com/post/698006466
 \DeclareSymbolFont{euler}{U}{eur}{m}{n}
@@ -389,7 +398,11 @@ vdW & van der Waals \\
 %\bibliographystyle{jphysicsB}
 %\bibliographystyle{unsrt}
 %\bibliographystyle{utphysLSB}
-\bibliographystyle{UNTamsplain}
+\bibliographystyle{UNTamsplain-modded}
+% May be possible with http://tex.stackexchange.com/questions/15677/revtex-4-1-bibliography-style-in-other-classes
+%\bibliographystyle{apsrev4-1}
+% Could also look at including doi's by http://tex.stackexchange.com/questions/3802/how-to-get-doi-links-in-bibliography
+
 
 \bibliography{Dissertation}
 

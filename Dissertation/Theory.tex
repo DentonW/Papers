@@ -5,7 +5,7 @@
 
 \chapter{Scattering Theory}
 \label{chp:WaveKohn}
-\lettrine{\textcolor{startcolor}{A}}{s} mentioned in the introduction, the Kohn variational method has been used for many types of systems. This chapter discusses the trial wavefunction used, derives the Kohn variational methods, and applies them to this system.
+\lettrine{\textcolor{startcolor}{A}}{s} mentioned in the introduction, the Kohn variational method has been used for many types of systems. This chapter discusses the trial wavefunction used, derives the Kohn-type variational methods, and applies them to this system.
 %\todoi{Description of partial waves?}
 
 \section{General Wavefunction}
@@ -169,7 +169,7 @@ The symbols $\rho$ and $\rho'$ are defined as (refer to \cref{fig:PsHCoords,sec:
 
 Much of this derivation is similar to that in Peter Van Reeth's thesis \cite{
 VanReethThesis} but is for single channel scattering and also generalized to 
-a variety of Kohn variational methods. His thesis covers the Kohn and inverse 
+a variety of Kohn-type variational methods. His thesis covers the Kohn and inverse 
 Kohn methods for two channel e$^+$-He scattering. For this derivation, I will 
 use \cref{eq:GeneralWaveTrial} but drop the short-range $\bar{\phi}_i^t$ 
 terms. The derivation follows through the same with these terms, but it is 
@@ -185,6 +185,7 @@ E_{\bm \kappa} = \frac{\hbar^2 \kappa^2}{2 m} = \frac{\kappa^2}{2 m} = \frac{1}{
 where $\kappa$ is the momentum of the Ps atom.
 Including this in the total energy with the ground-state energies of H and Ps, $E_H$ and $E_{Ps}$, gives
 \beq
+\label{eq:TotalEnergy}
 E = E_H + E_{Ps} + E_{\bm \kappa} = -\frac{1}{2} - \frac{1}{4} + \frac{1}{4} \kappa^2 = -\frac{3}{4} + \frac{1}{4} \kappa^2.
 \eeq
 
@@ -206,7 +207,7 @@ I[\Psi_\ell] = 0.
 \eeq
 \label{BraNote}Normally, the bra in bra-ket notation is conjugated,
 but as noted by Refs.~\cite{Cooper2010,Lucchese1989,Zhang1988},
-the bra is not conjugated for the Kohn variational methods.
+the bra is not conjugated for the Kohn-type variational methods.
 
 The trial wavefunction is related to the exact solution by
 \beq
@@ -397,9 +398,9 @@ From \cref{eq:IlPrimeDef,eq:IlPsiVariation9},
 \label{eq:KatoIdent}
 \delta I_\ell^\prime = (L_\ell^t - L_\ell) \Det{\textbf{u}} + (\delta\Psi_\ell, \mathcal{L} \,\delta\Psi_\ell).
 \eeq
-This is the Kato identity \cite{Kato1951a}. For the Kohn variational methods, the last term is neglected, since it is quadratic in $\delta\Psi_\ell$. Using $\delta I_\ell^\prime \approx \delta I_\ell$, we have
+This is the Kato identity \cite{Kato1951a}. For the Kohn-type variational methods, the last term is neglected, since it is quadratic in $\delta\Psi_\ell$. Using $\delta I_\ell^\prime \approx \delta I_\ell$, we have
 \beq
-\delta I_\ell = I_\ell[\Psi_\ell^t] - I_\ell[\Psi_\ell] \sim (L_\ell^t - L_\ell) \Det{\textbf{u}}.
+\delta I_\ell = I_\ell[\Psi_\ell^t] - I_\ell[\Psi_\ell] \approx (L_\ell^t - L_\ell) \Det{\textbf{u}}.
 \eeq
 Replacing the exact $L_\ell$ by the variational $L_\ell^v$ and rearranging,
 we finally get the general Kohn variational method of
@@ -443,7 +444,7 @@ Performing the first variation gives
 \pderiv{}{L_\ell^t} (L_\ell^t \widetilde{C}_\ell,\mathcal{L} L_\ell^t \widetilde{C}_\ell) = (\widetilde{C}_\ell,\mathcal{L} \widetilde{C}_\ell) \frac{\partial}{\partial L_\ell^t} {L_\ell^t}^2 = 2(\widetilde{C}_\ell,\mathcal{L}\widetilde{C}_\ell) L_\ell^t.
 \eeq
 
-\noindent The last two terms of \cref{eq:PdLambda1} are equal to each other, and we can use \cref{eq:SLCandCLSBar} to rewrite this.
+\noindent The last two terms of \cref{eq:PdLambda1} are equal to each other, and we can use \cref{eq:GenSLCandCLS} to rewrite this.
 \beq
 0 = -(\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell) - (\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell) - 2 L_\ell^t (\widetilde{C}_\ell,\mathcal{L}\widetilde{C}_\ell) - 2 \sum_i c_i (\widetilde{C}_\ell,\mathcal{L}\bar{\phi}_i)
 \eeq
@@ -1071,7 +1072,7 @@ f_\ell^\prime(\rho) = -\frac{\mu m_\ell (\mu  \rho +1) \left[1-\frac{1}{2} e^{-\
 \eeq
 and
 \beq
-\label{eq:Shielding1Der}
+\label{eq:Shielding2Der}
 f_\ell^{\prime\prime}(\rho) = \frac{\mu^2 m_\ell \left[-2 \mu  \rho  e^{\mu  \rho }+ m_\ell (\mu  \rho +1)^2-1\right] \left[1-\frac{1}{2} e^{-\mu  \rho } (\mu  \rho +2)\right]^{m_\ell}} {\left(\mu  \rho -2 e^{\mu  \rho }+2\right)^2}.
 \eeq
 
@@ -1171,7 +1172,7 @@ From \cref{eq:LSFinal,eq:LSPrimeFinal},
 \label{sec:MatrixShort}
 %The short-range -- short-range interactions are calculated in a separate document ``3.25 Using Spherical Coordinates.pdf''.
 
-Using \cref{eq:BoundHFull} with \cref{eq:LDef} and realizing that the bra is not conjugated in the Kohn variational methods, the short-short integrals are of the form
+Using \cref{eq:BoundHFull} with \cref{eq:LDef} and realizing that the bra is not conjugated in the Kohn-type variational methods, the short-short integrals are of the form
 \beq
 \label{eq:SWaveShortShort}
 \left(\bar{\phi}_i, \mathcal{L} \bar{\phi}_j\right) = \int \left[ \sum_{l=1}^3 \boldsymbol{\nabla}_{\!\mathbf{r}_l} \bar{\phi}_i \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_l} \bar{\phi}_j + \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E \right) \bar{\phi}_i \bar{\phi}_j \right] d\tau.
@@ -1209,14 +1210,14 @@ integrated using the methods described in \cref{sec:ShortInt}.
 \section{Schwartz Singularities}
 \label{eq:SchwartzSing}
 
-A disadvantage of the Kohn variational methods is the presence of spurious 
+A disadvantage of the Kohn-type variational methods is the presence of spurious 
 singularities in the phase shifts. Looking at \cref{eq:GeneralKohnMatrix}, if 
 $\textbf{\emph{A}}$ becomes near-singular
 (i.e. $\Det{\textbf{\emph{A}}} \approx 0$), solving this matrix equation
 will yield incorrect phase shifts. 
 These ``Schwartz singularities'' were described first by Schwartz
 \cite{Schwartz1961} and analyzed by others \cite{Nesbet1968,Nesbet1969}.
-These singularities do not make the Kohn variational methods 
+These singularities do not make the Kohn-type variational methods 
 unusable however. These singularities are often easily noticeable, because 
 they do not follow the pattern of other phase shifts.
 
@@ -1256,10 +1257,10 @@ complex Kohn variational method can be obtained exactly from the real-valued
 generalized Kohn method in \cite{eq:uGenKohn}, but we do not use this method.
 
 There is also much less variability in the results of the different complex 
-Kohn variational methods, and even for different values of $\tau$ in
+Kohn-type variational methods, and even for different values of $\tau$ in
 \cref{eq:uGenTKohn,eq:uGenSKohn}, the phase shifts generally agree to great 
 precision (greater than the accuracy that we quote for our phase shifts). Due 
-to the stability of the complex Kohn variational methods, the results quoted 
+to the stability and agreement of the complex Kohn variational methods, the results quoted 
 throughout this paper are for the $S$-matrix complex Kohn unless noted 
 otherwise.
 

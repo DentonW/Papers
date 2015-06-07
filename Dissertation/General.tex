@@ -124,7 +124,6 @@ three electrons, such as binding energy calculations of Li.
 
 \subsection{General Integrals}
 \label{sec:GenOverlap}
-\todoi{Note that these shouldn't be conjugated, but for the short-range terms with $m = 0$, it does not matter. \pageref{BraNote}}
 %As mentioned in the previous section, Drake and Yan's wavefunction is similar but not exactly the same. Thus, we cannot use the equations directly from their paper. Using their notation, the overlap integrals are given by
 %\begin{align}
 %\nonumber I^1(1) = \left< \phi_L^1 \left| \phi_R^1 \right. \right> = \sum_{\text{all } m_i^\prime m_i} & \int \mathrm{d}\boldsymbol{r}_1 \, \mathrm{d}\boldsymbol{r}_2 \, \mathrm{d}\boldsymbol{r}_3 \, r_1^{\tilde{j}_1} r_2^{\tilde{j}_2} r_3^{\tilde{j}_3} r_{12}^{\tilde{j}_{12}} r_{23}^{\tilde{j}_{23}} r_{31}^{\tilde{j}_{31}} \ee^{-(\tilde{\alpha} r_1 + \tilde{\beta} r_2 + \tilde{\gamma} r_3)} \\
@@ -158,7 +157,7 @@ r_{23}^{j_{23}} r_{31}^{j_{31}}
 e^{-(\alpha r_1 + \beta r_2 + \gamma r_3)}  \nonumber \\
 & \times Y_{\ell_1^\prime m_1^\prime}^* (\textit{\textbf{r}}_1) Y_{\ell_2^\prime m_2^\prime}^* (\textit{\textbf{r}}_2) Y_{\ell_3^\prime m_3^\prime}^* (\textit{\textbf{r}}_3) Y_{\ell_1 m_1} (\textit{\textbf{r}}_1) Y_{\ell_2 m_2} (\textit{\textbf{r}}_2) Y_{\ell_3 m_3} (\textit{\textbf{r}}_3)\, .
 \end{align}
-As noted on page~\pageref{BraNote} for the Kohn variational methods, these
+As noted on page~\pageref{BraNote} for the Kohn-type variational methods, these
 should not be conjugated, but for this work with $m = 0$ (so excluding the mixed
 symmetry terms described in \cref{sec:MixedTerms}), the real-valued short-range
 terms will be the same with and without the conjugate.
@@ -323,8 +322,8 @@ with
 The general short-short code implementing the equations described in \cref{sec:GeneralShort}
 is at least an order of magnitude slower than the corresponding S-, P-, and D-wave
 short-short code developed separately for each of the first three partial waves.
-On the Talon 2 \cite{} cluster, an $\omega = 5$ run of the general short-short code
-takes approximately a full day running on a single node with eight cores.
+On the Talon 2 \cite{Talon2} cluster, an $\omega = 5$ run of the general short-short code
+takes approximately a full day running on a single node with 16 cores.
 
 A rough analysis of the code shows that the bulk of the processing time is 
 spent calculating the angular parts, i.e. the 3-j and 6-j symbols. Due to the 

@@ -9,7 +9,7 @@
 \chapter{Cross Sections}
 \label{chp:CrossSections}
 
-We get the phase shifts directly from the Kohn variational methods, but a 
+We get the phase shifts directly from the Kohn-type variational methods, but a 
 more relevant quantity for experiments is the cross section. Cross sections 
 essentially give the strength of the interaction and are a quantity that can 
 be measured experimentally.
@@ -67,7 +67,7 @@ in each is the sum of each of the singlet or triplet partial waves through the
 H-wave.
 
 The triplet cross section in \cref{fig:triplet-cross-sections} is dominated 
-almost completely by the $^3$S partial wave. The $^3$P partial wave 
+almost completely by the $^3$S-wave. The $^3$P-wave 
 contributes less, and the $^3$D-wave barely registers on the graph. The 
 higher partial waves contribute nearly negligible amounts. The total follows
 closely with $^3$S, but the contribution from $^3$P is evident.
@@ -266,18 +266,18 @@ does not change things significantly.
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{spd-triplet-cross-sections}
-	\caption[Comparisons of $^3$S, $^3$P, and $^3$D cross sections.]{Comparisons of $^3$S, $^3$P, and $^3$D cross sections. CC results for $^3$S and $^3$P are from Ref. \cite{Walters2004}. CC results for $^3$D are from Ref. \cite{Blackwood2002}.}
+	\caption[Comparisons of $^3$S, $^3$P, and $^3$D cross sections.]{Comparisons of $^3$S, $^3$P, and $^3$D cross sections. CC results for $^3$S and $^3$P are from Ref. \cite{Walters2004}, and the CC results for $^3$D are from Ref. \cite{Blackwood2002}.}
 	\label{fig:spd-triplet-cross-sections}
 \end{figure}
 
-Despite the disappointing performance of the Born and modified Born 
+Despite the disappointing performance of the BO and modified BO
 approximations for the phase shifts of the higher partial waves in
-\cref{chp:HigherWaves}, we also compare the Born approximation cross sections
+\cref{chp:HigherWaves}, we also compare the BO approximation cross sections
 to see if the discrepancy is as large. In \cref{fig:fgh-born-cross-sections},
-we see that the Born approximation does not match up with either the singlet
+we see that the BO approximation does not match up with either the singlet
 or triplet for the F-, G-, or H-waves. Interestingly, we see that the plots
-for the singlet and the Born look approximately the same in (a), (b), and (c)
-but with a different vertical scale. This seems to indicate that the Born and complex
+for the singlet and the BO look approximately the same in (a), (b), and (c)
+but with a different vertical scale. This seems to indicate that the BO and complex
 Kohn results will only be approximately equal at a much higher value of $\ell$
 than $\ell = 5$. The phase shifts become very small for partial waves higher
 than the H-wave, so we would not be able to investigate these much further 
@@ -288,7 +288,7 @@ triplet phase shifts match for higher $\kappa$ as $\ell$ increases.
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{fgh-born-cross-sections}
-	\caption[Comparisons of F-, G-, and H-wave cross sections]{Comparisons of F-, G-, and H-wave cross sections between complex Kohn and Born approximation}
+	\caption[Comparisons of F-, G-, and H-wave cross sections]{Comparisons of F-, G-, and H-wave cross sections between complex Kohn and BO approximation}
 	\label{fig:fgh-born-cross-sections}
 \end{figure}
 
@@ -297,7 +297,7 @@ triplet phase shifts match for higher $\kappa$ as $\ell$ increases.
 \label{sec:diffcross}
 
 The differential cross section is important through \cref{eq:TotalDiffCross},
-but this also gives information about the angular dependence, $\theta$, of the
+but this also gives information about the angular dependence ($\theta$) of the
 system. The differential cross sections can be calculated from the phase shifts by
 \begin{align}
 \label{eq:DiffCross}
@@ -361,7 +361,7 @@ Similar to the integrated cross section, we combine these using the same type
 of spin-weighting given in \cref{eq:SpinWeightCS}. Due to the nearly featureless
 nature of the triplet in \cref{fig:diff-cross-sections-triplet},
 the combined differential cross section in 
-\cref{fig:diff-cross-sections-combined} looks very similar to 
+\cref{fig:combined-diff-cross-sections} looks very similar to 
 \cref{fig:diff-cross-sections-singlet}, but the 1/4 weighting of the singlet
 brings the vertical scale down. The forward direction is enhanced slightly by
 the maximum in the triplet in \cref{fig:diff-cross-sections-triplet}.
@@ -375,7 +375,7 @@ the maximum in the triplet in \cref{fig:diff-cross-sections-triplet}.
     \label{fig:combined-diff-cross-sections}%
 \end{figure}
 
-With the data in \cref{fig:diff-cross-sections-combined}, it is illustrative 
+With the data in \cref{fig:combined-diff-cross-sections}, it is illustrative 
 to plot 2-dimensional versions to see trends more clearly. In
 \cref{fig:diff-cross-section-2D-theta}, we restrict $\theta$ and vary
 $E_{\bm \kappa}$ to see the the energy-dependence for several $\theta$ values.
@@ -491,7 +491,7 @@ equaling 0 from the Legendre polynomial.
 	\label{fig:percent-diff-cross-sections-g}
 \end{figure}
 
-\todoi{Do a graph with selected energy - one at the threshold?}
+%\todoi{Do a graph with selected energy - one at the threshold?}
 
 \begin{figure}
 	\centering
@@ -670,6 +670,13 @@ but it is most clearly shown in \cref{fig:diff-cross-section-2D-theta}.
 %\todoi{Revisit ortho-para conversion cross section. Does this really show the ortho-Ps
 %converting to para-Ps? Because we are not considering the spin of Ps but rather the
 %spins of the electrons. We removed this from the paper.}
+
+
+
+\section{Summary}
+\label{sec:SummaryCross}
+
+
 
 
 \biblio

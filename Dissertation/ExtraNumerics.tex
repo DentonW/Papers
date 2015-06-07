@@ -40,7 +40,7 @@ solve for all three nonlinear parameters simultaneously. This was more stable
 than than 1-D Newton method. The second Broyden's method, sometimes referred 
 to as the ``bad Broyden's method'' was used here. As Kvaalen points out, this 
 method is perfectly usable and can be faster than the first Broyden's method 
-\cite{Kvaalen1991}. \Cref{table:NonlinearOptimized3SBroyden,BroydenPWaveSingOpt}
+\cite{Kvaalen1991}. \Cref{table:NonlinearOptimized3SBroyden,tab:BroydenPWaveSingOpt}
 show the nonlinear parameters used for $^3$S and $^1$P. All other partial waves
 used the simplex method described in \cref{sec:Simplex}. This is because I
 already had a number of results for $^3$S and $^1$P, so running everything
@@ -63,7 +63,7 @@ $\omega$ & $\alpha$ & $\beta$ & $\gamma$ \\ [0.5ex]
 \bottomrule
 \end{tabular}
 \caption{Broyden optimized $^3S$ nonlinear parameters}
-\label{table:NonlinearOptimized3SBroyden}
+\label{tab:NonlinearOptimized3SBroyden}
 \end{table}
 
 
@@ -224,7 +224,296 @@ $\omega$ & 1st formalism / 1 set & 2nd formalism / 1 set & 1st formalism / 2 set
 From \cref{tab:SimplexPWaveSingOpt,tab:SimplexPWaveTripOpt}, we see that lower energy eigenvalues are always obtained with the first formalism with 1 set versus the second formalism with 1 set. Likewise, the first formalism has lower energy eigenvalues than the second formalism when both have 2 sets. For $\omega \geq 2$, the first formalism with 1 set even has lower energy eigenvalues than the second symmetry with 2 sets. We had trouble obtaining phase shifts with two different sets of nonlinear parameters, but for higher $\omega$, we also see that the energy does not change much. Using more than one set of nonlinear parameters could be explored further in future work, and we have done preliminary investigation into this for the S-wave.
 
 
+\section{Determination of D-Wave Nonlinear Parameters}
+\label{sec:DWaveNonlinear}
 
+%\todoi{Do we want to just move that table here and to the P-wave chapter?}
+The comparison to the CC results \cite{Walters2004,Blackwood2002}
+in \cref{tab:DWaveComparisons,fig:DWavePhase} for the $^1$D state is
+reasonable, with the CC results below the complex Kohn at $\kappa = 0.7$.
+For $^3$D, the CC results are much higher, as can be seen in the inset
+in \cref{fig:DWavePhase}. The $^1$D phase shifts are small, so their overall
+contribution to the integrated cross section is small. 
+This lead us to investigate whether the phase shifts could be improved by a
+better selection of the short-range nonlinear parameters. If the phase shifts
+were fully converged, varying the nonlinear parameters should have little
+effect on their values.
+
+Using the simplex method described in \cref{sec:Simplex}, we obtained a set of
+nonlinear parameters for $^1$D and $^3$D in \cref{tab:NonlinearOptimizedPD}.
+We realized when calculating the phase shifts however that these were more
+sensitive to the values of the nonlinear parameters than the S-wave and P-wave,
+especially for $^3$D. This is likely due to the short-range terms trying to
+make up for the missing mixed symmetry terms. We performed some manual
+optimization of the nonlinear parameters for two $\kappa$ values to try to
+improve the phase shifts.
+
+For this investigation, we chose $\kappa$ values in two different regions:
+one at lower $\kappa$ and another at higher $\kappa$. The $\kappa = 0.1$ choice
+was made, since this is the lowest value that we report. We chose $\kappa = 0.6$
+for the higher $\kappa$ region, as this gets closer to the Ps(n=2) threshold
+but is far enough away from the $^1$D resonance to avoid sensitivity of the
+nonlinear parameters due to the resonance.
+
+For these variations, we kept $\gamma$ constant and used $\omega = 4$. From 
+\cref{tab:Nonlinear}, the value of $\gamma$ was found to be near $1$ using 
+the simplex method (\cref{sec:Simplex}) for every partial wave for both the 
+singlet and triplet. An explanation is that the $r_3$ coordinate represents 
+the electron in H, and $\gamma = 1$ gives the short-range terms multiplied by 
+the H wavefunction given in \cref{eq:HWave}. We used the original nonlinear 
+parameters given in \cref{tab:NonlinearOptimizedPD} as a starting set. For
+$^1$D, these are $\alpha = 0.359$, $\beta = 0.368$, and $\gamma = 0.976$. For
+$^3$D, these are $\alpha = 0.356$, $\beta = 0.365$, and $\gamma = 0.976$.
+
+For the first variation, we investigated the $\alpha$ nonlinear parameter at
+$\kappa = 0.1$. We varied $\alpha$ to see its effect on the phase shifts.
+\Cref{fig:dwave-singlet-alpha-k01-variation} shows the results of this
+variation. There is a maximum in the phase shift in 
+\cref{fig:dwave-singlet-alpha-k01-variation}(a) and a large difference between
+the phase shifts at low and high $\alpha$. If we decrease
+$\alpha$ from its value of 0.359, however, from
+\cref{fig:dwave-singlet-alpha-k01-variation}(b),
+the convergence ratio $\mathcal{R}(4)$, given by \cref{eq:ConvRatio},
+increases drastically. From this analysis, we had hoped for higher phase shifts,
+but we have a trade-off between this and reasonable convergence ratios. Due to
+this, we have kept the nonlinear parameter $\alpha$ at 0.359, which seems to be
+a reasonable compromise between higher phase shifts and better convergence
+ratios. This is likely an indication of the amount of numerical instability
+we have with small phase shifts.
+
+\todoi{Move $\mathcal{R}(4)$ to the left or move y-axis numbers to the right. Also narrow these figures to fit within the margins.}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{dwave-singlet-alpha-k01-variation}
+	\caption[Variation of the nonlinear parameter $\alpha$ for $^{1}$D at $\kappa = 0.1$]{Phase shifts (a) and convergence ratios (b) for variation of the nonlinear parameter $\alpha$ for $^{1}$D at $\kappa = 0.1$}
+	\label{fig:dwave-singlet-alpha-k01-variation}
+\end{figure}
+
+At the higher $\kappa$ of 0.6, the variation looks very different, as seen in
+\cref{fig:dwave-singlet-alpha-k06-variation}. The maximum is at about
+$\alpha = 0.6$, and $\mathcal{R}(4)$ is much less than 1. Interestingly,
+$\mathcal{R}(4)$ decreases monotonically as $\alpha$ is increased. For
+$\kappa = 0.6$, it is clear that choosing $\alpha = 0.6$ is much better than
+the original 0.359.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{dwave-singlet-alpha-k06-variation}
+	\caption[Variation of the nonlinear parameter $\alpha$ for $^{1}$D at $\kappa = 0.6$]{Phase shifts (a) and convergence ratios (b) for variation of the nonlinear parameter $\alpha$ for $^{1}$D at $\kappa = 0.6$}
+	\label{fig:dwave-singlet-alpha-k06-variation}
+\end{figure}
+
+Starting from the original nonlinear parameters, we also varied $\beta$. The
+$\beta$ variation looks very similar to the $\alpha$ derivation, but there is
+a surprising breakdown of the phase shifts when $\beta > 0.6$. At $\beta = 0.7$,
+$\delta_2^+$ increases significantly, and $\mathcal{R}(4) > 5$. For $\beta = 0.8$,
+$\delta_2^+ = -2.0694^{-3}$, and $\mathcal{R}(4) = -128.3$, so the phase shifts
+for large $\beta$ are obviously not reliable. When $\beta$ is smaller, we see
+very similar behavior to that of the $\alpha$ variation in
+\cref{fig:dwave-singlet-alpha-k01-variation}. The convergence ratio increases as
+$\beta$ gets too low, and the maximum is around $\beta = 0.3$. Similar to the
+$\alpha$ variation, we kept the original $\beta = 0.368$ value.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{dwave-singlet-beta-k01-variation}
+	\caption[Variation of the nonlinear parameter $\beta$ for $^{1}$D at $\kappa = 0.1$]{Phase shifts (a) and convergence ratios (b) for variation of the nonlinear parameter $\beta$ for $^{1}$D at $\kappa = 0.1$}
+	\label{fig:dwave-singlet-beta-k01-variation}
+\end{figure}
+
+For $\kappa = 0.6$, we see a breakdown when $\beta$ is large as well. The plot
+in \cref{fig:dwave-singlet-beta-k06-variation} shows that we have not hit the maximum
+$\delta_2^+$ before the phase shifts exhibit breakdown. The $\alpha$ variation
+appears to be more stable than the $\beta$ variation from these runs.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{dwave-singlet-beta-k06-variation}
+	\caption[Variation of the nonlinear parameter $\beta$ for $^{1}$D at $\kappa = 0.6$]{Phase shifts (a) and convergence ratios (b) for variation of the nonlinear parameter $\beta$ for $^{1}$D at $\kappa = 0.6$}
+	\label{fig:dwave-singlet-beta-k06-variation}
+\end{figure}
+
+The variations for $^3$D look similar to that of $^1$D. There are less points
+in \cref{fig:dwave-triplet-alpha-k01-variation}, but we can see that as
+$\alpha$ is lowered, $\mathcal{R}(4)$ increases, and there is a maximum around
+$\alpha = 0.3$. Again, we kept the original $\alpha$ of 0.356.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{dwave-triplet-alpha-k01-variation}
+	\caption[Variation of the nonlinear parameter $\alpha$ for $^{3}$D at $\kappa = 0.1$]{Phase shifts (a) and convergence ratios (b) for variation of the nonlinear parameter $\alpha$ for $^{3}$D at $\kappa = 0.1$}
+	\label{fig:dwave-triplet-alpha-k01-variation}
+\end{figure}
+
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{dwave-triplet-alpha-k06-variation}
+	\caption[Variation of the nonlinear parameter $\alpha$ for $^{3}$D at $\kappa = 0.6$]{Phase shifts (a) and convergence ratios (b) for variation of the nonlinear parameter $\alpha$ for $^{3}$D at $\kappa = 0.6$}
+	\label{fig:dwave-triplet-alpha-k06-variation}
+\end{figure}
+
+Due to the problems we had with the $\beta$ variation for $^1$D
+and the original $\alpha$, we did not pursue this for $^3$D.
+With these new choices of $^{1,3}$D nonlinear parameters for higher $\kappa$
+that use a higher $\alpha$ of 0.6, we also investigated varying $\beta$, as
+shown in \Cref{fig:dwave-singlet-alphabeta-k06-variation} for $^1$D.
+Again, the phase shifts are unreliable as $\beta$ is increased much.
+The equivalent plots for $^3$D are in \cref{fig:dwave-triplet-alphabeta-k06-variation}.
+For this, the phase shifts break down even earlier, starting after $\beta = 0.5$.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{dwave-singlet-alphabeta-k06-variation}
+	\caption[Variation of the nonlinear parameter $\beta$ for $^{1}$D at $\kappa = 0.1$ and $\alpha = 0.6$]{Phase shifts (a) and convergence ratios (b) for variation of the nonlinear parameter $\beta$ for $^{1}$D at $\kappa = 0.1$ and $\alpha = 0.6$}
+	\label{fig:dwave-singlet-alphabeta-k06-variation}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{dwave-triplet-alphabeta-k06-variation}
+	\caption[Variation of the nonlinear parameter $\beta$ for $^{3}$D at $\kappa = 0.1$ and $\alpha = 0.6$]{Phase shifts (a) and convergence ratios (b) for variation of the nonlinear parameter $\beta$ for $^{3}$D at $\kappa = 0.1$ and $\alpha = 0.6$}
+	\label{fig:dwave-triplet-alphabeta-k06-variation}
+\end{figure}
+
+We had previously noticed that if $\alpha$ and $\beta$ are equal (for multiple
+partial waves), linear dependence becomes a large issue. Based on this and the
+graphs in \cref{fig:dwave-singlet-alphabeta-k06-variation,fig:dwave-triplet-alphabeta-k06-variation},
+we tried the set of nonlinear parameters $\alpha = 0.6$, $\beta = 0.5$,
+and $\gamma = 0.976$ for $^{1,3}$D for a full run of $\omega = 6$.
+Using the Todd procedure in \cref{sec:ToddBound}, this $^1$D set only uses 844
+terms, and the $^3$D set uses 854 terms.
+
+\Cref{tab:D1WaveBetaVar} compares the sets with $\beta = 0.368$ and $0.5$ (using
+$\alpha = 0.6$ and $\gamma = 0.976$). We do not use the restricted set described
+in \cref{sec:Restricted} for our final calculations, but a comparison with it
+can give an idea of how stable the phase shifts are. Comparing the full and
+restricted sets for $\beta = 0.368$, the phase shifts do not change much, even
+though we are reducing our basis set from 913 to 720 terms. However, comparison
+of the full and restricted sets for $\beta = 0.5$ shows a much larger change in
+the phase shifts, despite only changing from 844 to 720 terms. This seems to
+indicate that the set with $\beta = 0.5$ is not as stable and could potentially
+suffer from linear dependence.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{c....}
+\toprule
+$\kappa$ & \multicolumn{1} {c}{$\delta_2^-$ full $\beta = 0.368$} & \multicolumn{1} {c}{$\delta_2^-$ restricted $\beta = 0.368$}  & \multicolumn{1} {c}{$\delta_2^-$ full $\beta = 0.5$}  & \multicolumn{1} {c}{$\delta_2^-$ restricted $\beta = 0.5$} \\
+\midrule
+0.3 & 1.599^{-2} & 1.595^{-2} & 1.693^{-2} & 1.600^{-2} \\
+0.4 & 4.978^{-2} & 4.965^{-2} & 5.176^{-2} & 4.987^{-2} \\
+0.5 & 1.126^{-1} & 1.124^{-1} & 1.152^{-1} & 1.130^{-1} \\
+0.6 & 2.058^{-1} & 2.053^{-1} & 2.083^{-1} & 2.066^{-1} \\
+0.7 & 3.275^{-1} & 3.269^{-1} & 3.302^{-1} & 3.293^{-1} \\
+\bottomrule
+\end{tabular}
+\caption[$^1$D phase shifts for varying $\beta$]{$^1$D phase shifts for sets of nonlinear parameters with $\alpha = 0.6$ and $\gamma = 0.976$. The full set for $\beta = 0.368$ has 913 terms, and the full set for $\beta = 0.5$ has 844 terms. The restricted sets have 720 terms.}
+\label{tab:D1WaveBetaVar}
+\end{table}
+
+To see whether the $\beta = 0.5$ set has linear dependence issues, we compared
+the convergence ratios. From \cref{tab:D1Beta368VarConv}, we see that the
+convergence ratios are less than 0.5 for $\omega = 6$, which indicates good
+convergence. \Cref{tab:D1Beta5VarConv} however shows a problem with linear
+dependence for the $\beta = 0.5$ set. Based on this analysis, we have chosen
+the set $\alpha = 0.359$, $\beta = 0.368$, and $\gamma = 0.976$ for higher
+$\kappa$ for $^1$D.
+
+\begin{table}
+\centering
+\begin{tabular}{cccccc}
+\toprule
+$\kappa$ & $\mathcal{R}(2)$ & $\mathcal{R}(3)$ & $\mathcal{R}(4)$ & $\mathcal{R}(5)$ & $\mathcal{R}(6)$ \\
+\midrule
+0.3 & 1.523 & 0.795 & 0.572 & 0.491 & 0.377 \\
+0.4 & 1.286 & 0.680 & 0.475 & 0.412 & 0.429 \\
+0.5 & 1.048 & 0.603 & 0.464 & 0.442 & 0.466 \\
+0.6 & 0.826 & 0.534 & 0.575 & 0.435 & 0.481 \\
+0.7 & 0.471 & 0.874 & 0.472 & 0.521 & 0.465 \\
+\bottomrule
+\end{tabular}
+\caption{Convergence ratios for $^1D$ at multiple $\omega$ values for the full $\beta = 0.368$ set}
+\label{tab:D1Beta368VarConv}
+\end{table}
+
+
+\begin{table}
+\centering
+\begin{tabular}{cccccc}
+\toprule
+$\kappa$ & $\mathcal{R}(2)$ & $\mathcal{R}(3)$ & $\mathcal{R}(4)$ & $\mathcal{R}(5)$ & $\mathcal{R}(6)$ \\
+\midrule
+0.3 & 2.475 & 0.352 & 1.611 & 0.316 & 1.628 \\
+0.4 & 2.157 & 0.291 & 1.372 & 0.209 & 1.902 \\
+0.5 & 1.835 & 0.254 & 1.133 & 0.225 & 1.343 \\
+0.6 & 1.539 & 0.237 & 0.979 & 0.299 & 0.667 \\
+0.7 & 1.206 & 0.306 & 0.696 & 0.360 & 0.441 \\
+\bottomrule
+\end{tabular}
+\caption{Convergence ratios for $^1D$ at multiple $\omega$ values for the full $\beta = 0.5$ set}
+\label{tab:D1Beta5VarConv}
+\end{table}
+
+
+\begin{table}
+\centering
+\begin{tabular}{c....}
+\toprule
+$\kappa$ & \multicolumn{1} {c}{$\delta_2^-$ full $\beta = 0.368$} & \multicolumn{1} {c}{$\delta_2^-$ restricted $\beta = 0.368$}  & \multicolumn{1} {c}{$\delta_2^-$ full $\beta = 0.5$}  & \multicolumn{1} {c}{$\delta_2^-$ restricted $\beta = 0.5$} \\
+\midrule
+0.3  & 1.100^{-3}  & 1.058^{-3}  & 1.977^{-3}  & 1.079^{-3}   \\
+0.4  & -1.796^{-3} & -1.898^{-3} & 8.016^{-6}  & -1.751^{-3}  \\
+0.5  & -1.070^{-2} & -1.087^{-2} & -8.432^{-3} & -1.052^{-2}  \\
+0.6  & -2.544^{-2} & -2.568^{-2} & -2.331^{-2} & -2.501^{-2}  \\
+0.7  & -4.281^{-2} & -4.314^{-2} & -4.085^{-2} & -4.191^{-2}  \\
+\bottomrule
+\end{tabular}
+\caption[$^3$D phase shifts for varying $\beta$]{$^3$D phase shifts for sets of nonlinear parameters with $\alpha = 0.6$ and $\gamma = 0.976$. The full set for $\beta = 0.365$ has 913 terms, and the full set for $\beta = 0.5$ has 854 terms. The restricted sets have 720 terms.}
+\label{tab:D3WaveBetaVar}
+\end{table}
+
+We also looked at the convergence ratios for $^3$D, as given in
+\cref{tab:D3Beta365VarConv,tab:D3Beta5VarConv}. Again, the set of nonlinear
+parameters with $\beta = 0.5$ is problematic, giving $\mathcal{R}(6) > 1$ for
+most $\kappa$ values. From this analysis, we decided on the $^3$D nonlinear
+parameters of $\alpha = 0.356$, $\beta = 0.365$, and $\gamma = 0.976$.
+
+\begin{table}
+\centering
+\begin{tabular}{cccccc}
+\toprule
+$\kappa$ & $\mathcal{R}(2)$ & $\mathcal{R}(3)$ & $\mathcal{R}(4)$ & $\mathcal{R}(5)$ & $\mathcal{R}(6)$ \\
+\midrule
+0.3 & 3.950 & 0.932 & 0.564 & 0.512 & 0.432 \\
+0.4 & 3.399 & 0.811 & 0.446 & 0.404 & 0.469 \\
+0.5 & 2.812 & 0.740 & 0.417 & 0.411 & 0.519 \\
+0.6 & 2.261 & 0.730 & 0.466 & 0.400 & 0.527 \\
+0.7 & 1.714 & 0.860 & 0.490 & 0.433 & 0.484 \\
+\bottomrule
+\end{tabular}
+\caption{Convergence ratios for $^3D$ at multiple $\omega$ values for the full $\beta = 0.365$ set}
+\label{tab:D3Beta365VarConv}
+\end{table}
+
+\begin{table}
+\centering
+\begin{tabular}{cccccc}
+\toprule
+$\kappa$ & $\mathcal{R}(2)$ & $\mathcal{R}(3)$ & $\mathcal{R}(4)$ & $\mathcal{R}(5)$ & $\mathcal{R}(6)$ \\
+\midrule
+0.3 & 7.392 & 3.424 & 0.505 & 0.426 & 1.768 \\
+0.4 & 6.978 & 3.035 & 0.390 & 0.265 & 2.421 \\
+0.5 & 6.435 & 2.625 & 0.345 & 0.229 & 2.235 \\
+0.6 & 5.739 & 2.241 & 0.393 & 0.242 & 1.251 \\
+0.7 & 5.082 & 2.063 & 0.504 & 0.244 & 0.723 \\
+\bottomrule
+\end{tabular}
+\caption{Convergence ratios for $^3D$ at multiple $\omega$ values for the full $\beta = 0.5$ set}
+\label{tab:D3Beta5VarConv}
+\end{table}
 
 
 \section{Nonlinear Parameters and Terms Used}
@@ -236,26 +525,26 @@ From \cref{tab:SimplexPWaveSingOpt,tab:SimplexPWaveTripOpt}, we see that lower e
 	\toprule
 	Partial wave & $\omega$ & $N^\prime(\omega)$ & $\alpha$ & $\beta$ & $\gamma$ & $\mu$ & $m_\ell$ \\
 	\midrule
-	$^1S$                      & 7 & 1505        & 0.568 & 0.580 & 1.093 & 0.9 & 1 \\
-	$^3S$                      & 7 & 1633        & 0.323 & 0.334 & 0.975 & 0.9 & 1 \\
-	$^1P$                      & 7 & 1000        & 0.397 & 0.376 & 0.962 & 0.9 & 3 \\
-	$^3P$                      & 7 & 1000        & 0.310 & 0.311 & 0.995 & 0.9 & 3 \\
-	$^1D$ $(\kappa < 0.3)$     & 6 & 916         & 0.359 & 0.368 & 0.976 & 0.7 & 7 \\
-	$^1D$ $(\kappa \geq 0.3)$  & 6 & 913         & 0.600 & 0.368 & 0.976 & 0.7 & 7 \\
-	$^3D$ $(\kappa < 0.3)$     & 6 & 919         & 0.356 & 0.365 & 0.976 & 0.7 & 7 \\
-	$^3D$ $(\kappa \geq 0.3)$  & 6 & 913         & 0.600 & 0.365 & 0.976 & 0.7 & 7 \\
-	$^1F$ $(\kappa < 0.4)$     & 5 & $385^\star$ & 0.359 & 0.368 & 0.976 & 0.7 & 7 \\
-	$^1F$ $(\kappa \geq 0.4)$  & 5 & 462         & 0.500 & 0.600 & 1.100 & 0.7 & 7 \\
-	$^3F$ $(\kappa < 0.4)$     & 5 & $385^\star$ & 0.356 & 0.365 & 0.976 & 0.7 & 7 \\
-    $^3F$ $(\kappa \geq 0.4)$  & 5 & 462         & 0.600 & 0.365 & 0.976 & 0.7 & 7 \\
-	$^1G$ $(\kappa < 0.45)$    & 5 & 462         & 0.359 & 0.368 & 0.976 & 0.7 & 9 \\
-    $^1G$ $(\kappa \geq 0.45)$ & 5 & 462         & 0.500 & 0.600 & 1.100 & 0.7 & 9 \\
-	$^3G$ $(\kappa < 0.45)$    & 5 & 462         & 0.356 & 0.365 & 0.976 & 0.7 & 9 \\
-    $^3G$ $(\kappa \geq 0.45)$ & 5 & 462         & 0.600 & 0.365 & 0.976 & 0.7 & 9 \\
-	$^1H$ $(\kappa < 0.5)$     & 5 & 462         & 0.359 & 0.368 & 0.976 & 0.7 & 11 \\
-	$^1H$ $(\kappa \geq 0.5)$  & 5 & 462         & 0.500 & 0.600 & 1.100 & 0.7 & 11 \\
-	$^3H$ $(\kappa < 0.45)$    & 5 & 462         & 0.356 & 0.365 & 0.976 & 0.7 & 11 \\
-    $^3H$ $(\kappa \geq 0.45)$ & 5 & 462         & 0.600 & 0.365 & 0.976 & 0.7 & 11 \\
+	$^1$S                      & 7 & 1505        & 0.568 & 0.580 & 1.093 & 0.9 & 1 \\
+	$^3$S                      & 7 & 1633        & 0.323 & 0.334 & 0.975 & 0.9 & 1 \\
+	$^1$P                      & 7 & 1000        & 0.397 & 0.376 & 0.962 & 0.9 & 3 \\
+	$^3$P                      & 7 & 1000        & 0.310 & 0.311 & 0.995 & 0.9 & 3 \\
+	$^1$D $(\kappa < 0.3)$     & 6 & 916         & 0.359 & 0.368 & 0.976 & 0.7 & 7 \\
+	$^1$D $(\kappa \geq 0.3)$  & 6 & 913         & 0.600 & 0.368 & 0.976 & 0.7 & 7 \\
+	$^3$D $(\kappa < 0.3)$     & 6 & 919         & 0.356 & 0.365 & 0.976 & 0.7 & 7 \\
+	$^3$D $(\kappa \geq 0.3)$  & 6 & 913         & 0.600 & 0.365 & 0.976 & 0.7 & 7 \\
+	$^1$F $(\kappa < 0.4)$     & 5 & $385^\star$ & 0.359 & 0.368 & 0.976 & 0.7 & 7 \\
+	$^1$F $(\kappa \geq 0.4)$  & 5 & 462         & 0.500 & 0.600 & 1.100 & 0.7 & 7 \\
+	$^3$F $(\kappa < 0.4)$     & 5 & $385^\star$ & 0.356 & 0.365 & 0.976 & 0.7 & 7 \\
+    $^3$F $(\kappa \geq 0.4)$  & 5 & 462         & 0.600 & 0.365 & 0.976 & 0.7 & 7 \\
+	$^1$G $(\kappa < 0.45)$    & 5 & 462         & 0.359 & 0.368 & 0.976 & 0.7 & 9 \\
+    $^1$G $(\kappa \geq 0.45)$ & 5 & 462         & 0.500 & 0.600 & 1.100 & 0.7 & 9 \\
+	$^3$G $(\kappa < 0.45)$    & 5 & 462         & 0.356 & 0.365 & 0.976 & 0.7 & 9 \\
+    $^3$G $(\kappa \geq 0.45)$ & 5 & 462         & 0.600 & 0.365 & 0.976 & 0.7 & 9 \\
+	$^1$H $(\kappa < 0.5)$     & 5 & 462         & 0.359 & 0.368 & 0.976 & 0.7 & 11 \\
+	$^1$H $(\kappa \geq 0.5)$  & 5 & 462         & 0.500 & 0.600 & 1.100 & 0.7 & 11 \\
+	$^3$H $(\kappa < 0.45)$    & 5 & 462         & 0.356 & 0.365 & 0.976 & 0.7 & 11 \\
+    $^3$H $(\kappa \geq 0.45)$ & 5 & 462         & 0.600 & 0.365 & 0.976 & 0.7 & 11 \\
 	\bottomrule
   \end{tabular}
   \caption[Parameters for each partial wave]{Parameters for each partial wave. Numbers marked with a star indicate the
@@ -702,7 +991,7 @@ Extra points & Phase shift \\
 \todoi{Table of final integration points}
 
 
-\subsection{Quadrature Points}
+\section{Quadrature Points}
 \label{sec:QuadraturePoints}
 
 \todoi{Put in information from ``Integration Point Numbers.nb''}

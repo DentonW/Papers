@@ -2,9 +2,11 @@
 \documentclass[Dissertation.tex]{subfiles} 
 \begin{document}
 
-\chapter{Extra Derivations}
+\chapter{Extra Derivations and Scattering Theory}
 \label{chp:ExtraDer}
 
+This chapter mainly contains short derivations that are not critical to 
+understanding the main results but are nonetheless needed for this work.
 
 \section{\texorpdfstring{$\rho$ and $\rho'$} {rho and rho'} Definitions}
 \label{sec:RhoDef}
@@ -218,7 +220,9 @@ Substituting this back into \cref{eq:LSGenLapl1}, we get cancellations with the 
 \section{\texorpdfstring{$_2F_1$}{Hypergeometric} Recursion Relation}
 \label{sec:Hypergeometric}
 
-The backwards recursion relation for the hypergeometric function is given in Refs. \cite{Drake1995} and \cite{Frolov2003} as
+The backwards recursion relation for the hypergeometric function is used in the
+short-range code (\cref{sec:CompShort}). This is given in Refs.~\cite{Drake1995}
+and \cite{Frolov2003} as
 \beq
 \label{eq:HyperIdentity}
 \Hypergeometric{2}{1}{1,a}{c}{z} = 1 + \left( \frac{a}{c} \right) z \,\, \Hypergeometric{2}{1}{1,a+1}{c+1}{z}.
@@ -272,23 +276,26 @@ _2F_1(1,a;c;z) = 1 + \left( \frac{a}{c} \right) z \,\,_2F_1(1,a+1;c+1;z).
 \section{Mixed Terms}
 \label{sec:MixedDerivation}
 
-This derivation proves \cref{eq:MixedAngSimple}. Using \cref{sec:MixedTerms} and substituting the appropriate spherical harmonics and Clebsch-Gordan coefficients,
+This derivation proves \cref{eq:MixedAngSimple}. Using \cref{eq:MixedAng} and
+substituting the appropriate spherical harmonics and Clebsch-Gordan coefficients,
 \begin{align}
+\label{eq:Psi1}
 \psi_{(1,1,2,0)} = &\sum_{m=-1}^{+1} Y_{1,m}(\theta_1,\varphi_1) Y_{1,m}(\theta_2,\varphi_2) \left< 1,m; 1,-m,0 | 2,0 \right> \nonumber \\
 	= &-\sqrt{\frac{3}{8\uppi}} \sin\theta_1 \ee^{-\ii \varphi_1} \sqrt{\frac{3}{8\uppi}} \sin\theta_2 \ee^{\ii \varphi_1} \frac{1}{\sqrt{6}} \nonumber \\
 	& + \sqrt{\frac{3}{4\uppi}} \cos\theta_1 \sqrt{\frac{3}{4\uppi}} \sin\theta_2 \frac{2}{\sqrt{6}} \nonumber \\
 	& -\sqrt{\frac{3}{8\uppi}} \sin\theta_1 \ee^{\ii \varphi_1} \sqrt{\frac{3}{8\uppi}} \sin\theta_2 \ee^{-\ii \varphi_1} \frac{1}{\sqrt{6}}.
 \end{align}
-From \cref{},
+Using \cite[p.192]{VanReethThesis}
 \beq
-\cos\theta_{12} = \sin\theta_1 \sin\theta_2 \cos(\varphi_1 - \varphi_2) + \cos\theta_1 \cos\theta_2.
+\cos\theta_{12} = \sin\theta_1 \sin\theta_2 \cos(\varphi_1 - \varphi_2) + \cos\theta_1 \cos\theta_2
 \eeq
-Using this with the standard
+and the standard
 \beq
-\cos\theta = \frac{\ee^{\ii \theta} + \ee^{-\ii \theta}}{2},
+\cos\theta = \frac{\ee^{\ii \theta} + \ee^{-\ii \theta}}{2}
 \eeq
-we obtain \cref{eq:MixedAngSimple}:
+in \cref{eq:Psi1}, we obtain \cref{eq:MixedAngSimple}:
 \begin{align}
+\label{eq:Psi2}
 \psi_{(1,1,2,0)} &= -\frac{3}{8\uppi} \frac{1}{\sqrt{6}} \sin\theta_1 \sin\theta_2 \cdot 2 \cos(\varphi_1 - \varphi_2) + \frac{3}{4\uppi} \frac{1}{\sqrt{6}} \cdot 2 \cos\theta_1 \cos\theta_2 \nonumber \\
 &= \frac{3}{4\uppi} \frac{1}{\sqrt{6}} \left(3 \cos\theta_1 \cos\theta_2 - \cos\theta_{12} \right).
 \end{align}
@@ -333,6 +340,73 @@ resonances with differing values of $q$, shown for S-wave scattering}
 	\label{fig:FanoCross}
 \end{figure}
 
+
+\section{Spherical Functions}
+\label{sec:SphericalFunc}
+%
+
+{
+\renewcommand{\arraystretch}{1.5}
+\begin{table}
+\centering
+\begin{tabular}{l l}
+\toprule\\[-1.2cm]
+Partial Wave & $\SphericalHarmonicY{\ell}{0}{\theta}{\phi}$ \\
+\midrule
+S-Wave & $\frac{1}{\sqrt{4\pi}}$ \\
+P-Wave & $\sqrt{\frac{3}{4\pi}} \cos\theta$ \\
+D-Wave & $\sqrt{\frac{5}{16\pi}} (3\cos^2\theta - 1)$ \\
+F-Wave & $\sqrt{\frac{7}{16\pi}} \left(5 \cos^3\theta - 3 \cos\theta \right)$ \\
+G-Wave & $\sqrt{\frac{9}{256\pi}} \left(35 \cos^4\theta - 30 \cos^2\theta + 3 \right)$ \\
+H-Wave & $\sqrt{\frac{11}{256\pi}} \left(63 \cos^5\theta - 70 \cos^3\theta + 15 \cos\theta \right)$ \\
+\bottomrule
+\end{tabular}
+\caption{Spherical harmonics for partial waves $\ell = 0$ through 5}
+\label{tab:SphHarm}
+\end{table}
+}
+
+{
+\renewcommand{\arraystretch}{1.5}
+\begin{table}
+\centering
+\begin{tabular}{l l}
+\toprule\\[-1.2cm]
+Partial Wave & $j_\ell(z)$ \\
+\midrule
+S-Wave & $\frac{\sin(\kappa\rho)}{\kappa\rho}$ \\
+P-Wave & $\frac{\sin z}{z^2} - \frac{\cos z}{z}$ \\
+D-Wave & $\left(\frac{3}{z^3}-\frac{1}{z}\right)\sin z - \frac{3}{z^2}\cos z$ \\
+F-Wave & $\frac{\left(z^2-15\right) \cos z}{z^3}-\frac{3 \left(2 z^2-5\right) \sin z}{z^4}$ \\
+G-Wave & $\frac{5 \left(2 z^2-21\right) \cos z}{z^4}+\frac{\left(z^4-45 z^2+105\right) \sin z}{z^5}$ \\
+H-Wave & $\frac{15 \left(z^4-28 z^2+63\right) \sin z}{z^6}+\frac{\left(-z^4+105 z^2-945\right) \cos z}{z^5}$ \\
+\bottomrule
+\end{tabular}
+\caption{Spherical Bessel functions for partial waves $\ell = 0$ through 5}
+\label{tab:SphBess}
+\end{table}
+}
+
+{
+\renewcommand{\arraystretch}{1.5}
+\begin{table}
+\centering
+\begin{tabular}{l l}
+\toprule\\[-1.2cm]
+Partial Wave & $n_\ell(z)$ \\
+\midrule
+S-Wave & $-\frac{\cos z}{z}$ \\
+P-Wave & $-\frac{\cos z}{z^2} - \frac{\sin z}{z}$ \\
+D-Wave & $-\left(\frac{3}{z^3}-\frac{1}{z}\right)\cos x - \frac{3}{z^2}\sin z$ \\
+F-Wave & $\frac{3 \left(2 z^2-5\right) \cos z}{z^4}+\frac{\left(z^2-15\right) \sin z}{z^3}$ \\
+G-Wave & $\frac{5 \left(2 z^2-21\right) \sin z}{z^4}+\frac{\left(-z^4+45 z^2-105\right) \cos z}{z^5}$ \\
+H-Wave & $\frac{\left(-z^4+105 z^2-945\right) \sin z}{z^5}-\frac{15 \left(z^4-28 z^2+63\right) \cos z}{z^6}$ \\
+\bottomrule
+\end{tabular}
+\caption{Spherical Neumann functions for partial waves $\ell = 0$ through 5}
+\label{tab:SphNeum}
+\end{table}
+}
 
 
 \biblio

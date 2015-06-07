@@ -27,30 +27,33 @@ We include two short-range symmetries for the P-wave, so that \cref{eq:GeneralWa
 \label{eq:PWaveTrial}
 \Psi_1^{\pm,t} = \widetilde{S}_1 + L_1^{\pm,t} \, \widetilde{C}_1 + \sum_{i=1}^{N'(\omega)} c_i \bar{\phi}_{1i} + \sum_{j=1}^{N'(\omega)} d_j \bar{\phi}_{2j}.
 \eeq
-Like for the S-wave and as mentioned in \cref{sec:KohnApplied}, we compute only matrix elements with the barred versions of $S_1$ and $C_1$, 
+Like for the S-wave and as mentioned in \cref{sec:KohnApplied}, we compute only
+matrix elements with the barred versions of $S_1$ and $C_1$ for the Kohn, then
+use these to construct the matrices (\cref{eq:GeneralKohnMatrix}) to compute
+the other Kohn-type variational methods.
 
 \todoi{Describe $N'(\omega)$}
 \todoi{Pairing terms - how really 2x}
 
-\noindent To simplify the notation, $\bar{S}_1$ and $\bar{C}_1$
-can be written as
-\begin{subequations}
-\label{eq:PWaveSandCBar}
-\begin{align}
-\bar{S}_1 &= \frac{Y_{10}(\theta_\rho,\varphi_\rho)S_{22} \pm Y_{10}(\theta_{\rho^\prime},\varphi_{\rho'})S_{23} }{\sqrt{2}} \label{eq:PWaveSBar} \\
-\bar{C}_1 &= \frac{Y_{10}(\theta_\rho,\varphi_\rho)C_{22} \pm Y_{10}(\theta_{\rho^\prime},\varphi_{\rho'})C_{23} }{\sqrt{2}} \label{eq:PWaveCBar} 
-\end{align}
-\end{subequations}
-with
-\begin{subequations}
-\label{eq:PWaveSandC}
-\begin{alignat}{2}
-S_{22} &={}&\Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) &\sqrt{2\kappa} \,j_1\!\left(\kappa\rho\right) \label{eq:PWaveS22Def} \\
-S_{23} &={}&\Phi_{Ps}\left(r_{13}\right) \Phi_H\left(r_2\right) &\sqrt{2\kappa} \,j_1\!\left(\kappa\rho^\prime\right) \label{eq:PWaveS23Def} \\
-C_{22} &={}-&\Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) &\sqrt{2\kappa} \,n_1\!\left(\kappa\rho\right) f_1(\rho) \label{eq:PWaveC22Def} \\
-C_{23} &={}-&\Phi_{Ps}\left(r_{13}\right) \Phi_H\left(r_2\right) &\sqrt{2\kappa} \,n_1\!\left(\kappa\rho^\prime\right) f_1(\rho^\prime). \label{eq:PWaveC23Def}
-\end{alignat}
-\end{subequations}
+%\noindent To simplify the notation, $\bar{S}_1$ and $\bar{C}_1$
+%can be written as
+%\begin{subequations}
+%\label{eq:PWaveSandCBar}
+%\begin{align}
+%\bar{S}_1 &= \frac{Y_{10}(\theta_\rho,\varphi_\rho)S_{22} \pm Y_{10}(\theta_{\rho^\prime},\varphi_{\rho'})S_{23} }{\sqrt{2}} \label{eq:PWaveSBar} \\
+%\bar{C}_1 &= \frac{Y_{10}(\theta_\rho,\varphi_\rho)C_{22} \pm Y_{10}(\theta_{\rho^\prime},\varphi_{\rho'})C_{23} }{\sqrt{2}} \label{eq:PWaveCBar} 
+%\end{align}
+%\end{subequations}
+%with
+%\begin{subequations}
+%\label{eq:PWaveSandC}
+%\begin{alignat}{2}
+%S_{22} &={}&\Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) &\sqrt{2\kappa} \,j_1\!\left(\kappa\rho\right) \label{eq:PWaveS22Def} \\
+%S_{23} &={}&\Phi_{Ps}\left(r_{13}\right) \Phi_H\left(r_2\right) &\sqrt{2\kappa} \,j_1\!\left(\kappa\rho^\prime\right) \label{eq:PWaveS23Def} \\
+%C_{22} &={}-&\Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) &\sqrt{2\kappa} \,n_1\!\left(\kappa\rho\right) f_1(\rho) \label{eq:PWaveC22Def} \\
+%C_{23} &={}-&\Phi_{Ps}\left(r_{13}\right) \Phi_H\left(r_2\right) &\sqrt{2\kappa} \,n_1\!\left(\kappa\rho^\prime\right) f_1(\rho^\prime). \label{eq:PWaveC23Def}
+%\end{alignat}
+%\end{subequations}
 
 \noindent The shielding factor, $f_1(\rho)$, is given by
 \beq
@@ -612,6 +615,11 @@ Coupled-pseudostate \cite{Campbell1998} & $4.88$ & $0.058$ & --- & --- \\
 \Cref{tab:PWaveResonancesOther} has the P-wave resonances calculated in this work and compared to that of calculations from other groups. The complex rotation result of Yan and Ho \cite{Yan1999} is one of the most accurate calculations of these resonance parameters. The positions of the first and resonances using the complex Kohn agree very well with the complex rotation, as does the width of the first resonance. We find a width for the second resonance about half that of the complex rotation. A more recent result of Yan and Ho uses a stabilization method \cite{Yan2003}, which brings the second resonance width more in line with the complex Kohn.
 
 The CC results of the Belfast group \cite{Blackwood2002,Blackwood2002b,Walters2004} show again that the H$^-$ channel is important for the resonances. Going from the 9Ps9H approximation to the 9Ps9H+H$^-$ significantly improves the first resonance position. The $^1E_R$ that they calculate is still higher than this work and that of Yan and Ho, but it is roughly comparable. Including the H$^-$ channel also allowed them to compute the second resonance's parameters. The $^2E_R$ they calculate is lower than the complex Kohn, stabilization and complex rotation, although it is also close. The CC does not seem to capture the width of the second resonance well.
+
+
+\section{Summary}
+\label{sec:SummaryP}
+
 
 
 \biblio

@@ -233,7 +233,7 @@ $\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (au) & Binding E
 \bottomrule
 \end{tabular}
 }
-\caption{Ground state energy of PsH with full set of terms}
+\caption{Ground state energy of $^1$S PsH with full set of terms}
 \label{tab:BoundEnergy1}
 \end{table}
 
@@ -260,11 +260,16 @@ $\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (au) & Binding E
 \bottomrule
 \end{tabular}
 }
-\caption{Ground state energy of PsH with Todd set of terms}
+\caption{Ground state energy of $^1$S PsH with Todd set of terms}
 \label{tab:BoundEnergyTodd1}
 \end{table}
 
-As described later in \cref{sec:ToddScattering}, we cannot use the full 1716 terms for the Ps-H scattering problem. \Cref{tab:BoundEnergyTodd1} gives the ground state energies using the restricted set of terms with Todd ordering. The cutoffs in $\omega$ are easily seen using the ViewOmegaCutoffs.py script described at \url{http://cas-bs5cph1.phys.unt.edu/wiki/index.php/ViewOmegaCutoffs.py} \cite{Wiki}.
+As described later in \cref{sec:CompPhase} we cannot use the full 1716 terms 
+for the Ps-H scattering problem. \Cref{tab:BoundEnergyTodd1} gives the ground 
+state energies using the restricted set of terms with Todd ordering. The 
+cutoffs in $\omega$ are easily seen using the ViewOmegaCutoffs.py script 
+described on the Wiki \cite{Wiki}.
+%\url{http://cas-bs5cph1.phys.unt.edu/wiki/index.php/ViewOmegaCutoffs.py}
 
 
 \begin{center}
@@ -394,22 +399,19 @@ finding the PsH energy is a simpler problem than Ps-H scattering.
 \subsection{Triplet Energy Eigenvalues}
 \label{sec:TripletEigenvalues}
 
-Our code does not predict a true triplet bound state. Mitroy and Bromley have 
+Our code does not predict a triplet bound state. Mitroy and Bromley have 
 published a paper \cite{Mitroy2007} claiming a stable triplet bound state, 
 but our code does not have the appropriate type of wavefunction to see this, 
 since it is for a H($2p$) + Ps($2p$) state. They also use a very large 
 configuration interaction basis, and this bound state is very shallow. 
 
-Despite not predicting a bound state, we run the energy eigenvalue code for the 
-triplet so that we can use this for the short-range terms for the scattering 
-program.
-This output is also used in the program for Todd's method, which is then fed 
-into the scattering program (see \cref{sec:ToddScattering}). The triplet case 
-was more sensitive to the accuracy of the matrix elements.
-Changing the energy eigenvalue code to quadruple precision let us use more
-short-range terms in our calculations.
+Despite not predicting a bound state, we run the energy eigenvalue code for 
+the triplet so that we can use this for the short-range terms for the 
+scattering programs. The triplet case was more sensitive to the accuracy of 
+the matrix elements. Changing the energy eigenvalue code to quadruple 
+precision let us use more short-range terms in our calculations.
 
- %With the singlet, 
+%With the singlet, 
 %we were able to use the full $\omega = 6$ set (924 terms) without the 
 %asymptotic expansion before linear dependence became an issue. With the 
 %triplet, we were only able to use 450 terms out of an $\omega = 7$ run if the 
@@ -436,15 +438,13 @@ $\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (a.u.) & $\Delta
 7 & 1716 & 0.323 & 0.334 & 0.975 & -0.743 386 825 704 & 0.002 764 443 796 \\
 \bottomrule
 \end{tabular}
-\caption{Eigenvalues of triplet short-range terms}
+\caption{Eigenvalues of $^3$S short-range terms}
 \label{tab:BoundEnergy3}
 \end{table}
 
-As described later in \cref{sec:ToddScattering}, we cannot use the full 1716 
-terms for the Ps-H scattering problem. \Cref{tab:BoundEnergyTodd1} gives the 
-ground state energies using the restricted set of terms with Todd ordering. 
-The cutoffs in $\omega$ are easily seen using the ViewOmegaCutoffs.py script 
-described in the Wiki \cite{Wiki}.
+Similar to the singlet, we cannot use the full 1716 
+terms for the Ps-H scattering problem. \Cref{tab:BoundEnergyTodd3} gives the 
+energy eigenvalues using the restricted set of terms with Todd ordering. 
 
 \setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
 \setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
@@ -464,7 +464,7 @@ $\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (a.u.) & $\Delta
 7 & 1633 & 0.323 & 0.334 & 0.975 & -0.743 386 823 504 & 0.000 008 079 425 \\
 \bottomrule
 \end{tabular}
-\caption{Eigenvalues of triplet short-range terms}
+\caption{Eigenvalues of $^3$S short-range terms}
 \label{tab:BoundEnergyTodd3}
 \end{table}
 
