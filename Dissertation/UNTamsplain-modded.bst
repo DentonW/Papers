@@ -567,13 +567,6 @@ FUNCTION {format.title}
   if$
 }
 
-FUNCTION {bolden}
-{ duplicate$ empty$
-    { pop$ "" }
-    { "\textbf{" swap$ * "}" * }
-  if$
-}
-
 FUNCTION {format.journal.vol.year}
 { journal empty$
     { "journal name" missing.warning ""}

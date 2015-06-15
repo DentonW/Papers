@@ -92,7 +92,10 @@ C_\ell = -&\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} \Phi_{Ps}\!\l
 \end{align}
 \end{subequations}
 The $\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho}$ are the 
-standard spherical harmonics, and $\Phi_H\,\left(r_3\right)$ are the Ps 
+spherical harmonics, $j_\ell(\kappa\rho)$ are the spherical Bessel functions,
+and $n_\ell(\kappa\rho)$ are the spherical Neumann functions. These are all
+given in \cref{sec:SphericalFunc} through $\ell = 5$.
+$\Phi_{\rm{Ps}}\!\left(r_{12}\right)$ and $\Phi_{\rm{H}}\!\left(r_3\right)$ are the Ps 
 and H ground state wavefunctions given in \cref{eq:PsWave,eq:HWave}.
 
 The shielding function, $f_\ell(\rho)$, removes the singularity at the origin 
@@ -114,7 +117,7 @@ f(\rho) = (1 - \ee^{-\lambda \rho})^3.
 \end{equation}
 Note that their paper is missing the negative sign in the exponential.
 
-\todoi{Put in plots from ``Shielding Function Plots.nb''?}
+%\todoi{Put in plots from ``Shielding Function Plots.nb''?}
 
 The Hylleraas-type short-range terms are similar to that used
 in \cref{eq:BoundWavefn}. These are chosen to have two symmetries, one 
@@ -759,8 +762,7 @@ The short-long and long-long matrix elements have a similar analysis. For
 these, the effect of the $\mathcal{L} = 2(H-E)$ operator on the long-range 
 terms must be considered, and then integrations over the external angles (see 
 \cref{chp:AngularInt}) are performed. The remaining 6-dimensional integral is 
-then numerically integrated as described in sections \ref{sec:LongLongInt} 
-and \ref{sec:ShortLongInt}.
+then numerically integrated as described in \cref{sec:LongLongInt,sec:ShortLongInt}.
 
 For all of these matrix elements, looking at the barred terms, we have 4
 integrations to perform. Using a property of the $P_{23}$ permutation operator,
@@ -908,7 +910,7 @@ Likewise,
 \label{eq:GenCLS}
 \end{align}
 
-\noindent Combining equations \ref{eq:GenSLC} and \ref{eq:GenCLS} gives
+\noindent Combining \cref{eq:GenSLC,eq:GenCLS} gives
 \begin{align}
 \nonumber (\widetilde{S}_\ell,\mathcal{L}\widetilde{C}_\ell) - (\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell) = \,\, &[u_{00} u_{10} - u_{10} u_{00}] (\bar{S}_\ell,\mathcal{L}\bar{S}_\ell) + [u_{00} u_{11} - u_{10} u_{01}] (\bar{S}_\ell,\mathcal{L}\bar{C}_\ell) \\
 \nonumber + &[u_{01} u_{10} - u_{11} u_{00}] (\bar{C}_\ell,\mathcal{L}\bar{S}_\ell) + [u_{01} u_{11} - u_{11} u_{01}] (\bar{C}_\ell,\mathcal{L}\bar{C}_\ell) \\
@@ -920,7 +922,7 @@ Likewise,
 %\beq
 %(\widetilde{S}_\ell,\mathcal{L}\widetilde{C}_\ell) - (\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell) = (\bar{S}_\ell,\mathcal{L}\bar{C}_\ell) - (\bar{C}_\ell,\mathcal{L}\bar{S}_\ell).
 %\eeq
-This is finally written as the general form of equation \ref{eq:SLCandCLS}, giving
+This is finally written as the general form of \cref{eq:SLCandCLS}, giving
 \beq
 (\widetilde{S}_\ell,\mathcal{L}\widetilde{C}_\ell) = (\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell) + \Det{\textbf{u}}.
 \label{eq:GenSLCandCLS}
@@ -930,9 +932,8 @@ This relation can let us obtain the
 $(\widetilde{S}_\ell,\mathcal{L}\widetilde{C}_\ell)$ matrix element from
 $(\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell)$, but it also gives us a 
 nice numerical check. I calculate these two matrix elements separately in my 
-code and calculate their difference for the Kohn. If it is close to 1, this
+code and calculate their difference for the Kohn. \label{GenSLCandCLS}If it is close to 1, this
 gives us confidence that the long-long integrations are accurate.
-\todoi{Make sure that this is mentioned in the computation chapter.}
 
 
 \subsection{Matrix Elements Involving Long-Range Terms}
@@ -947,7 +948,6 @@ then numerically integrated as described in \cref{sec:LongLongInt,sec:ShortLongI
 \label{sec:LSTerms}
 The matrix elements in \cref{eq:GeneralKohnMatrix} require us to first determine
 $\mathcal{L}\bar{S}_\ell$. We start with examining $\mathcal{L}S_\ell$ first.
-
 Using \cref{eq:GenSDef,eq:LDef}, 
 \begin{align}
 \label{eq:LS1}
@@ -1013,49 +1013,48 @@ given in this table is substituted in \cref{eq:LC2} to find the full $\mathcal{L
 	\label{fig:LCMath}
 \end{figure}
 
-{
-\renewcommand{\arraystretch}{3}  % To space out rows - could also look at the array environment.
-\begin{table}
-\centering
-\centerline{
-\begin{tabular}{c l}
-\toprule \\[-2.7cm]
-Partial & \\[-1.3cm]
-Wave & $\frac{1}{2} \left(\Laplacian_\rho + \kappa^2\right) \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} n_\ell(\kappa\rho) f_\ell(\rho)$ \\
-\midrule
-S-Wave & {$\!\begin{aligned} % http://tex.stackexchange.com/q/98482/16595 
-               \frac{2 \kappa  f_\ell^\prime(\rho ) \sin (\kappa  \rho )-f_\ell^{\prime\prime}(\rho) \cos (\kappa \rho )}{2 \kappa  \rho } \\    % http://tex.stackexchange.com/q/78788/16595
-           \end{aligned}$} \\
-P-Wave & {$\!\begin{aligned}
-				-\frac{\rho  f_\ell^{\prime\prime}(\rho ) \left[\kappa  \rho  \sin (\kappa \rho)+\cos (\kappa \rho )\right]+2 f_\ell^\prime(\rho ) \left[\left(\kappa ^2 \rho ^2-1\right) \cos (\kappa  \rho )-\kappa  \rho  \sin (\kappa \rho )\right]}{2 \kappa ^2 \rho ^3}
-			\end{aligned}$} \\
-D-Wave & {$\!\begin{aligned}
-		-\frac{1}{2 \kappa ^3 \rho ^4} &\left\{\rho  f_\ell^{\prime\prime}(\rho ) \left[\left(3-\kappa ^2 \rho ^2\right) \cos (\kappa  \rho )+3 \kappa  \rho  \sin (\kappa  \rho )\right] \right. \\
-		& \left.+2 f_\ell^\prime(\rho ) \left[\kappa  \rho  \left(\kappa ^2 \rho ^2-6\right) \sin (\kappa  \rho )+3 \left(\kappa ^2 \rho ^2-2\right) \cos (\kappa  \rho )\right] \right\}
-		\end{aligned}$} \\[0.6cm]
-F-Wave & {$\!\begin{aligned}
-	\frac{1}{2 \kappa ^4 \rho ^5} &\left\{\rho  f_\ell^{\prime\prime}(\rho ) \left[\kappa  \rho  \left(\kappa ^2 \rho ^2-15\right) \sin (\kappa  \rho )+3 \left(2 \kappa ^2 \rho ^2-5\right) \cos (\kappa  \rho )\right] \right. \\
-	& \left. +2 f_\ell^\prime(\rho ) \left[3 \kappa  \rho  \left(15-2 \kappa ^2 \rho ^2\right) \sin (\kappa  \rho )+\left(\kappa ^4 \rho ^4-21 \kappa ^2 \rho ^2+45\right) \cos (\kappa  \rho )\right]\right\}
-	\end{aligned}$} \\[1cm] 
-G-Wave & {$\!\begin{aligned}
-	\frac{1}{2 \kappa ^5 \rho ^6} & \left\{2 f_\ell^\prime(\rho ) \left[\kappa  \rho  \left(\kappa ^4 \rho ^4-55 \kappa ^2 \rho ^2+420\right) \sin (\kappa  \rho ) \right. \right. \\
-	& \left. +5 \left(2 \kappa ^4 \rho ^4-39 \kappa ^2 \rho ^2+84\right) \cos (\kappa  \rho )\right]-\rho  f_\ell^{\prime\prime}(\rho ) \left[5 \kappa  \rho  \left(21-2 \kappa ^2 \rho ^2\right) \sin (\kappa  \rho ) \right. \\
-	& \left. \left. +\left(\kappa ^4 \rho ^4-45 \kappa ^2 \rho ^2+105\right) \cos (\kappa  \rho )\right] \right\}
-	\end{aligned}$} \\[1.5cm]
-H-Wave & {$\!\begin{aligned}
-	-\frac{1}{2 \kappa ^6 \rho ^7} & \left\{\rho  f_\ell^{\prime\prime}(\rho ) \left[\kappa  \rho  \left(\kappa ^4 \rho ^4-105 \kappa ^2 \rho ^2+945\right) \sin (\kappa  \rho ) \right. \right. \\
-	& \left. +15 \left(\kappa ^4 \rho ^4-28 \kappa ^2 \rho ^2+63\right) \cos (\kappa  \rho )\right] \\
-	& + 2 f_\ell^\prime(\rho ) \left[\left(\kappa ^6 \rho ^6-120 \kappa ^4 \rho ^4+2205 \kappa ^2 \rho ^2-4725\right) \cos (\kappa  \rho ) \right. \\
-	& \left. \left. -15 \kappa  \rho  \left(\kappa ^4 \rho ^4-42 \kappa ^2 \rho ^2+315\right) \sin (\kappa  \rho )\right]\right\}
-	\end{aligned}$} \\
-\bottomrule
-\end{tabular}
-}
-\caption{Part of $\mathcal{L}C_\ell$ derived for each partial wave}
-\label{tab:LCList}
-\end{table}
-}
-\todoi{Put in each partial wave section}
+%{
+%\renewcommand{\arraystretch}{3}  % To space out rows - could also look at the array environment.
+%\begin{table}
+%\centering
+%\centerline{
+%\begin{tabular}{c l}
+%\toprule \\[-2.7cm]
+%Partial & \\[-1.3cm]
+%Wave & $\frac{1}{2} \left(\Laplacian_\rho + \kappa^2\right) \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} n_\ell(\kappa\rho) f_\ell(\rho)$ \\
+%\midrule
+%S-Wave & {$\!\begin{aligned} % http://tex.stackexchange.com/q/98482/16595 
+               %\frac{2 \kappa  f_\ell^\prime(\rho ) \sin (\kappa  \rho )-f_\ell^{\prime\prime}(\rho) \cos (\kappa \rho )}{2 \kappa  \rho } \\    % http://tex.stackexchange.com/q/78788/16595
+           %\end{aligned}$} \\
+%P-Wave & {$\!\begin{aligned}
+				%-\frac{\rho  f_\ell^{\prime\prime}(\rho ) \left[\kappa  \rho  \sin (\kappa \rho)+\cos (\kappa \rho )\right]+2 f_\ell^\prime(\rho ) \left[\left(\kappa ^2 \rho ^2-1\right) \cos (\kappa  \rho )-\kappa  \rho  \sin (\kappa \rho )\right]}{2 \kappa ^2 \rho ^3}
+			%\end{aligned}$} \\
+%D-Wave & {$\!\begin{aligned}
+		%-\frac{1}{2 \kappa ^3 \rho ^4} &\left\{\rho  f_\ell^{\prime\prime}(\rho ) \left[\left(3-\kappa ^2 \rho ^2\right) \cos (\kappa  \rho )+3 \kappa  \rho  \sin (\kappa  \rho )\right] \right. \\
+		%& \left.+2 f_\ell^\prime(\rho ) \left[\kappa  \rho  \left(\kappa ^2 \rho ^2-6\right) \sin (\kappa  \rho )+3 \left(\kappa ^2 \rho ^2-2\right) \cos (\kappa  \rho )\right] \right\}
+		%\end{aligned}$} \\[0.6cm]
+%F-Wave & {$\!\begin{aligned}
+	%\frac{1}{2 \kappa ^4 \rho ^5} &\left\{\rho  f_\ell^{\prime\prime}(\rho ) \left[\kappa  \rho  \left(\kappa ^2 \rho ^2-15\right) \sin (\kappa  \rho )+3 \left(2 \kappa ^2 \rho ^2-5\right) \cos (\kappa  \rho )\right] \right. \\
+	%& \left. +2 f_\ell^\prime(\rho ) \left[3 \kappa  \rho  \left(15-2 \kappa ^2 \rho ^2\right) \sin (\kappa  \rho )+\left(\kappa ^4 \rho ^4-21 \kappa ^2 \rho ^2+45\right) \cos (\kappa  \rho )\right]\right\}
+	%\end{aligned}$} \\[1cm] 
+%G-Wave & {$\!\begin{aligned}
+	%\frac{1}{2 \kappa ^5 \rho ^6} & \left\{2 f_\ell^\prime(\rho ) \left[\kappa  \rho  \left(\kappa ^4 \rho ^4-55 \kappa ^2 \rho ^2+420\right) \sin (\kappa  \rho ) \right. \right. \\
+	%& \left. +5 \left(2 \kappa ^4 \rho ^4-39 \kappa ^2 \rho ^2+84\right) \cos (\kappa  \rho )\right]-\rho  f_\ell^{\prime\prime}(\rho ) \left[5 \kappa  \rho  \left(21-2 \kappa ^2 \rho ^2\right) \sin (\kappa  \rho ) \right. \\
+	%& \left. \left. +\left(\kappa ^4 \rho ^4-45 \kappa ^2 \rho ^2+105\right) \cos (\kappa  \rho )\right] \right\}
+	%\end{aligned}$} \\[1.5cm]
+%H-Wave & {$\!\begin{aligned}
+	%-\frac{1}{2 \kappa ^6 \rho ^7} & \left\{\rho  f_\ell^{\prime\prime}(\rho ) \left[\kappa  \rho  \left(\kappa ^4 \rho ^4-105 \kappa ^2 \rho ^2+945\right) \sin (\kappa  \rho ) \right. \right. \\
+	%& \left. +15 \left(\kappa ^4 \rho ^4-28 \kappa ^2 \rho ^2+63\right) \cos (\kappa  \rho )\right] \\
+	%& + 2 f_\ell^\prime(\rho ) \left[\left(\kappa ^6 \rho ^6-120 \kappa ^4 \rho ^4+2205 \kappa ^2 \rho ^2-4725\right) \cos (\kappa  \rho ) \right. \\
+	%& \left. \left. -15 \kappa  \rho  \left(\kappa ^4 \rho ^4-42 \kappa ^2 \rho ^2+315\right) \sin (\kappa  \rho )\right]\right\}
+	%\end{aligned}$} \\
+%\bottomrule
+%\end{tabular}
+%}
+%\caption{Part of $\mathcal{L}C_\ell$ derived for each partial wave}
+%\label{tab:LCList}
+%\end{table}
+%}
 
 Matrix elements involving $\mathcal{L}C_\ell^\prime$ look similar but have the 2 and 3 coordinates swapped. In other words, $\rho \leftrightarrow \rho^\prime$.
 
@@ -1111,7 +1110,6 @@ antisymmetric functions causes the integral to be 0:
 \label{eq:SLS0Test}
 (S_\ell,\mathcal{L}S_\ell) = (S_\ell^\prime,\mathcal{L}S_\ell^\prime) = 0.
 \eeq
-\todoi{Reference this in computation section}
 Therefore, using \cref{eq:LSFinal,eq:LSPrimeFinal},
 \begin{subequations}
 \label{eq:SbarLSbar}
@@ -1149,7 +1147,7 @@ Again, from the properties of the $P_{23}$ permutation operator,
 (\phi_i,\mathcal{L}S_\ell) = (\phi_i^\prime,\mathcal{L}S_\ell^\prime) \text{ and } (\phi_i,\mathcal{L}S_\ell^\prime) = (\phi_i^\prime,\mathcal{L}S_\ell).
 \eeq
 
-\noindent Equation (\ref{eq:PhiBarLSBar1}) becomes
+\noindent \Cref{eq:PhiBarLSBar1} becomes
 \begin{subequations}
 \label{eq:PhiBarLSBar2}
 \begin{align}
@@ -1158,7 +1156,7 @@ Again, from the properties of the $P_{23}$ permutation operator,
 \end{align}
 \end{subequations}
 
-\noindent Notice that (\ref{eq:PhiBarLSBar2a}) and (\ref{eq:PhiBarLSBar2b}) are equivalent ways of writing this expression.  Either could be used, depending on the form desired for the computation.
+\noindent Notice that \cref{eq:PhiBarLSBar2a,eq:PhiBarLSBar2b}) are equivalent ways of writing this expression. Either could be used, depending on the form desired for the computation.
 From \cref{eq:LSFinal,eq:LSPrimeFinal},
 \begin{align}
 (\bar{\phi}_i, \mathcal{L}\bar{S}_\ell) &= \frac{2}{\sqrt{2}} \left[\left( \phi_i \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_\ell\right) \pm \left( \phi_i^\prime \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_\ell\right)\right] \\

@@ -9,10 +9,11 @@
 \chapter{Cross Sections}
 \label{chp:CrossSections}
 
-We get the phase shifts directly from the Kohn-type variational methods, but a 
-more relevant quantity for experiments is the cross section. Cross sections 
-essentially give the strength of the interaction and are a quantity that can 
-be measured experimentally.
+\lettrine{\textcolor{startcolor}{W}}{e} obtain the phase shifts directly from 
+the Kohn-type variational methods, but a more relevant quantity for 
+experiments is the cross section. Cross sections essentially give the 
+strength of the interaction and are a quantity that can be measured 
+experimentally.
 
 \begin{figure}
 	\centering
@@ -473,21 +474,21 @@ equaling 0 from the Legendre polynomial.
 \begin{figure}
 	\centering
 	\includegraphics[width=5.5in]{percent-diff-cross-sections-full-g}
-	\caption[Percent difference of differential cross sections at all angles]{Percent difference of $\frac{d\sigma_{el}}{d\Omega}$ for upper limit of summations in \ref{eq:DiffCross} as $\ell_{max} = 3$ versus $\ell_{max} = 4$ for all angles and energies}
+	\caption[Percent difference of differential cross sections at all angles]{Percent difference of $\frac{d\sigma_{el}}{d\Omega}$ for upper limit of summations in \cref{eq:DiffCross} as $\ell_{max} = 3$ versus $\ell_{max} = 4$ for all angles and energies}
 	\label{fig:percent-diff-cross-sections-full-g}
 \end{figure}
 
 \begin{figure}
 	\centering
 	\includegraphics[width=5.5in]{percent-diff-cross-sections-full-h}
-	\caption[Percent difference of differential cross sections at all angles]{Percent difference of $\frac{d\sigma_{el}}{d\Omega}$ for upper limit of summations in \ref{eq:DiffCross} as $\ell_{max} = 4$ versus $\ell_{max} = 5$ for all angles and energies}
+	\caption[Percent difference of differential cross sections at all angles]{Percent difference of $\frac{d\sigma_{el}}{d\Omega}$ for upper limit of summations in \cref{eq:DiffCross} as $\ell_{max} = 4$ versus $\ell_{max} = 5$ for all angles and energies}
 	\label{fig:percent-diff-cross-sections-full-h}
 \end{figure}
 
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{percent-diff-cross-sections-g}
-	\caption[Percent difference of differential cross sections at selected angles]{Percent difference of $\frac{d\sigma_{el}}{d\Omega}$ for upper limit of summations in \ref{eq:DiffCross} as $\ell_{max} = 3$ versus $\ell_{max} = 4$ for selected angles}
+	\caption[Percent difference of differential cross sections at selected angles]{Percent difference of $\frac{d\sigma_{el}}{d\Omega}$ for upper limit of summations in \cref{eq:DiffCross} as $\ell_{max} = 3$ versus $\ell_{max} = 4$ for selected angles}
 	\label{fig:percent-diff-cross-sections-g}
 \end{figure}
 
@@ -496,7 +497,7 @@ equaling 0 from the Legendre polynomial.
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{percent-diff-cross-sections-h}
-	\caption[Percent difference of differential cross sections at selected angles]{Percent difference of $\frac{d\sigma_{el}}{d\Omega}$ for upper limit of summations in \ref{eq:DiffCross} as $\ell_{max} = 4$ versus $\ell_{max} = 5$ for selected angles}
+	\caption[Percent difference of differential cross sections at selected angles]{Percent difference of $\frac{d\sigma_{el}}{d\Omega}$ for upper limit of summations in \cref{eq:DiffCross} as $\ell_{max} = 4$ versus $\ell_{max} = 5$ for selected angles}
 	\label{fig:percent-diff-cross-sections-h}
 \end{figure}
 
@@ -665,7 +666,8 @@ but it is most clearly shown in \cref{fig:diff-cross-section-2D-theta}.
 
 %\todoi{Other papers describing relationship between elastic and momentum-transfer?}
 %
-%\todoi{Ortho-para conversion ratio in \cite{Massey1954,Biswas1998,Raya,Rayb}. Data from \cite{Biswas1998} pulled form plot using WebPlotDigitizer \cite{WebPlotDigitizer}}
+%\todoi{Ortho-para conversion ratio in \cite{Massey1954,Biswas1998,Raya,Rayb}.
+%Data from \cite{Biswas1998} pulled form plot using WebPlotDigitizer \cite{WebPlotDigitizer}}
 %
 %\todoi{Revisit ortho-para conversion cross section. Does this really show the ortho-Ps
 %converting to para-Ps? Because we are not considering the spin of Ps but rather the
@@ -676,8 +678,30 @@ but it is most clearly shown in \cref{fig:diff-cross-section-2D-theta}.
 \section{Summary}
 \label{sec:SummaryCross}
 
+Computing the phase shifts for the first three partial waves allowed us to
+calculate the elastic integrated cross section for for Ps-H scattering. This
+cross section compares well to the CC \cite{Walters2004} but with some 
+significant differences at both low and high $\kappa$ (below the Ps(n=2) 
+threshold). The $\ell = 3 - 5$ partial waves are used in this calculation but
+affect the integrated cross section little. An interesting feature is the
+dip and maximum under \SI{1}{eV}, which is caused by the interference of the
+$^1$S and $^1$P partial wave cross sections.
+
+The differential cross section converges slower than the integrated cross
+section with respect to $\ell$, so we need through the H-wave to obtain 
+reasonably accurate differential cross sections. The differential cross section
+exhibits a complicated behavior, with the singlet resonances contributing
+greatly near the Ps(n=2) threshold. At very low energies, the differential
+cross section is slightly backward peaked and becomes strongly forward peaked
+as energy increases. The momentum transfer cross section is identical to the
+elastic integrated cross section at nearly zero energy but becomes larger as
+energy increases, up to approximately \SI{0.46}{eV}, which corresponds with the
+differential cross section being backward peaked. Past this energy, the 
+momentum transfer cross section is less than the elastic integrated cross
+section, indicating that scattering is more forward peaked.
 
 
 
 \biblio
 \end{document}
+

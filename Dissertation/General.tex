@@ -9,23 +9,44 @@
 \chapter{General Ps-H Formalism}
 \label{chp:General}
 
-%\todoi{Combine with Chapter 3?} 
 
-\lettrine{\textcolor{startcolor}{F}}{or} the first two partial waves of the Ps-H system, I was able to compare my code and results, including individual matrix elements, with code previously written by Peter Van Reeth. As there was no available code to compare against for the D-wave, we took steps to write a general code to compare against. The long-range code, covered in section \ref{sec:GeneralLong}, is a straightforward generalization from the previous codes. The short-range code, discussed in section \ref{sec:GeneralShort}, uses a different formalism, enabling us to compare two different methods.
+%\lettrine{\textcolor{startcolor}{F}}{or} the first two partial waves of the
+%Ps-H system, I was able to compare my code and results, including individual 
+%matrix elements, with code and results from Van Reeth \cite{VanReethPrivate}.
+%As there was no available code to compare against for the D-
+%wave, I took steps to write a general code to compare against. The long-range
+%code, covered in \cref{sec:GeneralLong}, is a straightforward 
+%generalization from the previous codes. The short-range code, discussed in 
+%\cref{sec:GeneralShort}, uses a different formalism, enabling us to 
+%compare two different methods for the first three partial waves.
 
-\section{General Long-Range}
+\lettrine{\textcolor{startcolor}{T}}{o} extend this work to higher partial 
+waves, we could have continued as before, performing derivations and writing 
+new code for each partial wave. This takes time and is error prone, so during
+the course of writing the D-wave code, I investigated creating a general
+formalism that works for arbitrary $\ell$. The long-range
+code, covered in \cref{sec:GeneralLong}, is a straightforward 
+generalization from the previous codes. The short-range code, discussed in 
+\cref{sec:GeneralShort}, uses the Laplacian formalism instead of the
+gradient-gradient that we used in the S-, P-, and D-wave short-short codes,
+which also enabled us to compare the two different methods for the first three
+partial waves.
+
+
+
+\section{General Long-Range Matrix Elements}
 \label{sec:GeneralLong}
 
-If the ``mixed terms'' in \cref{sec:MixedTerms} are not included for the
+If the mixed symmetry terms in \cref{sec:MixedTerms} are not included for the
 D-wave, the P-wave and D-wave long-range codebases are very similar. The S-wave 
 is not much different as well, but it only has a single symmetry. We also
 only treat the first two symmetries for $\ell \geq 2$.
 
-\subsection{Long-Long}
+\subsection{Long-Long Matrix Elements}
 \label{sec:GeneralLongLong}
 
 One major difference for similar matrix elements is the angular integrations. 
-As shown in Appendix \ref{chp:AngularInt}, the external angular integrations 
+As shown in \cref{chp:AngularInt}, the external angular integrations 
 for each partial wave have different results, due to the different spherical 
 harmonics. $\widetilde{S}_\ell$ and $\widetilde{C}_\ell$ are also of a similar form between the 
 partial waves, as seen in \cref{eq:PWaveSandCBar,eq:PWaveSandC,eq:DWaveSandCBar,eq:DWaveSandC}.
@@ -54,7 +75,7 @@ integrations.
 %\eeq
 
 
-\subsection{Short-Long}
+\subsection{Short-Long Matrix Elements}
 \label{sec:GeneralShortLong}
 The short-range functions are also easily generalizable. For the P-wave and
 D-wave, these are seen in \cref{eq:PWavePhiBar,eq:DWavePhiBar}. The $\phi_i$
@@ -62,7 +83,7 @@ and $\phi_j$ parts for each are the same. This fact can only
 be easily used for the short-long calculations and not the short-short 
 calculations, due to the action of the $\mathcal{L}$-operator on these terms. The 
 formalism we have used for the short-long terms at every stage only operates
-$\mathcal{L}$ on the long-range parts. Section \ref{sec:GeneralShort} covers 
+$\mathcal{L}$ on the long-range parts. \Cref{sec:GeneralShort} covers 
 the calculations of the short-short terms using a general formalism.
 
 %\subsection{Implementation}
@@ -74,18 +95,20 @@ the calculations of the short-short terms using a general formalism.
 \label{sec:GeneralShort}
 
 The short-short integrals are more complicated due to the 
-gradient-gradient formalism we have used (see equation \ref{eq:BoundGradient}).
+gradient-gradient operator acting on the short-range terms (see \cref{eq:BoundGradient}).
 As an example of the nature of these, refer to \cref{sec:DWaveShortShort}.
 The derivations were previously performed by rotating 
 the coordinate system and integrating over external angles first, as 
-described in Appendix \ref{chp:AngularInt}. This approach works, but it 
+described in \cref{chp:AngularInt}. This approach works, but it 
 cannot be extended to higher partial waves without completing a full 
-derivation for each partial wave. This also introduces terms that may be too 
-singular for higher partial waves. Drake and Yan \cite{Yan1997} expand upon 
+derivation for each partial wave. %This also introduces terms that may be too 
+%singular for higher partial waves.
+Drake and Yan \cite{Yan1997} expand upon 
 their previous work for the three-electron Hylleraas integrals to include the 
-spherical harmonics using the Laplacian formalism instead.
-It is this approach that we take here. All equations 
-used from their paper have been rederived in my notes \cite{Wiki}.
+spherical harmonics using the Laplacian formalism instead, which still
+has a complicated form but works for arbitrary $\ell$.
+It is this approach that we take here. All equations in this
+section have been rederived for our system in my notes \cite{Wiki,figshare}.
 The work of Harris \cite{Harris2005a} may also be directly
 applicable to this problem, but this has not yet been explored.
 
@@ -98,9 +121,8 @@ as in \cref{eq:BoundHamiltonian} by
 \label{eq:GenHam1}
 H = \sum_{i=1}^3 \left(-\frac{1}{2} \nabla_i^2 - \frac{1}{r_i} \right) + \sum_{i>j}^3 \frac{1}{r_{ij}}.
 \eeq
-
-\noindent As worked out in my notes and shown in their paper, when the
-Laplacians are expanded, this is given by the form
+As in Ref.~\cite{Yan1997}, when the Laplacians are expanded, this is given by
+the form
 \begin{align}
 \label{eq:GenHam2}
 \nonumber H = -\frac{1}{2} & \left[ \sum_{i=1}^3 \left( \frac{\partial^2}{\partial r_i^2} + \frac{2}{r_i} \frac{\partial}{\partial r_i} - \frac{\ell(\ell+1)}{r_i^2} \right) + \sum_{i>j}^3 \left( 2 \frac{\partial^2}{\partial r_i^2} + \frac{4}{r_{ij}} \frac{\partial}{\partial r_i} \right) + \sum_{i \neq j}^3 \left(\frac{r_i^2 - r_j^2 + r_{12}^2}{r_i r_j} \right) \right. \\
@@ -113,11 +135,11 @@ Laplacians are expanded, this is given by the form
 (with $\mu \rightarrow 0$). As defined in Ref. \cite{Yan1997},
 $\hat{\boldsymbol{r}_j} = \boldsymbol{r}_i/r_i$ and $\hat{\nabla}_i^Y = r_i \nabla_i^Y$.
 The terms involving $\nabla_i^Y$ only operate on the spherical 
-harmonics, and they will be discussed in section \ref{sec:GenSphHarm}.
+harmonics, and they will be discussed in \cref{sec:GenSphHarm}.
 
-The wavefunction we use is slightly different from the form Drake and Yan 
+The wavefunction we use is slightly different from the form Yan and Drake \cite{Yan1997}
 use. Specifically, we handle the antisymmetrization operator differently in 
-our code, and we do not include the $\Omega$ function, given by equation (10) 
+our code, and we do not include the $\Omega$ function, given by Equation (10) 
 in their paper. Part of the difference here is that we are working with two 
 electrons and one positron, whereas they are working with systems that have 
 three electrons, such as binding energy calculations of Li.
@@ -166,6 +188,7 @@ Note that $\alpha$, $\beta$, and $\gamma$ are not necessarily the same as those
 in \cref{eq:PhiDef}. These will be $2\alpha$, $2\beta$, and $2\gamma$ for the
 direct-direct terms and $2\alpha$, $\beta+\gamma$, $\gamma+\beta$ for the
 direct-exchange terms. After some manipulation, this integral can be written as
+\cite{Yan1997}
 \begin{align}
 \label{eq:ShortIntGen2}
 I(\ell_1^\prime m_1^\prime, &\ell_2^\prime m_2^\prime, \ell_3^\prime m_3^\prime, \ell_1 m_1, \ell_2 m_2, \ell_3 m_3; j_1,j_2,j_3,j_{12},j_{23},j_{31}; \alpha, \beta, \gamma)  \nonumber \\
@@ -273,7 +296,7 @@ This addition to their wavefunction is included in the
 $\tilde{C}^1(\hat{\textit{\textbf{r}}}_1 \bm{\cdot} \hat{\textit{\textbf{r}}}_2)$
 and allows them to reduce these using graphical methods as in
 Refs.~\cite{Lindgren2012,Brink1993}. Unfortunately, such simplifications are not possible with the 
-form of our wavefunction.
+form of \cref{eq:GeneralWaveTrial}.
 
 We note that $C^1(\hat{\textit{\textbf{r}}}_1 \bm{\cdot} \hat{\textit{\textbf{r}}}_2) = C^1(\hat{\textit{\textbf{r}}}_2 \bm{\cdot} \hat{\textit{\textbf{r}}}_1)$, but $I^1(\hat{\boldsymbol{r}_1} \cdot \hat{\nabla}_2^Y) \neq I^1(\hat{\boldsymbol{r}_2} \cdot \hat{\nabla}_1^Y)$. Namely,
 \begin{align}
@@ -319,6 +342,8 @@ with
 
 \section{Programs}
 \label{sec:GenShortProg}
+The general codes described in this chapter are available on GitHub \cite{GitHub}.
+
 The general short-short code implementing the equations described in \cref{sec:GeneralShort}
 is at least an order of magnitude slower than the corresponding S-, P-, and D-wave
 short-short code developed separately for each of the first three partial waves.
@@ -329,10 +354,10 @@ A rough analysis of the code shows that the bulk of the processing time is
 spent calculating the angular parts, i.e. the 3-j and 6-j symbols. Due to the 
 symmetries inherent in the 3-j and 6-j symbols, different inputs can generate 
 the same output. Also, many input values to these do not satisfy the 
-selection rules \cite[p.1054-1064]{Messiah1999} \cite{Edmonds1996},
-giving a result of 0.
+selection rules for the 3-j and 6-j symbols
+\cite[p.1054-1064]{Messiah1999} \cite{Edmonds1996}, giving a result of 0.
 
-Multiple papers \cite{Luscombe1998,Wei1998,Rasch2003,Johansson2015} have
+Multiple papers \cite{Luscombe1998,Wei1998,Rasch2004,Johansson2015} have
 detailed strategies to exploit the symmetries to speed up calculations of the
 3-j and 6-j symbols. Storing a full lookup table with the full parameter
 space of the 6 input variables would be prohibitively memory-intensive.

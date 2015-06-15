@@ -8,70 +8,78 @@
 
 %\todoi{Variation of $\mu$ to get 0.7. Latest variation of other nonlinear parameters} 
 
+Van Reeth \cite{VanReethPrivate} had D-wave notes that I used as guidance for
+the D-wave derivations. He also had code for the $^1$D-wave that we used to
+compare our independent code against after it was written. His D-wave work was
+unpublished, unlike that of the S-wave and P-wave \cite{VanReeth2003,VanReeth2004}.
+
+
 \section{Wavefunction}
 \label{sec:DWaveFn}
 
 Similar to the discussions for the S-wave (\cref{chp:SWave}) and the P-wave
-(\cref{chp:PWave}), here we present the D-wave wavefunction for the Kohn
-variational method in \cref{eq:DWaveTrial}. The wavefunction for each of the 
+(\cref{chp:PWave}), here we present the D-wave wavefunction for multiple Kohn-type
+variational methods in \cref{eq:DWaveTrial}, but throughout this chapter, we
+only consider the Kohn variational method. The wavefunction for each of the 
 variants of the Kohn can be easily constructed from this by using the general
-formalism in \cref{sec:GeneralWave,sec:KohnApplied}.
+formalism in \cref{sec:GeneralWave,sec:KohnApplied}. The general D-wave
+wavefunction is given by
 \begin{equation}
-\Psi_t^\pm = \widetilde{S}_2 + L_2^{\pm,t} \, \widetilde{C}_2 + \sum_{i=1}^{N(\omega)} c_i \bar{\phi}_{1i} + \sum_{j=1}^{N(\omega)} d_j \bar{\phi}_{2j} + \sum_{j=1}^{N(\omega)} f_k \bar{\phi}_{12k}
+\Psi_t^\pm = \widetilde{S}_2 + L_2^{\pm,t} \, \widetilde{C}_2 + \sum_{i=1}^{N'(\omega)} c_i \bar{\phi}_{1i} + \sum_{j=1}^{N'(\omega)} d_j \bar{\phi}_{2j} + \sum_{j=1}^{N'(\omega)} f_k \bar{\phi}_{12k}.
 \label{eq:DWaveTrial}
 \end{equation}
-
-\noindent Including exchange, $\bar{S}_2$ and $\bar{C}_2$ are
-\begin{subequations}
-\label{eq:DWaveSandCBar}
-\begin{align}
-\bar{S}_2 &= \frac{Y_{20}(\theta_\rho,\varphi_\rho)S_{22} \pm Y_{20}(\theta_{\rho^\prime},\varphi_{\rho'})S_{23} }{\sqrt{2}} \label{eq:DWaveSBar} \\
-\bar{C}_2 &= \frac{Y_{20}(\theta_\rho,\varphi_\rho)C_{22} \pm Y_{20}(\theta_{\rho^\prime},\varphi_{\rho'})C_{23} }{\sqrt{2}} \label{eq:DWaveCBar} 
-\end{align}
-\end{subequations}
-with
-\begin{subequations}
-\label{eq:DWaveSandC}
-\begin{alignat}{2}
-S_{22} &={}&\Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) &\sqrt{2\kappa} \,j_2\!\left(\kappa\rho\right) \label{eq:DWaveS22Def} \\
-S_{23} &={}&\Phi_{Ps}\left(r_{13}\right) \Phi_H\left(r_2\right) &\sqrt{2\kappa} \,j_2\!\left(\kappa\rho^\prime\right) \label{eq:DWaveS23Def} \\
-C_{22} &={}-&\Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) &\sqrt{2\kappa} \,n_2\!\left(\kappa\rho\right) f_{2}(\rho) \label{eq:DWaveC22Def} \\
-C_{23} &={}-&\Phi_{Ps}\left(r_{13}\right) \Phi_H\left(r_2\right) &\sqrt{2\kappa} \,n_2\!\left(\kappa\rho^\prime\right) f_{2}(\rho^\prime). \label{eq:DWaveC23Def}
-\end{alignat}
-\end{subequations}
-
-\noindent The shielding factor, $f_{2}(\rho)$, is given by
-\beq
-f_{2}(\rho) = \left[1 - \ee^{-\mu \rho} \left(1+\frac{\mu}{2}\rho\right)\right]^5.
-\label{eq:DWaveShielding}
-\eeq
-The first and second derivatives of this shielding factor are needed in the
-derivations of the matrix elements, and it is worthwhile to work them out separately.
-\begin{subequations}
-\label{eq:DWaveShieldingDer}
-\begin{align}
-f_{2}^\prime(\rho) &= \frac{5}{32} \ee^{-5 \mu \rho} \mu (1 + \mu \rho) (2 - 2 \ee^{\mu \rho} + \mu \rho)^4 \\
-f_{2}^{\prime\prime}(\rho) &= -\frac{5}{32} \ee^{-5 \mu \rho} \mu^2 (2 - 2 \ee^{\mu \rho} + \mu \rho)^3 \left[4 + 2\mu\rho (5 - \ee^{\mu \rho}) + 5 \mu^2 \rho^2\right]
-\end{align}
-\end{subequations}
-
-\noindent The $j_2(\kappa\rho)$ and $n_2(\kappa\rho)$ are the spherical Bessel
-and Neumann functions given by \cite[p. 729]{Arfken2005}
-\begin{subequations}
-\label{eq:DWaveBessel}
-\begin{align}
-j_2(x) & = \left(\frac{3}{x^3}-\frac{1}{x}\right)\sin x - \frac{3}{x^2}\cos x \label{eq:Bessel2} \\
-n_2(x) & = -\left(\frac{3}{x^3}-\frac{1}{x}\right)\cos x - \frac{3}{x^2}\sin x. \label{eq:Neumann2}
-\end{align}
-\end{subequations}
-
-\noindent The $Y_{20}(\theta)$ are an abbreviated form of the spherical harmonics,
-since there is azimuthal symmetry. For the D-wave, this is
-\beq
-\label{eq:DWaveSpherHarm}
-Y_{20}(\theta) = Y_{20}(\theta,\varphi) = \sqrt{\frac{5}{16\pi}} (3\cos^2\theta - 1).
-\eeq
-
+%\noindent Including exchange, $\bar{S}_2$ and $\bar{C}_2$ are
+%\begin{subequations}
+%\label{eq:DWaveSandCBar}
+%\begin{align}
+%\bar{S}_2 &= \frac{Y_{20}(\theta_\rho,\varphi_\rho)S_{22} \pm Y_{20}(\theta_{\rho^\prime},\varphi_{\rho'})S_{23} }{\sqrt{2}} \label{eq:DWaveSBar} \\
+%\bar{C}_2 &= \frac{Y_{20}(\theta_\rho,\varphi_\rho)C_{22} \pm Y_{20}(\theta_{\rho^\prime},\varphi_{\rho'})C_{23} }{\sqrt{2}} \label{eq:DWaveCBar} 
+%\end{align}
+%\end{subequations}
+%with
+%\begin{subequations}
+%\label{eq:DWaveSandC}
+%\begin{alignat}{2}
+%S_{22} &={}&\Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) &\sqrt{2\kappa} \,j_2\!\left(\kappa\rho\right) \label{eq:DWaveS22Def} \\
+%S_{23} &={}&\Phi_{Ps}\left(r_{13}\right) \Phi_H\left(r_2\right) &\sqrt{2\kappa} \,j_2\!\left(\kappa\rho^\prime\right) \label{eq:DWaveS23Def} \\
+%C_{22} &={}-&\Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) &\sqrt{2\kappa} \,n_2\!\left(\kappa\rho\right) f_{2}(\rho) \label{eq:DWaveC22Def} \\
+%C_{23} &={}-&\Phi_{Ps}\left(r_{13}\right) \Phi_H\left(r_2\right) &\sqrt{2\kappa} \,n_2\!\left(\kappa\rho^\prime\right) f_{2}(\rho^\prime). \label{eq:DWaveC23Def}
+%\end{alignat}
+%\end{subequations}
+%
+%\noindent The shielding factor, $f_{2}(\rho)$, is given by
+%\beq
+%f_{2}(\rho) = \left[1 - \ee^{-\mu \rho} \left(1+\frac{\mu}{2}\rho\right)\right]^5.
+%\label{eq:DWaveShielding}
+%\eeq
+%The first and second derivatives of this shielding factor are needed in the
+%derivations of the matrix elements, and it is worthwhile to work them out separately.
+%\begin{subequations}
+%\label{eq:DWaveShieldingDer}
+%\begin{align}
+%f_{2}^\prime(\rho) &= \frac{5}{32} \ee^{-5 \mu \rho} \mu (1 + \mu \rho) (2 - 2 \ee^{\mu \rho} + \mu \rho)^4 \\
+%f_{2}^{\prime\prime}(\rho) &= -\frac{5}{32} \ee^{-5 \mu \rho} \mu^2 (2 - 2 \ee^{\mu \rho} + \mu \rho)^3 \left[4 + 2\mu\rho (5 - \ee^{\mu \rho}) + 5 \mu^2 \rho^2\right]
+%\end{align}
+%\end{subequations}
+%
+%\noindent The $j_2(\kappa\rho)$ and $n_2(\kappa\rho)$ are the spherical Bessel
+%and Neumann functions given by \cite[p. 729]{Arfken2005}
+%\begin{subequations}
+%\label{eq:DWaveBessel}
+%\begin{align}
+%j_2(x) & = \left(\frac{3}{x^3}-\frac{1}{x}\right)\sin x - \frac{3}{x^2}\cos x \label{eq:Bessel2} \\
+%n_2(x) & = -\left(\frac{3}{x^3}-\frac{1}{x}\right)\cos x - \frac{3}{x^2}\sin x. \label{eq:Neumann2}
+%\end{align}
+%\end{subequations}
+%
+%\noindent The $Y_{20}(\theta)$ are an abbreviated form of the spherical harmonics,
+%since there is azimuthal symmetry. For the D-wave, this is
+%\beq
+%\label{eq:DWaveSpherHarm}
+%Y_{20}(\theta) = Y_{20}(\theta,\varphi) = \sqrt{\frac{5}{16\pi}} (3\cos^2\theta - 1).
+%\eeq
+The long-range $\widetilde{S}_\ell$ and $\widetilde{C}_\ell$ are given by
+\cref{eq:TildeSCDef}.
 As noted in \cref{sec:GeneralWave}, the full wavefunction has $(\ell+1) = 3$
 short-range symmetries. The short-range terms are given by
 \begin{subequations}
@@ -82,17 +90,20 @@ short-range symmetries. The short-range terms are given by
 \bar{\phi}_{12k} &= \left(1 \pm P_{23}\right) \psi_{(1,1,2,0)}(\theta_1,\theta_2) r_1 r_2 \phi_k, \label{eq:DWavePhi12k}
 \end{align}
 \end{subequations}
-where $\phi_i$, $\phi_j$ and $\phi_k$ are given by \cref{eq:PhiDef}. The
-$\psi_{(1,1,2,0)}(\theta_1,\theta_2)$ is described in \cref{sec:MixedDerivation}.
+where $\phi_i$, $\phi_j$ and $\phi_k$ are given by \cref{eq:BoundWavefn_phi}.
 We also use the shortcuts
-\begin{subequations}
+\begin{equation}
 \label{eq:DWavePhi}
-\begin{align}
-\phi_{1i} &= r_1^2 \phi_i \\
-\phi_{2j} &= r_2^2 \phi_j \\
-\phi_{12k} &= r_1 r_2 \phi_k.
-\end{align}
-\end{subequations}
+\phi_{1i} = r_1^2 \phi_i \text{, }
+\phi_{2j} = r_2^2 \phi_j \text{, and }
+\phi_{12k} = r_1 r_2 \phi_k.
+\end{equation}
+%The $\psi_{(1,1,2,0)}(\theta_1,\theta_2)$ is described in
+%\cref{sec:MixedDerivation}.
+The mixed symmetry terms, given as $\bar{\phi}_{12k}$,
+are discussed in \cref{sec:MixedTerms}. There is also a second formalism,
+similar to that for the P-wave (\cref{sec:PWave2Formalism}), which we did not
+use but is discussed in \cref{sec:DSecondForm}.
 
 To calculate $\mathcal{L} C_2$, we again use the code in \cref{fig:LCMath} to get
 \begin{align}
@@ -101,10 +112,12 @@ To calculate $\mathcal{L} C_2$, we again use the code in \cref{fig:LCMath} to ge
 \nonumber -\frac{1}{2 \kappa ^3 \rho ^4} &\left\{\rho  f^{\prime\prime}(\rho ) \left[\left(3-\kappa ^2 \rho ^2\right) \cos (\kappa  \rho )+3 \kappa  \rho  \sin (\kappa  \rho )\right] \right. \\
 & \left.+2 f^\prime(\rho ) \left[\kappa  \rho  \left(\kappa ^2 \rho ^2-6\right) \sin (\kappa  \rho )+3 \left(\kappa ^2 \rho ^2-2\right) \cos (\kappa  \rho )\right] \right\}.
 \end{align}
+Only the results of the derivations of the matrix elements are shown here, but
+full derivations are found on figshare \cite{figshare}.
 
 
 
-\section{Short-Range -- Short-Range Integrals}
+\section{Short-Range -- Short-Range Matrix Elements}
 \label{sec:DWaveShortShort}
 
 The D-wave short-short integrals are generally more complicated than those 
@@ -112,7 +125,8 @@ for the S-wave and P-wave.
 \Cref{eq:DWavePhi1Phi1,eq:DWavePhi2Phi2,eq:DWavePhi1Phi2,eq:DWavePhi2Phi1}
 give the short-short integrals needed evaluate the 
 matrix in \cref{eq:GeneralKohnMatrix}. Full derivations for each of these are 
-given in separate notes available on the Wiki \cite{Wiki}.
+given in separate notes available on the Wiki \cite{Wiki} and figshare
+\cite{figshare}.
 
 \begin{align}
 \label{eq:DWavePhi1Phi1}
@@ -120,7 +134,6 @@ given in separate notes available on the Wiki \cite{Wiki}.
 \nonumber  &+ \left. \left[\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2}\kappa^2 + \frac{6}{r_1^2} \right] \right. \\
  &\;\;\;\;\; \times \left(\phi_{1i} \phi_{1j} \pm \phi_{1i} \phi_{1j}^\prime \right) \Bigg\} d\tau_{int}
 \end{align}
-
 \begin{align}
 \label{eq:DWavePhi2Phi2}
 \left(\bar{\phi}_{2i},\mathcal{L} \bar{\phi}_{2j}\right) = 2 & \cdot 2\pi \int \Bigg\{ \sum_{k=1}^3 \left[ \boldsymbol{\nabla}_{\!\mathbf{r}_k} \nonumber \phi_{2i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2j} \pm \left(1-\tfrac{3}{2}\sin^2\theta_{23}\right) \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2j}^\prime \right]  + \frac{6}{r_2^2}\phi_{2i}\phi_{2j} \\
@@ -129,7 +142,6 @@ given in separate notes available on the Wiki \cite{Wiki}.
  \nonumber &+ \left. \left[\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2}\kappa^2 \right] \right. \\
  &\;\;\;\;\; \times \left[\phi_{2i} \phi_{2j} \pm \left(1-\tfrac{3}{2}\sin^2\theta_{23}\right) \phi_{2i} \phi_{2j}^\prime \right] \Bigg\} d\tau_{int}
 \end{align}
-
 \begin{align}
 \label{eq:DWavePhi1Phi2}
 \left(\bar{\phi}_{1i},\mathcal{L} \bar{\phi}_{2j}\right) = 2 & \cdot 2\pi \int \Bigg\{ \sum_{k=1}^3 \left[ \left(1-\tfrac{3}{2}\sin^2\theta_{12}\right) \boldsymbol{\nabla}_{\!\mathbf{r}_k} \nonumber \phi_{1i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2j} \pm \left(1-\tfrac{3}{2}\sin^2\theta_{13}\right) \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2j}^\prime \right] \\
@@ -140,7 +152,6 @@ given in separate notes available on the Wiki \cite{Wiki}.
  \nonumber &+ \left. \left[\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2}\kappa^2 \right] \right. \\
  &\;\;\;\;\; \times \left[\left(1-\tfrac{3}{2}\sin^2\theta_{12}\right) \phi_{1i} \phi_{2j} \pm \left(1-\tfrac{3}{2}\sin^2\theta_{13}\right) \phi_{1i} \phi_{2j}^\prime \right] \Bigg\} d\tau_{int}
 \end{align}
-
 \begin{align}
 \label{eq:DWavePhi2Phi1}
 \left(\bar{\phi}_{2i},\mathcal{L} \bar{\phi}_{1j}\right) = 2 & \cdot 2\pi \int \Bigg\{ \sum_{k=1}^3 \left(1-\tfrac{3}{2}\sin^2\theta_{12}\right) \left[ \boldsymbol{\nabla}_{\!\mathbf{r}_k} \nonumber \phi_{2i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1j} \pm \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1j}^\prime \right] \\
@@ -151,11 +162,16 @@ given in separate notes available on the Wiki \cite{Wiki}.
  \nonumber &+ \left. \left[\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2}\kappa^2 \right] \right. \\
  &\;\;\;\;\; \times \left(1-\tfrac{3}{2}\sin^2\theta_{12}\right) \left( \phi_{2i} \phi_{12j} \pm \phi_{2i} \phi_{1j}^\prime \right) \Bigg\} d\tau_{int}
 \end{align}
+The $\cos_{ij}$ factors in each of these must be re-expressed in terms of $r_i$
+and $r_{ij}$ by using \cref{eq:Cosines} so that these can solved using the
+techniques given in \cref{sec:ShortInt}. Similar to the P-wave, I wrote a
+\emph{Mathematica} notebook (see \cref{chp:Programs}) that transforms
+these equations into a form that allows us to copy and paste them directly
+into Fortran code. 
 
 
 
-
-\section{Short-Range -- Long-Range Integrals}
+\section{Short-Range -- Long-Range  Matrix Elements}
 \label{sec:DWaveShortLong}
 
 To simplify these equations, define
@@ -165,24 +181,75 @@ To simplify these equations, define
 & - \Phi_{Ps}(r_{12}) \Phi_H(r_3) \sqrt{2\kappa} \frac{1}{2\rho} \left\{ \left[4 n_2(\kappa\rho) - 2 \kappa\rho \, n_1(\kappa\rho) \right] f_{2}^\prime(\rho) - \rho \, n_2(\kappa\rho) f_{2}^{\prime\prime}(\rho) \right\}.
 \end{align}
 Equivalently,
-\begin{subequations}
-\begin{align}
-\mathscr{L} S_\ell^\prime &= \frac{\mathcal{L} S^\prime}{Y_{20}(\theta_{\rho^\prime})} \\
-\mathscr{L} C_\ell^\prime &= \frac{\mathcal{L} C^\prime}{Y_{20}(\theta_{\rho^\prime})}.
-\end{align}
-\end{subequations}
+\begin{equation}
+\mathscr{L} S_\ell^\prime = \frac{\mathcal{L} S^\prime}{Y_{20}(\theta_{\rho^\prime})} \text{ and }
+\mathscr{L} C_\ell^\prime = \frac{\mathcal{L} C^\prime}{Y_{20}(\theta_{\rho^\prime})}.
+\end{equation}
 
-Each of the following equations has two forms that can be used. These 
+Each of the following equations has multiple forms that can be used due to the
+properties of the permutation operator, but these equations show the form that
+we used in our code. These 
 equations are mainly straightforward applications of the external angular
 integrations in \cref{sec:AngularInt} to the matrix elements of
 \cref{eq:GeneralKohnMatrix}.
 
+%%\begin{align}
+%%\label{eq:DWavePhi1SBar}
+%%\nonumber \left(\bar{\phi}_{1i},L \bar{S}\right) = \sqrt{2} \cdot 2\pi & \int \left[ \left(1 - \frac{3 r_2^2 \sin^2\theta_{12}}{8 \rho^2} \right) \left(\phi_{1i} \pm \phi_{1i}^\prime \right) \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_{22} \right] d\tau_{int} \\
+%%\nonumber = \sqrt{2} \cdot 2\pi & \int \phi_{1i} \left[ \left(1 - \frac{3 r_2^2 \sin^2\theta_{12}}{8 \rho^2} \right) \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_{22} \right. \\
+%%& \pm \left. \left(1 - \frac{3 r_3^2 \sin^2\theta_{13}}{8 {\rho^\prime}^2} \right) \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) S_{23} \right] d\tau_{int}
+%%\end{align}
+%
 %\begin{align}
 %\label{eq:DWavePhi1SBar}
-%\nonumber \left(\bar{\phi}_{1i},L \bar{S}\right) = \sqrt{2} \cdot 2\pi & \int \left[ \left(1 - \frac{3 r_2^2 \sin^2\theta_{12}}{8 \rho^2} \right) \left(\phi_{1i} \pm \phi_{1i}^\prime \right) \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_{22} \right] d\tau_{int} \\
-%\nonumber = \sqrt{2} \cdot 2\pi & \int \phi_{1i} \left[ \left(1 - \frac{3 r_2^2 \sin^2\theta_{12}}{8 \rho^2} \right) \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_{22} \right. \\
-%& \pm \left. \left(1 - \frac{3 r_3^2 \sin^2\theta_{13}}{8 {\rho^\prime}^2} \right) \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) S_{23} \right] d\tau_{int}
+%\nonumber \left(\bar{\phi}_{1i},\mathcal{L} \bar{S}_\ell\right) = & \sqrt{2} \cdot 2\pi \int \left(1 - \frac{3 r_2^2 \sin^2\theta_{12}}{8 \rho^2} \right) \left(\phi_{1i} \pm \phi_{1i}^\prime \right) \mathscr{L}S_\ell \, d\tau_{int} \\
+%=& \sqrt{2} \cdot 2\pi \int \phi_{1i} \left[ \left(1 - \frac{3 r_2^2 \sin^2\theta_{12}}{8 \rho^2} \right) \mathscr{L}S_\ell \pm \left(1 - \frac{3 r_3^2 \sin^2\theta_{13}}{8 {\rho^\prime}^2} \right) \mathscr{L}S_\ell^\prime \right] d\tau_{int}
 %\end{align}
+%
+%\begin{align}
+%\label{eq:DWavePhi1CBar}
+%\nonumber \left(\bar{\phi}_{1i},\mathcal{L} \bar{C}_\ell\right) = & \sqrt{2} \cdot 2\pi \int \left(1 - \frac{3 r_2^2 \sin^2\theta_{12}}{8 \rho^2} \right) \left(\phi_{1i} \pm \phi_{1i}^\prime \right) \mathscr{L}C_\ell \, d\tau_{int} \\
+%=& \sqrt{2} \cdot 2\pi \int \phi_{1i} \left[ \left(1 - \frac{3 r_2^2 \sin^2\theta_{12}}{8 \rho^2} \right) \mathscr{L}C_\ell \pm \left(1 - \frac{3 r_3^2 \sin^2\theta_{13}}{8 {\rho^\prime}^2} \right) \mathscr{L}C_\ell^\prime \right] d\tau_{int}
+%\end{align}
+%
+%%\begin{align}
+%%\label{eq:DWavePhi2SBar}
+%%\nonumber \left(\bar{\phi}_{2j},L \bar{S}\right) = \sqrt{2} \cdot 2\pi & \int \left\{ \left[ \left(1 - \frac{3 r_1^2 \sin^2\theta_{12}}{8 \rho^2} \right) \phi_{2j} \pm \left( \frac{3(r_1 \cos\theta_{13} + r_2 \cos\theta_{23})^2}{8 \rho^2} - \frac{1}{2} \right) \phi_{2j}^\prime \right] \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_{22} \right\} d\tau_{int} \\
+%%\nonumber = \sqrt{2} \cdot 2\pi & \int \phi_{2j} \left[ \left(1 - \frac{3 r_1^2 \sin^2\theta_{12}}{8 \rho^2} \right) \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_{22} \right. \\
+%%& \pm \left. \left( \frac{3(r_1 \cos\theta_{12} + r_3 \cos\theta_{23})^2}{8 {\rho^\prime}^2} - \frac{1}{2} \right) \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) S_{23} \right]  d\tau_{int}
+%%\end{align}
+%
+%\begin{align}
+%\label{eq:DWavePhi2SBar}
+%\nonumber \left(\bar{\phi}_{2j},\mathcal{L} \bar{S}_\ell\right) = & \sqrt{2} \cdot 2\pi \int \left[ \left( \frac{3(r_1 \cos\theta_{12} + r_2)^2}{8 \rho^2} - \frac{1}{2} \right) \phi_{2j} \pm \left( \frac{3(r_1 \cos\theta_{13} + r_2 \cos\theta_{23})^2}{8 \rho^2} - \frac{1}{2} \right) \phi_{2j}^\prime \right] \mathscr{L}S_\ell \, d\tau_{int} \\
+%=& \sqrt{2} \cdot 2\pi \int \phi_{2j} \left[ \left( \frac{3(r_1 \cos\theta_{12} + r_2)^2}{8 \rho^2} - \frac{1}{2} \right) \mathscr{L}S_\ell \pm \left( \frac{3(r_1 \cos\theta_{12} + r_3 \cos\theta_{23})^2}{8 {\rho^\prime}^2} - \frac{1}{2} \right) \mathscr{L}S_\ell^\prime \right] d\tau_{int}
+%\end{align}
+%
+%\begin{align}
+%\label{eq:DWavePhi2CBar}
+%\nonumber \left(\bar{\phi}_{2j},\mathcal{L} \bar{C}_\ell\right) = & \sqrt{2} \cdot 2\pi \int \left[ \left( \frac{3(r_1 \cos\theta_{12} + r_2)^2}{8 \rho^2} - \frac{1}{2} \right) \phi_{2j} \right. \\
+%\nonumber & \left. \pm \left( \frac{3(r_1 \cos\theta_{13} + r_2 \cos\theta_{23})^2}{8 \rho^2} - \frac{1}{2} \right) \phi_{2j}^\prime \right] \mathscr{L}C_\ell \, d\tau_{int} \\
+%\nonumber =& \sqrt{2} \cdot 2\pi \int \phi_{2j} \left[ \left( \frac{3(r_1 \cos\theta_{12} + r_2)^2}{8 \rho^2} - \frac{1}{2} \right) \mathscr{L}C_\ell \right.\\
+%& \left. \pm \left( \frac{3(r_1 \cos\theta_{12} + r_3 \cos\theta_{23})^2}{8 {\rho^\prime}^2} - \frac{1}{2} \right) \mathscr{L}C_\ell^\prime \right] d\tau_{int}
+%\end{align}
+%
+%%\begin{align}
+%%\label{eq:DWavePhi3SBar}
+%%\nonumber \left(\bar{\phi}_{12k},\mathcal{L} \bar{S}_\ell\right) = \sqrt{2} \cdot & \frac{1}{4} \sqrt{\frac{3\pi}{5}} \int \mathscr{L}S_\ell \left\{ \left[ 8 \cos\theta_{12} + \frac{3 r_1 r_2 \sin^2\theta_{12}}{\rho^2} \right] \phi_{12k} \right. \\
+%%\nonumber & \left. \pm \frac{1}{\sqrt{2}} \left[ 3 \frac{\cos\theta_{13}(r_1^2 + r_1 r_2 \cos\theta_{12}) + \cos\theta_{23}(r_1 r_2 + r_2^2 \cos\theta_{12})}{\rho^2} - 4 \cos\theta_{13} \right] \phi_{12k}^\prime  \right\} d\tau_{int} \\
+%%\nonumber = \sqrt{2} \cdot & \frac{1}{4} \sqrt{\frac{3\pi}{5}} \int \phi_{12k} \left\{ \left[ 8 \cos\theta_{12} + \frac{3 r_1 r_2 \sin^2\theta_{12}}{\rho^2} \right] \mathscr{L}S_\ell \right. \\
+%%& \pm \left. \frac{1}{\sqrt{2}} \left[ 3 \frac{\cos\theta_{12}(r_1^2 + r_1 r_3 \cos\theta_{13}) + \cos\theta_{23}(r_1 r_3 + r_3^2 \cos\theta_{13})}{{\rho^\prime}^2} - 4 \cos\theta_{12} \right] \mathscr{L}S_\ell^\prime \right\} d\tau_{int}
+%%\end{align}
+%%
+%%\begin{align}
+%%\label{eq:DWavePhi3CBar}
+%%\nonumber \left(\bar{\phi}_{12k},\mathcal{L} \bar{C}_\ell\right) = \sqrt{2} \cdot & \frac{1}{4} \sqrt{\frac{3\pi}{5}} \int \mathscr{L}C_\ell \left\{ \left[ 8 \cos\theta_{12} + \frac{3 r_1 r_2 \sin^2\theta_{12}}{\rho^2} \right] \phi_{12k} \right. \\
+%%\nonumber & \left. \pm \frac{1}{\sqrt{2}} \left[ 3 \frac{\cos\theta_{13}(r_1^2 + r_1 r_2 \cos\theta_{12}) + \cos\theta_{23}(r_1 r_2 + r_2^2 \cos\theta_{12})}{\rho^2} - 4 \cos\theta_{13} \right] \phi_{12k}^\prime  \right\} d\tau_{int} \\
+%%\nonumber = \sqrt{2} \cdot & \frac{1}{4} \sqrt{\frac{3\pi}{5}} \int \phi_{12k} \left\{ \left[ 8 \cos\theta_{12} + \frac{3 r_1 r_2 \sin^2\theta_{12}}{\rho^2} \right] \mathscr{L}C_\ell \right. \\
+%%& \pm \left. \frac{1}{\sqrt{2}} \left[ 3 \frac{\cos\theta_{12}(r_1^2 + r_1 r_3 \cos\theta_{13}) + \cos\theta_{23}(r_1 r_3 + r_3^2 \cos\theta_{13})}{{\rho^\prime}^2} - 4 \cos\theta_{12} \right] \mathscr{L}C_\ell^\prime \right\} d\tau_{int}
+%%\end{align}
+
+\todoi{Only one form}
 
 \begin{align}
 \label{eq:DWavePhi1SBar}
@@ -196,13 +263,6 @@ integrations in \cref{sec:AngularInt} to the matrix elements of
 =& \sqrt{2} \cdot 2\pi \int \phi_{1i} \left[ \left(1 - \frac{3 r_2^2 \sin^2\theta_{12}}{8 \rho^2} \right) \mathscr{L}C_\ell \pm \left(1 - \frac{3 r_3^2 \sin^2\theta_{13}}{8 {\rho^\prime}^2} \right) \mathscr{L}C_\ell^\prime \right] d\tau_{int}
 \end{align}
 
-%\begin{align}
-%\label{eq:DWavePhi2SBar}
-%\nonumber \left(\bar{\phi}_{2j},L \bar{S}\right) = \sqrt{2} \cdot 2\pi & \int \left\{ \left[ \left(1 - \frac{3 r_1^2 \sin^2\theta_{12}}{8 \rho^2} \right) \phi_{2j} \pm \left( \frac{3(r_1 \cos\theta_{13} + r_2 \cos\theta_{23})^2}{8 \rho^2} - \frac{1}{2} \right) \phi_{2j}^\prime \right] \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_{22} \right\} d\tau_{int} \\
-%\nonumber = \sqrt{2} \cdot 2\pi & \int \phi_{2j} \left[ \left(1 - \frac{3 r_1^2 \sin^2\theta_{12}}{8 \rho^2} \right) \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_{22} \right. \\
-%& \pm \left. \left( \frac{3(r_1 \cos\theta_{12} + r_3 \cos\theta_{23})^2}{8 {\rho^\prime}^2} - \frac{1}{2} \right) \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) S_{23} \right]  d\tau_{int}
-%\end{align}
-
 \begin{align}
 \label{eq:DWavePhi2SBar}
 \nonumber \left(\bar{\phi}_{2j},\mathcal{L} \bar{S}_\ell\right) = & \sqrt{2} \cdot 2\pi \int \left[ \left( \frac{3(r_1 \cos\theta_{12} + r_2)^2}{8 \rho^2} - \frac{1}{2} \right) \phi_{2j} \pm \left( \frac{3(r_1 \cos\theta_{13} + r_2 \cos\theta_{23})^2}{8 \rho^2} - \frac{1}{2} \right) \phi_{2j}^\prime \right] \mathscr{L}S_\ell \, d\tau_{int} \\
@@ -211,58 +271,42 @@ integrations in \cref{sec:AngularInt} to the matrix elements of
 
 \begin{align}
 \label{eq:DWavePhi2CBar}
-\nonumber \left(\bar{\phi}_{2j},\mathcal{L} \bar{C}_\ell\right) = & \sqrt{2} \cdot 2\pi \int \left[ \left( \frac{3(r_1 \cos\theta_{12} + r_2)^2}{8 \rho^2} - \frac{1}{2} \right) \phi_{2j} \pm \left( \frac{3(r_1 \cos\theta_{13} + r_2 \cos\theta_{23})^2}{8 \rho^2} - \frac{1}{2} \right) \phi_{2j}^\prime \right] \mathscr{L}C_\ell \, d\tau_{int} \\
-=& \sqrt{2} \cdot 2\pi \int \phi_{2j} \left[ \left( \frac{3(r_1 \cos\theta_{12} + r_2)^2}{8 \rho^2} - \frac{1}{2} \right) \mathscr{L}C_\ell \pm \left( \frac{3(r_1 \cos\theta_{12} + r_3 \cos\theta_{23})^2}{8 {\rho^\prime}^2} - \frac{1}{2} \right) \mathscr{L}C_\ell^\prime \right] d\tau_{int}
-\end{align}
-
-\begin{align}
-\label{eq:DWavePhi3SBar}
-\nonumber \left(\bar{\phi}_{12k},\mathcal{L} \bar{S}_\ell\right) = \sqrt{2} \cdot & \frac{1}{4} \sqrt{\frac{3\pi}{5}} \int \mathscr{L}S_\ell \left\{ \left[ 8 \cos\theta_{12} + \frac{3 r_1 r_2 \sin^2\theta_{12}}{\rho^2} \right] \phi_{12k} \right. \\
-\nonumber & \left. \pm \frac{1}{\sqrt{2}} \left[ 3 \frac{\cos\theta_{13}(r_1^2 + r_1 r_2 \cos\theta_{12}) + \cos\theta_{23}(r_1 r_2 + r_2^2 \cos\theta_{12})}{\rho^2} - 4 \cos\theta_{13} \right] \phi_{12k}^\prime  \right\} d\tau_{int} \\
-\nonumber = \sqrt{2} \cdot & \frac{1}{4} \sqrt{\frac{3\pi}{5}} \int \phi_{12k} \left\{ \left[ 8 \cos\theta_{12} + \frac{3 r_1 r_2 \sin^2\theta_{12}}{\rho^2} \right] \mathscr{L}S_\ell \right. \\
-& \pm \left. \frac{1}{\sqrt{2}} \left[ 3 \frac{\cos\theta_{12}(r_1^2 + r_1 r_3 \cos\theta_{13}) + \cos\theta_{23}(r_1 r_3 + r_3^2 \cos\theta_{13})}{{\rho^\prime}^2} - 4 \cos\theta_{12} \right] \mathscr{L}S_\ell^\prime \right\} d\tau_{int}
-\end{align}
-
-\begin{align}
-\label{eq:DWavePhi3CBar}
-\nonumber \left(\bar{\phi}_{12k},\mathcal{L} \bar{C}_\ell\right) = \sqrt{2} \cdot & \frac{1}{4} \sqrt{\frac{3\pi}{5}} \int \mathscr{L}C_\ell \left\{ \left[ 8 \cos\theta_{12} + \frac{3 r_1 r_2 \sin^2\theta_{12}}{\rho^2} \right] \phi_{12k} \right. \\
-\nonumber & \left. \pm \frac{1}{\sqrt{2}} \left[ 3 \frac{\cos\theta_{13}(r_1^2 + r_1 r_2 \cos\theta_{12}) + \cos\theta_{23}(r_1 r_2 + r_2^2 \cos\theta_{12})}{\rho^2} - 4 \cos\theta_{13} \right] \phi_{12k}^\prime  \right\} d\tau_{int} \\
-\nonumber = \sqrt{2} \cdot & \frac{1}{4} \sqrt{\frac{3\pi}{5}} \int \phi_{12k} \left\{ \left[ 8 \cos\theta_{12} + \frac{3 r_1 r_2 \sin^2\theta_{12}}{\rho^2} \right] \mathscr{L}C_\ell \right. \\
-& \pm \left. \frac{1}{\sqrt{2}} \left[ 3 \frac{\cos\theta_{12}(r_1^2 + r_1 r_3 \cos\theta_{13}) + \cos\theta_{23}(r_1 r_3 + r_3^2 \cos\theta_{13})}{{\rho^\prime}^2} - 4 \cos\theta_{12} \right] \mathscr{L}C_\ell^\prime \right\} d\tau_{int}
+\nonumber \left(\bar{\phi}_{2j},\mathcal{L} \bar{C}_\ell\right) = & \sqrt{2} \cdot 2\pi \int \left[ \left( \frac{3(r_1 \cos\theta_{12} + r_2)^2}{8 \rho^2} - \frac{1}{2} \right) \phi_{2j} \right. \\
+\nonumber & \left. \pm \left( \frac{3(r_1 \cos\theta_{13} + r_2 \cos\theta_{23})^2}{8 \rho^2} - \frac{1}{2} \right) \phi_{2j}^\prime \right] \mathscr{L}C_\ell \, d\tau_{int} \\
+\nonumber =& \sqrt{2} \cdot 2\pi \int \phi_{2j} \left[ \left( \frac{3(r_1 \cos\theta_{12} + r_2)^2}{8 \rho^2} - \frac{1}{2} \right) \mathscr{L}C_\ell \right.\\
+& \left. \pm \left( \frac{3(r_1 \cos\theta_{12} + r_3 \cos\theta_{23})^2}{8 {\rho^\prime}^2} - \frac{1}{2} \right) \mathscr{L}C_\ell^\prime \right] d\tau_{int}
 \end{align}
 
 
-\section{Long-Range -- Long-Range Integrals}
+
+\section{Long-Range -- Long-Range  Matrix Elements}
 \label{sec:DWaveLongLong}
 
 Similar to the short-short terms, the derivations for the long-long terms are 
-available on the Wiki \cite{Wiki}.
-
+available on the Wiki \cite{Wiki} and figshare \cite{figshare}. After external
+angular integrations (see \cref{sec:AngularInt}), these matrix elements are:
 \begin{align}
 \label{eq:DWaveSBarSBar}
 \left(\bar{S}_\ell,\mathcal{L}\bar{S}_\ell\right) = \pm 2\pi \int \left\{ S_{22} S_{23} \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) \left[ \frac{3}{8} \frac{(4\rho^2 + 4 {\rho^\prime}^2 - r_{23}^2)^2}{16 \rho^2 {\rho^\prime}^2} - \frac{1}{2} \right] \right\} d\tau_{int}
 \end{align}
-
 \begin{align}
 \label{eq:DWaveCBarSBar}
 \left(\bar{C}_\ell,\mathcal{L}\bar{S}_\ell\right) = \pm 2\pi \int \left\{ S_{22} C_{23} \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) \left[ \frac{3}{8} \frac{(4\rho^2 + 4 {\rho^\prime}^2 - r_{23}^2)^2}{16 \rho^2 {\rho^\prime}^2} - \frac{1}{2} \right] \right\} d\tau_{int}
 \end{align}
-
 \begin{align}
 \label{eq:DWaveSBarCBar}
 \nonumber \left(\bar{S}_\ell,\mathcal{L}\bar{C}_\ell\right) = 2\pi \int \Bigg\{ \pm & S_{23} C_{22} \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) \left[ \frac{3}{8} \frac{(4\rho^2 + 4 {\rho^\prime}^2 - r_{23}^2)^2}{16 \rho^2 {\rho^\prime}^2} - \frac{1}{2} \right] \\
 \nonumber - & \left[ S_{22} \pm \left( \frac{3}{8} \frac{(4\rho^2 + 4 {\rho^\prime}^2 - r_{23}^2)^2}{16 \rho^2 {\rho^\prime}^2} - \frac{1}{2} \right) S_{23} \right] \sqrt{2\kappa} \, \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \\
 & \times \frac{1}{2\rho} \left( \left[ 4 n_2(\kappa\rho) - 2 \kappa\rho \, n_1(\kappa\rho) \right] f_2^\prime(\rho) - \rho \, n_2(\kappa\rho) f_2^{\prime\prime}(\rho) \right) \Bigg\} d\tau_{int}
 \end{align}
-
 \begin{align}
 \label{eq:DWaveCBarCBar}
 \nonumber \left(\bar{C}_\ell,\mathcal{L}\bar{C}_\ell\right) = 2\pi \int \Bigg\{ \pm & C_{23} C_{22} \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) \left[ \frac{3}{8} \frac{(4\rho^2 + 4 {\rho^\prime}^2 - r_{23}^2)^2}{16 \rho^2 {\rho^\prime}^2} - \frac{1}{2} \right] \\
 \nonumber - & \left[ C_{22} \pm \left( \frac{3}{8} \frac{(4\rho^2 + 4 {\rho^\prime}^2 - r_{23}^2)^2}{16 \rho^2 {\rho^\prime}^2} - \frac{1}{2} \right) C_{23} \right] \sqrt{2\kappa} \, \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \\
-& \times \frac{1}{2\rho} \left( \left[ 4 n_2(\kappa\rho) - 2 \kappa\rho \, n_1(\kappa\rho) \right] f_2^\prime(\rho) - \rho \, n_2(\kappa\rho) f_2^{\prime\prime}(\rho) \right) \Bigg\} d\tau_{int}
+& \times \frac{1}{2\rho} \left( \left[ 4 n_2(\kappa\rho) - 2 \kappa\rho \, n_1(\kappa\rho) \right] f_2^\prime(\rho) - \rho \, n_2(\kappa\rho) f_2^{\prime\prime}(\rho) \right) \Bigg\} d\tau_{int}.
 \end{align}
 
-\section{Mixed Terms}
+\section{Mixed Symmetry Terms}
 \label{sec:MixedTerms}
 
 According to Schwartz \cite{Schwartz1961a}, to have a complete description, 
@@ -338,44 +382,6 @@ of the D-wave phase shifts. As we discovered in \cref{sec:DWaveResults}, this
 turns out to be an acceptable approximation.
 
 
-\section{Second Formalism}
-\label{sec:DSecondForm}
-For the second formalism, the angular momentum needs to be placed on the Ps and
-H, so we would need
-\begin{subequations}
-\label{eq:DWave2ndPhiBar}
-\begin{align}
-\bar{\phi}_{\rho i} &= \left(1 \pm P_{23}\right) Y_{20}(\theta_\rho) \rho^2 \phi_i \label{eq:DWave2ndPhi1i}\\
-\bar{\phi}_{3j} &= \left(1 \pm P_{23}\right) Y_{20}(\theta_3) r_3^2 \phi_j \label{eq:DWave2ndPhi2j}.
-\end{align}
-\end{subequations}
-It will be shown that these are sufficient to describe this system without 
-having a third set of terms as in \cref{eq:DWaveTrial}.
-
-To use these in the short-range code, we need an expression similar to
-\cref{eq:P2rhoY10}. We cannot use that exact expression, as we have $\rho^2$. We
-follow the same procedure as that of obtaining \cref{eq:P2rhoY10}, but the
-spherical harmonic is more complicated. Full details of the derivation are
-found in the ``Second Formalism P-wave and D-wave.nb'' notebook.
-Substituting \cref{eq:CosRho} into \cref{eq:DWaveSpherHarm}, multiplying by
-$\rho^2$, and then using \cref{eq:RhoRDef}, we obtain
-\begin{equation}
-\label{eq:rhoident2}
-\rho^2 Y_{20}(\theta_\rho) = \frac{1}{4} \left[r_1^2 Y_{20}(\theta_1) + r_2^2 Y_{20}(\theta_2) \right] + \frac{1}{2} \sqrt{\frac{5}{16 \pi}} 
-   r_1 r_2 \left[3 \cos\theta_1 \cos\theta_2 - \cos\theta_{12} \right].
-\end{equation}
-The first set of brackets is obviously similar to \cref{eq:P2rhoY10} but with
-$1 \to 2$ coming from the P-wave to the D-wave. More interesting though is the
-second set of brackets, which is clearly the mixed terms in
-\cref{eq:DWavePhi12k,eq:MixedAngSimple}.
-
-As mentioned in \cref{sec:MixedTerms}, we do not use the mixed terms in the
-D-wave calculation due to their complexity. Because of this, the second
-formalism has not been implemented for the D-wave and could be a source of
-future work.
-
-
-
 
 \section{Results}
 \label{sec:DWaveResults}
@@ -400,8 +406,8 @@ This work $(\omega \to \infty)$ $\delta_2^+$ 		& 4.24^{-4}  & 3.18^{-3}  & 1.62^
 \% Diff$^+$											& 103.0\%    & 6.27\%     & 1.54\%     & 1.33\%     & 1.52\%     & 1.67\%     & 1.67\% \\
 \% Diff$^+$	CC										& 39.1\%     & 15.4\%     & 7.81\%     & 4.71\%     & 2.62\%     & 0.97\%     & 1.23\% \\
 \arrayrulecolor[RGB]{220,220,220}\midrule\arrayrulecolor{black}
-CC 14Ps14H+H$^-$ \cite{Walters2004} $\delta_2^+$	& 2.02^{-4}  & 3.49^{-3}  & 1.73^{-2}  & 5.22^{-2}  & 1.16^{-1}  & 2.08^{-1}  & 3.24^{-1} \\
-CC 14Ps14H \cite{Blackwood2002} $\delta_2^+$		& 1.46^{-4}  & 3.15^{-3}  & 1.65^{-2}  & 4.95^{-2}  & 1.08^{-1}  & 1.94^{-1}  & 3.02^{-1} \\
+CC 9Ps9H+H$^-$ \cite{Walters2004} $\delta_2^+$		& 2.02^{-4}  & 3.49^{-3}  & 1.73^{-2}  & 5.22^{-2}  & 1.16^{-1}  & 2.08^{-1}  & 3.24^{-1} \\
+CC 9Ps9H \cite{Blackwood2002} $\delta_2^+$			& 1.46^{-4}  & 3.15^{-3}  & 1.65^{-2}  & 4.95^{-2}  & 1.08^{-1}  & 1.94^{-1}  & 3.02^{-1} \\
 3-state CC \cite{Sinha1997} $\delta_2^-$			& 3.22^{-5}  & 9.29^{-4}  & 5.96^{-3}  & 2.01^{-2}  & 4.63^{-2}  & 8.29^{-2}  & 1.23^{-1} \\
 SE \cite{Ray1997} $\delta_2^+$ 						& 3.18^{-5}  & 9.17^{-4}  & 5.87^{-3}  & 1.97^{-2}  & 4.54^{-2}  & 8.09^{-2}  & 1.19^{-1} \\
 5-state CC \cite{Adhikari1999} $\delta_2^+$			& 1.8^{-5}   & 5.3^{-4}   & 3.5^{-3}   & 1.2^{-2}   & 2.9^{-2}   & 5.5^{-2}   & 8.8^{-2} \\
@@ -411,20 +417,20 @@ This work $(\omega = 6)$ $\delta_2^-$ 				& 5.81^{-5}  & 7.12^{-4}  & 1.07^{-3} 
 This work $(\omega \to \infty)$ $\delta_2^-$ 		& 3.13^{-4}  & 8.67^{-4}  & 1.41^{-3}  & -1.20^{-3} & -9.34^{-2} & -2.32^{-2} & -4.02^{-2} \\
 \% Diff$^-$											& 137.4\%    & 19.6\%     & 24.4\%     & 39.8\%     & 13.5\%     & 9.10\%     & 6.28\% \\
 \arrayrulecolor[RGB]{220,220,220}\midrule\arrayrulecolor{black}
-CC 14Ps14H \cite{Blackwood2002} $\delta_2^-$		& 8.48^{-5}  & 1.15^{-3}  & 2.84^{-3}  & 2.37^{-3}  & -4.66^{-3} & -1.85^{-2} & -3.27^{-2} \\
+CC 9Ps9H \cite{Blackwood2002} $\delta_2^-$			& 8.48^{-5}  & 1.15^{-3}  & 2.84^{-3}  & 2.37^{-3}  & -4.66^{-3} & -1.85^{-2} & -3.27^{-2} \\
 3-state CC \cite{Sinha1997} $\delta_2^-$			& -2.74^{-5} & -7.77^{-4} & -4.83^{-3} & -1.55^{-2} & -3.41^{-2} & -5.83^{-2} & -8.25^{-2} \\
 SE \cite{Ray1997} $\delta_2^+$ 						& -3.00^{-5} & -8.56^{-4} & -5.37^{-3} & -1.76^{-2} & -3.95^{-2} & -7.03^{-2} & -1.06^{-1} \\
 5-state CC \cite{Adhikari1999} $\delta_2^+$			& -1.4^{-5}  & -4.0^{-4}  & -2.6^{-3}  & -8.6^{-3}  & -2.0^{-2}  & -3.6^{-2}  & -5.5^{-2} \\
 SE \cite{Hara1975} $\delta_2^+$						& 0.0        & -8.0^{-4}  & -5.3^{-3}  & -1.74^{-2} & -3.95^{-2} & -7.04^{-2} & -1.062^{-1} \\
 \bottomrule
 \end{tabular}
-\caption[$^{1,3}$D results and comparisons]{$^{1,3}$D results and 
-comparisons. Values in the header are $\kappa$ in au. \% Diff$^\pm$ is the 
+\caption[$^{1,3}$D results and comparisons]{Comparison of $^{1,3}$D phase
+shifts and comparisons with other groups. Values in the header are $\kappa$
+in au. \% Diff$^\pm$ is the 
 percent difference between the current complex Kohn $\omega = 6$ and 
-extrapolated values. \% Diff $^+$ is the percent difference between the 
+extrapolated values. \% Diff$^+$ CC is the percent difference between the 
 complex Kohn $\omega = 6$ and CC 14Ps14H+H$^-$ \cite{Walters2004} phase
-shifts. Exponents denote
-powers of 10.}
+shifts. Exponents denote powers of 10.}
 \label{tab:DWaveComparisons}
 \end{table}
 
@@ -444,7 +450,7 @@ $^1$D in Ref.~\cite{Woods2015}, as it is obviously not good.
 
 For $\kappa \geq 0.2$, the extrapolations look more reasonable, and for $^1$D,
 our phase shifts look relatively well converged, especially for $\kappa \geq 0.3$.
-We believe that with the exception of $\kappa < 0.2$, our $^1$D phase shifts are
+We believe that with the exception of $\kappa < 0.2$, the $^1$D phase shifts are
 reasonably accurate, even with the omission of the mixed terms. The $^1$D phase
 shifts for $\omega = 5$ and $\omega = 6$ differ by less than 10\%.
 
@@ -474,7 +480,7 @@ plus the poorer $^3$D extrapolations show that the $^3$D phase shifts are not
 fully converged. It should be noted however that the CC phase shifts could be
 overestimates, considering that the CVM \cite{Zhang2012} $^3$S phase shifts
 agree extremely well with the complex Kohn, but the CC $^3$S phase shifts are
-slightly higher than both. The CC also differs significantly from the complex
+slightly higher than both. The CC also differs from the complex
 Kohn at low $\kappa$ for the $^3$P-wave, where we do not have a neglected
 symmetry, and the phase shifts are well converged.
 
@@ -492,11 +498,11 @@ phase shifts are well converged.
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{dwave-phases}
-	\caption[$^{1,3}$D phase shifts]{$^{1,3}$D complex Kohn phase shifts. The $^1S$ CC phase shifts
+	\caption[$^{1,3}$D phase shifts]{$^{1,3}$D complex Kohn phase shifts. The $^1$D CC phase shifts
 \cite{Walters2004} are given by \mbox{\textcolor{blue}{$\times$}}, and the
-$^3S$ CC phase shifts \cite{Blackwood2002} are given by
+$^3$D CC phase shifts \cite{Blackwood2002} are given by
 \mbox{\textcolor{red}{\textbf{+}}}. Vertical dashed lines denote the complex rotation resonance
-positions \cite{Ho1998}.}
+positions \cite{Ho1998}. An interactive version of this figure is available online \cite{Plotly}.}
 	\label{fig:DWavePhase}
 \end{figure}
 
@@ -520,7 +526,8 @@ is located.
 
 From the discussion in \cref{sec:DWaveNonlinear}, the complex Kohn resonance 
 parameters presented in \cref{tab:DWaveResonancesOther} are likely more 
-sensitive to the nonlinear parameters than the two lower partial waves. Our 
+sensitive to the nonlinear parameters than the two lower partial waves. The
+complex Kohn 
 resonance parameters agree very well with the complex rotation \cite{Ho1998}.
 The 9Ps9H CC results \cite{Blackwood2002} are brought closer to the complex
 Kohn and complex rotation results by the inclusion of the H$^-$ channel for
@@ -532,8 +539,6 @@ This $^1$D-wave resonance has a very important contribution to the cross
 sections in \cref{chp:CrossSections}. Due to their $(2\ell+1)$ and $(\ell+1)$
 dependence, the $^1$D resonance has a larger contribution to these cross
 sections than the $^1$S- and $^1$P-waves.
-
-\todoi{Mention Drachman as in the computation chapter?}
 
 
 \setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
@@ -563,6 +568,17 @@ Coupled-pseudostate \cite{Campbell1998} & $5.28$ & $0.47$ \\
 \section{Summary}
 \label{sec:SummaryD}
 
+The $^1$D-wave phase shifts obtained by the Kohn-type methods using the first 
+two short-range symmetries are relatively well converged at higher
+$\kappa$ but do not appear to be as well converged at low $\kappa$ values. The
+$^3$D-wave phase shifts are less converged than the $^1$D phase shifts and 
+show poor convergence at low $\kappa$. Including the mixed symmetry terms may
+improve the convergence, but we have not included them in this work, primarily
+due to the difficulty of evaluating the short-short integrations. However, we
+are able to reliably calculate the $^1$D resonance, and the contribution to the
+cross sections from the less accurate $^3$D phase shifts is minimal
+(see \cref{chp:CrossSections}). The contribution to the cross sections from the
+$^1$D low $\kappa$ phase shifts is also small.
 
 
 

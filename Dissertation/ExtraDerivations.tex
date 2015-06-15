@@ -5,8 +5,9 @@
 \chapter{Extra Derivations and Scattering Theory}
 \label{chp:ExtraDer}
 
-This chapter mainly contains short derivations that are not critical to 
-understanding the main results but are nonetheless needed for this work.
+This chapter mainly contains short derivations and equations that are not 
+critical to understanding the main results but are nonetheless needed for 
+this work.
 
 \section{\texorpdfstring{$\rho$ and $\rho'$} {rho and rho'} Definitions}
 \label{sec:RhoDef}
@@ -43,12 +44,12 @@ Also, using the law of cosines,
 r_{13}^2 = r_1^2 + r_3^2 - 2 r_1 r_3 \cos \theta_{13}
 \label{eq:CosLaw}
 \end{equation}
-Substituting (\ref{eq:CosLaw}) into (\ref{eq:RhoDef3}) gives
+Substituting \cref{eq:CosLaw} into \cref{eq:RhoDef3} gives
 \begin{equation}
 \left| r_1 + r_3 \right|^2 = 2 \left( r_1^2 + r_3^2 \right) - r_{13}^2.
 \label{eq:RhoDef4}
 \end{equation}
-From (\ref{eq:RhoDef2}) and (\ref{eq:RhoDef4}),
+From \cref{eq:RhoDef2,eq:RhoDef4},
 \begin{equation}
 \label{eq:RhopRDef}
 \rho' = \frac{1}{2} \left[ 2 \left(r_1^2 + r_3^2 \right) - r_{13}^2 \right] ^ \frac{1}{2}.
@@ -245,7 +246,7 @@ Using the above definition of the Pochhammer symbol, we can easily see that
 \label{eq:PochPlus1}
 (x+1)_n = \frac{(x+n)}{(x)} \cdot (x)_n = \frac{(x)_{n+1}}{x}.
 \eeq
-From \ref{eq:HyperDef} and \ref{eq:PochPlus1}, 
+From \cref{eq:HyperDef,eq:PochPlus1}, 
 \begin{align}
 \nonumber _2F_1(1,a+1;c+1;z) &= 1 + \sum_{n=1}^{\infty} \frac{(1)_n \cdot (a+1)_n}{(c+1)_n} \frac{z^n}{n!} = 1 + \sum_{n=1}^{\infty} \frac{(a+1)_n}{(c+1)_n} z^n \\
 &= 1 + \left(\frac{c}{a}\right) \sum_{n=1}^{\infty} \frac{(a)_{n+1}}{(c)_{n+1}} z^n = 1 + \left(\frac{c}{a}\right) \sum_{n=2}^{\infty} \frac{(a)_n}{(c)_n} z^{n-1}.
@@ -255,12 +256,12 @@ Multiplying by $\left(\frac{c}{a}\right) z$, we now have
 \label{eq:Hyper1}
 \left(\frac{c}{a}\right) z \,\, _2F_1(1,a+1;c+1;z) = \left(\frac{c}{a}\right) z + \sum_{n=2}^{\infty} \frac{(a)_n}{(c)_n} z^n = \sum_{n=1}^{\infty} \frac{(a)_n}{(c)_n} z^n.
 \eeq
-From the definition in equation \ref{eq:HyperDef},
+From the definition in \cref{eq:HyperDef},
 \beq
 \label{eq:Hyper2}
 _2F_1(1,a;c;z) = 1 + \sum_{n=1}^{\infty} \frac{(a)_n}{(c)_n} z^n,
 \eeq
-which, when combined with equation \ref{eq:Hyper1}, gives the final result of
+which, when combined with \cref{eq:Hyper1}, gives the final result of
 \beq
 _2F_1(1,a;c;z) = 1 + \left( \frac{a}{c} \right) z \,\,_2F_1(1,a+1;c+1;z).
 \eeq
@@ -271,6 +272,22 @@ _2F_1(1,a;c;z) = 1 + \left( \frac{a}{c} \right) z \,\,_2F_1(1,a+1;c+1;z).
 
 \todoi{Give how C acts like S with shielding function}
 
+shielding function given by \cref{eq:PartialWaveShielding}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=5.25in]{shielding-func-n}
+	\caption{Shielding function $f_\ell$ variation with respect to $\rho$ for multiple values of $m_\ell$ with $\mu = 0.9$}
+	\label{fig:shielding-func-n}
+\end{figure}
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=5.25in]{shielding-func-mu}
+	\caption{Shielding function $f_\ell$ variation with respect to $\rho$ for multiple values of $\mu$ with $m_\ell = 7$}
+	\label{fig:shielding-func-mu}
+\end{figure}
 
 
 \section{Mixed Terms}
@@ -345,6 +362,9 @@ resonances with differing values of $q$, shown for S-wave scattering}
 \label{sec:SphericalFunc}
 %
 
+This section gives the spherical harmonics, spherical Bessel functions, and
+spherical Neumann functions through $\ell = 5$ for easier reference.
+
 {
 \renewcommand{\arraystretch}{1.5}
 \begin{table}
@@ -407,6 +427,63 @@ H-Wave & $\frac{\left(-z^4+105 z^2-945\right) \sin z}{z^5}-\frac{15 \left(z^4-28
 \label{tab:SphNeum}
 \end{table}
 }
+
+
+\section{D-Wave Second Formalism}
+\label{sec:DSecondForm}
+For the D-wave second formalism, similar to the P-wave second formalism
+(\cref{sec:PWave2Formalism}), the angular momentum is placed on the Ps and
+H, so we would need
+\begin{subequations}
+\label{eq:DWave2ndPhiBar}
+\begin{align}
+\bar{\phi}_{\rho i} &= \left(1 \pm P_{23}\right) Y_{20}(\theta_\rho) \rho^2 \phi_i \label{eq:DWave2ndPhi1i}\\
+\bar{\phi}_{3j} &= \left(1 \pm P_{23}\right) Y_{20}(\theta_3) r_3^2 \phi_j \label{eq:DWave2ndPhi2j}.
+\end{align}
+\end{subequations}
+It will be shown that these are sufficient to describe this system without 
+having a third set of terms as in \cref{eq:DWaveTrial}.
+
+To use these in the short-range code, we need an expression similar to
+\cref{eq:P2rhoY10}. We cannot use that exact expression, as we have $\rho^2$. We
+follow the same procedure as that of obtaining \cref{eq:P2rhoY10}, but the
+spherical harmonic is more complicated. Full details of the derivation are
+found in the ``Second Formalism P-wave and D-wave.nb'' notebook found on
+figshare \cite{figshare}.
+Substituting \cref{eq:CosRho} into \cref{eq:DWaveSpherHarm}, multiplying by
+$\rho^2$, and then using \cref{eq:RhoRDef}, we obtain
+\begin{equation}
+\label{eq:rhoident2}
+\rho^2 Y_{20}(\theta_\rho) = \frac{1}{4} \left[r_1^2 Y_{20}(\theta_1) + r_2^2 Y_{20}(\theta_2) \right] + \frac{1}{2} \sqrt{\frac{5}{16 \pi}} 
+   r_1 r_2 \left[3 \cos\theta_1 \cos\theta_2 - \cos\theta_{12} \right].
+\end{equation}
+The first set of brackets is obviously similar to \cref{eq:P2rhoY10} but with
+$1 \to 2$ coming from the P-wave to the D-wave. More interesting though is the
+second set of brackets, which is clearly the mixed terms in
+\cref{eq:DWavePhi12k,eq:MixedAngSimple}.
+
+As mentioned in \cref{sec:MixedTerms}, we do not use the mixed terms in the
+D-wave calculation due to their complexity. Because of this, the second
+formalism has not been implemented for the D-wave and could be a source of
+future work.
+
+
+
+
+
+\section{Miscellaneous}
+\label{sec:Misc}
+
+The cosine factors present in many of the matrix element equations are easily 
+expressed in terms of $r_i$ and $r_{ij}$ by using the law of cosines
+\cite[p.174]{CRC1978}:
+\beq
+\label{eq:Cosines}
+\cos\theta_{12} = \frac{r_1^2 + r_2^2 - r_{12}^2}{2 r_1 r_2}, \ \ \ \ \cos\theta_{13} = \frac{r_1^2 + r_3^2 - r_{13}^2}{2 r_1 r_3} \ \ \ \text{and}  \ \ \cos\theta_{23} = \frac{r_2^2 + r_3^2 - r_{23}^2}{2 r_2 r_3}.
+\eeq
+This allows us to express all short-short matrix elements in the form needed by
+the short-short methods described in \cref{sec:CompShort}.
+
 
 
 \biblio

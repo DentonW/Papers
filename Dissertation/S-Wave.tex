@@ -34,7 +34,7 @@ though we rederived everything, and I wrote my own codes.
 
 The general wavefunction for any $\ell$ is given in \cref{eq:GeneralWaveTrial}, and the S-wave version is
 \beq
-\Psi_0^{\pm,t} = \widetilde{S}_0 + L_0^{\pm,t} \, \widetilde{C}_0 + \sum_{i=1}^{N(\omega)} c_i \bar{\phi}_i.
+\Psi_0^{\pm,t} = \widetilde{S}_0 + L_0^{\pm,t} \, \widetilde{C}_0 + \sum_{i=1}^{N'(\omega)} c_i \bar{\phi}_i.
 \label{eq:SWaveTrial}
 \eeq
 The S-wave has only one set of short-range terms. $\widetilde{S}_0$,
@@ -61,7 +61,7 @@ The shielding factor, $f_0(\rho)$, complicates the derivatives slightly.
 \label{eq:LC1}
 \end{align}
 
-\noindent Again, we use (\ref{eq:HEqn}) and (\ref{eq:PsEqn}) to simplify this expression.
+\noindent Again, we use \cref{eq:HEqn,eq:PsEqn}) to simplify this expression.
 \begin{align}
 \mathcal{L}C_0 = & \left(-\frac{1}{2}\nabla_\rho^2 + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}}  - \frac{1}{2}\kappa^2\right) \nonumber \\
  & \times \Phi_{Ps}(r_{12}) \Phi_H(r_3) \frac{\sin(\kappa\rho)}{\kappa\rho} \sqrt{\frac{2\kappa}{4\pi}} \left[1 + e^{-\mu\rho} \left(1 + \frac{\mu}{2} \rho \right) \right]
@@ -191,7 +191,9 @@ $\phi_i$, not $\phi_i$ and $\phi_i'$.
 
 \subsection{Phase Shifts}
 All runs here were performed using the set of integration points described in 
-\cref{sec:QuadraturePoints}. The phase shifts are calculated with the programs 
+\cref{sec:QuadraturePoints}. The number of terms used for $^1$S was determined
+using the procedure in \cref{sec:MaxMu}, and for $^3$S, the method in
+\cref{sec:CompPhase}. The phase shifts are calculated with the programs 
 described in \cref{chp:Programs}. \Cref{tab:SWavePhase} shows the $^{1,3}$S phase shifts 
 calculated using the $S$-matrix complex Kohn at regular intervals of $\kappa$, which we 
 compare to the results from other groups in \cref{tab:SWaveComparisons}. 
@@ -242,7 +244,8 @@ $^3S$ CC phase shifts \cite{Blackwood2002} are given by
 \mbox{\textcolor{red}{\textbf{+}}}. The CVM $^1S$ and $^3S$ phase shifts
 \cite{Zhang2012} are blue and red circles,
 respectively. Vertical dashed lines denote the complex rotation resonance
-positions \cite{Yan1999,Yan1998a,Ho1998}.}
+positions \cite{Yan1999,Yan1998a,Ho1998}. An interactive version of this
+figure is available online \cite{Plotly}.}
 	\label{fig:SWavePhase}
 \end{figure}
 
@@ -319,8 +322,8 @@ This work $\omega \to \infty$ $\delta_0^+$							& -0.426   & -0.819   & -1.161 
 Kohn $\omega = 6$ \cite{VanReeth2003} $\delta_0^+$					& -0.427   & -0.820   & -1.161   & -1.446  & -1.677  & -1.857  & -1.964 \\
 Kohn $\omega \rightarrow \infty$ \cite{VanReeth2003} $\delta_0^+$	& -0.425   & -0.817   & -1.158   & -1.443  & -1.674  & -1.852  & -1.959 \\
 CVM \cite{Zhang2012} $\delta_0^+$									& -0.42636 & -0.81973 & $---$    & $---$   & $---$   & $---$   & $---$  \\
-CC 14Ps14H+H$^-$ \cite{Walters2004} $\delta_0^+$					& -0.434   & -0.834   & -1.178   & -1.467  & -1.704  & -1.890  & -2.018 \\
-CC 14Ps14H \cite{Blackwood2002} $\delta_0^+$						& -0.428   & -0.825   & -1.167   & -1.453  & -1.685  & -1.867  & -1.992 \\
+CC 14Ps14H+H$^-$ \cite{Walters2004} $\delta_0^+$					& -0.428   & -0.825   & -1.167   & -1.453  & -1.685  & -1.867  & -1.992 \\
+CC 14Ps14H \cite{Blackwood2002} $\delta_0^+$						& -0.434   & -0.834   & -1.178   & -1.467  & -1.704  & -1.890  & -2.018 \\
 T-matrix \cite{Biswas2002a} $\delta_0^+$							& -0.38269 & -0.73419 & -1.03799 & -1.2924 & -1.5014 & -1.6667 & $---$  \\
 2 channel ME \cite{Biswas2001} $\delta_0^+$							& -0.532   & -0.966   & -1.294   & -1.546  & -1.746  & -1.910  & -2.048 \\
 3-state CC \cite{Sinha1997} $\delta_0^+$							& -0.68    & -1.20    & -1.59    & -1.89   & -2.13   & -2.32   & -2.48  \\
@@ -348,7 +351,7 @@ SE \cite{Hara1975} $\delta_0^-$										& -0.2469  & -0.4888  & -0.7211  & -0.9
 An extensive comparison of the S-wave phase shifts with calculations from other
 groups is also shown in \cref{tab:SWaveComparisons}. Fewer groups have attempted this
 problem than the PsH bound state problem in \cref{tab:BoundEnergyOther}. We see
-that the accuratecomplex Kohn results are very similar to the prior Kohn
+that the accurate complex Kohn results are very similar to the prior Kohn
 \cite{VanReeth2003} and agree extremely well with the CVM results
 \cite{Zhang2012}. The CC phase shifts \cite{Walters2004,Blackwood2002} also
 agree relatively well, with closer agreement for $^1$S than $^3$S.
@@ -360,7 +363,7 @@ agree relatively well, with closer agreement for $^1$S than $^3$S.
 
 Before the Ps(n=2) threshold at \SI{5.102}{eV}, 
 there are two very clear resonances for $^1$S scattering, which can be seen 
-in figure \ref{fig:SWavePhase}. %The first resonance is associated with the
+in \cref{fig:SWavePhase}. %The first resonance is associated with the
 %$2s$ state \cite{DiRienzi2002b}. The $1s$ state is associated with the PsH bound 
 %state in \cref{chp:PsHBound}.
 The trial wavefunction we use cannot be 
@@ -453,7 +456,10 @@ scattering.
 \section{Summary}
 \label{sec:SummaryS}
 
-
+The Kohn-type variational methods have provided highly accurate phase shifts 
+and reliable resonance parameters for the $^{1,3}$S-wave. The $S$-matrix
+complex Kohn phase shifts and resonance parameters compare well with those
+of accurate calculations from other groups \cite{Blackwood2002,Walters2004,Zhang2012}.
 
 
 

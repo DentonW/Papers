@@ -6,7 +6,10 @@
 \chapter{Computation}
 \label{chp:Computation}
 
-\todoi{How hardcoded Gaussian abscissae and weights}
+\lettrine{\textcolor{startcolor}{T}}{his} chapter covers some of the major
+computational details of this work. For additional details, such as resonance
+fittings, determination of nonlinear parameters and the use of Gaussian
+quadratures, refer to \cref{chp:ExtraNumerics}.
 
 \section{Short-Range Terms}
 \label{sec:CompShort}
@@ -439,7 +442,7 @@ so its form is
 (\bar{S}_\ell,\mathcal{L} \bar{S}_\ell)_B = \pm 8\pi^2 \int_0^\infty & \int_0^\infty \int_0^\infty \int_{|r_1 - r_3|}^{|r_1 + r_3|} \int_{|r_2 - r_3|}^{|r_2 + r_3|} \int_0^{2\pi}  S_\ell^\prime S_\ell \frac{2}{r_{23}} r_1 r_2 r_{13} r_{23} \nonumber \\
 & \times d\varphi_{12}\, dr_{23}\, dr_{13}\, dr_2\, dr_3\, dr_1.
 \end{align}
-\todoi{Check that we do this over $\varphi_{12}$.}
+%\todoi{Check that we do this over $\varphi_{12}$.}
 
 The $r_{13}$ and $r_{23}$ integrals have finite limits, so here we use Gauss-
 Legendre quadrature. Again, for the internal angular integration, this time 
@@ -451,7 +454,15 @@ Legendre before the cusp and Gauss-Laguerre after the cusp.
 The $(\bar{C}_\ell,\mathcal{L} \bar{S}_\ell)$ and
 $(\bar{C}_\ell,\mathcal{L} \bar{C}_\ell)$ terms
 are integrated in the same manner as the
-$(\bar{S}_\ell,\mathcal{L} \bar{S}_\ell)$ integral just described.
+$(\bar{S}_\ell,\mathcal{L} \bar{S}_\ell)$ integral just described. With all
+four matrix elements calculated, as mentioned on \pageref{GenSLCandCLS}, if
+the difference of $(\bar{S}_\ell,\mathcal{L} \bar{C}_\ell)$ and
+$(\bar{C}_\ell,\mathcal{L} \bar{S}_\ell)$ is close to 1, we can have reasonable
+confidence in the long-long integrations. Another check is that if we
+explicitly calculate $(S_\ell,\mathcal{L} S_\ell)$, we should get 0
+(\cref{eq:SLS0Test}). We find that the choice of innermost integration,
+over $\varphi_{12}$ or $\varphi_{13}$, can cause this to be nonzero, so this
+gives us another check on the accuracy of the long-long integrations.
 
 
 \subsection{Short-Range -- Long-Range}
@@ -475,9 +486,9 @@ From \cref{eq:PhiBarLSBar2b,eq:LSFinal,eq:LSPrimeFinal},
 
 \subsubsection{Case I: \texorpdfstring{$q_i > 0$}{qi > 0}}
 \label{sec:Swaveqigt0}
-When $q_i > 0$ in $\phi_i$ (equation \ref{eq:PhiDef}), the power of $r_{23}$ is
+When $q_i > 0$ in $\phi_i$ (\cref{eq:PhiDef}), the power of $r_{23}$ is
 equal to or greater than 0. Gaussian quadratures can safely integrate this type
-of term, so we integrate the full expression in equation \ref{eq:PhiLSBarInt}.
+of term, so we integrate the full expression in \cref{eq:PhiLSBarInt}.
 \begin{align}
 \label{eq:PhiLSBarIntFull}
 \nonumber (\bar{\phi}_i, \mathcal{L} \bar{S}_\ell) =& \, \frac{2}{\sqrt{2}} \cdot 8\pi^2  \int_0^\infty \int_0^\infty \int_0^\infty \int_{|r_1 - r_2|}^{|r_1 + r_2|} \int_{|r_1 - r_3|}^{|r_1 + r_3|} \int_0^{2\pi} \phi_i \\
@@ -485,7 +496,7 @@ of term, so we integrate the full expression in equation \ref{eq:PhiLSBarInt}.
 &\times r_2 r_3 r_{12} r_{13}\, d\varphi_{23}\, dr_{13}\, dr_{12}\, dr_3\, dr_2\, dr_1
 \end{align}
 
-Similar to the long-long integrations from section \ref{sec:LongLongInt}, the 
+Similar to the long-long integrations from \cref{sec:LongLongInt}, the 
 $r_1$ integration is performed using the Gauss-Laguerre quadrature. The $r_2$
 integral is broken into two parts at the cusp of $r_2 = r_1$, with the
 Gauss-Legendre quadrature before the cusp and the Gauss-Laguerre quadrature 
@@ -497,7 +508,7 @@ $\varphi_{23}$ integration uses the Chebyshev-Gauss quadrature.
 
 \subsubsection{Case II: \texorpdfstring{$q_i = 0$}{qi = 0}}
 When $q_i = 0$, the overall power of the $r_{23}$ term is $-1$, so we 
-cannot use the Gaussian quadratures in the form of \ref{eq:PhiLSBarIntFull}.  
+cannot use the Gaussian quadratures in the form of \cref{eq:PhiLSBarIntFull}.  
 Similar to the long-long integrations, the $r_{23}^{-1}$ term is integrated 
 separately, using the same type of integrations as \cref{eq:PhiLSBarIntFull}.
 Refer to the previous section for the description of the quadratures used.
@@ -599,7 +610,7 @@ while $\delta = -0.42707370$ for cusp parameters of 25. To the required
 accuracy, the cusp parameters of 25 are sufficient for this example.
 
 Smaller values for these cusp parameters were also tried, and these tests are 
-summarized in table \ref{tab:SWaveCuspParameters}. When the cusp parameters 
+summarized in \cref{tab:SWaveCuspParameters}. When the cusp parameters 
 are too small, such as the cases of 5, 10 and 15, the phase shifts do not 
 converge well and start to diverge much earlier. The second column in this 
 table shows the number of terms we can use for each set, but the number of 
@@ -902,13 +913,13 @@ When we can compare convergence with respect to $\omega$, we define a
 convergence ratio as
 \begin{equation}
 \label{eq:ConvRatio}
-\mathcal{R}(\omega) = \frac{\delta_\ell^\pm(\omega)-\delta_\ell^\pm(\omega-1)}
+R'(\omega) = \frac{\delta_\ell^\pm(\omega)-\delta_\ell^\pm(\omega-1)}
   {\delta_\ell^\pm(\omega-1)-\delta_\ell^\pm(\omega-2)}.
 \end{equation}
 This is similar to the inverse of the ratio for the energy eigenvalues given in
-Ref.~\cite{Yan1999}. If $\mathcal{R}(\omega) \geq 1$, there is no convergence
+Ref.~\cite{Yan1999}. If $R'(\omega) \geq 1$, there is no convergence
 pattern. A ratio of less than 1 shows convergence but does not guarantee a
-reliable extrapolation. We find that $\mathcal{R}(\omega) \lesssim 0.5$ is
+reliable extrapolation. We find that $R'(\omega) \lesssim 0.5$ is
 needed to properly extrapolate phase shifts. We also find that when
 $\delta_\ell \lesssim 10^{-4}$, the convergence often becomes poor
 (see \cref{sec:DWavePhase}).
@@ -920,7 +931,12 @@ The tangent of the phase shifts is fitted to the function
 \eeq
 The $c$ and $p$ in this equation are fitting parameters. When plotted with respect to $\omega^{-p}$, the tangents of the phase shifts form nearly a straight line, with the y-intercept being the tangent of the extrapolated value of the phase shift, $\tan \delta^\pm(\omega \to \infty)$.
 
-In Van Reeth and Humberston, the extrapolation is done using $\omega = 3$ through $\omega = 6$ \cite{VanReeth2003}. Our results go to $\omega = 7$, so we have completed the extrapolation using the sets $\omega = 3-6$, $\omega = 3-7$ and $\omega = 4-7$. The smallest residuals are normally found with the set $\omega = 4-7$. The values of the extrapolated phase shifts using this method are in table \ref{tab:SWavePhase}.
+In Van Reeth and Humberston, the extrapolation is done using $\omega = 3$ 
+through $\omega = 6$ \cite{VanReeth2003}. Our results go to $\omega = 7$, so 
+we have completed the extrapolation using the sets $\omega = 3-6$,
+$\omega = 3-7$ and $\omega = 4-7$. The smallest residuals are normally found
+with the set $\omega = 4-7$. The values of the extrapolated phase shifts using
+this method are in \cref{tab:SWavePhase}.
 
 \begin{figure}
 	\centering
@@ -944,178 +960,6 @@ omitted in the scattering problem than just the bound state problem.
 We also extrapolate scattering lengths as shown in \cref{eq:ScatLenExtrap}.
 There is no clear convergence pattern for the effective ranges, which are
 described in \cref{sec:ScatteringLength}.
-
-
-
-\section{Resonance Fitting}
-\label{sec:ResonanceFit}
-
-To find the resonance parameters (positions and widths), the phase shifts for 
-multiple energy values are fitted to \cref{eq:ResonanceCurve}. There have 
-been multiple programs described in the literature
-\cite{Tennyson1984, Stibbe1998, Sochi2013} to do these fittings, which I
-was not aware of when I 
-originally wrote code to do these. Some of the difficulty with this type of 
-fitting is choosing appropriate guesses for the resonance parameters.
-Ref.~\cite{Sochi2013} describes methods that some groups use to try to identify 
-resonance parameters.
-
-This nonlinear fitting can be difficult for general programs. I first tried 
-the \texttt{Fit} and \texttt{FindFit} functions of
-Mathematica\textsuperscript{\textregistered} 8.0 \cite{Mathematica}, but these were unable to fit our 
-data to this complicated nonlinear function. I next tried the
-\texttt{curve\_fit} function of SciPy \cite{SciPy} in Python\textsuperscript{\textregistered}
-2.6 \cite{Python}, which was better able to fit the nonresonant (polynomial) 
-part but had trouble with the $\arctan$ terms.
-
-With the help of Ryan Bosca, I wrote a MATLAB\textsuperscript{\textregistered}
-\cite{matlab} script that uses the \texttt{nlinfit} routine of MATLAB. 
-\texttt{nlinfit} is specifically designed for fitting to nonlinear functions, 
-and its robust option allows for a variety of weighting functions to be used. 
-This script does the fitting for all eight of the possible weightings: 
-Bisquare, Andrews, Cauchy, Fair, Huber, Logistic, Talwar and Welsch. This 
-fitting routine is also not as sensitive to the initial guesses as the 
-Mathematica and SciPy routines.
-
-Later on, I adapted this resonance fitting code to be called from IPython 
-\cite{ipython} using the mlabwrap \cite{mlabwrap} Python to MATLAB wrapper. 
-This allows fits and graphs of the fittings to be in the same IPython 
-notebook, including the flexibility of querying the MySQL database for the 
-phase shift data for any partial wave at any number of terms and for
-any Kohn method
-(see \cref{sec:XMLSQLIPy}). The mlabwrap package is difficult to install properly, 
-requiring a compilation against MATLAB. The mlabwrap-purepy package
-\cite{mlabwrappurepy} has been created to simplify this, but we have not tried it 
-yet.
-
-The results of fitting the phase shifts from the $S$ matrix are shown in
-\cref{fig:swave-resonance-uncorrected-fits1,fig:swave-resonance-uncorrected-fits2} 
-for each of the weighting functions, and the resonance parameters are given 
-in each subfigure. There is good agreement between the fits performed with 
-each of the weighting functions, and the Fair is the furthest from the 
-others. In our testing, the Cauchy is consistently one of the best choices 
-for fitting. In addition, \cref{fig:swave-resonance-uncorrected-res} has 
-plots of the residuals (the absolute value of the difference between the 
-fitted curve and the actual phase shifts). Each graph also has the residual 
-sum of squares (RSS) calculated. The RSS gives an easy way to compare the 
-performance of the weightings with each other. The Fair has a notably larger 
-RSS than all of the other fittings.
-
-\begin{figure}
-	\centering
-	\includegraphics[width=\textwidth]{swave-resonance-uncorrected-fits1}
-	\caption{First set of uncorrected resonance fitting graphs for $^1$S at $\omega = 7$}
-	\label{fig:swave-resonance-uncorrected-fits1}
-\end{figure}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=\textwidth]{swave-resonance-uncorrected-fits2}
-	\caption{Second set of uncorrected resonance fitting graphs for $^1$S at $\omega = 7$}
-	\label{fig:swave-resonance-uncorrected-fits2}
-\end{figure}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=\textwidth]{swave-resonance-uncorrected-res}
-	\caption{Residuals for uncorrected resonance fitting graphs for $^1$S at $\omega = 7$}
-	\label{fig:swave-resonance-uncorrected-res}
-\end{figure}
-
-One important thing to notice with the fits in
-\cref{fig:swave-resonance-uncorrected-fits1,fig:swave-resonance-uncorrected-fits2} is that the
-$S$-matrix phase shifts extend above the fitted curve at the resonances before 
-matching up again on the right side of the resonance below $-3.0$. The red 
-curves still fit to the data well, but the fits can be improved by correcting 
-for these. 
-
-In \cref{eq:ResonanceCurve}, the first three polynomial terms form the 
-background, and the two $\arctan$ terms represent the resonances. The range 
-of $\arctan$ is $(-\frac{\pi}{2},\frac{\pi}{2})$, so the $\arctan$ parts of 
-this model cannot bring the phase shift from the background (near 2.0) all 
-the way to 0.0, as it can only add up to $\frac{\pi}{2}$ to the background. 
-It is important to realize that the Kohn methods will only return phase 
-shifts in a certain range. From \cref{eq:GenKohnL}, we are not finding the 
-phase shifts directly but are rather calculating $\tan \delta_\ell$. The 
-phase shifts found this way sometimes have to have $\pi$ added or subtracted 
-to get them in the proper range.
-
-\begin{figure}
-	\centering
-	\includegraphics[width=5in]{swave-phases-reson-pi}
-	\caption[$^1$S resonance data showing correction]{$^1$S resonance data showing raw data from complex Kohn and the corrected version. The solid gray line shows the polynomial background, and the vertical dashed lines give the calculated resonance positions.}
-	\label{fig:swave-phases-reson-pi}
-\end{figure}
-
-\Cref{fig:swave-phases-reson-pi} shows the results of subtracting $\pi$ from 
-phase shifts that are more than $\frac{\pi}{2}$ above the background. The 
-original and the corrected data are both shown on this plot, and the 
-background is given as a gray line. Note that the slope of the original data 
-changes when crossing over the vertical dashed lines, which gives the 
-resonance positions. When corrected, these upper points are moved down to 
-their appropriate place, shown as x's on the graph. These match up better 
-with the fitting curve. This fitting is an iterative process, because the 
-background polynomial has to be determined with \cref{eq:ResonanceCurve} 
-before we can do this correction. Then the phase shifts are fitted again 
-after performing the correction.
-
-\begin{figure}
-	\centering
-	\includegraphics[width=\textwidth]{swave-resonance-corrected-fits1}
-	\caption{First set of corrected resonance fitting graphs for $^1$S at $\omega = 7$}
-	\label{fig:swave-resonance-corrected-fits1}
-\end{figure}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=\textwidth]{swave-resonance-corrected-fits2}
-	\caption{Second set of corrected resonance fitting graphs for $^1$S at $\omega = 7$}
-	\label{fig:swave-resonance-corrected-fits2}
-\end{figure}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=\textwidth]{swave-resonance-corrected-res}
-	\caption{Residuals for corrected resonance fitting graphs for $^1$S at $\omega = 7$}
-	\label{fig:swave-resonance-corrected-res}
-\end{figure}
-
-Finally, this corrected and re-fitted data is shown in
-\cref{fig:swave-resonance-corrected-fits1,fig:swave-resonance-corrected-fits2}. The different 
-weighting methods agree extremely well now, with the only notable differences 
-being in the $^2\Gamma$ width of the second resonance for the Bisquare, 
-Andrews, and Talwar fits. This is still a very small difference, and the 
-other resonance parameters are almost all identical.
-\Cref{fig:swave-resonance-corrected-res} gives the residuals and RSS for the corrected phase
-shifts, similar to \cref{fig:swave-resonance-uncorrected-res}. The Bisquare, Andrews, 
-and Talwar weightings have larger RSS values than the other weightings, 
-indicating that their fits are not quite as accurate, but they are still 
-relatively accurate.
-
-The differences between the different weighting methods gives us one way to 
-determine errors for our resonance parameters. Additionally, comparing the 
-different Kohn methods gives us an idea of the error. The real-valued 
-generalized Kohn methods give more disagreement, so we compute the resonance 
-parameters for each of these Kohn methods. We also have to take into account 
-Schwartz singularities. In \cref{fig:schwartz-singularity}(a) on
-\pageref{fig:schwartz-singularity}, the second resonance parameters are not as 
-accurate. The fitting routine described here chooses fitting parameters of
-$^2E_R = \SI{5.0295}{eV}$ and $^2\Gamma = \SI{0.06011}{eV}$.
-In \cref{fig:schwartz-singularity}(b), where there are no Schwartz 
-singularities, $^2E_R = \SI{5.0278}{eV}$ and $^2\Gamma = \SI{0.06075}{eV}$. 
-This highlights the importance of using multiple Kohn methods and trying to 
-detect Schwartz singularities. After removing obvious Schwartz singularities, 
-the mean value of the different Kohn methods for all weightings is taken for 
-each resonance parameter, and these are the results listed for each of the 
-partial waves in
-\cref{sec:SWaveResonances,sec:PWaveResonances,sec:DWaveResonance,sec:FWaveResonance}.
-The errors given in these tables are simply the standard deviation with all 
-Kohn methods and weightings used for each resonance parameter. For this, we 
-do not use the generalized $S$ or $T$ matrices, because using these would 
-decrease the error, as they agree to a significant precision.
-
-\todoi{IPython notebook?}
-
 
 
 \biblio

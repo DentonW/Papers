@@ -12,7 +12,7 @@
 A powerful property of the Rayleigh-Ritz variational method is the 
 ability to systematically improve the wavefunction to lower the upper bound 
 on the energy. By either adding terms to the expansion in
-\ref{eq:BoundWavefn_psi} or changing the nonlinear parameters $\alpha$,
+\cref{eq:BoundWavefn_psi} or changing the nonlinear parameters $\alpha$,
 $\beta$ and $\gamma$, the energy can be reduced and a possible minimum
 found. This is a three-dimensional optimization problem, and we tried 
 multiple methods for the nonlinear parameter optimization.
@@ -221,7 +221,17 @@ $\omega$ & 1st formalism / 1 set & 2nd formalism / 1 set & 1st formalism / 2 set
 \label{tab:SimplexPWaveTripOpt}
 \end{table}
 
-From \cref{tab:SimplexPWaveSingOpt,tab:SimplexPWaveTripOpt}, we see that lower energy eigenvalues are always obtained with the first formalism with 1 set versus the second formalism with 1 set. Likewise, the first formalism has lower energy eigenvalues than the second formalism when both have 2 sets. For $\omega \geq 2$, the first formalism with 1 set even has lower energy eigenvalues than the second symmetry with 2 sets. We had trouble obtaining phase shifts with two different sets of nonlinear parameters, but for higher $\omega$, we also see that the energy does not change much. Using more than one set of nonlinear parameters could be explored further in future work, and we have done preliminary investigation into this for the S-wave.
+From \cref{tab:SimplexPWaveSingOpt,tab:SimplexPWaveTripOpt}, we see that 
+lower energy eigenvalues are always obtained with the first formalism with 1 
+set versus the second formalism with 1 set. Likewise, the first formalism has 
+lower energy eigenvalues than the second formalism when both have 2 sets. For 
+$\omega \geq 2$, the first formalism with 1 set even has lower energy 
+eigenvalues than the second symmetry with 2 sets. We had trouble obtaining 
+phase shifts with two different sets of nonlinear parameters due to increased 
+linear dependence, but for higher $\omega$, we also see that the energy does 
+not change much. Using more than one set of nonlinear parameters could be 
+explored further in future work, and we have done preliminary investigation 
+into this for the S-wave.
 
 
 \section{Determination of D-Wave Nonlinear Parameters}
@@ -229,7 +239,7 @@ From \cref{tab:SimplexPWaveSingOpt,tab:SimplexPWaveTripOpt}, we see that lower e
 
 %\todoi{Do we want to just move that table here and to the P-wave chapter?}
 The comparison to the CC results \cite{Walters2004,Blackwood2002}
-in \cref{tab:DWaveComparisons,fig:DWavePhase} for the $^1$D state is
+in \cref{tab:DWaveComparisons,fig:DWavePhase} for the $^1$D-wave is
 reasonable, with the CC results below the complex Kohn at $\kappa = 0.7$.
 For $^3$D, the CC results are much higher, as can be seen in the inset
 in \cref{fig:DWavePhase}. The $^1$D phase shifts are small, so their overall
@@ -273,7 +283,7 @@ variation. There is a maximum in the phase shift in
 the phase shifts at low and high $\alpha$. If we decrease
 $\alpha$ from its value of 0.359, however, from
 \cref{fig:dwave-singlet-alpha-k01-variation}(b),
-the convergence ratio $\mathcal{R}(4)$, given by \cref{eq:ConvRatio},
+the convergence ratio $R'(4)$, given by \cref{eq:ConvRatio},
 increases drastically. From this analysis, we had hoped for higher phase shifts,
 but we have a trade-off between this and reasonable convergence ratios. Due to
 this, we have kept the nonlinear parameter $\alpha$ at 0.359, which seems to be
@@ -281,7 +291,7 @@ a reasonable compromise between higher phase shifts and better convergence
 ratios. This is likely an indication of the amount of numerical instability
 we have with small phase shifts.
 
-\todoi{Move $\mathcal{R}(4)$ to the left or move y-axis numbers to the right. Also narrow these figures to fit within the margins.}
+\todoi{Move $R'(4)$ to the left or move y-axis numbers to the right. Also narrow these figures to fit within the margins.}
 
 \begin{figure}
 	\centering
@@ -292,8 +302,8 @@ we have with small phase shifts.
 
 At the higher $\kappa$ of 0.6, the variation looks very different, as seen in
 \cref{fig:dwave-singlet-alpha-k06-variation}. The maximum is at about
-$\alpha = 0.6$, and $\mathcal{R}(4)$ is much less than 1. Interestingly,
-$\mathcal{R}(4)$ decreases monotonically as $\alpha$ is increased. For
+$\alpha = 0.6$, and $R'(4)$ is much less than 1. Interestingly,
+$R'(4)$ decreases monotonically as $\alpha$ is increased. For
 $\kappa = 0.6$, it is clear that choosing $\alpha = 0.6$ is much better than
 the original 0.359.
 
@@ -307,8 +317,8 @@ the original 0.359.
 Starting from the original nonlinear parameters, we also varied $\beta$. The
 $\beta$ variation looks very similar to the $\alpha$ derivation, but there is
 a surprising breakdown of the phase shifts when $\beta > 0.6$. At $\beta = 0.7$,
-$\delta_2^+$ increases significantly, and $\mathcal{R}(4) > 5$. For $\beta = 0.8$,
-$\delta_2^+ = -2.0694^{-3}$, and $\mathcal{R}(4) = -128.3$, so the phase shifts
+$\delta_2^+$ increases significantly, and $R'(4) > 5$. For $\beta = 0.8$,
+$\delta_2^+ = -2.0694^{-3}$, and $R'(4) = -128.3$, so the phase shifts
 for large $\beta$ are obviously not reliable. When $\beta$ is smaller, we see
 very similar behavior to that of the $\alpha$ variation in
 \cref{fig:dwave-singlet-alpha-k01-variation}. The convergence ratio increases as
@@ -336,7 +346,7 @@ appears to be more stable than the $\beta$ variation from these runs.
 
 The variations for $^3$D look similar to that of $^1$D. There are less points
 in \cref{fig:dwave-triplet-alpha-k01-variation}, but we can see that as
-$\alpha$ is lowered, $\mathcal{R}(4)$ increases, and there is a maximum around
+$\alpha$ is lowered, $R'(4)$ increases, and there is a maximum around
 $\alpha = 0.3$. Again, we kept the original $\alpha$ of 0.356.
 
 \begin{figure}
@@ -378,9 +388,9 @@ For this, the phase shifts break down even earlier, starting after $\beta = 0.5$
 	\label{fig:dwave-triplet-alphabeta-k06-variation}
 \end{figure}
 
-We had previously noticed that if $\alpha$ and $\beta$ are equal (for multiple
-partial waves), linear dependence becomes a large issue. Based on this and the
-graphs in \cref{fig:dwave-singlet-alphabeta-k06-variation,fig:dwave-triplet-alphabeta-k06-variation},
+We had previously noticed for multiple partial waves that if $\alpha$ and
+$\beta$ are equal, linear dependence becomes a large issue. Based on this and
+the graphs in \cref{fig:dwave-singlet-alphabeta-k06-variation,fig:dwave-triplet-alphabeta-k06-variation},
 we tried the set of nonlinear parameters $\alpha = 0.6$, $\beta = 0.5$,
 and $\gamma = 0.976$ for $^{1,3}$D for a full run of $\omega = 6$.
 Using the Todd procedure in \cref{sec:ToddBound}, this $^1$D set only uses 844
@@ -426,7 +436,7 @@ $\kappa$ for $^1$D.
 \centering
 \begin{tabular}{cccccc}
 \toprule
-$\kappa$ & $\mathcal{R}(2)$ & $\mathcal{R}(3)$ & $\mathcal{R}(4)$ & $\mathcal{R}(5)$ & $\mathcal{R}(6)$ \\
+$\kappa$ & $R'(2)$ & $R'(3)$ & $R'(4)$ & $R'(5)$ & $R'(6)$ \\
 \midrule
 0.3 & 1.523 & 0.795 & 0.572 & 0.491 & 0.377 \\
 0.4 & 1.286 & 0.680 & 0.475 & 0.412 & 0.429 \\
@@ -444,7 +454,7 @@ $\kappa$ & $\mathcal{R}(2)$ & $\mathcal{R}(3)$ & $\mathcal{R}(4)$ & $\mathcal{R}
 \centering
 \begin{tabular}{cccccc}
 \toprule
-$\kappa$ & $\mathcal{R}(2)$ & $\mathcal{R}(3)$ & $\mathcal{R}(4)$ & $\mathcal{R}(5)$ & $\mathcal{R}(6)$ \\
+$\kappa$ & $R'(2)$ & $R'(3)$ & $R'(4)$ & $R'(5)$ & $R'(6)$ \\
 \midrule
 0.3 & 2.475 & 0.352 & 1.611 & 0.316 & 1.628 \\
 0.4 & 2.157 & 0.291 & 1.372 & 0.209 & 1.902 \\
@@ -477,7 +487,7 @@ $\kappa$ & \multicolumn{1} {c}{$\delta_2^-$ full $\beta = 0.368$} & \multicolumn
 
 We also looked at the convergence ratios for $^3$D, as given in
 \cref{tab:D3Beta365VarConv,tab:D3Beta5VarConv}. Again, the set of nonlinear
-parameters with $\beta = 0.5$ is problematic, giving $\mathcal{R}(6) > 1$ for
+parameters with $\beta = 0.5$ is problematic, giving $R'(6) > 1$ for
 most $\kappa$ values. From this analysis, we decided on the $^3$D nonlinear
 parameters of $\alpha = 0.356$, $\beta = 0.365$, and $\gamma = 0.976$.
 
@@ -485,7 +495,7 @@ parameters of $\alpha = 0.356$, $\beta = 0.365$, and $\gamma = 0.976$.
 \centering
 \begin{tabular}{cccccc}
 \toprule
-$\kappa$ & $\mathcal{R}(2)$ & $\mathcal{R}(3)$ & $\mathcal{R}(4)$ & $\mathcal{R}(5)$ & $\mathcal{R}(6)$ \\
+$\kappa$ & $R'(2)$ & $R'(3)$ & $R'(4)$ & $R'(5)$ & $R'(6)$ \\
 \midrule
 0.3 & 3.950 & 0.932 & 0.564 & 0.512 & 0.432 \\
 0.4 & 3.399 & 0.811 & 0.446 & 0.404 & 0.469 \\
@@ -502,7 +512,7 @@ $\kappa$ & $\mathcal{R}(2)$ & $\mathcal{R}(3)$ & $\mathcal{R}(4)$ & $\mathcal{R}
 \centering
 \begin{tabular}{cccccc}
 \toprule
-$\kappa$ & $\mathcal{R}(2)$ & $\mathcal{R}(3)$ & $\mathcal{R}(4)$ & $\mathcal{R}(5)$ & $\mathcal{R}(6)$ \\
+$\kappa$ & $R'(2)$ & $R'(3)$ & $R'(4)$ & $R'(5)$ & $R'(6)$ \\
 \midrule
 0.3 & 7.392 & 3.424 & 0.505 & 0.426 & 1.768 \\
 0.4 & 6.978 & 3.035 & 0.390 & 0.265 & 2.421 \\
@@ -642,10 +652,36 @@ perform a calculation, especially for large $\omega$.
 \end{figure}
 
 
+\section{S-Wave Maximum \texorpdfstring{$\mu$}{mu}}
+\label{sec:MaxMu}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=5in]{swave-max-mu}
+	\caption[Maximum $\mu$ for $^1$S-wave]{Value of $\mu$ in the shielding function, \cref{eq:PartialWaveShielding}, that gives the largest phase shift versus the number of terms for the $^1$S-wave with $\kappa = 0.1$}
+	\label{fig:swave-max-mu}
+\end{figure}
+
+For the first three partial waves, we truncated the short-range basis set of
+size $N(\omega)$ using the method in \cref{sec:CompPhase}. For $^1$S however,
+we found that we could more easily determine the cutoff by performing phase 
+shift runs for multiple $\mu$ values and various $\kappa$ to see what the 
+optimal value of $\mu$ was that gave the highest phase shift. As shown in
+\cref{fig:swave-max-mu}, this value of $\mu$ was fairly stable through most of
+the $N$ range, but it suddenly spikes up after 1505 terms and fluctuates
+greatly. For some $\kappa$ values, we also saw that when this happened, the
+value of $\mu$ that gave the highest phase shift was sometimes unbounded,
+definitely indicating linear dependence. Interestingly, this behavior was
+not noticed for the $^3$S-wave. We did not try this for other partial waves,
+but it gave a good cutoff point for the $^1$S-wave.
+
 
 \section{Gaussian Quadratures}
 \label{sec:GaussQuad}
+
+\todoi{How hardcoded Gaussian abscissae and weights}
 \todoi{Mention looking into \cite{Bailey2004,Ma1996,Mori2001,Odrzywolek2011,Fukuda2005}}
+
 Gaussian quadratures are used to integrate many classes of integrals. In their
 most general form, these quadratures are given by \cite[p.887]{Abramowitz1965}
 \beq
@@ -758,14 +794,14 @@ relatively quickly, while the $(\bar{C}_\ell,\mathcal{L}_\ell \bar{C}_\ell)$
 term requires more integration points.
 
 We also used a sample input file from Van Reeth for the number of quadrature 
-points he used in his code. In figure \ref{fig:OriginalPhaseShifts-pvr}, this 
+points he used in his code. In \cref{fig:OriginalPhaseShifts-pvr}, this 
 set of points was used. After approximately 525 short-range terms, it is 
 immediately apparent that the phase shifts diverge, with a particularly large 
 deviation in the inverse Kohn output. The Kohn and complex Kohn methods 
 converge again shortly before 600 terms and stay converged up to 1000 terms.
 
 Adding 5 points to all integrations yields a much more well-behaved graph in 
-figure \ref{fig:OriginalPhaseShifts-pvrplus5}. There are slight variations, 
+\cref{fig:OriginalPhaseShifts-pvrplus5}. There are slight variations, 
 one of which can be seen in the inset graph at about 540 terms, but the 
 results are overall converged up to 1100 terms.
 
@@ -851,7 +887,7 @@ If we took the set of integration points that we used in the S-wave problem as o
 \end{figure}
 \noindent Notice that there is little blue and plenty of yellows, oranges and reds. The goal is to get as much black and blue as possible, though it is impossible to get entirely black and blue with our limited precision. It is evident that the matrix elements are not well-converged when we compare the phase shifts from these two runs. For the first run with the base set, the phase shift is 0.02346176. The corresponding phase shift for the second run is 0.02294583. We desire three significant figures in our phase shifts, so this is certainly not good enough.
 
-Doing a similar run with the base set and another with the base set plus 10 in $r_1$, the difference image is given by figure \ref{fig:BasevsBaseplus10}.
+Doing a similar run with the base set and another with the base set plus 10 in $r_1$, the difference image is given by \cref{fig:BasevsBaseplus10}.
 \begin{figure}
 	\centering
 	\resizebox{1.0\textwidth}{!}{\includegraphics{QuadPoints/BasevsBaseplus10.png}}
@@ -860,9 +896,9 @@ Doing a similar run with the base set and another with the base set plus 10 in $
 \end{figure}
 \noindent This image is not much different from the previous image. Even when we compare the ``plus 5'' run with the ``plus 10'' run \textbf{@TODO: Where is this image?}, the image does not change much. The phase shift for the ``plus 10'' run is 0.02257283, which is still significantly different from the ``plus 5'' run.
 
-We tried adding up to 25 extra points to the $1^{st}$ coordinate of the base set, but the matrix elements (and consequently, the phase shifts) still did not converge well enough. To perform the Gauss-Laguerre and Gauss-Legendre quadratures described in section \ref{sec:GaussQuad}, we have to compute the abscissae and weights for the Laguerre and Legendre polynomials. The weights depend on the abscissae, and the abscissae depend only on $n$, the number of quadrature points to use. This allows us to hardcode values for the abscissae and weights to speed up computations marginally. Previously, the long-range code used hardcoded values for some multiples of 5 but not all that were used. This code also did not have values hardcoded when the value of $n$ was not a multiple of 5. The integration points were then changed to use values that were multiples of 5, and all were hardcoded. The hardcoded values were also done in extended precision by using \emph{Mathematica}.
+We tried adding up to 25 extra points to the $1^{st}$ coordinate of the base set, but the matrix elements (and consequently, the phase shifts) still did not converge well enough. To perform the Gauss-Laguerre and Gauss-Legendre quadratures described in \cref{sec:GaussQuad}, we have to compute the abscissae and weights for the Laguerre and Legendre polynomials. The weights depend on the abscissae, and the abscissae depend only on $n$, the number of quadrature points to use. This allows us to hardcode values for the abscissae and weights to speed up computations marginally. Previously, the long-range code used hardcoded values for some multiples of 5 but not all that were used. This code also did not have values hardcoded when the value of $n$ was not a multiple of 5. The integration points were then changed to use values that were multiples of 5, and all were hardcoded. The hardcoded values were also done in extended precision by using \emph{Mathematica}.
 
-Figure \ref{fig:Base5vsBase5hardcoderound} shows the changes going from a previous ``plus 5'' run to a ``plus 5'' run with all hardcoded abscissae and weights. There is a relatively large difference in the matrix elements by making this change.
+\Cref{fig:Base5vsBase5hardcoderound} shows the changes going from a previous ``plus 5'' run to a ``plus 5'' run with all hardcoded abscissae and weights. There is a relatively large difference in the matrix elements by making this change.
 \begin{figure}
 	\centering
 	\resizebox{1.0\textwidth}{!}{\includegraphics{QuadPoints/Base5vsBase5hardcoderound.png}}
@@ -870,7 +906,7 @@ Figure \ref{fig:Base5vsBase5hardcoderound} shows the changes going from a previo
 	\label{fig:Base5vsBase5hardcoderound}
 \end{figure}
 
-The results were much better for the base set versus the ``plus 5'' set when hardcoded values for the abscissae and weight were used. Figure \ref{fig:BasehardcodevsBase5hardcode} shows this comparison, which has the large sections of black. All black and dark blue values are for terms where $q_i > 0$. This integration is done separately, as discussed in section \ref{sec:Swaveqigt0} for the S-wave.
+The results were much better for the base set versus the ``plus 5'' set when hardcoded values for the abscissae and weight were used. \Cref{fig:BasehardcodevsBase5hardcode} shows this comparison, which has the large sections of black. All black and dark blue values are for terms where $q_i > 0$. This integration is done separately, as discussed in \cref{sec:Swaveqigt0} for the S-wave.
 \begin{figure}
 	\centering
 	\resizebox{1.0\textwidth}{!}{\includegraphics{QuadPoints/BasehardcodevsBase5hardcode.png}}
@@ -878,7 +914,7 @@ The results were much better for the base set versus the ``plus 5'' set when har
 	\label{fig:BasehardcodevsBase5hardcode}
 \end{figure}
 
-We then completed a series of runs where we increased the number of integration points for each coordinate for $\omega = 2$. Figure \ref{fig:PlusCoord1-d} shows that the $1/r_{23}$ integration needs an extra 15 points in the first coordinate. The runs for the other coordinates were all performed with an extra 15 points in the first coordinate as well. From figures \ref{fig:PlusCoord2} through \ref{fig:PlusCoord8}, we see that the $5^{th}$ through $8^{th}$ coordinates possibly need more integration points.
+We then completed a series of runs where we increased the number of integration points for each coordinate for $\omega = 2$. \Cref{fig:PlusCoord1-d} shows that the $1/r_{23}$ integration needs an extra 15 points in the first coordinate. The runs for the other coordinates were all performed with an extra 15 points in the first coordinate as well. From Figures \ref{fig:PlusCoord2} through \ref{fig:PlusCoord8}, we see that the $5^{th}$ through $8^{th}$ coordinates possibly need more integration points.
 
 \begin{figure}
 \centering
@@ -951,7 +987,7 @@ We then completed a series of runs where we increased the number of integration 
 \label{fig:PlusCoord8}
 \end{figure}
 
-These tests give us an idea of what coordinates need more integration points. The phase shifts, not the matrix elements, are what we are concerned with, so we ran a number of tests for the phase shifts for $\omega = 6$. Table \ref{tab:5thcoordExtraPoints} shows how the phase shift stabilizes when the $5^{th}$ coordinate has an extra 10-15 points. For table \ref{tab:678thcoordExtraPoints}, we have 15 extra points in the $1^{st}$ and $5^{th}$ coordinates, then add points to all of the $6^{th}$, $7^{th}$ and $8^{th}$ coordinates simultaneously. To the required precision (3 significant figures), the phase shift does not change with this last set of changes. From these runs, we finally determined that the $1^{st}$ and $5^{th}$ coordinates needed 15 extra integration points each, and we can save adding extra points to the other coordinates.
+These tests give us an idea of what coordinates need more integration points. The phase shifts, not the matrix elements, are what we are concerned with, so we ran a number of tests for the phase shifts for $\omega = 6$. \Cref{tab:5thcoordExtraPoints} shows how the phase shift stabilizes when the $5^{th}$ coordinate has an extra 10-15 points. For \cref{tab:678thcoordExtraPoints}, we have 15 extra points in the $1^{st}$ and $5^{th}$ coordinates, then add points to all of the $6^{th}$, $7^{th}$ and $8^{th}$ coordinates simultaneously. To the required precision (3 significant figures), the phase shift does not change with this last set of changes. From these runs, we finally determined that the $1^{st}$ and $5^{th}$ coordinates needed 15 extra integration points each, and we can save adding extra points to the other coordinates.
 
 \begin{table}
 \centering
@@ -1037,7 +1073,7 @@ Integral & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
 \end{table}
 
 Describing the number of points used in integrating the different coordinates 
-in sections \ref{sec:LongLongInt} and \ref{sec:ShortLongInt} can be 
+in \cref{sec:LongLongInt,sec:ShortLongInt} can be 
 confusing, so we have taken to grouping the sets of points as in
 \cref{tab:BaseEffectiveCoords,tab:OptimalEffectiveCoords}. Each column of 
 this table is referred to as an ``effective coordinate''.
@@ -1107,6 +1143,175 @@ root is referred to as an ``anomaly-free singularity'' in
 Cooper et al.\ \cite{Cooper2009} and does not correspond to a Schwartz
 singularity. The roots are easily found by fitting the data to equation (20)
 and solving equation (21) in Cooper et al.\ \cite{Cooper2009}.
+
+
+\section{Resonance Fitting}
+\label{sec:ResonanceFit}
+
+To find the resonance parameters (positions and widths), the phase shifts for 
+multiple energy values are fitted to \cref{eq:ResonanceCurve}. There have 
+been multiple programs described in the literature
+\cite{Tennyson1984, Stibbe1998, Sochi2013} to do these fittings, which I
+was not aware of when I 
+originally wrote code to do these. Some of the difficulty with this type of 
+fitting is choosing appropriate guesses for the resonance parameters.
+Ref.~\cite{Sochi2013} describes methods that some groups use to try to identify 
+resonance parameters.
+
+This nonlinear fitting can be difficult for general programs. I first tried 
+the \texttt{Fit} and \texttt{FindFit} functions of
+Mathematica\textsuperscript{\textregistered} 8.0 \cite{Mathematica}, but these were unable to fit our 
+data to this complicated nonlinear function. I next tried the
+\texttt{curve\_fit} function of SciPy \cite{SciPy} in Python\textsuperscript{\textregistered}
+2.6 \cite{Python}, which was better able to fit the nonresonant (polynomial) 
+part but had trouble with the $\arctan$ terms.
+
+With the help of Ryan Bosca, I wrote a MATLAB\textsuperscript{\textregistered}
+\cite{matlab} script that uses the \texttt{nlinfit} routine of MATLAB. 
+\texttt{nlinfit} is specifically designed for fitting to nonlinear functions, 
+and its robust option allows for a variety of weighting functions to be used. 
+This script does the fitting for all eight of the possible weightings: 
+Bisquare, Andrews, Cauchy, Fair, Huber, Logistic, Talwar and Welsch. This 
+fitting routine is also not as sensitive to the initial guesses as the 
+Mathematica and SciPy routines.
+
+Later on, I adapted this resonance fitting code to be called from IPython 
+\cite{ipython} using the mlabwrap \cite{mlabwrap} Python to MATLAB wrapper. 
+This allows fits and graphs of the fittings to be in the same IPython 
+notebook, including the flexibility of querying the MySQL database for the 
+phase shift data for any partial wave at any number of terms and for
+any Kohn method
+(see \cref{sec:XMLSQLIPy}). The mlabwrap package is difficult to install properly, 
+requiring a compilation against MATLAB. The mlabwrap-purepy package
+\cite{mlabwrappurepy} has been created to simplify this, but we have not tried it 
+yet.
+
+The results of fitting the phase shifts from the $S$ matrix are shown in
+\cref{fig:swave-resonance-uncorrected-fits1,fig:swave-resonance-uncorrected-fits2} 
+for each of the weighting functions, and the resonance parameters are given 
+in each subfigure. There is good agreement between the fits performed with 
+each of the weighting functions, and the Fair is the furthest from the 
+others. In our testing, the Cauchy is consistently one of the best choices 
+for fitting. In addition, \cref{fig:swave-resonance-uncorrected-res} has 
+plots of the residuals (the absolute value of the difference between the 
+fitted curve and the actual phase shifts). Each graph also has the residual 
+sum of squares (RSS) calculated. The RSS gives an easy way to compare the 
+performance of the weightings with each other. The Fair has a notably larger 
+RSS than all of the other fittings.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{swave-resonance-uncorrected-fits1}
+	\caption{First set of uncorrected resonance fitting graphs for $^1$S at $\omega = 7$}
+	\label{fig:swave-resonance-uncorrected-fits1}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{swave-resonance-uncorrected-fits2}
+	\caption{Second set of uncorrected resonance fitting graphs for $^1$S at $\omega = 7$}
+	\label{fig:swave-resonance-uncorrected-fits2}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{swave-resonance-uncorrected-res}
+	\caption{Residuals for uncorrected resonance fitting graphs for $^1$S at $\omega = 7$}
+	\label{fig:swave-resonance-uncorrected-res}
+\end{figure}
+
+One important thing to notice with the fits in
+\cref{fig:swave-resonance-uncorrected-fits1,fig:swave-resonance-uncorrected-fits2} is that the
+$S$-matrix phase shifts extend above the fitted curve at the resonances before 
+matching up again on the right side of the resonance below $-3.0$. The red 
+curves still fit to the data well, but the fits can be improved by correcting 
+for these. 
+
+In \cref{eq:ResonanceCurve}, the first three polynomial terms form the 
+background, and the two $\arctan$ terms represent the resonances. The range 
+of $\arctan$ is $(-\frac{\pi}{2},\frac{\pi}{2})$, so the $\arctan$ parts of 
+this model cannot bring the phase shift from the background (near 2.0) all 
+the way to 0.0, as it can only add up to $\frac{\pi}{2}$ to the background. 
+It is important to realize that the Kohn methods will only return phase 
+shifts in a certain range. From \cref{eq:GenKohnL}, we are not finding the 
+phase shifts directly but are rather calculating $\tan \delta_\ell$. The 
+phase shifts found this way sometimes have to have $\pi$ added or subtracted 
+to get them in the proper range.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=5in]{swave-phases-reson-pi}
+	\caption[$^1$S resonance data showing correction]{$^1$S resonance data showing raw data from complex Kohn and the corrected version. The solid gray line shows the polynomial background, and the vertical dashed lines give the calculated resonance positions.}
+	\label{fig:swave-phases-reson-pi}
+\end{figure}
+
+\Cref{fig:swave-phases-reson-pi} shows the results of subtracting $\pi$ from 
+phase shifts that are more than $\frac{\pi}{2}$ above the background. The 
+original and the corrected data are both shown on this plot, and the 
+background is given as a gray line. Note that the slope of the original data 
+changes when crossing over the vertical dashed lines, which gives the 
+resonance positions. When corrected, these upper points are moved down to 
+their appropriate place, shown as x's on the graph. These match up better 
+with the fitting curve. This fitting is an iterative process, because the 
+background polynomial has to be determined with \cref{eq:ResonanceCurve} 
+before we can do this correction. Then the phase shifts are fitted again 
+after performing the correction.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{swave-resonance-corrected-fits1}
+	\caption{First set of corrected resonance fitting graphs for $^1$S at $\omega = 7$}
+	\label{fig:swave-resonance-corrected-fits1}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{swave-resonance-corrected-fits2}
+	\caption{Second set of corrected resonance fitting graphs for $^1$S at $\omega = 7$}
+	\label{fig:swave-resonance-corrected-fits2}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{swave-resonance-corrected-res}
+	\caption{Residuals for corrected resonance fitting graphs for $^1$S at $\omega = 7$}
+	\label{fig:swave-resonance-corrected-res}
+\end{figure}
+
+Finally, this corrected and re-fitted data is shown in
+\cref{fig:swave-resonance-corrected-fits1,fig:swave-resonance-corrected-fits2}. The different 
+weighting methods agree extremely well now, with the only notable differences 
+being in the $^2\Gamma$ width of the second resonance for the Bisquare, 
+Andrews, and Talwar fits. This is still a very small difference, and the 
+other resonance parameters are almost all identical.
+\Cref{fig:swave-resonance-corrected-res} gives the residuals and RSS for the corrected phase
+shifts, similar to \cref{fig:swave-resonance-uncorrected-res}. The Bisquare, Andrews, 
+and Talwar weightings have larger RSS values than the other weightings, 
+indicating that their fits are not quite as accurate, but they are still 
+relatively accurate.
+
+The differences between the different weighting methods gives us one way to 
+determine errors for our resonance parameters. Additionally, comparing the 
+different Kohn methods gives us an idea of the error. The real-valued 
+generalized Kohn methods give more disagreement, so we compute the resonance 
+parameters for each of these Kohn methods. We also have to take into account 
+Schwartz singularities. In \cref{fig:schwartz-singularity}(a) on
+\pageref{fig:schwartz-singularity}, the second resonance parameters are not as 
+accurate. The fitting routine described here chooses fitting parameters of
+$^2E_R = \SI{5.0295}{eV}$ and $^2\Gamma = \SI{0.06011}{eV}$.
+In \cref{fig:schwartz-singularity}(b), where there are no Schwartz 
+singularities, $^2E_R = \SI{5.0278}{eV}$ and $^2\Gamma = \SI{0.06075}{eV}$. 
+This highlights the importance of using multiple Kohn methods and trying to 
+detect Schwartz singularities. After removing obvious Schwartz singularities, 
+the mean value of the different Kohn methods for all weightings is taken for 
+each resonance parameter, and these are the results listed for each of the 
+partial waves in
+\cref{sec:SWaveResonances,sec:PWaveResonances,sec:DWaveResonance,sec:FWaveResonance}.
+The errors given in these tables are simply the standard deviation with all 
+Kohn methods and weightings used for each resonance parameter. For this, we 
+do not use the generalized $S$ or $T$ matrices, because using these would 
+decrease the error, as they agree to a significant precision.
+
 
 
 \biblio

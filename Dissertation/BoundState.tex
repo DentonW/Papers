@@ -6,8 +6,9 @@
 \label{chp:PsHBound}
 
 \lettrine{\textcolor{startcolor}{A}}{s} discussed in \cref{sec:PsH}, PsH 
-consists of one atom of both Ps and of H. We model it the 
-standard way here as an exotic atom, instead of a molecule.
+consists of one atom of both Ps and of H.
+%We model it the 
+%standard way here as an exotic atom, instead of a molecule.
 \Cref{fig:PsHCoords} shows the PsH coordinate system. There are 6 interparticle 
 coordinates, given by $r_1$, $r_2$, $r_3$, $r_{12}$, $r_{13}$, and $r_{23}$. 
 The proton is considered infinitely heavy in this treatment.
@@ -43,7 +44,7 @@ minus sign indicates the spatially antisymmetric triplet case. The
 permutation operator $P_{23}$ is needed, as the two electrons are 
 indistinguishable. The $\frac{1}{\sqrt{2}}$ needed to normalize $\Psi^\pm$
 (to cancel out the 2 in \cref{eq:RRfinal}) is absorbed into the $c_i$ constant 
-in equation \ref{eq:BoundWavefn_psi}. The constant
+in \cref{eq:BoundWavefn_psi}. The constant
 $\SphericalHarmY{0}{0}{\theta}{\phi} = \frac{1}{\sqrt{4\pi}}$ is also absorbed
 into $c_i$. The Hylleraas-type basis set satisfies the Kato cusp condition
 \cite{Kato1957} well \cite{Armour1991}.
@@ -150,7 +151,7 @@ and
 \beq
 \left< \phi_i \left| H \right| P_{23} \phi_j \right> = \left< P_{23} \phi_i \left| H \right| \phi_j \right>,
 \eeq
-expression \ref{eq:BoundHFull} becomes
+\cref{eq:BoundHFull} becomes
 \begin{subequations}
 \label{eq:RRfinal}
 \begin{align}
@@ -267,8 +268,8 @@ $\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (au) & Binding E
 As described later in \cref{sec:CompPhase} we cannot use the full 1716 terms 
 for the Ps-H scattering problem. \Cref{tab:BoundEnergyTodd1} gives the ground 
 state energies using the restricted set of terms with Todd ordering. The 
-cutoffs in $\omega$ are easily seen using the ViewOmegaCutoffs.py script 
-described on the Wiki \cite{Wiki}.
+cutoffs in $\omega$ are easily seen using the ViewOmegaCutoffs.py script
+(\cref{chp:Programs}).
 %\url{http://cas-bs5cph1.phys.unt.edu/wiki/index.php/ViewOmegaCutoffs.py}
 
 
@@ -295,10 +296,10 @@ described on the Wiki \cite{Wiki}.
 \endhead
 
 \hline \multicolumn{5}{r}{{Continued on next page}} \\ \hline
-\rowcolor{white} \caption[Positronium hydride energy values]{Positronium hydride energy values. Starred values are the reported values. Unstarred values are obtained by using the conversion factor given in section \ref{sec:Units}. Results marked by $^a$ take into account the finite mass correction.} \\
+\rowcolor{white} \caption[Positronium hydride energy values]{Positronium hydride energy values. Starred values are the reported values. Unstarred values are obtained by using the conversion factor given in \cref{sec:Units}. Results marked by $^a$ take into account the finite mass correction.} \\
 \endfoot
 
-\caption[Positronium hydride energy values]{Continued from previous page. Positronium hydride energy values. Starred values are the reported values. Unstarred values are obtained by using the conversion factor given in section \ref{sec:Units}. Results marked by $^a$ take into account the finite mass correction.}
+\caption[Positronium hydride energy values]{Continued from previous page. Positronium hydride energy values. Starred values are the reported values. Unstarred values are obtained by using the conversion factor given in \cref{sec:Units}. Results marked by $^a$ take into account the finite mass correction.}
 \endlastfoot
 \rowcolors{2}{gray!15}{white}
 Current work & Variational Hylleraas $(\omega = 7)$ & 1505 & -0.789 189 725 & 1.066 406 705 \\
