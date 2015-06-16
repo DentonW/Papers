@@ -6,11 +6,12 @@
 \chapter{Program Descriptions}
 \label{chp:Programs}
 
-
-\todoi{Should mention the Mathematica notebooks to generate Fortran lists for short-range matrix elements and possibly other programs}
-\todoi{\url{https://github.com/DentonW/Ps-H-Scattering}}
-
-
+\lettrine{\textcolor{startcolor}{D}}{oing} this work required writing multiple
+codes, and I have made my codes available on GitHub at 
+\url{https://github.com/DentonW/Ps-H-Scattering} \cite{GitHub}. Much of the
+codes are what is described in \cref{chp:Computation}. A flowchart of the
+steps required to calculate phase shifts and any additional quantities, such
+as cross sections, is given by \cref{fig:ProgramFlowchart}.
 
 \begin{figure}
 	\centering
@@ -18,6 +19,57 @@
 	\caption{Flowchart for programs and scripts}
 	\label{fig:ProgramFlowchart}
 \end{figure}
+
+The short-range program typically only needs to be run once for a partial wave,
+and those short-range matrix elements are used for all $\kappa$ runs. For
+$\ell \geq 2$, we have a low and high $\kappa$ set of nonlinear parameters, so
+there are two runs of the short-range program that have to be done. The
+long-range program is run for every $\kappa$ value for each partial wave, and
+if needed, we restrict the short-range terms using Todd's method from
+\cref{sec:ToddBound}. Then the phase shift program uses these inputs to run
+many Kohn-type variational methods and generate phase shifts. These phase shifts
+can then be further analyzed with several scripts.
+
+As the codes are freely available on GitHub, it is worthwhile to show the
+directory structure when this package is downloaded with git or as a zip.
+\Cref{fig:dirtree} shows this directory tree. The S-wave, P-wave, and D-wave
+codes only work for their respective partial wave, and the code in ``General 
+Code'' works for arbitrary $\ell$, as described in \cref{chp:WaveKohn,chp:General}.
+
+\begin{figure}[H]
+\label{fig:directory}       
+\dirtree{%
+.1 /.
+%.2 S-Wave\DTcomment{test}.
+.2 S-Wave.
+.3 Long.
+.3 Short.
+.2 P-Wave.
+.3 Long.
+.3 Short.
+.2 D-Wave.
+.3 Long.
+.3 Short.
+.2 General Code.
+.3 Long-Range.
+.3 Phase Shift.
+.3 Python Scripts.
+.3 Short-Range.
+.3 Text to Binary.
+.2 Derivations and Tests.
+}
+\caption{Directory tree of code on GitHub \cite{GitHub}}
+\label{fig:dirtree}
+\end{figure}
+
+
+
+
+
+\todoi{Should mention the Mathematica notebooks to generate Fortran lists for short-range matrix elements and possibly other programs}
+
+
+
 
 
 %\begin{lstlisting}[label=some-code,caption=Some Code]

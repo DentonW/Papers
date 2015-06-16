@@ -270,21 +270,69 @@ _2F_1(1,a;c;z) = 1 + \left( \frac{a}{c} \right) z \,\,_2F_1(1,a+1;c+1;z).
 \section{Shielding Function}
 \label{sec:ShieldingFunc}
 
-\todoi{Give how C acts like S with shielding function}
+The spherical Neumann functions, $n_\ell(\kappa\rho)$, in $C_\ell$ go to
+$-\infty$ at the origin, and we remove this singularity with the shielding
+function. The shielding function given by \cref{eq:PartialWaveShielding},
+$f_\ell(\rho) = \left[1 - \ee^{-\mu \rho} \left(1+\frac{\mu}{2}\rho\right)\right]^{m_\ell}$,
+is slightly different than earlier work \cite{VanReeth2003,VanReeth2004} on
+Ps-H scattering, which used $f(\rho) = (1 - \ee^{-\lambda \rho})^3$.
 
-shielding function given by \cref{eq:PartialWaveShielding}
+We want to have $C_\ell$ behaving similarly to $S_\ell$ at the origin. To
+accomplish this, we take a series expansion of both to see what the dominant
+terms are. To more easily see the behavior, we only take expansions of the
+spherical Bessel and Neumann functions for the S-wave. For $S_0$, the series expansion of
+$j_0$ is
+\begin{equation}
+j_0(\kappa\rho) \sim 1 - \frac{\kappa^2 \rho^2}{6} + \frac{\kappa^4 \rho^4}{120} + \mathcal{O}(\rho^5).
+\end{equation}
+For $C_0$, the series expansion of $n_0$ is
+\begin{equation}
+n_0(\kappa\rho) \sim -\frac{1}{\kappa\rho} + \frac{\kappa \rho}{2} - \frac{\kappa^3 \rho^3}{24} + \mathcal{O}(\rho^4).
+\end{equation}
+The singular nature at the origin is easily seen by the first term. To have
+$C_0 \sim S_0$ at the origin, the shielding function needs to change the
+leading term to $\rho^2$. If we choose a shielding function of the form
+$\left[1 - \ee^{-\mu \rho} \left(1+a \rho\right)\right]$, the
+expansion at the origin of this multiplied by the spherical Neumann function is
+\begin{equation}
+n_0(\kappa\rho) \left[1 - \ee^{-\mu \rho} \left(1+a \rho\right)\right] \sim
+-\frac{\mu-a}{\kappa} - \frac{\left(a\mu - \frac{\mu^2}{2}\right)\rho}{\kappa}
++ \left(\frac{1}{2}\kappa(\mu-a) - \frac{\mu^2 - 3 a \mu^2}{6\kappa}\right) \rho^2 + \ldots
+\end{equation}
+This is no longer singular, but it has a $\rho$ term, so if we set
+$a = \frac{\mu}{2}$, the second term disappears, leaving us with
+\begin{equation}
+n_0(\kappa\rho) \left[1 - \ee^{-\mu \rho} \left(1+\frac{\mu}{2}\rho\right)\right] \sim
+-\frac{\mu}{2\kappa} + \left(\frac{\kappa\mu}{4} + \frac{\mu^3}{12\kappa}\right) \rho^2 + \ldots \ .
+\end{equation}
+This shows that with the choice of shielding function in \cref{eq:PartialWaveShielding},
+we have $C_0$ behaving similar to $S_0$ at the origin.
 
+The \emph{Mathematica} notebook ``Shielding Factor.nb'' found on the GitHub
+page \cite{GitHub} shows these expansions and the expansions for the P-wave
+and D-wave. We normally choose $m_\ell = (2\ell+1)$, but for the D-wave, we
+used $m_\ell = 7$ when we were trying to improve the convergence, which
+ultimately did not give improved results over $m_\ell = 5$. This notebook
+also shows the first and second derivatives of the shielding function given
+in \cref{eq:Shielding1Der,eq:Shielding2Der}.
+
+This notebook also has interactive graphs that show how the shielding function
+with and without the spherical Neumann function behaves with differing $m_\ell$,
+$\mu$, and $\ell$ values. \Cref{fig:shielding-func-n} shows that as $m_\ell$
+increases for fixed $\mu$ of 0.9, it takes a larger $\rho$ before $C_\ell$
+becomes significant. \Cref{fig:shielding-func-mu} keeps $m_\ell$ constant at 7
+and varies $\mu$. This figure shows that smaller $\mu$ values give a strong
+contribution for $C_\ell$. \Cref{tab:Nonlinear} shows the $\mu$ and $m_\ell$
+values we use for each partial wave.
 \begin{figure}
 	\centering
-	\includegraphics[width=5.25in]{shielding-func-n}
+	\includegraphics[width=5in]{shielding-func-n}
 	\caption{Shielding function $f_\ell$ variation with respect to $\rho$ for multiple values of $m_\ell$ with $\mu = 0.9$}
 	\label{fig:shielding-func-n}
 \end{figure}
-
-
 \begin{figure}
 	\centering
-	\includegraphics[width=5.25in]{shielding-func-mu}
+	\includegraphics[width=5in]{shielding-func-mu}
 	\caption{Shielding function $f_\ell$ variation with respect to $\rho$ for multiple values of $\mu$ with $m_\ell = 7$}
 	\label{fig:shielding-func-mu}
 \end{figure}
