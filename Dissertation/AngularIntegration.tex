@@ -28,7 +28,6 @@ The form that we will need is
 Both of these equations are variations on Gaussian quadratures. The
 Chebyshev-Gauss quadrature is given by
 \cite{Abramowitz1965,MathworldChebyshevGauss}
-\todoi{Mathworld has a specific citation at end of page}
 \begin{equation}
 \Int{ \frac{f\left( x \right)}{\sqrt{1 - x^2}} }{x,-1,1} \approx \sum_{i = 1}^n {w_i}f\left( {{x_i}} \right),
 \label{eq:ChebyshevGauss}
@@ -186,20 +185,15 @@ d\tau = 8 \uppi^2 r_1 dr_1 r_2 dr_2 dr_3 r_{13} dr_{13} r_{23} dr_{23}
 
 For the P-wave and higher, we no longer have spherical symmetry, but there is
 azimuthal symmetry for $m = 0$ of the spherical harmonics for all partial 
-waves. For the P-wave,
-\cref{tab:SphHarm} gives
-\begin{equation}
-Y_{10}(\theta,\varphi) = \sqrt{\frac{3}{4\pi}} \cos\theta.
-\end{equation}
-
-
-
-
-
-
-\todoi{Describe why these are needed}
-These are derived in a \emph{Mathematica} notebook entitled ``General Angular Integrations.nb''.
-\todoi{Describe how this notebook works, including ExtremeSimplify}
+waves. %For the P-wave,
+%\cref{tab:SphHarm} gives
+%\begin{equation}
+%Y_{10}(\theta,\varphi) = \sqrt{\frac{3}{4\pi}} \cos\theta.
+%\end{equation}
+The following sections show the results of performing these external angular
+integrations for general $\ell$. These are shown in a \emph{Mathematica}
+notebook entitled ``General Angular Integrations.nb'' \cite{GitHub}.
+%\todoi{Describe how this notebook works, including ExtremeSimplify}
 
 
 
@@ -313,7 +307,7 @@ giving
 \beq
 \Int{Y_\ell^0(\theta_3, \varphi_3) Y_\ell^0(\theta_{\rho}, \varphi_{\rho})}{\tau_{ext}, \tau_{ext}} = 2 \pi \LegendreP{\ell, w_5}.
 \eeq
-\todoi{The $w_4$ and $w_5$ look similar to equation (B.14) in Peter's thesis}
+%\todoi{The $w_4$ and $w_5$ look similar to equation (B.14) in Peter's thesis}
 
 
 \subsection{Terms with \texorpdfstring{$Y_\ell^0(\theta_\rho, \varphi_\rho) Y_\ell^0(\theta_{\rho^\prime}, \varphi_{\rho^\prime})$}{Yrho-Yrho'}}
