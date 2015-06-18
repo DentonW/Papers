@@ -7,7 +7,8 @@
 \label{chp:DWave}
 
 %\todoi{Variation of $\mu$ to get 0.7. Latest variation of other nonlinear parameters} 
-\lettrine{\textcolor{startcolor}{V}}{an} Reeth \cite{VanReethPrivate}
+\iftoggle{UNT}{Van}{\lettrine{\textcolor{startcolor}{V}}{an}}
+Reeth \cite{VanReethPrivate}
 had D-wave notes that I used as guidance for
 the D-wave derivations. He also had code for the $^1$D-wave that we used to
 compare our independent code against after it was written. His D-wave work was
@@ -137,14 +138,15 @@ given in separate notes available on the Wiki \cite{Wiki} and figshare
 \begin{align}
 \label{eq:DWavePhi2Phi2}
 \left(\bar{\phi}_{2i},\mathcal{L} \bar{\phi}_{2j}\right) = 2 & \cdot 2\pi \bigintsss \Bigg\{ \sum_{k=1}^3 \left[ \boldsymbol{\nabla}_{\!\mathbf{r}_k} \nonumber \phi_{2i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2j} \pm \left(1-\tfrac{3}{2}\sin^2\theta_{23}\right) \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2j}^\prime \right]  + \frac{6}{r_2^2}\phi_{2i}\phi_{2j} \\
- \nonumber &\mp 3 \phi_{2i} \phi_{2j}^\prime \cos\theta_{23} \left[p_i \frac{r_1}{r_3 r_{13}^2} (\cos\theta_{12} - \cos\theta_{23} \cos\theta_{13}) + m_j^\prime \frac{r_1}{r_2 r_{12}^2}(\cos\theta_{13} - \cos\theta_{23} \cos\theta_{12})\right.\\
- \nonumber & \left. \;\;\;\;\;  + \sin^2\theta_{23} \left(q_i \frac{r_2}{r_3 r_{23}^2} + q_j^\prime \frac{r_3}{r_2 r_{23}^2} \right) \right] \\
+ \nonumber &\mp 3 \phi_{2i} \phi_{2j}^\prime \cos\theta_{23} \left[p_i \frac{r_1}{r_3 r_{13}^2} (\cos\theta_{12} - \cos\theta_{23} \cos\theta_{13}) + m_j^\prime \frac{r_1}{r_2 r_{12}^2}(\cos\theta_{13} \right.\\
+ \nonumber & \left. \;\;\;\;\; - \cos\theta_{23} \cos\theta_{12}) + \sin^2\theta_{23} \left(q_i \frac{r_2}{r_3 r_{23}^2} + q_j^\prime \frac{r_3}{r_2 r_{23}^2} \right) \right] \\
  \nonumber &+ \left. \left[\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2}\kappa^2 \right] \right. \\
  &\;\;\;\;\; \times \left[\phi_{2i} \phi_{2j} \pm \left(1-\tfrac{3}{2}\sin^2\theta_{23}\right) \phi_{2i} \phi_{2j}^\prime \right] \Bigg\} d\tau_{int}
 \end{align}
 \begin{align}
 \label{eq:DWavePhi1Phi2}
-\left(\bar{\phi}_{1i},\mathcal{L} \bar{\phi}_{2j}\right) = 2 & \cdot 2\pi \bigintsss \Bigg\{ \sum_{k=1}^3 \left[ \left(1-\tfrac{3}{2}\sin^2\theta_{12}\right) \boldsymbol{\nabla}_{\!\mathbf{r}_k} \nonumber \phi_{1i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2j} \pm \left(1-\tfrac{3}{2}\sin^2\theta_{13}\right) \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2j}^\prime \right] \\
+\left(\bar{\phi}_{1i},\mathcal{L} \bar{\phi}_{2j}\right) = 2 & \cdot 2\pi \bigintsss \Bigg\{ \sum_{k=1}^3 \left[ \left(1-\tfrac{3}{2}\sin^2\theta_{12}\right) \boldsymbol{\nabla}_{\!\mathbf{r}_k} \nonumber \phi_{1i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2j} \right. \\
+\nonumber & \left. \;\;\;\;\; \pm \left(1-\tfrac{3}{2}\sin^2\theta_{13}\right) \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{1i} \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_k} \phi_{2j}^\prime \right] \\
  \nonumber &\mp 3 \phi_{1i} \phi_{2j} \cos\theta_{12} \left[q_i \frac{r_3}{r_2 r_{23}^2} (\cos\theta_{13} - \cos\theta_{12} \cos\theta_{23}) + p_j \frac{r_3}{r_1 r_{13}^2}(\cos\theta_{23} \right.\\
  \nonumber & \left. \;\;\;\;\;  - \cos\theta_{12} \cos\theta_{13}) + \sin^2\theta_{12} \left(m_i \frac{r_1}{r_2 r_{12}^2} + m_j \frac{r_2}{r_1 r_{12}^2} \right) \right] \\
  \nonumber &\mp 3 \phi_{1i} \phi_{2j}^\prime \cos\theta_{13} \left[q_i \frac{r_2}{r_3 r_{23}^2} (\cos\theta_{12} - \cos\theta_{13} \cos\theta_{23}) + m_j^\prime \frac{r_2}{r_1 r_{12}^2}(\cos\theta_{23} \right.\\

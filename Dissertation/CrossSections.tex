@@ -9,7 +9,8 @@
 \chapter{Cross Sections}
 \label{chp:CrossSections}
 
-\lettrine{\textcolor{startcolor}{W}}{e} obtain the phase shifts directly from 
+\iftoggle{UNT}{We}{\lettrine{\textcolor{startcolor}{W}}{e}}
+obtain the phase shifts directly from 
 the Kohn-type variational methods, but a more relevant quantity for 
 experiments is the cross section. Cross sections essentially give the 
 strength of the interaction and are a quantity that can be measured 
@@ -571,13 +572,11 @@ $\ell$ & \multicolumn{1}{c}{$\%^+$ Diff.}  & \multicolumn{1}{c}{$\%^-$ Diff.}  &
 \section{Momentum Transfer Cross Section and Comparisons}
 \label{sec:OtherCross}
 
-\todoi{Reword this paragraph. It's mainly copied from the PRA article. Also mention \cite{Engbrecht2008} so that it's clear there is experimental interest. Good reason for the $1-\cos\theta$? Make sure to mention any groups who do these calculations, even if I don't use them in my figures.}
-
-The momentum transfer cross section, $\sigma_m$, can be useful in plasma applications
-\cite{Wang2014, McEachran2014}. These cross sections have been measured for Ps
-scattering with multiple atomic and molecular targets
-\cite{Nagashima1998,Saito2003,Skalsey1998} and calculated
-for Ps scattering by inert gases \cite{Blackwood2002c}. 
+The momentum transfer cross section, $\sigma_m$, has been used in plasma applications
+\cite{Wang2014, McEachran2014}. Measurements of the momentum transfer cross section
+have been made for Ps scattering with atomic and molecular targets
+\cite{Engbrecht2008,Nagashima1998,Saito2003,Skalsey1998}, and calculations of
+Ps scattering by inert gases have been performed \cite{Blackwood2002c}. 
 The momentum transfer cross section is
 similar to \cref{eq:TotalDiffCross} but with a weighting factor of
 $(1 - \cos\theta)$ \cite{Walters2004}:

@@ -13,7 +13,8 @@
 %and $^3S$, respectively (as shown in the nomenclature on page
 %\pageref{chp:nomenclature}).
 
-\lettrine{\textcolor{startcolor}{T}}{he} S-wave is the simplest of the 
+\iftoggle{UNT}{The}{\lettrine{\textcolor{startcolor}{T}}{he}}
+S-wave is the simplest of the 
 partial waves to consider, since the spherical harmonic
 $\SphericalHarmonicY{0}{0}{\theta_\rho}{\varphi_\rho}$ is constant. The form
 of the Kohn matrix elements was derived in \cref{chp:WaveKohn} for general
@@ -91,7 +92,7 @@ The $f^\prime(\rho)$ and $f^{\prime\prime}(\rho)$ are given in \cref{eq:Shieldin
 %& + \left. \frac{e^{-\mr} \mu^3 \rho}{4} \frac{\cos(\kr)}{\kr} + \frac{e^{-\mr}}{2} \kappa \mu (1+\mu\rho) \frac{\sin(\kr)}{\kr} \right\}.
 %\label{eq:LC}
 %\end{align}
-Combining \cref{eq:LCMathS,eq:LC} and the permuted versions gives
+Combining \cref{eq:LCMathS,eq:LC2} and the permuted versions gives
 \begin{align}
 \mathcal{L}\bar{C}_0 = \:\: &\frac{1}{\sqrt{2}} \mathcal{L}(C_0 \pm C_0^\prime) = \frac{1}{\sqrt{2}} (\mathcal{L}C_0 \pm \mathcal{L}C_0^\prime) \nonumber \\
 = \:\: &\frac{1}{\sqrt{8\pi}} \Phi_{Ps}(r_{12}) \Phi_H(r_3) \sqrt{2\kappa} \nonumber  \\
@@ -111,7 +112,7 @@ Using \cref{eq:PermPropFull,eq:SCBarDef},
  \label{eq:CLC1}
 \end{align}
 
-Substitute \cref{eq:GenCDef,eq:LC} in \cref{eq:CLC1} and simplify to get
+Substitute \cref{eq:GenCDef,eq:LCBar} in \cref{eq:CLC1} and simplify to get
 %\begin{align}
 %\left(\bar{C}_0,\mathcal{L}\bar{C}_0\right) = &(C_0,\mathcal{L}C_0) \pm (C_0',\mathcal{L}C_0) = \left((C_0 \pm C_0'),\mathcal{L}C_0 \right) \nonumber\\
  %= &\left((C_0 \pm C_0') \Phi_{Ps}(r_{12}) \Phi_H(r_3) \sqrt{\frac{2\kappa}{4\pi}} \left\{ \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) \frac{\cos(\kr)}{\kr} \right.\right.  \nonumber \\
@@ -155,7 +156,7 @@ This is the form that is used in the S-wave long-range code (\cref{chp:Programs}
 For the S-wave, following the work of Van Reeth \cite{VanReethThesis}, we 
 chose to absorb both the $\frac{1}{\sqrt{2}}$ and
 $Y_{0,0}(\theta_\rho,\varphi_\rho) = \frac{1}{\sqrt{4\pi}}$ into the $c_i$ 
-constants of the short-range terms in \cref{eq:PhiDefS}.
+constants of the short-range terms in \cref{eq:PhiDef}.
 
 From \cref{eq:PermPropFull},
 \begin{subequations}
@@ -165,7 +166,7 @@ From \cref{eq:PermPropFull},
 \end{align}
 \end{subequations}
 
-\noindent Using \cref{eq:LC,eq:LCBar} in the above gives our results for $(\bar{\phi}_i, \mathcal{L}\bar{C}_0)$.
+\noindent Using \cref{eq:LCBar} in the above gives our results for $(\bar{\phi}_i, \mathcal{L}\bar{C}_0)$.
 \begin{subequations}
 \begin{align}
 (\bar{\phi}_i, \mathcal{L}\bar{C}_0) = &\sqrt{\frac{\kappa}{\pi}} \left( (\phi_i \pm \phi_i') \Phi_{Ps}(r_{12}) \Phi_H(r_3) \left\{ \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}}\right) \frac{\cos(\kr)}{\kr} \right.\right. \nonumber\\
@@ -287,7 +288,7 @@ publication. This work -- solid curves;
 	\label{fig:SWaveComparisons}
 \end{figure}
 
-\todoi{Add \cite{Fraser1961} $\delta_0^-$ and \cite{Biswas2002a} $\delta_0^+$}
+%\todoi{Add \cite{Fraser1961} $\delta_0^-$ and \cite{Biswas2002a} $\delta_0^+$}
 
 \Cref{fig:SWaveComparisons} shows comparisons of the complex Kohn phase 
 shifts to that of other groups for calculations of $^1$S and $^3$S. The

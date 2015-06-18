@@ -6,7 +6,8 @@
 \chapter{Computation}
 \label{chp:Computation}
 
-\lettrine{\textcolor{startcolor}{T}}{his} chapter covers some of the major
+\iftoggle{UNT}{This}{\lettrine{\textcolor{startcolor}{T}}{his}}
+chapter covers some of the major
 computational details of this work. For additional details, such as resonance
 fittings, determination of nonlinear parameters and the use of Gaussian
 quadratures, refer to \cref{chp:ExtraNumerics}.
@@ -514,11 +515,10 @@ separately, using the same type of integrations as \cref{eq:PhiLSBarIntFull}.
 Refer to the previous section for the description of the quadratures used.
 \begin{align}
 \label{eq:PhiLSBarIntNoR23}
-\nonumber (\bar{\phi}_i, \mathcal{L} \bar{S}_\ell) =& \,\frac{2}{\sqrt{2}} \bigintsss \phi_i \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} \right)S_\ell \pm \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} \right) S_\ell^\prime \right]  d\tau \\
-\nonumber =&\, \frac{2}{\sqrt{2}} \cdot 8\pi^2  \int_0^\infty \int_0^\infty \int_0^\infty \int_{|r_1 - r_2|}^{|r_1 + r_2|} \int_{|r_1 - r_3|}^{|r_1 + r_3|} \int_0^{2\pi} \phi_i \\
-&\times \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} \right)S_\ell \pm \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} \right) S_\ell^\prime \right]  r_2 r_3 r_{12} r_{13}\, d\varphi_{23}\, dr_{13}\, dr_{12}\, dr_3\, dr_2\, dr_1
+\nonumber (\bar{\phi}_i, \mathcal{L} \bar{S}_\ell)_A =& \,\frac{2}{\sqrt{2}} \bigintsss \phi_i \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} \right)S_\ell \pm \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} \right) S_\ell^\prime \right]  d\tau \\
+\nonumber =&\, \frac{2}{\sqrt{2}} \cdot 8\pi^2  \int_0^\infty \int_0^\infty \int_0^\infty \int_{|r_1 - r_2|}^{|r_1 + r_2|} \int_{|r_1 - r_3|}^{|r_1 + r_3|} \int_0^{2\pi} \phi_i r_2 r_3 r_{12} r_{13} \\
+&\times \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} \right)S_\ell \pm \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} \right) S_\ell^\prime \right]  d\varphi_{23}\, dr_{13}\, dr_{12}\, dr_3\, dr_2\, dr_1
 \end{align}
-\todoi{Volume element changes between this and the next equation}
 
 The integration over the $r_{23}^{-1}$ term is done the same way as the 
 second integration of the long-long matrix elements in \cref{sec:LongLongInt}.
@@ -527,12 +527,12 @@ term. Refer to \cref{sec:LongLongR23} for a description of
 the quadratures used here.
 \begin{align}
 \label{eq:PhiLSBarIntR23}
-(\bar{\phi}_i, \mathcal{L} \bar{S}_\ell) =& \,\frac{2}{\sqrt{2}} \bigintsss \phi_i \left[ \frac{2}{r_{23}}\left(S_\ell \pm S_\ell^\prime\right) \right] d\tau^\prime  \nonumber \\
+(\bar{\phi}_i, \mathcal{L} \bar{S}_\ell)_B =& \,\frac{2}{\sqrt{2}} \bigintsss \phi_i \left[ \frac{2}{r_{23}}\left(S_\ell \pm S_\ell^\prime\right) \right] d\tau^\prime  \nonumber \\
 =&\, \frac{2}{\sqrt{2}} \cdot 8\pi^2  \int_0^\infty \int_0^\infty \int_0^\infty \int_{|r_1 - r_3|}^{|r_1 + r_3|} \int_{|r_2 - r_3|}^{|r_2 + r_3|} \int_0^{2\pi} \phi_i \left[ \frac{2}{r_{23}}\left(S_\ell \pm S_\ell^\prime\right) \right]  \nonumber \\
 &\times  r_1 r_2 r_{13} r_{23}\, d\varphi_{12}\, dr_{23}\, dr_{13}\, dr_2\, dr_3\, dr_1
 \end{align}
 
-\todoi{Check that we do this over $\varphi_{12}$.}
+%\todoi{Check that we do this over $\varphi_{12}$.}
 
 For a discussion on the final quadrature points used, refer to \cref{sec:QuadraturePoints}.
 
@@ -582,10 +582,6 @@ Doing this splitting requires many more function evaluations, so we use an
 approximation whenever $r_1$ is large enough. Specifically when $r_1$ is 
 greater than a chosen distance, we use Gauss-Laguerre over the entire
 $[0,\infty)$ range. 
-
-\todoi{Mention ECGs?}
-
-
 In the example given in \cref{fig:cusp}, at $r_2 = 100$, the $r_2$ integrand 
 is approximately $10^{-57}$, while at $r_2 = 25$, the integrand is 
 approximately $10^{-9}$.
@@ -703,11 +699,11 @@ Introducing an extra $e^{-\lambda x}$ and removing it with $e^{\lambda x}$, we c
 \int_0^\infty e^{-x} f(x) dx \approx \sum_{i=1}^n \frac{w_i}{\lambda} f\! \left(\frac{x_i}{\lambda}\right) \ee^{\lambda x_i}.
 \eeq
 
-As an example, the full expression for the $r_2$ Gauss-Laguerre quadrature is given \todo{$y_i$ defined?} by
+As an example, the full expression for the $r_2$ Gauss-Laguerre quadrature is given by
 \beq
-\int_a^\infty e^{-\beta r_2} f(r_2) dr_2 \approx \frac{e^{-\beta a}}{\beta} \sum_{i=1}^n w_i f\left(\frac{y_i}{\beta}+a\right).
+\int_a^\infty e^{-\beta r_2} f(r_2) dr_2 \approx \frac{e^{-\beta a}}{\beta} \sum_{i=1}^n w_i f\left(\frac{y_i}{\beta}+a\right),
 \eeq
-and with the exponential in $\lambda$, this becomes
+where $y_i = \beta x_i$. With the exponential in $\lambda$, this becomes
 \beq
 \int_a^\infty e^{-\beta r_2} f(r_2) dr_2 \approx \frac{e^{-a (\beta + \lambda)}}{\beta + \lambda} \sum_{i=1}^n w_i f\left(\frac{r_2 + a(\beta + \lambda)}{\beta + \lambda} \right) \ee^{\lambda r_2}.
 \eeq
@@ -907,7 +903,8 @@ the convergence of the differential cross sections, we use the percent
 difference. There is no standard symbol for this, so we define it as
 \begin{equation}
 \label{eq:PercentDiff}
-\% \text{ Diff} = \rhd(a,b) = \left| \frac{a - b}{(a + b) / 2} \right| \times 100\%.
+%\% \text{ Diff} = \rhd(a,b) = \left| \frac{a - b}{(a + b) / 2} \right| \times 100\%.
+\% \text{ Diff} = \left| \frac{a - b}{(a + b) / 2} \right| \times 100\%.
 \end{equation}
 When we can compare convergence with respect to $\omega$, we define a
 convergence ratio as

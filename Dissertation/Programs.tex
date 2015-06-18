@@ -6,7 +6,8 @@
 \chapter{Program Descriptions}
 \label{chp:Programs}
 
-\lettrine{\textcolor{startcolor}{D}}{oing} this work required writing multiple
+\iftoggle{UNT}{Doing}{\lettrine{\textcolor{startcolor}{D}}{oing}}
+this work required writing multiple
 codes, and I have made my codes available on GitHub at 
 \url{https://github.com/DentonW/Ps-H-Scattering} \cite{GitHub}. Much of the
 codes are what is described in \cref{chp:Computation}. A flowchart of the
@@ -54,11 +55,13 @@ Code'' works for arbitrary $\ell$, as described in \cref{chp:WaveKohn,chp:Genera
 .3 Long.
 .3 Short.
 .2 General Code.
+.3 Comparison.
 .3 Long-Range.
 .3 Phase Shift.
 .3 Python Scripts.
 .3 Short-Range.
 .3 Text to Binary.
+.3 Todd Method.
 .2 Derivations and Tests.
 }
 \caption{Directory tree of code on GitHub \cite{GitHub}}

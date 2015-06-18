@@ -66,7 +66,7 @@
 %\end{table}
 %}
 
-\lettrine{\textcolor{startcolor}{W}}{e}
+\iftoggle{UNT}{We}{\lettrine{\textcolor{startcolor}{W}}{e}}
 necessarily have to truncate the expressions for the cross
 sections to use a finite number of partial waves (\cref{chp:CrossSections}).
 By the D-wave, the various cross sections have not
@@ -123,7 +123,7 @@ here due to \cref{eq:SLS0Test}, which would just give 0.
 	\label{fig:DWavePhaseBorn}
 \end{figure}
 
-\todoi{Do we really need to show the S-wave and P-wave?}
+%\todoi{Do we really need to show the S-wave and P-wave?}
 
 These BO approximations were calculated for the first three partial waves 
 but showed huge discrepancies, especially for the S-wave, as seen in

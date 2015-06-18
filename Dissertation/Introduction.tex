@@ -22,83 +22,47 @@ longer with a lifetime of $\SI{142}{\ns}$ \cite{Vallery2003}. Due to the short
 lifetime of p-Ps, the majority of experimental data of Ps-atom and
 Ps-molecule scattering comes from o-Ps.
 
-
-\subsection{Positronium and Hydrogen Wavefunctions}
-The reduced mass for H is
+Working in atomic units (see \cref{sec:Units}), the ground state wavefunctions
+of H and that of Ps are
 \begin{equation}
-\mu_{\rm{H}} = \frac{m_{\rm{p}} m_{\rm{e}}}{m_{\rm{p}} + m_{\rm{e}}}.
-\end{equation}
-
-In the limit where the proton has infinite mass, the reduced mass becomes
-\begin{equation}
-%\lim_{m_p \to \infty} \frac{m_p + m_e}{m_p m_e} = \frac{1}{m_e} = \mu_H^{-1}
-\lim_{m_{\rm{p}} \to \infty} \frac{m_{\rm{p}} m_{\rm{e}}}{m_{\rm{p}} + m_{\rm{e}}} = m_{\rm{e}} \approx \mu_{\rm{H}}.
-\end{equation}
-
-The Ps exotic atom is similar to the H atom with the proton replaced 
-e$^+$, meaning we can no longer use the infinite mass approximation, 
-as $m_{{\rm{e}}^+} = m_{{\rm{e}}^-} = m_{\rm{e}}$.
-\begin{equation}
-\mu_{\rm{Ps}} = \frac{m_{\rm{e}}^2}{2 m_{\rm{e}}} = \frac{m_{\rm{e}}}{2}.
-\end{equation}
-
-To obtain the Ps wavefunction, we can start with the wavefunction for H and
-replace $m_{\rm{e}} \rightarrow \frac{m_{\rm{e}}}{2}$. The ground state wavefunction for H is
-\begin{equation}
-\Phi_{100,\rm{H}} = \left(\frac{1}{\pi a_0^3}\right)^{\frac{1}{2}} \!\! \ee^{-\frac{r}{a_0}},
-\text{where } a_0 = \frac{\hbar^2}{m_{\rm{e}} \,e^2} \;.
-\end{equation}
-The $100$ represents the $n \ell m$ quantum numbers, and we are only
-considering ground state H and Ps. If we denote $a_0 \to a_\mu$, where
-we replace $m_{\rm{e}}$ by $m_{\rm{e}}/2$, the positronium ground state
-wavefunction can be written easily as
-\begin{equation}
-\Phi_{100,\rm{Ps}} = \left(\frac{1}{\pi {a_\mu}^3}\right)^{\frac{1}{2}} \!\! \ee^{-\frac{r}{a_\mu}},
-\text{where } a_\mu = \frac{2\hbar^2}{m_{\rm{e}} \,e^2} \;.
-\end{equation}
-Working in atomic units (see \cref{sec:Units}), $a_0 = 1$ (i.e. $\hbar = m_{\rm{e}} = e = 1$), giving
-\begin{equation}
-\Phi_{\rm{H}}\left(r_3\right) \equiv \Phi_{100,\rm{H}}\left(r_3\right) = \frac{1}{\sqrt{\pi}} \ee^{-r_3}
+\Phi_{\rm{H}}\left(r_3\right) = \frac{1}{\sqrt{\pi}} \ee^{-r_3}
 \label{eq:HWave}
 \end{equation}
 and
 \begin{equation}
-\Phi_{\rm{Ps}}\left(r_{12}\right) \equiv \Phi_{100,\rm{Ps}}\left(r_{12}\right) = \frac{1}{\sqrt{8 \pi}} \ee^{-r_{12}/2} \;.
+\Phi_{\rm{Ps}}\left(r_{12}\right) = \frac{1}{\sqrt{8 \pi}} \ee^{-r_{12}/2} \;.
 \label{eq:PsWave}
 \end{equation}
-
-\subsection{Positronium and Hydrogen Energies}
-
 When the Schr\"{o}dinger equation is solved for the hydrogen atom, the energy
 is seen to be (neglecting higher-order effects)
 \beq
 \label{eq:HEnergy}
 E_{n,\rm{H}} = -\frac{R_\infty}{n^2}.
 \eeq
-In Hartree atomic units, $R_\infty = \frac{1}{2}$, giving
+In Hartree atomic units, $R_\infty = \frac{1}{2}$, giving a ground state energy of
 \beq
 \label{eq:HEnergyAU}
-E_{n,\rm{H}} = -\frac{1}{2 n^2}.
+E_{\rm{H}} = -\frac{1}{2}.
 \eeq
-Due to the reduced mass of half that of hydrogen, the energy of positronium is
+Due to the reduced mass of half that of hydrogen, the ground state energy of Ps is
 \beq
 \label{eq:PsEnergyAU}
-E_{n,\rm{Ps}} = -\frac{1}{4 n^2}.
+E_{\rm{Ps}} = -\frac{1}{4}.
 \eeq
 
-For a given level $n$, the energy of positronium is half that of hydrogen. The
-ionization energy is approximately $\SI{-6.8}{\eV}$, versus that of
-$\SI{-13.6}{\eV}$ for hydrogen. \Cref{fig:HPsLevels} compares the energy levels
-of positronium and hydrogen.
-\begin{figure}
-	\centering
-	\includegraphics[width=5.5in]{HPsLevels}
-	\caption{Hydrogen and positronium energy levels}
-	\label{fig:HPsLevels}
-\end{figure}
-
-For a detailed analysis of H and Ps theoretical and experimental research,
-refer to Ref.~\cite{Karshenboim2005}.
+%For a given level $n$, the energy of positronium is half that of hydrogen. The
+%ionization energy is approximately $\SI{-6.8}{\eV}$, versus that of
+%$\SI{-13.6}{\eV}$ for hydrogen. \Cref{fig:HPsLevels} compares the energy levels
+%of positronium and hydrogen.
+%\begin{figure}
+	%\centering
+	%\includegraphics[width=5.5in]{HPsLevels}
+	%\caption{Hydrogen and positronium energy levels}
+	%\label{fig:HPsLevels}
+%\end{figure}
+%
+%For a detailed analysis of H and Ps theoretical and experimental research,
+%refer to Ref.~\cite{Karshenboim2005}.
 
 
 
@@ -203,7 +167,7 @@ The Kohn variational method and its variants suffer from well-known spurious
 singularities (see \cref{eq:SchwartzSing}), so they are often used in conjunction
 with each other to identify these. To avoid cumbersome wording in this document,
 the Kohn variational method and variants of the method are simply referred to as
-``Kohn methods''. Complex Kohn methods that use spherical Hankel functions 
+``Kohn-type methods''. Complex Kohn methods that use spherical Hankel functions 
 instead of the spherical Bessel and Neumann functions are often used due to a 
 smaller, but nonzero, chance of the Schwartz singularities
 \cite{McCurdy1989,Lucchese1989,Cooper2010}. This work uses the Kohn,

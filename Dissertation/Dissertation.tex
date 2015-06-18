@@ -3,15 +3,25 @@
 %\documentclass[10pt,openany]{book}
 \documentclass[12pt,openany]{book}
 
+\usepackage{etoolbox}  % To do conditional compilation with \iftoggle
+\newtoggle{UNT}
+%\toggletrue{UNT}
+\togglefalse{UNT}
 
 %\documentclass[draft]{}
 %\usepackage[nobysame]{amsrefs}
 %\usepackage[demo]{graphicx}
 \usepackage{graphicx}
 \usepackage{amsmath, fullpage, subfiles, mathrsfs}
-\usepackage[Bjornstrup]{fncychap}
+%\nottoggle{UNT}{\usepackage[Bjornstrup]{fncychap}}
+\iftoggle{UNT}{
+}{
+	\usepackage[Bjornstrup]{fncychap}
+}
+%\usepackage[Bjornstrup]{fncychap}
 %\usepackage[colorlinks=true]{hyperref}  % hyperref must be loaded after fncychap.
-\usepackage{srcltx, tabularx, pdfsync, multirow, float, fancyhdr}
+\usepackage{srcltx, tabularx, pdfsync, multirow, float}
+\usepackage{fancyhdr}
 \usepackage[table]{xcolor}  % For table coloring - can have option clash if loaded after other packages
 \usepackage{color, colortbl, rotate, listings, rotating}
 \usepackage{caption, booktabs, tocvsec2, longtable}
@@ -48,6 +58,52 @@
 \usepackage{doi}  % Is this needed for the DOIs in the bibliography?
 \usepackage{dirtree}
 
+%%Trying to make TOC chapter titles uppercase
+%%From http://tex.stackexchange.com/questions/156916/how-to-make-section-name-uppercase-in-toc
+%\makeatletter
+%\let\oldcontentsline\contentsline
+%\def\contentsline#1#2{%
+  %\expandafter\ifx\csname l@#1\endcsname\l@section
+    %\expandafter\@firstoftwo
+  %\else
+    %\expandafter\@secondoftwo
+  %\fi
+  %{%
+    %\oldcontentsline{#1}{\MakeTextUppercase{#2}}%
+  %}{%
+    %\oldcontentsline{#1}{#2}%
+  %}%
+%}
+%\makeatother
+
+%\renewcommand{\chaptitlefont}{\MakeUppercase}
+
+
+% Gives uppercase chapter names in table of contents but gives LaTeX errors
+%\iftoggle{UNT}{
+%\makeatletter
+%\newtocstyle{uppercase}{%
+  %\settocfeature[0]{entryhook}{\MakeUppercase}
+%}
+%\makeatother
+%\usetocstyle{uppercase}
+%}
+
+\iftoggle{UNT}{
+\usepackage{sectsty}  % For formatting chapter and section titles
+\allsectionsfont{\centering\normalfont\fontsize{12}{15}\selectfont\MakeUppercase}
+\chapterfont{\centering\normalfont\fontsize{12}{15}\selectfont\MakeUppercase}
+\sectionfont{\normalfont\fontsize{12}{15}\selectfont}
+\subsectionfont{\normalfont\fontsize{12}{15}\selectfont}
+\subsubsectionfont{\normalfont\fontsize{12}{15}\selectfont}
+%\newcommand{\chp}[1] {\MakeUppercase{#1}}
+\newcommand{\chp}[1] {\uppercase{#1}}
+}{
+\newcommand{\chp}[1] {#1}
+}
+
+
+
 % From http://tex.stackexchange.com/questions/15971/bibliography-with-page-numbers for backref
 \renewcommand*{\backref}[1]{}
 \renewcommand*{\backrefalt}[4]{%
@@ -57,8 +113,12 @@
     \fi}
 
 % Comment out to allow floating figures and tables
-\floatplacement{figure}{H}
-\floatplacement{table}{H}
+\iftoggle{UNT}{
+}
+{
+	\floatplacement{figure}{H}
+	\floatplacement{table}{H}
+}
 
 %\usepackage[normalem]{ulem}  % Remove this - strikethrough text
 %\usepackage{soul}  % Remove this - highlighted text
@@ -99,7 +159,9 @@
 \usepackage{setspace}
 %\singlespacing
 %\onehalfspacing
-%\doublespacing
+\iftoggle{UNT}{
+\doublespacing
+}
 
 % If we want the equations, figures and tables to be numbered sequentially instead of by chapter/section
 %\usepackage{chngcntr}
@@ -294,8 +356,12 @@ Denton Woods
 \pdfbookmark[1]{Acknowledgements}{acknowledgements}
 \thispagestyle{plain}
 \begin{center}
-    \large
-    \textbf{Acknowledgements}
+	\iftoggle{UNT}{
+		ACKNOWLEDGEMENTS
+	}{
+		\large
+		\textbf{Acknowledgements}
+	}
 \end{center}
 
 Many people helped me through this project. Special thanks goes to Ryan 
@@ -315,7 +381,7 @@ Services, a project of Academic Computing and User Services division of the
 University Information Technology with additional support from UNT Office of 
 Research and Economic Development.
 
-$\LaTeXe$
+%$\LaTeXe$
 
 %%%%%%\setcounter{tocdepth}{2}
 \hypersetup{linktocpage}
@@ -391,8 +457,9 @@ vdW & van der Waals \\
 \subfile{Unfinished.tex}
 
 %\addcontentsline{toc}{chapter}{References}
-\newpage
-\Urlmuskip=0mu plus 1mu\relax
+%\newpage
+%\Urlmuskip=0mu plus 1mu\relax
+
 %\bibliographystyle{h-physrev3}
 %\bibliographystyle{h-physrev}
 %\bibliographystyle{h-elsevier}

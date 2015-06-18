@@ -7,7 +7,8 @@
 %\todoi{Write this all in terms of $j_i$, $k_i$, $l_i$, etc. instead of $k_1$, $k_2$, $k_{12}$, etc.}
 %\todoi{Get rid of all old equation environments.}
 
-\lettrine{\textcolor{startcolor}{P}}{recalculating} the results of the W 
+\iftoggle{UNT}{Precalculating}{\lettrine{\textcolor{startcolor}{P}}{recalculating}}
+the results of the W 
 function yields significant improvements to the speed of this program.  The 
 number of terms in the trial function increases greatly with increasing
 $\omega$. The number of elements of the matrices Phi2HPhi and PhiPhi is

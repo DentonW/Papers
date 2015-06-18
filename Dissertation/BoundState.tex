@@ -5,7 +5,8 @@
 \chapter{Positronium Hydride and Short-Range Terms}
 \label{chp:PsHBound}
 
-\lettrine{\textcolor{startcolor}{A}}{s} discussed in \cref{sec:PsH}, PsH 
+\iftoggle{UNT}{As}{\lettrine{\textcolor{startcolor}{A}}{s}}
+discussed in \cref{sec:PsH}, PsH 
 consists of one atom of both Ps and of H.
 %We model it the 
 %standard way here as an exotic atom, instead of a molecule.
@@ -272,6 +273,8 @@ cutoffs in $\omega$ are easily seen using the ViewOmegaCutoffs.py script
 (\cref{chp:Programs}).
 %\url{http://cas-bs5cph1.phys.unt.edu/wiki/index.php/ViewOmegaCutoffs.py}
 
+{
+\iftoggle{UNT}{\singlespacing}
 
 \begin{center}
 \setlength{\aboverulesep}{0pt}
@@ -362,6 +365,7 @@ Campbell (1998) \cite{Campbell1998} & CC 22Ps1H & --- & -0.773 3 & 0.634$^\star$
 \end{center}
 %\end{landscape}
 
+}
 
 
 There have been a large number of calculations of the PsH binding energy over 
