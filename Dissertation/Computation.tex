@@ -30,16 +30,18 @@ of matrices forming the generalized eigenvalue problem.
 
 \subsection{Short-Range -- Short-Range Integrations}
 \label{sec:ShortInt}
-The short-range--short-range (short-short) integrals make up the bulk of
-the $\textbf{\emph{A}}$ matrix
+The short-range--short-range (short-short) matrix elements make up the
+bulk of the $\textbf{\emph{A}}$ matrix
 (\cref{eq:GenKohnMatrixAXB}). The PsH bound state problem in 
 \cref{chp:PsHBound} consists of only these types of matrix elements
 (see \cref{eq:BoundWavefn}). The form of these short-range integrals is
 \beq
 \label{eq:FourBody}
-I \equiv I(k_i, l_i, m_i, n_i, p_i, q_i; \alpha, \beta, \gamma) = \int e^{-(\alpha r_1 + \beta r_2 + \gamma r_3)} r_1^{k_i} r_2^{l_i} r_{12}^{m_i} r_3^{n_i} r_{13}^{p_i} r_{23}^{q_i} d\textbf{r}_1 d\textbf{r}_2 d\textbf{r}_3,
+I \equiv I(k_i, l_i, m_i, n_i, p_i, q_i; \bar{\alpha}, \bar{\beta}, \bar{\gamma}) = \int e^{-(\bar{\alpha} r_1 + \bar{\beta} r_2 + \bar{\gamma} r_3)} r_1^{k_i} r_2^{l_i} r_{12}^{m_i} r_3^{n_i} r_{13}^{p_i} r_{23}^{q_i} d\textbf{r}_1 d\textbf{r}_2 d\textbf{r}_3,
 \eeq
-with real-valued $\alpha, \beta, \gamma > 0$.
+with real-valued $\bar{\alpha}, \bar{\beta}, \bar{\gamma} > 0$. The $\bar{\alpha}$ is related
+to $\alpha$ through \cref{eq:GeneralKohnMatrix}, as are the relations of the other
+nonlinear parameters $\bar{\beta}$, $\beta$, $\bar{\gamma}$, and $\gamma$.
 
 This class of integrals, the Hylleraas three-electron or four-body 
 integrals, has been studied extensively. See
@@ -106,9 +108,10 @@ The $k_{ij}$ summations in \cref{eq:FourBodyExpansion} are all finite. If all po
 As Frolov and Bailey \cite{Frolov2003} note, these four-body integrals only work for systems with one infinitely heavy particle, such as PsH or Ps-H scattering. For systems with arbitrary masses, such as Ps$_2$ or Ps-Ps scattering, this has to be generalized to
 \beq
 \label{eq:FourBodyIntGen}
-I = \int e^{-(\alpha r_1 + \beta r_2 + \gamma r_3 + a_{12} r_{12} + a_{13} r_{13} + a_{23} r_{23})} r_1^{k_i} r_2^{l_i} r_{12}^{m_i} r_3^{n_i} r_{13}^{p_i} r_{23}^{q_i} d\textbf{r}_1 d\textbf{r}_2 d\textbf{r}_3.
+I = \int e^{-(\bar{\alpha} r_1 + \bar{\beta} r_2 + \bar{\gamma} r_3 + a_{12} r_{12} + a_{13} r_{13} + a_{23} r_{23})} r_1^{k_i} r_2^{l_i} r_{12}^{m_i} r_3^{n_i} r_{13}^{p_i} r_{23}^{q_i} d\textbf{r}_1 d\textbf{r}_2 d\textbf{r}_3.
 \eeq
-Fromm and Hill give an analytic solution to this \cite{Fromm1987}, but it is extremely difficult to work with. Harris more recently solved this problem analytically using recursion relations \cite{Harris2009}, using a similar method to the recursion relations of Pachucki et al.\ \cite{Pachucki2004}. Both of these solutions restrict the powers of $r_i$ and $r_{ij}$ to $k_i, l_i, m_i, n_i, p_i, q_i \geq -1$. We have also looked at a subset of these integrals (refer to \cref{chp:Unfinished}). As another extension of the Hylleraas basis set, some four-electron integrals can be reduced down to the three-electron integrals \cite{King1993,Pelzl2002}.
+Fromm and Hill give an analytic solution to this \cite{Fromm1987}, but it is extremely difficult to work with. Harris more recently solved this problem analytically using recursion relations \cite{Harris2009}, using a similar method to the recursion relations of Pachucki et al.\ \cite{Pachucki2004}. Both of these solutions restrict the powers of $r_i$ and $r_{ij}$ to $k_i, l_i, m_i, n_i, p_i, q_i \geq -1$. We have also looked at a subset of these integrals. %(refer to \cref{chp:Unfinished}).
+As another extension of the Hylleraas basis set, some four-electron integrals can be reduced down to the three-electron integrals \cite{King1993,Pelzl2002}.
 
 
 \subsubsection{Asymptotic Expansion}
@@ -686,7 +689,7 @@ earlier Kohn and inverse Kohn work \cite{VanReeth2003,VanReeth2004}
 quadrature points can increase the computational time greatly. We took 
 another approach to further increase the accuracy. For each of the Gauss-
 Laguerre quadratures, we introduce an extra $e^{-\lambda r_i}$ and remove it 
-with $e^{\lambda r_i}$ after the quadrature, bringing our abscissae closer to 
+with $e^{\lambda r_i}$ after the quadrature, bringing the abscissae closer to 
 the origin without increasing the number of integration points.
 
 The basic form of the Gauss-Laguerre quadrature is given in \cref{eq:GaussLag} as
@@ -929,7 +932,7 @@ The tangent of the phase shifts is fitted to the function
 The $c$ and $p$ in this equation are fitting parameters. When plotted with respect to $\omega^{-p}$, the tangents of the phase shifts form nearly a straight line, with the y-intercept being the tangent of the extrapolated value of the phase shift, $\tan \delta^\pm(\omega \to \infty)$.
 
 In Van Reeth and Humberston, the extrapolation is done using $\omega = 3$ 
-through $\omega = 6$ \cite{VanReeth2003}. Our results go to $\omega = 7$, so 
+through $\omega = 6$ \cite{VanReeth2003}. The current results go to $\omega = 7$, so 
 we have completed the extrapolation using the sets $\omega = 3-6$,
 $\omega = 3-7$ and $\omega = 4-7$. The smallest residuals are normally found
 with the set $\omega = 4-7$. The values of the extrapolated phase shifts using

@@ -49,7 +49,7 @@ related to the phase shifts by
 In addition to the relation of the integrated cross sections to the
 differential cross sections in \cref{eq:TotalDiffCross},
 using the partial wave expansion, the integrated cross sections can also be 
-expressed as \citep[p.]{Bransden2003}
+expressed as \citep[p.584]{Bransden2003}
 \begin{equation}
 \label{eq:TotalCross}
 \sigma_{el}^\pm = \sum_{\ell=0}^\infty \sigma_{el,\ell}^\pm = \frac{4}{\kappa^2} \sum_{\ell=0}^\infty (2\ell+1) \sin^2 \delta_\ell^\pm.
@@ -64,24 +64,25 @@ giving spin-weighted cross sections, i.e. \cite{Ward1987,Blackwood2002}
 \eeq
 
 \Cref{fig:singlet-cross-sections,fig:triplet-cross-sections} show the partial
-wave cross sections for the singlet and triplet, respectively. The ``Total''
+wave cross sections for the singlet and triplet, respectively. The ``Summed''
 in each is the sum of each of the singlet or triplet partial waves through the
 H-wave.
 
 The triplet cross section in \cref{fig:triplet-cross-sections} is dominated 
 almost completely by the $^3$S-wave. The $^3$P-wave 
 contributes less, and the $^3$D-wave barely registers on the graph. The 
-higher partial waves contribute nearly negligible amounts. The total follows
+higher partial waves contribute nearly negligible amounts. The 
+summed cross section follows
 closely with $^3$S, but the contribution from $^3$P is evident.
 
 The singlet cross sections in \cref{fig:singlet-cross-sections} are more
 interesting due to their larger partial wave cross sections and the resonances
-from the first four partial waves. The ``Total'' has peaks from each of the
+from the first four partial waves. The ``Summed'' has peaks from each of the
 first three partial waves, giving it a more complicated structure than the
-total from the triplet in \cref{fig:triplet-cross-sections}. As mentioned
+summed from the triplet in \cref{fig:triplet-cross-sections}. As mentioned
 in \cref{sec:Resonances}, each of these resonances goes through a phase shift
 change of $\uppi$. With the $(2\ell+1)$ factor in \cref{eq:TotalCross},
-higher partial wave resonances have a larger contribution to the total
+higher partial wave resonances have a larger contribution to the summed
 cross sections, as long as the background does not change significantly.
 In \cref{fig:singlet-cross-sections}, the $^1$D resonance clearly has the
 most significant contribution to the integrated elastic cross section out of
@@ -99,7 +100,7 @@ As can be seen in \cref{fig:singlet-cross-sections,fig:triplet-cross-sections},
 the D-wave falls off quicker than the P-wave as $\kappa \to 0$, and the F-wave
 falls off even faster.
 
-Also interesting is the minimum in the total singlet cross section at 
+Also interesting is the minimum in the summed singlet cross section at 
 approximately $\SI{0.25}{eV}$ and then the maximum at $\SI{0.74}{eV}$. The dip
 here at low energy is due to the mixing of the $^1$S and $^1$P cross sections.
 The $^1$S-wave cross section is decreasing rapidly while the $^1$P-wave cross
@@ -109,7 +110,7 @@ $^1$P-wave.
 \begin{figure}
 	\centering
 	\includegraphics[width=5.25in]{singlet-cross-sections}
-	\caption{$S$-matrix complex Kohn singlet cross sections. An interactive version of this
+	\caption{$S$-matrix complex Kohn singlet cross sections for each partial wave and the sum through $\ell = 5$. An interactive version of this
 figure is available online \cite{Plotly}.}
 	\label{fig:singlet-cross-sections}
 \end{figure}
@@ -117,7 +118,7 @@ figure is available online \cite{Plotly}.}
 \begin{figure}
 	\centering
 	\includegraphics[width=5.25in]{triplet-cross-sections}
-	\caption{$S$-matrix complex Kohn triplet cross sections. An interactive version of this
+	\caption{$S$-matrix complex Kohn triplet cross sections for each partial wave and the sum through $\ell = 5$. An interactive version of this
 figure is available online \cite{Plotly}.}
 	\label{fig:triplet-cross-sections}
 \end{figure}
@@ -125,7 +126,7 @@ figure is available online \cite{Plotly}.}
 From \cref{eq:TotalCross}, for exact cross sections, we have to do an infinite
 summation. In practice, we add partial waves until the cross section no longer
 changes a significant amount. In \cref{fig:percentage-cross-sections}(a), we
-consider what the percentage contribution to the total cross section for
+consider what the percentage contribution to the summed cross section for
 the singlet partial waves is at the 7 ``standard'' $\kappa$ values. From this,
 we can see the trend that the $^1$S-wave is by far the greatest contribution at
 small $\kappa$, but the $^1$P-wave becomes the dominant contribution through
@@ -136,19 +137,19 @@ insignificant contributions.
 
 The corresponding bar chart for the triplet is in
 \cref{fig:percentage-cross-sections}(b). As qualitatively described earlier,
-the contribution to the total elastic integrated cross section for
+the contribution to the elastic integrated cross section for
 the triplet is mainly due to the $^3$S-wave. The $^3$P-wave contributes about
 $20\%$ at $\kappa = 0.7$, and the $^3$D-wave contribution is nearly negligible.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{percentage-cross-sections}
-	\caption[Percentage contribution to total cross section]{Percentage contribution to total cross section from each partial wave for the singlet (a) and triplet (b).}
+	\caption[Percentage contribution to integrated elastic cross section]{Percentage contribution to integrated elastic cross section from each partial wave for the singlet (a) and triplet (b).}
 	\label{fig:percentage-cross-sections}
 \end{figure}
 
 \Cref{fig:percentage-cross-sections-full} also shows the percent contributions to 
-the total integrated elastic cross sections from each partial wave but shows
+the integrated elastic cross sections from each partial wave but shows
 this data for the entire energy range. The triplet graph in
 \cref{fig:percentage-cross-sections-full}(b) again shows that only the $^3$S- and
 $^3$P-waves give very significant contributions. The $^3$D-wave gives a
@@ -165,12 +166,12 @@ minima.
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{percentage-cross-sections-full}
-	\caption[Percentage contribution to total cross section]{Percentage contribution to total cross section from each partial wave for the singlet (a) and triplet (b).}
+	\caption[Percentage contribution to integrated elastic cross section]{Percentage contribution to integrated elastic cross section from each partial wave for the singlet (a) and triplet (b).}
 	\label{fig:percentage-cross-sections-full}
 \end{figure}
 
 For a more quantitative approach, we calculate the percent contributions of the
-different partial waves to the total spin-weighted cross section as presented
+different partial waves to the spin-weighted integrated elastic cross section as presented
 in \cref{tab:PercentToCross}. The second and third columns give the
 contribution from the singlet and triplet combined for each partial wave. From
 this, it is noticeable that the F-wave should be included, though the average
@@ -179,13 +180,13 @@ contribution from both the singlet and triplet less than $0.002\%$ on
 average.
 
 For the last 4 columns of \cref{tab:PercentToCross}, we also compare each
-partial wave's contribution to the total spin-weighted cross section, but we
+partial wave's contribution to the spin-weighted integrated elastic cross section, but we
 separate out the singlet and triplet. From columns 4 and 5 for the singlet,
 we see that the $^1$F-wave is important, and it gives most of the combined
 $^{1,3}$F-wave contribution to the elastic integrated cross section. The 
 $^3$F-wave contribution is $0.0011\%$ on average, and the $^3$D contribution 
 is less than $0.41\%$ through the entire energy range. We include all partial
-waves through the H-wave in our final results, but these would be relatively
+waves through the H-wave in the final results, but these would be relatively
 well converged if we stopped adding partial waves to \cref{eq:TotalCross} at
 the F-wave. For comparison, the CC \cite{Walters2004} cross section shown in
 \cref{fig:combined-cross-sections} uses partial waves through the G-wave, but
@@ -209,10 +210,10 @@ H-wave & 0.0083\% & 0.0019\%  & 0.0062\% & 0.0013\% & 0.00070\% & 0.00021\% \\
 \label{tab:PercentToCross}
 \end{table}
 
-Finally, combining the singlet and triplet total integrated elastic cross 
+Finally, combining the singlet and triplet integrated elastic cross 
 sections using the spin-weighting in \cref{eq:SpinWeightCS} gives the result
 in \cref{fig:combined-cross-sections}. We include the spin-weighted singlet
-and triplet cross sections for comparison with the combined total cross section.
+and triplet cross sections for comparison with the combined integrated elastic cross section.
 The comparison to the CC \cite{Walters2004} and SE \cite{Hara1975} results is
 made possible by using the CurveSnap \cite{CurveSnap} program to extract the
 curves from the respective papers. The SE curve gives a decent approximation to
@@ -508,7 +509,7 @@ the average and maximum percent differences for adding partial waves to the
 differential cross section (both the singlet and triplet). The average 
 percent difference for adding the G-wave is less than 1\% but has a fairly
 large maximum percent difference. Adding the H-wave is a much less
-significant contribution, and our differential cross section looks to be
+significant contribution, and the differential cross section looks to be
 relatively well converged by the H-wave.
 
 \begin{table}
@@ -632,7 +633,7 @@ contribution to the spin-weighted momentum transfer cross section.
 \begin{figure}
 	\centering
 	\includegraphics[width=5.25in]{cross-section-comparisons}
-	\caption{Comparison of cross sections. CC data is from Ref.~\cite{Walters2004}.}
+	\caption[Comparison of cross sections.]{Comparison of cross sections. CC data is from Ref.~\cite{Walters2004}.}
 	\label{fig:cross-section-comparisons}
 \end{figure}
 

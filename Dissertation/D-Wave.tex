@@ -339,7 +339,7 @@ The evaluation of the short-short matrix elements involving the mixed terms is
 much more difficult than those with just the first and second symmetry terms. 
 I spent some time trying to derive the expressions for the short-short
 matrix elements but ran into difficulty doing so. There has been some
-preliminary progress on this front, as described in \cref{chp:Unfinished}.
+preliminary progress on this front. %, as described in \cref{chp:Unfinished}.
 
 For three-body problems, the mixed terms are substantially easier to deal
 with. For e$^+$-H, Refs.~\cite{Brown1985a,BrownThesis,WattsThesis,Humberston1997,VanReeth1997}
@@ -375,7 +375,8 @@ Due to the difficulty we had evaluating the analytical portion (the external
 angular integrals) for the mixed terms, we only included the first two
 symmetries in the D-wave calculations in this work. The preliminary investigation
 \cite{VanReeth2015} took place only recently, after we had attempted other
-methods (see \cite{chp:Unfinished}) to accelerate the convergence
+methods %(see \cite{chp:Unfinished})
+to accelerate the convergence
 of the D-wave phase shifts. As we discovered in \cref{sec:DWaveResults}, this
 turns out to be an acceptable approximation.
 
@@ -432,22 +433,22 @@ shifts. Exponents denote powers of 10.}
 \label{tab:DWaveComparisons}
 \end{table}
 
-\Cref{tab:DWaveComparisons,fig:DWaveComparisons} show our final results of 
+\Cref{tab:DWaveComparisons,fig:DWaveComparisons} show the final results of 
 the phase shifts using the $S$-matrix complex Kohn with the nonlinear 
 parameters given in \cref{sec:DWaveNonlinear} and compares to multiple other 
 calculations by other groups. One of the most easily noticeable problems is
-our poor convergence for $\kappa = 0.1$ for both $^1$D and $^3$D. As mentioned
+the poor convergence for $\kappa = 0.1$ for both $^1$D and $^3$D. As mentioned
 in \cref{sec:Extrapolations} on page~\pageref{sec:Extrapolations}, our code
 does not seem to handle very small phase shifts particularly well, and we
 likely would have to increase the number of integration points further. Also, the 
 lack of mixed terms likely affects the convergence. Both of these effects
 likely combine to give a bad extrapolation of over 100\%. However, note that
-our phase shifts for $\kappa = 0.1$ are not extremely far from the CC of
+the phase shifts for $\kappa = 0.1$ are not extremely far from the CC of
 Refs.~\cite{Walters2004,Blackwood2002}. We do not show this extrapolation for
 $^1$D in Ref.~\cite{Woods2015}, as it is obviously not good.
 
 For $\kappa \geq 0.2$, the extrapolations look more reasonable, and for $^1$D,
-our phase shifts look relatively well converged, especially for $\kappa \geq 0.3$.
+the phase shifts look relatively well converged, especially for $\kappa \geq 0.3$.
 We believe that with the exception of $\kappa < 0.2$, the $^1$D phase shifts are
 reasonably accurate, even with the omission of the mixed terms. The $^1$D phase
 shifts for $\omega = 5$ and $\omega = 6$ differ by less than 10\%.
@@ -463,8 +464,8 @@ Due to the worse extrapolations for $^3$D than for the $^{1,3}$S, $^{1,3}$P,
 and $^1$D partial waves, we do not report any $^3$D extrapolations in
 Ref.~\cite{Woods2015}.
 
-We see from \Cref{tab:DWaveComparisons,fig:DWaveComparisons} that the CC results
-\cite{Blackwood2002,Walters2004} are generally above ours. The exception is the
+We see from \Cref{tab:DWaveComparisons,fig:DWaveComparisons} that the CC phase shifts
+\cite{Blackwood2002,Walters2004} are generally above the $S$-matrix complex Kohn phase shifts. The exception is the
 $\kappa = 0.7$ phase shift for $^1$D and the extrapolated phase shifts for
 $\kappa = 0.6$ and $0.7$, where the complex Kohn results are slightly higher.
 For $^1$D, the complex Kohn and CC \cite{Walters2004} results overall agree
@@ -484,8 +485,9 @@ symmetry, and the phase shifts are well converged.
 
 Unfortunately, it is not possible to know at the moment how far the complex 
 Kohn phase shifts differ from the true phase shifts, and further 
-investigation into the mixed terms could help resolve this discrepancy
-(see \cref{chp:Unfinished}). Thankfully, the contribution to the cross sections
+investigation into the mixed terms could help resolve this discrepancy.
+%(see \cref{chp:Unfinished}).
+Thankfully, the contribution to the cross sections
 in \cref{chp:CrossSections} from the $^3D$ is small, even the differential
 cross section. The $^1$D contribution to the cross sections is very small
 in the low $\kappa$ region where the phase shifts are less converged. In the

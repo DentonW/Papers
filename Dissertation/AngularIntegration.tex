@@ -12,15 +12,13 @@
 \section{Chebyshev-Gauss Quadrature}
 \label{sec:ChebyshevGauss}
 
-We need to prove equation 5.4 of Peter Van Reeth's thesis \cite[p.79]{VanReethThesis}. Our integration is over $(0,2\pi)$.
-
+We need to prove equation 5.4 of Peter Van Reeth's thesis \cite[p.79]{VanReethThesis},
+given as
 \begin{equation}
 \Int{ D(\cos \varphi_{23})}{\varphi_{23},0,2\pi} \approx \frac{2\pi}{n}\sum_{i=1}^n D\left[\cos\left(\frac{2i-1}{2n}\pi\right)\right].
 \label{eq:PVRAng}
 \end{equation}
-
-
-The form that we will need is
+To prove this, we start with
 \begin{equation}
 \Int{ D(\cos \varphi_{23}) }{\varphi_{23},0,\pi} \approx \frac{\pi}{n}\sum_{i=1}^n D\left[\cos\left(\frac{2i-1}{2n}\pi\right)\right].
 \label{eq:PVRAngNew}
@@ -74,7 +72,7 @@ Since this is the same as \cref{eq:PVRAngNew3}, we just combine this with \cref{
 \label{sec:AngularInt}
 
 We perform rotations and then integrations over the 3 
-external angles to reduce our 9-dimensional integrations to 6 dimensions. The
+external angles to reduce the 9-dimensional integrations to 6 dimensions. The
 procedure described here is the same as in Van Reeth's thesis
 \cite{VanReethThesis}.
 
@@ -215,12 +213,13 @@ where $i$ = $1$, 2, 3, $\rho$ or $\rho^\prime$.
 
 These terms are not completely necessary to generalize here, because they 
 only appear in the short-short calculations. My derivations and code for the 
-S-, P-, and D-wave short-short calculations use these. The general code
-short-short derivations and code \cite{sec:} use a formalism from Drake and
+S-, P-, and D-wave short-short calculations use these. The general short-short
+derivations and code (\cref{sec:GeneralShort}) use a formalism from Drake and
 Yan \cite{Yan1997} that does not do these external angular integrations. The 
 general code is used for the F-, G-, and H-waves and can be used for 
 arbitrary $\ell$. Derivations for all of these can be seen in the
-\emph{Mathematica} notebook ``General Angular Integrations.nb''. Note that the
+\emph{Mathematica} notebook ``General Angular Integrations.nb''
+\cite{GitHub,Wiki}. Note that the
 result of $2\pi$ in \cref{sec:AngSame} is recovered if $i=j$. The general 
 result is
 \beq
@@ -314,7 +313,7 @@ giving
 
 These are the most difficult angular integrations considered. After performing these integrations by hand through the D-wave, I came up with a way to compute them in \emph{Mathematica}. These are derived in a \emph{Mathematica} notebook entitled ``General Angular Integrations.nb''. Using this method, the H-wave integral ($\ell = 5$) took approximately 1 hour and 26 minutes to calculate in \emph{Mathematica}. An I-wave version of this integral was attempted on the Talon2 cluster (single processor only), but it was killed after approximately 2 weeks of runtime. Without this result, the I-wave and higher cannot be calculated using this method.
 
-I discovered a way to generalize these integrals as well, but it was not until recently. The general long-range code still has the hardcoded values. Without realizing this relation, these integrals are very difficult to compute. Defining
+I discovered a way to generalize these integrals as well, but it was not until recently. Without realizing this relation, these integrals are very difficult to compute. Defining
 \beq
 y = \frac{4\left(\rho^2 + {\rho^\prime}^2\right) - r_{23}^2}{8 \rho \rho^\prime},
 \eeq

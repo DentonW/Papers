@@ -405,7 +405,7 @@ $\alpha = 0.6$ and $\gamma = 0.976$). We do not use the restricted set described
 in \cref{sec:Restricted} for our final calculations, but a comparison with it
 can give an idea of how stable the phase shifts are. Comparing the full and
 restricted sets for $\beta = 0.368$, the phase shifts do not change much, even
-though we are reducing our basis set from 913 to 720 terms. However, comparison
+though we are reducing the basis set from 913 to 720 terms. However, comparison
 of the full and restricted sets for $\beta = 0.5$ shows a much larger change in
 the phase shifts, despite only changing from 844 to 720 terms. This seems to
 indicate that the set with $\beta = 0.5$ is not as stable and could potentially
@@ -754,7 +754,7 @@ where we have defined $y = m x$.  This allows for \cref{eq:GaussLagGen1} to be g
 \end{align}
 The $y_i$ abscissas and $w_i$ weights are the same as the less general case in
 \cref{eq:GaussLag,eq:GaussLagWeights}. This general form of Gauss-Laguerre
-quadrature is what we use for our semi-infinite integrations.
+quadrature is what we use for semi-infinite integrations.
 
 
 \subsection{Chebyshev--Gauss Quadrature}
@@ -827,7 +827,7 @@ extra in all other coordinates, showed small differences from the first set
 that had 10 points extra in all coordinates. Reducing the points of any of 
 the other coordinates resulted in larger differences from the set with 10 
 extra points in all coordinates. This final set, referred to as the ``optimal 
-set'', is used in all of our current runs. Increasing the number of 
+set'', is used in all of the current runs. Increasing the number of 
 integration points further than could potentially lead to better accuracy, 
 though numerical instabilities start appearing with 15 extra points over the 
 base set.
@@ -885,14 +885,14 @@ This only looks at the output from the long-range programs, and this is the firs
 
 Using the comparison program, we found that the $1/r_{23}$ term in the potential needed more integration points when $q_i = 0$. The integrations for the other three potential terms already produced reasonably converged results. All runs in this section are performed with $\kappa = 0.1$.
 
-If we took the set of integration points that we used in the S-wave problem as our base set, then compared this with the same set but an extra 5 points in the $1^{st}$ coordinate, the resulting difference image for the $A$ matrix looks like this:
+If we took the set of integration points that we used in the S-wave problem as the base set, then compared this with the same set but an extra 5 points in the $1^{st}$ coordinate, the resulting difference image for the $A$ matrix looks like this:
 \begin{figure}
 	\centering
 	\resizebox{1.0\textwidth}{!}{\includegraphics{QuadPoints/BasevsBaseplus5.png}}
 	\caption{Base set versus base set plus 5 in $r_1$}
 	\label{fig:BasevsBaseplus5}
 \end{figure}
-\noindent Notice that there is little blue and plenty of yellows, oranges and reds. The goal is to get as much black and blue as possible, though it is impossible to get entirely black and blue with our limited precision. It is evident that the matrix elements are not well-converged when we compare the phase shifts from these two runs. For the first run with the base set, the phase shift is 0.02346176. The corresponding phase shift for the second run is 0.02294583. We desire three significant figures in our phase shifts, so this is certainly not good enough.
+\noindent Notice that there is little blue and plenty of yellows, oranges and reds. The goal is to get as much black and blue as possible, though it is impossible to get entirely black and blue with limited precision. It is evident that the matrix elements are not well-converged when we compare the phase shifts from these two runs. For the first run with the base set, the phase shift is 0.02346176. The corresponding phase shift for the second run is 0.02294583. We desire three significant figures in the phase shifts, so this is certainly not good enough.
 
 Doing a similar run with the base set and another with the base set plus 10 in $r_1$, the difference image is given by \cref{fig:BasevsBaseplus10}.
 \begin{figure}
@@ -1298,7 +1298,7 @@ indicating that their fits are not quite as accurate, but they are still
 relatively accurate.
 
 The differences between the different weighting methods gives us one way to 
-determine errors for our resonance parameters. Additionally, comparing the 
+determine errors for the resonance parameters. Additionally, comparing the 
 different Kohn methods gives us an idea of the error. The real-valued 
 generalized Kohn methods give more disagreement, so we compute the resonance 
 parameters for each of these Kohn methods. We also have to take into account 

@@ -1,3 +1,14 @@
+%
+%
+% Important note for compilation: The etoolbox package conflicts with the bm
+%  package and requires a change to work properly. There is discussion of this at
+%  http://tex.stackexchange.com/questions/22995/package-incompatibilites-etoolbox-hyperref-and-bm-standalone
+%  and a corrected .sty file at https://github.com/josephwright/etoolbox.
+%
+%
+
+
+
 %\RequirePackage[l2tabu, orthodox]{nag}  % Warns of obsolete or incorrect LaTeX usage
 
 %\documentclass[10pt,openany]{book}
@@ -57,6 +68,7 @@
 %\usepackage{adjustbox}  % Centering tables too wide for text width
 \usepackage{doi}  % Is this needed for the DOIs in the bibliography?
 \usepackage{dirtree}
+%\usepackage{academicons}
 
 %%Trying to make TOC chapter titles uppercase
 %%From http://tex.stackexchange.com/questions/156916/how-to-make-section-name-uppercase-in-toc
@@ -309,6 +321,7 @@
 %\input{UNTdissertation.sty}
 
 \begin{document}
+
 \def\biblio{}
 
 %\title{Variational Calculations of Positronium Scattering with Hydrogen}
@@ -370,6 +383,12 @@ Cassie Whitmire, Robert Whitmire,
 and Lauren Murphy have been part of a great support network that helped me
 survive this process.
 
+Great thanks goes to our collaborator, Peter Van Reeth, who helped immensely
+with this project through discussions, plenty of notes, and codes.
+I also appreciate discussions with Drs. Y.~K.~Ho, J.~W.~Humberston, K.~Pachucki,
+Z.-C.~Yan, Edward Armour, James Cooper, Martin Plummer, and Gillian Peach
+during the course of this project.
+
 I received several travel grants to help me go to and present at conferences, 
 including from DAMOP, UNT's Student Government Association, and UNT's College 
 of Arts and Sciences. Dr. Ward received a grant from the National Science 
@@ -406,16 +425,16 @@ Research and Economic Development.
 \newpage
 
 % Idea for nomenclature: http://www.howtotex.com/packages/create-a-simple-nomenclature-with-the-longtable-package/
-\chapter*{Nomenclature}
+\chapter*{List of Abbreviations}
 \label{chp:nomenclature}
-\addcontentsline{toc}{chapter}{Nomenclature}
+\addcontentsline{toc}{chapter}{List of Abbreviations}
 
 \begin{table}[H]
 	\begin{tabular}{l l}
 short-short & short-range--short-range \\
 long-short & long-range--short-range \\
 long-long & long-range--long-range \\
-$^1$S, $^3$S & S-wave singlet, S-wave triplet  \\
+%$^1$S, $^3$S & S-wave singlet, S-wave triplet  \\
 CC & close coupling                \\
 SVM & stochastic variational method  \\
 DMC & diffusion Monte Carlo \\
@@ -454,9 +473,10 @@ vdW & van der Waals \\
 \subfile{WLimits.tex}
 \subfile{ExtraNumerics.tex}
 \subfile{Programs.tex}
-\subfile{Unfinished.tex}
+%\subfile{Unfinished.tex}
 
 %\addcontentsline{toc}{chapter}{References}
+%\pdfbookmark[1]{References}{references}  % Sets a PDF bookmark for the bibliography
 %\newpage
 %\Urlmuskip=0mu plus 1mu\relax
 
