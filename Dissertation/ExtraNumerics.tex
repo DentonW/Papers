@@ -149,7 +149,7 @@ separately. %If the sector-based method of Drake and Yan \cite{Yan1995} is
 %to optimize each sector separately.
 
 
-\section{P-Wave Nonlinear Parameter Optimization}
+\subsection{P-Wave Nonlinear Parameter Optimization}
 \label{sec:PWaveOpt}
 
 Using the simplex method described in \cref{sec:Simplex}, we optimized the nonlinear parameters for both the first and second formalisms. \Cref{tab:SimplexPWaveSingOpt,tab:SimplexPWaveTripOpt} show the results of these optimizations in the second and third columns. We also let each symmetry have its own set of nonlinear parameters for each symmetry in the fourth and fifth columns. This was inspired by the work of Yan and Ho \cite{Yan1999}, where they used 5 different sets of nonlinear parameters to calculate the PsH ground state energy.
@@ -238,13 +238,13 @@ explored further in future work, and we have done preliminary investigation
 into this for the S-wave.
 
 
-\section{Determination of D-Wave Nonlinear Parameters}
+\subsection{D-Wave Nonlinear Parameter Optimization}
 \label{sec:DWaveNonlinear}
 
 %\todoi{Do we want to just move that table here and to the P-wave chapter?}
 The comparison to the CC results \cite{Walters2004,Blackwood2002}
 in \cref{tab:DWaveComparisons,fig:DWavePhase} for the $^1$D-wave is
-reasonable, with the CC results below the complex Kohn at $\kappa = 0.7$.
+reasonable, with the CC results below the complex Kohn results at $\kappa = 0.7$.
 For $^3$D, the CC results are much higher, as can be seen in the inset
 in \cref{fig:DWavePhase}. The $^1$D phase shifts are small, so their overall
 contribution to the integrated cross section is small. 
@@ -275,7 +275,8 @@ the simplex method (\cref{sec:Simplex}) for every partial wave for both the
 singlet and triplet. An explanation is that the $r_3$ coordinate represents 
 the electron in H, and $\gamma = 1$ gives the short-range terms multiplied by 
 the H wavefunction given in \cref{eq:HWave}. We used the original nonlinear 
-parameters given in \cref{tab:NonlinearOptimizedPD} as a starting set. For
+parameters found by the simplex method and  given in
+\cref{tab:NonlinearOptimizedPD} as a starting set. For
 $^1$D, these are $\alpha = 0.359$, $\beta = 0.368$, and $\gamma = 0.976$. For
 $^3$D, these are $\alpha = 0.356$, $\beta = 0.365$, and $\gamma = 0.976$.
 
@@ -686,8 +687,8 @@ but it gave a good cutoff point for the $^1$S-wave.
 \section{Gaussian Quadratures}
 \label{sec:GaussQuad}
 
-\todoi{How hardcoded Gaussian abscissae and weights}
-\todoi{Mention looking into \cite{Bailey2004,Ma1996,Mori2001,Odrzywolek2011,Fukuda2005}}
+%\todoi{How hardcoded Gaussian abscissae and weights}
+%\todoi{Mention looking into \cite{Bailey2004,Ma1996,Mori2001,Odrzywolek2011,Fukuda2005}}
 
 Gaussian quadratures are used to integrate many classes of integrals. In their
 most general form, these quadratures are given by \cite[p.887]{Abramowitz1965}
@@ -780,7 +781,7 @@ how to use this for these integrations is found in \cref{sec:ChebyshevGauss}.
 \section{Selection of Quadrature Points}
 \label{sec:SelQuadPoints}
 
-\todoi{Show how compare to Peter's set - including information from the Mathematica notebook}
+%\todoi{Show how compare to Peter's set - including information from the Mathematica notebook}
 
 The number of quadrature points for each coordinate in the 6-dimensional 
 integrations is critical to have fully converged results. In our testing, the 
@@ -797,10 +798,10 @@ one coordinate, which we increased in steps. The difference in the output
 between steps was used to analyze how important each coordinate was. Also, 
 some terms are more sensitive to the number of integration points than other. 
 For instance, the $(\bar{S}_\ell,\mathcal{L} \bar{S}_\ell)$ term converges 
-relatively quickly, while the $(\bar{C}_\ell,\mathcal{L}_\ell \bar{C}_\ell)$ 
+relatively quickly, while the $(\bar{C}_\ell,\mathcal{L} \bar{C}_\ell)$ 
 term requires more integration points.
 
-We also used a sample input file from Van Reeth for the number of quadrature 
+We also used a sample input file from Van Reeth \cite{VanReethPrivate} for the number of quadrature 
 points he used in his code. In \cref{fig:OriginalPhaseShifts-pvr}, this 
 set of points was used. After approximately 525 short-range terms, it is 
 immediately apparent that the phase shifts diverge, with a particularly large 
@@ -827,7 +828,8 @@ extra in all other coordinates, showed small differences from the first set
 that had 10 points extra in all coordinates. Reducing the points of any of 
 the other coordinates resulted in larger differences from the set with 10 
 extra points in all coordinates. This final set, referred to as the ``optimal 
-set'', is used in all of the current runs. Increasing the number of 
+set'' in \cref{tab:OptimalEffectiveCoords}, is used in all of the current
+runs. Increasing the number of 
 integration points further than could potentially lead to better accuracy, 
 though numerical instabilities start appearing with 15 extra points over the 
 base set.
@@ -848,40 +850,31 @@ base set.
 \end{figure}
 
 
-
-\section{Selection of Quadrature Points}
-\label{sec:SelQuadPoints2}
-
+\subsection{Comparison Program}
 \begin{figure}
 	\resizebox{1.0\textwidth}{!}{\includegraphics{QuadPoints/ColorKey.pdf}}
 	\caption{Color key for differences}
 	\label{fig:ColorKey}
 \end{figure}
-
-For the P-wave, we noticed that the phase shifts for smaller $\kappa$ values were more sensitive to the number of integration points than higher $\kappa$ values. In general, the smaller the value of $\kappa$, the smaller the phase shift will be. The smaller phase shifts for the P-wave also caused it to be more sensitive than the S-wave.
-\todoi{Mention how DevIL \cite{DevIL} used for these}
-
-\subsection{Comparison Program}
-I wrote the program \emph{Comparison} \cite{} to visually compare two runs with different numbers of integration points. This program calculates the relative difference between similar matrix elements of the two input files. The relative difference is given by
-\beq
-\text{diff}_{rel} = \left| \frac{elem_1 - elem_2}{(elem_1 + elem_2) / 2} \right|.
-\eeq
+I wrote the program \emph{Comparison} \cite{GitHub} to visually compare two runs with different numbers of integration points. This program calculates the relative difference between similar matrix elements of the two input files. The relative difference is given by \cref{eq:PercentDiff}.
 Since the values of matrix elements can range over many orders of magnitude, the relative difference is an appropriate measure of the change caused by varying the number of integration points. The other option would have been to use the absolute difference, which is given by 
 \beq
-\text{diff}_{abs} = \left| elem_1 - elem_2 \right|.
+\text{diff}_{abs} = \left| elem_1 - elem_2 \right| \times 100\%.
 \eeq
 However, this is a poor measure of the differences, and the relative differences give much more useful information for our purposes.
 
-The \emph{Comparison} program calculates these relative differences for each matrix element between the two input files and creates an image using the colors in \cref{fig:ColorKey}. So if a column of pixels in the output image is yellow, then the relative difference for that matrix element is on the order of $10^{-6}$. This is an example image from running this program:
+The comparison program calculates these relative differences for each matrix element between the two input files and creates an image using the colors in \cref{fig:ColorKey} by using the Developer's Image Library \cite{DevIL}. So if a column of pixels in the output image is yellow, then the relative difference for that matrix element is on the order of $10^{-6}$. This is an example image from running this program:
 \begin{figure}
 	\centering
 	\resizebox{0.8\textwidth}{!}{\includegraphics{QuadPoints/Example.png}}
 	\caption{Example matrix element comparison image}
 	\label{fig:QuadExample}
 \end{figure}
-This only looks at the output from the long-range programs, and this is the first row (or column) of the $A$ matrix. The \emph{Comparison} program outputs a vertical line for each matrix element to make them more visible than outputting a single pixel. More examples and descriptions of the command line syntax are available on the \htmladdnormallink{Wiki}{http://129.120.30.66/wiki/index.php/Long-range_graphical_comparison_program} \cite{Wiki}.
+This only looks at the output from the long-range programs, and this is the first row (or column) of the $A$ matrix. The \emph{Comparison} program outputs a vertical line for each matrix element to make them more visible than outputting a single pixel. More examples and descriptions of the command line syntax are available on the \htmladdnormallink{Wiki}{http://129.120.30.66/wiki/index.php/Long-range_graphical_comparison_program} and GitHub \cite{Wiki,GitHub}.
 
-\section{Application to the P-Wave}
+\subsection{Application to the P-Wave}
+
+For the P-wave, we noticed that the phase shifts for smaller $\kappa$ values were more sensitive to the number of integration points than higher $\kappa$ values. In general, the smaller the value of $\kappa$, the smaller the phase shift will be. The smaller phase shifts for the P-wave also caused it to be more sensitive than the S-wave.
 
 Using the comparison program, we found that the $1/r_{23}$ term in the potential needed more integration points when $q_i = 0$. The integrations for the other three potential terms already produced reasonably converged results. All runs in this section are performed with $\kappa = 0.1$.
 
@@ -901,7 +894,7 @@ Doing a similar run with the base set and another with the base set plus 10 in $
 	\caption{Base set versus base set plus 10 in $r_1$}
 	\label{fig:BasevsBaseplus10}
 \end{figure}
-\noindent This image is not much different from the previous image. Even when we compare the ``plus 5'' run with the ``plus 10'' run \textbf{@TODO: Where is this image?}, the image does not change much. The phase shift for the ``plus 10'' run is 0.02257283, which is still significantly different from the ``plus 5'' run.
+\noindent This image is not much different from the previous image. Even when we compare the ``plus 5'' run with the ``plus 10'' run, the image does not change much. The phase shift for the ``plus 10'' run is 0.02257283, which is still significantly different from the ``plus 5'' run.
 
 We tried adding up to 25 extra points to the $1^{st}$ coordinate of the base set, but the matrix elements (and consequently, the phase shifts) still did not converge well enough. To perform the Gauss-Laguerre and Gauss-Legendre quadratures described in \cref{sec:GaussQuad}, we have to compute the abscissae and weights for the Laguerre and Legendre polynomials. The weights depend on the abscissae, and the abscissae depend only on $n$, the number of quadrature points to use. This allows us to hardcode values for the abscissae and weights to speed up computations marginally. Previously, the long-range code used hardcoded values for some multiples of 5 but not all that were used. This code also did not have values hardcoded when the value of $n$ was not a multiple of 5. The integration points were then changed to use values that were multiples of 5, and all were hardcoded. The hardcoded values were also done in extended precision by using \emph{Mathematica}.
 
@@ -925,10 +918,10 @@ We then completed a series of runs where we increased the number of integration 
 
 \begin{figure}
 \centering
-\subfloat[Part 1][Base vs. plus 5]{\includegraphics[height=1.2in]{QuadPoints/R23-BasevsBaseplus5-1st.png} \label{fig:PlusCoord1-a}}
-\subfloat[Part 2][Plus 5 vs. plus 10]{\includegraphics[height=1.2in]{QuadPoints/R23-Baseplus5vsBaseplus10-1st.png} \label{fig:PlusCoord1-b}}
-\subfloat[Part 3][Plus 10 vs. plus 15]{\includegraphics[height=1.2in]{QuadPoints/R23-Baseplus10vsBaseplus15-1st.png} \label{fig:PlusCoord1-c}}
-\subfloat[Part 4][Plus 15 vs. plus 20]{\includegraphics[height=1.2in]{QuadPoints/R23-Baseplus15vsBaseplus20-1st.png} \label{fig:PlusCoord1-d}}
+\subfloat[Part 1][Base vs. plus 5]{\includegraphics[height=1.4in]{QuadPoints/R23-BasevsBaseplus5-1st.png} \label{fig:PlusCoord1-a}}
+\subfloat[Part 2][Plus 5 vs. plus 10]{\includegraphics[height=1.4in]{QuadPoints/R23-Baseplus5vsBaseplus10-1st.png} \label{fig:PlusCoord1-b}}
+\subfloat[Part 3][Plus 10 vs. plus 15]{\includegraphics[height=1.4in]{QuadPoints/R23-Baseplus10vsBaseplus15-1st.png} \label{fig:PlusCoord1-c}}
+\subfloat[Part 4][Plus 15 vs. plus 20]{\includegraphics[height=1.4in]{QuadPoints/R23-Baseplus15vsBaseplus20-1st.png} \label{fig:PlusCoord1-d}}
 \caption{Comparison of extra points in $1^{st}$ coordinate after hardcoded abscissae}
 \label{fig:PlusCoord1}
 \end{figure}
@@ -1031,13 +1024,11 @@ Extra points & Phase shift \\
 \label{tab:678thcoordExtraPoints}
 \end{table}
 
-\todoi{Table of final integration points}
 
-
-\section{Quadrature Points}
+\subsection{Quadrature Points}
 \label{sec:QuadraturePoints}
 
-\todoi{Put in information from ``Integration Point Numbers.nb''}
+%\todoi{Put in information from ``Integration Point Numbers.nb''}
 
 \begin{table}
 \centering
@@ -1079,11 +1070,16 @@ Integral & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
 \label{tab:OptimalEffectiveCoords}
 \end{table}
 
+The final ``optimal'' set of integration points is given in 
+\cref{tab:OptimalEffectiveCoords}. This is the set used for all partial waves
+through the H-wave.
+
 Describing the number of points used in integrating the different coordinates 
 in \cref{sec:LongLongInt,sec:ShortLongInt} can be 
 confusing, so we have taken to grouping the sets of points as in
 \cref{tab:BaseEffectiveCoords,tab:OptimalEffectiveCoords}. Each column of 
-this table is referred to as an ``effective coordinate''.
+this table is referred to as an ``effective coordinate''. \Cref{tab:EffectiveCoords}
+describes what each of these refers to.
 
 \begin{table}
 \centering
@@ -1101,8 +1097,7 @@ Integral & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
  Long-short $q_i > 0$ & $r_1$ Lag & $r_2$ Leg & $r_2$ Lag & $r_3$ Leg & $r_3$ Lag & $r_{12}$ Leg & $r_{13}$ Leg & $\varphi_{23}$ Che \\
 \bottomrule
 \end{tabular}
-\caption{Optimal set of effective coordinates for integrations}
-\todoi{Order of these tables and caption on last one. Describe tables more.}
+\caption{Description of the values in \cref{tab:BaseEffectiveCoords,tab:OptimalEffectiveCoords}}
 \label{tab:EffectiveCoords}
 \end{table}
 
@@ -1185,12 +1180,11 @@ Mathematica and SciPy routines.
 Later on, I adapted this resonance fitting code to be called from IPython 
 \cite{ipython} using the mlabwrap \cite{mlabwrap} Python to MATLAB wrapper. 
 This allows fits and graphs of the fittings to be in the same IPython 
-notebook, including the flexibility of querying the MySQL database for the 
+notebook, including the flexibility of querying a MySQL database for the 
 phase shift data for any partial wave at any number of terms and for
-any Kohn method
-(see \cref{sec:XMLSQLIPy}). The mlabwrap package is difficult to install properly, 
+any Kohn method. The mlabwrap package is difficult to install properly, 
 requiring a compilation against MATLAB. The mlabwrap-purepy package
-\cite{mlabwrappurepy} has been created to simplify this, but we have not tried it 
+\cite{mlabwrappurepy} has been created to simplify this, but I have not tried it 
 yet.
 
 The results of fitting the phase shifts from the $S$ matrix are shown in
