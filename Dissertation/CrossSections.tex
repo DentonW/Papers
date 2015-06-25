@@ -16,19 +16,20 @@ experiments is the cross section. Cross sections essentially give the
 strength of the interaction and are a quantity that can be measured 
 experimentally.
 
-\begin{figure}
-	\centering
-	\includegraphics[width=4.5in]{ScatteringDiagram}
-	\caption[General scattering diagram]{General scattering diagram. Modified from \url{http://commons.wikimedia.org/wiki/File:ScatteringDiagram.svg}. Permission granted under the Creative Commons Attribution-Share Alike 3.0 Unported license.}
-	\label{fig:ScatteringDiagram}
-\end{figure}
-
-\Cref{fig:ScatteringDiagram} shows a general scattering diagram. If we have
-azimuthal symmetry, as we assume for Ps-H scattering, $\varphi$ is unimportant.
+%\begin{figure}
+	%\centering
+	%\includegraphics[width=4.5in]{ScatteringDiagram}
+	%\caption[General scattering diagram]{General scattering diagram. Modified from \url{http://commons.wikimedia.org/wiki/File:ScatteringDiagram.svg}. Permission granted under the Creative Commons Attribution-Share Alike 3.0 Unported license.}
+	%\label{fig:ScatteringDiagram}
+%\end{figure}
+%
+%\Cref{fig:ScatteringDiagram} shows a general scattering diagram.
+If we have azimuthal symmetry, as we assume for Ps-H scattering,
+the results are independent of $\varphi$.
 The quantity that we are most interested in from this is the ratio
 $\frac{d\sigma}{d\Omega}$, which is is the differential cross section.
-The integrated cross section (also known simply as the cross section) is
-related to the differential cross section by integrating over $d\Omega$:
+The integrated cross section %(also known simply as the cross section)
+is related to the differential cross section by integrating over $d\Omega$:
 \begin{equation}
 \label{eq:TotalDiffCross}
 \sigma = \int \frac{d\sigma}{d\Omega} \, d\Omega
@@ -91,9 +92,9 @@ contributes, but this is because the resonance lies past the inelastic
 threshold.
 
 The cross section at very low energy (less than \SI{0.5}{eV}) is dominated
-by the S-wave, as we would expect. At near zero energy, the S-wave is the
+by the S-wave, as we would expect. At zero energy, the S-wave is the
 only partial wave that has a non-zero cross section (for both $^1$S and $^3$S).
-Bransden and Joachain \cite{Bransden2003} point out that for $\ell \geq 1$,
+Bransden and Joachain \cite[p.589]{Bransden2003} point out that for $\ell \geq 1$,
 the partial cross sections vanish as $\kappa^{4\ell}$ as $\kappa \to 0$, so
 $\sigma_{el}$ = $\sigma_0$ at this limit, and the scattering is isotropic.
 As can be seen in \cref{fig:singlet-cross-sections,fig:triplet-cross-sections},
@@ -110,7 +111,7 @@ $^1$P-wave.
 \begin{figure}
 	\centering
 	\includegraphics[width=5.25in]{singlet-cross-sections}
-	\caption{$S$-matrix complex Kohn singlet cross sections for each partial wave and the sum through $\ell = 5$. An interactive version of this
+	\caption{$S$-matrix complex Kohn singlet elastic partial wave cross sections and the sum through $\ell = 5$. An interactive version of this
 figure is available online \cite{Plotly}.}
 	\label{fig:singlet-cross-sections}
 \end{figure}
@@ -118,7 +119,7 @@ figure is available online \cite{Plotly}.}
 \begin{figure}
 	\centering
 	\includegraphics[width=5.25in]{triplet-cross-sections}
-	\caption{$S$-matrix complex Kohn triplet cross sections for each partial wave and the sum through $\ell = 5$. An interactive version of this
+	\caption{$S$-matrix complex Kohn triplet elastic partial wave cross sections and the sum through $\ell = 5$. An interactive version of this
 figure is available online \cite{Plotly}.}
 	\label{fig:triplet-cross-sections}
 \end{figure}
@@ -218,8 +219,9 @@ The comparison to the CC \cite{Walters2004} and SE \cite{Hara1975} results is
 made possible by using the CurveSnap \cite{CurveSnap} program to extract the
 curves from the respective papers. The SE curve gives a decent approximation to
 the background without any resonances. We would not expect the SE to give
-resonance information, but it is a good first approximation, except at low
-energy, where it overestimates the cross section greatly. There is
+resonance information. %, but it is a good first approximation, except at low
+%energy, where it overestimates the cross section greatly.
+There is
 good agreement between the complex Kohn and CC cross sections, but the CC
 results have resonances shifted to higher energy. The complex Kohn resonances
 correspond better than the CC to the resonance positions that are given in the
@@ -245,8 +247,8 @@ the CC 22Ps1H + H$^-$.
 
 Other than the shifted resonance positions, the CC results tend to match well
 with the complex Kohn results. However, there are some features that are worth
-noticing. For $^1$P in \cref{fig:spd-singlet-cross-sections}, the CC
-9Ps9H + H$^-$ maximum is lower than the complex Kohn maximum. The CC
+noticing. For the $^1$P cross section in \cref{fig:spd-singlet-cross-sections}, the CC
+9Ps9H + H$^-$ maximum is lower than the complex Kohn maximum. The CC cross section
 22Ps1H + H$^-$ maximum is even lower, so we would expect that if more
 eigen- and pseudo-states are included, the CC maximum would likely match up 
 with the complex Kohn. Also, the $^3$D CC cross section is much smaller than
@@ -255,7 +257,7 @@ the complex Kohn. This is a reflection of the fact that in
 complex Kohn results, making them less negative and the corresponding cross sections
 smaller. Noting the magnitude of the $^3$D cross section for both methods, the
 contribution to the full summed elastic integrated cross section is small.
-As a simple test, we tried replacing the complex Kohn $\kappa = 0.1 - 0.7$
+As a simple test, we tried replacing the complex Kohn $\kappa = 0.1 - 0.7$ $^3$D
 phase shifts with those of the CC, and the change to the cross section is
 less than 0.084\% for this range. Consequently, for the full summed
 cross section, the discrepancy between the complex Kohn and the CC results
@@ -264,36 +266,38 @@ does not change things significantly.
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{spd-singlet-cross-sections}
-	\caption[Comparisons of $^1$S, $^1$P, and $^1$D cross sections.]{Comparisons of $^1$S, $^1$P, and $^1$D cross sections. CC 9Ps9H + H$^-$ results are from Ref.~\cite{Walters2004}, and CC 22Ps1H + H$^-$ results are from Ref.~\cite{Blackwood2002b}.}
+	\caption[Comparisons of $^1$S, $^1$P, and $^1$D cross sections.]{Comparisons of $^1$S, $^1$P, and $^1$D elastic partial wave cross sections. CC 9Ps9H + H$^-$ results are from Ref.~\cite{Walters2004}, and CC 22Ps1H + H$^-$ results are from Ref.~\cite{Blackwood2002b}.}
 	\label{fig:spd-singlet-cross-sections}
 \end{figure}
 
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{spd-triplet-cross-sections}
-	\caption[Comparisons of $^3$S, $^3$P, and $^3$D cross sections.]{Comparisons of $^3$S, $^3$P, and $^3$D cross sections. CC results for $^3$S and $^3$P are from Ref. \cite{Walters2004}, and the CC results for $^3$D are from Ref. \cite{Blackwood2002}.}
+	\caption[Comparisons of $^3$S, $^3$P, and $^3$D cross sections.]{Comparisons of $^3$S, $^3$P, and $^3$D elastic partial wave cross sections. CC results for $^3$S and $^3$P are from Ref. \cite{Walters2004}, and the CC results for $^3$D are from Ref. \cite{Blackwood2002}.}
 	\label{fig:spd-triplet-cross-sections}
 \end{figure}
 
-Despite the disappointing performance of the BO and modified BO
-approximations for the phase shifts of the higher partial waves in
-\cref{chp:HigherWaves}, we also compare the BO approximation cross sections
-to see if the discrepancy is as large. In \cref{fig:fgh-born-cross-sections},
-we see that the BO approximation does not match up with either the singlet
+%Despite the disappointing performance of the BO and modified BO
+%approximations for the phase shifts of the higher partial waves in
+%\cref{chp:HigherWaves}, we also compare the BO approximation cross sections
+%to see if the discrepancy is as large.
+In \cref{fig:fgh-born-cross-sections}, the BO approximation elastic partial
+wave cross sections do not match up with either the singlet
 or triplet for the F-, G-, or H-waves. Interestingly, we see that the plots
 for the singlet and the BO look approximately the same in (a), (b), and (c)
-but with a different vertical scale. This seems to indicate that the BO and complex
-Kohn results will only be approximately equal at a much higher value of $\ell$
-than $\ell = 5$. The phase shifts become very small for partial waves higher
-than the H-wave, so we would not be able to investigate these much further 
-without improving the accuracy of our long-range code. Similar to what we
+but with a different vertical scale. %This seems to indicate that the BO and complex
+%Kohn results will only be approximately equal at a much higher value of $\ell$
+%than $\ell = 5$. The phase shifts become very small for partial waves higher
+%than the H-wave, so we would not be able to investigate these much further 
+%without improving the accuracy of our long-range code.
+Similar to what we
 noticed in \cref{sec:SingTripCompare}, we also note that the singlet and
 triplet phase shifts match for higher $\kappa$ as $\ell$ increases.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{fgh-born-cross-sections}
-	\caption[Comparisons of F-, G-, and H-wave cross sections]{Comparisons of F-, G-, and H-wave cross sections between complex Kohn and BO approximation}
+	\caption[Comparisons of F-, G-, and H-wave cross sections]{Comparisons of F-, G-, and H-wave elastic partial wave cross sections between complex Kohn and BO approximation}
 	\label{fig:fgh-born-cross-sections}
 \end{figure}
 
@@ -304,6 +308,7 @@ triplet phase shifts match for higher $\kappa$ as $\ell$ increases.
 The differential cross section is important through \cref{eq:TotalDiffCross},
 but this also gives information about the angular dependence ($\theta$) of the
 system. The differential cross sections can be calculated from the phase shifts by
+\cite[p.584]{Bransden2003}
 \begin{align}
 \label{eq:DiffCross}
 \nonumber \frac{d\sigma_{el}^\pm}{d\Omega} = \frac{1}{\kappa^2} & \sum_{\ell=0}^\infty \sum_{\ell^\prime=0}^\infty (2\ell+1)(2\ell^\prime+1) \exp\left\{\ii \left[\delta_\ell(\kappa) - \delta_{\ell^\prime}(\kappa) \right] \right\} \\
@@ -328,11 +333,12 @@ approximation of
 Graphs of the differential cross sections for the singlet and triplet are found
 in \cref{fig:diff-cross-sections-singlet,fig:diff-cross-sections-triplet},
 respectively. Note that the $\theta$ axis is plotting backwards so that the
-features are visible instead of being obscured by higher differential cross
-sections in the front of the graph.
+features are visible instead of being obscured by the higher value of the differential
+cross section in the front of the graph.
 The triplet $\frac{d\sigma_{el}^-}{d\Omega}$ is not particularly
 remarkable, being smooth and having a maximum at intermediate energies for the
-forward direction $(\theta = 0)$. The values are all less than 7 $a_0^2/\textrm{sr}$.
+forward direction $(\theta = 0)$. The triplet differential cross section in the
+forward direction is less than 7 $a_0^2/\textrm{sr}$ for all energies considered.
 It is also of note that in the backward scattering direction $(\theta = \uppi)$,
 the triplet differential cross section quickly becomes very small.
 
@@ -384,22 +390,22 @@ With the data in \cref{fig:combined-diff-cross-sections}, it is illustrative
 to plot 2-dimensional versions to see trends more clearly. In
 \cref{fig:diff-cross-section-2D-theta}, we restrict $\theta$ and vary
 $E_{\bm \kappa}$ to see the the energy-dependence for several $\theta$ values.
-We are particularly interested in the forward ($\theta = 0\degree$) and backward
-($\theta = 180\degree$) directions but also include $\theta = 90\degree$.
+%We are particularly interested in the forward ($\theta = 0\degree$) and backward
+%($\theta = 180\degree$) directions but also include $\theta = 90\degree$.
 From this figure, it is clear that scattering in the forward direction is
 dominant past approximately $\SI{0.46}{eV}$. The maximum for forward scattering
 is due to the $^1$D resonance. Particularly interesting is the contribution
 from backward scattering for low $E_{\bm \kappa}$ and the dip in the forward
 scattering direction, which corresponds to the dip in
 \cref{fig:combined-cross-sections}. All angles give essentially the same value
-at very low energy, as we would expect. For nearly 0 energy at
+at very low energy, as we would expect. For nearly zero energy at
 $\kappa = 0.0001$ (\SI{6.8e-8}{eV}), $\frac{d\sigma_{el}^\pm}{d\Omega}$ at
 $0\degree$, $90\degree$, and $180\degree$ is 8.112, 8.113, and 8.108
 $a_0^2/\textrm{sr}$, showing that the differential cross section is
 essentially isotropic. \label{pg:diffcross0}
 At exactly \SI{0}{eV}, it will be exactly isotropic. This is due to the S-wave
-having the only non-zero cross section at zero energy, as noted in
-\cref{sec:totalcross}.
+having the only non-zero cross section at zero energy. %, as noted in
+%\cref{sec:totalcross}.
 
 
 \begin{figure}
@@ -413,12 +419,12 @@ In \cref{fig:diff-cross-section-2D-kappa}, we instead fix values of
 $E_{\bm \kappa}$ and plot with respect to $\theta$. The legend gives the $\kappa$ 
 value instead, so it is clear what specific values we are plotting. At low $
 \kappa$ (0.05 in the plot), the differential cross section is nearly 
-isotropic, with a slight bias toward backward scattering. As the momentum is 
+isotropic, with a slight bias toward backward scattering. As $\kappa$ is %the momentum is 
 increased to 0.2, backward scattering is more prominent. Between $\kappa = 0.2$
 and 0.3, there is an abrupt change in the differential cross section, where 
 it becomes much more forward peaked, with a decreasing contribution to the 
-backward direction, and a minimum at approximately $100\degree$. As the 
-momentum is increased further, the differential cross section becomes very 
+backward direction, and a minimum at approximately $100\degree$. As %the momentum
+$\kappa$ is increased further, the differential cross section becomes very 
 strongly forward peaked, with even further decreases at larger angles and a 
 nearly constant value from about $100\degree$.  We see from
 \cref{fig:combined-diff-cross-sections} that the majority of the scattering
@@ -437,9 +443,10 @@ We find that the elastic differential cross section converges slower with
 respect to $\ell$ than the elastic integrated cross section in
 \cref{sec:totalcross}. The differential cross section is more difficult to 
 quantitatively evaluate the convergence than the integrated cross section, 
-since it has mixing between all of the included partial waves. Due to the
-double summation, there are $\ell_{max}^2$ terms in the differential cross
-section. We calculate $\frac{d\sigma_{el}}{d\Omega}$ for two subsequent
+since it has mixing between all of the included partial waves. %Due to the
+%double summation, there are $\ell_{max}^2$ terms in the differential cross
+%section.
+We calculate $\frac{d\sigma_{el}}{d\Omega}$ for two subsequent
 values of $\ell_{max}$, then find the percent difference between these.
 
 \Cref{fig:percent-diff-cross-sections-full-g,fig:percent-diff-cross-sections-full-h}
@@ -539,7 +546,7 @@ triplet differential cross section converges much quicker for both the average
 and maximum. Columns 5 and 6 give the values of $E_{\bm \kappa}$ and $\theta$
 where the maximum percent difference is located for the singlet, and columns
 8 and 9 give the maximum percent difference location for the triplet.
-Unsurprisingly, other than the case of $\ell = 1$, the angles that are the most
+Unsurprisingly, for $\ell \geq 1$, the angles that are the most
 sensitive are 0 and $\pi$ radians. The most sensitive energies are in the
 resonance region, and most of these are near the inelastic threshold of
 $\SI{5.102}{eV}$.
@@ -573,11 +580,12 @@ $\ell$ & \multicolumn{1}{c}{$\%^+$ Diff.}  & \multicolumn{1}{c}{$\%^-$ Diff.}  &
 \section{Momentum Transfer Cross Section and Comparisons}
 \label{sec:OtherCross}
 
-The momentum transfer cross section, $\sigma_m$, has been used in plasma applications
-\cite{Wang2014, McEachran2014}. Measurements of the momentum transfer cross section
+Measurements of the momentum transfer cross section, $\sigma_m$,
 have been made for Ps scattering with atomic and molecular targets
 \cite{Engbrecht2008,Nagashima1998,Saito2003,Skalsey1998}, and calculations of
-Ps scattering by inert gases have been performed \cite{Blackwood2002c}. 
+Ps scattering by inert gases have been performed \cite{Blackwood2002c}.
+Calculations of momentum transfer cross sections for other systems
+have been made in Refs.~\cite{Wang2014, McEachran2014}.
 The momentum transfer cross section is
 similar to \cref{eq:TotalDiffCross} but with a weighting factor of
 $(1 - \cos\theta)$ \cite{Walters2004}:
@@ -586,7 +594,7 @@ $(1 - \cos\theta)$ \cite{Walters2004}:
 \sigma_m = \int (1 - \cos\theta) \frac{d\sigma_{el}}{d\Omega} \, d\Omega.
 \end{equation}
 The momentum transfer cross sections can also be written in terms of the
-phase shifts as \citep[p. 589]{Bransden2003}
+phase shifts as \citep[p.589]{Bransden2003}
 \begin{equation}
 \label{eq:MomentumCross}
 \sigma_{m}^\pm = \frac{4}{\kappa^2} \sum_{\ell=0}^\infty (\ell+1) \sin^2 (\delta_\ell^\pm - \delta_{\ell+1}^\pm) .
@@ -602,16 +610,16 @@ This is the expression used in this work.
 %$\SI{57.7}{$\pi a_0^2$}$ at zero energy. The SE approximation also does not
 %reproduce any of the resonance features from the singlet.
 
-\Cref{fig:momentum-cross-sections} shows the momentum transfer cross section 
-from the complex Kohn. The spin-weighting is from \cref{eq:SpinWeightCS}.
-Similar to the elastic integrated cross sections (\cref{fig:combined-cross-sections}),
-the triplet is a nearly featureless curve that gives a nearly constant
+\Cref{fig:momentum-cross-sections} shows the momentum transfer cross section
+using the complex Kohn phase shifts. The spin-weighting is from \cref{eq:SpinWeightCS}.
+%Similar to the elastic integrated cross sections (\cref{fig:combined-cross-sections}),
+The triplet is a nearly featureless curve that gives a nearly constant
 contribution to the spin-weighted momentum transfer cross section.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=5.25in]{momentum-cross-sections}
-	\caption[Momentum transfer cross sections]{Complex Kohn momentum transfer cross sections}
+	\caption[Momentum transfer cross sections]{$S$-matrix complex Kohn momentum transfer cross sections}
 	\label{fig:momentum-cross-sections}
 \end{figure}
 
@@ -639,16 +647,17 @@ contribution to the spin-weighted momentum transfer cross section.
 
 \Cref{fig:cross-section-comparisons} shows the elastic integrated and momentum
 transfer cross sections.
-As expected, $\sigma_m \approx \sigma_{el}$ at very low energy. 
+%As expected,
+$\sigma_m \approx \sigma_{el}$ at very low energy. 
 At zero energy, $\sigma_m = \sigma_{el}$ should hold, and for Ps-H, we find that
 $E_{\bm \kappa} < 10^{-6}$ eV, $\sigma_m = \sigma_{el} = 32.45$ $\pi a_0^2$. 
-As Blackwood et al.\ \cite{Blackwood2002c} note, this is due to the differential
-cross section being essentially isotropic at low energy (and exactly isotropic at
-zero energy), as seen in
+As Blackwood et al.\ \cite{Blackwood2002c} note for Ps-Ne scattering,
+this is due to the differential cross section being essentially isotropic
+at low energy (and exactly isotropic at zero energy), as seen in
 \cref{fig:diff-cross-section-2D-kappa,fig:combined-diff-cross-sections}.
 If $\sigma_m < \sigma_{el}$, the scattering is mainly forward peaked, and if
 $\sigma_m > \sigma_{el}$, the scattering is mainly backward peaked \cite{Thumm1993}.
-Past very low energy, where $\sigma_m = \sigma_{el}$, we see that $\sigma_m > \sigma_{el}$
+Past zero energy, where $\sigma_m = \sigma_{el}$, we see that $\sigma_m > \sigma_{el}$
 until approximately $\SI{0.46}{eV}$ or $\kappa = 0.26$. This is backward peaked
 (concentrated in the $\theta = \pi$ direction), which corresponds to the
 findings from the differential cross section in \cref{sec:diffcross}. Beyond

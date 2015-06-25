@@ -259,8 +259,8 @@ of the incoming Ps(1s). For partial waves $\ell > 0$, we consider a trial
 wavefunction of the form
 \begin{equation}
 \Psi_\ell^{\pm,t} = \widetilde{S}_\ell + L^{\pm,t}_\ell \, \widetilde{C}_\ell
- + \sum_{i=1}^{N(\omega)} c_{i\ell} \bar{\phi}_{i\ell 1}
- + \!\!\!\sum_{i=N(\omega)+1}^{2N(\omega)} \!\! d_{i\ell} \bar{\phi}_{i\ell 2}.
+ + \sum_{i=1}^{N(\omega)} c_{i\ell}^\pm \bar{\phi}_{i\ell 1}
+ + \!\!\!\sum_{i=N(\omega)+1}^{2N(\omega)} \!\! d_{i\ell}^\pm \bar{\phi}_{i\ell 2}.
 \label{eq:TrialWaveHigher}
 \end{equation}
 The scattering wavefunctions contain both the long-range terms $\widetilde{S}_\ell$
@@ -350,7 +350,8 @@ We use the definition of the $T$ and $S$ matrices
 given by Bransden \cite{Bransden1970}.
 The \textbf{u} matrix for the Kohn in Eq.~(\ref{eq:KohnU}) is identical
 to that of Lucchese \cite{Lucchese1989}, but the \textbf{u} matrices for
-the inverse Kohn, $T$ matrix, and $S$ matrix are slightly different.
+the inverse Kohn, $T$ matrix complex Kohn, and $S$ matrix
+complex Kohn are slightly different.
 
 The short-range terms are highly correlated Hylleraas-type functions, including
 all interparticle distances, given by
@@ -417,7 +418,7 @@ e$^-$-H scattering, and it has revealed that
 for the $^1D$-wave, the inclusion of the 
 mixed symmetry terms has little effect on the phase shifts at very low
 energies but has a more appreciable effect at higher energy. Interestingly,
-this investigation found that the mixed symmetry terms change the
+the investigation found that the mixed symmetry terms change the
 $^3D$-wave e$^-$-H phase shifts less than 1\% over the energy
 range considered.
 As discussed in Sec.~\ref{sec:Results} for Ps-H scattering, the $D$-wave
@@ -510,7 +511,7 @@ for the $S$-wave
   \frac{\partial L^v}{\partial c_i} = 0 \text{ where $i = 1,\ldots,N(\omega)$},
 \label{eq:ComplexKohnStationary}
 \end{equation}
-which can be written as a matrix equation:
+which can be written as a matrix equation, namely
 \begin{widetext}
 \begin{equation}
 \label{eq:ComplexKohnMatrix}
@@ -562,9 +563,9 @@ some confidence of the reliability of using these short-range terms for the Ps-H
 scattering problem. The wavefunction we use for the bound state is
 \begin{equation}
 \label{eq:BoundWavefn}
-\Psi_{B.S.}^\pm = \sum_{i=1}^{N(\omega)} c_i \bar{\phi}_{i01}^\pm,
+\Psi_{B.S.}^+ = \sum_{i=1}^{N(\omega)} c_{i0} \bar{\phi}_{i01}^+,
 \end{equation}
-where $\bar{\phi}_{i01}^\pm$ is given in Eq. (\ref{eq:PhiDef}) with
+where $\bar{\phi}_{i01}^+$ is given in Eq. (\ref{eq:PhiDef}) with
 $\ell = 0$.
 
 \subsection{Born-Oppenheimer Approximation}
@@ -753,7 +754,7 @@ The phase shifts are calculated using this set of short-range terms for the
 generalized Kohn variational method for multiple $\tau$ values in
 Eq.~(\ref{eq:GenKohn}). We further truncate this basis set where the phase
 shifts for the generalized Kohn variational method
-for different $\tau$ values begin to diverge, as seen in
+for different $\tau$ values begin to noticeably diverge, as seen in
 Fig.~\ref{fig:swave-phase-divergence}, or when there is a significant jump in
 the phase shifts at high $\omega$. This method with an appropriate choice of
 nonlinear parameters normally gives a reliable set of
@@ -854,7 +855,7 @@ if $R'(\omega) \geq 1$, there is no convergence pattern and thus we would not
 be confident with extrapolated phase shifts.
 
 
-\subsection{Nonlinear Parameters and Terms in Scattering Wavefunction}
+\subsection{Nonlinear Parameters and Terms in the Scattering Wavefunctions}
 \label{sec:Parameters}
 
 
@@ -924,14 +925,13 @@ use two different sets of these nonlinear parameters.
 We use the $^1S$ PsH bound state results as a measure of the reliability of the 
 short-range part of the wavefunction to describe $^1S$ Ps-H scattering at
 small distances. The Rayleigh-Ritz variational method provides a true upper
-bound on the 
-total energy, which converges well with respect to $\omega$. To 
-be consistent, we report the results of the total and binding energies
-we obtain with the same set of nonlinear parameters $\alpha$, $\beta$,
-and $\gamma$ that we use in the scattering calculation, as given in
-Table \ref{tab:Nonlinear}. Table \ref{tab:BoundEnergy} 
-compares our $^1$S PsH bound state energies with that obtained by
-other groups.
+bound on the total energy, which converges well with respect to $\omega$.
+We report the results of the total and binding energies we obtain with the
+same set of nonlinear parameters $\alpha$, $\beta$, and $\gamma$ and the
+same number of terms $N'(7)$ that we use in the scattering calculation and
+which we give in Table \ref{tab:Nonlinear}. Table \ref{tab:BoundEnergy}
+compares our energies for the $^1$S PsH bound state that we obtain with
+$\omega = 7$ (1505 terms) with the results from other groups.
 
 Our calculation yields a better value for the binding energy than the earlier 
 variational calculations of Refs.~\cite{VanReeth2003,VanReeth2004} but not
@@ -955,7 +955,7 @@ Method & Terms & \thead{$E$ (a.u.)} & \thead{$E_b$ (eV)}\\
 %\hline
 \colrule
 %\midrule
-Current work & 1505 & $-$0.789 189 725 & 1.066 406 705 \\
+Current work ($\omega = 7$) & 1505 & $-$0.789 189 725 & 1.066 406 705 \\
 Variational Hylleraas $(\omega = 6)$ \cite{VanReeth2003} & 721 & $-$0.789 156 & 1.065 5$^\star$ \\
 Variational Hylleraas \cite{Ho1986} & 396 & $-$0.788 945$^\star$ & 1.059 75 \\
 Variational Hylleraas $(\omega \rightarrow \infty)$ \cite{Yan1999} & --- & $-$0.789 196 714 7$^\star$ & 1.066 596 896 \\
@@ -1044,7 +1044,7 @@ interaction is repulsive for low $\kappa$ and attractive for higher $\kappa$.
 
 We have difficulty performing extrapolations on the $^{1,3}D$ phase shifts.
 For $^1D$, the $\kappa = 0.1$ extrapolation is not reliable, and the
-percentage difference is correspondibly large, even though the
+percentage difference is correspondingly large, even though the
 convergence ratio $R'(6)$ given by Eq.~(\ref{eq:ConvRatio}) is less than 1. As seen in Table
 \ref{tab:DWavePhase}, for $\kappa = 0.2$, the percentage difference
 between the $^1D$ extrapolated phase shift and the $\omega = 6$ 
@@ -1272,7 +1272,7 @@ not agree well with the complex Kohn phase shifts, being much lower. We
 also find little agreement between the BO approximation and the complex 
 Kohn phase shifts for the $^{1,3}G$-wave and $^{1,3}H$-wave. Thus, in 
 computing the elastic integrated cross sections, we would not be comfortable 
-using BO phase shifts for $\ell > 5$.
+using the BO phase shifts for $\ell > 5$.
 
 We perform complex Kohn calculations on all first six partial waves, but 
 we do more elaborate calculations for the first three partial waves, as shown 
