@@ -21,30 +21,31 @@ $\beta$ and $\gamma$, the energy can be reduced and a possible minimum
 found. This is a three-dimensional optimization problem, and we tried 
 multiple methods for the nonlinear parameter optimization.
 
-\subsection{Newton's Method}
-\label{sec:Newton}
-From Ref. \cite{Yan1999} (and easily derived), if the wavefunction $\Psi$
-is properly normalized, the energy can be minimized by setting the
-derivative with respect to each of the nonlinear parameters equal to 0 by
-\beq
-\frac{\partial E}{\partial \alpha} = 2 \left< \Psi \Big| H \Big| \frac{\partial\Psi}{\partial \alpha} \right> - 2 \left< \Psi \Big| \frac{\partial\Psi}{\partial \alpha} \right>.
-\label{eq:EnergyDerivativeNorm}
-\eeq
-With this, the wavefunction is minimized using the 1-D Newton's method for 
-each parameter separately \cite{Sauer2006}. Newton's method was unstable for 
-anything other than a small basis set ($\omega \leq 4$), so I evaluated other 
-methods. Newton's method for n-dimensions can be used as well, though it 
-requires computation of the Jacobian.
+%\subsection{Newton's Method}
+%\label{sec:Newton}
+%From Ref. \cite{Yan1999} (and easily derived), if the wavefunction $\Psi$
+%is properly normalized, the energy can be minimized by setting the
+%derivative with respect to each of the nonlinear parameters equal to 0 by
+%\beq
+%\frac{\partial E}{\partial \alpha} = 2 \left< \Psi \Big| H \Big| \frac{\partial\Psi}{\partial \alpha} \right> - 2 \left< \Psi \Big| \frac{\partial\Psi}{\partial \alpha} \right>.
+%\label{eq:EnergyDerivativeNorm}
+%\eeq
+%With this, the wavefunction is minimized using the 1-D Newton's method for 
+%each parameter separately \cite{Sauer2006}. Newton's method was unstable for 
+%anything other than a small basis set ($\omega \leq 4$), so I evaluated other 
+%methods. Newton's method for n-dimensions can be used as well, though it 
+%requires computation of the Jacobian.
 
 \subsection{Broyden's Method}
 \label{sec:Broyden}
 
-The next method I tried was Broyden's method \cite{Sauer2006}, which can 
+%The next method I tried was Broyden's method \cite{Sauer2006}, which can 
+We used Broyden's method \cite{Sauer2006}, which can 
 solve for all three nonlinear parameters simultaneously. This was more stable 
-than than 1-D Newton method. The second Broyden's method, sometimes referred 
+than the 1-D Newton method. The second Broyden's method, sometimes referred 
 to as the ``bad Broyden's method'' was used here. As Kvaalen points out, this 
 method is perfectly usable and can be faster than the first Broyden's method 
-\cite{Kvaalen1991}. \Cref{table:NonlinearOptimized3SBroyden,tab:BroydenPWaveSingOpt}
+\cite{Kvaalen1991}. \Cref{tab:NonlinearOptimized3SBroyden,tab:BroydenPWaveSingOpt}
 show the nonlinear parameters used for $^3$S and $^1$P. All other partial waves
 used the simplex method described in \cref{sec:Simplex}. This is because I
 already had a number of results for $^3$S and $^1$P, so running everything
@@ -108,7 +109,7 @@ $\omega$ & $\alpha$ & $\beta$ & $\gamma$ \\ [0.5ex]
 5 & 0.58691 & 0.58045 & 1.03321 \\
 \bottomrule
 \end{tabular}
-\caption{Simplex optimized $^1S$ nonlinear parameters}
+\caption{Simplex optimized $^1$S nonlinear parameters}
 \label{tab:NonlinearOptimized1SSimplex}
 \end{table}
 
@@ -185,7 +186,7 @@ $\omega$ & 1st formalism / 1 set & 2nd formalism / 1 set & 1st formalism / 2 set
 \bottomrule
 \bottomrule
 \end{tabular}
-\caption{Simplex P-Wave Singlet Short-Range Optimization}
+\caption{Simplex $^1$P-Wave Short-Range Optimization}
 \label{tab:SimplexPWaveSingOpt}
 \end{table}
 
@@ -574,8 +575,8 @@ Ref.~\cite{Woods2015}.
 
 \section{L\"uchow and Kleindienst Algorithm}
 \label{sec:LuchowBound}
-The algorithm that L\"uchow and Kleindienst propose \cite{Luchow1992} is 
-similar to Todd's algorithm. They use all terms through $\omega = 5$, since 
+The algorithm that L\"uchow and Kleindienst \cite{Luchow1992} propose is 
+similar to Todd's method \cite{sec:ToddBound}. They use all terms through $\omega = 5$, since 
 none of these have linear dependence within this set. This fact could be 
 applied to Allan Todd's algorithm to speed up the calculation. The rest of 
 the terms are partitioned up into blocks of 300-400 terms, except the last 
@@ -1102,49 +1103,49 @@ Integral & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
 \end{table}
 
 
-\section{Extra Schwartz Singularity Discussion}
-\label{sec:ExtraSchwartz}
-
-Interestingly, adding terms will change which Kohn method has a Schwartz 
-singularity. \Cref{fig:PhaseTau-Omega} shows how increasing $\omega$ (adding 
-terms) will change the $\tau$ in the generalized Kohn where a Schwartz 
-singularity occurs. \Cref{fig:PhaseTau-Kappa} also shows how for the 
-same set of short-range terms, varying $\kappa$ will change the $\tau$ value 
-where a these singularities occur.
-
-\begin{figure}
-	\centering
-	\includegraphics[width=\textwidth]{PhaseTau-Omega}
-	\caption{Phase shifts versus $\tau$ for $\kappa = 0.1$ and varying $\omega$ values}
-	\label{fig:PhaseTau-Omega}
-\end{figure}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=\textwidth]{PhaseTau-Kappa}
-	\caption{Phase shifts versus $\tau$ for $\omega = 7$ and varying $\kappa$ values}
-	\label{fig:PhaseTau-Kappa}
-\end{figure}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=4in]{Det-Omega=6,Kappa=01}
-	\caption[Determinant of $\textbf{\emph{A}}$ versus $\tau$]{Determinant of $\textbf{\emph{A}}$ versus $\tau$ for $\omega = 6$ with 875 terms of Todd reordering}
-	\label{fig:Det-Omega=6}
-\end{figure}
-
-Cooper et al. \cite{Cooper2009} showed that if $\Det{\textbf{\emph{A}}}$ is 
-plotted with respect to $\tau$, there are actually two $\tau$ values where
-$\Det{\textbf{\emph{A}}} \approx 0$, but only one of them corresponds to a 
-Schwartz singularity. They refer to the second root as an anomaly-free 
-singularity. \Cref{fig:Det-Omega=6} shows an equivalent plot for our 
-data. The roots of $\Det{\textbf{\emph{A}}}$ are at approximately
-$\tau = 0.125$ and $\tau = 1.144$. The first root corresponds well with the
-singularity in the $\omega = 6$ graph in \cref{fig:PhaseTau-Omega}. The second
-root is referred to as an ``anomaly-free singularity'' in
-Cooper et al.\ \cite{Cooper2009} and does not correspond to a Schwartz
-singularity. The roots are easily found by fitting the data to equation (20)
-and solving equation (21) in Cooper et al.\ \cite{Cooper2009}.
+%\section{Extra Schwartz Singularity Discussion}
+%\label{sec:ExtraSchwartz}
+%
+%Interestingly, adding terms will change which Kohn method has a Schwartz 
+%singularity. \Cref{fig:PhaseTau-Omega} shows how increasing $\omega$ (adding 
+%terms) will change the $\tau$ in the generalized Kohn where a Schwartz 
+%singularity occurs. \Cref{fig:PhaseTau-Kappa} also shows how for the 
+%same set of short-range terms, varying $\kappa$ will change the $\tau$ value 
+%where a these singularities occur.
+%
+%\begin{figure}
+	%\centering
+	%\includegraphics[width=\textwidth]{PhaseTau-Omega}
+	%\caption{Phase shifts versus $\tau$ for $\kappa = 0.1$ and varying $\omega$ values}
+	%\label{fig:PhaseTau-Omega}
+%\end{figure}
+%
+%\begin{figure}
+	%\centering
+	%\includegraphics[width=\textwidth]{PhaseTau-Kappa}
+	%\caption{Phase shifts versus $\tau$ for $\omega = 7$ and varying $\kappa$ values}
+	%\label{fig:PhaseTau-Kappa}
+%\end{figure}
+%
+%\begin{figure}
+	%\centering
+	%\includegraphics[width=4in]{Det-Omega=6,Kappa=01}
+	%\caption[Determinant of $\textbf{\emph{A}}$ versus $\tau$]{Determinant of $\textbf{\emph{A}}$ versus $\tau$ for $\omega = 6$ with 875 terms of Todd reordering}
+	%\label{fig:Det-Omega=6}
+%\end{figure}
+%
+%Cooper et al. \cite{Cooper2009} showed that if $\Det{\textbf{\emph{A}}}$ is 
+%plotted with respect to $\tau$, there are actually two $\tau$ values where
+%$\Det{\textbf{\emph{A}}} \approx 0$, but only one of them corresponds to a 
+%Schwartz singularity. They refer to the second root as an anomaly-free 
+%singularity. \Cref{fig:Det-Omega=6} shows an equivalent plot for our 
+%data. The roots of $\Det{\textbf{\emph{A}}}$ are at approximately
+%$\tau = 0.125$ and $\tau = 1.144$. The first root corresponds well with the
+%singularity in the $\omega = 6$ graph in \cref{fig:PhaseTau-Omega}. The second
+%root is referred to as an ``anomaly-free singularity'' in
+%Cooper et al.\ \cite{Cooper2009} and does not correspond to a Schwartz
+%singularity. The roots are easily found by fitting the data to equation (20)
+%and solving equation (21) in Cooper et al.\ \cite{Cooper2009}.
 
 
 \section{Resonance Fitting}
@@ -1168,7 +1169,7 @@ data to this complicated nonlinear function. I next tried the
 2.6 \cite{Python}, which was better able to fit the nonresonant (polynomial) 
 part but had trouble with the $\arctan$ terms.
 
-With the help of Ryan Bosca, I wrote a MATLAB\textsuperscript{\textregistered}
+With the help of Bosca \cite{RyanBosca}, I wrote a MATLAB\textsuperscript{\textregistered}
 \cite{matlab} script that uses the \texttt{nlinfit} routine of MATLAB. 
 \texttt{nlinfit} is specifically designed for fitting to nonlinear functions, 
 and its robust option allows for a variety of weighting functions to be used. 
@@ -1310,8 +1311,9 @@ partial waves in
 \cref{sec:SWaveResonances,sec:PWaveResonances,sec:DWaveResonance,sec:FWaveResonance}.
 The errors given in these tables are simply the standard deviation with all 
 Kohn methods and weightings used for each resonance parameter. For this, we 
-do not use the generalized $S$ or $T$ matrices, because using these would 
-decrease the error, as they agree to a significant precision.
+do not use the generalized $S$-matrix or $T$-matrix complex Kohn methods,
+because using these would decrease the error, as they agree to a significant
+precision.
 
 
 

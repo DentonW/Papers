@@ -22,9 +22,12 @@ A four-dimensional matrix is constructed with ranges of all possible inputs
 to the W function, and the output of the W function is stored as the 
 elements.  The range of the parameters to the W function needs to be 
 determined so that no extra computation takes place for impossible inputs and 
-that values are not read outside of the matrix. Also note that this Appendix
-gives the powers of $r_i$ and $r_{ij}$ in the form given in the Drake and
-Yan \cite{Drake1995} paper and not in the form given by \cref{eq:PhiDef}.
+that values are not read outside of the matrix.
+
+This Appendix describes what we do for the S-wave, and this is extended to the 
+partial waves with $l > 0$ in my codes (\cref{chp:Programs}).
+Also note that the powers of $r_i$ and $r_{ij}$ are in the form given in the
+Drake and Yan \cite{Drake1995} paper and not in the form given by \cref{eq:PhiDef}.
 
 \section{\texorpdfstring{$\alpha$, $\beta$ and $\gamma$} {alpha, beta and gamma} Definitions}
 
@@ -32,8 +35,8 @@ The last three parameters of the W function are $\alpha$, $\beta$ and $\gamma$.
 There are exactly six permutations of these parameters. All six of these 
 occur in the T function for a set of l, m and n parameters. Since there are 
 only six possibilities from equation (6) of Drake and Yan \cite{Drake1995}, 
-the last dimension of the WMatrix is 6. If this fact was not used, a six-
-dimensional matrix would have to be used.
+the last dimension of the WMatrix is 6. If this fact was not used, a
+six-dimensional matrix would have to be used.
 
 \section{Limits of convergence on W}
 

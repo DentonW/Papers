@@ -212,7 +212,7 @@ where $i$ = $1$, 2, 3, $\rho$ or $\rho^\prime$.
 \label{sec:AngRiRj}
 
 These terms are not completely necessary to generalize here, because they 
-only appear in the short-short calculations. My derivations and code for the 
+only appear in the short-short calculations. The derivations and code for the 
 S-, P-, and D-wave short-short calculations use these. The general short-short
 derivations and code (\cref{sec:GeneralShort}) use a formalism from Drake and
 Yan \cite{Yan1997} that does not do these external angular integrations. The 
@@ -228,12 +228,12 @@ result is
 \eeq
 where $i$ = $1$, 2, 3, $\rho$ or $\rho^\prime$. It takes some work to show that the results in the \emph{Mathematica} notebook ``General Angular Integrations.nb'' are equivalent to this.
 
-These integrations for the first three partial waves are given below.
+These integrations for the first three partial waves are given below:
 \begin{subequations}
 \begin{align}
 \Int{Y_0^0(\theta_i, \varphi_i) Y_0^0(\theta_j, \varphi_j)}{\tau_{ext}, \tau_{ext}} &= 2 \pi \\
 \Int{Y_1^0(\theta_i, \varphi_i) Y_1^0(\theta_j, \varphi_j)}{\tau_{ext}, \tau_{ext}} &= 2 \pi \cos\theta_{ij} \\
-\Int{Y_2^0(\theta_i, \varphi_i) Y_2^0(\theta_j, \varphi_j)}{\tau_{ext}, \tau_{ext}} &= 2 \pi \left(3 \cos^2 \theta_{ij} - 1 \right)
+\Int{Y_2^0(\theta_i, \varphi_i) Y_2^0(\theta_j, \varphi_j)}{\tau_{ext}, \tau_{ext}} &= 2 \pi \left(3 \cos^2 \theta_{ij} - 1 \right).
 \end{align}
 \end{subequations}
 
@@ -248,7 +248,7 @@ This allows us to split these into multiple integrations with only polynomial $r
 \subsection{Terms with \texorpdfstring{$Y_\ell^0(\theta_1, \varphi_1) Y_\ell^0(\theta_{\rho}, \varphi_{\rho})$}{Y1-Yrho} and \texorpdfstring{$Y_\ell^0(\theta_1, \varphi_1) Y_\ell^0(\theta_{\rho^\prime}, \varphi_{\rho^\prime})$}{Y1-Yrho'}}
 \label{sec:AngR1Rho}
 
-After doing these integrations by hand for the P-, D-, and F-wave (the S-wave is just $2\pi$), I realized that it is possible to generalize these. This can be seen in the ``Vector Gaussian Integration.cpp'' file of the general long-range integration code. If we define
+After doing these integrations by hand for the P-, D-, and F-wave (the S-wave is just $2\pi$), I realized that it is possible to generalize these. This can be seen in the ``Vector Gaussian Integration.cpp'' file of the general long-range integration code (\cref{chp:Programs}). If we define
 \beq
 w_1 = \frac{r_1 + r_2 \cos\theta_{12}}{2 \rho},
 \eeq

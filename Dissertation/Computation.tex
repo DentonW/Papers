@@ -37,7 +37,8 @@ bulk of the $\textbf{\emph{A}}$ matrix
 (see \cref{eq:BoundWavefn}). The form of these short-range integrals is
 \beq
 \label{eq:FourBody}
-I \equiv I(k_i, l_i, m_i, n_i, p_i, q_i; \bar{\alpha}, \bar{\beta}, \bar{\gamma}) = \int e^{-(\bar{\alpha} r_1 + \bar{\beta} r_2 + \bar{\gamma} r_3)} r_1^{k_i} r_2^{l_i} r_{12}^{m_i} r_3^{n_i} r_{13}^{p_i} r_{23}^{q_i} d\textbf{r}_1 d\textbf{r}_2 d\textbf{r}_3,
+%I \equiv I(k_i, l_i, m_i, n_i, p_i, q_i; \bar{\alpha}, \bar{\beta}, \bar{\gamma})
+I = \int e^{-(\bar{\alpha} r_1 + \bar{\beta} r_2 + \bar{\gamma} r_3)} r_1^{k_i} r_2^{l_i} r_{12}^{m_i} r_3^{n_i} r_{13}^{p_i} r_{23}^{q_i} d\textbf{r}_1 d\textbf{r}_2 d\textbf{r}_3,
 \eeq
 with real-valued $\bar{\alpha}, \bar{\beta}, \bar{\gamma} > 0$. The $\bar{\alpha}$ is related
 to $\alpha$ through \cref{eq:GeneralKohnMatrix}, as are the relations of the other
@@ -46,12 +47,12 @@ nonlinear parameters $\bar{\beta}$, $\beta$, $\bar{\gamma}$, and $\gamma$.
 This class of integrals, the Hylleraas three-electron or four-body 
 integrals, has been studied extensively. See
 Refs.~\cite{Drake1995,Frolov2003,Pelzl1998,Ruiz2009,Pachucki2004} for just some of 
-the papers detailing strategies on how to compute these integrals. The first 
-three papers here use the same infinite summation to numerically solve this 
+the papers detailing strategies on how to compute these integrals.
+Refs.~\cite{Drake1995,Frolov2003,Pelzl1998} use the same infinite summation to numerically solve this 
 integral but use different techniques to accelerate the convergence, as the 
-summation converges slowly for some arguments. The last paper by Pachucki et 
-al.\ uses a very different approach with recursion relations, described in 
-\cref{sec:RecursionRelations}.
+summation converges slowly for some arguments. The paper by Pachucki et 
+al. \cite{Pachucki2004} uses a very different approach with recursion relations,
+described in \cref{sec:RecursionRelations}.
 
 Each of these methods has some restriction on how singular these integrals 
 can be. For Drake and Yan's asymptotic expansion \cite{Drake1995,Yan1997},
@@ -103,9 +104,20 @@ To reduce computation time, we also use the recursion relation in their paper of
 \eeq
 A derivation of this is given in \cref{sec:Hypergeometric}.
 
-The $k_{ij}$ summations in \cref{eq:FourBodyExpansion} are all finite. If all powers of $r_{ij}$ are odd, the $q$ summation is infinite, and if any of $r_{ij}$ is even, the $q$ summation becomes finite. For the finite $q$ sums, these direct sums are solved very accurately, but for the infinite sums, some integrals converge slowly. Particularly when all three $r_{ij}$ powers are odd and at least one is $-1$, the integrals converge the slowest. It is possible to restrict the basis set described by \cref{eq:OmegaDef} so that at least one of the $r_{ij}$ powers is even, making solving the integrals easier. However, this leads to slow convergence in the energy \cite{Drake1995}.
+The $k_{ij}$ summations in \cref{eq:FourBodyExpansion} are all finite. If all 
+powers of $r_{ij}$ are odd, the $q$ summation is infinite, and if any of
+$r_{ij}$ is even, the $q$ summation becomes finite. For the finite $q$ sums, 
+these direct sums are solved very accurately, but for the infinite sums, some 
+integrals converge slowly. Particularly when all three $r_{ij}$ powers are 
+odd and at least one is $-1$, the integrals converge the slowest. It is 
+possible to restrict the basis set described by \cref{eq:OmegaDef} so that at 
+least one of the $r_{ij}$ powers is even, making solving the integrals 
+easier. However, this leads to slow convergence in the energy \cite{Drake1995}.
 
-As Frolov and Bailey \cite{Frolov2003} note, these four-body integrals only work for systems with one infinitely heavy particle, such as PsH or Ps-H scattering. For systems with arbitrary masses, such as Ps$_2$ or Ps-Ps scattering, this has to be generalized to
+As Frolov and Bailey \cite{Frolov2003} note, these four-body integrals only 
+work for systems with one infinitely heavy particle, such as PsH or Ps-H 
+scattering. For systems with arbitrary masses, such as Ps$_2$ or Ps-Ps 
+scattering, this has to be generalized to
 \beq
 \label{eq:FourBodyIntGen}
 I = \int e^{-(\bar{\alpha} r_1 + \bar{\beta} r_2 + \bar{\gamma} r_3 + a_{12} r_{12} + a_{13} r_{13} + a_{23} r_{23})} r_1^{k_i} r_2^{l_i} r_{12}^{m_i} r_3^{n_i} r_{13}^{p_i} r_{23}^{q_i} d\textbf{r}_1 d\textbf{r}_2 d\textbf{r}_3.
@@ -120,7 +132,7 @@ For cases of \cref{eq:FourBodyExpansion} with all odd powers of $r_{ij}$, the $q
 
 As an example in Drake and Yan's paper \cite{Drake1995}, direct calculation of the $q$ summation for $I(0,0,0,-1,-1,-1; 1,1,1)$ only reaches an accuracy of $1.5 x 10^{-13}$ after 6860 terms. With their asymptotic expansion method, the integral has converged to approximately $2.2 x 10^{-16}$ after only 21 terms. The summation converges monotonically and asymptotically. Drake and Yan use this knowledge to speed up the convergence of the integration. Details of this method can be found in their paper \cite{Drake1995}.
 
-I use this asymptotic expansion method in all calculations of the short--short integrals through the H-wave, and it performed very well. In fact, my quadruple precision code often calculates matrix elements to better than $1$ part in $10^{20}$ for the S-wave. \Cref{tab:AsympExpan} gives an example of the convergence of a single integral by only calculating the direct sum of \cref{eq:FourBodyExpansion} in the $S_d(N)$ column and with the asymptotic expansion in the $S_a(N)$ column. These four-body integrals are relatively quick to calculate, and most of the runs to compute them complete in a matter of hours.
+I use this asymptotic expansion method in all calculations of the short--short integrals through the H-wave, and it performed very well. In fact, my quadruple precision code often calculates matrix elements to better than $1$ part in $10^{20}$ for the S-wave. \Cref{tab:AsympExpan} gives an example of the convergence of a single integral by only calculating the direct sum of \cref{eq:FourBodyExpansion} in the $S_d(N)$ column and with the asymptotic expansion in the $S_a(N)$ column. These four-body integrals are relatively quick to calculate, and most of the runs to compute them for $\ell \leq 2$ complete in a matter of hours on a typical desktop computer.
 
 \begin{table}
 \centering
@@ -244,47 +256,58 @@ $\omega$ & Used Terms & Total Terms & Percentage Used \\
 \caption{D-wave W function terms used}
 \label{tab:WFuncUnusedD}
 \end{table}
-
-Another more sophisticated method that we have started using is given in
-\cref{sec:PrimeFactor}. This looks instead at the overall integrations,
-not the $W$ function arguments.
+Another more sophisticated method that we have started using is
+looking instead at the overall integrations instead of the $W$ function
+arguments using prime factorization to avoid calculating integrals
+more than once \cite{VanReethPrivate}.
+%given in
+%\cref{sec:PrimeFactor}.
+%This looks instead at the overall integrations,
+%not the $W$ function arguments.
 
 
 
 \subsection{Linear Dependence in the Bound State Calculation}
-With infinite precision in calculations, all terms from the basis set could be used. However, due to the limited precision inherent in computer calculations, when using large basis sets, near linear dependences will exist in the matrices. The goal is to identify and eliminate terms that exhibit near linear dependence with other terms. These terms are not exactly linearly dependent, if infinite precision was possible, but they are linearly dependent to computer precision.
+With infinite precision in calculations, all terms from the basis set could 
+be used. However, due to the limited precision inherent in computer 
+calculations, when using large basis sets, near linear dependences will exist 
+in the matrices. The goal is to identify and eliminate terms that exhibit 
+near linear dependence with other terms. These terms are not exactly linearly 
+dependent, if infinite precision was possible, but they are linearly 
+dependent to computer precision.
 
 To calculate the eigenvalues of the generalized eigenproblem, the LAPACK 
 routine \texttt{dsygv} is used \cite{dsygv}. For the basis set consisting of 
 terms from $\omega$ = 5, LAPACK computes the eigenvalues without errors. 
 Adding in terms corresponding to $\omega = 6$ for some sets of nonlinear 
 parameters causes \texttt{dsygv} to fail with an error set in the last 
-parameter, Info. This error is always an integer greater than the number of 
+parameter, info. This error is always an integer greater than the number of 
 terms, indicating from the library documentation that ``the leading minor of 
 order i of B is not positive definite'' \cite{dsygv}. L\"uchow and 
-Kleindienst also encountered a similar problem using NAG and EISPACK
-\cite{Luchow1993}.
+Kleindienst \cite{Luchow1993} also encountered a similar problem using
+other libraries.
+%NAG and EISPACK.
 
 This error does suggest that one approach to identifying problematic terms is 
 to check for positive definiteness of the overlap matrix
 $\left\langle \phi_i | \phi_j \right\rangle$. This is one method that
-Yan et. al use to isolate 
-problematic terms \cite{Yan1999}. They test the eigenvalues of the overlap 
+Yan and Ho \cite{Yan1999} use to isolate 
+problematic terms. They test the eigenvalues of the overlap 
 matrix to see if any are small or negative, though there is no mention in 
 their paper of what value of ``small'' is used. We attempted to use this fact 
 to remove problematic terms, but too many terms were removed, leading to an 
 energy that converged too slowly. In several papers by Yan and others
 \cite{Yan1998,Yan1998a,Yan1999,Drake1995,Yan1997a}, terms with $j1 > j2$ are 
-omitted if $l_1 = l_2$ and $\alpha \approx \beta$, along with $j_1 = j_2$ if
+omitted if $l_1 = l_2$ and $\bar{\alpha} \approx \bar{\beta}$, along with $j_1 = j_2$ if
 $j_{23} > j_{31}$. These terms were likely determined by trial and error 
 or by noticing patterns in terms that produced near linear dependence.
 
-Another technique Yan et al.\ used was to partition the basis set into five 
+Another technique Yan and Ho \cite{Yan1999} used was to partition the basis set into five 
 sectors, each with a different set of nonlinear parameters and maximum
-$\omega$ \cite{Yan1999}. The sectors also have restrictions on the interparticle
+$\omega$. The sectors also have restrictions on the interparticle
 $r_{ij}$ terms, mainly limiting the power of $r_{23}$ and $r_{31}$, which are the 
 electron-positron coordinates in their paper (corresponding to $r_{12}$ and
-$r_{13}$ in our work). The techniques used by Yan, Drake and Ho for restricting 
+$r_{13}$ in our work). These techniques used for restricting 
 the set of terms are not used in our work.
 
 
@@ -293,12 +316,15 @@ the set of terms are not used in our work.
 
 In trying to determine the energy eigenvalues, we noticed that the ordering 
 of the terms could determine whether there was linear dependence in the 
-matrices. Todd's algorithm \cite{Todd2007,Armour2008} was attractive,
+matrices. Todd's method \cite{Todd2007,Armour2008} was attractive,
 because it reorders the matrices to obtain the best possible energy, and it 
-is a purely computational approach. This is very similar to the algorithm
-in \cref{sec:LuchowBound} that we also considered. So far, we have not seen 
+is a purely computational approach. We have not seen 
 any physical reason why certain terms should introduce a near linear 
-dependence. A description of his algorithm as implemented by us follows.
+dependence. Todd's method is very similar to the algorithm in
+%\cref{sec:LuchowBound}
+Ref.~\cite{Luchow1992}
+that we also considered, but it did not work as well. A description of his
+algorithm as implemented in this work follows.
 
 The total number of terms to look at is $N = N(\omega)$ (see \cref{eq:NumberTermsOmega}).
 N matrices of size 1x1 are created for each term. This 
@@ -329,7 +355,7 @@ trying to calculate the eigenvalues, so the ordering is important for getting
 the best possible energy. For $\omega$ = 7, 116 terms were omitted, out of a 
 total of 1716 terms. The criteria that the eigenvalues for the upper and 
 lower matrices differs by no more than a certain amount was not needed in 
-this case. The Info parameter of the LAPACK dsygv function is checked for 
+this case. The info parameter of the LAPACK dsygv function is checked for 
 both the upper and lower matrix eigenvalue calculations, and the last added 
 term is discarded if it causes an error due to linear dependence. When only 
 the 116 problematic terms were left, every one of them caused LAPACK to 
@@ -387,7 +413,8 @@ elements. The volume element in \cref{eq:dTauS23} has an internal angle
 of $\varphi_{23}$ to integrate over.  When a term has a a negative power of
 $r_{23}$, a large number of integration points must be used for reasonable 
 accuracy. Instead, we split the integration such that one part is missing 
-the $r_{23}^{-1}$ term and the other contains only the $r_{23}^{-1}$ term.
+the $r_{23}^{-1}$ term and the other contains only the $r_{23}^{-1}$ term
+\cite{VanReethThesis,VanReethPrivate}.
 
 The first integration excluding the $r_{23}^{-1}$ term has negative powers of 
 $r_i$ and $r_{ij}$ canceled by the corresponding terms in the volume element 
@@ -471,9 +498,9 @@ gives us another check on the accuracy of the long-long integrations.
 
 \subsection{Short-Range -- Long-Range}
 \label{sec:ShortLongInt}
-We will consider only the $(\bar{\phi}_i,\mathcal{L} \bar{S}_\ell)$ 
-integrations here, as the $(\bar{\phi}_i,\mathcal{L} \bar{C}_\ell)$ integrals 
-are evaluated in the same manner. As in the case of long-range -- long-range 
+We will consider only the integrations for $(\bar{\phi}_i,\mathcal{L} \bar{S}_\ell)$ 
+here, as the integrations for $(\bar{\phi}_i,\mathcal{L} \bar{C}_\ell)$
+are evaluated in the same manner. As in the case of long-long 
 integrations in \cref{sec:LongLongInt}, we split up the integration 
 into two parts -- one containing the $r_{23}^{-1}$ term and another 
 containing the rest of the terms. The short-range terms have the added 
@@ -540,8 +567,6 @@ the quadratures used here.
 For a discussion on the final quadrature points used, refer to \cref{sec:QuadraturePoints}.
 
 
-
-
 \subsection{Cusp Behavior}
 \label{sec:Cusps}
 
@@ -589,95 +614,94 @@ In the example given in \cref{fig:cusp}, at $r_2 = 100$, the $r_2$ integrand
 is approximately $10^{-57}$, while at $r_2 = 25$, the integrand is 
 approximately $10^{-9}$.
 
-
-For the S-wave, all runs were performed with the cusp parameters set at
+For all partial waves, runs were performed with the cusp parameters set at
 $r_1 = 100$. When $r_1 > 100$, the $r_2$ and $r_3$ integrations are done using only 
 Gauss-Laguerre, since the cusp is considered unimportant at that distance. 
 When $r_1 \leq 100$, we use Gauss-Legendre before the cusp and Gauss-Laguerre 
 after the cusp, as described in \cref{sec:LongLongNoR23,sec:LongLongR23}. 
 
-Van Reeth and Humberston used cusp parameters set at $r_1 = 25$, with little 
-apparent loss of precision over using $r_1 = 100$ \cite{VanReethPrivate}. 
-With $\kappa$ set at $0.1$, several tests were performed with different cusp 
-parameters. With cusp parameters of 100, for $\omega = 6$, we are able to use 
-910 terms, giving a phase shift of $-0.427$. Doing the same run with cusp 
-parameters of 25 allows us to use the same number of terms and gives a phase 
-shift of $-0.427$ as well. In this particular example, the two sets of cusp 
-parameters (25 and 100) differ in the sixth decimal place. As an example, for 
-the inverse Kohn, $\delta = -0.42707291$ for the cusp parameters of 100, 
-while $\delta = -0.42707370$ for cusp parameters of 25. To the required 
-accuracy, the cusp parameters of 25 are sufficient for this example.
-
-Smaller values for these cusp parameters were also tried, and these tests are 
-summarized in \cref{tab:SWaveCuspParameters}. When the cusp parameters 
-are too small, such as the cases of 5, 10 and 15, the phase shifts do not 
-converge well and start to diverge much earlier. The second column in this 
-table shows the number of terms we can use for each set, but the number of 
-terms to use is not exact due to the lack of good convergence, so the values 
-here are approximate for small cusp parameters. The phase shift given for 
-these three tests are therefore approximate as well. From this table, we 
-conclude that 20 is the minimum value needed, at least for the $\kappa = 0.1$ 
-case tested here for the $S$-wave. To be conservative, runs use cusp 
-parameters of 100. 
-
-
-
-\begin{table}
-\centering
-\begin{tabular}{c c c}
-\toprule
-Cusp parameter & Terms possible & $\delta_0^+$ \\
-\midrule
- 5 & 531 & -0.4281 \\
-10 & 684 & -0.4071 \\
-15 & 684 & -0.4267 \\
-20 & 910 & -0.4271 \\
-25 & 910 & -0.4271 \\
-100 & 910 & -0.4271 \\
-\bottomrule
-\end{tabular}
-\caption{S-wave cusp parameters for $\kappa = 0.1$ at $\omega = 6$}
-\label{tab:SWaveCuspParameters}
-\end{table}
-
-\begin{table}
-\centering
-\begin{tabular}{c c}
-\toprule
-Cusp parameter & $\delta_1^+$ \\
-\midrule
- 25 & 1.142923114 \\
- 50 & 1.142923115 \\
-100 & 1.142924602 \\
-\bottomrule
-\end{tabular}
-\caption{P-wave cusp parameters for $S$ matrix $\kappa = 0.7$ at $\omega = 5$}
-\label{tab:PWaveCuspParameters}
-\end{table}
-
-
-\begin{table}
-\centering
-\begin{tabular}{c c c}
-\toprule
-Cusp parameter & $\delta_2^+$ & Time (hours) \\
-\midrule
-100 & 0.173 924 955 404 676 & 7.8 \\
-150 & 0.173 924 955 404 797 & 8.9 \\
-200 & 0.173 924 955 404 809 & 10.2 \\
-250 & 0.173 924 955 404 748 & 10.8 \\
-\bottomrule
-\end{tabular}
-\caption{D-wave cusp parameters for $S$ matrix $\kappa = 0.6$ at $\omega = 3$}
-\label{tab:DWaveCuspParameters}
-\end{table}
+%Van Reeth and Humberston used cusp parameters set at $r_1 = 25$, with little 
+%apparent loss of precision over using $r_1 = 100$ \cite{VanReethPrivate}. 
+%With $\kappa$ set at $0.1$, several tests were performed with different cusp 
+%parameters. With cusp parameters of 100, for $\omega = 6$, we are able to use 
+%910 terms, giving a phase shift of $-0.427$. Doing the same run with cusp 
+%parameters of 25 allows us to use the same number of terms and gives a phase 
+%shift of $-0.427$ as well. In this particular example, the two sets of cusp 
+%parameters (25 and 100) differ in the sixth decimal place. As an example, for 
+%the inverse Kohn, $\delta = -0.42707291$ for the cusp parameters of 100, 
+%while $\delta = -0.42707370$ for cusp parameters of 25. To the required 
+%accuracy, the cusp parameters of 25 are sufficient for this example.
+%
+%Smaller values for these cusp parameters were also tried, and these tests are 
+%summarized in \cref{tab:SWaveCuspParameters}. When the cusp parameters 
+%are too small, such as the cases of 5, 10 and 15, the phase shifts do not 
+%converge well and start to diverge much earlier. The second column in this 
+%table shows the number of terms we can use for each set, but the number of 
+%terms to use is not exact due to the lack of good convergence, so the values 
+%here are approximate for small cusp parameters. The phase shift given for 
+%these three tests are therefore approximate as well. From this table, we 
+%conclude that 20 is the minimum value needed, at least for the $\kappa = 0.1$ 
+%case tested here for the $S$-wave. To be conservative, runs use cusp 
+%parameters of 100. 
+%
+%
+%
+%\begin{table}
+%\centering
+%\begin{tabular}{c c c}
+%\toprule
+%Cusp parameter & Terms possible & $\delta_0^+$ \\
+%\midrule
+ %5 & 531 & -0.4281 \\
+%10 & 684 & -0.4071 \\
+%15 & 684 & -0.4267 \\
+%20 & 910 & -0.4271 \\
+%25 & 910 & -0.4271 \\
+%100 & 910 & -0.4271 \\
+%\bottomrule
+%\end{tabular}
+%\caption{S-wave cusp parameters for $\kappa = 0.1$ at $\omega = 6$}
+%\label{tab:SWaveCuspParameters}
+%\end{table}
+%
+%\begin{table}
+%\centering
+%\begin{tabular}{c c}
+%\toprule
+%Cusp parameter & $\delta_1^+$ \\
+%\midrule
+ %25 & 1.142923114 \\
+ %50 & 1.142923115 \\
+%100 & 1.142924602 \\
+%\bottomrule
+%\end{tabular}
+%\caption{P-wave cusp parameters for $S$ matrix $\kappa = 0.7$ at $\omega = 5$}
+%\label{tab:PWaveCuspParameters}
+%\end{table}
+%
+%
+%\begin{table}
+%\centering
+%\begin{tabular}{c c c}
+%\toprule
+%Cusp parameter & $\delta_2^+$ & Time (hours) \\
+%\midrule
+%100 & 0.173 924 955 404 676 & 7.8 \\
+%150 & 0.173 924 955 404 797 & 8.9 \\
+%200 & 0.173 924 955 404 809 & 10.2 \\
+%250 & 0.173 924 955 404 748 & 10.8 \\
+%\bottomrule
+%\end{tabular}
+%\caption{D-wave cusp parameters for $S$ matrix $\kappa = 0.6$ at $\omega = 3$}
+%\label{tab:DWaveCuspParameters}
+%\end{table}
 
 
 \subsection{Extra Exponential}
 \label{sec:ExtraExp}
 To further improve the convergence of the short-long matrix elements in 
-equation \cref{eq:GeneralKohnMatrix}, we investigated the integrands.
-The biggest source of 
+equation \cref{eq:GeneralKohnMatrix}, we investigated the integrands
+\cite{VanReethPrivate}. The biggest source of 
 difficulty in converging these results comes through the Gauss-Laguerre 
 quadratures in the $r_1$, $r_2$ and $r_3$ integrations. Specifically, the 
 region near the origin is not adequately represented. The integrands fall off 
@@ -706,7 +730,8 @@ As an example, the full expression for the $r_2$ Gauss-Laguerre quadrature is gi
 \beq
 \int_a^\infty e^{-\beta r_2} f(r_2) dr_2 \approx \frac{e^{-\beta a}}{\beta} \sum_{i=1}^n w_i f\left(\frac{y_i}{\beta}+a\right),
 \eeq
-where $y_i = \beta x_i$. With the exponential in $\lambda$, this becomes
+where $y_i = \beta x_i$, and $a$ is an arbitrary lower limit starting at the
+cusp described in \cref{sec:Cusps}. With the exponential in $\lambda$, this becomes
 \beq
 \int_a^\infty e^{-\beta r_2} f(r_2) dr_2 \approx \frac{e^{-a (\beta + \lambda)}}{\beta + \lambda} \sum_{i=1}^n w_i f\left(\frac{r_2 + a(\beta + \lambda)}{\beta + \lambda} \right) \ee^{\lambda r_2}.
 \eeq
@@ -741,18 +766,18 @@ elements converge better for $\lambda = 1.0$ than for $\lambda = 0$.
 We solve for the phase shifts by solving \cref{eq:GeneralKohnMatrix} for
 $\boldsymbol{X}$ and then using \cref{eq:GenDFDT2,eq:GenKohnL}. Note that
 as mentioned in \cref{sec:Kohn}, we only have to calculate one set of integrals
-for the Kohn variational method, and the other Kohn methods are
+for the Kohn variational method, and the other Kohn-type methods are
 used by rearrangement of these integrals in the matrix equation. The different
 Kohn-type variational methods typically agree well when linear dependence in the
 matrix equation does not occur. We use this fact to determine how many
 short-range terms we are able to use in our final calculations. If we plot the
-phase shifts with respect to the number of terms, as in \cref{fig:swave-phase-divergence},
+$^1$S phase shifts with respect to the number of terms, as in \cref{fig:swave-phase-divergence},
 it is clear that around 1530 terms, the phase shifts from the different
 generalized Kohn methods begin to diverge. In this particular example, we
 chose the cutoff as a more conservative 1505 terms--before the ``jump'' that 
 precedes the clear divergence. No Schwartz singularities (\cref{eq:SchwartzSing})
-are evident here, but if any are present, we discard the Kohn methods that
-contain spurious singularities.
+are evident here, but if any are present, we discard the generalized Kohn
+variational methods that contain spurious singularities.
 
 \begin{figure}
 	\centering
@@ -763,14 +788,14 @@ values for the generalized Kohn variational method}
 	\label{fig:swave-phase-divergence}
 \end{figure}
 
-Using the short-range terms chosen by the Todd method (\cref{sec:ToddBound})
+Using the short-range terms chosen by Todd's method (\cref{sec:ToddBound})
 normally allows us to increase the number of terms used over using the terms
 chosen just by \cref{eq:OmegaDef} for the Ps-H scattering problem.
-Since the Todd method chooses an ordering with the most ``important'' terms 
+Since Todd's method chooses an ordering with the most ``important'' terms 
 at the beginning, we obtain well-converged phase shifts using this method with
 the above-mentioned cutoffs for the first two partial waves (which do not 
 have omitted symmetries). So we perform one truncation of the basis set by
-using the Todd method for just the short-range terms and then an additional 
+using Todd's method for just the short-range terms and then an additional 
 truncation by using plots as in \cref{fig:swave-phase-divergence} to reduce
 linear dependence.
 
@@ -903,7 +928,7 @@ are determined.
 
 For comparing quantities such as the convergence of the matrix elements or 
 the convergence of the differential cross sections, we use the percent
-difference. There is no standard symbol for this, so we define it as
+difference:
 \begin{equation}
 \label{eq:PercentDiff}
 %\% \text{ Diff} = \rhd(a,b) = \left| \frac{a - b}{(a + b) / 2} \right| \times 100\%.
@@ -929,11 +954,11 @@ The tangent of the phase shifts is fitted to the function
 \label{eq:PhaseExtrap}
 \tan \delta_\ell^\pm(\omega) = \tan \delta_\ell^\pm(\omega \to \infty) + \frac{c}{\omega^p}.
 \eeq
-The $c$ and $p$ in this equation are fitting parameters. When plotted with respect to $\omega^{-p}$, the tangents of the phase shifts form nearly a straight line, with the y-intercept being the tangent of the extrapolated value of the phase shift, $\tan \delta^\pm(\omega \to \infty)$.
+The $c$ and $p$ in this equation are fitting parameters and depend on each extrapolation. When plotted with respect to $\omega^{-p}$, the tangents of the phase shifts form nearly a straight line, with the y-intercept being the tangent of the extrapolated value of the phase shift, $\tan \delta^\pm(\omega \to \infty)$.
 
-In Van Reeth and Humberston, the extrapolation is done using $\omega = 3$ 
-through $\omega = 6$ \cite{VanReeth2003}. The current results go to $\omega = 7$, so 
-we have completed the extrapolation using the sets $\omega = 3-6$,
+Van Reeth and Humberston \cite{VanReeth2003} do the extrapolation using $\omega = 3$ 
+through $\omega = 6$ . %The current results go to $\omega = 7$, so 
+We have completed the extrapolation using the sets $\omega = 3-6$,
 $\omega = 3-7$ and $\omega = 4-7$. The smallest residuals are normally found
 with the set $\omega = 4-7$. The values of the extrapolated phase shifts using
 this method are in \cref{tab:SWavePhase}.
@@ -950,10 +975,11 @@ Todd's method. The output of this method from the bound state program
 described in \cref{sec:ToddBound} is not ordered in terms of 
 increasing $\omega$. This leads to difficulties when attempting to do the 
 extrapolation in \cref{eq:PhaseExtrap}. The tangent of the phase 
-shifts cannot be fitted to a straight line in this order. If we reorder the 
+shifts cannot be fitted to a straight line in this order, as seen in
+\cref{fig:extrap-phase}(a). If we reorder the 
 short-range terms back into their original order while still omitting terms, 
 the tangent of the phase shifts can now be fitted to this straight line, as 
-can be seen in \cref{fig:extrap-phase}. The reordering does not affect 
+can be seen in \cref{fig:extrap-phase}(b). The reordering does not affect 
 the phase shifts in any case that we tested, since more terms are normally 
 omitted in the scattering problem than just the bound state problem.
 
