@@ -194,14 +194,18 @@
 %  \normalsize
 %}
 
+\iftoggle{UNT}{
+}
+{
 % For vertical bar on right to test whether text in margin
 %  http://www.latex-community.org/forum/viewtopic.php?f=5&t=9072
-\usepackage{background}
-\SetBgScale{1}
-\SetBgAngle{0}
-\SetBgColor{black}
-\SetBgContents{\rule{.4pt}{\paperheight}}
-\SetBgHshift{8.3cm}
+	\usepackage{background}
+	\SetBgScale{1}
+	\SetBgAngle{0}
+	\SetBgColor{black}
+	\SetBgContents{\rule{.4pt}{\paperheight}}
+	\SetBgHshift{8.3cm}
+}
 
 \providecommand{\e}[1]{\ensuremath{\times 10^{#1}}}
 \newcommand{\ee} {\,\text{e}}

@@ -15,23 +15,23 @@ this work.
 From equation 2.1 of Peter Van Reeth's thesis \cite{VanReethThesis} and Armour and Humberston's paper \cite{Armour1991},
 
 \beq
-\vec{\rho} = \frac{1}{2} \left( \vec{r_1} + \vec{r_2} \right).
+\bm{\rho} = \frac{1}{2} \left( \bm{r}_1 + \bm{r}_2 \right).
 \label{eq:RhoDef1}
 \eeq
 By switching coordinates 2 and 3, we have
 \beq
-\vec{\rho'} = \frac{1}{2} \left( \vec{r_1} + \vec{r_3} \right).
+\bm{\rho}' = \frac{1}{2} \left( \bm{r}_1 + \bm{r}_3 \right).
 \label{eq:RhoDef2}
 \eeq
 In the original coordinate system (\cref{fig:CoordinateSystemOriginal}),
 \begin{align}
-\nonumber \vec{r_1} &= \left( r_1 \sin \theta_1 \cos \varphi_1, r_1 \sin \theta_1 \sin \varphi_1, r_1 \cos \theta_1 \right) \\
-\vec{r_3} &= \left( r_3 \sin \theta_3 \cos \varphi_3, r_3 \sin \theta_3 \sin \varphi_3, r_3 \cos \theta_3 \right)
+\nonumber \bm{r}_1 &= \left( r_1 \sin \theta_1 \cos \varphi_1, r_1 \sin \theta_1 \sin \varphi_1, r_1 \cos \theta_1 \right) \\
+\bm{r}_3 &= \left( r_3 \sin \theta_3 \cos \varphi_3, r_3 \sin \theta_3 \sin \varphi_3, r_3 \cos \theta_3 \right)
 \end{align}
 In the rotated coordinate system (\cref{fig:CoordinateSystemRotated}),
 \begin{align}
-\nonumber \vec{r_1} &= (0, 0, r_1) \\
-\vec{r_3} &= \left( r_3 \sin \theta_{13} \cos \varphi_{13}, r_3 \sin \theta_{13} \sin \varphi_{13}, r_3 \cos \theta_{13} \right)
+\nonumber \bm{r}_1 &= (0, 0, r_1) \\
+\bm{r}_3 &= \left( r_3 \sin \theta_{13} \cos \varphi_{13}, r_3 \sin \theta_{13} \sin \varphi_{13}, r_3 \cos \theta_{13} \right)
 \end{align}
 \begin{align}
 \nonumber \left| r_1 + r_3 \right|^2 &= r_3^2 \sin^2 \theta_{13} \cos^2 \varphi_{13} + r_3^2 \sin^2 \theta_{13} \sin^2 \varphi_{13} + (r_1 + r_3 \cos \theta_{13})^2\\
@@ -187,6 +187,8 @@ Using these with \cref{eq:SphBesExpan,eq:SphBesExpanDer}, we see that to first o
 {n_\ell}^\prime(z) &\approx j_\ell(z).
 \end{align}
 \end{subequations}
+This allows us to write the gradient of $\widetilde{S}_\ell$ and
+$\widetilde{C}_\ell$ for arbitrary $\ell$ to first order in \cref{eq:GradSC}.
 
 
 \subsection{Second Derivative}
@@ -277,7 +279,9 @@ $f_\ell(\rho) = \left[1 - \ee^{-\mu \rho} \left(1+\frac{\mu}{2}\rho\right)\right
 is slightly different than earlier work \cite{VanReeth2003,VanReeth2004} on
 Ps-H scattering, which used $f(\rho) = (1 - \ee^{-\lambda \rho})^3$.
 
-We want to have $C_\ell$ behaving similarly to $S_\ell$ at the origin. To
+This work is based on notes from Van Reeth \cite{VanReethPrivate}\
+for the S-wave shielding function.
+We want to have $C_\ell$ behaving similar to $S_\ell$ at the origin. To
 accomplish this, we take a series expansion of both to see what the dominant
 terms are. To more easily see the behavior, we only take expansions of the
 spherical Bessel and Neumann functions for the S-wave. For $S_0$, the series expansion of
@@ -354,10 +358,10 @@ Using \cite[p.192]{VanReethThesis}
 \beq
 \cos\theta_{12} = \sin\theta_1 \sin\theta_2 \cos(\varphi_1 - \varphi_2) + \cos\theta_1 \cos\theta_2
 \eeq
-and the standard
-\beq
-\cos\theta = \frac{\ee^{\ii \theta} + \ee^{-\ii \theta}}{2}
-\eeq
+%and the standard
+%\beq
+%\cos\theta = \frac{\ee^{\ii \theta} + \ee^{-\ii \theta}}{2}
+%\eeq
 in \cref{eq:Psi1}, we obtain \cref{eq:MixedAngSimple}:
 \begin{align}
 \label{eq:Psi2}
@@ -445,75 +449,79 @@ in \cref{eq:Psi1}, we obtain \cref{eq:MixedAngSimple}:
 %%future work.
 
 
-%\section{Spherical Functions}
-%\label{sec:SphericalFunc}
-%%
+\section{Spherical Functions}
+\label{sec:SphericalFunc}
 %
-%This section gives the spherical harmonics, spherical Bessel functions, and
-%spherical Neumann functions through $\ell = 5$ for easier reference.
-%
-%{
-%\renewcommand{\arraystretch}{1.5}
-%\begin{table}
-%\centering
-%\begin{tabular}{l l}
-%\toprule\\[-1.2cm]
-%Partial Wave & $\SphericalHarmonicY{\ell}{0}{\theta}{\phi}$ \\
-%\midrule
-%S-Wave & $\frac{1}{\sqrt{4\pi}}$ \\
-%P-Wave & $\sqrt{\frac{3}{4\pi}} \cos\theta$ \\
-%D-Wave & $\sqrt{\frac{5}{16\pi}} (3\cos^2\theta - 1)$ \\
-%F-Wave & $\sqrt{\frac{7}{16\pi}} \left(5 \cos^3\theta - 3 \cos\theta \right)$ \\
-%G-Wave & $\sqrt{\frac{9}{256\pi}} \left(35 \cos^4\theta - 30 \cos^2\theta + 3 \right)$ \\
-%H-Wave & $\sqrt{\frac{11}{256\pi}} \left(63 \cos^5\theta - 70 \cos^3\theta + 15 \cos\theta \right)$ \\
-%\bottomrule
-%\end{tabular}
-%\caption{Spherical harmonics for partial waves $\ell = 0$ through 5}
-%\label{tab:SphHarm}
-%\end{table}
-%}
-%
-%{
-%\renewcommand{\arraystretch}{1.5}
-%\begin{table}
-%\centering
-%\begin{tabular}{l l}
-%\toprule\\[-1.2cm]
-%Partial Wave & $j_\ell(z)$ \\
-%\midrule
-%S-Wave & $\frac{\sin(\kappa\rho)}{\kappa\rho}$ \\
-%P-Wave & $\frac{\sin z}{z^2} - \frac{\cos z}{z}$ \\
-%D-Wave & $\left(\frac{3}{z^3}-\frac{1}{z}\right)\sin z - \frac{3}{z^2}\cos z$ \\
-%F-Wave & $\frac{\left(z^2-15\right) \cos z}{z^3}-\frac{3 \left(2 z^2-5\right) \sin z}{z^4}$ \\
-%G-Wave & $\frac{5 \left(2 z^2-21\right) \cos z}{z^4}+\frac{\left(z^4-45 z^2+105\right) \sin z}{z^5}$ \\
-%H-Wave & $\frac{15 \left(z^4-28 z^2+63\right) \sin z}{z^6}+\frac{\left(-z^4+105 z^2-945\right) \cos z}{z^5}$ \\
-%\bottomrule
-%\end{tabular}
-%\caption{Spherical Bessel functions for partial waves $\ell = 0$ through 5}
-%\label{tab:SphBess}
-%\end{table}
-%}
-%
-%{
-%\renewcommand{\arraystretch}{1.5}
-%\begin{table}
-%\centering
-%\begin{tabular}{l l}
-%\toprule\\[-1.2cm]
-%Partial Wave & $n_\ell(z)$ \\
-%\midrule
-%S-Wave & $-\frac{\cos z}{z}$ \\
-%P-Wave & $-\frac{\cos z}{z^2} - \frac{\sin z}{z}$ \\
-%D-Wave & $-\left(\frac{3}{z^3}-\frac{1}{z}\right)\cos x - \frac{3}{z^2}\sin z$ \\
-%F-Wave & $\frac{3 \left(2 z^2-5\right) \cos z}{z^4}+\frac{\left(z^2-15\right) \sin z}{z^3}$ \\
-%G-Wave & $\frac{5 \left(2 z^2-21\right) \sin z}{z^4}+\frac{\left(-z^4+45 z^2-105\right) \cos z}{z^5}$ \\
-%H-Wave & $\frac{\left(-z^4+105 z^2-945\right) \sin z}{z^5}-\frac{15 \left(z^4-28 z^2+63\right) \cos z}{z^6}$ \\
-%\bottomrule
-%\end{tabular}
-%\caption{Spherical Neumann functions for partial waves $\ell = 0$ through 5}
-%\label{tab:SphNeum}
-%\end{table}
-%}
+
+This section gives the spherical harmonics, spherical Bessel functions, and
+spherical Neumann functions through $\ell = 5$ for easier reference. These
+were all obtained using the appropriate functions in \emph{Mathematica}
+\cite{Mathematica}.
+
+\todoi{Arfken and Weber? Abramowitz?}
+
+{
+\renewcommand{\arraystretch}{1.5}
+\begin{table}
+\centering
+\begin{tabular}{l l}
+\toprule\\[-1.2cm]
+Partial Wave & $\SphericalHarmonicY{\ell}{0}{\theta}{\phi}$ \\
+\midrule
+S-Wave & $\frac{1}{\sqrt{4\pi}}$ \\
+P-Wave & $\sqrt{\frac{3}{4\pi}} \cos\theta$ \\
+D-Wave & $\sqrt{\frac{5}{16\pi}} (3\cos^2\theta - 1)$ \\
+F-Wave & $\sqrt{\frac{7}{16\pi}} \left(5 \cos^3\theta - 3 \cos\theta \right)$ \\
+G-Wave & $\sqrt{\frac{9}{256\pi}} \left(35 \cos^4\theta - 30 \cos^2\theta + 3 \right)$ \\
+H-Wave & $\sqrt{\frac{11}{256\pi}} \left(63 \cos^5\theta - 70 \cos^3\theta + 15 \cos\theta \right)$ \\
+\bottomrule
+\end{tabular}
+\caption{Spherical harmonics for partial waves $\ell = 0$ through 5}
+\label{tab:SphHarm}
+\end{table}
+}
+
+{
+\renewcommand{\arraystretch}{1.5}
+\begin{table}
+\centering
+\begin{tabular}{l l}
+\toprule\\[-1.2cm]
+Partial Wave & $j_\ell(z)$ \\
+\midrule
+S-Wave & $\frac{\sin(\kappa\rho)}{\kappa\rho}$ \\
+P-Wave & $\frac{\sin z}{z^2} - \frac{\cos z}{z}$ \\
+D-Wave & $\left(\frac{3}{z^3}-\frac{1}{z}\right)\sin z - \frac{3}{z^2}\cos z$ \\
+F-Wave & $\frac{\left(z^2-15\right) \cos z}{z^3}-\frac{3 \left(2 z^2-5\right) \sin z}{z^4}$ \\
+G-Wave & $\frac{5 \left(2 z^2-21\right) \cos z}{z^4}+\frac{\left(z^4-45 z^2+105\right) \sin z}{z^5}$ \\
+H-Wave & $\frac{15 \left(z^4-28 z^2+63\right) \sin z}{z^6}+\frac{\left(-z^4+105 z^2-945\right) \cos z}{z^5}$ \\
+\bottomrule
+\end{tabular}
+\caption{Spherical Bessel functions for partial waves $\ell = 0$ through 5}
+\label{tab:SphBess}
+\end{table}
+}
+
+{
+\renewcommand{\arraystretch}{1.5}
+\begin{table}
+\centering
+\begin{tabular}{l l}
+\toprule\\[-1.2cm]
+Partial Wave & $n_\ell(z)$ \\
+\midrule
+S-Wave & $-\frac{\cos z}{z}$ \\
+P-Wave & $-\frac{\cos z}{z^2} - \frac{\sin z}{z}$ \\
+D-Wave & $-\left(\frac{3}{z^3}-\frac{1}{z}\right)\cos z - \frac{3}{z^2}\sin z$ \\
+F-Wave & $\frac{3 \left(2 z^2-5\right) \cos z}{z^4}+\frac{\left(z^2-15\right) \sin z}{z^3}$ \\
+G-Wave & $\frac{5 \left(2 z^2-21\right) \sin z}{z^4}+\frac{\left(-z^4+45 z^2-105\right) \cos z}{z^5}$ \\
+H-Wave & $\frac{\left(-z^4+105 z^2-945\right) \sin z}{z^5}-\frac{15 \left(z^4-28 z^2+63\right) \cos z}{z^6}$ \\
+\bottomrule
+\end{tabular}
+\caption{Spherical Neumann functions for partial waves $\ell = 0$ through 5}
+\label{tab:SphNeum}
+\end{table}
+}
 
 
 

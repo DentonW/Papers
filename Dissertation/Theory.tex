@@ -166,8 +166,8 @@ For the P-wave and higher ($\ell > 0$),
 The symbols $\rho$ and $\rho'$ are defined as (refer to \cref{fig:PsHCoords,sec:RhoDef})
 \begin{subequations}
 \begin{align}
-\vec{\rho} &= \frac{1}{2}\left(\vec{r_1} + \vec{r_2}\right) \label{eq:RhoDef}\\
-\vec{\rho}^\prime &= \frac{1}{2}\left(\vec{r_1} + \vec{r_3}\right) \label{eq:RhopDef}.
+\bm{\rho} &= \frac{1}{2}\left(\bm{r}_1 + \bm{r}_2\right) \label{eq:RhoDef}\\
+\bm{\rho}^\prime &= \frac{1}{2}\left(\bm{r}_1 + \bm{r}_3\right) \label{eq:RhopDef}.
 \end{align}
 \end{subequations}
 
@@ -308,7 +308,8 @@ From Green's theorem,
 \end{align}
 $S_\rho$ is the surface at $\rho \rightarrow \infty$.
 
-Since we are only considering the direct terms in \cref{eq:GeneralWaveTrial} so far, let us define a direct term only version of \cref{eq:TildeSCDef} with
+Since we are only considering the direct terms in \cref{eq:GeneralWaveTrial} so
+far, let us define a direct term only version of \cref{eq:TildeSCDef} with
 \begin{subequations}
 \label{eq:TildeSCDefDir}
 \begin{align}
@@ -328,7 +329,8 @@ Substituting this into \cref{eq:IlPsiVariation4} with \cref{eq:GreensThm},
 \delta I_\ell^\prime = -\frac{1}{2} (L_\ell^t - L_\ell) \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{S_\rho} \left[(\widetilde{S}_d + L_\ell \, \widetilde{C}_d) \grad_\rho \widetilde{C}_d - \widetilde{C}_d \grad_\rho (\widetilde{S}_d + L_\ell \, \widetilde{C}_d) \right] \cdot d\bm{\sigma}_\rho d\tau_{12} d\tau_3 \;.
 \eeq
 
-From \cref{eq:SphBesDerRel,eq:GenSandC}, to first order, the gradient acting on $\widetilde{S}_d$ and $\widetilde{C}_d$ in \cref{eq:TildeSCDef} gives
+From \cref{eq:SphBesDerRel,eq:GenSandC}, to first order, the gradient acting
+on $\widetilde{S}_d$ and $\widetilde{C}_d$ in \cref{eq:TildeSCDef} gives
 \begin{subequations}
 \label{eq:GradSC}
 \begin{align}
@@ -336,7 +338,9 @@ From \cref{eq:SphBesDerRel,eq:GenSandC}, to first order, the gradient acting on 
 \grad_\rho \widetilde{C}_d &\sim \kappa \left[u_{10} C_\ell - u_{11} S_\ell \right] \hat{\bm\rho} \,.
 \end{align}
 \end{subequations}
-Substituting this into \cref{eq:IlPsiVariation5} and dropping the dot product, since the surface elements are in the same direction as $\hat{\bm\rho}$, this becomes
+Substituting this into \cref{eq:IlPsiVariation5} and dropping the dot product,
+since the surface elements are in the same direction as $\hat{\bm\rho}$,
+this becomes
 \begin{align}
 \label{eq:IlPsiVariation6a}
 \delta I_\ell^\prime \sim -\frac{1}{2} (L_\ell^t - L_\ell) & \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{S_\rho}  \left\{(\widetilde{S}_d + L_\ell \, \widetilde{C}_d) \kappa (u_{10} C_\ell - u_{11} S_\ell) \right. \nonumber \\

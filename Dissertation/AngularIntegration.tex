@@ -6,70 +6,8 @@
 \pagebreak
 \newpage
 
-\chapter{Angular Integrations}
+\chapter{External Angular Integrations}
 \label{chp:AngularInt}
-
-\section{Chebyshev-Gauss Quadrature}
-\label{sec:ChebyshevGauss}
-
-We need to prove equation 5.4 of Peter Van Reeth's thesis \cite[p.79]{VanReethThesis},
-given as
-\begin{equation}
-\Int{ D(\cos \varphi_{23})}{\varphi_{23},0,2\pi} \approx \frac{2\pi}{n}\sum_{i=1}^n D\left[\cos\left(\frac{2i-1}{2n}\pi\right)\right].
-\label{eq:PVRAng}
-\end{equation}
-To prove this, we start with
-\begin{equation}
-\Int{ D(\cos \varphi_{23}) }{\varphi_{23},0,\pi} \approx \frac{\pi}{n}\sum_{i=1}^n D\left[\cos\left(\frac{2i-1}{2n}\pi\right)\right].
-\label{eq:PVRAngNew}
-\end{equation}
-Both of these equations are variations on Gaussian quadratures. The
-Chebyshev-Gauss quadrature is given by
-\cite{Abramowitz1965,MathworldChebyshevGauss}
-\begin{equation}
-\Int{ \frac{f\left( x \right)}{\sqrt{1 - x^2}} }{x,-1,1} \approx \sum_{i = 1}^n {w_i}f\left( {{x_i}} \right),
-\label{eq:ChebyshevGauss}
-\end{equation}
-with $w_i = \frac{\pi}{n}$ and $x_i = \cos\left(\frac{2i-1}{2n}\pi\right)$.
-
-Starting from the left side of \cref{eq:PVRAngNew}, we have
-\begin{align}
-\Int{ D\left( {\cos \varphi } \right) }{\varphi,0,\pi} &= \Int{ \frac{1}{{\sqrt {1 - {{\cos }^2}\varphi } }}\sqrt {1 - {{\cos }^2}\varphi } \: D\!\left( {\cos \varphi } \right) }{\varphi,0,\pi} \\
-& = \Int{ \frac{1}{{\sqrt {1 - {{\cos }^2}\varphi } }} D\!\left( {\cos \varphi } \right)\sin \varphi \: }{\varphi,0,\pi}.
-\label{eq:PVRAngNew2}
-\end{align}
-
-Using the substitution $x = \cos \varphi$ and $dx = -\sin \varphi \:d\varphi$
-changes the limits to $x_{min} \!\!=\! \cos 0 \! =\! 1$ and
-$x_{max} = \cos \pi = -1$. \Cref{eq:PVRAngNew2} becomes
-\begin{equation}
-\int_0^\pi  D\left( {\cos \varphi } \right){\textrm{d}}\varphi = - \int_1^{ - 1} \frac{1}{{\sqrt {1 - {x^2}} }}D\left( x \right){\textrm{d}}x = \int_{ - 1}^1 \frac{1}{{\sqrt {1 - {x^2}} }}D\left( x \right){\textrm{d}}x.
-\label{eq:PVRAngNew3}
-\end{equation}
-This is the exact form needed for Gauss-Chebyshev quadrature (with f = D):
-\begin{equation}
-\int_0^\pi  D\left( {\cos \varphi } \right){\textrm{d}}\varphi \approx \frac{\pi }{n} \sum_{i = 1}^n D\!\left[ {\cos \left( {\frac{{2i - 1}}{{2n}}\pi } \right)} \right]
-\label{eq:AngQuadrature}
-\end{equation}
-
-This proves only form \cref{eq:PVRAngNew}. To prove \cref{eq:PVRAng}, we split up the integration into two parts:
-\begin{equation}
-\int_0^{2\pi } D\left( {\cos {\varphi_{23}}} \right){\textrm{d}}{\varphi_{23}} = \int_0^\pi  D\left( {\cos {\varphi_{23}}} \right){\textrm{d}}{\varphi_{23}} + \int _\pi ^{2\pi } D\left( {\cos {\varphi _{23}}} \right){\textrm{d}}{\varphi _{23}}.
-\label{eq:AngSplit}
-\end{equation}
-The first integration is just \cref{eq:PVRAngNew}. The only difference between the first and second integration is the limits. Defining $y = \varphi - \pi$ gives
-\begin{equation}
-\int _\pi ^{2\pi } D\left( {\cos {\varphi}} \right){\textrm{d}}{\varphi} = \int_0^\pi D\left[\cos(\varphi)\right] dy = \int_0^\pi D\left[\cos(y+\pi)\right] dy.
-\end{equation}
-If we also define $z = \cos \varphi = \cos(y+\pi)$ and $dz = \sin y \,dy$, we get an expression the same as \cref{eq:PVRAngNew3}:
-\begin{equation}
-\int_0^\pi D\left(\cos\varphi\right) dy = \int_0^\pi \frac{1}{\sqrt{1-z^2}} D(z)\, sin\varphi\, dy = \int_{-1}^1 \frac{1}{\sqrt{1-z^2}} D(z) dz
-\end{equation}
-Since this is the same as \cref{eq:PVRAngNew3}, we just combine this with \cref{eq:AngSplit,eq:AngQuadrature} to get \cref{eq:PVRAng}, proving the first form.
-
-
-\section{External Angular Integrations}
-\label{sec:AngularInt}
 
 We perform rotations and then integrations over the 3 
 external angles to reduce the 9-dimensional integrations to 6 dimensions. The
@@ -95,7 +33,7 @@ These coordinates are given in an arbitrary coordinate system as in
 \begin{figure}
 	\centering
 	\includegraphics[width=4.5in]{CoordinateSystemOriginal}
-	\caption{Ps-H original coordinate system}
+	\caption{Ps-H original coordinate system. This figure is the same as in Van Reeth \cite{VanReethThesis}.}
 	\label{fig:CoordinateSystemOriginal}
 \end{figure}
 
@@ -112,7 +50,7 @@ d\tau = r_1^2 dr_1 \sin\theta_1 d\theta_1 d\varphi_1 r_2^2 dr_2 \sin\theta_{12}
 \begin{figure}
 	\centering
 	\includegraphics[width=4.5in]{CoordinateSystemRotated}
-	\caption{Ps-H rotated coordinate system}
+	\caption{Ps-H rotated coordinate system. This figure is the same as in Van Reeth \cite{VanReethThesis}.}
 	\label{fig:CoordinateSystemRotated}
 \end{figure}
 \noindent The angles $\theta_{12}$, $\theta_{13}$, and $\varphi_{23}$ are 
@@ -181,7 +119,7 @@ d\tau = 8 \uppi^2 r_1 dr_1 r_2 dr_2 dr_3 r_{13} dr_{13} r_{23} dr_{23}
    d\varphi_{12}.
 \end{equation}
 
-For the P-wave and higher, we no longer have spherical symmetry, but there is
+For the P-wave and higher, there is no spherical symmetry, but there is
 azimuthal symmetry for $m = 0$ of the spherical harmonics for all partial 
 waves. %For the P-wave,
 %\cref{tab:SphHarm} gives
@@ -195,9 +133,10 @@ notebook entitled ``General Angular Integrations.nb'' \cite{GitHub}.
 
 
 
-\subsection{Terms with Identical Spherical Harmonics}
+\section{Terms with Identical Spherical Harmonics}
 \label{sec:AngSame}
-We are not integrating over all angles, so the orthogonality relations of the
+Since we are only investigating integrals over external angles in this
+Appendix, the orthogonality relations of the
 spherical harmonics do not hold. However, it can be seen that if we integrate
 over all external angles, $d\tau_{ext}$, any spherical harmonic with itself
 will give $2\pi$, i.e.
@@ -208,7 +147,7 @@ will give $2\pi$, i.e.
 where $i$ = $1$, 2, 3, $\rho$ or $\rho^\prime$.
 
 
-\subsection{Terms with \texorpdfstring{$Y_\ell^0(\theta_i, \varphi_i) Y_\ell^0(\theta_j, \varphi_j)$}{Yi-Yj} }
+\section{Terms with \texorpdfstring{$Y_\ell^0(\theta_i, \varphi_i) Y_\ell^0(\theta_j, \varphi_j)$}{Yi-Yj} }
 \label{sec:AngRiRj}
 
 These terms are not completely necessary to generalize here, because they 
@@ -226,7 +165,9 @@ result is
 \label{eq:AngRiRj}
 \Int{Y_\ell^0(\theta_i, \varphi_i) Y_\ell^0(\theta_j, \varphi_j)}{\tau_{ext}, \tau_{ext}} = 2 \pi \LegendreP{\ell, \cos\theta_{ij}}.
 \eeq
-where $i$ = $1$, 2, 3, $\rho$ or $\rho^\prime$. It takes some work to show that the results in the \emph{Mathematica} notebook ``General Angular Integrations.nb'' are equivalent to this.
+where $i$ = $1$, 2, 3, $\rho$ or $\rho^\prime$. The results in the
+\emph{Mathematica} notebook ``General Angular Integrations.nb'' are equivalent
+to this.
 
 These integrations for the first three partial waves are given below:
 \begin{subequations}
@@ -245,7 +186,7 @@ When performing the external angular integrations instead of using the general s
 This allows us to split these into multiple integrations with only polynomial $r_i$ and $r_{ij}$ terms with the decaying exponentials. Most of the other external angular integrations in this Appendix also end up with $\cos\theta_{ij}$, but those only apply to the long-range code, which does not have this restriction.
 
 
-\subsection{Terms with \texorpdfstring{$Y_\ell^0(\theta_1, \varphi_1) Y_\ell^0(\theta_{\rho}, \varphi_{\rho})$}{Y1-Yrho} and \texorpdfstring{$Y_\ell^0(\theta_1, \varphi_1) Y_\ell^0(\theta_{\rho^\prime}, \varphi_{\rho^\prime})$}{Y1-Yrho'}}
+\section{Terms with \texorpdfstring{$Y_\ell^0(\theta_1, \varphi_1) Y_\ell^0(\theta_{\rho}, \varphi_{\rho})$}{Y1-Yrho} and \texorpdfstring{$Y_\ell^0(\theta_1, \varphi_1) Y_\ell^0(\theta_{\rho^\prime}, \varphi_{\rho^\prime})$}{Y1-Yrho'}}
 \label{sec:AngR1Rho}
 
 After doing these integrations by hand for the P-, D-, and F-wave (the S-wave is just $2\pi$), I realized that it is possible to generalize these. This can be seen in the ``Vector Gaussian Integration.cpp'' file of the general long-range integration code (\cref{chp:Programs}). If we define
@@ -266,7 +207,7 @@ then
 \eeq
 
 
-\subsection{Terms with \texorpdfstring{$Y_\ell^0(\theta_2, \varphi_2) Y_\ell^0(\theta_{\rho}, \varphi_{\rho})$}{Y2-Yrho} and \texorpdfstring{$Y_\ell^0(\theta_3, \varphi_3) Y_\ell^0(\theta_{\rho^\prime}, \varphi_{\rho^\prime})$}{Y3-Yrho'}}
+\section{Terms with \texorpdfstring{$Y_\ell^0(\theta_2, \varphi_2) Y_\ell^0(\theta_{\rho}, \varphi_{\rho})$}{Y2-Yrho} and \texorpdfstring{$Y_\ell^0(\theta_3, \varphi_3) Y_\ell^0(\theta_{\rho^\prime}, \varphi_{\rho^\prime})$}{Y3-Yrho'}}
 \label{sec:AngR2Rho}
 
 Similar to \cref{sec:AngR1Rho}, these integrals are also generalizable and are used in the C++ file ``Vector Gaussian Integration.cpp''. Defining
@@ -287,7 +228,7 @@ which gives
 \eeq
 
 
-\subsection{Terms with \texorpdfstring{$Y_\ell^0(\theta_2, \varphi_2) Y_\ell^0(\theta_{\rho^\prime}, \varphi_{\rho^\prime})$}{Y2-Yrho'} and \texorpdfstring{$Y_\ell^0(\theta_3, \varphi_3) Y_\ell^0(\theta_{\rho}, \varphi_{\rho})$}{Y3-Yrho}}
+\section{Terms with \texorpdfstring{$Y_\ell^0(\theta_2, \varphi_2) Y_\ell^0(\theta_{\rho^\prime}, \varphi_{\rho^\prime})$}{Y2-Yrho'} and \texorpdfstring{$Y_\ell^0(\theta_3, \varphi_3) Y_\ell^0(\theta_{\rho}, \varphi_{\rho})$}{Y3-Yrho}}
 \label{sec:AngR2Rhop}
 
 This set is more complicated than those in \cref{sec:AngR2Rho} but look similar. We first define
@@ -309,9 +250,18 @@ giving
 %\todoi{The $w_4$ and $w_5$ look similar to equation (B.14) in Peter's thesis}
 
 
-\subsection{Terms with \texorpdfstring{$Y_\ell^0(\theta_\rho, \varphi_\rho) Y_\ell^0(\theta_{\rho^\prime}, \varphi_{\rho^\prime})$}{Yrho-Yrho'}}
+\section{Terms with \texorpdfstring{$Y_\ell^0(\theta_\rho, \varphi_\rho) Y_\ell^0(\theta_{\rho^\prime}, \varphi_{\rho^\prime})$}{Yrho-Yrho'}}
 
-These are the most difficult angular integrations considered. After performing these integrations by hand through the D-wave, I came up with a way to compute them in \emph{Mathematica}. These are derived in a \emph{Mathematica} notebook entitled ``General Angular Integrations.nb''. Using this method, the H-wave integral ($\ell = 5$) took approximately 1 hour and 26 minutes to calculate in \emph{Mathematica}. An I-wave version of this integral was attempted on the Talon2 cluster (single processor only), but it was killed after approximately 2 weeks of runtime. Without this result, the I-wave and higher cannot be calculated using this method.
+These are the most difficult angular integrations considered. After 
+performing these integrations by hand through the D-wave, I came up with a 
+way to compute them in \emph{Mathematica}. These are derived in a
+\emph{Mathematica} notebook entitled ``General Angular Integrations.nb''. Using 
+this method, the H-wave integral ($\ell = 5$) took approximately 1 hour and 26
+minutes to calculate in \emph{Mathematica} using an Intel Q6600 processor-based
+desktop computer. %An I-wave version of this 
+%integral was attempted on the Talon2 cluster (single processor only), but it 
+%was killed after approximately 2 weeks of runtime. Without this result, the I-
+%wave and higher cannot be calculated using this method.
 
 I discovered a way to generalize these integrals as well, but it was not until recently. Without realizing this relation, these integrals are very difficult to compute. Defining
 \beq

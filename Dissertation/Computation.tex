@@ -204,13 +204,14 @@ integrals to be evaluated. The overall powers of $r_1$, $r_2$, $r_{12}$, etc.\ i
 set of integrals without the overall powers the same, there is the possibility of
 two different integrals calling the same $W$ function.
 
-To speed up the program significantly, we precompute the $W$ functions and store
-the results in a look up table. The 4-dimensional matrix is constructed with the
-limits derived in \cref{chp:WLimits}. Even though there is a possibility for the
-$W$ function arguments to be anywhere in this space, not all of the $W$ matrix
-elements will be used.
+To speed up the partial wave specific programs for the short-short
+S-, P-, and D-wave matrix elements significantly, we precompute the $W$ functions
+and store the results in a look up table. The 4-dimensional matrix is constructed
+with the limits derived in \cref{chp:WLimits}. Even though there is a possibility
+for the $W$ function arguments to be anywhere in this space, not all of the $W$
+matrix elements will be used.
 
-The current S-wave, P-wave and D-wave short-range codes first do a dummy run
+The current S-, P-, and D-wave short-range codes first do a dummy run
 where the integrals are not actually calculated, but any $W$ matrix elements
 that need to be computed are marked. Only these are computed, and then the code
 runs through again using this $W$ matrix look up table. \Cref{tab:WFuncUnusedS}
@@ -571,10 +572,10 @@ For a discussion on the final quadrature points used, refer to \cref{sec:Quadrat
 \label{sec:Cusps}
 
 The short-long and long-long matrix element integrals have cusps in the
-integrands that must be dealt with. As an example, consider
-$(\bar{\phi}_i, L\bar{C}_0)$ from the S-wave. Using the notation of
-\cref{sec:LongLongR23}, where we are only computing the $r_{23}^{-1}$ terms
-(given fully later in \cref{eq:LCBar} on \pageref{eq:LCBar}),
+integrands that must be dealt with \cite{VanReethThesis,Armour1991}.
+As an example, consider$(\bar{\phi}_i, L\bar{C}_0)$ from the S-wave. Using the
+notation of \cref{sec:LongLongR23}, where we are only computing the
+$r_{23}^{-1}$ terms (given fully later in \cref{eq:LCBar} on \pageref{eq:LCBar}),
 \begin{align}
 (\bar{\phi}_i, L\bar{C}_0)_B = 8\pi^2 & \int_0^\infty \int_0^\infty \int_0^\infty \int_{|r_1 - r_2|}^{|r_1 + r_2|} \int_{|r_2 - r_3|}^{|r_2 + r_3|} \int_0^{2\pi} \bar{\phi}_i (\mathcal{L} \bar{C})_B  \nonumber \\
 & \times r_1 r_3 r_{13} r_{23}\, d\varphi_{13}\, dr_{23}\, dr_{12}\, dr_3\, dr_2\, dr_1.
@@ -601,8 +602,8 @@ The $r_2$ integration could be performed using just the Gauss-Laguerre
 quadrature, since we are integrating over $[0,\infty)$. However, the cusp 
 makes this integration slowly convergent. We instead split the integration 
 interval into two parts and employ different quadratures for each. The 
-integration is split to use Gauss-Legendre (\cref{eq:GaussLegGen}) on the 
-interval $[0,r_1]$ and Gauss-Laguerre (\cref{eq:GaussLagGen}) on the interval 
+integration is split to use Gauss-Legendre on the 
+interval $[0,r_1]$ and Gauss-Laguerre (\cref{sec:GaussQuad}) on the interval 
 $[r_1,\infty)$. Likewise, the $r_3$ integration is split into the intervals
 $[0,r_2]$ and $[r_2,\infty)$.
 
@@ -782,7 +783,8 @@ variational methods that contain spurious singularities.
 \begin{figure}
 	\centering
 	\includegraphics[width=5in]{swave-phase-divergence}
-	\caption{Breakdown in convergence of the $^1S$ phase
+	\caption[Breakdown in convergence of the $^1S$ phase shifts]
+{Breakdown in convergence of the $^1S$ phase
 shifts with respect to number of short-range terms for different $\tau$
 values for the generalized Kohn variational method}
 	\label{fig:swave-phase-divergence}
@@ -932,8 +934,9 @@ difference:
 \begin{equation}
 \label{eq:PercentDiff}
 %\% \text{ Diff} = \rhd(a,b) = \left| \frac{a - b}{(a + b) / 2} \right| \times 100\%.
-\% \text{ Diff} = \left| \frac{a - b}{(a + b) / 2} \right| \times 100\%.
+\% \text{ Diff} = \left| \frac{a - b}{(a + b) / 2} \right| \times 100\%,
 \end{equation}
+where $a$ and $b$ can represent any of these quantities.
 When we can compare convergence with respect to $\omega$, we define a
 convergence ratio as
 \begin{equation}

@@ -39,6 +39,8 @@ multiple methods for the nonlinear parameter optimization.
 \subsection{Broyden's Method}
 \label{sec:Broyden}
 
+%\todoi{``Bad''}
+
 %The next method I tried was Broyden's method \cite{Sauer2006}, which can 
 We used Broyden's method \cite{Sauer2006}, which can 
 solve for all three nonlinear parameters simultaneously. This was more stable 
@@ -50,8 +52,8 @@ show the nonlinear parameters used for $^3$S and $^1$P. All other partial waves
 used the simplex method described in \cref{sec:Simplex}. This is because I
 already had a number of results for $^3$S and $^1$P, so running everything
 again for simplex-optimized nonlinear parameters was unnecessary. For $^3$S,
-I was able to use even more terms than I could use for $^1$S \cref{tab:Nonlinear},
-and I was able to use the same number of terms for $^1$P and $^3$P.
+we were able to use even more terms than we could use for $^1$S \cref{tab:Nonlinear},
+and we were able to use the same number of terms for $^1$P and $^3$P.
 
 \setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
 \setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
@@ -252,7 +254,8 @@ contribution to the integrated cross section is small.
 This lead us to investigate whether the phase shifts could be improved by a
 better selection of the short-range nonlinear parameters. If the phase shifts
 were fully converged, varying the nonlinear parameters should have little
-effect on their values.
+effect on their values. Both Van Reeth \cite{VanReethPrivate} and I
+investigated this.
 
 Using the simplex method described in \cref{sec:Simplex}, we obtained a set of
 nonlinear parameters for $^1$D and $^3$D in \cref{tab:NonlinearOptimizedPD}.
@@ -264,7 +267,9 @@ optimization of the nonlinear parameters for two $\kappa$ values to try to
 improve the phase shifts.
 
 For this investigation, we chose $\kappa$ values in two different regions:
-one at lower $\kappa$ and another at higher $\kappa$. The $\kappa = 0.1$ choice
+one at lower $\kappa$ and another at higher $\kappa$. After optimization with
+these, we also checked convergence ratios in the more sensitive resonance
+region. The $\kappa = 0.1$ choice
 was made, since this is the lowest value that we report. We chose $\kappa = 0.6$
 for the higher $\kappa$ region, as this gets closer to the Ps(n=2) threshold
 but is far enough away from the $^1$D resonance to avoid sensitivity of the
@@ -275,8 +280,8 @@ For these variations, we kept $\gamma$ constant and used $\omega = 4$. From
 the simplex method (\cref{sec:Simplex}) for every partial wave for both the 
 singlet and triplet. An explanation is that the $r_3$ coordinate represents 
 the electron in H, and $\gamma = 1$ gives the short-range terms multiplied by 
-the H wavefunction given in \cref{eq:HWave}. We used the original nonlinear 
-parameters found by the simplex method and  given in
+the H wavefunction given in \cref{eq:HWave} \cite{VanReethPrivate}. We used the
+original nonlinear parameters found by the simplex method and given in
 \cref{tab:NonlinearOptimizedPD} as a starting set. For
 $^1$D, these are $\alpha = 0.359$, $\beta = 0.368$, and $\gamma = 0.976$. For
 $^3$D, these are $\alpha = 0.356$, $\beta = 0.365$, and $\gamma = 0.976$.
@@ -573,92 +578,92 @@ terms used for each partial wave. This table is the same as that in our
 Ref.~\cite{Woods2015}.
 
 
-\section{L\"uchow and Kleindienst Algorithm}
-\label{sec:LuchowBound}
-The algorithm that L\"uchow and Kleindienst \cite{Luchow1992} propose is 
-similar to Todd's method \cite{sec:ToddBound}. They use all terms through $\omega = 5$, since 
-none of these have linear dependence within this set. This fact could be 
-applied to Allan Todd's algorithm to speed up the calculation. The rest of 
-the terms are partitioned up into blocks of 300-400 terms, except the last 
-block, which will have modulus(N - 462, block size) terms. A key difference 
-from Allan Todd's algorithm is that the terms should be ordered in terms of 
-increasing $\omega$. In Allan Todd's algorithm, the initial ordering does not 
-matter. The terms in the first block are added to the basis set for
-$\omega = 5$, which has 462 terms. If we use a block with 300 terms, then 300 matrices 
-of size $463 \times 463$ are created, and their eigenvalues are determined. Whichever 
-term gives the lowest energy when added to this set is saved to the basis 
-set. This continues with ever-increasing matrix sizes, until all terms in the 
-block are used, or a linear dependence is noticed. L\"uchow and Kleindienst 
-propose that linear dependences can be prevented by omitting terms that do 
-not contribute significantly to the energy. The energy from the previous step 
-is saved, and the energy from the current step is compared to this. If the 
-difference in energies is small, e.g. $\Delta E < 10^{-10} E_h$ in their 
-paper, then that term is omitted. Since the lowest energy is chosen at each 
-step, when this $\Delta E$ is too small, the rest of the block can be omitted.
-
-Two parameters that are adjustable in this algorithm are the block size and 
-cutoff value for the energy. To determine the best values for each, we
-set $\omega = 7$, and one of the parameters was held constant. To 
-determine the optimal block size, an energy cutoff of $5\e{-9}$ was used.
-\begin{center}
-\begin{tabular}{|c|c|c|c|}
-\hline
-Block size & Used terms & Energy & Time (min)\\
-\hline
-200 & 1041 & -0.789 181 890 & 470 \\
-250 & 1024 & -0.789 184 500 & 572 \\
-300 & 960 &  -0.789 180 520 & 749 \\
-350 & 999 &  -0.789 181 942 & unknown \\
-400 & 1012 & -0.789 185 588 & 852 \\
-500 & 985 &  -0.789 184 116 & 764 \\
-\hline
-\end{tabular}
-\end{center}
-
-For most trials, increasing the block size also increased the time it took to 
-complete the computation. It can be seen that a block size of N-462 gives a 
-modified version of Todd's algorithm, since we are testing all terms at each 
-step. A block size of 1 would correspond to no reordering of terms, leading 
-to including problematic terms. The cutoff value for $\Delta E$,
-$E_{\text{cutoff}}$, is $10^{-10} E_h$ in L\"uchow and Kleindienst's paper
-\cite{Luchow1992}, but a value of $10^{-10}$ in our calculations led to LAPACK 
-errors due to linear dependences. The block size was set to 400, and it was
-determined that an energy cutoff of $10^{-9}$ was the largest value that caused linear 
-dependences.
-
-\begin{center}
-\begin{tabular}{|c|c|c|}
-\hline
-Energy cutoff & Used terms & Energy\\
-\hline
-2\e{-9} & 1116 & -0.789 185 858 \\
-3\e{-9} & 1053 & -0.789 186 346 \\
-4\e{-9} & 1043 & -0.789 185 173 \\
-5\e{-9} & 1012 & -0.789 185 588 \\
-1\e{-8} & 963 &  -0.789 188 024 \\
-\hline
-\end{tabular}
-\end{center}
-
-Unfortunately, the intuition that a larger block size and smaller energy 
-cutoff will yield a better final energy is not necessarily correct. The best 
-value of the energy was actually obtained for the largest tested energy 
-cutoff of $10^{-8}$. A block size of 500 also gave a worse energy than did a 
-block size of 400. More tests need to be performed to determine the optimal 
-value of both parameters, and these could possibly change for higher values 
-of $\omega$ or for a different system.
-
-We decided to use the Todd algorithm (\cref{sec:ToddBound}) due to the better 
-energy obtained and the larger set of terms returned. The Todd algorithm is 
-also more consistent between runs. The trade-off is the increased time to 
-perform a calculation, especially for large $\omega$.
-
-\begin{figure}
-	\centering
-	{\includegraphics[height=2in]{Luchow}}
-	\caption{Diagram of L\"uchow and Kleindienst procedure}
-	\label{fig:Luchow}
-\end{figure}
+%\section{L\"uchow and Kleindienst Algorithm}
+%\label{sec:LuchowBound}
+%The algorithm that L\"uchow and Kleindienst \cite{Luchow1992} propose is 
+%similar to Todd's method \cite{sec:ToddBound}. They use all terms through $\omega = 5$, since 
+%none of these have linear dependence within this set. This fact could be 
+%applied to Allan Todd's algorithm to speed up the calculation. The rest of 
+%the terms are partitioned up into blocks of 300-400 terms, except the last 
+%block, which will have modulus(N - 462, block size) terms. A key difference 
+%from Allan Todd's algorithm is that the terms should be ordered in terms of 
+%increasing $\omega$. In Allan Todd's algorithm, the initial ordering does not 
+%matter. The terms in the first block are added to the basis set for
+%$\omega = 5$, which has 462 terms. If we use a block with 300 terms, then 300 matrices 
+%of size $463 \times 463$ are created, and their eigenvalues are determined. Whichever 
+%term gives the lowest energy when added to this set is saved to the basis 
+%set. This continues with ever-increasing matrix sizes, until all terms in the 
+%block are used, or a linear dependence is noticed. L\"uchow and Kleindienst 
+%propose that linear dependences can be prevented by omitting terms that do 
+%not contribute significantly to the energy. The energy from the previous step 
+%is saved, and the energy from the current step is compared to this. If the 
+%difference in energies is small, e.g. $\Delta E < 10^{-10} E_h$ in their 
+%paper, then that term is omitted. Since the lowest energy is chosen at each 
+%step, when this $\Delta E$ is too small, the rest of the block can be omitted.
+%
+%Two parameters that are adjustable in this algorithm are the block size and 
+%cutoff value for the energy. To determine the best values for each, we
+%set $\omega = 7$, and one of the parameters was held constant. To 
+%determine the optimal block size, an energy cutoff of $5\e{-9}$ was used.
+%\begin{center}
+%\begin{tabular}{|c|c|c|c|}
+%\hline
+%Block size & Used terms & Energy & Time (min)\\
+%\hline
+%200 & 1041 & -0.789 181 890 & 470 \\
+%250 & 1024 & -0.789 184 500 & 572 \\
+%300 & 960 &  -0.789 180 520 & 749 \\
+%350 & 999 &  -0.789 181 942 & unknown \\
+%400 & 1012 & -0.789 185 588 & 852 \\
+%500 & 985 &  -0.789 184 116 & 764 \\
+%\hline
+%\end{tabular}
+%\end{center}
+%
+%For most trials, increasing the block size also increased the time it took to 
+%complete the computation. It can be seen that a block size of N-462 gives a 
+%modified version of Todd's algorithm, since we are testing all terms at each 
+%step. A block size of 1 would correspond to no reordering of terms, leading 
+%to including problematic terms. The cutoff value for $\Delta E$,
+%$E_{\text{cutoff}}$, is $10^{-10} E_h$ in L\"uchow and Kleindienst's paper
+%\cite{Luchow1992}, but a value of $10^{-10}$ in our calculations led to LAPACK 
+%errors due to linear dependences. The block size was set to 400, and it was
+%determined that an energy cutoff of $10^{-9}$ was the largest value that caused linear 
+%dependences.
+%
+%\begin{center}
+%\begin{tabular}{|c|c|c|}
+%\hline
+%Energy cutoff & Used terms & Energy\\
+%\hline
+%2\e{-9} & 1116 & -0.789 185 858 \\
+%3\e{-9} & 1053 & -0.789 186 346 \\
+%4\e{-9} & 1043 & -0.789 185 173 \\
+%5\e{-9} & 1012 & -0.789 185 588 \\
+%1\e{-8} & 963 &  -0.789 188 024 \\
+%\hline
+%\end{tabular}
+%\end{center}
+%
+%Unfortunately, the intuition that a larger block size and smaller energy 
+%cutoff will yield a better final energy is not necessarily correct. The best 
+%value of the energy was actually obtained for the largest tested energy 
+%cutoff of $10^{-8}$. A block size of 500 also gave a worse energy than did a 
+%block size of 400. More tests need to be performed to determine the optimal 
+%value of both parameters, and these could possibly change for higher values 
+%of $\omega$ or for a different system.
+%
+%We decided to use the Todd algorithm (\cref{sec:ToddBound}) due to the better 
+%energy obtained and the larger set of terms returned. The Todd algorithm is 
+%also more consistent between runs. The trade-off is the increased time to 
+%perform a calculation, especially for large $\omega$.
+%
+%\begin{figure}
+	%\centering
+	%{\includegraphics[height=2in]{Luchow}}
+	%\caption{Diagram of L\"uchow and Kleindienst procedure}
+	%\label{fig:Luchow}
+%\end{figure}
 
 
 \section{S-Wave Maximum \texorpdfstring{$\mu$}{mu}}
@@ -703,41 +708,64 @@ be chosen for certain classes of integrals. Three main types of weight
 functions are used in this work. For a discussion on the number of quadrature 
 points used, refer to \cref{sec:QuadraturePoints}.
 
+For most integrals over finite intervals, we use the Gauss-Legendre quadrature.
+The exception is when we integrate over an interior angle ($\varphi_{ij}$),
+where we use the Chebyshev-Gauss quadrature. For semi-infinite integrations,
+we use Gauss-Laguerre quadratures. Each of these can be seen in
+Ref.~\cite[p.887-890]{Abramowitz1965}.
 
-\subsection{Gauss-Legendre Quadrature}
-\label{sec:GaussLegendre}
-If the weight function is chosen as $W(x)=1$, and the integration interval is $(-1,1)$, this is known as Gauss-Legendre quadrature (or sometimes known simply as Gaussian quadrature). The orthogonal polynomials used are the Legendre polynomials, $P_n(x)$. \Cref{eq:GeneralQuadratures} becomes
-\beq
-\label{eq:GaussLeg}
-\int_{-1}^1 f(x) dx \approx \sum_{i=1}^n w_i f(x_i),
-\eeq
-where the $x_i$ abscissas are the $i^{th}$ zeros of $L_n(x)$, and the weights are given by
-\beq
-\label{eq:GaussLegWeights}
-w_i = \frac{2}{(1-x_i^2)[P^\prime_n(x_i)]^2}.
-\eeq
-The limits of integration must be from $-1$ to $1$, but this is generalized by using the transformation \cite{Abramowitz1965}
-\begin{align}
-\label{eq:GaussLegGen}
-\int_a^b f(x) dx &= \frac{b-a}{2} \int_{-1}^1 f \left(\frac{b-a}{2} x + \frac{a+b}{2}\right) dx \\
-&\approx \frac{b-a}{2} \sum_{i=1}^n w_i f \left(\frac{b-a}{2} x_i + \frac{a+b}{2}\right).
-\end{align}
+The Gauss-Laguerre quadrature is typically over the range $(-1,1)$ but can be
+modified to arbitrary finite intervals using a standard formula given in
+Ref.~\cite[p.887]{Abramowitz1965}. Discussion over adapting the Gauss-Laguerre
+quadrature to use an arbitrary lower limit and an extra constant multiplying
+the variable in the exponential is found in \cref{sec:GaussLag}. Discussion over
+adapting the Chebyshev-Gauss quadrature to the $\varphi_{ij}$ innermost
+integrations is given in \cref{sec:ChebyshevGauss}.
+
+
+%\subsection{Gauss-Legendre Quadrature}
+%\label{sec:GaussLegendre}
+%If the weight function is chosen as $W(x)=1$, and the integration interval is $(-1,1)$, this is known as Gauss-Legendre quadrature (or sometimes known simply as Gaussian quadrature). The orthogonal polynomials used are the Legendre polynomials, $P_n(x)$. \Cref{eq:GeneralQuadratures} becomes
+%\beq
+%\label{eq:GaussLeg}
+%\int_{-1}^1 f(x) dx \approx \sum_{i=1}^n w_i f(x_i),
+%\eeq
+%where the $x_i$ abscissas are the $i^{th}$ zeros of $L_n(x)$, and the weights are given by
+%\beq
+%\label{eq:GaussLegWeights}
+%w_i = \frac{2}{(1-x_i^2)[P^\prime_n(x_i)]^2}.
+%\eeq
+%The limits of integration must be from $-1$ to $1$, but this is generalized by using the transformation \cite{Abramowitz1965}
+%\begin{align}
+%\label{eq:GaussLegGen}
+%\int_a^b f(x) dx &= \frac{b-a}{2} \int_{-1}^1 f \left(\frac{b-a}{2} x + \frac{a+b}{2}\right) dx \\
+%&\approx \frac{b-a}{2} \sum_{i=1}^n w_i f \left(\frac{b-a}{2} x_i + \frac{a+b}{2}\right).
+%\end{align}
 
 
 \subsection{Gauss-Laguerre Quadrature}
 \label{sec:GaussLag}
-The Gauss-Legendre quadrature cannot be used on semi-infinite intervals, so we use the Gauss-Laguerre quadrature in these cases. The orthogonal polynomials in this case are the Laguerre polynomials, $L_n(x)$, and the weight function is $W(x) = e^{-x}$. \Cref{eq:GeneralQuadratures} becomes
+%The Gauss-Legendre quadrature cannot be used on semi-infinite intervals, so we use the Gauss-Laguerre quadrature in these cases. The orthogonal polynomials in this case are the Laguerre polynomials, $L_n(x)$, and the weight function is $W(x) = e^{-x}$. \Cref{eq:GeneralQuadratures} becomes
+%\beq
+%\label{eq:GaussLag}
+%\int_0^\infty e^{-x} f(x) dx \approx \sum_{i=1}^n w_i f(x_i),
+%\eeq
+%where the $x_i$ abscissas are the $i^{th}$ zeros of $L_n(x)$, and the weights are given by
+%\beq
+%\label{eq:GaussLagWeights}
+%w_i = \frac{x_i}{(n+1)^2 [L_{n+1}(x_i)]^2}.
+%\eeq
+
+The Gauss-Legendre quadrature cannot be used on semi-infinite intervals, so 
+we use the Gauss-Laguerre quadrature in these cases. The orthogonal 
+polynomials in this case are the Laguerre polynomials, $L_n(x)$, and the 
+weight function is $W(x) = e^{-x}$. The specific form of
+\cref{eq:GeneralQuadratures} is
 \beq
 \label{eq:GaussLag}
-\int_0^\infty e^{-x} f(x) dx \approx \sum_{i=1}^n w_i f(x_i),
+\int_0^\infty e^{-x} f(x) dx \approx \sum_{i=1}^n w_i f(x_i).
 \eeq
-where the $x_i$ abscissas are the $i^{th}$ zeros of $L_n(x)$, and the weights are given by
-\beq
-\label{eq:GaussLagWeights}
-w_i = \frac{x_i}{(n+1)^2 [L_{n+1}(x_i)]^2}.
-\eeq
-
-When the integration is over the interval $(a,\infty)$, \cref{eq:GaussLag} is easily transformed by
+When the integration is over the interval $(a,\infty)$ instead, \cref{eq:GaussLag} is transformed by
 \beq
 \label{eq:GaussLagGen1}
 \int_a^\infty e^{-x} f(x) dx = \int_0^\infty e^{-(x+a)} f(x+a) dx = e^{-a} \int_0^\infty e^{-x} f(x+a) dx \approx e^{-a} \sum_{i=1}^n w_i f(x_i+a).
@@ -754,45 +782,103 @@ where we have defined $y = m x$.  This allows for \cref{eq:GaussLagGen1} to be g
 \nonumber \int_a^\infty e^{-m x} f(x) dx &= \frac{1}{m} \int_{ma}^\infty e^{-y} f\left(\frac{y}{m}\right) dy = \frac{1}{m} \int_0^\infty e^{-(y+ma)} f\left(\frac{y}{m}+a\right) dy \\
 & = \frac{e^{-ma}}{m} \int_0^\infty e^{-y} f\left(\frac{y}{m}+a\right) dy \approx \frac{e^{-ma}}{m} \sum_{i=1}^n w_i f\left(\frac{y_i}{m}+a\right).
 \end{align}
-The $y_i$ abscissas and $w_i$ weights are the same as the less general case in
-\cref{eq:GaussLag,eq:GaussLagWeights}. This general form of Gauss-Laguerre
+The $y_i$ abscissas and $w_i$ weights are the same as %the less general case in
+%\cref{eq:GaussLag,eq:GaussLagWeights}.
+the standard Gauss-Laguerre quadrature. This more general form
 quadrature is what we use for semi-infinite integrations.
 
 
-\subsection{Chebyshev--Gauss Quadrature}
-\label{sec:ChebyshevGauss1}
-If the weight function is chosen as $W(x)=\frac{1}{\sqrt{1-x^2}}$, and the
-integration interval is $(-1,1)$, this is known as Chebyshev-Gauss quadrature.
-The orthogonal polynomials used are the Chebyshev polynomials of the first
-kind, $T_n(x)$. \Cref{eq:GeneralQuadratures} becomes
-\beq
-\label{eq:GaussCheb}
-\int_{-1}^1 \frac{f(x)}{\sqrt{1-x^2}} dx \approx \sum_{i=1}^n w_i f(x_i),
-\eeq
-where
-\beq
-\label{eq:GaussChebAbsWeights}
-x_i = \cos\left(\frac{2i-1}{n}\pi\right) \text{ and } w_i = \frac{\pi}{n}.
-\eeq
-This quadrature is used for the internal angular integrations. A discussion of
-how to use this for these integrations is found in \cref{sec:ChebyshevGauss}.
+%\subsection{Chebyshev--Gauss Quadrature}
+%\label{sec:ChebyshevGauss1}
+%If the weight function is chosen as $W(x)=\frac{1}{\sqrt{1-x^2}}$, and the
+%integration interval is $(-1,1)$, this is known as Chebyshev-Gauss quadrature.
+%The orthogonal polynomials used are the Chebyshev polynomials of the first
+%kind, $T_n(x)$. \Cref{eq:GeneralQuadratures} becomes
+%\beq
+%\label{eq:GaussCheb}
+%\int_{-1}^1 \frac{f(x)}{\sqrt{1-x^2}} dx \approx \sum_{i=1}^n w_i f(x_i),
+%\eeq
+%where
+%\beq
+%\label{eq:GaussChebAbsWeights}
+%x_i = \cos\left(\frac{2i-1}{n}\pi\right) \text{ and } w_i = \frac{\pi}{n}.
+%\eeq
+%This quadrature is used for the internal angular integrations. A discussion of
+%how to use this for these integrations is found in \cref{sec:ChebyshevGauss}.
+
+
+\subsection{Chebyshev-Gauss Quadrature}
+\label{sec:ChebyshevGauss}
+
+To integrate over the $\varphi_{ij}$ variable, we can use \cite[p.79]{VanReethThesis}
+\begin{equation}
+\Int{ D(\cos \varphi_{23})}{\varphi_{23},0,2\pi} \approx \frac{2\pi}{n}\sum_{i=1}^n D\left[\cos\left(\frac{2i-1}{2n}\pi\right)\right].
+\label{eq:PVRAng}
+\end{equation}
+To prove this, we start with
+\begin{equation}
+\Int{ D(\cos \varphi_{23}) }{\varphi_{23},0,\pi} \approx \frac{\pi}{n}\sum_{i=1}^n D\left[\cos\left(\frac{2i-1}{2n}\pi\right)\right].
+\label{eq:PVRAngNew}
+\end{equation}
+Both of these equations are variations on Gaussian quadratures. The
+Chebyshev-Gauss quadrature is given by
+\cite{Abramowitz1965,MathworldChebyshevGauss}
+\begin{equation}
+\Int{ \frac{f\left( x \right)}{\sqrt{1 - x^2}} }{x,-1,1} \approx \sum_{i = 1}^n {w_i}f\left( {{x_i}} \right),
+\label{eq:ChebyshevGauss}
+\end{equation}
+with $w_i = \frac{\pi}{n}$ and $x_i = \cos\left(\frac{2i-1}{2n}\pi\right)$.
+
+Starting from the left side of \cref{eq:PVRAngNew}, we have
+\begin{align}
+\Int{ D\left( {\cos \varphi } \right) }{\varphi,0,\pi} &= \Int{ \frac{1}{{\sqrt {1 - {{\cos }^2}\varphi } }}\sqrt {1 - {{\cos }^2}\varphi } \: D\!\left( {\cos \varphi } \right) }{\varphi,0,\pi} \\
+& = \Int{ \frac{1}{{\sqrt {1 - {{\cos }^2}\varphi } }} D\!\left( {\cos \varphi } \right)\sin \varphi \: }{\varphi,0,\pi}.
+\label{eq:PVRAngNew2}
+\end{align}
+
+Using the substitution $x = \cos \varphi$ and $dx = -\sin \varphi \:d\varphi$
+changes the limits to $x_{min} \!\!=\! \cos 0 \! =\! 1$ and
+$x_{max} = \cos \pi = -1$. \Cref{eq:PVRAngNew2} becomes
+\begin{equation}
+\int_0^\pi  D\left( {\cos \varphi } \right){\textrm{d}}\varphi = - \int_1^{ - 1} \frac{1}{{\sqrt {1 - {x^2}} }}D\left( x \right){\textrm{d}}x = \int_{ - 1}^1 \frac{1}{{\sqrt {1 - {x^2}} }}D\left( x \right){\textrm{d}}x.
+\label{eq:PVRAngNew3}
+\end{equation}
+This is the exact form needed for Gauss-Chebyshev quadrature (with f = D):
+\begin{equation}
+\int_0^\pi  D\left( {\cos \varphi } \right){\textrm{d}}\varphi \approx \frac{\pi }{n} \sum_{i = 1}^n D\!\left[ {\cos \left( {\frac{{2i - 1}}{{2n}}\pi } \right)} \right]
+\label{eq:AngQuadrature}
+\end{equation}
+
+This proves only form \cref{eq:PVRAngNew}. To prove \cref{eq:PVRAng}, we split up the integration into two parts:
+\begin{equation}
+\int_0^{2\pi } D\left( {\cos {\varphi_{23}}} \right){\textrm{d}}{\varphi_{23}} = \int_0^\pi  D\left( {\cos {\varphi_{23}}} \right){\textrm{d}}{\varphi_{23}} + \int _\pi ^{2\pi } D\left( {\cos {\varphi _{23}}} \right){\textrm{d}}{\varphi _{23}}.
+\label{eq:AngSplit}
+\end{equation}
+The first integration is just \cref{eq:PVRAngNew}. The only difference between the first and second integration is the limits. Defining $y = \varphi - \pi$ gives
+\begin{equation}
+\int _\pi ^{2\pi } D\left( {\cos {\varphi}} \right){\textrm{d}}{\varphi} = \int_0^\pi D\left[\cos(\varphi)\right] dy = \int_0^\pi D\left[\cos(y+\pi)\right] dy.
+\end{equation}
+If we also define $z = \cos \varphi = \cos(y+\pi)$ and $dz = \sin y \,dy$, we get an expression the same as \cref{eq:PVRAngNew3}:
+\begin{equation}
+\int_0^\pi D\left(\cos\varphi\right) dy = \int_0^\pi \frac{1}{\sqrt{1-z^2}} D(z)\, sin\varphi\, dy = \int_{-1}^1 \frac{1}{\sqrt{1-z^2}} D(z) dz
+\end{equation}
+Since this is the same as \cref{eq:PVRAngNew3}, we just combine this with \cref{eq:AngSplit,eq:AngQuadrature} to get \cref{eq:PVRAng}, proving the first form.
 
 
 
-\section{Selection of Quadrature Points}
+\subsection{Selection of Quadrature Points}
 \label{sec:SelQuadPoints}
 
 %\todoi{Show how compare to Peter's set - including information from the Mathematica notebook}
 
 The number of quadrature points for each coordinate in the 6-dimensional 
 integrations is critical to have fully converged results. In our testing, the 
-$r_1$ coordinate (the coordinate of $e^+$) was the most important, requiring 
-more integration points than any other. The $r_2$ and $r_3$ coordinates were 
-the second most important, and the interparticle terms ($r_{12}$, $r_{13}$ 
-and $r_{23}$) were the least important. These results only apply to the
-long-long and long-short terms, as the short-short terms are integrated using 
-the same asymptotic expansion method as the bound state problem
-(see \cref{sec:MatrixShort}).
+$r_1$ coordinate (the coordinate of $e^+$) required more integration points 
+than any other. The $r_2$ and $r_3$ coordinates required less points, and the 
+interparticle terms ($r_{12}$, $r_{13}$ and $r_{23}$) required the least. 
+These results only apply to the long-long and long-short terms, as the short-
+short terms are integrated using the asymptotic expansion method (see
+\cref{sec:MatrixShort}).
 
 To determine this, we held the number of integration points fixed, except for 
 one coordinate, which we increased in steps. The difference in the output 
@@ -802,234 +888,311 @@ For instance, the $(\bar{S}_\ell,\mathcal{L} \bar{S}_\ell)$ term converges
 relatively quickly, while the $(\bar{C}_\ell,\mathcal{L} \bar{C}_\ell)$ 
 term requires more integration points.
 
-We also used a sample input file from Van Reeth \cite{VanReethPrivate} for the number of quadrature 
-points he used in his code. In \cref{fig:OriginalPhaseShifts-pvr}, this 
-set of points was used. After approximately 525 short-range terms, it is 
-immediately apparent that the phase shifts diverge, with a particularly large 
-deviation in the inverse Kohn output. The Kohn and complex Kohn methods 
-converge again shortly before 600 terms and stay converged up to 1000 terms.
+We also used a sample input file from Van Reeth \cite{VanReethPrivate} for
+the number of quadrature points he used in his code as a starting point.
+This is shown in \cref{tab:BaseEffectiveCoords}.
+%Using the comparison program described in \cref{sec:CompareProg}, we
+Using a comparison program with the Developer's Image Library \cite{DevIL}, we
+determined a set of quadrature points that yielded good convergence of
+the matrix elements with a reasonable runtime. The final set of quadrature
+points that we use for all partial waves is shown in
+\cref{tab:OptimalEffectiveCoords}. This set yielded good convergence for
+partial waves through the H-wave.
 
-Adding 5 points to all integrations yields a much more well-behaved graph in 
-\cref{fig:OriginalPhaseShifts-pvrplus5}. There are slight variations, 
-one of which can be seen in the inset graph at about 540 terms, but the 
-results are overall converged up to 1100 terms.
+%We also used a sample input file from Van Reeth \cite{VanReethPrivate} for the number of quadrature 
+%points he used in his code. In \cref{fig:OriginalPhaseShifts-pvr}, this 
+%set of points was used. After approximately 525 short-range terms, it is 
+%immediately apparent that the phase shifts diverge, with a particularly large 
+%deviation in the inverse Kohn output. The Kohn and complex Kohn methods 
+%converge again shortly before 600 terms and stay converged up to 1000 terms.
+%
+%Adding 5 points to all integrations yields a much more well-behaved graph in 
+%\cref{fig:OriginalPhaseShifts-pvrplus5}. There are slight variations, 
+%one of which can be seen in the inset graph at about 540 terms, but the 
+%results are overall converged up to 1100 terms.
+%
+%Increasing the number of points can have a huge impact on performance. Adding 
+%5 points to an $\omega = 0$ calculation takes 3.5 hours, while adding 10 
+%points makes it take 6.1 hours, or approximately twice the time. So we have 
+%to make a trade-off between accuracy and performance.
+%
+%To determine an optimal set of points, 10 points were added to Van Reeth's 
+%set in all coordinates, and a run was done with this set. Then 5 points were 
+%subtracted from one coordinate from this set for each run, once for each 
+%coordinate. The difference in the matrix elements and phase shifts was small 
+%for the 2nd, 3rd and 4th coordinates. A final run using 5 points extra from 
+%Van Reeth's set for the 2nd, 3rd and 4th coordinates, along with 10 points 
+%extra in all other coordinates, showed small differences from the first set 
+%that had 10 points extra in all coordinates. Reducing the points of any of 
+%the other coordinates resulted in larger differences from the set with 10 
+%extra points in all coordinates. This final set, referred to as the ``optimal 
+%set'' in \cref{tab:OptimalEffectiveCoords}, is used in all of the current
+%runs. Increasing the number of 
+%integration points further than could potentially lead to better accuracy, 
+%though numerical instabilities start appearing with 15 extra points over the 
+%base set.
+%
+%
+%\begin{figure}
+	%\centering
+	%\includegraphics[width=\textwidth]{OriginalPhaseShifts-pvr}
+	%\caption{Phase shifts with original ordering $(\omega = 7)$}
+	%\label{fig:OriginalPhaseShifts-pvr}
+%\end{figure}
+%
+%\begin{figure}
+	%\centering
+	%\includegraphics[width=\textwidth]{OriginalPhaseShifts-pvrplus5}
+	%\caption{Phase shifts with original ordering and 5 extra points $(\omega = 7)$}
+	%\label{fig:OriginalPhaseShifts-pvrplus5}
+%\end{figure}
+%
+%
 
-Increasing the number of points can have a huge impact on performance. Adding 
-5 points to an $\omega = 0$ calculation takes 3.5 hours, while adding 10 
-points makes it take 6.1 hours, or approximately twice the time. So we have 
-to make a trade-off between accuracy and performance.
+%\subsection{Comparison Program}
+%\label{sec:CompareProg}
+%\begin{figure}
+	%\resizebox{1.0\textwidth}{!}{\includegraphics{QuadPoints/ColorKey.pdf}}
+	%\caption{Color key for differences}
+	%\label{fig:ColorKey}
+%\end{figure}
+%I wrote the program \emph{Comparison} \cite{GitHub} to visually compare two runs with different numbers of integration points. This program calculates the relative difference between similar matrix elements of the two input files. The relative difference is given by \cref{eq:PercentDiff}.
+%Since the values of matrix elements can range over many orders of magnitude, the relative difference is an appropriate measure of the change caused by varying the number of integration points.
+%%The other option would have been to use the absolute difference, which is given by 
+%%\beq
+%%\text{diff}_{abs} = \left| elem_1 - elem_2 \right| \times 100\%.
+%%\eeq
+%%However, this is a poor measure of the differences, and the relative differences give much more useful information for our purposes.
+%
+%The comparison program calculates these relative differences for each matrix element between the two input files and creates an image using the colors in \cref{fig:ColorKey} by using the Developer's Image Library \cite{DevIL}. So if a column of pixels in the output image is yellow, then the relative difference for that matrix element is on the order of $10^{-6}$. This is an example image from running this program:
+%\begin{figure}
+	%\centering
+	%\resizebox{0.8\textwidth}{!}{\includegraphics{QuadPoints/Example.png}}
+	%\caption{Example matrix element comparison image}
+	%\label{fig:QuadExample}
+%\end{figure}
+%This only looks at the output from the long-range programs, and this is the first row (or column) of the $A$ matrix. The \emph{Comparison} program outputs a vertical line for each matrix element to make them more visible than outputting a single pixel. More examples and descriptions of the command line syntax are available on the \htmladdnormallink{Wiki}{http://129.120.30.66/wiki/index.php/Long-range_graphical_comparison_program} and GitHub \cite{Wiki,GitHub}.
 
-To determine an optimal set of points, 10 points were added to Van Reeth's 
-set in all coordinates, and a run was done with this set. Then 5 points were 
-subtracted from one coordinate from this set for each run, once for each 
-coordinate. The difference in the matrix elements and phase shifts was small 
-for the 2nd, 3rd and 4th coordinates. A final run using 5 points extra from 
-Van Reeth's set for the 2nd, 3rd and 4th coordinates, along with 10 points 
-extra in all other coordinates, showed small differences from the first set 
-that had 10 points extra in all coordinates. Reducing the points of any of 
-the other coordinates resulted in larger differences from the set with 10 
-extra points in all coordinates. This final set, referred to as the ``optimal 
-set'' in \cref{tab:OptimalEffectiveCoords}, is used in all of the current
-runs. Increasing the number of 
-integration points further than could potentially lead to better accuracy, 
-though numerical instabilities start appearing with 15 extra points over the 
-base set.
-
-
-\begin{figure}
-	\centering
-	\includegraphics[width=\textwidth]{OriginalPhaseShifts-pvr}
-	\caption{Phase shifts with original ordering $(\omega = 7)$}
-	\label{fig:OriginalPhaseShifts-pvr}
-\end{figure}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=\textwidth]{OriginalPhaseShifts-pvrplus5}
-	\caption{Phase shifts with original ordering and 5 extra points $(\omega = 7)$}
-	\label{fig:OriginalPhaseShifts-pvrplus5}
-\end{figure}
-
-
-\subsection{Comparison Program}
-\begin{figure}
-	\resizebox{1.0\textwidth}{!}{\includegraphics{QuadPoints/ColorKey.pdf}}
-	\caption{Color key for differences}
-	\label{fig:ColorKey}
-\end{figure}
-I wrote the program \emph{Comparison} \cite{GitHub} to visually compare two runs with different numbers of integration points. This program calculates the relative difference between similar matrix elements of the two input files. The relative difference is given by \cref{eq:PercentDiff}.
-Since the values of matrix elements can range over many orders of magnitude, the relative difference is an appropriate measure of the change caused by varying the number of integration points. The other option would have been to use the absolute difference, which is given by 
-\beq
-\text{diff}_{abs} = \left| elem_1 - elem_2 \right| \times 100\%.
-\eeq
-However, this is a poor measure of the differences, and the relative differences give much more useful information for our purposes.
-
-The comparison program calculates these relative differences for each matrix element between the two input files and creates an image using the colors in \cref{fig:ColorKey} by using the Developer's Image Library \cite{DevIL}. So if a column of pixels in the output image is yellow, then the relative difference for that matrix element is on the order of $10^{-6}$. This is an example image from running this program:
-\begin{figure}
-	\centering
-	\resizebox{0.8\textwidth}{!}{\includegraphics{QuadPoints/Example.png}}
-	\caption{Example matrix element comparison image}
-	\label{fig:QuadExample}
-\end{figure}
-This only looks at the output from the long-range programs, and this is the first row (or column) of the $A$ matrix. The \emph{Comparison} program outputs a vertical line for each matrix element to make them more visible than outputting a single pixel. More examples and descriptions of the command line syntax are available on the \htmladdnormallink{Wiki}{http://129.120.30.66/wiki/index.php/Long-range_graphical_comparison_program} and GitHub \cite{Wiki,GitHub}.
-
-\subsection{Application to the P-Wave}
-
-For the P-wave, we noticed that the phase shifts for smaller $\kappa$ values were more sensitive to the number of integration points than higher $\kappa$ values. In general, the smaller the value of $\kappa$, the smaller the phase shift will be. The smaller phase shifts for the P-wave also caused it to be more sensitive than the S-wave.
-
-Using the comparison program, we found that the $1/r_{23}$ term in the potential needed more integration points when $q_i = 0$. The integrations for the other three potential terms already produced reasonably converged results. All runs in this section are performed with $\kappa = 0.1$.
-
-If we took the set of integration points that we used in the S-wave problem as the base set, then compared this with the same set but an extra 5 points in the $1^{st}$ coordinate, the resulting difference image for the $A$ matrix looks like this:
-\begin{figure}
-	\centering
-	\resizebox{1.0\textwidth}{!}{\includegraphics{QuadPoints/BasevsBaseplus5.png}}
-	\caption{Base set versus base set plus 5 in $r_1$}
-	\label{fig:BasevsBaseplus5}
-\end{figure}
-\noindent Notice that there is little blue and plenty of yellows, oranges and reds. The goal is to get as much black and blue as possible, though it is impossible to get entirely black and blue with limited precision. It is evident that the matrix elements are not well-converged when we compare the phase shifts from these two runs. For the first run with the base set, the phase shift is 0.02346176. The corresponding phase shift for the second run is 0.02294583. We desire three significant figures in the phase shifts, so this is certainly not good enough.
-
-Doing a similar run with the base set and another with the base set plus 10 in $r_1$, the difference image is given by \cref{fig:BasevsBaseplus10}.
-\begin{figure}
-	\centering
-	\resizebox{1.0\textwidth}{!}{\includegraphics{QuadPoints/BasevsBaseplus10.png}}
-	\caption{Base set versus base set plus 10 in $r_1$}
-	\label{fig:BasevsBaseplus10}
-\end{figure}
-\noindent This image is not much different from the previous image. Even when we compare the ``plus 5'' run with the ``plus 10'' run, the image does not change much. The phase shift for the ``plus 10'' run is 0.02257283, which is still significantly different from the ``plus 5'' run.
-
-We tried adding up to 25 extra points to the $1^{st}$ coordinate of the base set, but the matrix elements (and consequently, the phase shifts) still did not converge well enough. To perform the Gauss-Laguerre and Gauss-Legendre quadratures described in \cref{sec:GaussQuad}, we have to compute the abscissae and weights for the Laguerre and Legendre polynomials. The weights depend on the abscissae, and the abscissae depend only on $n$, the number of quadrature points to use. This allows us to hardcode values for the abscissae and weights to speed up computations marginally. Previously, the long-range code used hardcoded values for some multiples of 5 but not all that were used. This code also did not have values hardcoded when the value of $n$ was not a multiple of 5. The integration points were then changed to use values that were multiples of 5, and all were hardcoded. The hardcoded values were also done in extended precision by using \emph{Mathematica}.
-
-\Cref{fig:Base5vsBase5hardcoderound} shows the changes going from a previous ``plus 5'' run to a ``plus 5'' run with all hardcoded abscissae and weights. There is a relatively large difference in the matrix elements by making this change.
-\begin{figure}
-	\centering
-	\resizebox{1.0\textwidth}{!}{\includegraphics{QuadPoints/Base5vsBase5hardcoderound.png}}
-	\caption{Changes going to hardcoded abscissae and weights}
-	\label{fig:Base5vsBase5hardcoderound}
-\end{figure}
-
-The results were much better for the base set versus the ``plus 5'' set when hardcoded values for the abscissae and weight were used. \Cref{fig:BasehardcodevsBase5hardcode} shows this comparison, which has the large sections of black. All black and dark blue values are for terms where $q_i > 0$. This integration is done separately, as discussed in \cref{sec:Swaveqigt0} for the S-wave.
-\begin{figure}
-	\centering
-	\resizebox{1.0\textwidth}{!}{\includegraphics{QuadPoints/BasehardcodevsBase5hardcode.png}}
-	\caption[Base set with hardcoded values vs. base set plus 5 with hardcoded values]{Base set with hardcoded values versus base set plus 5 with hardcoded values}
-	\label{fig:BasehardcodevsBase5hardcode}
-\end{figure}
-
-We then completed a series of runs where we increased the number of integration points for each coordinate for $\omega = 2$. \Cref{fig:PlusCoord1-d} shows that the $1/r_{23}$ integration needs an extra 15 points in the first coordinate. The runs for the other coordinates were all performed with an extra 15 points in the first coordinate as well. From Figures \ref{fig:PlusCoord2} through \ref{fig:PlusCoord8}, we see that the $5^{th}$ through $8^{th}$ coordinates possibly need more integration points.
-
-\begin{figure}
-\centering
-\subfloat[Part 1][Base vs. plus 5]{\includegraphics[height=1.4in]{QuadPoints/R23-BasevsBaseplus5-1st.png} \label{fig:PlusCoord1-a}}
-\subfloat[Part 2][Plus 5 vs. plus 10]{\includegraphics[height=1.4in]{QuadPoints/R23-Baseplus5vsBaseplus10-1st.png} \label{fig:PlusCoord1-b}}
-\subfloat[Part 3][Plus 10 vs. plus 15]{\includegraphics[height=1.4in]{QuadPoints/R23-Baseplus10vsBaseplus15-1st.png} \label{fig:PlusCoord1-c}}
-\subfloat[Part 4][Plus 15 vs. plus 20]{\includegraphics[height=1.4in]{QuadPoints/R23-Baseplus15vsBaseplus20-1st.png} \label{fig:PlusCoord1-d}}
-\caption{Comparison of extra points in $1^{st}$ coordinate after hardcoded abscissae}
-\label{fig:PlusCoord1}
-\end{figure}
-
-\begin{figure}
-\centering
-\subfloat[Part 1][Plus 5 vs. plus 10]{\includegraphics[height=0.8in]{QuadPoints/r23-2nd-plus5vsplus10.png} \label{fig:PlusCoord2-a}}
-\subfloat[Part 2][Plus 10 vs. plus 15]{\includegraphics[height=0.8in]{QuadPoints/r23-2nd-plus5vsplus10.png} \label{fig:PlusCoord2-b}}
-\subfloat[Part 3][Plus 15 vs. plus 20]{\includegraphics[height=0.8in]{QuadPoints/r23-2nd-plus5vsplus10.png} \label{fig:PlusCoord2-c}}
-\caption{Comparison of extra points in $2^{nd}$ coordinate after hardcoded abscissae}
-\label{fig:PlusCoord2}
-\end{figure}
-
-\begin{figure}
-\centering
-\subfloat[Part 1][Plus 5 vs. plus 10]{\includegraphics[height=0.8in]{QuadPoints/r23-3rd-plus5vsplus10.png} \label{fig:PlusCoord3-a}}
-\subfloat[Part 2][Plus 10 vs. plus 15]{\includegraphics[height=0.8in]{QuadPoints/r23-3rd-plus5vsplus10.png} \label{fig:PlusCoord3-b}}
-\subfloat[Part 3][Plus 15 vs. plus 20]{\includegraphics[height=0.8in]{QuadPoints/r23-3rd-plus5vsplus10.png} \label{fig:PlusCoord3-c}}
-\caption{Comparison of extra points in $3^{rd}$ coordinate after hardcoded abscissae}
-\label{fig:PlusCoord3}
-\end{figure}
-
-\begin{figure}
-\centering
-\subfloat[Part 1][Plus 5 vs. plus 10]{\includegraphics[height=0.8in]{QuadPoints/r23-4th-plus5vsplus10.png} \label{fig:PlusCoord4-a}}
-\caption{Comparison of extra points in $4^{th}$ coordinate after hardcoded abscissae}
-\label{fig:PlusCoord4}
-\end{figure}
-
-\begin{figure}
-\centering
-\subfloat[Part 1][Plus 5 vs. plus 10]{\includegraphics[height=0.8in]{QuadPoints/r23-5th-plus5vsplus10.png} \label{fig:PlusCoord5-a}}
-\subfloat[Part 2][Plus 10 vs. plus 15]{\includegraphics[height=0.8in]{QuadPoints/r23-5th-plus5vsplus10.png} \label{fig:PlusCoord5-b}}
-\subfloat[Part 3][Plus 15 vs. plus 20]{\includegraphics[height=0.8in]{QuadPoints/r23-5th-plus5vsplus10.png} \label{fig:PlusCoord5-c}}
-\caption{Comparison of extra points in $5^{th}$ coordinate after hardcoded abscissae}
-\label{fig:PlusCoord5}
-\end{figure}
-
-\begin{figure}
-\centering
-\subfloat[Part 1][Plus 5 vs. plus 10]{\includegraphics[height=0.8in]{QuadPoints/r23-6th-plus5vsplus10.png} \label{fig:PlusCoord6-a}}
-\subfloat[Part 2][Plus 10 vs. plus 15]{\includegraphics[height=0.8in]{QuadPoints/r23-6th-plus5vsplus10.png} \label{fig:PlusCoord6-b}}
-\subfloat[Part 3][Plus 15 vs. plus 20]{\includegraphics[height=0.8in]{QuadPoints/r23-6th-plus5vsplus10.png} \label{fig:PlusCoord6-c}}
-\caption{Comparison of extra points in $6^{th}$ coordinate after hardcoded abscissae}
-\label{fig:PlusCoord6}
-\end{figure}
-
-\begin{figure}
-\centering
-\subfloat[Part 1][Plus 5 vs. plus 10]{\includegraphics[height=0.8in]{QuadPoints/r23-7th-plus5vsplus10.png} \label{fig:PlusCoord7-a}}
-\subfloat[Part 2][Plus 10 vs. plus 15]{\includegraphics[height=0.8in]{QuadPoints/r23-7th-plus5vsplus10.png} \label{fig:PlusCoord7-b}}
-\subfloat[Part 3][Plus 15 vs. plus 20]{\includegraphics[height=0.8in]{QuadPoints/r23-7th-plus5vsplus10.png} \label{fig:PlusCoord7-c}}
-\caption{Comparison of extra points in $7^{th}$ coordinate after hardcoded abscissae}
-\label{fig:PlusCoord7}
-\end{figure}
-
-\begin{figure}
-\centering
-\subfloat[Part 1][Plus 5 vs. plus 10]{\includegraphics[height=0.8in]{QuadPoints/r23-8th-plus5vsplus10.png} \label{fig:PlusCoord8-a}}
-\subfloat[Part 2][Plus 10 vs. plus 15]{\includegraphics[height=0.8in]{QuadPoints/r23-8th-plus5vsplus10.png} \label{fig:PlusCoord8-b}}
-\subfloat[Part 3][Plus 15 vs. plus 20]{\includegraphics[height=0.8in]{QuadPoints/r23-8th-plus5vsplus10.png} \label{fig:PlusCoord8-c}}
-\caption{Comparison of extra points in $8^{th}$ coordinate after hardcoded abscissae}
-\label{fig:PlusCoord8}
-\end{figure}
-
-These tests give us an idea of what coordinates need more integration points. The phase shifts, not the matrix elements, are what we are concerned with, so we ran a number of tests for the phase shifts for $\omega = 6$. \Cref{tab:5thcoordExtraPoints} shows how the phase shift stabilizes when the $5^{th}$ coordinate has an extra 10-15 points. For \cref{tab:678thcoordExtraPoints}, we have 15 extra points in the $1^{st}$ and $5^{th}$ coordinates, then add points to all of the $6^{th}$, $7^{th}$ and $8^{th}$ coordinates simultaneously. To the required precision (3 significant figures), the phase shift does not change with this last set of changes. From these runs, we finally determined that the $1^{st}$ and $5^{th}$ coordinates needed 15 extra integration points each, and we can save adding extra points to the other coordinates.
-
-\begin{table}
-\centering
-\begin{tabular}{c c}
-\toprule
-Extra points & Phase shift \\
-\midrule
-+5 & 0.02273585 \\
-+10 & 0.02256803 \\
-+15 & 0.02257100 \\
-+20 & 0.02258546 \\
-+25 & 0.02257720 \\
-+30 & 0.02257869 \\
-+35 & 0.02257844 \\
-\bottomrule
-\end{tabular}
-\caption{$5^{th}$ Coordinate Comparisons}
-\label{tab:5thcoordExtraPoints}
-\end{table}
-
-
-\begin{table}
-\centering
-\begin{tabular}{c c}
-\toprule
-Extra points & Phase shift \\
-\midrule
-+5 & 0.02255816 \\
-+10 & 0.02255351 \\
-+15 & 0.02255181 \\
-\bottomrule
-\end{tabular}
-\caption{Extra points in the $6^{th}$, $7^{th}$ and $8^{th}$ coordinates}
-\label{tab:678thcoordExtraPoints}
-\end{table}
+%\subsection{Application to the P-Wave}
+%
+%For the P-wave, we noticed that the phase shifts for smaller $\kappa$ values were more sensitive to the number of integration points than higher $\kappa$ values. In general, the smaller the value of $\kappa$, the smaller the phase shift will be. The smaller phase shifts for the P-wave also caused it to be more sensitive than the S-wave.
+%
+%Using the comparison program, we found that the $1/r_{23}$ term in the potential needed more integration points when $q_i = 0$. The integrations for the other three potential terms already produced reasonably converged results. All runs in this section are performed with $\kappa = 0.1$.
+%
+%If we took the set of integration points that we used in the S-wave problem as the base set, then compared this with the same set but an extra 5 points in the $1^{st}$ coordinate, the resulting difference image for the $A$ matrix looks like this:
+%\begin{figure}
+	%\centering
+	%\resizebox{1.0\textwidth}{!}{\includegraphics{QuadPoints/BasevsBaseplus5.png}}
+	%\caption{Base set versus base set plus 5 in $r_1$}
+	%\label{fig:BasevsBaseplus5}
+%\end{figure}
+%\noindent Notice that there is little blue and plenty of yellows, oranges and reds. The goal is to get as much black and blue as possible, though it is impossible to get entirely black and blue with limited precision. It is evident that the matrix elements are not well-converged when we compare the phase shifts from these two runs. For the first run with the base set, the phase shift is 0.02346176. The corresponding phase shift for the second run is 0.02294583. We desire three significant figures in the phase shifts, so this is certainly not good enough.
+%
+%Doing a similar run with the base set and another with the base set plus 10 in $r_1$, the difference image is given by \cref{fig:BasevsBaseplus10}.
+%\begin{figure}
+	%\centering
+	%\resizebox{1.0\textwidth}{!}{\includegraphics{QuadPoints/BasevsBaseplus10.png}}
+	%\caption{Base set versus base set plus 10 in $r_1$}
+	%\label{fig:BasevsBaseplus10}
+%\end{figure}
+%\noindent This image is not much different from the previous image. Even when we compare the ``plus 5'' run with the ``plus 10'' run, the image does not change much. The phase shift for the ``plus 10'' run is 0.02257283, which is still significantly different from the ``plus 5'' run.
+%
+%We tried adding up to 25 extra points to the $1^{st}$ coordinate of the base set, but the matrix elements (and consequently, the phase shifts) still did not converge well enough. To perform the Gauss-Laguerre and Gauss-Legendre quadratures described in \cref{sec:GaussQuad}, we have to compute the abscissae and weights for the Laguerre and Legendre polynomials. The weights depend on the abscissae, and the abscissae depend only on $n$, the number of quadrature points to use. This allows us to hardcode values for the abscissae and weights to speed up computations marginally. Previously, the long-range code used hardcoded values for some multiples of 5 but not all that were used. This code also did not have values hardcoded when the value of $n$ was not a multiple of 5. The integration points were then changed to use values that were multiples of 5, and all were hardcoded. The hardcoded values were also done in extended precision by using \emph{Mathematica}.
+%
+%\Cref{fig:Base5vsBase5hardcoderound} shows the changes going from a previous ``plus 5'' run to a ``plus 5'' run with all hardcoded abscissae and weights. There is a relatively large difference in the matrix elements by making this change.
+%\begin{figure}
+	%\centering
+	%\resizebox{1.0\textwidth}{!}{\includegraphics{QuadPoints/Base5vsBase5hardcoderound.png}}
+	%\caption{Changes going to hardcoded abscissae and weights}
+	%\label{fig:Base5vsBase5hardcoderound}
+%\end{figure}
+%
+%The results were much better for the base set versus the ``plus 5'' set when hardcoded values for the abscissae and weight were used. \Cref{fig:BasehardcodevsBase5hardcode} shows this comparison, which has the large sections of black. All black and dark blue values are for terms where $q_i > 0$. This integration is done separately, as discussed in \cref{sec:Swaveqigt0} for the S-wave.
+%\begin{figure}
+	%\centering
+	%\resizebox{1.0\textwidth}{!}{\includegraphics{QuadPoints/BasehardcodevsBase5hardcode.png}}
+	%\caption[Base set with hardcoded values vs. base set plus 5 with hardcoded values]{Base set with hardcoded values versus base set plus 5 with hardcoded values}
+	%\label{fig:BasehardcodevsBase5hardcode}
+%\end{figure}
+%
+%We then completed a series of runs where we increased the number of integration points for each coordinate for $\omega = 2$. \Cref{fig:PlusCoord1-d} shows that the $1/r_{23}$ integration needs an extra 15 points in the first coordinate. The runs for the other coordinates were all performed with an extra 15 points in the first coordinate as well. From Figures \ref{fig:PlusCoord2} through \ref{fig:PlusCoord8}, we see that the $5^{th}$ through $8^{th}$ coordinates possibly need more integration points.
+%
+%\begin{figure}
+%\centering
+%\subfloat[Part 1][Base vs. plus 5]{\includegraphics[height=1.4in]{QuadPoints/R23-BasevsBaseplus5-1st.png} \label{fig:PlusCoord1-a}}
+%\subfloat[Part 2][Plus 5 vs. plus 10]{\includegraphics[height=1.4in]{QuadPoints/R23-Baseplus5vsBaseplus10-1st.png} \label{fig:PlusCoord1-b}}
+%\subfloat[Part 3][Plus 10 vs. plus 15]{\includegraphics[height=1.4in]{QuadPoints/R23-Baseplus10vsBaseplus15-1st.png} \label{fig:PlusCoord1-c}}
+%\subfloat[Part 4][Plus 15 vs. plus 20]{\includegraphics[height=1.4in]{QuadPoints/R23-Baseplus15vsBaseplus20-1st.png} \label{fig:PlusCoord1-d}}
+%\caption{Comparison of extra points in $1^{st}$ coordinate after hardcoded abscissae}
+%\label{fig:PlusCoord1}
+%\end{figure}
+%
+%\begin{figure}
+%\centering
+%\subfloat[Part 1][Plus 5 vs. plus 10]{\includegraphics[height=0.8in]{QuadPoints/r23-2nd-plus5vsplus10.png} \label{fig:PlusCoord2-a}}
+%\subfloat[Part 2][Plus 10 vs. plus 15]{\includegraphics[height=0.8in]{QuadPoints/r23-2nd-plus5vsplus10.png} \label{fig:PlusCoord2-b}}
+%\subfloat[Part 3][Plus 15 vs. plus 20]{\includegraphics[height=0.8in]{QuadPoints/r23-2nd-plus5vsplus10.png} \label{fig:PlusCoord2-c}}
+%\caption{Comparison of extra points in $2^{nd}$ coordinate after hardcoded abscissae}
+%\label{fig:PlusCoord2}
+%\end{figure}
+%
+%\begin{figure}
+%\centering
+%\subfloat[Part 1][Plus 5 vs. plus 10]{\includegraphics[height=0.8in]{QuadPoints/r23-3rd-plus5vsplus10.png} \label{fig:PlusCoord3-a}}
+%\subfloat[Part 2][Plus 10 vs. plus 15]{\includegraphics[height=0.8in]{QuadPoints/r23-3rd-plus5vsplus10.png} \label{fig:PlusCoord3-b}}
+%\subfloat[Part 3][Plus 15 vs. plus 20]{\includegraphics[height=0.8in]{QuadPoints/r23-3rd-plus5vsplus10.png} \label{fig:PlusCoord3-c}}
+%\caption{Comparison of extra points in $3^{rd}$ coordinate after hardcoded abscissae}
+%\label{fig:PlusCoord3}
+%\end{figure}
+%
+%\begin{figure}
+%\centering
+%\subfloat[Part 1][Plus 5 vs. plus 10]{\includegraphics[height=0.8in]{QuadPoints/r23-4th-plus5vsplus10.png} \label{fig:PlusCoord4-a}}
+%\caption{Comparison of extra points in $4^{th}$ coordinate after hardcoded abscissae}
+%\label{fig:PlusCoord4}
+%\end{figure}
+%
+%\begin{figure}
+%\centering
+%\subfloat[Part 1][Plus 5 vs. plus 10]{\includegraphics[height=0.8in]{QuadPoints/r23-5th-plus5vsplus10.png} \label{fig:PlusCoord5-a}}
+%\subfloat[Part 2][Plus 10 vs. plus 15]{\includegraphics[height=0.8in]{QuadPoints/r23-5th-plus5vsplus10.png} \label{fig:PlusCoord5-b}}
+%\subfloat[Part 3][Plus 15 vs. plus 20]{\includegraphics[height=0.8in]{QuadPoints/r23-5th-plus5vsplus10.png} \label{fig:PlusCoord5-c}}
+%\caption{Comparison of extra points in $5^{th}$ coordinate after hardcoded abscissae}
+%\label{fig:PlusCoord5}
+%\end{figure}
+%
+%\begin{figure}
+%\centering
+%\subfloat[Part 1][Plus 5 vs. plus 10]{\includegraphics[height=0.8in]{QuadPoints/r23-6th-plus5vsplus10.png} \label{fig:PlusCoord6-a}}
+%\subfloat[Part 2][Plus 10 vs. plus 15]{\includegraphics[height=0.8in]{QuadPoints/r23-6th-plus5vsplus10.png} \label{fig:PlusCoord6-b}}
+%\subfloat[Part 3][Plus 15 vs. plus 20]{\includegraphics[height=0.8in]{QuadPoints/r23-6th-plus5vsplus10.png} \label{fig:PlusCoord6-c}}
+%\caption{Comparison of extra points in $6^{th}$ coordinate after hardcoded abscissae}
+%\label{fig:PlusCoord6}
+%\end{figure}
+%
+%\begin{figure}
+%\centering
+%\subfloat[Part 1][Plus 5 vs. plus 10]{\includegraphics[height=0.8in]{QuadPoints/r23-7th-plus5vsplus10.png} \label{fig:PlusCoord7-a}}
+%\subfloat[Part 2][Plus 10 vs. plus 15]{\includegraphics[height=0.8in]{QuadPoints/r23-7th-plus5vsplus10.png} \label{fig:PlusCoord7-b}}
+%\subfloat[Part 3][Plus 15 vs. plus 20]{\includegraphics[height=0.8in]{QuadPoints/r23-7th-plus5vsplus10.png} \label{fig:PlusCoord7-c}}
+%\caption{Comparison of extra points in $7^{th}$ coordinate after hardcoded abscissae}
+%\label{fig:PlusCoord7}
+%\end{figure}
+%
+%\begin{figure}
+%\centering
+%\subfloat[Part 1][Plus 5 vs. plus 10]{\includegraphics[height=0.8in]{QuadPoints/r23-8th-plus5vsplus10.png} \label{fig:PlusCoord8-a}}
+%\subfloat[Part 2][Plus 10 vs. plus 15]{\includegraphics[height=0.8in]{QuadPoints/r23-8th-plus5vsplus10.png} \label{fig:PlusCoord8-b}}
+%\subfloat[Part 3][Plus 15 vs. plus 20]{\includegraphics[height=0.8in]{QuadPoints/r23-8th-plus5vsplus10.png} \label{fig:PlusCoord8-c}}
+%\caption{Comparison of extra points in $8^{th}$ coordinate after hardcoded abscissae}
+%\label{fig:PlusCoord8}
+%\end{figure}
+%
+%These tests give us an idea of what coordinates need more integration points. The phase shifts, not the matrix elements, are what we are concerned with, so we ran a number of tests for the phase shifts for $\omega = 6$. \Cref{tab:5thcoordExtraPoints} shows how the phase shift stabilizes when the $5^{th}$ coordinate has an extra 10-15 points. For \cref{tab:678thcoordExtraPoints}, we have 15 extra points in the $1^{st}$ and $5^{th}$ coordinates, then add points to all of the $6^{th}$, $7^{th}$ and $8^{th}$ coordinates simultaneously. To the required precision (3 significant figures), the phase shift does not change with this last set of changes. From these runs, we finally determined that the $1^{st}$ and $5^{th}$ coordinates needed 15 extra integration points each, and we can save adding extra points to the other coordinates.
+%
+%\begin{table}
+%\centering
+%\begin{tabular}{c c}
+%\toprule
+%Extra points & Phase shift \\
+%\midrule
+%+5 & 0.02273585 \\
+%+10 & 0.02256803 \\
+%+15 & 0.02257100 \\
+%+20 & 0.02258546 \\
+%+25 & 0.02257720 \\
+%+30 & 0.02257869 \\
+%+35 & 0.02257844 \\
+%\bottomrule
+%\end{tabular}
+%\caption{$5^{th}$ Coordinate Comparisons}
+%\label{tab:5thcoordExtraPoints}
+%\end{table}
+%
+%
+%\begin{table}
+%\centering
+%\begin{tabular}{c c}
+%\toprule
+%Extra points & Phase shift \\
+%\midrule
+%+5 & 0.02255816 \\
+%+10 & 0.02255351 \\
+%+15 & 0.02255181 \\
+%\bottomrule
+%\end{tabular}
+%\caption{Extra points in the $6^{th}$, $7^{th}$ and $8^{th}$ coordinates}
+%\label{tab:678thcoordExtraPoints}
+%\end{table}
 
 
 \subsection{Quadrature Points}
 \label{sec:QuadraturePoints}
 
 %\todoi{Put in information from ``Integration Point Numbers.nb''}
+
+Describing the number of points used in integrating the different coordinates 
+in \cref{sec:LongLongInt,sec:ShortLongInt} can be confusing, so we have taken 
+to grouping the sets of points as in
+\Cref{tab:EffectiveCoords1,tab:EffectiveCoords2}. Each column of these tables 
+is referred to as an ``effective coordinate'', as the $r_2$ and $r_3$ 
+integrations are split into two parts, as described in \cref{sec:Cusps}.
+The ``Lag'' entries use the Gauss-Laguerre quadrature, ``Leg'' uses the
+Gauss-Legendre quadrature, and ``Che'' uses Chebyshev-Gauss quadrature. Note
+that the only difference between \cref{tab:EffectiveCoords1,tab:EffectiveCoords2}
+is that the S-wave long-long matrix elements are integrated using perimetric
+coordinates when the $r_{23}^{-1}$ is not present, while the other partial
+waves use the same coordinates as the long-short terms.
+
+\begin{table}
+\centering
+\footnotesize
+\begin{tabular}{c c c c c c c c c}
+\toprule
+ & Coord & Coord & Coord & Coord & Coord & Coord & Coord & Coord \\
+Integral & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
+\midrule
+ Long-long, no $r_{23}^{-1}$ & $x$ Lag & $y$ Lag & $z$ Lag & $r_3$ Leg & $r_3$ Leg & $r_{13}$ Leg & & \\
+ Long-long, $r_{23}^{-1}$ & $r_1$ Lag & $r_2$ Leg & $r_2$ Lag & $r_3$ Leg & $r_3$ Lag & $\varphi_{12}$ Che & $r_{13}$ Leg & $r_{23}$ Leg \\
+\midrule
+ Long-short $q_i = 0$, no $r_{23}^{-1}$ & $r_1$ Lag & $r_2$ Leg & $r_2$ Lag & $r_3$ Leg & $r_3$ Lag & $r_{12}$ Leg & $r_{13}$ Leg & \\
+ Long-short $q_i = 0$, $r_{23}^{-1}$ & $r_1$ Lag & $r_2$ Leg & $r_2$ Lag & $r_3$ Leg & $r_3$ Lag & $r_{12}$ Leg & $\varphi_{13}$ Che & $r_{23}$ Leg \\
+ Long-short $q_i > 0$ & $r_1$ Lag & $r_2$ Leg & $r_2$ Lag & $r_3$ Leg & $r_3$ Lag & $r_{12}$ Leg & $r_{13}$ Leg & $\varphi_{23}$ Che \\
+\bottomrule
+\end{tabular}
+\caption{Description of the values in \cref{tab:BaseEffectiveCoords,tab:OptimalEffectiveCoords} for the S-wave. Refer to the text for explanation of this table.}
+\label{tab:EffectiveCoords1}
+\end{table}
+
+\begin{table}
+\centering
+\footnotesize
+\begin{tabular}{c c c c c c c c c}
+\toprule
+ & Coord & Coord & Coord & Coord & Coord & Coord & Coord & Coord \\
+Integral & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
+\midrule
+ Long-long, no $r_{23}^{-1}$ & $r_1$ Lag & $r_2$ Leg & $r_2$ Lag & $r_3$ Leg & $r_3$ Lag & $r_{12}$ Leg & $r_{13}$ Leg & \\
+ Long-long, $r_{23}^{-1}$ & $r_1$ Lag & $r_2$ Leg & $r_2$ Lag & $r_3$ Leg & $r_3$ Lag & $\varphi_{12}$ Che & $r_{13}$ Leg & $r_{23}$ Leg \\
+\midrule
+ Long-short $q_i = 0$, no $r_{23}^{-1}$ & $r_1$ Lag & $r_2$ Leg & $r_2$ Lag & $r_3$ Leg & $r_3$ Lag & $r_{12}$ Leg & $r_{13}$ Leg & \\
+ Long-short $q_i = 0$, $r_{23}^{-1}$ & $r_1$ Lag & $r_2$ Leg & $r_2$ Lag & $r_3$ Leg & $r_3$ Lag & $r_{12}$ Leg & $\varphi_{13}$ Che & $r_{23}$ Leg \\
+ Long-short $q_i > 0$ & $r_1$ Lag & $r_2$ Leg & $r_2$ Lag & $r_3$ Leg & $r_3$ Lag & $r_{12}$ Leg & $r_{13}$ Leg & $\varphi_{23}$ Che \\
+\bottomrule
+\end{tabular}
+\caption{Description of the values in \cref{tab:BaseEffectiveCoords,tab:OptimalEffectiveCoords} for $\ell > 0$. Refer to the text for explanation of this table.}
+\label{tab:EffectiveCoords2}
+\end{table}
+
+\Cref{tab:BaseEffectiveCoords} shows the set of integration points used by Van
+Reeth \cite{VanReethPrivate}. This was the starting point for trying to obtain
+better convergence of the matrix element integrations, as described in
+\cref{sec:SelQuadPoints}. Using a comparison program to investigate this
+convergence, we determined a more extensive set of integration points given
+in \cref{tab:OptimalEffectiveCoords} that we use for all partial waves.
+%Interestingly, for the S-wave, this did
+%not yield appreciably different phase shifts from those given in
+%Ref.~\cite{VanReeth2003}, as shown in \cref{sec:SWavePhase}.
 
 \begin{table}
 \centering
@@ -1047,7 +1210,7 @@ Integral & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
  Long-short $q_i > 0$ & 90 & 57 & 34 & 57 & 34 & 30 & 30 & 30 \\
 \bottomrule
 \end{tabular}
-\caption{Base set of effective coordinates for integrations}
+\caption{Base set of effective coordinates for integrations from \cref{VanReethPrivate}}
 \label{tab:BaseEffectiveCoords}
 \end{table}
 
@@ -1067,40 +1230,10 @@ Integral & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
  Long-short $q_i > 0$					& 100 & 65 & 45 & 65 & 45 & 45 & 45 & 45 \\
 \bottomrule
 \end{tabular}
-\caption{Optimal set of effective coordinates for integrations}
+\caption{Final set of effective coordinates for integrations}
 \label{tab:OptimalEffectiveCoords}
 \end{table}
 
-The final ``optimal'' set of integration points is given in 
-\cref{tab:OptimalEffectiveCoords}. This is the set used for all partial waves
-through the H-wave.
-
-Describing the number of points used in integrating the different coordinates 
-in \cref{sec:LongLongInt,sec:ShortLongInt} can be 
-confusing, so we have taken to grouping the sets of points as in
-\cref{tab:BaseEffectiveCoords,tab:OptimalEffectiveCoords}. Each column of 
-this table is referred to as an ``effective coordinate''. \Cref{tab:EffectiveCoords}
-describes what each of these refers to.
-
-\begin{table}
-\centering
-\footnotesize
-\begin{tabular}{c c c c c c c c c}
-\toprule
- & Coord & Coord & Coord & Coord & Coord & Coord & Coord & Coord \\
-Integral & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
-\midrule
- Long-long, no $r_{23}^{-1}$ & $x$ Lag & $y$ Lag & $z$ Lag & $r_3$ Leg & $r_3$ Leg & $r_{13}$ Leg & & \\
- Long-long, $r_{23}^{-1}$ & $r_1$ Lag & $r_2$ Leg & $r_2$ Lag & $r_3$ Leg & $r_3$ Lag & $\varphi_{12}$ Che & $r_{13}$ Leg & $r_{23}$ Leg \\
-\midrule
- Long-short $q_i = 0$, no $r_{23}^{-1}$ & $r_1$ Lag & $r_2$ Leg & $r_2$ Lag & $r_3$ Leg & $r_3$ Lag & $r_{12}$ Leg & $r_{13}$ Leg & \\
- Long-short $q_i = 0$, $r_{23}^{-1}$ & $r_1$ Lag & $r_2$ Leg & $r_2$ Lag & $r_3$ Leg & $r_3$ Lag & $r_{12}$ Leg & $\varphi_{13}$ Che & $r_{23}$ Leg \\
- Long-short $q_i > 0$ & $r_1$ Lag & $r_2$ Leg & $r_2$ Lag & $r_3$ Leg & $r_3$ Lag & $r_{12}$ Leg & $r_{13}$ Leg & $\varphi_{23}$ Che \\
-\bottomrule
-\end{tabular}
-\caption{Description of the values in \cref{tab:BaseEffectiveCoords,tab:OptimalEffectiveCoords}}
-\label{tab:EffectiveCoords}
-\end{table}
 
 
 %\section{Extra Schwartz Singularity Discussion}
@@ -1111,7 +1244,7 @@ Integral & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
 %terms) will change the $\tau$ in the generalized Kohn where a Schwartz 
 %singularity occurs. \Cref{fig:PhaseTau-Kappa} also shows how for the 
 %same set of short-range terms, varying $\kappa$ will change the $\tau$ value 
-%where a these singularities occur.
+%where these singularities occur.
 %
 %\begin{figure}
 	%\centering
@@ -1154,22 +1287,23 @@ Integral & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
 To find the resonance parameters (positions and widths), the phase shifts for 
 multiple energy values are fitted to \cref{eq:ResonanceCurve}. There have 
 been multiple programs described in the literature
-\cite{Tennyson1984, Stibbe1998, Sochi2013} to do these fittings, which I
-was not aware of when I 
-originally wrote code to do these. Some of the difficulty with this type of 
+\cite{Tennyson1984, Stibbe1998, Sochi2013} to do these fittings. %, which I
+%was not aware of when I 
+%originally wrote code to do these.
+Some of the difficulty with this type of 
 fitting is choosing appropriate guesses for the resonance parameters.
 Ref.~\cite{Sochi2013} describes methods that some groups use to try to identify 
 resonance parameters.
 
-This nonlinear fitting can be difficult for general programs. I first tried 
-the \texttt{Fit} and \texttt{FindFit} functions of
-Mathematica\textsuperscript{\textregistered} 8.0 \cite{Mathematica}, but these were unable to fit our 
-data to this complicated nonlinear function. I next tried the
-\texttt{curve\_fit} function of SciPy \cite{SciPy} in Python\textsuperscript{\textregistered}
-2.6 \cite{Python}, which was better able to fit the nonresonant (polynomial) 
-part but had trouble with the $\arctan$ terms.
+%This nonlinear fitting can be difficult for general programs. I first tried 
+%the \texttt{Fit} and \texttt{FindFit} functions of
+%Mathematica\textsuperscript{\textregistered} 8.0 \cite{Mathematica}, but these were unable to fit our 
+%data to this complicated nonlinear function. I next tried the
+%\texttt{curve\_fit} function of SciPy \cite{SciPy} in Python\textsuperscript{\textregistered}
+%2.6 \cite{Python}, which was better able to fit the nonresonant (polynomial) 
+%part but had trouble with the $\arctan$ terms.
 
-With the help of Bosca \cite{RyanBosca}, I wrote a MATLAB\textsuperscript{\textregistered}
+With the help of Bosca \cite{BoscaPrivate}, I wrote a MATLAB\textsuperscript{\textregistered}
 \cite{matlab} script that uses the \texttt{nlinfit} routine of MATLAB. 
 \texttt{nlinfit} is specifically designed for fitting to nonlinear functions, 
 and its robust option allows for a variety of weighting functions to be used. 
@@ -1183,7 +1317,7 @@ Later on, I adapted this resonance fitting code to be called from IPython
 This allows fits and graphs of the fittings to be in the same IPython 
 notebook, including the flexibility of querying a MySQL database for the 
 phase shift data for any partial wave at any number of terms and for
-any Kohn method. The mlabwrap package is difficult to install properly, 
+any Kohn-type variational method. The mlabwrap package is difficult to install properly, 
 requiring a compilation against MATLAB. The mlabwrap-purepy package
 \cite{mlabwrappurepy} has been created to simplify this, but I have not tried it 
 yet.
@@ -1224,7 +1358,7 @@ RSS than all of the other fittings.
 
 One important thing to notice with the fits in
 \cref{fig:swave-resonance-uncorrected-fits1,fig:swave-resonance-uncorrected-fits2} is that the
-$S$-matrix phase shifts extend above the fitted curve at the resonances before 
+$S$-matrix complex Kohn phase shifts extend above the fitted curve at the resonances before 
 matching up again on the right side of the resonance below $-3.0$. The red 
 curves still fit to the data well, but the fits can be improved by correcting 
 for these. 
@@ -1234,16 +1368,16 @@ background, and the two $\arctan$ terms represent the resonances. The range
 of $\arctan$ is $(-\frac{\pi}{2},\frac{\pi}{2})$, so the $\arctan$ parts of 
 this model cannot bring the phase shift from the background (near 2.0) all 
 the way to 0.0, as it can only add up to $\frac{\pi}{2}$ to the background. 
-It is important to realize that the Kohn methods will only return phase 
+It is important to realize that the Kohn-type variational methods will only return phase 
 shifts in a certain range. From \cref{eq:GenKohnL}, we are not finding the 
 phase shifts directly but are rather calculating $\tan \delta_\ell$. The 
 phase shifts found this way sometimes have to have $\pi$ added or subtracted 
-to get them in the proper range.
+if they are outside this range.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=5in]{swave-phases-reson-pi}
-	\caption[$^1$S resonance data showing correction]{$^1$S resonance data showing raw data from complex Kohn and the corrected version. The solid gray line shows the polynomial background, and the vertical dashed lines give the calculated resonance positions.}
+	\caption[$^1$S resonance data showing correction]{$^1$S resonance data showing raw data from $S$-matrix complex Kohn and the corrected version. The solid gray line shows the polynomial background, and the vertical dashed lines give the calculated resonance positions.}
 	\label{fig:swave-phases-reson-pi}
 \end{figure}
 
@@ -1294,23 +1428,23 @@ relatively accurate.
 
 The differences between the different weighting methods gives us one way to 
 determine errors for the resonance parameters. Additionally, comparing the 
-different Kohn methods gives us an idea of the error. The real-valued 
-generalized Kohn methods give more disagreement, so we compute the resonance 
-parameters for each of these Kohn methods. We also have to take into account 
+different Kohn-type variational methods methods gives us an idea of the error. The real-valued 
+generalized Kohn variational methods give more disagreement, so we compute the resonance 
+parameters for each of these. We also have to take into account 
 Schwartz singularities. In \cref{fig:schwartz-singularity}(a) on
 \pageref{fig:schwartz-singularity}, the second resonance parameters are not as 
 accurate. The fitting routine described here chooses fitting parameters of
 $^2E_R = \SI{5.0295}{eV}$ and $^2\Gamma = \SI{0.06011}{eV}$.
 In \cref{fig:schwartz-singularity}(b), where there are no Schwartz 
 singularities, $^2E_R = \SI{5.0278}{eV}$ and $^2\Gamma = \SI{0.06075}{eV}$. 
-This highlights the importance of using multiple Kohn methods and trying to 
+This highlights the importance of using multiple Kohn-type variational methods and trying to 
 detect Schwartz singularities. After removing obvious Schwartz singularities, 
-the mean value of the different Kohn methods for all weightings is taken for 
+the mean value of the different Kohn-type variational methods for all weightings is taken for 
 each resonance parameter, and these are the results listed for each of the 
 partial waves in
 \cref{sec:SWaveResonances,sec:PWaveResonances,sec:DWaveResonance,sec:FWaveResonance}.
 The errors given in these tables are simply the standard deviation with all 
-Kohn methods and weightings used for each resonance parameter. For this, we 
+generalized Kohn variational methods and weightings used for each resonance parameter. For this, we 
 do not use the generalized $S$-matrix or $T$-matrix complex Kohn methods,
 because using these would decrease the error, as they agree to a significant
 precision.
