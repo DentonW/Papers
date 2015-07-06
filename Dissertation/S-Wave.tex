@@ -57,25 +57,24 @@ The analysis for $\mathcal{L}C_0$ is more difficult than that of
 $\mathcal{L}S_0$ in \cref{eq:LSFinal} and \cref{eq:LSPrimeFinal}.
 The shielding factor, $f_0(\rho)$, complicates the derivatives slightly.
 \begin{align}
-\mathcal{L}C_0 = & \left(-\frac{1}{2}\nabla_\rho^2 - \nabla_{r_3}^2 - 2\nabla_{r_{12}}^2 + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2}\kappa^2 \right) \nonumber \\
- & \times \Phi_{Ps}(r_{12}) \Phi_H(r_3) \frac{\sin(\kappa\rho)}{\kappa\rho} \sqrt{\frac{2\kappa}{4\pi}} \left[1 + e^{-\mu\rho} \left(1 + \frac{\mu}{2} \rho \right) \right]
+\mathcal{L}C_0 = & \left(-\frac{1}{2}\Laplacian_{\bm{\rho}} - \Laplacian_{\bm{r}_3} - 2\Laplacian_{\bm{r}_{12}} + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2}\kappa^2 \right) \nonumber \\
+ & \times \Phi_{Ps}(r_{12}) \Phi_H(r_3) \frac{\cos(\kappa\rho)}{\kappa\rho} \sqrt{\frac{2\kappa}{4\pi}} \left[1 + e^{-\mu\rho} \left(1 + \frac{\mu}{2} \rho \right) \right]
 \label{eq:LC1}
 \end{align}
-
-\noindent Again, we use \cref{eq:HEqn,eq:PsEqn}) to simplify this expression.
+Again, we use \cref{eq:HEqn,eq:PsEqn}) to simplify this expression.
 \begin{align}
-\mathcal{L}C_0 = & \left(-\frac{1}{2}\nabla_\rho^2 + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}}  - \frac{1}{2}\kappa^2\right) \nonumber \\
- & \times \Phi_{Ps}(r_{12}) \Phi_H(r_3) \frac{\sin(\kappa\rho)}{\kappa\rho} \sqrt{\frac{2\kappa}{4\pi}} \left[1 + e^{-\mu\rho} \left(1 + \frac{\mu}{2} \rho \right) \right]
+\mathcal{L}C_0 = & \left(-\frac{1}{2}\Laplacian_{\bm{\rho}} + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}}  - \frac{1}{2}\kappa^2\right) \nonumber \\
+ & \times \Phi_{Ps}(r_{12}) \Phi_H(r_3) \frac{\cos(\kappa\rho)}{\kappa\rho} \sqrt{\frac{2\kappa}{4\pi}} \left[1 + e^{-\mu\rho} \left(1 + \frac{\mu}{2} \rho \right) \right]
 \label{eq:LC2}
 \end{align}
 
-Similar to \cref{sec:SphBess2}, $n_0(\kr)$ is an eigenfunction of $\nabla_\rho^2$ with eigenvalue $-\kappa^2$.
+\label{pg:SWaveLC}Similar to \cref{sec:SphBess2}, $n_0(\kr)$ is an eigenfunction of $\Laplacian_{\bm{\rho}}$ with eigenvalue $-\kappa^2$.
 %Then $\displaystyle -\frac{1}{2} \nabla_\rho^2 \frac{\cos(\kr)}{\kr}$ could be replaced by $\displaystyle \frac{1}{2}\kappa^2\frac{\cos(\kr)}{\kr}$ if the shielding term could be ignored.  However, it also depends on $\rho$, so we have to calculate this separately.
 To properly take into account the shielding function, we use the code in
 \cref{fig:LCMath} for the S-wave, yielding
 \beq
 \label{eq:LCMathS}
-\frac{1}{2} \left(\Laplacian_\rho + \kappa^2\right) \SphericalHarmonicY{0}{0}{\theta_\rho}{\varphi_\rho} n_0(\kappa\rho) f_0(\rho) = \frac{2 \kappa  f^\prime(\rho ) \sin (\kappa \rho )-f^{\prime\prime}(\rho) \cos (\kappa \rho )}{2 \kappa \rho}.
+\frac{1}{2} \left(\Laplacian_{\bm{\rho}} + \kappa^2\right) \SphericalHarmonicY{0}{0}{\theta_\rho}{\varphi_\rho} n_0(\kappa\rho) f_0(\rho) = \frac{2 \kappa  f^\prime(\rho ) \sin (\kappa \rho )-f^{\prime\prime}(\rho) \cos (\kappa \rho )}{2 \kappa \rho}.
 \eeq
 The $f^\prime(\rho)$ and $f^{\prime\prime}(\rho)$ are given in \cref{eq:Shielding1Der}.
 %\begin{align}
@@ -270,7 +269,7 @@ that complex Kohn phase shifts are more accurate than the CC.
 	\includegraphics[width=5.25in]{swave-comparisons}
 	\caption[Comparison of $^1S$ and $^3S$ phase shifts]{Comparison of $^1S$ (a) and $^3S$ (b) phase shifts
 with results from other groups. Results are ordered according to year of
-publication. This work -- solid curves;
+publication. Solid curves -- this work;
 \mbox{\textcolor{blue}{$\times$} -- CC \cite{Walters2004};}
 \mbox{$\CIRCLE$ -- Kohn \cite{VanReeth2003};}
 \mbox{\textcolor{red}{\textbf{+}} -- CC \cite{Blackwood2002};}

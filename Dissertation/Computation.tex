@@ -300,8 +300,8 @@ to remove problematic terms, but too many terms were removed, leading to an
 energy that converged too slowly. In several papers by Yan and others
 \cite{Yan1998,Yan1998a,Yan1999,Drake1995,Yan1997a}, terms with $j1 > j2$ are 
 omitted if $l_1 = l_2$ and $\bar{\alpha} \approx \bar{\beta}$, along with $j_1 = j_2$ if
-$j_{23} > j_{31}$. These terms were likely determined by trial and error 
-or by noticing patterns in terms that produced near linear dependence.
+$j_{23} > j_{31}$. %These terms were likely determined by trial and error 
+%or by noticing patterns in terms that produced near linear dependence.
 
 Another technique Yan and Ho \cite{Yan1999} used was to partition the basis set into five 
 sectors, each with a different set of nonlinear parameters and maximum
@@ -356,7 +356,7 @@ trying to calculate the eigenvalues, so the ordering is important for getting
 the best possible energy. For $\omega$ = 7, 116 terms were omitted, out of a 
 total of 1716 terms. The criteria that the eigenvalues for the upper and 
 lower matrices differs by no more than a certain amount was not needed in 
-this case. The info parameter of the LAPACK dsygv function is checked for 
+this case. The info parameter of the LAPACK \texttt{dsygv} function is checked for 
 both the upper and lower matrix eigenvalue calculations, and the last added 
 term is discarded if it causes an error due to linear dependence. When only 
 the 116 problematic terms were left, every one of them caused LAPACK to 
@@ -411,8 +411,10 @@ are described fully in \cref{sec:GaussQuad}.
 
 The scattering program calculates only the short-long and long-long matrix 
 elements. The volume element in \cref{eq:dTauS23} has an internal angle 
-of $\varphi_{23}$ to integrate over.  When a term has a a negative power of
-$r_{23}$, a large number of integration points must be used for reasonable 
+of $\varphi_{23}$ to integrate over. When a term has a negative power of
+$r_{23}$ due to the Hamiltonian in
+\cref{eq:Hamiltonian1,eq:Hamiltonian2,eq:Hamiltonian3}, a large
+number of integration points must be used for reasonable 
 accuracy. Instead, we split the integration such that one part is missing 
 the $r_{23}^{-1}$ term and the other contains only the $r_{23}^{-1}$ term
 \cite{VanReethThesis,VanReethPrivate}.
@@ -446,7 +448,7 @@ The $\varphi_{23}$ integration is done analytically. Since $S_\ell$ and
 $S_\ell^\prime$ have no $r_{23}$ dependence and there is no $r_{23}$ term in
 the brackets, the integration over $\varphi_{23}$ is simply $2\pi$. The
 $r_{13}$ integration uses the Gauss-Laguerre quadrature from
-\cref{sec:GaussLegendre}. The $x$, $y$ and $z$ integrations use Gauss-Laguerre 
+\cref{sec:GaussQuad}. The $x$, $y$ and $z$ integrations use Gauss-Laguerre 
 quadrature, since they are semi-infinite.
 
 The $r_3$ integration could also be performed using just the Gauss-Laguerre 

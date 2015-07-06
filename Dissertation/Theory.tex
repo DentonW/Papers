@@ -29,7 +29,8 @@ form as
 \eeq
 We only consider the Ps(1s)+H(1s) system for energies up to the excitation
 threshold of Ps(n=2)+H(1s), which is at an energy of $\tfrac{3}{16}$ a.u.
-($5.102$ eV) \cite{Woods2015}.
+($5.102$ eV) \cite{Woods2015}. The coordinate system used is the same as
+in \cref{fig:PsHCoords}.
 
 To avoid confusion with $L_\ell^{\pm,t}$ here and $\mathcal{L}$ in
 \cref{eq:LDef}, since the orbital angular momentum $\ell$ of the incoming Ps is
@@ -103,7 +104,7 @@ given in \cref{sec:SphericalFunc} through $\ell = 5$.
 $\Phi_{\rm{Ps}}\!\left(r_{12}\right)$ and $\Phi_{\rm{H}}\!\left(r_3\right)$ are the Ps 
 and H ground state wavefunctions given in \cref{eq:PsWave,eq:HWave}.
 
-The shielding function, $f_\ell(\rho)$, removes the singularity at the origin 
+The shielding function, $f_\ell$, removes the singularity at the origin 
 due to the spherical Neumann function, $n_\ell$. The form that we have chosen 
 for this is
 \begin{equation}
@@ -125,7 +126,9 @@ Note that their paper is missing the negative sign in the exponential.
 %\todoi{Put in plots from ``Shielding Function Plots.nb''?}
 
 The Hylleraas-type short-range terms are similar to that used
-in \cref{eq:BoundWavefn}. These are chosen to have two symmetries, one 
+in \cref{eq:BoundWavefn}, again with $k_i + l_i + m_i + n_i + p_i + q_i \leq \omega$
+(\cref{eq:OmegaDef}).
+These are chosen to have two symmetries, one 
 with a prefactor of $r_1^\ell$ and the other with a prefactor of $r_2^\ell$.
 The prefactors are included so that the correct asymptotic form of
 $\Psi_\ell^{\pm,t} \sim r_k^\ell$ at the origin follows \cite[p.87]{BrownThesis}.
@@ -142,9 +145,10 @@ The first and second symmetries are given respectively by
 \end{align}
 \end{subequations}
 
-From Refs.~\cite{Schwartz1961a,VanReethThesis}, the D-wave and higher can 
+From Refs.~\cite{Schwartz1961a,VanReethThesis},
+the D-wave and higher can 
 have additional symmetries where the angular momentum is shared between the 
-Ps and H. From Ref.~\cite{Schwartz1961a}, we see that there are a possible
+Ps and H. From these references, we see that there are a possible
 $\ell+1$ sets of short-range terms for each partial wave. We do not consider 
 these mixed terms in this work (see \cref{sec:MixedTerms}). 
 
@@ -231,7 +235,7 @@ The variation of $I_\ell$ is
 \end{align}
 The first and last terms are equal to 0, by virtue of \cref{eq:Il0}. %We drop the $\ell$ subscript from this point.
 
-The $(\delta\Psi_\ell, \mathcal{L} \,\delta\Psi_\ell)$ term is of second order in $\delta\Psi_\ell$, so this can be neglected. Denoting this approximation as $\delta I_\ell^\prime$ gives
+We define $\delta I_\ell^\prime$ as
 \beq
 \label{eq:IlPrimeDef}
 \delta I_\ell^\prime = \delta I_\ell - (\delta\Psi_\ell, \mathcal{L} \,\delta\Psi_\ell).
@@ -242,33 +246,33 @@ Since $\mathcal{L}\Psi_\ell = 0$,
 \eeq
 which combined with the definition of $\mathcal{L}$ from \cref{eq:LDef}, allows us to write the above equation as
 \beq
-\delta I_\ell^\prime = 2 (\Psi_\ell^\star | H\!-\!E | \delta\Psi_\ell) - 2 (\delta\Psi_\ell^\star | H\!-\!E | \Psi_\ell).
+\delta I_\ell^\prime = 2 \left(\Psi_\ell, (H\!-\!E) \delta\Psi_\ell \right) - 2 \left(\delta\Psi_\ell, (H\!-\!E) \Psi_\ell \right).
 \label{eq:IlPsiVariation2}
 \eeq
 
 The Hamiltonian for the fundamental Coulombic system is
 \begin{align}
 \label{eq:Hamiltonian1}
-H = -\frac{1}{2} \Laplacian_{r_1} - \frac{1}{2} \Laplacian_{r_2} - \frac{1}{2} \Laplacian_{r_3} + \frac{1}{r_1} - \frac{1}{r_2} - \frac{1}{r_3} - \frac{1}{r_{12}} -\frac {1}{r_{13}} + \frac{1}{r_{23}}.
+H = -\frac{1}{2} \Laplacian_{\bm{r}_1} - \frac{1}{2} \Laplacian_{\bm{r}_2} - \frac{1}{2} \Laplacian_{\bm{r}_3} + \frac{1}{r_1} - \frac{1}{r_2} - \frac{1}{r_3} - \frac{1}{r_{12}} -\frac {1}{r_{13}} + \frac{1}{r_{23}}.
 \end{align}
 
 \noindent The Hamiltonian can also be expressed in terms of other variables in Jacobi coordinates as
 \begin{align}
-H = -\frac{1}{4} \Laplacian_\rho - \frac{1}{2} \Laplacian_{r_3} - \Laplacian_{r_{12}} + \frac{1}{r_1} - \frac{1}{r_2} - \frac{1}{r_3} - \frac{1}{r_{12}} - \frac{1}{r_{13}} + \frac{1}{r_{23}}
+H = -\frac{1}{4} \Laplacian_{\bm{\rho}} - \frac{1}{2} \Laplacian_{\bm{r}_3} - \Laplacian_{\bm{r}_{12}} + \frac{1}{r_1} - \frac{1}{r_2} - \frac{1}{r_3} - \frac{1}{r_{12}} - \frac{1}{r_{13}} + \frac{1}{r_{23}}
 \label{eq:Hamiltonian2}
 \end{align}
 and for the permuted version,
 \begin{align}
-H = -\frac{1}{4} \Laplacian_{\rho^\prime} - \frac{1}{2} \Laplacian_{r_2} - \Laplacian_{r_{13}} + \frac{1}{r_1} - \frac{1}{r_2} - \frac{1}{r_3} - \frac{1}{r_{12}} - \frac{1}{r_{13}} + \frac{1}{r_{23}}.
+H = -\frac{1}{4} \Laplacian_{\bm{\rho}^\prime} - \frac{1}{2} \Laplacian_{\bm{r}_2} - \Laplacian_{\bm{r}_{13}} + \frac{1}{r_1} - \frac{1}{r_2} - \frac{1}{r_3} - \frac{1}{r_{12}} - \frac{1}{r_{13}} + \frac{1}{r_{23}}.
 \label{eq:Hamiltonian3}
 \end{align}
 
 \noindent Substituting the second form of $H$ in \cref{eq:IlPsiVariation2} and using the total energy from \cref{eq:TotalEnergy} gives
 \begin{align}
 \label{eq:IlPsiVariation3}
-\delta I_\ell^\prime = 2 \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{V_\rho} \Psi_\ell &\left[-\frac{1}{4} \Laplacian_\rho - \frac{1}{2} \Laplacian_{r_3} - \Laplacian_{r_{12}} + \frac{1}{r_1} - \frac{1}{r_2} - \frac{1}{r_3} \right. \nonumber \\
+\delta I_\ell^\prime = 2 \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{V_\rho} \Psi_\ell &\left[-\frac{1}{4} \Laplacian_{\bm{\rho}} - \frac{1}{2} \Laplacian_{\bm{r}_3} - \Laplacian_{\bm{r}_{12}} + \frac{1}{r_1} - \frac{1}{r_2} - \frac{1}{r_3} \right. \nonumber \\
   &- \left. \frac{1}{r_{12}} - \frac{1}{r_{13}} + \frac{1}{r_{23}} - E_H - E_{Ps} - \frac{1}{4}\kappa^2 \right] \delta \Psi_\ell \,d\tau_\rho d\tau_{r_3} d\tau_{r_{12}} \nonumber \\
- - 2 \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{V_\rho} \delta \Psi_\ell &\left[-\frac{1}{4} \Laplacian_\rho - \frac{1}{2} \Laplacian_{r_3} - \Laplacian_{r_{12}} + \frac{1}{r_1} - \frac{1}{r_2} - \frac{1}{r_3} \right. \nonumber \\
+ - 2 \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{V_\rho} \delta \Psi_\ell &\left[-\frac{1}{4} \Laplacian_{\bm{\rho}} - \frac{1}{2} \Laplacian_{\bm{r}_3} - \Laplacian_{\bm{r}_{12}} + \frac{1}{r_1} - \frac{1}{r_2} - \frac{1}{r_3} \right. \nonumber \\
   &- \left. \frac{1}{r_{12}} - \frac{1}{r_{13}} + \frac{1}{r_{23}} - E_H - E_{Ps} - \frac{1}{4}\kappa^2 \right] \Psi_\ell \,d\tau_\rho d\tau_{r_3} d\tau_{r_{12}}.
 \end{align}
 
@@ -278,35 +282,35 @@ The H and Ps equations are respectively (for large values of $\rho$)
 \begin{subequations}
 \label{eq:HPsEqn}
 \begin{align}
-\left(-\frac{1}{2} \Laplacian_{r_3} - \frac{1}{r_3}\right) \Phi_H(r_3) &= E_H \Phi_H(r_3) \label{eq:HEqn} \\
-\left(-\Laplacian_{r_{12}} - \frac{1}{r_{12}}\right) \Phi_{Ps}(r_{12}) &= E_{Ps} \Phi_{Ps}(r_{12}). \label{eq:PsEqn}
+\left(-\frac{1}{2} \Laplacian_{\bm{r}_3} - \frac{1}{r_3}\right) \Phi_H(r_3) &= E_H \Phi_H(r_3) \label{eq:HEqn} \\
+\left(-\Laplacian_{\bm{r}_{12}} - \frac{1}{r_{12}}\right) \Phi_{Ps}(r_{12}) &= E_{Ps} \Phi_{Ps}(r_{12}). \label{eq:PsEqn}
 \end{align}
 \end{subequations}
 Realizing then that the Hamiltonians for H and Ps are given by
 \begin{subequations}
 \label{eq:HPsHamil}
 \begin{align}
-H_H =& -\frac{1}{2} \Laplacian_{r_3} - \frac{1}{r_3} \label{eq:HHamil} \\
-H_{Ps} =& -\Laplacian_{r_{12}} - \frac{1}{r_{12}}, \label{eq:PsHamil}
+H_H =& -\frac{1}{2} \Laplacian_{\bm{r}_3} - \frac{1}{r_3} \label{eq:HHamil} \\
+H_{Ps} =& -\Laplacian_{\bm{r}_{12}} - \frac{1}{r_{12}}, \label{eq:PsHamil}
 \end{align}
 \end{subequations}
 and rearranging terms, \cref{eq:IlPsiVariation3} becomes
 \begin{align}
 \label{eq:IlPsiVariation4}
-\delta I_\ell^\prime = -&\frac{1}{2} \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{V_\rho} \left[\Psi_\ell \Laplacian_\rho \,\delta\Psi_\ell - \delta\Psi_\ell \Laplacian_\rho \Psi_\ell \right] \,d\tau_\rho d\tau_{r_3} d\tau_{r_{12}} \nonumber \\
+\delta I_\ell^\prime = -&\frac{1}{2} \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{V_\rho} \left[\Psi_\ell \Laplacian_{\bm{\rho}} \,\delta\Psi_\ell - \delta\Psi_\ell \Laplacian_{\bm{\rho}} \Psi_\ell \right] \,d\tau_\rho d\tau_{r_3} d\tau_{r_{12}} \nonumber \\
 + &2 \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{V_\rho} \Psi_\ell \left[H_H + H_{Ps} + \frac{1}{r_1} - \frac{1}{r_2} - \frac{1}{r_{13}} + \frac{1}{r_{23}} - E_H - E_{Ps} - \frac{1}{4}\kappa^2 \right] \delta\Psi_\ell \,d\tau_\rho d\tau_{r_3} d\tau_{r_{12}} \nonumber \\
 - &2 \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{V_\rho} \delta\Psi_\ell \left[H_H + H_{Ps} + \frac{1}{r_1} - \frac{1}{r_2} - \frac{1}{r_{13}} + \frac{1}{r_{23}} - E_H - E_{Ps} - \frac{1}{4}\kappa^2 \right] \Psi_\ell \,d\tau_\rho d\tau_{r_3} d\tau_{r_{12}}.
 \end{align}
-Due to the exponential form of $\Phi_{Ps}(r_{12})$ and $\Phi_H(r_3)$ given in \cref{eq:PsWave,eq:HWave}, the last two lines cancel each other.
-
 From Green's theorem,
 \begin{align}
 \label{eq:GreensThm}
-\nonumber \Braket{\Psi_\ell^\star | \Laplacian_\rho | \delta\Psi_\ell } - \Braket{\delta\Psi_\ell^\star | \laplacian_\rho | \Psi_\ell}
-&= \int\limits_{V_3} \int\limits_{V_{12}} \int\limits_{V_\rho} \left[ \Psi_\ell \laplacian_\rho \,\delta\Psi_\ell - \delta\Psi_\ell \laplacian_\rho \Psi_\ell \right] d\tau_\rho \, d\tau_{12} d\tau_3 \\
+\nonumber \Braket{\Psi_\ell^\star | \Laplacian_{\bm{\rho}} | \delta\Psi_\ell } - \Braket{\delta\Psi_\ell^\star | \Laplacian_{\bm{\rho}} | \Psi_\ell}
+&= \int\limits_{V_3} \int\limits_{V_{12}} \int\limits_{V_\rho} \left[ \Psi_\ell \Laplacian_{\bm{\rho}} \,\delta\Psi_\ell - \delta\Psi_\ell \Laplacian_{\bm{\rho}} \Psi_\ell \right] d\tau_\rho \, d\tau_{12} d\tau_3 \\
 &= \int\limits_{V_3} \int\limits_{V_{12}} \int\limits_{S_\rho} \left[ \Psi_\ell \grad_\rho \delta\Psi - \delta\Psi_\ell \grad_\rho \Psi_\ell \right] \cdot d\bm{\sigma}_\rho d\tau_{12} d\tau_3.
 \end{align}
 $S_\rho$ is the surface at $\rho \rightarrow \infty$.
+Due to the exponential form of $\Phi_{Ps}(r_{12})$ and $\Phi_H(r_3)$ given in
+\cref{eq:PsWave,eq:HWave}, the last two lines of \cref{eq:IlPsiVariation4} cancel each other.
 
 Since we are only considering the direct terms in \cref{eq:GeneralWaveTrial} so
 far, let us define a direct term only version of \cref{eq:TildeSCDef} with
@@ -378,7 +382,7 @@ S_\ell^2 + C_\ell^2 \sim \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho}
 \eeq
 
 Substituting this in \cref{eq:IlPsiVariation6b} and expanding the
-$d\sigma_\rho$ differential,
+$d\sigma_\rho$ volume element,
 \begin{align}
 \label{eq:IlPsiVariation7}
 \delta I_\ell^\prime \sim& \; \kappa (L_\ell^t - L_\ell) \Det{\textbf{u}} \int\limits_{V_{12}} \int\limits_{V_3} \int\limits_{S_\rho} \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho}^2 \Phi_{Ps}\left(r_{12}\right)^2 \Phi_H\left(r_3\right)^2 \frac{1}{\kappa \rho^2} \rho^2 \sin\theta_\rho d\theta_\rho d\varphi_\rho d\tau_{12} d\tau_3 \nonumber \\
@@ -410,7 +414,9 @@ From \cref{eq:IlPrimeDef,eq:IlPsiVariation9},
 \label{eq:KatoIdent}
 \delta I_\ell^\prime = (L_\ell^t - L_\ell) \Det{\textbf{u}} + (\delta\Psi_\ell, \mathcal{L} \,\delta\Psi_\ell).
 \eeq
-This is the Kato identity \cite{Kato1951a}. For the Kohn-type variational methods, the last term is neglected, since it is quadratic in $\delta\Psi_\ell$. Using $\delta I_\ell^\prime \approx \delta I_\ell$, we have
+This is the Kato identity \cite{Kato1951a}. For the Kohn-type variational methods,
+the last term is neglected, since it is second order in $\delta\Psi_\ell$. Using the
+approximation $\delta I_\ell^\prime \approx \delta I_\ell$, we have
 \beq
 \delta I_\ell = I_\ell[\Psi_\ell^t] - I_\ell[\Psi_\ell] \approx (L_\ell^t - L_\ell) \Det{\textbf{u}}.
 \eeq
@@ -555,7 +561,7 @@ Using the following definitions of
 \beq
 D = 
 \begin{bmatrix}
-L_\ell^t & c_1 & \cdots & c_N
+L_\ell^t & c_1 & \cdots & c_N & 1
 \end{bmatrix}
 \text{ and}
 \eeq
@@ -682,7 +688,7 @@ Similarly, when $\tau = \frac{\pi}{2}$, the $\textbf{u}$-matrix for the
 inverse Kohn method is generated (\cref{eq:uInvKohn}).
 
 
-\subsubsection*{Complex Kohn $T$-matrix}
+\subsubsection*{$T$-matrix Complex Kohn}
 \label{sec:ComplexTKohn}
 \beq
 \textbf{u} =
@@ -704,7 +710,7 @@ but we use the definition of the $T$-matrix from Bransden \cite{Bransden1970}:
 K_\ell = \frac{T_\ell}{1 + \ii T_\ell}
 \end{equation}
 
-\subsubsection*{Complex Kohn $S$-matrix}
+\subsubsection*{$S$-matrix Complex Kohn}
 \label{sec:ComplexSKohn}
 \beq
 \textbf{u} =
@@ -746,8 +752,9 @@ provide a relation between the two.
 \eeq
 This is a generalized form of the $T$-matrix complex Kohn, similar to how the 
 generalized Kohn works. When $\tau = 0$, this reduces to the $T$-matrix complex
-Kohn. This is also a slightly different from than that of Cooper
-et al.~\cite{Cooper2010}.
+Kohn. This is also a slightly different form than that of Cooper
+et al.~\cite{Cooper2010}, who have the real and imaginary parts of $\widetilde{C}_\ell$
+swapped.
 
 \subsubsection*{Generalized $S$-matrix Complex Kohn}
 \label{sec:GenComplexSKohn}
@@ -798,25 +805,25 @@ such as $(\widetilde{C}_\ell,\mathcal{L}\bar{\phi}_i) = (\bar{\phi}_i,\mathcal{L
 In this particular case, it is much easier to 
 calculate $(\bar{\phi}_i,\mathcal{L}\widetilde{C}_\ell)$ instead of
 $(\widetilde{C}_\ell,\mathcal{L}\bar{\phi}_i)$, due to the complexity of 
-operating $\mathcal{L}$ on $\bar{\phi}_i$ (see \cref{eq:GradGradShort,tab:LCList}).
+operating $\mathcal{L}$ on $\bar{\phi}_i$ (see \cref{eq:GradGradShort}).
 We prove these claims in this section.
 
-These arguments follow that of Appendix A of Peter Van Reeth's thesis \cite{VanReethThesis}.
+These arguments follow that of Appendix A of Van Reeth's thesis \cite{VanReethThesis}.
 We start with the functional
 \begin{align}
 	\label{eq:Fsymm}
-	F \equiv \left(g,\mathcal{L}f \right)-\left(f,\mathcal{L}g \right) \; ,
+	F \equiv \left(g,\mathcal{L}f \right)-\left(f,\mathcal{L}g \right) \, ,
 \end{align}
 with $\mathcal{L}$ given by \cref{eq:LDef}.
 Using the Hamiltonian given by \cref{eq:Hamiltonian1}, only the first
 three terms of the above functional have to be evaluated, as the other terms go to 0 with the subtraction.
 \begin{align}
-	F=&\left({-g,\frac{1}{2} \Laplacian_{r_1} f}\right)+\left({f,\frac{1}{2} \Laplacian_{r_1} g}\right)+
-	\left({-g,\frac{1}{2} \Laplacian_{r_2} f}\right)+\left({f,\frac{1}{2} \Laplacian_{r_2} g}\right) \nonumber \\
-	&+\left({-g,\frac{1}{2} \Laplacian_{r_3} f}\right)+\left({f,\frac{1}{2} \Laplacian_{r_3} g}\right)  \nonumber \\
+	F=&\left({-g,\frac{1}{2} \Laplacian_{\bm{r}_1} f}\right)+\left({f,\frac{1}{2} \Laplacian_{\bm{r}_1} g}\right)+
+	\left({-g,\frac{1}{2} \Laplacian_{\bm{r}_2} f}\right)+\left({f,\frac{1}{2} \Laplacian_{\bm{r}_2} g}\right) \nonumber \\
+	&+\left({-g,\frac{1}{2} \Laplacian_{\bm{r}_3} f}\right)+\left({f,\frac{1}{2} \Laplacian_{\bm{r}_3} g}\right)  \nonumber \\
 =& \int\limits_{V_3} \int\limits_{V_2} \int\limits_{V_1} \left[
-	-g  \Laplacian_{r_1} f + f \Laplacian_{r_1} g
-	-g \Laplacian_{r_2} f + f \Laplacian_{r_2} g - g \Laplacian_{r_3} f + f \Laplacian_{r_3} g \right] \,d\tau_1 d\tau_2 d\tau_3
+	-g  \Laplacian_{\bm{r}_1} f + f \Laplacian_{\bm{r}_1} g
+	-g \Laplacian_{\bm{r}_2} f + f \Laplacian_{\bm{r}_2} g - g \Laplacian_{\bm{r}_3} f + f \Laplacian_{\bm{r}_3} g \right] \,d\tau_1 d\tau_2 d\tau_3
 \end{align}
 Using Green's theorem on each pair of terms,
 \begin{align}
@@ -926,7 +933,6 @@ Likewise,
 \nonumber = \,\, &[u_{00} u_{11} - u_{10} u_{01}] [(\bar{S}_\ell,\mathcal{L}\bar{C}_\ell) - (\bar{C}_\ell,\mathcal{L}\bar{S}_\ell)] \\
 \nonumber = \,\, & \Det{\textbf{u}} [(\bar{S}_\ell,\mathcal{L}\bar{C}_\ell) - (\bar{C}_\ell,\mathcal{L}\bar{S}_\ell)]
 \end{align}
-
 %\noindent Each of our $\textbf{u}$ matrices satisfies $\Det{\textbf{u}} = 1$, making this
 %\beq
 %(\widetilde{S}_\ell,\mathcal{L}\widetilde{C}_\ell) - (\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell) = (\bar{S}_\ell,\mathcal{L}\bar{C}_\ell) - (\bar{C}_\ell,\mathcal{L}\bar{S}_\ell).
@@ -940,9 +946,12 @@ This is finally written as the general form of \cref{eq:SLCandCLS}, giving
 This relation can let us obtain the
 $(\widetilde{S}_\ell,\mathcal{L}\widetilde{C}_\ell)$ matrix element from
 $(\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell)$, but it also gives us a 
-nice numerical check. I calculate these two matrix elements separately in my 
-code and calculate their difference for the Kohn. \label{GenSLCandCLS}If it is close to 1, this
-gives us confidence that the long-long integrations are accurate.
+nice numerical check. I calculate these two matrix elements separately in the 
+long-long code and calculate their difference for the Kohn variational method.
+\label{GenSLCandCLS}If it is close to 1, this
+gives us confidence that the long-long integrations are accurate. This also
+allows us to check that the difficult formulation of $\mathcal{L}C_\ell$
+is correct.
 
 
 \subsection{Matrix Elements Involving Long-Range Terms}
@@ -960,17 +969,17 @@ $\mathcal{L}\bar{S}_\ell$. We start with examining $\mathcal{L}S_\ell$ first.
 Using \cref{eq:GenSDef,eq:LDef}, 
 \begin{align}
 \label{eq:LS1}
-\mathcal{L}S_\ell = &\left(-\frac{1}{2} \Laplacian_\rho - \Laplacian_{r_3} - 2 \Laplacian_{r_{12}} + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2} \kappa^2\right) \nonumber \\
+\mathcal{L}S_\ell = &\left(-\frac{1}{2} \Laplacian_{\bm{\rho}} - \Laplacian_{\bm{r}_3} - 2 \Laplacian_{\bm{r}_{12}} + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2} \kappa^2\right) \nonumber \\
 & \times \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,j_\ell\!\left(\kappa\rho\right).
 \end{align}
 Since $S_\ell$ is independent of $r_3$ and $r_{12}$ except for the $\Phi_H$ and $\Phi_{Ps}$ functions, respectively, using \cref{eq:HPsEqn,eq:HPsHamil} simplifies this to
 \begin{align}
 \label{eq:LS2}
-\mathcal{L}S_\ell = \left(-\frac{1}{2} \Laplacian_\rho + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - \frac{1}{2} \kappa^2\right) \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,j_\ell\!\left(\kappa\rho\right).
+\mathcal{L}S_\ell = \left(-\frac{1}{2} \Laplacian_{\bm{\rho}} + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - \frac{1}{2} \kappa^2\right) \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,j_\ell\!\left(\kappa\rho\right).
 \end{align}
-From \cref{sec:SphBess2}, we find that $\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} j_\ell(\kappa\rho)$ is an eigenfunction of $\Laplacian_\rho$ with eigenvalue $-\kappa^2$:
+From \cref{sec:SphBess2}, we find that $\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} j_\ell(\kappa\rho)$ is an eigenfunction of $\Laplacian_{\bm{\rho}}$ with eigenvalue $-\kappa^2$:
 \begin{equation}
-\Laplacian_\rho \left[\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} j_\ell(\kappa\rho) \right] = \frac{(-\kappa^2 \rho^2) \LegendreP{\ell, \cos\theta} } {\rho^2 \LegendreP{\ell, \cos\theta}}
+\Laplacian_{\bm{\rho}} \left[\SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} j_\ell(\kappa\rho) \right] = \frac{(-\kappa^2 \rho^2) \LegendreP{\ell, \cos\theta} } {\rho^2 \LegendreP{\ell, \cos\theta}}
 = -\kappa^2 \, \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} j_\ell(\kappa\rho).
 \end{equation}
 Then \cref{eq:LS2} reduces down to
@@ -996,24 +1005,26 @@ $\mathcal{L}S_\ell^\prime$ is simply the same as \cref{eq:LSFinal} but with $2 \
 To calculate the matrix elements in \cref{eq:GeneralKohnMatrix} that include $\bar{C}_\ell$ in the ket, we start by writing a general form of $\mathcal{L}C_\ell$ using \cref{eq:LDef,eq:GenCDef}:
 \begin{align}
 \label{eq:LC1}
-\mathcal{L}C_\ell = -&\left(-\frac{1}{2} \Laplacian_\rho - \Laplacian_{r_3} - 2 \Laplacian_{r_{12}} + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2} \kappa^2\right) \nonumber \\
+\mathcal{L}C_\ell = -&\left(-\frac{1}{2} \Laplacian_{\bm{\rho}} - \Laplacian_{\bm{r}_3} - 2 \Laplacian_{\bm{r}_{12}} + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2} \kappa^2\right) \nonumber \\
 & \times \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,n_\ell\!\left(\kappa\rho\right) f_\ell(\rho) 
 \end{align}
 Similar to \cref{eq:LS2}, using \cref{eq:HPsEqn,eq:HPsHamil} reduces this to
 \begin{align}
 \label{eq:LC2}
-\mathcal{L}C_\ell = -&\left(-\frac{1}{2} \Laplacian_\rho + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2} \kappa^2\right) \nonumber \\
+\mathcal{L}C_\ell = -&\left(-\frac{1}{2} \Laplacian_{\bm{\rho}} + \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E_H - 2 E_{Ps} - \frac{1}{2} \kappa^2\right) \nonumber \\
 & \times \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} \Phi_{Ps}\left(r_{12}\right) \Phi_H\left(r_3\right) \sqrt{2\kappa} \,n_\ell\!\left(\kappa\rho\right) f_\ell(\rho).
 \end{align}
-Unlike with $\mathcal{L}S_\ell$ in \cref{sec:LSTerms}, there is not a cancellation 
-with the $\Laplacian_\rho$ and $\kappa^2$ terms. The combination of these 
+Unlike with $\mathcal{L}S_\ell$ in \cref{sec:LSTerms}, there is not a direct cancellation 
+with the $\Laplacian_{\bm{\rho}}$ and $\kappa^2$ terms, as these also operate on the
+shielding function $f_\ell$, such as . The combination of these 
 terms was calculated in the ``First Partial Waves LC.nb'' \emph{Mathematica} 
 notebook \cite{GitHub,Wiki} using the code given in \cref{fig:LCMath}. This is for the F-wave, 
 and replacing the $\ell$-value of 3 in \texttt{SphericalBesselY} allows this 
-to be used for any partial wave. The results of these derivations is given in 
-each partial wave chapter through the D-wave. The
-$\frac{1}{2} \left(\Laplacian_\rho + \kappa^2\right) \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} n_\ell(\kappa\rho) f_\ell(\rho)$
-given in this table is substituted in \cref{eq:LC2} to find the full $\mathcal{L}C_\ell$.
+to be used for any partial wave. The results of these derivations are given in 
+each partial wave chapter through the D-wave. The full $\mathcal{L}C_\ell$ for the
+S-wave is shown on page~\pageref{pg:SWaveLC} by substituting the
+$\frac{1}{2} \left(\Laplacian_{\bm{\rho}} + \kappa^2\right) \SphericalHarmonicY{\ell}{0}{\theta_\rho}{\varphi_\rho} n_\ell(\kappa\rho) f_\ell(\rho)$
+in \cref{eq:LC2}.
 
 \begin{figure}
 	\centering
@@ -1064,8 +1075,7 @@ given in this table is substituted in \cref{eq:LC2} to find the full $\mathcal{L
 %\label{tab:LCList}
 %\end{table}
 %}
-
-Matrix elements involving $\mathcal{L}C_\ell^\prime$ look similar but have the 2 and 3 coordinates swapped. In other words, $\rho \leftrightarrow \rho^\prime$.
+\noindent Matrix elements involving $\mathcal{L}C_\ell^\prime$ look similar but have the 2 and 3 coordinates swapped. In other words, $\rho \leftrightarrow \rho^\prime$.
 
 From \cref{eq:PartialWaveShielding}, the general shielding function for $\widetilde{C}_\ell$ to keep it regular at the origin is given by
 \begin{equation}
@@ -1073,7 +1083,7 @@ From \cref{eq:PartialWaveShielding}, the general shielding function for $\wideti
   f_\ell(\rho) = \left[1 - \ee^{-\mu \rho} \left(1+\frac{\mu}{2}\rho\right)
   \right]^{m_\ell}.
 \end{equation}
-From \cref{tab:LCList}, the derivatives $f_\ell^\prime(\rho)$ and $f_\ell^{\prime\prime}(\rho)$ are needed. In the \emph{Mathematica} notebook ``Shielding Factor.nb'' \cite{GitHub,Wiki}, I found out that the derivatives can be written generally as
+In \cref{fig:LCMath}, the derivatives $f_\ell^\prime(\rho)$ and $f_\ell^{\prime\prime}(\rho)$ are needed. In the \emph{Mathematica} notebook ``Shielding Factor.nb'' \cite{GitHub,Wiki}, I found out that the derivatives can be written generally as
 \beq
 \label{eq:Shielding1Der}
 f_\ell^\prime(\rho) = -\frac{\mu m_\ell (\mu  \rho +1) \left[1-\frac{1}{2} e^{-\mu  \rho } (\mu  \rho +2)\right]^{m_\ell}}{\mu  \rho -2 e^{\mu  \rho }+2}
@@ -1171,6 +1181,10 @@ From \cref{eq:LSFinal,eq:LSPrimeFinal},
 (\bar{\phi}_i, \mathcal{L}\bar{S}_\ell) &= \frac{2}{\sqrt{2}} \left[\left( \phi_i \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_\ell\right) \pm \left( \phi_i^\prime \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_\ell\right)\right] \\
  &= \frac{2}{\sqrt{2}} \left[\left( \phi_i \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_\ell\right) \pm \left( \phi_i \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) S_\ell^\prime \right)\right]
 \end{align}
+Unlike the long-long matrix elements in \cref{sec:SLSandCLS}, $\phi_i$ is
+neither symmetric nor anti-symmetric in the $1 \leftrightarrow 2$ swap, so
+the direct-direct and exchange-exchange terms are nonzero.
+
 
 
 
@@ -1179,14 +1193,17 @@ From \cref{eq:LSFinal,eq:LSPrimeFinal},
 \label{sec:MatrixShort}
 %The short-range -- short-range interactions are calculated in a separate document ``3.25 Using Spherical Coordinates.pdf''.
 
-Using \cref{eq:BoundHFull} with \cref{eq:LDef} and realizing that the bra is not conjugated in the Kohn-type variational methods, the short-short integrals are of the form
+Using the short-range terms given by \cref{eq:PhiDef} in \cref{eq:BoundHFull}
+with \cref{eq:LDef} and realizing that the bra is
+not conjugated in the Kohn-type variational methods \cite{Cooper2010,Lucchese1989},
+the short-short integrals are of the form
 \beq
 \label{eq:SWaveShortShort}
-\left(\bar{\phi}_i, \mathcal{L} \bar{\phi}_j\right) = \int \left[ \sum_{l=1}^3 \boldsymbol{\nabla}_{\!\mathbf{r}_l} \bar{\phi}_i \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_l} \bar{\phi}_j + \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E \right) \bar{\phi}_i \bar{\phi}_j \right] d\tau.
+\left(\bar{\phi}_i, \mathcal{L} \bar{\phi}_j\right) = \bigintsss \left[ \sum_{l=1}^3 \boldsymbol{\nabla}_{\!\mathbf{r}_l} \bar{\phi}_i \boldsymbol{\cdot} \boldsymbol{\nabla}_{\!\mathbf{r}_l} \bar{\phi}_j + \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_3} - \frac{2}{r_{12}} - \frac{2}{r_{13}} + \frac{2}{r_{23}} - 2 E \right) \bar{\phi}_i \bar{\phi}_j \right] d\tau.
 \eeq
 Again, the $\bar{\phi}$ represents any of the short-range terms given in
 \cref{eq:PhiDef} and could also represent any other Hylleraas-type terms, such as 
-the mixed terms (see \cref{sec:MixedTerms}) or the second formalism of the
+the mixed symmetry terms (see \cref{sec:MixedTerms}) or the second formalism of the
 P-wave (see \cref{sec:PWave2Formalism}). These matrix elements are numerically 
 integrated using the methods described in \cref{sec:ShortInt}.
 
@@ -1225,14 +1242,17 @@ will yield incorrect phase shifts.
 These ``Schwartz singularities'' were described first by Schwartz
 \cite{Schwartz1961} and analyzed by others \cite{Nesbet1968,Nesbet1969}.
 These singularities do not make the Kohn-type variational methods 
-unusable however. These singularities are often easily noticeable, because 
-they do not follow the pattern of other phase shifts.
+unusable, however. These singularities are often easily noticeable, because 
+they do not follow the pattern of other phase shifts, and they do not
+agree with the results of the other Kohn-type variational methods.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{schwartz-singularity}
-	\caption[Example of Schwartz singularities for $^1$S]{Example of Schwartz singularities for $^1$S at $\omega = 7$.
-The generalized Kohn method with $\tau = 1.4$ is shown in (a). The $S$-matrix complex Kohn is shown in (b).}
+	\caption[Example of a Schwartz singularity for $^1$S]{Example of Schwartz singularity for $^1$S at $\omega = 7$.
+The generalized Kohn method with $\tau = 1.4$ is shown in (a), and the dashed rectangle
+is surrounding the Schwartz singularity. The corresponding $S$-matrix complex Kohn phase shifts are shown in (b),
+and no Schwartz singularities are present.}
 	\label{fig:schwartz-singularity}
 \end{figure}
 
@@ -1245,9 +1265,9 @@ or $E = \SI{4.915}{eV}$, seen as a slight deviation from the fitting curve.
 
 The same calculation as in \cref{fig:schwartz-singularity}(a) is performed 
 using the $S$-matrix complex Kohn in \cref{fig:schwartz-singularity}(b), but 
-no Schwartz singularities are evident. Normally, if one Kohn variational 
+no Schwartz singularities are evident. Normally, if one Kohn-type
 method described in the previous section (\cref{sec:KohnApplied}) has a 
-Schwartz singularity, other Kohn methods will not. This gives us a strategy 
+Schwartz singularity, other Kohn-type methods will not. This gives us a strategy 
 of simply rejecting Kohn methods that have obvious Schwartz singularities.
 
 
@@ -1261,7 +1281,7 @@ Lucchese~\cite{Lucchese1989} showed that the complex Kohn methods can indeed hav
 Schwartz singularities, but they are not likely to show up in practice.
 Cooper et al.~\cite{Cooper2010} also showed that the phase shifts obtained using the 
 complex Kohn variational method can be obtained exactly from the real-valued 
-generalized Kohn method in \cite{eq:uGenKohn}, but we do not use this method.
+generalized Kohn method in \cref{eq:uGenKohn}, but we do not use this method.
 
 There is also much less variability in the results of the different complex 
 Kohn-type variational methods, and even for different values of $\tau$ in
@@ -1282,7 +1302,7 @@ there are resonances in each singlet partial wave for Ps-H scattering. Some
 papers refer to these resonances as Breit-Wigner resonances
 \cite{Tennyson1984,Stibbe1998}, but according to Bransden and Joachain
 \cite[p.596]{Bransden2003}, Breit-Wigner resonances are a special case of Fano
-resonances with $q = \pm\infty$.
+resonances. % with $q = \pm\infty$.
 
 The resonance positions and widths can be calculated to high 
 accuracy by fitting the phase shift data to the following curve \cite{VanReeth2004}:
