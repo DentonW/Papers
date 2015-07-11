@@ -193,18 +193,37 @@ the F-wave. For comparison, the CC \cite{Walters2004} cross section shown in
 \cref{fig:combined-cross-sections} uses partial waves through the G-wave, but
 their graph would likely not change if they included the H-wave.
 
+%\begin{table}
+%\centering
+%\begin{tabular}{cllllll}
+%\toprule
+%$\ell$ & Max. $^{1,3}\ell$ \% & Avg. $^{1,3}\ell$ \% & Max. $^1\ell$ \% & Avg. $^1\ell$ \% & Max. $^3\ell$ \% & Avg. $^3\ell$ \% \\
+%\midrule
+%S-wave & 100.0\%  & 60.61\%   & 57.80\%  & 20.80\%  & 20.86\%   & 13.27\% \\
+%P-wave & 45.97\%  & 30.21\%   & 42.89\%  & 24.36\%  & 4.323\%   & 1.947\%  \\
+%D-wave & 42.07\%  & 8.565\%   & 41.61\%  & 8.178\%  & 0.401\%   & 0.129\%  \\
+%F-wave & 3.782\%  & 0.596\%   & 3.765\%  & 0.593\%  & 0.00606\% & 0.0011\%  \\
+%G-wave & 0.103\%  & 0.022\%   & 0.0994\% & 0.0206\% & 0.00106\% & 0.00046\%  \\
+%H-wave & 0.0083\% & 0.0019\%  & 0.0062\% & 0.0013\% & 0.00070\% & 0.00021\% \\ 
+%\bottomrule
+%\end{tabular}
+%\caption[Cross section contribution from each partial wave]{Percent contribution to the elastic integrated cross section from each partial wave for both the maximum and average for the entire energy range}
+%\label{tab:PercentToCross}
+%\end{table}
+
 \begin{table}
 \centering
-\begin{tabular}{cllllll}
+\begin{tabular}{cllllllll}
 \toprule
-$\ell$ & Max. $^{1,3}\ell$ \% & Avg. $^{1,3}\ell$ \% & Max. $^1\ell$ \% & Avg. $^1\ell$ \% & Max. $^3\ell$ \% & Avg. $^3\ell$ \% \\
+& Max. & Avg. & Max. & Max. & Avg. & Max. & Max. & Avg. \\
+$\ell$ & \% & \% & $^1\ell$ \% & $E_{\bm \kappa}^-$ (eV) & $\%^+$ & $\%^-$ & $E_{\bm \kappa}^+$ (eV) & $\%^-$ \\
 \midrule
-S-wave & 100.0\%  & 60.61\%   & 57.80\%  & 20.80\%  & 20.86\%   & 13.27\% \\
-P-wave & 45.97\%  & 30.21\%   & 42.89\%  & 24.36\%  & 4.323\%   & 1.947\%  \\
-D-wave & 42.07\%  & 8.565\%   & 41.61\%  & 8.178\%  & 0.401\%   & 0.129\%  \\
-F-wave & 3.782\%  & 0.596\%   & 3.765\%  & 0.593\%  & 0.00606\% & 0.0011\%  \\
-G-wave & 0.103\%  & 0.022\%   & 0.0994\% & 0.0206\% & 0.00106\% & 0.00046\%  \\
-H-wave & 0.0083\% & 0.0019\%  & 0.0062\% & 0.0013\% & 0.00070\% & 0.00021\% \\ 
+S-wave & 100.0\%  & 60.61\%   & 57.80\%  & 2.721$^{-7}$ & 20.80\%  & 20.86\%   & 5.067 & 13.27\% \\
+P-wave & 45.97\%  & 30.21\%   & 42.89\%  & 1.200        & 24.36\%  & 4.323\%   & 4.300 & 1.947\%  \\
+D-wave & 42.07\%  & 8.565\%   & 41.61\%  & 4.686        & 8.178\%  & 0.401\%   & 5.067 & 0.129\%  \\
+F-wave & 3.782\%  & 0.596\%   & 3.765\%  & 5.078        & 0.593\%  & 0.00606\% & 5.067 & 0.0011\%  \\
+G-wave & 0.103\%  & 0.022\%   & 0.0994\% & 5.067        & 0.0206\% & 0.00106\% & 5.067 & 0.00046\%  \\
+H-wave & 0.0083\% & 0.0019\%  & 0.0062\% & 5.067        & 0.0013\% & 0.00070\% & 5.067 & 0.00021\% \\ 
 \bottomrule
 \end{tabular}
 \caption[Cross section contribution from each partial wave]{Percent contribution to the elastic integrated cross section from each partial wave for both the maximum and average for the entire energy range}
@@ -441,9 +460,10 @@ takes place between 0 and 1 radians.
 
 We find that the elastic differential cross section converges slower with 
 respect to $\ell$ than the elastic integrated cross section in
-\cref{sec:totalcross}. The differential cross section is more difficult to 
-quantitatively evaluate the convergence than the integrated cross section, 
-since it has mixing between all of the included partial waves. %Due to the
+\cref{sec:totalcross}. The convergence of the differential cross section
+is more difficult to quantitatively evaluate than that of the
+integrated cross section, since it has mixing between all of the included
+partial waves. %Due to the
 %double summation, there are $\ell_{max}^2$ terms in the differential cross
 %section.
 We calculate $\frac{d\sigma_{el}}{d\Omega}$ for two subsequent
@@ -698,8 +718,7 @@ dip and maximum under \SI{1}{eV}, which is caused by the interference of the
 $^1$S and $^1$P partial wave cross sections.
 
 The differential cross section converges slower than the integrated cross
-section with respect to $\ell$, so we need through the H-wave to obtain 
-reasonably accurate differential cross sections. The differential cross section
+section with respect to $\ell$. The differential cross section
 exhibits a complicated behavior, with the singlet resonances contributing
 greatly near the Ps(n=2) threshold. At very low energies, the differential
 cross section is slightly backward peaked and becomes strongly forward peaked

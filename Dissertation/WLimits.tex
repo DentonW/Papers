@@ -8,8 +8,9 @@
 %\todoi{Get rid of all old equation environments.}
 
 \iftoggle{UNT}{Precalculating}{\lettrine{\textcolor{startcolor}{P}}{recalculating}}
-the results of the W 
-function yields significant improvements to the speed of this program.  The 
+the results of the W function, given in \cref{eq:Wfunc} as
+$W = W(l,m,n;\alpha,\beta,\gamma)$,
+yields significant improvements to the speed of our long-range programs.  The 
 number of terms in the trial function increases greatly with increasing
 $\omega$. The number of elements of the matrices Phi2HPhi and PhiPhi is
 $N(\omega)^2$. Only half of each of these matrices need to be calculated, 
@@ -20,12 +21,12 @@ element, but the parameters are not unique between elements of the matrices.
 
 A four-dimensional matrix is constructed with ranges of all possible inputs 
 to the W function, and the output of the W function is stored as the 
-elements.  The range of the parameters to the W function needs to be 
+elements. The range of the parameters to the W function needs to be 
 determined so that no extra computation takes place for impossible inputs and 
 that values are not read outside of the matrix.
 
 This Appendix describes what we do for the S-wave, and this is extended to the 
-partial waves with $l > 0$ in my codes (\cref{chp:Programs}).
+partial waves with $\ell > 0$ in my codes (\cref{chp:Programs}).
 Also note that the powers of $r_i$ and $r_{ij}$ are in the form given in the
 Drake and Yan \cite{Drake1995} paper and not in the form given by \cref{eq:PhiDef}.
 
@@ -34,21 +35,20 @@ Drake and Yan \cite{Drake1995} paper and not in the form given by \cref{eq:PhiDe
 The last three parameters of the W function are $\alpha$, $\beta$ and $\gamma$.
 There are exactly six permutations of these parameters. All six of these 
 occur in the T function for a set of l, m and n parameters. Since there are 
-only six possibilities from equation (6) of Drake and Yan \cite{Drake1995}, 
+only six possibilities from Equation (6) of Drake and Yan \cite{Drake1995}, 
 the last dimension of the WMatrix is 6. If this fact was not used, a
 six-dimensional matrix would have to be used.
 
 \section{Limits of convergence on W}
 
 The first three parameters of the W function are called $l$, $m$ and $n$
-(in order). From \cite{Drake1995}, there are three conditions for the first
+(in order). From Ref. \cite{Drake1995}, there are three conditions for the first
 three parameters that determine whether W converges.
 \[l \geq 0, ~~~~ l+m+1 \geq 0, ~~~~ l+m+n+2 \geq 0\]
 The other limits that must be taken into account are that $j_{\mu \nu} \geq -1$
 and $j_{\mu} \geq -2$. However, for this program, none of $j_{\mu \nu}$ or
 $j_{\mu}$ are more singular than -1.  Also, the lower limits of $\omega$ and
 $q$ are 0.
-
 Note that since we are calculating the inner products of $\phi_i$ and $\phi_j$,
 the upper limit on any of $j_{\mu \nu}$ and $j_{\mu}$ is $2\omega$, not
 $\omega$.

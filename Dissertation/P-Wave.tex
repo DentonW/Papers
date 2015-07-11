@@ -194,10 +194,11 @@ symmetries are given below:
 The $\cos\theta_{ij}$ that are present in these equations have to be rewritten in
 terms of $r_i$ and $r_{ij}$ using \cref{eq:Cosines} so that the short-short
 code in \cref{sec:CompShort} can be used with these.
-Tables showing the coefficients and powers of $r_i$ and $r_{ij}$ for each of 
-these equations is shown in \cref{sec:RPowersCoeffsP}. These tables allow a 
-direct correspondence between the derivations and the code described in
-\cref{chp:Programs}. I wrote a \emph{Mathematica} notebook
+%Tables showing the coefficients and powers of $r_i$ and $r_{ij}$ for each of 
+%these equations is shown in \cref{sec:RPowersCoeffsP}. These tables allow a 
+%direct correspondence between the derivations and the code described in
+%\cref{chp:Programs}.
+I wrote a \emph{Mathematica} notebook
 (see \cref{chp:Programs}) that transforms
 these equations into a form that allows us to copy and paste them directly
 into Fortran code.
@@ -212,41 +213,76 @@ codes before we developed a general formalism described in \cref{chp:WaveKohn}.
 They can easily be shown to be equivalent, but it is easier to compare these
 forms to the P-wave long-range code.
 
-\begin{align}
-\label{eq:PWavePhi1SBar}
-\nonumber \left(\bar{\phi}_{1i},\mathcal{L} \bar{S}_1\right) = \sqrt{2} \pi & \int \left[ \frac{r_1 + r_2 \cos\theta_{12}}{\rho} \left(\phi_{1i} \pm \phi_{1i}^\prime \right) \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_{22} \right] d\tau_{int} \\
-\nonumber = \sqrt{2} \pi & \int \phi_{1i} \left[ \frac{r_1 + r_2 \cos\theta_{12}}{\rho} \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_{22} \right. \\
-& \pm \left. \frac{r_1 + r_3 \cos\theta_{13}}{\rho^\prime} \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) S_{23} \right]  d\tau_{int}
-\end{align}
 
 \todoi{Get these to fit on fully on the page now that they're 12 point.}
 
+%
+%\begin{align}
+%\label{eq:PWavePhi1SBar}
+%\nonumber \left(\bar{\phi}_{1i},\mathcal{L} \bar{S}_1\right) = \sqrt{2} \pi & \int \left[ \frac{r_1 + r_2 \cos\theta_{12}}{\rho} \left(\phi_{1i} \pm \phi_{1i}^\prime \right) \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_{22} \right] d\tau_{int} \\
+%\nonumber = \sqrt{2} \pi & \int \phi_{1i} \left[ \frac{r_1 + r_2 \cos\theta_{12}}{\rho} \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_{22} \right. \\
+%& \pm \left. \frac{r_1 + r_3 \cos\theta_{13}}{\rho^\prime} \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) S_{23} \right]  d\tau_{int}
+%\end{align}
+%
+%\begin{align}
+%\label{eq:PWavePhi1CBar}
+%\nonumber (\bar{\phi}_{1i},&\mathcal{L} \bar{C}_1) = -2 \pi \sqrt{\kappa} \int \phi_{1i} \left\{ \frac{r_1 + r_2 \cos\theta_{12}}{\rho} \Phi_{Ps}(r_{12}) \Phi_H(r_3) \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) n_1(\kappa\rho) f_1(\rho) \right. \right. \\
+%\nonumber & + \left.\left. \left[f_1^\prime(\rho) \frac{1}{\rho} \left( n_1(\kappa\rho) + \cos(\kappa\rho) \right) - \frac{1}{2} f_1^{\prime\prime}(\rho) n_1(\kappa\rho) \right]\right] \pm \frac{r_1 + r_3 \cos\theta_{13}}{\rho^\prime}  \Phi_{Ps}(r_{13}) \Phi_H(r_2) \right. \\
+%\nonumber & \times \left[ \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) n_1(\kappa\rho^\prime) f_1(\rho^\prime) \right. \\ 
+%\nonumber & \left.\left. + \ \left[f_1^\prime(\rho^\prime) \frac{1}{\rho^\prime} \left( n_1(\kappa\rho^\prime) + \cos(\kappa\rho^\prime) \right) - \frac{1}{2} f_1^{\prime\prime}(\rho^\prime) n_1(\kappa\rho^\prime) \right]\right]\right\} d\tau_{int} \\
+%\nonumber = -&2 \uppi \sqrt{\kappa} \int \left\{ \left( \phi_{1i} \pm \phi_{1i}^\prime \right) \frac{r_1 + r_2 \cos\theta_{12}}{\rho} \Phi_{Ps}(r_{12}) \Phi_H(r_3) \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) n_1(\kappa\rho) f_1(\rho) \right.\right. \\
+%& + \left.\left. \left[ f_1^\prime (\rho) \frac{1}{\rho} \left( n_1(\kappa\rho) + \cos(\kappa\rho) \right) - \frac{1}{2} f_1^{\prime\prime}(\rho) n_1(\kappa\rho) \right] \right] \right\} d\tau_{int}
+%\end{align}
+%
+%\begin{align}
+%\label{eq:PWavePhi2SBar}
+%\nonumber \left(\bar{\phi}_{2j},\mathcal{L} \bar{S}_1\right) = \sqrt{2} \pi & \int \left\{ \frac{1}{\rho} \left[ \phi_{2j} \left(r_2 + r_1 \cos\theta_{12}\right) \pm \phi_{2j}^\prime \left(r_1 \cos\theta_{13} + r_2 \cos\theta_{23} \right) \right] \right. \\
+%\nonumber & \left. \times \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_{22} \right\} d\tau_{int} \\
+%\nonumber = \sqrt{2} \pi & \int \phi_{2j} \left[ \frac{1}{\rho} \left(r_2 + r_1 \cos\theta_{12}\right) \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_{22} \right. \\
+%& \pm \left. \frac{1}{\rho^\prime} \left(r_1 \cos\theta_{12} + r_3 \cos\theta_{23}\right) \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) S_{23} \right]  d\tau_{int}
+%\end{align}
+%
+%\begin{align}
+%\label{eq:PWavePhi2CBar}
+%\nonumber \left(\bar{\phi}_{2j},\mathcal{L} \bar{C}_1\right) = -2 \uppi &\sqrt{\kappa} \int \phi_{2j} \left\{ \frac{r_2 + r_1 \cos\theta_{12}}{\rho} \Phi_{Ps}(r_{12}) \Phi_H(r_3) \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) n_1(\kappa\rho) f_1(\rho) \right. \right. \\
+%\nonumber & + \left.\left. \left[f_1^\prime(\rho) \frac{1}{\rho} \left( n_1(\kappa\rho) + \cos(\kappa\rho) \right) - \frac{1}{2} f_1^{\prime\prime}(\rho) n_1(\kappa\rho) \right]\right] \pm \frac{r_1 \cos\theta_{12} + r_3 \cos\theta_{23}}{\rho^\prime}  \Phi_{Ps}(r_{13}) \Phi_H(r_2) \right. \\
+%\nonumber & \times \left. \left[ \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) n_1(\kappa\rho^\prime) f_1(\rho^\prime) + \left[f_1^\prime(\rho^\prime) \frac{1}{\rho^\prime} \left( n_1(\kappa\rho^\prime) + \cos(\kappa\rho^\prime) \right) - \frac{1}{2} f_1^{\prime\prime}(\rho^\prime) n_1(\kappa\rho^\prime) \right]\right]\right\} \\
+%\nonumber = -2 \uppi &\sqrt{\kappa} \int \left( \phi_{2j} \frac{r_2 + r_1 \cos\theta_{12}}{\rho} \pm \phi_{2j}^\prime \frac{r_1 \cos\theta_{13} + r_2 \cos\theta_{23}}{\rho} \right) \\
+%& \times \Phi_{Ps}(r_{12}) \Phi_H(r_3) \left\{ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) n_1(\kappa\rho) f_1(\rho) \right. \\
+%& + \left. \left[ f_1^\prime (\rho) \frac{1}{\rho} \left( n_1(\kappa\rho) + \cos(\kappa\rho) \right) - \frac{1}{2} f_1^{\prime\prime}(\rho) n_1(\kappa\rho) \right] \right\} d\tau_{int}
+%\end{align}
+
+
+
+\begin{align}
+\label{eq:PWavePhi1SBar}
+\nonumber \left(\bar{\phi}_{1i},\mathcal{L} \bar{S}_1\right) = \sqrt{2} \pi & \int \phi_{1i} \left[ \frac{r_1 + r_2 \cos\theta_{12}}{\rho} \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_{22} \right. \\
+& \pm \left. \frac{r_1 + r_3 \cos\theta_{13}}{\rho^\prime} \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) S_{23} \right]  d\tau_{int}
+\end{align}
+
 \begin{align}
 \label{eq:PWavePhi1CBar}
-\nonumber (\bar{\phi}_{1i},&\mathcal{L} \bar{C}_1) = -2 \pi \sqrt{\kappa} \int \phi_{1i} \left\{ \frac{r_1 + r_2 \cos\theta_{12}}{\rho} \Phi_{Ps}(r_{12}) \Phi_H(r_3) \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) n_1(\kappa\rho) f_1(\rho) \right. \right. \\
+\nonumber (\bar{\phi}_{1i},&\mathcal{L} \bar{C}_1) = -2 \pi \sqrt{\kappa} \int \phi_{1i} \\
+\nonumber & \times \left\{ \frac{r_1 + r_2 \cos\theta_{12}}{\rho} \Phi_{Ps}(r_{12}) \Phi_H(r_3) \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) n_1(\kappa\rho) f_1(\rho) \right. \right. \\
 \nonumber & + \left.\left. \left[f_1^\prime(\rho) \frac{1}{\rho} \left( n_1(\kappa\rho) + \cos(\kappa\rho) \right) - \frac{1}{2} f_1^{\prime\prime}(\rho) n_1(\kappa\rho) \right]\right] \pm \frac{r_1 + r_3 \cos\theta_{13}}{\rho^\prime}  \Phi_{Ps}(r_{13}) \Phi_H(r_2) \right. \\
 \nonumber & \times \left[ \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) n_1(\kappa\rho^\prime) f_1(\rho^\prime) \right. \\ 
-\nonumber & \left.\left. + \ \left[f_1^\prime(\rho^\prime) \frac{1}{\rho^\prime} \left( n_1(\kappa\rho^\prime) + \cos(\kappa\rho^\prime) \right) - \frac{1}{2} f_1^{\prime\prime}(\rho^\prime) n_1(\kappa\rho^\prime) \right]\right]\right\} d\tau_{int} \\
-\nonumber = -&2 \uppi \sqrt{\kappa} \int \left\{ \left( \phi_{1i} \pm \phi_{1i}^\prime \right) \frac{r_1 + r_2 \cos\theta_{12}}{\rho} \Phi_{Ps}(r_{12}) \Phi_H(r_3) \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) n_1(\kappa\rho) f_1(\rho) \right.\right. \\
-& + \left.\left. \left[ f_1^\prime (\rho) \frac{1}{\rho} \left( n_1(\kappa\rho) + \cos(\kappa\rho) \right) - \frac{1}{2} f_1^{\prime\prime}(\rho) n_1(\kappa\rho) \right] \right] \right\} d\tau_{int}
+& \left.\left. + \ \left[f_1^\prime(\rho^\prime) \frac{1}{\rho^\prime} \left( n_1(\kappa\rho^\prime) + \cos(\kappa\rho^\prime) \right) - \frac{1}{2} f_1^{\prime\prime}(\rho^\prime) n_1(\kappa\rho^\prime) \right]\right]\right\} d\tau_{int}
 \end{align}
 
 \begin{align}
 \label{eq:PWavePhi2SBar}
-\nonumber \left(\bar{\phi}_{2j},\mathcal{L} \bar{S}_1\right) = \sqrt{2} \pi & \int \left\{ \frac{1}{\rho} \left[ \phi_{2j} \left(r_2 + r_1 \cos\theta_{12}\right) \pm \phi_{2j}^\prime \left(r_1 \cos\theta_{13} + r_2 \cos\theta_{23} \right) \right] \right. \\
-\nonumber & \left. \times \left(\frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_{22} \right\} d\tau_{int} \\
-\nonumber = \sqrt{2} \pi & \int \phi_{2j} \left[ \frac{1}{\rho} \left(r_2 + r_1 \cos\theta_{12}\right) \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_{22} \right. \\
+\nonumber \left(\bar{\phi}_{2j},\mathcal{L} \bar{S}_1\right) = \sqrt{2} \pi & \int \phi_{2j} \left[ \frac{1}{\rho} \left(r_2 + r_1 \cos\theta_{12}\right) \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) S_{22} \right. \\
 & \pm \left. \frac{1}{\rho^\prime} \left(r_1 \cos\theta_{12} + r_3 \cos\theta_{23}\right) \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) S_{23} \right]  d\tau_{int}
 \end{align}
 
 \begin{align}
 \label{eq:PWavePhi2CBar}
-\nonumber \left(\bar{\phi}_{2j},\mathcal{L} \bar{C}_1\right) = -2 \uppi &\sqrt{\kappa} \int \phi_{2j} \left\{ \frac{r_2 + r_1 \cos\theta_{12}}{\rho} \Phi_{Ps}(r_{12}) \Phi_H(r_3) \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) n_1(\kappa\rho) f_1(\rho) \right. \right. \\
-\nonumber & + \left.\left. \left[f_1^\prime(\rho) \frac{1}{\rho} \left( n_1(\kappa\rho) + \cos(\kappa\rho) \right) - \frac{1}{2} f_1^{\prime\prime}(\rho) n_1(\kappa\rho) \right]\right] \pm \frac{r_1 \cos\theta_{12} + r_3 \cos\theta_{23}}{\rho^\prime}  \Phi_{Ps}(r_{13}) \Phi_H(r_2) \right. \\
-\nonumber & \times \left. \left[ \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) n_1(\kappa\rho^\prime) f_1(\rho^\prime) + \left[f_1^\prime(\rho^\prime) \frac{1}{\rho^\prime} \left( n_1(\kappa\rho^\prime) + \cos(\kappa\rho^\prime) \right) - \frac{1}{2} f_1^{\prime\prime}(\rho^\prime) n_1(\kappa\rho^\prime) \right]\right]\right\} \\
-\nonumber = -2 \uppi &\sqrt{\kappa} \int \left( \phi_{2j} \frac{r_2 + r_1 \cos\theta_{12}}{\rho} \pm \phi_{2j}^\prime \frac{r_1 \cos\theta_{13} + r_2 \cos\theta_{23}}{\rho} \right) \\
-& \times \Phi_{Ps}(r_{12}) \Phi_H(r_3) \left\{ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) n_1(\kappa\rho) f_1(\rho) \right. \\
-& + \left. \left[ f_1^\prime (\rho) \frac{1}{\rho} \left( n_1(\kappa\rho) + \cos(\kappa\rho) \right) - \frac{1}{2} f_1^{\prime\prime}(\rho) n_1(\kappa\rho) \right] \right\} d\tau_{int}
+\nonumber (\bar{\phi}_{2j},&\mathcal{L} \bar{C}_1) = -2 \uppi \sqrt{\kappa} \int \phi_{2j} \\
+&\times \left\{ \frac{r_2 + r_1 \cos\theta_{12}}{\rho} \Phi_{Ps}(r_{12}) \Phi_H(r_3) \left[ \left( \frac{2}{r_1} - \frac{2}{r_2} - \frac{2}{r_{13}} + \frac{2}{r_{23}} \right) n_1(\kappa\rho) f_1(\rho) \right. \right. \\
+\nonumber & + \left.\left. \left[f_1^\prime(\rho) \frac{1}{\rho} \left( n_1(\kappa\rho) + \cos(\kappa\rho) \right) - \frac{1}{2} f_1^{\prime\prime}(\rho) n_1(\kappa\rho) \right]\right] \right. \\
+\nonumber & \pm \frac{r_1 \cos\theta_{12} + r_3 \cos\theta_{23}}{\rho^\prime}  \Phi_{Ps}(r_{13}) \Phi_H(r_2) \\
+& \times \left. \left[ \left( \frac{2}{r_1} - \frac{2}{r_3} - \frac{2}{r_{12}} + \frac{2}{r_{23}} \right) n_1(\kappa\rho^\prime) f_1(\rho^\prime) \right.\right. \\
+\nonumber & + \left.\left. \left[f_1^\prime(\rho^\prime) \frac{1}{\rho^\prime} \left( n_1(\kappa\rho^\prime) + \cos(\kappa\rho^\prime) \right) - \frac{1}{2} f_1^{\prime\prime}(\rho^\prime) n_1(\kappa\rho^\prime) \right]\right]\right\}
 \end{align}
 
 
@@ -324,8 +360,8 @@ directly. The following relations are used:
 \begin{subequations}
 \label{eq:P2rhoY10}
 \begin{align}
-\rho Y_{10}(\theta_\rho) &= \frac{1}{2}\left[ r_1 Y_{10}(\theta_1) + r_2 Y_{10}(\theta_2) \right] \\
-\rho^\prime Y_{10}(\theta_{\rho^\prime}) &= \frac{1}{2}\left[ r_1 Y_{10}(\theta_1) + r_3 Y_{10}(\theta_3) \right].
+\rho \SphericalHarmonicY{1}{0}{\theta_\rho}{\varphi_\rho} &= \frac{1}{2}\left[ r_1 \SphericalHarmonicY{1}{0}{\theta_1}{\varphi_1} + r_2 \SphericalHarmonicY{1}{0}{\theta_2}{\varphi_2} \right] \\
+\rho^\prime \SphericalHarmonicY{1}{0}{\theta_{\rho'}}{\varphi_{\rho'}} &= \frac{1}{2}\left[ r_1 \SphericalHarmonicY{1}{0}{\theta_1}{\varphi_1} + r_3 \SphericalHarmonicY{1}{0}{\theta_3}{\varphi_3} \right].
 \end{align}
 \end{subequations}
 The first of these is obtained by substituting
@@ -333,11 +369,14 @@ The first of these is obtained by substituting
 \label{eq:CosRho}
 \cos\theta_\rho = \frac{r_1 \cos\theta_1 + r_2 \cos\theta_2}{2\rho}
 \end{equation}
-in the definition of \cref{eq:PWaveSpherHarm}. The second is found by using the $P_{23}$ swap.
+in the $\SphericalHarmonicY{1}{0}{\theta_\rho}{\varphi_\rho}$ spherical
+harmonic. The second is found by using the $P_{23}$ permutation of this.
 
 
 \subsection{Short-Short Matrix Elements}
 \label{sec:PWave2ndShortShort}
+
+\todoi{Spherical harmonics}
 
 The $\left(\bar{\phi}_{\rho i},\mathcal{L} \bar{\phi}_{\rho j}\right)$ matrix
 elements of the second formalism can easily be rewritten in terms of the first
@@ -417,7 +456,7 @@ The energy eigenvalues in \cref{tab:SimplexPWaveSingOpt,tab:SimplexPWaveTripOpt}
 were also lower for the first formalism, so we did not pursue using the second
 formalism any further. The convergence of the phase shifts for the first
 formalism, even for $^3$P, appears to be good. The second formalism was not
-tried for the D-wave due to its difficulty and because it it did not generally
+tried for the D-wave due to its difficulty and because it did not generally
 improve the results for the P-wave. %Refer to \cref{sec:DSecondForm} for a
 %discussion of this for the D-wave.
 

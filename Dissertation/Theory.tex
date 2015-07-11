@@ -453,7 +453,7 @@ this case as
 Performing the first variation gives
 \begin{align}
 \nonumber 0 &= \pderiv{L_\ell^v}{L_\ell^t} \\
-&= 1 - \left[(\widetilde{S}_\ell,\mathcal{L}\widetilde{C}_\ell) + (\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell) + \frac{\partial}{\partial L_\ell^t}(L_\ell^t \widetilde{C}_\ell,\mathcal{L} L_\ell^t \widetilde{C}_\ell) + (\widetilde{C}_\ell, \mathcal{L} \sum_i c_i \bar{\phi}_i) + (\sum_i c_i \bar{\phi}_i, \mathcal{L} \widetilde{C}_\ell) \right].
+&= \Det{\textbf{u}} - \! \left[(\widetilde{S}_\ell,\mathcal{L}\widetilde{C}_\ell) + (\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell) + \frac{\partial}{\partial L_\ell^t}(L_\ell^t \widetilde{C}_\ell,\mathcal{L} L_\ell^t \widetilde{C}_\ell) + (\widetilde{C}_\ell, \mathcal{L} \sum_i c_i \bar{\phi}_i) + (\sum_i c_i \bar{\phi}_i, \mathcal{L} \widetilde{C}_\ell) \right]\!.
 \label{eq:PdLambda1}
 \end{align}
 
@@ -462,15 +462,15 @@ Performing the first variation gives
 \pderiv{}{L_\ell^t} (L_\ell^t \widetilde{C}_\ell,\mathcal{L} L_\ell^t \widetilde{C}_\ell) = (\widetilde{C}_\ell,\mathcal{L} \widetilde{C}_\ell) \frac{\partial}{\partial L_\ell^t} {L_\ell^t}^2 = 2(\widetilde{C}_\ell,\mathcal{L}\widetilde{C}_\ell) L_\ell^t.
 \eeq
 
-\noindent The last two terms of \cref{eq:PdLambda1} are equal to each other, and we can use \cref{eq:GenSLCandCLS} to rewrite this.
+\noindent The last two terms of \cref{eq:PdLambda1} are equal to each other, and we can use \cref{eq:GenSLCandCLS} to rewrite this as
 \beq
-0 = -(\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell) - (\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell) - 2 L_\ell^t (\widetilde{C}_\ell,\mathcal{L}\widetilde{C}_\ell) - 2 \sum_i c_i (\widetilde{C}_\ell,\mathcal{L}\bar{\phi}_i)
+0 = -2 (\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell) - 2 L_\ell^t (\widetilde{C}_\ell,\mathcal{L}\widetilde{C}_\ell) - 2 \sum_i c_i (\widetilde{C}_\ell,\mathcal{L}\bar{\phi}_i).
 \eeq
 
 \noindent Rearranging gives
 \beq
--(\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell) = L_\ell^t (\widetilde{C}_\ell,\mathcal{L}\widetilde{C}_\ell) + \sum_i c_i (\widetilde{C}_\ell,\mathcal{L}\bar{\phi}_i)
 \label{eq:PdLambda}
+-(\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell) = L_\ell^t (\widetilde{C}_\ell,\mathcal{L}\widetilde{C}_\ell) + \sum_i c_i (\widetilde{C}_\ell,\mathcal{L}\bar{\phi}_i).
 \eeq
 
 Now we perform the variation with respect to a general $c_k$ as in \cref{eq:KohnStationary}.
@@ -544,7 +544,7 @@ c_i\\
 To obtain $L_\ell^v$ from this matrix equation, we must next expand \cref{eq:GenKohnApplied}.
 
 \begin{align}
-\nonumber L_\ell^v = L_\ell^t - &\left[ (\widetilde{S}_\ell,\mathcal{L}\widetilde{S}_\ell) + L_\ell^t (\widetilde{S}_\ell,\mathcal{L}\widetilde{C}_\ell) + \sum_i c_i (\widetilde{S}_\ell,\mathcal{L} \bar{\phi}_i) + L_\ell^t (\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell) + {L_\ell^t}^2 (\widetilde{C}_\ell,\mathcal{L}\widetilde{C}_\ell)  \right. \\
+\nonumber L_\ell^v = L_\ell^t - & \tfrac{1}{\Det{\textbf{u}}} \left[ (\widetilde{S}_\ell,\mathcal{L}\widetilde{S}_\ell) + L_\ell^t (\widetilde{S}_\ell,\mathcal{L}\widetilde{C}_\ell) + \sum_i c_i (\widetilde{S}_\ell,\mathcal{L} \bar{\phi}_i) + L_\ell^t (\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell) + {L_\ell^t}^2 (\widetilde{C}_\ell,\mathcal{L}\widetilde{C}_\ell)  \right. \\
 & + \left. L_\ell^t \sum_i c_i (\widetilde{C}_\ell,\mathcal{L} \bar{\phi}_i) + \sum_i c_i (\bar{\phi}_i, \mathcal{L} \widetilde{S}_\ell) + L_\ell^t \sum_i c_i (\bar{\phi}_i, \mathcal{L} \widetilde{C}_\ell) + \sum_i \sum_j c_i c_j (\bar{\phi}_i, \mathcal{L} \bar{\phi}_j) \right]
 \end{align}
 
@@ -552,7 +552,7 @@ To obtain $L_\ell^v$ from this matrix equation, we must next expand \cref{eq:Gen
 
 \begin{align}
 \label{eq:GenKohnApplied2}
-L_\ell^v = - & \left[ (\widetilde{S}_\ell,\mathcal{L}\widetilde{S}_\ell) + L_\ell^t (\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell) + \sum_i c_i (\widetilde{S}_\ell, \mathcal{L} \bar{\phi}_i) + L_\ell^t (\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell) + {L_\ell^t}^2 (\widetilde{C}_\ell,\mathcal{L}\widetilde{C}_\ell) \right.  \nonumber \\
+L_\ell^v = - & \tfrac{1}{\Det{\textbf{u}}} \left[ (\widetilde{S}_\ell,\mathcal{L}\widetilde{S}_\ell) + L_\ell^t (\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell) + \sum_i c_i (\widetilde{S}_\ell, \mathcal{L} \bar{\phi}_i) + L_\ell^t (\widetilde{C}_\ell,\mathcal{L}\widetilde{S}_\ell) + {L_\ell^t}^2 (\widetilde{C}_\ell,\mathcal{L}\widetilde{C}_\ell) \right.  \nonumber \\
 & + \left. L_\ell^t \sum_i c_i (\widetilde{C}_\ell,\mathcal{L} \bar{\phi}_i)
 + \sum_i c_i (\bar{\phi}_i, \mathcal{L} \widetilde{S}_\ell) + L_\ell^t \sum_i c_i (\bar{\phi}_i, \mathcal{L} \widetilde{C}_\ell) + \sum_i \sum_j c_i c_j (\bar{\phi}_i, \mathcal{L} \bar{\phi}_j) \right].
 \end{align}
@@ -575,16 +575,15 @@ F =
 \end{bmatrix},
 \eeq
 \cref{eq:GenKohnApplied2} can be rewritten as the following matrix equation:
-
 \beq
 \label{eq:GenDFDT}
-L_\ell^v = - D F D^T.
+L_\ell^v = - \tfrac{1}{\Det{\textbf{u}}} D F D^T.
 \eeq
 
 \noindent Using \cref{eq:GenKohnMatrixAXB} in \cref{eq:GenDFDT} and expanding gives
 \begin{align}
 \label{eq:GenDFDT2}
-\nonumber L_\ell^v &= - 
+\nonumber \Det{\textbf{u}} \: L_\ell^v &= - 
 \begin{bmatrix}
 \boldsymbol{X^T} & 1 
 \end{bmatrix}
@@ -613,9 +612,9 @@ where
 
 \noindent A more compact way of writing \cref{eq:GenDFDT2} is by
 \beq
-L_\ell^v = -\left( \Psi^{t,0},\mathcal{L} \widetilde{S}_\ell \right).
+L_\ell^v = -\tfrac{1}{\Det{\textbf{u}}} \left( \Psi^{t,0},\mathcal{L} \widetilde{S}_\ell \right),
 \eeq
-$\Psi^{t,0}$ is the full general wavefunction in \cref{eq:GeneralWaveTrial} with its nonlinear parameters optimized.
+where $\Psi^{t,0}$ is the full general wavefunction in \cref{eq:GeneralWaveTrial} with its nonlinear parameters optimized.
 Finally, to obtain the phase shifts, we use the relation given by Ref.~\cite{Lucchese1989} as
 \begin{equation}
 \label{eq:GenKohnL}

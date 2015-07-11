@@ -255,7 +255,7 @@ problem, so for the $p$ in their paper, we always use $p = 1$.
 
 \begin{align}
 \label{eq:GenY12}
-I^1(\hat{\boldsymbol{r}_1} \cdot \hat{\nabla}_2^Y) = &\sum_{q_{12}=0}^{M_{12}} \sum_{q_{23}=0}^{M_{23}} \sum_{q_{31}=0}^{M_{31}} \sum_{k_{12}=0}^{L_{12}} \sum_{k_{23}=0}^{L_{23}} \sum_{k_{31}=0}^{L_{31}} \sum_{T_1 T_2} b(\ell_2; T_2) C^1(\hat{\textit{\textbf{r}}}_1 \bm{\cdot} \hat{\textit{\textbf{r}}}_2)  \nonumber \\
+I^1(\hat{\boldsymbol{r}_1} \cdot \hat{\nabla}_2^Y) = &\sum_{q_{12}=0}^{M_{12}} \sum_{q_{23}=0}^{M_{23}} \sum_{q_{31}=0}^{M_{31}} \sum_{k_{12}=0}^{L_{12}} \sum_{k_{23}=0}^{L_{23}} \sum_{k_{31}=0}^{L_{31}} \sum_{T_1 = \abs{1 - \ell_1}}^{1+\ell_1} \sum_{T_2 = \abs{1 - \ell_2}}^{1+\ell_2} b(\ell_2; T_2) C^1(\hat{\textit{\textbf{r}}}_1 \bm{\cdot} \hat{\textit{\textbf{r}}}_2)  \nonumber \\
 & \times I_{\rm{R}}(q_{12}, q_{23}, q_{31}, k_{12}, k_{23}, k_{31}; j_1, j_2, j_3, j_{12}, j_{23}, j_{31}; \bar{\alpha}, \bar{\beta}, \bar{\gamma})
 \end{align}
 The $b$ function here is defined by
@@ -287,8 +287,8 @@ $\abs{1 - \ell_2}$ to $1 + \ell_2$. However, considering that the $b$
 function in \cref{eq:bfunc} can give 0, not all $T_2$ in this range are used.
 
 Unlike the previous section, the expressions here are not exactly the same as 
-that in Yan and Drake \cite{Yan1997}, since as noted, their wavefunction has 
-an extra set of coefficients. % given by
+that in Yan and Drake \cite{Yan1997}, since as noted, their wavefunction
+for Li has an extra set of coefficients. % given by
 %\begin{align}
 %\Omega(\ell_1, \ell_2, \ell_{12}, &\ell_3, L, M_L, m_1, m_2, m_3) = (-1)^{\ell_1 - \ell_2 + m_{12} + \ell_{12} - \ell_3 + M_L} (\ell_{12}, L)^{1/2}  \nonumber \\
 %& \times \ThreeJSymbol{\ell_1, m_1}{\ell_2,m_2}{\ell_{12},-m_{12}} \ThreeJSymbol{\ell_{12},m_{12}}{\ell_3,m_3}{L,-M_L}.
