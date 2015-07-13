@@ -10,6 +10,80 @@ Appendix mainly contains short derivations and equations that are not
 critical to understanding the main results but are nonetheless needed for 
 this work.
 
+\section{Spherical Functions}
+\label{sec:SphericalFunc}
+%
+
+This section gives the spherical harmonics, spherical Bessel functions, and
+spherical Neumann functions through $\ell = 5$ for easier reference. These
+were all obtained using the appropriate functions in \emph{Mathematica}
+\cite{Mathematica}. Most sources \cite{Arfken2005,Abramowitz1965} give
+these for $\ell \leq 2$.
+
+{
+\renewcommand{\arraystretch}{1.5}
+\begin{table}
+\centering
+\begin{tabular}{l l}
+\toprule\\[-1.2cm]
+Partial Wave & $\SphericalHarmonicY{\ell}{0}{\theta}{\phi}$ \\
+\midrule
+S-Wave & $\frac{1}{\sqrt{4\pi}}$ \\
+P-Wave & $\sqrt{\frac{3}{4\pi}} \cos\theta$ \\
+D-Wave & $\sqrt{\frac{5}{16\pi}} (3\cos^2\theta - 1)$ \\
+F-Wave & $\sqrt{\frac{7}{16\pi}} \left(5 \cos^3\theta - 3 \cos\theta \right)$ \\
+G-Wave & $\sqrt{\frac{9}{256\pi}} \left(35 \cos^4\theta - 30 \cos^2\theta + 3 \right)$ \\
+H-Wave & $\sqrt{\frac{11}{256\pi}} \left(63 \cos^5\theta - 70 \cos^3\theta + 15 \cos\theta \right)$ \\
+\bottomrule
+\end{tabular}
+\caption{Spherical harmonics for partial waves $\ell = 0$ through 5}
+\label{tab:SphHarm}
+\end{table}
+}
+
+{
+\renewcommand{\arraystretch}{1.5}
+\begin{table}
+\centering
+\begin{tabular}{l l}
+\toprule\\[-1.2cm]
+Partial Wave & $j_\ell(z)$ \\
+\midrule
+S-Wave & $\frac{\sin(\kappa\rho)}{\kappa\rho}$ \\
+P-Wave & $\frac{\sin z}{z^2} - \frac{\cos z}{z}$ \\
+D-Wave & $\left(\frac{3}{z^3}-\frac{1}{z}\right)\sin z - \frac{3}{z^2}\cos z$ \\
+F-Wave & $\frac{\left(z^2-15\right) \cos z}{z^3}-\frac{3 \left(2 z^2-5\right) \sin z}{z^4}$ \\
+G-Wave & $\frac{5 \left(2 z^2-21\right) \cos z}{z^4}+\frac{\left(z^4-45 z^2+105\right) \sin z}{z^5}$ \\
+H-Wave & $\frac{15 \left(z^4-28 z^2+63\right) \sin z}{z^6}+\frac{\left(-z^4+105 z^2-945\right) \cos z}{z^5}$ \\
+\bottomrule
+\end{tabular}
+\caption{Spherical Bessel functions for partial waves $\ell = 0$ through 5}
+\label{tab:SphBess}
+\end{table}
+}
+
+{
+\renewcommand{\arraystretch}{1.5}
+\begin{table}
+\centering
+\begin{tabular}{l l}
+\toprule\\[-1.2cm]
+Partial Wave & $n_\ell(z)$ \\
+\midrule
+S-Wave & $-\frac{\cos z}{z}$ \\
+P-Wave & $-\frac{\cos z}{z^2} - \frac{\sin z}{z}$ \\
+D-Wave & $-\left(\frac{3}{z^3}-\frac{1}{z}\right)\cos z - \frac{3}{z^2}\sin z$ \\
+F-Wave & $\frac{3 \left(2 z^2-5\right) \cos z}{z^4}+\frac{\left(z^2-15\right) \sin z}{z^3}$ \\
+G-Wave & $\frac{5 \left(2 z^2-21\right) \sin z}{z^4}+\frac{\left(-z^4+45 z^2-105\right) \cos z}{z^5}$ \\
+H-Wave & $\frac{\left(-z^4+105 z^2-945\right) \sin z}{z^5}-\frac{15 \left(z^4-28 z^2+63\right) \cos z}{z^6}$ \\
+\bottomrule
+\end{tabular}
+\caption{Spherical Neumann functions for partial waves $\ell = 0$ through 5}
+\label{tab:SphNeum}
+\end{table}
+}
+
+
 \section{\texorpdfstring{$\rho$ and $\rho'$} {rho and rho'} Definitions}
 \label{sec:RhoDef}
 From equation 2.1 of Peter Van Reeth's thesis \cite{VanReethThesis} and Armour and Humberston's paper \cite{Armour1991},
@@ -448,80 +522,6 @@ in \cref{eq:Psi1}, we obtain \cref{eq:MixedAngSimple}:
 %formalism has not been implemented for the D-wave. % and could be a source of
 %%future work.
 
-
-\section{Spherical Functions}
-\label{sec:SphericalFunc}
-%
-
-This section gives the spherical harmonics, spherical Bessel functions, and
-spherical Neumann functions through $\ell = 5$ for easier reference. These
-were all obtained using the appropriate functions in \emph{Mathematica}
-\cite{Mathematica}.
-
-\todoi{Arfken and Weber? Abramowitz?}
-
-{
-\renewcommand{\arraystretch}{1.5}
-\begin{table}
-\centering
-\begin{tabular}{l l}
-\toprule\\[-1.2cm]
-Partial Wave & $\SphericalHarmonicY{\ell}{0}{\theta}{\phi}$ \\
-\midrule
-S-Wave & $\frac{1}{\sqrt{4\pi}}$ \\
-P-Wave & $\sqrt{\frac{3}{4\pi}} \cos\theta$ \\
-D-Wave & $\sqrt{\frac{5}{16\pi}} (3\cos^2\theta - 1)$ \\
-F-Wave & $\sqrt{\frac{7}{16\pi}} \left(5 \cos^3\theta - 3 \cos\theta \right)$ \\
-G-Wave & $\sqrt{\frac{9}{256\pi}} \left(35 \cos^4\theta - 30 \cos^2\theta + 3 \right)$ \\
-H-Wave & $\sqrt{\frac{11}{256\pi}} \left(63 \cos^5\theta - 70 \cos^3\theta + 15 \cos\theta \right)$ \\
-\bottomrule
-\end{tabular}
-\caption{Spherical harmonics for partial waves $\ell = 0$ through 5}
-\label{tab:SphHarm}
-\end{table}
-}
-
-{
-\renewcommand{\arraystretch}{1.5}
-\begin{table}
-\centering
-\begin{tabular}{l l}
-\toprule\\[-1.2cm]
-Partial Wave & $j_\ell(z)$ \\
-\midrule
-S-Wave & $\frac{\sin(\kappa\rho)}{\kappa\rho}$ \\
-P-Wave & $\frac{\sin z}{z^2} - \frac{\cos z}{z}$ \\
-D-Wave & $\left(\frac{3}{z^3}-\frac{1}{z}\right)\sin z - \frac{3}{z^2}\cos z$ \\
-F-Wave & $\frac{\left(z^2-15\right) \cos z}{z^3}-\frac{3 \left(2 z^2-5\right) \sin z}{z^4}$ \\
-G-Wave & $\frac{5 \left(2 z^2-21\right) \cos z}{z^4}+\frac{\left(z^4-45 z^2+105\right) \sin z}{z^5}$ \\
-H-Wave & $\frac{15 \left(z^4-28 z^2+63\right) \sin z}{z^6}+\frac{\left(-z^4+105 z^2-945\right) \cos z}{z^5}$ \\
-\bottomrule
-\end{tabular}
-\caption{Spherical Bessel functions for partial waves $\ell = 0$ through 5}
-\label{tab:SphBess}
-\end{table}
-}
-
-{
-\renewcommand{\arraystretch}{1.5}
-\begin{table}
-\centering
-\begin{tabular}{l l}
-\toprule\\[-1.2cm]
-Partial Wave & $n_\ell(z)$ \\
-\midrule
-S-Wave & $-\frac{\cos z}{z}$ \\
-P-Wave & $-\frac{\cos z}{z^2} - \frac{\sin z}{z}$ \\
-D-Wave & $-\left(\frac{3}{z^3}-\frac{1}{z}\right)\cos z - \frac{3}{z^2}\sin z$ \\
-F-Wave & $\frac{3 \left(2 z^2-5\right) \cos z}{z^4}+\frac{\left(z^2-15\right) \sin z}{z^3}$ \\
-G-Wave & $\frac{5 \left(2 z^2-21\right) \sin z}{z^4}+\frac{\left(-z^4+45 z^2-105\right) \cos z}{z^5}$ \\
-H-Wave & $\frac{\left(-z^4+105 z^2-945\right) \sin z}{z^5}-\frac{15 \left(z^4-28 z^2+63\right) \cos z}{z^6}$ \\
-\bottomrule
-\end{tabular}
-\caption{Spherical Neumann functions for partial waves $\ell = 0$ through 5}
-\label{tab:SphNeum}
-\end{table}
-}
 
 
 

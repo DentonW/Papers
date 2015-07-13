@@ -234,11 +234,43 @@ $\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (au) & Binding E
 \bottomrule
 \end{tabular}
 }
-\caption{Ground state energy of $^1$S PsH with full set of terms}
+\caption{Ground state energy of $^1$S PsH with full set of terms and original ordering}
 \label{tab:BoundEnergy1}
 \end{table}
 
-The next and current version of the code uses quadruple precision and is able to do runs through $\omega = 8$ (not shown in \cref{tab:BoundEnergy1}). Linear dependence is also decreased when the nonlinear parameters are different (\cref{sec:BoundOptimization} for parameter optimization). The Ps-H scattering problem (\cref{chp:SWave}) is much more difficult, so a run with $\omega = 7$ is all that is needed. \Cref{tab:BoundEnergy1} shows the PsH energies through $\omega = 7$ for the full set of terms described by \cref{eq:OmegaDef}.
+The next and current version of the code uses quadruple precision and is able 
+to do full runs through $\omega = 8$ without omitting terms (not shown in 
+\cref{tab:BoundEnergy1}). Linear dependence is also decreased when the 
+nonlinear parameters are different (\cref{sec:BoundOptimization} for 
+parameter optimization). The Ps-H scattering problem (\cref{chp:SWave}) is 
+more difficult, so a run with $\omega = 7$ is all that is needed.
+\Cref{tab:BoundEnergy1} shows the PsH energies through $\omega = 7$ for the full 
+set of terms described by \cref{eq:OmegaDef}.
+
+%\setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
+%\setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
+%\begin{table}
+%\small
+%\centering
+%\centerline{
+%\begin{tabular}{c c c c c c c c}
+%\toprule
+%$\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (a.u.) & Binding Energy (eV) & $\Delta E$ (au) \\ [0.5ex]
+%\midrule
+%0 & 1    & 0.586 & 0.580 & 1.093 & -0.667 061 651 939 & --- & --- \\
+%1 & 5    & 0.586 & 0.580 & 1.093 & -0.744 026 116 052 & ---               & 0.076 964 464 113 \\
+%2 & 25   & 0.586 & 0.580 & 1.093 & -0.782 354 938 988 & 0.880 422 703 095 & 0.038 328 822 936 \\
+%3 & 77   & 0.586 & 0.580 & 1.093 & -0.787 040 587 400 & 1.007 925 686 241 & 0.004 685 648 412 \\
+%4 & 199  & 0.586 & 0.580 & 1.093 & -0.788 799 610 636 & 1.055 791 144 810 & 0.001 759 023 236 \\
+%5 & 436  & 0.586 & 0.580 & 1.093 & -0.789 131 695 127 & 1.064 827 623 779 & 0.000 332 084 491 \\
+%6 & 856  & 0.586 & 0.580 & 1.093 & -0.789 188 377 502 & 1.066 370 029 703 & 0.000 056 682 375 \\
+%7 & 1505 & 0.586 & 0.580 & 1.093 & -0.789 189 725 291 & 1.066 406 704 904 & 0.000 001 347 789 \\
+%\bottomrule
+%\end{tabular}
+%}
+%\caption{Ground state energy of $^1$S PsH with Todd set of terms}
+%\label{tab:BoundEnergyTodd1}
+%\end{table}
 
 \setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
 \setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
@@ -248,28 +280,28 @@ The next and current version of the code uses quadruple precision and is able to
 \centerline{
 \begin{tabular}{c c c c c c c c}
 \toprule
-$\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (au) & Binding Energy (eV) & $\Delta E$ (au) \\ [0.5ex]
+$\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (a.u.) & Binding Energy (eV) & $\Delta E$ (au) \\ [0.5ex]
 \midrule
-0 & 1    & 0.586 & 0.580 & 1.093 & -0.667 061 651 939 & --- & --- \\
-1 & 5    & 0.586 & 0.580 & 1.093 & -0.744 026 116 052 & ---               & 0.076 964 464 113 \\
-2 & 25   & 0.586 & 0.580 & 1.093 & -0.782 354 938 988 & 0.880 422 703 095 & 0.038 328 822 936 \\
-3 & 77   & 0.586 & 0.580 & 1.093 & -0.787 040 587 400 & 1.007 925 686 241 & 0.004 685 648 412 \\
-4 & 199  & 0.586 & 0.580 & 1.093 & -0.788 799 610 636 & 1.055 791 144 810 & 0.001 759 023 236 \\
-5 & 436  & 0.586 & 0.580 & 1.093 & -0.789 131 695 127 & 1.064 827 623 779 & 0.000 332 084 491 \\
-6 & 856  & 0.586 & 0.580 & 1.093 & -0.789 188 377 502 & 1.066 370 029 703 & 0.000 056 682 375 \\
-7 & 1505 & 0.586 & 0.580 & 1.093 & -0.789 189 725 291 & 1.066 406 704 904 & 0.000 001 347 789 \\
+0 & 1    & 0.586 & 0.580 & 1.093 & -0.558 977 058 051 & --- & --- \\
+1 & 5    & 0.586 & 0.580 & 1.093 & -0.718 445 865 883 & ---               & 0.159 468 807 832 \\
+2 & 25   & 0.586 & 0.580 & 1.093 & -0.776 355 701 568 & 0.717 175 143 631 & 0.057 909 835 685 \\
+3 & 77   & 0.586 & 0.580 & 1.093 & -0.786 645 720 870 & 0.997 180 821 018 & 0.010 290 019 302 \\
+4 & 199  & 0.586 & 0.580 & 1.093 & -0.788 665 304 510 & 1.052 136 489 091 & 0.002 019 583 640 \\
+5 & 436  & 0.586 & 0.580 & 1.093 & -0.789 080 739 334 & 1.063 441 046 057 & 0.000 415 434 824 \\
+6 & 856  & 0.586 & 0.580 & 1.093 & -0.789 169 644 174 & 1.065 860 269 913 & 0.000 088 904 841 \\
+7 & 1505 & 0.586 & 0.580 & 1.093 & -0.789 189 725 050 & 1.066 406 698 333 & 0.000 020 080 875 \\
 \bottomrule
 \end{tabular}
 }
-\caption{Ground state energy of $^1$S PsH with Todd set of terms}
+\caption{Ground state energy of $^1$S PsH with Todd set of terms and original ordering}
 \label{tab:BoundEnergyTodd1}
 \end{table}
 
-As described later in \cref{sec:CompPhase} we cannot use the full 1716 terms 
+As described later in \cref{sec:CompPhase}, we cannot use the full 1716 terms 
 for the Ps-H scattering problem. \Cref{tab:BoundEnergyTodd1} gives the ground 
-state energies using the restricted set of terms with Todd ordering. The 
-cutoffs in $\omega$ are easily seen using the ViewOmegaCutoffs.py script
-(\cref{chp:Programs}).
+state energies using the restricted set of terms using Todd's method with the 
+original ordering. The cutoffs in $\omega$ are easily seen using the
+ViewOmegaCutoffs.py script (\cref{chp:Programs}).
 %\url{http://cas-bs5cph1.phys.unt.edu/wiki/index.php/ViewOmegaCutoffs.py}
 
 {
@@ -442,13 +474,14 @@ $\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (a.u.) & $\Delta
 7 & 1716 & 0.323 & 0.334 & 0.975 & -0.743 386 825 704 & 0.002 764 443 796 \\
 \bottomrule
 \end{tabular}
-\caption{Eigenvalues of $^3$S short-range terms}
+\caption{Eigenvalues of $^3$S with full set of terms and original ordering}
 \label{tab:BoundEnergy3}
 \end{table}
 
 Similar to the singlet, we cannot use the full 1716 
 terms for the Ps-H scattering problem. \Cref{tab:BoundEnergyTodd3} gives the 
-energy eigenvalues using the restricted set of terms with Todd ordering. 
+energy eigenvalues using the restricted set of terms using Todd's method
+with original ordering. 
 
 \setlength{\abovecaptionskip}{6pt}   % 0.5cm as an example
 \setlength{\belowcaptionskip}{6pt}   % 0.5cm as an example
@@ -458,17 +491,17 @@ energy eigenvalues using the restricted set of terms with Todd ordering.
 \toprule
 $\omega$ & Terms & $\alpha$ & $\beta$ & $\gamma$ & Total Energy (a.u.) & $\Delta E$ (a.u.) \\ [0.5ex]
 \midrule
-0 & 1    & 0.323 & 0.334 & 0.975 & -0.563 395 012 511 & --- \\
-1 & 7    & 0.323 & 0.334 & 0.975 & -0.686 271 418 056 & 0.122 876 405 545 \\
-2 & 27   & 0.323 & 0.334 & 0.975 & -0.711 282 334 038 & 0.025 010 915 982 \\
-3 & 81   & 0.323 & 0.334 & 0.975 & -0.735 714 009 056 & 0.024 431 675 018 \\
-4 & 201  & 0.323 & 0.334 & 0.975 & -0.743 231 966 796 & 0.007 517 957 740 \\
-5 & 432  & 0.323 & 0.334 & 0.975 & -0.743 327 766 172 & 0.000 095 799 376 \\
-6 & 854  & 0.323 & 0.334 & 0.975 & -0.743 378 744 079 & 0.000 050 977 907 \\
-7 & 1633 & 0.323 & 0.334 & 0.975 & -0.743 386 823 504 & 0.000 008 079 425 \\
+0 & 1    & 0.323 & 0.334 & 0.975 & -0.500 031 146 247 & --- \\
+1 & 7    & 0.323 & 0.334 & 0.975 & -0.623 725 636 031 & 0.123 694 489 784 \\
+2 & 27   & 0.323 & 0.334 & 0.975 & -0.679 173 632 477 & 0.055 447 996 446 \\
+3 & 81   & 0.323 & 0.334 & 0.975 & -0.710 405 860 558 & 0.031 232 228 081 \\
+4 & 201  & 0.323 & 0.334 & 0.975 & -0.727 100 988 826 & 0.016 695 128 267 \\
+5 & 432  & 0.323 & 0.334 & 0.975 & -0.735 860 470 972 & 0.008 759 482 146 \\
+6 & 854  & 0.323 & 0.334 & 0.975 & -0.740 622 201 811 & 0.004 761 730 840 \\
+7 & 1633 & 0.323 & 0.334 & 0.975 & -0.743 386 893 723 & 0.002 764 691 911 \\
 \bottomrule
 \end{tabular}
-\caption{Eigenvalues of $^3$S short-range terms}
+\caption{Eigenvalues of $^3$S with Todd set of terms and original ordering}
 \label{tab:BoundEnergyTodd3}
 \end{table}
 
@@ -482,7 +515,7 @@ to PsH bound state calculations.
 Specifically, they plotted 
 the four lowest eigenvalues with respect to $N$ and looked for avoided 
 crossings. A resonance only exists if there is an avoided crossing between 
-eigenvalues. The avoided crossing that they found at $\SI{0.428 985}{au}$ (or 
+eigenvalues. The avoided crossing that they found at $\SI{0.428 985}{a.u.}$ (or 
 $\SI{5.8366}{eV}$ as shown in \cref{tab:SWaveResonancesOther}) corresponds 
 roughly with the first $^1$S resonance. Van Reeth and Humberston \cite{
 VanReeth2004} also did an analysis of stabilized eigenvalues but with the 

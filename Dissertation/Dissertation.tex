@@ -367,7 +367,10 @@ Denton Woods
 \vspace*{\fill}
 \newpage
 
-\input{Abstract}
+\iftoggle{UNT}{
+}{
+	\input{Abstract}  % The abstract has to be a separate document for UNT
+}
 
 % From http://tex.stackexchange.com/questions/45809/acknowledgement-dedication-problem
 \clearpage
@@ -440,16 +443,16 @@ short-short & short-range--short-range \\
 long-short & long-range--short-range \\
 long-long & long-range--long-range \\
 %$^1$S, $^3$S & S-wave singlet, S-wave triplet  \\
+BO & Born-Oppenheimer \\
 CC & close coupling                \\
-SVM & stochastic variational method  \\
-DMC & diffusion Monte Carlo \\
-CVM & confined variational method \\
 CI & configuration interaction \\
-SE & static-exchange \\
+CVM & confined variational method \\
+DMC & diffusion Monte Carlo \\
 Ps & positronium \\
 PsH & positronium hydride \\
+SVM & stochastic variational method  \\
+SE & static-exchange \\
 vdW & van der Waals \\
-BO & Born-Oppenheimer \\
 	\end{tabular}
 \end{table}
 
