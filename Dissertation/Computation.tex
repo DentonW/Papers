@@ -206,10 +206,11 @@ two different integrals calling the same $W$ function.
 
 To speed up the partial wave specific programs for the short-short
 S-, P-, and D-wave matrix elements significantly, we precompute the $W$ functions
-and store the results in a look up table. The 4-dimensional matrix is constructed
-with the limits derived in \cref{chp:WLimits}. Even though there is a possibility
-for the $W$ function arguments to be anywhere in this space, not all of the $W$
-matrix elements will be used.
+and store the results in a look up table stored in a 4-dimensional matrix.
+%The 4-dimensional matrix is constructed
+%with the limits derived in \cref{chp:WLimits}.
+Even though there is a possibility for the $W$ function arguments to be
+anywhere in this space, not all of the $W$ matrix elements will be used.
 
 The current S-, P-, and D-wave short-range codes first do a dummy run
 where the integrals are not actually calculated, but any $W$ matrix elements

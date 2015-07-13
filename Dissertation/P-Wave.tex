@@ -95,6 +95,10 @@ my \href{http://figshare.com/authors/Denton_Woods/581638}{figshare page} \cite{f
 
 \section{First Formalism}
 
+We used two different formalisms for the P-wave. The first places the orbital angular
+momentum mainly on the positron ($\bm{r}_1$) and the electron of Ps ($\bm{r}_2$,
+and $\bm{r}_3$ with exchange). \Cref{sec:PWave2Formalism} covers the second
+formalism that we tried.
 
 \subsection{Matrix Equation}
 \label{sec:PWaveMatrix}
@@ -214,8 +218,6 @@ They can easily be shown to be equivalent, but it is easier to compare these
 forms to the P-wave long-range code.
 
 
-\todoi{Get these to fit on fully on the page now that they're 12 point.}
-
 %
 %\begin{align}
 %\label{eq:PWavePhi1SBar}
@@ -330,7 +332,9 @@ wavefunction a set of terms for which the unit of angular momentum is on the
 electron in the H atom.''
 \end{quote}
 Due to this, we looked at a second formalism that includes these short-range 
-terms instead of what we call the first formalism in \cref{sec:PWaveFn}. 
+terms instead of what we call the first formalism in \cref{sec:PWaveFn}. This
+second formalism places the orbital angular momentum mainly on the Ps
+($\bm{\rho}$) and the electron of H ($\bm{r}_3$, and $\bm{r}_2$ with exchange).
 
 \subsection{Wavefunction}
 The trial wavefunction that we use for the second formalism is similar to the
@@ -344,8 +348,8 @@ first formalism in \cref{sec:PWaveFn}.
 \begin{subequations}
 \label{eq:PWave2ndPhiBar}
 \begin{align}
-\bar{\phi}_{\rho i} &= \left(1 \pm P_{23}\right) Y_{10}(\theta_\rho) \rho \phi_i \label{eq:PWave2ndPhi1i}\\
-\bar{\phi}_{3j} &= \left(1 \pm P_{23}\right) Y_{10}(\theta_3) r_3 \phi_j \label{eq:PWave2ndPhi2j}.
+\bar{\phi}_{\rho i} &= \left(1 \pm P_{23}\right) \SphericalHarmonicY{1}{0}{\theta_\rho}{\varphi_\rho} \rho \, \phi_i \label{eq:PWave2ndPhi1i}\\
+\bar{\phi}_{3j} &= \left(1 \pm P_{23}\right) \SphericalHarmonicY{1}{0}{\theta_3}{\varphi_3} r_3 \phi_j \label{eq:PWave2ndPhi2j}.
 \end{align}
 \end{subequations}
 These place the angular momentum on the Ps and on the electron of H, instead of
@@ -376,7 +380,7 @@ harmonic. The second is found by using the $P_{23}$ permutation of this.
 \subsection{Short-Short Matrix Elements}
 \label{sec:PWave2ndShortShort}
 
-\todoi{Spherical harmonics}
+%\todoi{Spherical harmonics}
 
 The $\left(\bar{\phi}_{\rho i},\mathcal{L} \bar{\phi}_{\rho j}\right)$ matrix
 elements of the second formalism can easily be rewritten in terms of the first
